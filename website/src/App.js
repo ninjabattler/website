@@ -1,22 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
+import TitleCard from './components/TitleCard';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <TitleCard 
+          pageColour='#00FFFF'
+          imageSrc='https://static.wikia.nocookie.net/terraria/images/f/f2/NPC_636.gif/revision/latest/scale-to-width-down/386?cb=20200618223104'
+          title='Empress of Light'
+        />
       </header>
     </div>
   );

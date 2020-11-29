@@ -1,0 +1,30 @@
+.bossCard  {
+  margin-bottom: 200px;
+  margin-top: 200px;
+  display: flex;
+  justify-content: left;
+  align-items: flex-start;
+}
+.bossCard > .background1 {
+  position: fixed;
+  border-top: 200px solid rgb(35,35,35);
+  border-right: 200px solid transparent;
+  width: 50%;
+}
+.bossCard > .background2 {
+  position: fixed;
+  border-top: 200px solid rgb(20,20,20);
+  border-right: 200px solid transparent;
+  width: 51%;
+  margin-top: 20px
+}
+.bossCard > h1 {
+  position: fixed;  
+  color: rgb(20,20,20);
+  text-shadow: 4px 4px 0px;
+  margin-top: 100px;
+}
+.bossCard > img {
+  position: fixed;
+  margin-top: -130px;
+}
