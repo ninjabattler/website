@@ -14,10 +14,8 @@
 }
 
 .App-header {
-  background-color: rgb(20,20,20);
+  background-color: rgb(35,35,35);
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
   font-size: calc(10px + 2vmin);
   color: white;
 }
@@ -33,4 +31,12 @@
   to {
     transform: rotate(360deg);
   }
+}
+.articleContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(20,20,20);
+  width: 88%;
+  margin-left: 6%;
+  margin-right: 6%;
 }
