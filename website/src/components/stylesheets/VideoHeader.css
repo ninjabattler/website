@@ -6,6 +6,7 @@
   align-items: center;
   display: flex;
   justify-content: flex-start;
+  width: 100%;
 }
 .videoHeader > .bar1, .videoHeader > .barC {
   border-bottom: 100px solid rgb(35,35,35);
@@ -31,4 +32,7 @@
   position: absolute;
   margin-top: 380px;
   color: rgb(20,20,20);
+}
+.videoHeader > video {
+  width: 100%;
 }
