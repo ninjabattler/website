@@ -2,19 +2,22 @@ import logo from './logo.svg';
 import './App.css';
 import Paragraph from './components/Paragraph';
 import TitleCard from './components/TitleCard';
+import VideoHeader from './components/VideoHeader'
 
 function App() {
+  const pageColour = '#333399'
+
   return (
     <div className="App">
       <header className="App-header">
-        <article className='articleContainer'>
+        <VideoHeader></VideoHeader>
+        <article className='articleContainer' style={{boxShadow: `5px 5px 0px ${pageColour}`}}>
           <Paragraph
             text='AYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYy'
           />
           <TitleCard 
-            pageColour='#FF4444'
-            imageSrc='https://static.wikia.nocookie.net/sonic/images/d/d4/Blackdoom_pose0_flatten.png/revision/latest/scale-to-width-down/1000?cb=20150410191238'
-            title='Black Doom'
+            pageColour={pageColour}
+            title='Slow-mo Fatality'
           />
           <Paragraph
             text='AYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYy'
