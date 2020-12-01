@@ -1,16 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
 import Paragraph from './components/Paragraph';
 import TitleCard from './components/TitleCard';
 import VideoHeader from './components/VideoHeader'
 
 function App() {
-  const pageColour = '#333399'
+  const pageColour = '#5740FB'
 
   return (
     <div className="App">
       <header className="App-header">
-        <VideoHeader></VideoHeader>
+        <VideoHeader 
+          pageColour={pageColour}
+          title='Cosmic Carnage - 32X'
+        />
         <article className='articleContainer' style={{boxShadow: `5px 5px 0px ${pageColour}`}}>
           <Paragraph
             text='AYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYy'
