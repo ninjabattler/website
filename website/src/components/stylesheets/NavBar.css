@@ -3,16 +3,16 @@
   height: 200px;
   background-color: rgb(20, 20, 20);
   filter: drop-shadow(5px 5px 0px black);
-  position: fixed;
   z-index: 100;
-  margin-top: -190px;
+  position: sticky;
+  top: -185px;
 }
 .navBar > div {
   width: 95%;
   border-top: 60px solid rgb(35, 35, 35);
   border-right: 60px solid transparent;
-  position: absolute;
   margin-top: -20px;
+  position: absolute;
 }
 .navOptions > input {
   position: absolute;
@@ -22,7 +22,7 @@
   height: 30px;
   font-size: 2em;
   margin-top: -45px;
-  margin-left: 1%;
+  margin-left: 61%;
 }
 .navOptions > button {
   background-color: rgb(20, 20, 20);
@@ -32,7 +32,7 @@
   color: rgb(35, 35, 35);
   position: absolute;
   margin-top: -45px;
-  margin-left: 26.5%;
+  margin-left: 86.5%;
 }
 input:focus {
   outline: none;
