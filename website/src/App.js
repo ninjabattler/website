@@ -3,12 +3,16 @@ import Paragraph from './components/Paragraph';
 import TitleCard from './components/TitleCard';
 import VideoHeader from './components/VideoHeader';
 import InfoBar from './components/InfoBar';
+import Navbar from './components/NavBar';
 
 function App() {
   const pageColour = '#0000A2'
 
   return (
     <div className="App">
+      <Navbar
+        pageColour={pageColour}
+      />
       <header className="App-header">
         <VideoHeader 
           pageColour={pageColour}
