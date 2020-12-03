@@ -1,0 +1,22 @@
+import React from 'react';
+import "./stylesheets/ListItem.css";
+import shuriken from './images/shuriken.svg';
+
+export default function Paragraph(props){
+  return (
+    <li className='listItem'>
+      {/* If given an image source, show that otherwise show the shuriken svgs */}
+      {props.imgSrc ? 
+      (<img
+        style={{filter: `drop-shadow(5px 5px 0px ${props.pageColour})`}}
+        src={props.imgSrc}
+      />)
+      :
+      (<img
+        style={{filter: `drop-shadow(1px 1px 0px ${props.pageColour})`}}
+        src={shuriken}
+      />)}
+      {props.content}
+    </li>
+  )
+}

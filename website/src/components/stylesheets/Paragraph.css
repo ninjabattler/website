@@ -3,3 +3,6 @@
   width: 80%;
   margin-left: 10%;
 }
+.paragraph:hover {
+  text-shadow: 4px 4px 0px black;
+}
