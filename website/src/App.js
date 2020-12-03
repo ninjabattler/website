@@ -6,7 +6,9 @@ import InfoBar from './components/InfoBar';
 import Navbar from './components/NavBar';
 import Picture from './components/Picture';
 import ListItem from './components/ListItem';
-import image from './components/images/Cosmic Carnage title.png'
+import Underline from './components/Underline';
+import Quote from './components/Quote';
+import image from './components/images/Cosmic Carnage title.png';
 
 function App() {
   const pageColour = '#0055FF'
@@ -37,6 +39,11 @@ function App() {
             pageColour={pageColour}
             imageSrc={image}
           />
+          <Underline/>
+          <Quote
+            quote='Game zooms in for an in-your-face view of hand-to-hand carnage!'
+            source='Cosmic Carnage game box'
+          />
           <TitleCard 
             pageColour={pageColour}
             title='Slow-mo Fatality'
@@ -56,38 +63,22 @@ function App() {
             <ListItem
               pageColour={pageColour}
               imgSrc='https://segaretro.org/images/2/2b/CosmicCarnage_32X_Cylic_Portrait.png'
-              content={(<h3>Cylic</h3>)}
-            />
-            <ListItem
-              pageColour={pageColour}
-              content={(<p>An alien warrior who excedes at keeping his distance with haduken like projectiles or long metal arms</p>)}
+              content={(<div><h3>Cylic</h3><p>An alien warrior who excedes at keeping his distance with haduken like projectiles or long metal arms</p></div>)}
             />
             <ListItem
               pageColour={pageColour}
               imgSrc='https://segaretro.org/images/7/73/CosmicCarnage_32X_Tyr-Karl_Portrait.png'
-              content={(<h3>Tyr</h3>)}
-            />
-            <ListItem
-              pageColour={pageColour}
-              content={(<p>A creator of armor and weaponry with the ablity to avoid projectiles and create pillars of fire by smashing the ground</p>)}
+              content={(<div><h3>Tyr</h3><p>A creator of armor and weaponry with the ablity to avoid projectiles and create pillars of fire by smashing the ground</p></div>)}
             />
             <ListItem
               pageColour={pageColour}
               imgSrc='https://segaretro.org/images/0/07/CosmicCarnage_32X_Naruto_Portrait_US-EU.png'
-              content={(<h3>Naruto</h3>)}
-            />
-            <ListItem
-              pageColour={pageColour}
-              content={(<p>Yes he's a ninja. Naruto can dash away from his opponents and has a multitude of long range and aerial attacks, and yes he has a katana</p>)}
+              content={(<div><h3>Naruto</h3><p>Yes he's a ninja. Naruto can dash away from his opponents and has a multitude of long range and aerial attacks, and yes he has a katana</p></div>)}
             />
             <ListItem
               pageColour={pageColour}
               imgSrc='https://segaretro.org/images/9/99/CosmicCarnage_32X_ZenaLan_Portrait.png'
-              content={(<h3>Zena Lan</h3>)}
-            />
-            <ListItem
-              pageColour={pageColour}
-              content={(<p>Speed is Zena's specialty, that and electrifying her opponents with projectiles or upward shocks that are sure to know airborn opponents out of the sky</p>)}
+              content={(<div><h3>Zena Lan</h3><p>Speed is Zena's specialty, that and electrifying her opponents with projectiles or upward shocks that are sure to know airborn opponents out of the sky</p></div>)}
             />
           </ul>
         </article>

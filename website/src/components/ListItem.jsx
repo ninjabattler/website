@@ -2,7 +2,7 @@ import React from 'react';
 import "./stylesheets/ListItem.css";
 import shuriken from './images/shuriken.svg';
 
-export default function Paragraph(props){
+export default function ListItem(props){
   return (
     <li className='listItem'>
       {/* If given an image source, show that otherwise show the shuriken svgs */}

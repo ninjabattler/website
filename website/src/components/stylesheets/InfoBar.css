@@ -6,7 +6,7 @@
   display: flex;
   align-items: flex-end;
 }
-.infoBar > .underline {
+.infoBar > .infoUnderline {
   border-top: 75px solid rgb(20,20,20);
   border-right: 75px solid transparent;
   width: 84.9%;
