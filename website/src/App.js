@@ -39,15 +39,15 @@ function App() {
             pageColour={pageColour}
             imageSrc={image}
           />
-          <Underline/>
-          <Quote
-            quote='Game zooms in for an in-your-face view of hand-to-hand carnage!'
-            source='Cosmic Carnage game box'
-          />
           <TitleCard 
             pageColour={pageColour}
             title='Slow-mo Fatality'
           />
+          <Quote
+            quote='Game zooms in for an in-your-face view of hand-to-hand carnage!'
+            source='Cosmic Carnage game box'
+          />
+          <Underline/>
           <Paragraph
             text={`Now we should start this by adressing the most important part of all fighting games, the fighters. Would you
                   really remember Mortal Kombat as fondly if it didn't have memorable characters like Scorpion, Sonya, Ermac, Shao 

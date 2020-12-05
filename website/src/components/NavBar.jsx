@@ -12,6 +12,13 @@ export default function NavBar(props){
       <div className='navOptions'>
         <input type='text'>
         </input>
+        <div className='option'>
+
+          <div>
+            <i class="fas fa-info-circle"></i>
+            <span>About</span>
+          </div>
+        </div>
         <button>Search</button>
       </div>
     </div>

@@ -16,4 +16,8 @@
   position: absolute;
   margin-bottom: 1%;
   color: rgb(35,35,35);
+  display: flex;
+  justify-content: space-between;
+  width: 30%;
+  margin-left: 2%;
 }

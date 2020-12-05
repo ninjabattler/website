@@ -5,7 +5,16 @@ export default function InfoBar(props){
   return (
     <div className='infoBar'>
       <div className='infoUnderline'></div>
-      <span>{new Date(Date.now()).getFullYear()}, {new Date(Date.now()).getDay()}, {new Date(Date.now()).getDate()}</span>
+      <span>
+        <div>
+          <i class="fas fa-calendar-alt"></i>
+          {new Date(Date.now()).getFullYear()}/{new Date(Date.now()).getMonth()}/{new Date(Date.now()).getDay()}
+        </div>
+        <div>
+          <i class="fas fa-gamepad"></i>
+          32X / 2D-Fighter
+        </div>
+      </span>
     </div>
   )
 }

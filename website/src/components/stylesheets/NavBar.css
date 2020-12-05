@@ -14,14 +14,16 @@
   margin-top: -20px;
   position: absolute;
 }
-.navOptions > input {
+.navOptions > * {
   position: absolute;
+  margin-top: -45px;
+}
+.navOptions > input {
   width: 25%;
   background-color: rgb(20, 20, 20);
   color: rgb(35, 35, 35);
   height: 30px;
   font-size: 2em;
-  margin-top: -45px;
   margin-left: 61%;
 }
 .navOptions > button {
@@ -30,10 +32,24 @@
   outline: none;
   border: none;
   color: rgb(35, 35, 35);
-  position: absolute;
-  margin-top: -45px;
   margin-left: 86.5%;
+}
+.navOptions > .option {
+  display: flex;
+}
+.navOptions > .option > div {
+  color: rgb(20, 20, 20);
+  font-size: 1.7em;
+  display: flex;
+  margin-left: 50px;
 }
 input:focus {
   outline: none;
+}
+select {
+  background-color: rgb(35, 35, 35);
+  color: rgb(20, 20, 20);
+  font-size: 1em;
+  outline: none;
+  border: none;
 }
