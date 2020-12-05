@@ -1,0 +1,28 @@
+.footer {
+  width: 90%;
+  border-bottom: 300px solid rgb(20,20,20);
+  border-right: 300px solid transparent;
+  margin-top: 50px;
+  filter: drop-shadow(5px -5px 0px black);
+}
+.footer > .linkDisplay {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 20px;
+}
+.linkDisplay > a {
+  width: 70%;
+  height: 10px;
+  border-top: 80px solid rgb(25,25,25);
+  border-right: 80px solid transparent;
+  filter: drop-shadow(5px 5px 0px black);
+  color: rgb(20,20,20);
+}
+.linkDisplay > a > * {
+  position: absolute;
+  margin-top: -60px;
+  font-size: 1.3em;
+  margin-left: 20px;
+}

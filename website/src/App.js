@@ -9,6 +9,7 @@ import ListItem from './components/ListItem';
 import Underline from './components/Underline';
 import Quote from './components/Quote';
 import image from './components/images/Cosmic Carnage title.png';
+import Footer from './components/Footer';
 
 function App() {
   const pageColour = '#0055FF'
@@ -82,6 +83,7 @@ function App() {
             />
           </ul>
         </article>
+        <Footer/>
       </header>
     </div>
   );
