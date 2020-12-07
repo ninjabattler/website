@@ -10,6 +10,7 @@ import Underline from './components/Underline';
 import Quote from './components/Quote';
 import image from './components/images/Cosmic Carnage title.png';
 import Footer from './components/Footer';
+import HomePage from './components/HomePage'
 
 function App() {
   const pageColour = '#0055FF'
@@ -17,10 +18,10 @@ function App() {
   return (
     <div className="App">
       <Navbar
-        pageColour={pageColour}
+        pageColour={'null'}
       />
       <header className="App-header">
-        <VideoHeader 
+        {/* <VideoHeader 
           pageColour={pageColour}
           title='Cosmic Carnage - 32X'
         />
@@ -82,9 +83,11 @@ function App() {
               content={(<div><h3>Zena Lan</h3><p>Speed is Zena's specialty, that and electrifying her opponents with projectiles or upward shocks that are sure to know airborn opponents out of the sky</p></div>)}
             />
           </ul>
-        </article>
+        </article> */}
+        <HomePage/>
         <Footer/>
       </header>
+  
     </div>
   );
 }

@@ -14,6 +14,9 @@
   margin-top: -20px;
   position: absolute;
 }
+.navBar > img {
+  filter: drop-shadow(5px 5px 0px black);
+}
 .navOptions > * {
   position: absolute;
   margin-top: -45px;
