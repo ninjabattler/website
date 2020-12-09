@@ -11,6 +11,8 @@ import Quote from './components/Quote';
 import image from './components/images/Cosmic Carnage title.png';
 import Footer from './components/Footer';
 import HomePage from './components/HomePage'
+import About from './components/About'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 function App() {
   const pageColour = '#0055FF'
@@ -84,7 +86,16 @@ function App() {
             />
           </ul>
         </article> */}
-        <HomePage/>
+        <BrowserRouter>
+          <Switch>
+            <Route exact path='/'>
+              <HomePage/>
+            </Route>
+            <Route path='/about'>
+              <About/>
+            </Route>
+          </Switch>
+        </BrowserRouter>
         <Footer/>
       </header>
   

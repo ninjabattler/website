@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/ninjabattler/website/issues"
   },
-  "homepage": "https://github.com/ninjabattler/website#readme"
+  "homepage": "https://github.com/ninjabattler/website#readme",
+  "dependencies": {
+    "react-router-dom": "^5.2.0"
+  }
 }
