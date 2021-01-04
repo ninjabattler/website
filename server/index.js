@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const db = require('./db/db');
 const queries = require('./db/queries');
@@ -9,6 +10,8 @@ db.connect()
   console.log('YO')
 })
 app.use('/posts', postRoutes(db));
+
+app.use(cors())
 
 app.get('/', (req, res)=>{
   

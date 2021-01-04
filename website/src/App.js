@@ -11,8 +11,10 @@ import Quote from './components/Quote';
 import image from './components/images/Cosmic Carnage title.png';
 import Footer from './components/Footer';
 import HomePage from './components/HomePage'
+import PostsPage from './components/PostsPage'
 import About from './components/About'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import axios from 'axios'
 
 function App() {
   const pageColour = '#0055FF'
@@ -93,6 +95,9 @@ function App() {
             </Route>
             <Route path='/about'>
               <About/>
+            </Route>
+            <Route path='/posts'>
+              <PostsPage/>
             </Route>
           </Switch>
         </BrowserRouter>

@@ -1,7 +1,8 @@
 const selectAllPosts = async (db) => {
   try {
     const posts = await db.query(`
-      SELECT * FROM posts;
+      SELECT * FROM posts
+      ORDER BY date DESC;
     `)
 
     return posts
