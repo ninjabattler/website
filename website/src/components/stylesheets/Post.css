@@ -47,6 +47,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+}
+.optionsBar:hover {
+  text-shadow: 2px 2px 0px black;
 }
 .post > .left > h1 {
   position: absolute;

@@ -9,6 +9,7 @@
 }
 body {
   overflow-x: hidden;
+  font-family: 'Righteous', cursive;
 }
 .articleContainer {
   display: flex;

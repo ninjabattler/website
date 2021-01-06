@@ -1,6 +1,7 @@
 import { React, useState } from 'react';
 import './stylesheets/Post.css';
 import image from './images/Ninja placeholder.png'
+import FireText from './animatedText/FireText';
 
 export default function Posts(props){
 
@@ -14,6 +15,8 @@ export default function Posts(props){
       </h1>
       <div className={closed ? 'closed' : 'dropDown'}>
         {props.content}
+        {/* <FireText text='I be a test'/>
+        {props.content} */}
       </div>
       <div className='optionsBar'
         onClick={() => {setClosed(!closed)}}
