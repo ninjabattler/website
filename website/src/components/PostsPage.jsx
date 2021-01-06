@@ -1,7 +1,8 @@
 import { React, useState } from 'react';
 import './stylesheets/PostsPage.css';
 import axios from 'axios';
-import image from './images/Ninja placeholder.png'
+import image from './images/Ninja placeholder.png';
+import Post from './Post';
 
 export default function PostsPage(props){
 
@@ -23,16 +24,11 @@ export default function PostsPage(props){
         :
         posts.map((post)=>{
           return (
-          <article>
-            <div className='left'>
-              <h1>
-                {post.title}
-              </h1>
-            </div>
-            <div className='right'>
-              <img src={image}/>
-            </div>
-          </article>)
+            <Post
+              title={post.title}
+              content={post.content}
+            />
+          )
         })
       }
     </div>
