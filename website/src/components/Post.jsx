@@ -1,7 +1,9 @@
 import { React, useState } from 'react';
 import './stylesheets/Post.css';
-import image from './images/Ninja placeholder.png'
 import FireText from './animatedText/FireText';
+import IceText from './animatedText/IceText';
+import ThunderText from './animatedText/ThunderText';
+import EarthText from './animatedText/EarthText';
 
 export default function Posts(props){
 
@@ -15,8 +17,8 @@ export default function Posts(props){
       </h1>
       <div className={closed ? 'closed' : 'dropDown'}>
         {props.content}
-        {/* <FireText text='I be a test'/>
-        {props.content} */}
+        <EarthText text='I be a test'/>
+        {props.content}
       </div>
       <div className='optionsBar'
         onClick={() => {setClosed(!closed)}}
@@ -25,7 +27,7 @@ export default function Posts(props){
       </div>
     </div>
     <div className='right'>
-      <img src={image}/>
+      <img src={props.image ? props.image : null}/>
     </div>
   </article>)
 }
