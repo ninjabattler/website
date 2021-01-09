@@ -3,6 +3,7 @@ import './stylesheets/PostsPage.css';
 import axios from 'axios';
 // import image from './images/Ninja placeholder.png';
 import Post from './Post';
+import ReviewPost from './ReviewPost';
 import PostShadow from './PostShadow';
 
 export default function PostsPage(props){
@@ -33,12 +34,20 @@ export default function PostsPage(props){
         (<></>)
         :
         posts.map((post)=>{
-          return (
+          return !post.review ? (
             <Post
               title={post.title}
               content={post.content}
             />
           )
+          :
+          (<ReviewPost
+            title={post.title}
+            content={post.content}
+            thumbnail={post.thumbnail}
+            colour={post.colour}
+            date={post.formatteddate}
+          />)
         })
       }
       {empty}

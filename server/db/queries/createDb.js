@@ -10,6 +10,7 @@ const createDb = async (db) => {
         id SERIAL PRIMARY KEY NOT NULL,
         title VARCHAR(255),
         thumbnail VARCHAR(255),
+        video_header VARCHAR(255),
         date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         review BOOL NOT NULL DEFAULT false,
         colour VARCHAR(255),

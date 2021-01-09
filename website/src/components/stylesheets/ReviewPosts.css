@@ -1,0 +1,55 @@
+.reviewPost {
+  width: 30%;
+  filter: drop-shadow(10px 5px 0px black);
+  border-top: 300px solid rgb(20, 20, 20);
+  border-left: 300px solid transparent;
+  border-right: 300px solid transparent;
+  margin-left: 30px;
+  margin-top: 30px;
+  margin-bottom: 120px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  animation-name: slideIn;
+  animation-duration: 2s;
+}
+.reviewPost > img {
+  position: absolute;
+  height: 300px;
+  margin-top: -300px;
+  image-resolution: 4px;
+}
+.reviewPost > header {
+  position: absolute;
+  margin-top: -370px;
+  text-align: center;
+  color: rgb(35, 35, 35);
+  width: 150%;
+  border-bottom: 50px solid rgb(20, 20, 20);
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  display: flex;
+  justify-content: center;
+}
+
+.reviewPost > header > h1 {
+  position: absolute;
+  margin-top: -5px;
+}
+
+.reviewPost > footer {
+  position: absolute;
+  margin-top: 20px;
+  text-align: center;
+  color: rgb(35, 35, 35);
+  width: 80%;
+  border-top: 50px solid rgb(20, 20, 20);
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  display: flex;
+  justify-content: center;
+}
+.reviewPost > footer > h3 {
+  position: absolute;
+  margin-top: -50px;
+}

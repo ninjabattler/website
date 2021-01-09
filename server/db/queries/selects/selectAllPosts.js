@@ -1,7 +1,7 @@
 const selectAllPosts = async (db) => {
   try {
     const posts = await db.query(`
-      SELECT * FROM posts
+      SELECT *, TO_CHAR(date, 'MM, DD, YYYY') as formattedDate FROM posts
       ORDER BY date DESC;
     `)
 
