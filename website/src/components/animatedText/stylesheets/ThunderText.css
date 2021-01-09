@@ -1,7 +1,7 @@
 .thunderText {
   text-shadow: 0px 0px 5px skyblue;
   color: lightseagreen;
-  animation-name: glow;
+  animation-name: thunderGlow;
   animation-duration: 2s;
   animation-iteration-count: infinite;
   font-family: 'Trade Winds', cursive;
@@ -20,14 +20,14 @@
   animation-timing-function: linear;
 }
 
-.symbol > i {
+.thunderText > .symbol > i {
   animation-name: fall;
   animation-duration: 0.75s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
 
-@keyframes glow{
+@keyframes thunderGlow{
   0% {text-shadow: 0px 0px 10px skyblue;}
   50% {text-shadow: 0px 0px 15px skyblue;}
   100% {text-shadow: 0px 0px 10px skyblue;}

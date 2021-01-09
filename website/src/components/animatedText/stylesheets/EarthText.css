@@ -1,7 +1,7 @@
 .earthText {
   text-shadow: 0px 0px 5px lime;
   color: brown;
-  animation-name: glow;
+  animation-name: earthGlow;
   animation-duration: 2s;
   animation-iteration-count: infinite;
   font-family: 'Rock Salt', cursive;
@@ -20,14 +20,14 @@
   animation-timing-function: linear;
 }
 
-.symbol > i {
-  animation-name: fall;
+.earthText > .symbol > i {
+  animation-name: flow;
   animation-duration: 1s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
 
-@keyframes glow{
+@keyframes earthGlow{
   0% {text-shadow: 0px 0px 10px lime;}
   50% {text-shadow: 0px 0px 15px lime;}
   100% {text-shadow: 0px 0px 10px lime;}
@@ -37,7 +37,7 @@
   50% {opacity: 100%; transform: rotate(-40deg)}
   100% {opacity: 0%; transform: rotate(-80deg)}
 }
-@keyframes fall{
+@keyframes flow{
   0% {padding-top: 0px;}
   100% {padding-top: 30px;}
 }

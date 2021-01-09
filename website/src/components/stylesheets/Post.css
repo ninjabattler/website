@@ -28,6 +28,17 @@
   font-weight: 1000;
   overflow-y: scroll;
 }
+.shadow > * {
+  border-top-color: black !important;
+  border-bottom-color: black !important;
+  color: black !important;
+  opacity: 25%;
+}
+.shadow > * > *{
+  color: black !important;
+  background-color: black !important;
+  opacity: 75%;
+}
 .closed {
   display: none;
 }

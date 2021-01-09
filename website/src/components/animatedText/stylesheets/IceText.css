@@ -1,7 +1,7 @@
 .iceText {
   text-shadow: 0px 0px 5px skyblue;
   color: whitesmoke;
-  animation-name: glow;
+  animation-name: iceGlow;
   animation-duration: 2s;
   animation-iteration-count: infinite;
   font-family: 'Hanalei Fill', cursive;
@@ -12,7 +12,7 @@
   font-size: 0.75em;
   color: skyblue;
   opacity: 50%;
-  animation-name: flame;
+  animation-name: frost;
   animation-duration: 1s;
   animation-iteration-count: infinite;
   z-index: 20;
@@ -21,24 +21,24 @@
   animation-timing-function: linear;
 }
 
-.symbol > i {
-  animation-name: fall;
+.iceText > .symbol > i {
+  animation-name: slowFall;
   animation-duration: 1s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
 
-@keyframes glow{
+@keyframes iceGlow{
   0% {text-shadow: 0px 0px 10px skyblue;}
   50% {text-shadow: 0px 0px 15px skyblue;}
   100% {text-shadow: 0px 0px 10px skyblue;}
 }
-@keyframes flame{
+@keyframes frost{
   0% {opacity: 0%;}
   50% {opacity: 100%;}
   100% {opacity: 0%;}
 }
-@keyframes fall{
+@keyframes slowFall{
   0% {padding-top: 0px; transform: rotate(0deg);}
   100% {padding-top: 20px; transform: rotate(120deg);}
 }

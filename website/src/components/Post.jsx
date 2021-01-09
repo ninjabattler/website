@@ -4,6 +4,7 @@ import FireText from './animatedText/FireText';
 import IceText from './animatedText/IceText';
 import ThunderText from './animatedText/ThunderText';
 import EarthText from './animatedText/EarthText';
+import JsxParser from 'react-jsx-parser';
 
 export default function Posts(props){
 
@@ -15,10 +16,11 @@ export default function Posts(props){
       <h1>
         {props.title}
       </h1>
-      <div className={closed ? 'closed' : 'dropDown'}>
-        {props.content}
-        <EarthText text='I be a test'/>
-        {props.content}
+      <div className={closed ? 'closed' : 'dropDown'} >
+      <JsxParser
+        components={{ FireText, IceText, ThunderText, EarthText }}
+        jsx={props.content}
+      />
       </div>
       <div className='optionsBar'
         onClick={() => {setClosed(!closed)}}

@@ -13,7 +13,7 @@ export default function EarthText(props){
         className='symbol'
         style={{
           paddingTop: `${Math.random() * 50}px`, 
-          marginLeft: `${((i * 15) + Math.random() * 10) - 10}px`, 
+          marginLeft: `${((i * 20) + Math.random() * 10) - 10}px`, 
           fontSize: `${Math.random()}em`, 
           animationDelay: `${animDelay}s`}}>
         <i 
