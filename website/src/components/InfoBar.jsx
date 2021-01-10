@@ -8,7 +8,7 @@ export default function InfoBar(props){
       <span>
         <div>
           <i class="fas fa-calendar-alt"></i>
-          {new Date(Date.now()).getFullYear()}/{new Date(Date.now()).getMonth()}/{new Date(Date.now()).getDay()}
+          {props.date}
         </div>
         <div>
           <i class="fas fa-gamepad"></i>

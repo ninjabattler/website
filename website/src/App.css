@@ -11,13 +11,6 @@ body {
   overflow-x: hidden;
   font-family: 'Righteous', cursive;
 }
-.articleContainer {
-  display: flex;
-  flex-direction: column;
-  background-color: rgb(20,20,20);
-  width: 88%;
-  filter: drop-shadow(8px 5px 0px black);
-}
 ul {
   list-style: none;
   margin-left: auto;

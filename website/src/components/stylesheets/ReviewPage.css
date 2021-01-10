@@ -1,0 +1,8 @@
+#reviewPage > .articleContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(20,20,20);
+  width: 65%;
+  filter: drop-shadow(8px 5px 0px black);
+  margin-left: 1%;
+}

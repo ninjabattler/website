@@ -17,7 +17,7 @@ export default function TitleCard(props){
       (null)
       }   
 
-      <h1 style={{textShadow: `2px 2px 0px ${props.pageColour}`}}>{props.title}</h1>
+      <h2 style={{textShadow: `2px 2px 0px ${props.pageColour}`}}>{props.title}</h2>
     </div>
   )
 }

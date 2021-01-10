@@ -13,6 +13,20 @@ module.exports = (database) => {
     res.send(posts)
   })
 
+  router.get('/:review', async (req, res) => {
+
+    const splitReview = req.params.review.split('_')
+    let formattedReview = '';
+    splitReview.forEach((review) => {
+      formattedReview += review + " "
+    })
+
+    formattedReview = formattedReview.slice(0, -1);
+
+    const post = await queries.selectSinglePost(database, {title: formattedReview})
+    res.send(post)
+  })
+
   return router;
 
 }
