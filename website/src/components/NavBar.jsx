@@ -1,6 +1,7 @@
 import React from 'react';
 import "./stylesheets/NavBar.css";
 import image from'./images/Banner.png'
+import ParticlesBg from 'particles-bg';
 
 export default function NavBar(props){
   return (
@@ -10,16 +11,20 @@ export default function NavBar(props){
         src={image}
       />
       <div className='navOptions'>
-        <input type='text'>
-        </input>
+        <div className='option'>
+          <div>
+            <i class="fas fa-sticky-note"></i>
+            <span><a href='/posts'>Posts</a></span>
+          </div>
+        </div>
         <div className='option'>
           <div>
             <i class="fas fa-info-circle"></i>
             <span><a href='/about'>About</a></span>
           </div>
         </div>
-        <button>Search</button>
       </div>
+      <ParticlesBg num={50} color='#252525' type="cobweb" bg={true} />
     </div>
   )
 }

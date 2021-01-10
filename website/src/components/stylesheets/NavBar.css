@@ -17,8 +17,10 @@
 .navBar > img {
   filter: drop-shadow(5px 5px 0px black);
 }
+.navOptions {
+  display: flex;
+}
 .navOptions > * {
-  position: absolute;
   margin-top: -45px;
 }
 .navOptions > input {

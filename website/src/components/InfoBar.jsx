@@ -12,7 +12,7 @@ export default function InfoBar(props){
         </div>
         <div>
           <i class="fas fa-gamepad"></i>
-          32X / 2D-Fighter
+          {props.categoryGenre}
         </div>
       </span>
     </div>

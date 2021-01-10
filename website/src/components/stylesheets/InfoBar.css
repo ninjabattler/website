@@ -5,6 +5,7 @@
   margin-bottom: 35px;
   display: flex;
   align-items: flex-end;
+  justify-content: flex-start;
 }
 .infoBar > .infoUnderline {
   border-top: 75px solid rgb(20,20,20);
@@ -20,4 +21,5 @@
   justify-content: space-between;
   width: 30%;
   margin-left: 2%;
+  text-align: left;
 }
