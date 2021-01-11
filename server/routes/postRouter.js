@@ -22,7 +22,6 @@ module.exports = (database) => {
     })
 
     formattedReview = formattedReview.slice(0, -1);
-
     const post = await queries.selectSinglePost(database, {title: formattedReview})
     res.send(post)
   })

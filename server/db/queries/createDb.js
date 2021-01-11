@@ -22,9 +22,8 @@ const createDb = async (db) => {
       CREATE TABLE users (
         id SERIAL PRIMARY KEY NOT NULL,
         username VARCHAR(255) NOT NULL,
-        email VARCHAR(255) NOT NULL,
-        password VARCHAR(255) NOT NULL,
         avatar VARCHAR(255) NOT NULL,
+        ip VARCHAR(50),
         date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
       );
 

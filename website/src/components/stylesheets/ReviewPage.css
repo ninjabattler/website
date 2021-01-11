@@ -10,16 +10,28 @@
   display: flex;
 }
 #likePanel {
-  position: sticky;
-  width: 30%;
-  height: 700px;
+  position: absolute;
+  height: 50px;
   background-color: rgb(20,20,20);
   margin-left: auto;
   margin-right: auto;
-  top: 120px;
+  margin-top: -70px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+#commentPanel {
+  position: sticky;
+  width: 30%;
+  height: 75vh;
+  background-color: rgb(20,20,20);
+  margin-left: auto;
+  margin-right: auto;
+  top: 170px;
+  margin-top: 80px;
   filter: drop-shadow(8px 8px 0px black);
 }
-#likePanel > textarea {
+#commentPanel > textarea {
   width: 90%;
   height: 130px;
   background: none;
@@ -39,4 +51,12 @@
   cursor: pointer;
   font-size: 1em;
   padding-left: 5%;
+  padding-right: 5%;
+}
+#likePanel > #likeBar {
+  width: 80%;
+  height: 20%;
+  background-color: rgb(35, 35, 35);
+  margin-top: auto;
+  margin-bottom: auto;
 }
