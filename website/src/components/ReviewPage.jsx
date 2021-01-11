@@ -14,6 +14,8 @@ import TitleCard from './TitleCard';
 import ParticlesBg from 'particles-bg';
 
 let ip;
+let isLiked = false;
+let isDisliked = false;
 
 //Grabs the data of an article based off it's title
 const getArticleData = async (params, cb)=>{
@@ -22,15 +24,23 @@ const getArticleData = async (params, cb)=>{
     ip = ip.data.ip;
 
     const res = await axios({ method: 'get', url: `http://localhost:5000/posts/${params.review}/`, headers: { 'Content-Type': 'application/json' },})
+    const liked = await axios({ method: 'get', url: `http://localhost:5000/users/liked/`, params:{ip, postId: res.data.rows[0].id}, headers: { 'Content-Type': 'application/json' }})
+    
+    if(liked.data.id !== undefined){
+      liked.data.liked === true ? isLiked = true : isDisliked = true;
+    }
   
     const data = res.data.rows[0];
+    console.log(data.likes)
     cb(
       data.title,
       data.colour,
       data.content,
       data.formatteddate,
       `${data.category} / ${data.genre}`,
-      Math.round(data.likes - data.dislikes) * 100)
+      data.likes,
+      data.dislikes,
+      data.id)
   }
   catch(err) {
     console.log(err);
@@ -40,7 +50,7 @@ const getArticleData = async (params, cb)=>{
 //Create a new like and a new user if they don't alreaday exist
 const like = async (params, cb)=>{
   try {
-    const res = await axios({ method: 'get', url: `http://localhost:5000/users/like`, params:{ip, like: params.like},  headers: { 'Content-Type': 'application/json' },})
+    const res = await axios({ method: 'get', url: `http://localhost:5000/users/like`, params:{ip, like: params.like, postId: params.id},  headers: { 'Content-Type': 'application/json' },})
     cb()
   }
   catch(err) {
@@ -56,17 +66,21 @@ export default function PostsPage(props){
   const [date, setDate] = useState('')
   const [categoryGenre, setCategoryGenre] = useState('')
   const [likes, setLikes] = useState(0)
+  const [dislikes, setDislikes] = useState(0)
+  const [id, setId] = useState(0)
 
   const params = useParams();
 
   useEffect(()=>{
-    getArticleData(params, (name, colour, content, date, cg, likesRatio) => {
+    getArticleData(params, (name, colour, content, date, cg, likes, dislikes, id) => {
       setTitle(name);
       setColour(colour);
       setContent(content);
       setDate(date);
       setCategoryGenre(cg);
-      setLikes(likesRatio);
+      setLikes(Number(likes));
+      setDislikes(Number(dislikes));
+      setId(id);
     })
   }, [])
 
@@ -91,21 +105,47 @@ export default function PostsPage(props){
         </article>
 
         <aside id='commentPanel'>
-          <aside id='likePanel'>
+          <aside id='likePanel' >
+            
             <button onClick={() => {
-              like({like: true, cb: ()=>{
-                console.log('sdf')
-              }})
-            }}>
-              <i class="far fa-thumbs-up"></i>
+              like({like: true, id,}, ()=>{
+                isLiked = !isLiked
+                if(isLiked === true){
+                  setLikes(likes + 1)
+                } else {
+                  setLikes(likes - 1)
+                }
+                if(isDisliked){
+                  isDisliked = !isDisliked
+                  setLikes(dislikes - 1)
+                }
+              })
+            }}
+            style={{color: isLiked === true ? colour : 'rgb(35, 35, 35)'}}>
+              <i class="far fa-thumbs-up">{likes}</i>
+              
             </button>
 
-            <div id='likeBar' style={{backgroundImage: `linear-gradient(90deg, ${colour} ${likes}%, transparent ${likes}%)`}}>
-
+            <div id='likeBar' style={{backgroundImage: `linear-gradient(90deg, ${colour} ${Math.round(likes / (likes + dislikes)) * 100}%, transparent ${Math.round(likes / (likes + dislikes)) * 100}%)`}}>
+            
             </div>
 
-            <button>
-              <i class="far fa-thumbs-down"></i>
+            <button onClick={() => {
+              like({like: false, id,}, ()=>{
+                isDisliked = !isDisliked
+                if(isDisliked === true){
+                  setDislikes(dislikes + 1)
+                } else {
+                  setDislikes(dislikes - 1)
+                }
+                if(isDisliked){
+                  isLiked = !isLiked
+                  setLikes(likes - 1)
+                }
+              })
+            }}
+            style={{color: isDisliked === true ? colour : 'rgb(35, 35, 35)'}}>
+              <i class="far fa-thumbs-down">{dislikes}</i>
             </button>
           </aside>
 

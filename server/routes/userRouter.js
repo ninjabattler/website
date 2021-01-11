@@ -10,10 +10,15 @@ module.exports = (database) => {
 
   router.get('/like', async (req, res) => {
     const user = await queries.findCreateUser(database, {ip: req.query.ip})
+    const like = await queries.insertNewLike(database, {liked: req.query.like, userId: user.rows[0].id, postId: req.query.postId})
 
-    console.log(user.rows)
+    res.send(like.rows[0])
+  })
 
-    res.send('YES')
+  router.get('/liked', async (req, res) => {
+    const user = await queries.findCreateUser(database, {ip: req.query.ip})
+    const like = await queries.selectUserLike(database, {userId: user.rows[0].id, postId: req.query.postId})
+    res.send(like.rows[0])
   })
 
   return router;
