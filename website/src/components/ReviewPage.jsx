@@ -24,7 +24,7 @@ const getArticleData = async (params, cb)=>{
     ip = await axios({ method: 'get', url: `https://api.ipify.org?format=json`, headers: { 'Content-Type': 'application/json' },})
     ip = ip.data.ip;
 
-    const res = await axios({ method: 'get', url: `http://localhost:5000/posts/${params.review}/`, headers: { 'Content-Type': 'application/json' },})
+    const res = await axios({ method: 'get', url: `http://localhost:5000/postData/${params.review}/`, headers: { 'Content-Type': 'application/json' },})
     const liked = await axios({ method: 'get', url: `http://localhost:5000/users/liked/`, params:{ip, postId: res.data.rows[0].id}, headers: { 'Content-Type': 'application/json' }})
     
     if(liked.data.id !== undefined){

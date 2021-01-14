@@ -14,7 +14,7 @@ export default function PostsPage(props){
   const emptyPosts = [];
   
   if(!posts){
-    axios.get('http://localhost:5000/posts')
+    axios.get('http://localhost:5000/postData')
     .then((res) => {
       setPosts(res.data.rows)
 

@@ -20,7 +20,7 @@ db.connect()
 .catch((err) => {
   console.log(err)
 })
-app.use('/posts', postRoutes(db));
+app.use('/postData', postRoutes(db));
 app.use('/users', userRoutes(db));
 
 app.use(cors())
