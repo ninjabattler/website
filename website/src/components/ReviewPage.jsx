@@ -12,6 +12,7 @@ import Quote from './Quote';
 import Paragraph from './Paragraph';
 import TitleCard from './TitleCard';
 import ParticlesBg from 'particles-bg';
+import Comment from './Comment';
 
 let ip;
 let isLiked = false;
@@ -31,7 +32,7 @@ const getArticleData = async (params, cb)=>{
     }
   
     const data = res.data.rows[0];
-    console.log(data.likes)
+    console.log(data)
     cb(
       data.title,
       data.colour,
@@ -40,7 +41,8 @@ const getArticleData = async (params, cb)=>{
       `${data.category} / ${data.genre}`,
       data.likes,
       data.dislikes,
-      data.id)
+      data.id,
+      data.video_header)
   }
   catch(err) {
     console.log(err);
@@ -68,11 +70,12 @@ export default function PostsPage(props){
   const [likes, setLikes] = useState(0)
   const [dislikes, setDislikes] = useState(0)
   const [id, setId] = useState(0)
+  const [video, setVideo] = useState('')
 
   const params = useParams();
 
   useEffect(()=>{
-    getArticleData(params, (name, colour, content, date, cg, likes, dislikes, id) => {
+    getArticleData(params, (name, colour, content, date, cg, likes, dislikes, id, video) => {
       setTitle(name);
       setColour(colour);
       setContent(content);
@@ -81,15 +84,21 @@ export default function PostsPage(props){
       setLikes(Number(likes));
       setDislikes(Number(dislikes));
       setId(id);
+      setVideo(video)
     })
   }, [])
 
   return (
     <div id='reviewPage'>
-      <VideoHeader 
-          pageColour={colour}
-          title={title}
-        />
+      {video !== '' ?
+      (<VideoHeader 
+        pageColour={colour}
+        title={title}
+        video={video}
+      />)
+      :
+      (<></>)}
+      
       <InfoBar
         date={date}
         categoryGenre={categoryGenre}
@@ -150,6 +159,14 @@ export default function PostsPage(props){
           </aside>
 
           <textarea name="comment" placeholder="Leave a comment!" ></textarea>
+          <div>
+            <Comment/>
+            <Comment/>
+            <Comment/>
+            <Comment/>
+            <Comment/>
+            <Comment/>
+          </div>
         </aside>
       </div>
     </div>

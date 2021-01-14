@@ -6,7 +6,7 @@ export default function VideoHeader(props){
   return (
     <div className='videoHeader'>
       <video loop muted autoPlay >
-        <source src={video} type="video/mp4"></source>
+        <source src={props.video} type="video/mp4"></source>
       </video>
 
       <div className='bar2'></div>

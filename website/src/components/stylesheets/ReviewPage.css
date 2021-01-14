@@ -43,6 +43,11 @@
   margin-left: 5%;
   resize: none;
 }
+#commentPanel > div {
+  overflow-y: scroll;
+  height: 70%;
+  margin-top: 10%;
+}
 #likePanel > button {
   color: rgb(35, 35, 35);
   background: none;
