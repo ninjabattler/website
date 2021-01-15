@@ -23,3 +23,8 @@ a {
 i {
   font-family: 'Righteous', cursive;
 }
+@media only screen and (max-device-width: 1362px) {
+  body {
+    font-size: 12px;
+  }
+}

@@ -1,5 +1,5 @@
 .footer {
-  width: 90%;
+  width: 70%;
   border-bottom: 300px solid rgb(20,20,20);
   border-right: 300px solid transparent;
   margin-top: 50px;
@@ -13,12 +13,16 @@
   margin-top: 20px;
 }
 .linkDisplay > a {
-  width: 70%;
+  width: 80%;
   height: 10px;
   border-top: 80px solid rgb(25,25,25);
   border-right: 80px solid transparent;
   filter: drop-shadow(5px 5px 0px black);
-  color: rgb(20,20,20);
+  color: rgb(35,35,35);
+  font-size: 25px;
+}
+.linkDisplay > a:hover {
+  text-shadow: 2px 2px 0px black;
 }
 .linkDisplay > a > * {
   position: absolute;
@@ -26,3 +30,30 @@
   font-size: 1.3em;
   margin-left: 20px;
 }
+@media only screen and (max-device-width: 1362px) {
+  .footer {
+    border-right-width: 200px;
+    border-bottom-width: 200px;
+  }
+  .footer > .linkDisplay > a {
+    border-width: 40px;
+    font-size: 15px;
+  }
+  .footer > .linkDisplay > a > *{
+   margin-top: -30px;
+  }
+}
+/* @media only screen and (max-device-width: 768px) {
+  .footer {
+    border-right-width: 100px;
+    border-bottom-width: 100px;
+    width: 40%;
+  }
+  .footer > .linkDisplay > a {
+    border-width: 30px;
+    font-size: 8px;
+  }
+  .footer > .linkDisplay > a > *{
+   margin-top: -25px;
+  }
+} */

@@ -42,6 +42,9 @@
 .navOptions > .option {
   display: flex;
 }
+.option:hover {
+  text-shadow: 2px 2px 0px black;
+}
 .navOptions > .option > div {
   color: rgb(20, 20, 20);
   font-size: 1.7em;
@@ -57,4 +60,12 @@ select {
   font-size: 1em;
   outline: none;
   border: none;
+}
+@media (max-device-width: 1362px) {
+  .navBar {
+    height: 180px;
+  }
+  .navBar > div {
+    width: 94%;
+  }
 }

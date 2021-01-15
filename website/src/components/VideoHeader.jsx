@@ -1,6 +1,6 @@
 import React from 'react';
 import './stylesheets/VideoHeader.css'
-import video from './test/CosmicCarnage.mp4';
+// import video from './test/CosmicCarnage.mp4';
 
 export default function VideoHeader(props){
   return (
