@@ -4,6 +4,7 @@
   border-right: 300px solid transparent;
   margin-top: 50px;
   filter: drop-shadow(5px -5px 0px black);
+  
 }
 .footer > .linkDisplay {
   position: absolute;
@@ -43,11 +44,25 @@
    margin-top: -30px;
   }
 }
-/* @media only screen and (max-device-width: 768px) {
+@media only screen and (max-device-width: 853px) {
   .footer {
     border-right-width: 100px;
     border-bottom-width: 100px;
-    width: 40%;
+    width: 70%;
+  }
+  .footer > .linkDisplay > a {
+    border-width: 30px;
+    font-size: 10px;
+  }
+  .footer > .linkDisplay > a > *{
+   margin-top: -25px;
+  }
+}
+@media only screen and (max-device-width: 480px) {
+  .footer {
+    border-right-width: 100px;
+    border-bottom-width: 100px;
+    width: 70%;
   }
   .footer > .linkDisplay > a {
     border-width: 30px;
@@ -56,4 +71,4 @@
   .footer > .linkDisplay > a > *{
    margin-top: -25px;
   }
-} */
+}
