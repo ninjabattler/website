@@ -32,7 +32,7 @@
   filter: drop-shadow(8px 8px 0px black);
 }
 #commentPanel > textarea {
-  width: 90%;
+  width: 70%;
   height: 130px;
   background: none;
   border: none;
@@ -42,6 +42,17 @@
   font-size: 0.75em;
   margin-left: 5%;
   resize: none;
+}
+#commentPanel > button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: rgb(35, 35, 35);
+  font-size: 1em;
+}
+#commentPanel > button:hover {
+  cursor: pointer;
+  text-shadow: 2px 2px 0px black;
 }
 #commentPanel > div {
   overflow-y: scroll;

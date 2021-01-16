@@ -17,6 +17,8 @@ import Comment from './Comment';
 let ip;
 let isLiked = false;
 let isDisliked = false;
+let commentContent = '';
+let userId;
 
 //Grabs the data of an article based off it's title
 const getArticleData = async (params, cb)=>{
@@ -25,14 +27,15 @@ const getArticleData = async (params, cb)=>{
     ip = ip.data.ip;
 
     const res = await axios({ method: 'get', url: `http://localhost:5000/postData/${params.review}/`, headers: { 'Content-Type': 'application/json' },})
+    const comments = await axios({ method: 'get', url: `http://localhost:5000/postData/comments/`, params:{postId: res.data.rows[0].id}, headers: { 'Content-Type': 'application/json' },})
     const liked = await axios({ method: 'get', url: `http://localhost:5000/users/liked/`, params:{ip, postId: res.data.rows[0].id}, headers: { 'Content-Type': 'application/json' }})
+    userId = liked.data.userId
     
-    if(liked.data.id !== undefined){
-      liked.data.liked === true ? isLiked = true : isDisliked = true;
+    if(liked.data.liked !== undefined){
+      liked.data.liked.liked === true ? isLiked = true : isDisliked = true;
     }
-  
+    console.log(comments.data.rows)
     const data = res.data.rows[0];
-    console.log(data)
     cb(
       data.title,
       data.colour,
@@ -42,7 +45,8 @@ const getArticleData = async (params, cb)=>{
       data.likes,
       data.dislikes,
       data.id,
-      data.video_header)
+      data.video_header,
+      comments.data.rows)
   }
   catch(err) {
     console.log(err);
@@ -60,7 +64,21 @@ const like = async (params, cb)=>{
   }
 }
 
+const comment = async (params, cb)=>{
+  try {
+    const res = await axios({ method: 'post', url: `http://localhost:5000/users/comment`, params:{ip, content: params.content, postId: params.id},  headers: { 'Content-Type': 'application/json' },})
+    const comments = await axios({ method: 'get', url: `http://localhost:5000/postData/comments/`, params:{postId: res.data.rows[0].id}, headers: { 'Content-Type': 'application/json' },})
+
+    console.log(res)
+    cb(comments.data.rows)
+  }
+  catch(err) {
+    console.log(err);
+  }
+}
+
 export default function PostsPage(props){
+  const page = this
 
   const [title, setTitle] = useState('')
   const [colour, setColour] = useState('')
@@ -71,11 +89,12 @@ export default function PostsPage(props){
   const [dislikes, setDislikes] = useState(0)
   const [id, setId] = useState(0)
   const [video, setVideo] = useState('')
+  const [comments, setComments] = useState([])
 
   const params = useParams();
 
   useEffect(()=>{
-    getArticleData(params, (name, colour, content, date, cg, likes, dislikes, id, video) => {
+    getArticleData(params, (name, colour, content, date, cg, likes, dislikes, id, video, comments) => {
       setTitle(name);
       setColour(colour);
       setContent(content);
@@ -85,6 +104,7 @@ export default function PostsPage(props){
       setDislikes(Number(dislikes));
       setId(id);
       setVideo(video)
+      setComments(comments)
     })
   }, [])
 
@@ -158,14 +178,33 @@ export default function PostsPage(props){
             </button>
           </aside>
 
-          <textarea name="comment" placeholder="Leave a comment!" ></textarea>
-          <div>
-            <Comment/>
-            <Comment/>
-            <Comment/>
-            <Comment/>
-            <Comment/>
-            <Comment/>
+          <textarea 
+            id='commentArea'
+            name="comment"
+            placeholder="Leave a comment!"
+            onChange={(e) => {
+              commentContent = e.target.value
+            }}>
+          </textarea>
+          <button onClick={() => {
+            const textField = document.getElementById('commentArea');
+            comment({content: commentContent, id: id}, (newComments) => {
+              commentContent = ''
+              setComments(newComments)
+            })
+          }}>
+            <i class="fas fa-caret-square-right"></i>
+          </button>
+          <div id='comments'>
+            {comments.map((com) => {
+              console.log(com)
+              return (<Comment 
+                pageColour={com.user_id === userId ? colour : 'transparent'}
+                username={com.username.slice(0, 10)}
+                date={com.formatteddate}
+                content={com.content}
+                avatar={com.avatar}/>)
+            })}
           </div>
         </aside>
       </div>
