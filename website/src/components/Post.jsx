@@ -9,11 +9,12 @@ import JsxParser from 'react-jsx-parser';
 export default function Posts(props){
 
   const [closed, setClosed] = useState(true)
-
   return (
   <article className='post'>
     <div className='left'>
       <h1>
+        <u>{props.date}</u>
+        <br></br>
         {props.title}
       </h1>
       <div className={closed ? 'closed' : 'dropDown'} >

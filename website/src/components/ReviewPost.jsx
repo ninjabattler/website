@@ -1,10 +1,10 @@
 import { React, useState } from 'react';
 import './stylesheets/ReviewPosts.css';
-import FireText from './animatedText/FireText';
-import IceText from './animatedText/IceText';
-import ThunderText from './animatedText/ThunderText';
-import EarthText from './animatedText/EarthText';
-import JsxParser from 'react-jsx-parser';
+// import FireText from './animatedText/FireText';
+// import IceText from './animatedText/IceText';
+// import ThunderText from './animatedText/ThunderText';
+// import EarthText from './animatedText/EarthText';
+// import JsxParser from 'react-jsx-parser';
 
 export default function ReviewPost(props){
 
@@ -25,11 +25,11 @@ export default function ReviewPost(props){
     <a href={`http://localhost:4000/posts/${formattedTitle}`}>
       <article className='reviewPost'>
         <header>
-          <h1 style={{filter: `drop-shadow(2px 2px 0px ${props.colour})`}}>{props.title}</h1>
+          <h1 style={{filter: `drop-shadow(1px 1px 0px ${props.colour})`}}>{props.title}</h1>
         </header>
         <img src={props.thumbnail}/>
         <footer>
-          <h3 style={{filter: `drop-shadow(2px 2px 0px ${props.colour})`}}>{props.date}</h3>
+          <h3 style={{filter: `drop-shadow(1px 1px 0px ${props.colour})`}}>{props.date}</h3>
         </footer>
       </article>
     </a>)

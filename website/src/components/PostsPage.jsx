@@ -38,6 +38,7 @@ export default function PostsPage(props){
             <Post
               title={post.title}
               content={post.content}
+              date={post.formatteddate}
             />
           )
           :

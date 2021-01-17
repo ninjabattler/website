@@ -5,7 +5,7 @@
   border-left: 300px solid transparent;
   border-right: 300px solid transparent;
   margin-left: 30px;
-  margin-top: 30px;
+  margin-top: 90px;
   margin-bottom: 120px;
   display: flex;
   justify-content: center;
@@ -18,6 +18,7 @@
   height: 300px;
   margin-top: -300px;
   image-resolution: 4px;
+  background-color: black;
 }
 .reviewPost > header {
   position: absolute;
@@ -52,4 +53,62 @@
 .reviewPost > footer > h3 {
   position: absolute;
   margin-top: -50px;
+}
+
+@media only screen and (max-device-width: 853px) {
+  .reviewPost {
+    border-width: 180px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 45%;
+    margin-top: 70px;
+    margin-bottom: 80px;
+  }
+  .reviewPost > img {
+    margin-top: -180px;
+    height: 180px;
+  }
+  .reviewPost > footer {
+    border-width: 35px;
+    width: 60%;
+    font-size: 15px;
+  }
+  .reviewPost > footer > h3 {
+    margin-top: -25px;
+  }
+  .reviewPost > header {
+    border-width: 35px;
+    width: 140%;
+    font-size: 19px;
+    margin-top: -230px;
+  }
+}
+
+@media only screen and (max-device-width: 480px) {
+  .reviewPost {
+    border-width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 35%;
+    margin-top: 70px;
+    margin-bottom: 80px;
+  }
+  .reviewPost > img {
+    margin-top: -100px;
+    height: 90px;
+  }
+  .reviewPost > footer {
+    border-width: 25px;
+    width: 60%;
+    font-size: 12px;
+  }
+  .reviewPost > footer > h3 {
+    margin-top: -25px;
+  }
+  .reviewPost > header {
+    border-width: 25px;
+    width: 190%;
+    font-size: 14px;
+    margin-top: -140px;
+  }
 }

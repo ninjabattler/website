@@ -66,10 +66,13 @@
 .post > .left > h1 {
   position: absolute;
   z-index: 20;
-  margin-top: -150px;
+  margin-top: -200px;
   color:rgb(35, 35, 35);
   font-weight: 700;
   text-shadow: 0px 0px 5px black;
+}
+.left > h1 > u {
+  font-size: 0.5em;
 }
 .post > .right > img {
   position: absolute;
@@ -80,4 +83,38 @@
 @keyframes slideIn {
   0%{margin-left: 0px; opacity: 0; };
   100%{margin-left: 30px; opacity: 100;};
+}
+
+@media only screen and (max-device-width: 853px) {
+  .post > .left, .post > .right {
+    border-width: 200px;
+  }
+  .left > .optionsBar {
+    width: 340%;
+  }
+  .left > .dropDown  {
+    width: 328%;
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-device-width: 480px) {
+  .post {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .post > .left, .post > .right {
+    border-width: 100px;
+  }
+  .left > .optionsBar {
+    width: 320%;
+  }
+  .left > .dropDown  {
+    width: 300%;
+    font-size: 20px;
+  }
+  .post > .left > h1 {
+    margin-top: -90px;
+    font-size: 20px;
+  }
 }

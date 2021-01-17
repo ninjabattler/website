@@ -107,11 +107,12 @@
 
 @media only screen and (max-device-width: 480px) {
   #homePage {
-    font-size: 10px;
+    font-size: 8px;
     margin-left: 3%;
   }
   #homePage > p {
     width: 90%;
+    height: 40vh
   }
   #homePage > video {
     width: 100%;
