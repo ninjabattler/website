@@ -26,9 +26,9 @@ const getArticleData = async (params, cb)=>{
     ip = await axios({ method: 'get', url: `https://api.ipify.org?format=json`, headers: { 'Content-Type': 'application/json' },})
     ip = ip.data.ip;
 
-    const res = await axios({ method: 'get', url: `http://localhost:5000/postData/${params.review}/`, headers: { 'Content-Type': 'application/json' },})
-    const comments = await axios({ method: 'get', url: `http://localhost:5000/postData/comments/`, params:{postId: res.data.rows[0].id}, headers: { 'Content-Type': 'application/json' },})
-    const liked = await axios({ method: 'get', url: `http://localhost:5000/users/liked/`, params:{ip, postId: res.data.rows[0].id}, headers: { 'Content-Type': 'application/json' }})
+    const res = await axios({ method: 'get', url: `/postData/${params.review}/`, headers: { 'Content-Type': 'application/json' },})
+    const comments = await axios({ method: 'get', url: `/postData/comments/`, params:{postId: res.data.rows[0].id}, headers: { 'Content-Type': 'application/json' },})
+    const liked = await axios({ method: 'get', url: `/users/liked/`, params:{ip, postId: res.data.rows[0].id}, headers: { 'Content-Type': 'application/json' }})
     userId = liked.data.userId
     
     if(liked.data.liked !== undefined){
@@ -56,7 +56,7 @@ const getArticleData = async (params, cb)=>{
 //Create a new like and a new user if they don't alreaday exist
 const like = async (params, cb)=>{
   try {
-    const res = await axios({ method: 'get', url: `http://localhost:5000/users/like`, params:{ip, like: params.like, postId: params.id},  headers: { 'Content-Type': 'application/json' },})
+    const res = await axios({ method: 'get', url: `/users/like`, params:{ip, like: params.like, postId: params.id},  headers: { 'Content-Type': 'application/json' },})
     cb()
   }
   catch(err) {
@@ -66,8 +66,8 @@ const like = async (params, cb)=>{
 
 const comment = async (params, cb)=>{
   try {
-    const res = await axios({ method: 'post', url: `http://localhost:5000/users/comment`, params:{ip, content: params.content, postId: params.id},  headers: { 'Content-Type': 'application/json' },})
-    const comments = await axios({ method: 'get', url: `http://localhost:5000/postData/comments/`, params:{postId: res.data.rows[0].id}, headers: { 'Content-Type': 'application/json' },})
+    const res = await axios({ method: 'post', url: `/users/comment`, params:{ip, content: params.content, postId: params.id},  headers: { 'Content-Type': 'application/json' },})
+    const comments = await axios({ method: 'get', url: `/postData/comments/`, params:{postId: res.data.rows[0].id}, headers: { 'Content-Type': 'application/json' },})
 
     console.log(res)
     cb(comments.data.rows)

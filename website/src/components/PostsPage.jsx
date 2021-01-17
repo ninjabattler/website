@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import './stylesheets/PostsPage.css';
 import axios from 'axios';
 // import image from './images/Ninja placeholder.png';
@@ -13,18 +13,20 @@ export default function PostsPage(props){
 
   const emptyPosts = [];
   
-  if(!posts){
-    axios.get('http://localhost:5000/postData')
-    .then((res) => {
-      setPosts(res.data.rows)
+  useEffect(()=>{
+    if(!posts){
+      axios.get('/postData')
+      .then((res) => {
+        setPosts(res.data.rows)
 
-      for(let i = 0; i < 9 - res.data.rows.length; i++ ) {
-        emptyPosts.push((<PostShadow/>))
-      }
+        for(let i = 0; i < 9 - res.data.rows.length; i++ ) {
+          emptyPosts.push((<PostShadow/>))
+        }
 
-      setEmpty(emptyPosts)
-    })
-  }
+        setEmpty(emptyPosts)
+      })
+    }
+  }, [])
 
   console.log(posts)
 
