@@ -11,7 +11,7 @@ export default function HomePage(props){
       </video>
       <h1>Welcome chrome users<i>(I hope)</i>!</h1>
       <u></u>
-      <p>I don't know how you found this sight but since you're here, why not stick around? It's pretty quiet
+      <p>I don't know how you found this site but since you're here, why not stick around? It's pretty quiet
         in here right now but I plan on changing that as soon as possible by filling this sight with uninformed
         opinions, video games retro and new, and whatever else I so choose to post. 
       </p>
