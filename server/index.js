@@ -30,4 +30,13 @@ app.use(cors())
 
 app.listen(5000, () => {
   console.log("server has started on port 5000");
+  // queries.insertNewPost(db, {
+  //   title: "It is complete!",
+  //   colour: '',
+  //   category: '',
+  //   genre: '',
+  //   review: false,
+  //   thumbnail: '',
+  //   video_header: '',
+  //   content: "<h1>YES</h1><p><span>Through the power of incomprehensible gibberish copied off of google, I have trancended you mortals and created a website! NYEHEHEHE!!!!</span></p><br></br><p>I don't know how often I'll post but if you have any suggestions, complaints, or you just want something to hate, I've linked my github on the footer for this site!</p>"})
 })
