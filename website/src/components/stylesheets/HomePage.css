@@ -25,6 +25,7 @@
 #homePage > video {
   width: 100%;
   margin-bottom: -400px;
+  opacity: 0;
 }
 .homeVideo {
   display: flex;
@@ -47,7 +48,20 @@
   border-top: 400px solid transparent;
   border-left: 400px solid rgb(20,20,20);
 } 
-
+#threeBackground {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  margin: 0;
+  z-index: -10;
+}
+#threeBackground > .particle {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: -1000;
+  background-color: black;
+}
 @media only screen and (max-device-width: 1362px) {
   #homePage {
     font-size: 20px;

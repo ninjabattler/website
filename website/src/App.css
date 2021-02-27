@@ -3,13 +3,14 @@
 }
 
 .App-header {
-  background-color: rgb(35,35,35);
+  background-color: transparent;
   min-height: 100vh;
   font-size: 30px
 }
 body {
   overflow-x: hidden;
   font-family: 'Righteous', cursive;
+  background-color: rgb(35,35,35);
 }
 ul {
   list-style: none;

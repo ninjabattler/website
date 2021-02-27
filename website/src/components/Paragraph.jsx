@@ -4,7 +4,7 @@ import "./stylesheets/Paragraph.css";
 export default function Paragraph(props){
   return (
     <div className='paragraph'>
-      <p>{props.text}</p>
+      <p dangerouslySetInnerHTML={{__html: props.text}}></p>
     </div>
   )
 }
