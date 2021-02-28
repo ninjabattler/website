@@ -1,4 +1,5 @@
 import { React, useEffect, useState } from 'react';
+import ReactDOM from 'react-dom';
 import './stylesheets/ReviewPage.css';
 import axios from 'axios';
 import VideoHeader from './VideoHeader';
@@ -20,6 +21,7 @@ let isLiked = false;
 let isDisliked = false;
 let commentContent = '';
 let userId;
+let postId;
 
 //Grabs the data of an article based off it's title
 const getArticleData = async (params, cb) => {
@@ -31,6 +33,7 @@ const getArticleData = async (params, cb) => {
     const comments = await axios({ method: 'get', url: `/postData/comments/`, params: { postId: res.data.rows[0].id }, headers: { 'Content-Type': 'application/json' }, })
     const liked = await axios({ method: 'get', url: `/users/liked/`, params: { ip, postId: res.data.rows[0].id }, headers: { 'Content-Type': 'application/json' } })
     userId = liked.data.userId
+    postId = res.data.rows[0].id;
 
     if (liked.data.liked !== undefined) {
       liked.data.liked.liked === true ? isLiked = true : isDisliked = true;
@@ -65,12 +68,14 @@ const like = async (params, cb) => {
   }
 }
 
-const comment = async (params, cb) => {
+const comment = async (params, setCommenting, cb) => {
   try {
+    setCommenting(true)
     const res = await axios({ method: 'post', url: `/users/comment`, params: { ip, content: params.content, postId: params.id }, headers: { 'Content-Type': 'application/json' }, })
-    const comments = await axios({ method: 'get', url: `/postData/comments/`, params: { postId: res.data.rows[0].id }, headers: { 'Content-Type': 'application/json' }, })
+    const comments = await axios({ method: 'get', url: `/postData/comments/`, params: { postId: postId }, headers: { 'Content-Type': 'application/json' }, })
 
     console.log(res)
+    setCommenting(false)
     cb(comments.data.rows)
   }
   catch (err) {
@@ -91,6 +96,7 @@ export default function PostsPage(props) {
   const [id, setId] = useState(0)
   const [video, setVideo] = useState('')
   const [comments, setComments] = useState([])
+  const [commenting, setCommenting] = useState(false)
 
   const params = useParams();
 
@@ -183,23 +189,45 @@ export default function PostsPage(props) {
                 </button>
               </aside>
 
-              <textarea
-                id='commentArea'
-                name="comment"
-                placeholder="Leave a comment!"
-                onChange={(e) => {
-                  commentContent = e.target.value
-                }}>
-              </textarea>
-              <button onClick={() => {
-                const textField = document.getElementById('commentArea');
-                comment({ content: commentContent, id: id }, (newComments) => {
-                  commentContent = ''
-                  setComments(newComments)
-                })
-              }}>
-                <i class="fas fa-caret-square-right"></i>
-              </button>
+              {commenting === true ?
+                (<>
+                  <p id='commentLoading'>
+                    <img src={ninjabattler} />
+                  </p>
+                </>) :
+                (<>
+                  <textarea
+                    id='commentArea'
+                    name="comment"
+                    placeholder="Leave a comment!"
+                    onChange={(e) => {
+                      commentContent = e.target.value
+                    }}>
+                  </textarea>
+                  <button onClick={() => {
+                    comment({ content: commentContent, id: id }, setCommenting, (newComments) => {
+                      commentContent = ''
+                      setComments(newComments)
+                      // ReactDOM.render(
+                      //   <>
+                      //     {comments.map((com) => {
+                      //       console.log(com)
+                      //       return (<Comment
+                      //         pageColour={com.user_id === userId ? colour : 'transparent'}
+                      //         username={com.username.slice(0, 10)}
+                      //         date={com.formatteddate}
+                      //         content={com.content}
+                      //         avatar={com.avatar} />)
+                      //     })}
+                      //   </>,
+                      //   document.getElementById('comments')
+                      // );
+                    })
+                  }}>
+                    <i class="fas fa-caret-square-right"></i>
+                  </button>
+                </>)}
+
               <div id='comments'>
                 {comments.map((com) => {
                   console.log(com)

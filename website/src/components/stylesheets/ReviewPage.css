@@ -43,6 +43,16 @@
   margin-left: 5%;
   resize: none;
 }
+#commentLoading {
+  width: 70%;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#commentLoading > img {
+  width: 50%;
+}
 #commentPanel > button {
   border: none;
   outline: none;
@@ -58,6 +68,17 @@
   overflow-y: scroll;
   height: 70%;
   margin-top: 10%;
+}
+#commentPanel > div::-webkit-scrollbar {
+  background: rgb(35, 35, 35);
+  outline: 4px solid rgb(20, 20, 20);
+}
+#commentPanel > div::-webkit-scrollbar-track {
+  background: rgb(35, 35, 35);
+}
+#commentPanel > div::-webkit-scrollbar-thumb {
+  background: rgb(20, 20, 20);
+  border: 2px solid rgb(35, 35, 35);
 }
 #likePanel > button {
   color: rgb(35, 35, 35);

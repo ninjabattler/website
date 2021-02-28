@@ -12,6 +12,17 @@ body {
   font-family: 'Righteous', cursive;
   background-color: rgb(35,35,35);
 }
+body::-webkit-scrollbar {
+  background: rgb(35, 35, 35);
+  outline: 4px solid rgb(20, 20, 20);
+}
+body::-webkit-scrollbar-track {
+  background: rgb(35, 35, 35);
+  border: 2px solid rgb(20, 20, 20);
+}
+body::-webkit-scrollbar-thumb {
+  background: rgb(20, 20, 20);
+}
 ul {
   list-style: none;
   margin-left: auto;
