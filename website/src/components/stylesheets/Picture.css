@@ -1,7 +1,11 @@
-.picture {
+.picture > img{
   max-width: 80%;
   min-width: 50%;
   image-rendering: pixelated;
   margin-left: auto;
   margin-right: auto;
+}
+.picture {
+  display: flex;
+  justify-content: center;
 }

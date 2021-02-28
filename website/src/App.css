@@ -11,6 +11,7 @@ body {
   overflow-x: hidden;
   font-family: 'Righteous', cursive;
   background-color: rgb(35,35,35);
+  display: none;
 }
 body::-webkit-scrollbar {
   background: rgb(35, 35, 35);
