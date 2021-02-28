@@ -149,8 +149,9 @@ export default function PostsPage(props) {
                     }
                     if (isDisliked) {
                       isDisliked = !isDisliked
-                      setLikes(dislikes - 1)
+                      setDislikes(dislikes - 1)
                     }
+                    console.log(isLiked, isDisliked)
                   })
                 }}
                   style={{ color: isLiked === true ? colour : 'rgb(35, 35, 35)' }}>
@@ -170,10 +171,11 @@ export default function PostsPage(props) {
                     } else {
                       setDislikes(dislikes - 1)
                     }
-                    if (isDisliked) {
+                    if (isLiked) {
                       isLiked = !isLiked
                       setLikes(likes - 1)
                     }
+                    console.log(isLiked, isDisliked)
                   })
                 }}
                   style={{ color: isDisliked === true ? colour : 'rgb(35, 35, 35)' }}>
