@@ -22,7 +22,7 @@ export default function ReviewPost(props){
   formattedTitle = formattedTitle.slice(0, -1)
 
   return (
-    <a href={`https://ninjabattler.ca/posts/${formattedTitle}`}>
+    <a href={`http://localhost:4000/posts/${formattedTitle}`}>
       <article className='reviewPost'>
         <header>
           <h1 style={{filter: `drop-shadow(1px 1px 0px ${props.colour})`}}>{props.title}</h1>
