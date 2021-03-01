@@ -24,6 +24,21 @@
   text-align: left;
 }
 
+@media only screen and (max-width: 853px) {
+  .infoBar {
+    height: 20%;
+    width: 80%;
+  }
+  .infoBar > .infoUnderline {
+    border-width: 40px;
+  }
+  .infoBar > span {
+    font-size: 0.6em;
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
 @media only screen and (max-width: 480px) {
   .infoBar {
     height: 10%;
