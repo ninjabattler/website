@@ -3,7 +3,7 @@ import './stylesheets/Post.css';
 
 export default function PostShadow(props){
 
-  const [closed, setClosed] = useState(true)
+  const [closed,] = useState(true)
 
   return (
   <article className='post shadow'>

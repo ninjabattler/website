@@ -16,11 +16,11 @@ const avatars = {
 
 export default function Comment(props){
 
-  const [closed, setClosed] = useState(true)
+  // const [closed, setClosed] = useState(true)
 
   return (
   <article className='comment'>
-    <img className='avatar' src={avatars[`avatar${props.avatar}`]} style={{filter: `drop-shadow(2px 2px 0px ${props.pageColour || 'transparent'})`}}/>
+    <img className='avatar' src={avatars[`avatar${props.avatar}`]} style={{filter: `drop-shadow(2px 2px 0px ${props.pageColour || 'transparent'})`}} alt='profile pic' />
     <header style={{textShadow: `1px 1px 0px ${props.pageColour || 'transparent'}`}}>
       <i>Anon-{props.username}</i>
       <p>{props.date}</p>

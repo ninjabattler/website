@@ -30,7 +30,7 @@ export default function Posts(props){
       </div>
     </div>
     <div className='right'>
-      <img src={props.image ? props.image : null}/>
+      <img src={props.image ? props.image : null} alt=''/>
     </div>
   </article>)
 }

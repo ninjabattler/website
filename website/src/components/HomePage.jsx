@@ -1,7 +1,7 @@
 import React from 'react';
 import './stylesheets/HomePage.css'
 import splashVideo from './images/Splash Video.mp4'
-import cosmicCarnage from './images/CosmicCarnage.mp4'
+// import cosmicCarnage from './images/CosmicCarnage.mp4'
 
 export default function HomePage(props){
   return (

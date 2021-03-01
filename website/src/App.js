@@ -17,7 +17,7 @@ import About from './components/About'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 function App() {
-  const pageColour = '#0055FF'
+  // const pageColour = '#0055FF'
 
   return (
     <div className="App">

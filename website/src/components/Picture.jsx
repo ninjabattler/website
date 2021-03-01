@@ -7,6 +7,7 @@ export default function Picture(props) {
       <img
         src={props.imageSrc}
         style={{ filter: `drop-shadow(5px 5px 0px ${props.pageColour})` }}
+        alt=''
       />
     </div>
   )

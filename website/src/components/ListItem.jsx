@@ -10,11 +10,13 @@ export default function ListItem(props){
       (<img
         style={{filter: `drop-shadow(5px 5px 0px ${props.pageColour})`}}
         src={props.imgSrc}
+        alt=''
       />)
       :
       (<img
         style={{filter: `drop-shadow(1px 1px 0px ${props.pageColour})`}}
         src={shuriken}
+        alt=''
       />)}
       {props.content}
     </li>

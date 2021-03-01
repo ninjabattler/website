@@ -202,6 +202,12 @@ export default function PostsPage(props) {
                     placeholder="Leave a comment!"
                     onChange={(e) => {
                       commentContent = e.target.value
+                    }}
+                    onFocus={(e) => {
+                      e.target.placeholder = ''
+                    }}
+                    onBlur={(e) => {
+                      e.target.placeholder = 'Leave a comment!'
                     }}>
                   </textarea>
                   <button onClick={() => {

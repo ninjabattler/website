@@ -6,7 +6,7 @@ export default function About(props){
   return (
     <div id='about'>
       <div className='left'></div>
-      <img src={ninjabattler}/>
+      <img src={ninjabattler} alt='logo'/>
       <div className='right'></div>
       <br></br>
       <div id='content'>

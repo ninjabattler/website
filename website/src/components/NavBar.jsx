@@ -10,6 +10,7 @@ export default function NavBar(props){
         <img 
           style={{filter: `drop-shadow(5px 5px 0px ${props.pageColour})`}}
           src={image}
+          alt='logo'
         />
       </a>
       <div className='navOptions'>
