@@ -36,6 +36,25 @@
   max-height: 700px;
 }
 
+@media only screen and (max-width: 1362px) {
+  .bossCard {
+    margin-bottom: 150px;
+    filter: drop-shadow(3px 2px 0px black);
+  }
+  .bossCard > h2 {
+    font-size: 1.4em;
+    margin-top: 40px
+  }
+  .bossCard > .background1 {
+    border-width: 125px;
+    margin-left: -2px;
+  }
+  .bossCard > .background2 {
+    margin-top: 5px;
+    border-width: 125px;
+  }
+}
+
 @media only screen and (max-width: 853px) {
   .bossCard {
     margin-bottom: 100px;

@@ -151,15 +151,16 @@ export default function PostsPage(props) {
       }
       <div>
         {content !== '' ?
-          (<><article className='articleContainer' style={{ boxShadow: `5px 5px 0px ${colour}` }}>
-            <JsxParser
-              components={{ Picture, ListItem, Underline, Quote, Paragraph, TitleCard }}
+          (<>
+            <article className='articleContainer' style={{ boxShadow: `5px 5px 0px ${colour}` }}>
+              <JsxParser
+                components={{ Picture, ListItem, Underline, Quote, Paragraph, TitleCard }}
 
-              jsx={content}
-            />
-          </article>
-            <aside id='commentPanel'>
-              <aside id='likePanel' >
+                jsx={content}
+              />
+            </article>
+            <aside className='commentPanel'>
+              <aside className='likePanel' >
 
                 <button onClick={() => {
                   like({ like: true, id, }, () => {
@@ -230,27 +231,13 @@ export default function PostsPage(props) {
                     comment({ content: commentContent, id: id }, setCommenting, (newComments) => {
                       commentContent = ''
                       setComments(newComments)
-                      // ReactDOM.render(
-                      //   <>
-                      //     {comments.map((com) => {
-                      //       console.log(com)
-                      //       return (<Comment
-                      //         pageColour={com.user_id === userId ? colour : 'transparent'}
-                      //         username={com.username.slice(0, 10)}
-                      //         date={com.formatteddate}
-                      //         content={com.content}
-                      //         avatar={com.avatar} />)
-                      //     })}
-                      //   </>,
-                      //   document.getElementById('comments')
-                      // );
                     })
                   }}>
                     <i class="fas fa-caret-square-right"></i>
                   </button>
                 </>)}
 
-              <div id='comments'>
+              <div className='comments'>
                 {comments.map((com) => {
                   console.log(com)
                   return (<Comment
@@ -269,6 +256,96 @@ export default function PostsPage(props) {
             <h3>"{QUOTES[Math.floor(Math.random() * QUOTES.length)]}"</h3>
           </div>)}
       </div>
+      <aside className='commentPanel mobile'>
+        <aside className='likePanel' >
+
+          <button onClick={() => {
+            like({ like: true, id, }, () => {
+              isLiked = !isLiked
+              if (isLiked === true) {
+                setLikes(likes + 1)
+              } else {
+                setLikes(likes - 1)
+              }
+              if (isDisliked) {
+                isDisliked = !isDisliked
+                setDislikes(dislikes - 1)
+              }
+              console.log(isLiked, isDisliked)
+            })
+          }}
+            style={{ color: isLiked === true ? colour : 'rgb(35, 35, 35)' }}>
+            <i class="far fa-thumbs-up">{likes}</i>
+
+          </button>
+
+          <div id='likeBar' style={{ backgroundImage: `linear-gradient(90deg, ${colour} ${Math.round(likes / (likes + dislikes)) * 100}%, transparent ${Math.round(likes / (likes + dislikes)) * 100}%)` }}>
+
+          </div>
+
+          <button onClick={() => {
+            like({ like: false, id, }, () => {
+              isDisliked = !isDisliked
+              if (isDisliked === true) {
+                setDislikes(dislikes + 1)
+              } else {
+                setDislikes(dislikes - 1)
+              }
+              if (isLiked) {
+                isLiked = !isLiked
+                setLikes(likes - 1)
+              }
+              console.log(isLiked, isDisliked)
+            })
+          }}
+            style={{ color: isDisliked === true ? colour : 'rgb(35, 35, 35)' }}>
+            <i class="far fa-thumbs-down">{dislikes}</i>
+          </button>
+        </aside>
+
+        {commenting === true ?
+          (<>
+            <p id='commentLoading'>
+              <img src={ninjabattler} />
+            </p>
+          </>) :
+          (<>
+            <textarea
+              id='commentArea'
+              name="comment"
+              placeholder="Leave a comment!"
+              onChange={(e) => {
+                commentContent = e.target.value
+              }}
+              onFocus={(e) => {
+                e.target.placeholder = ''
+              }}
+              onBlur={(e) => {
+                e.target.placeholder = 'Leave a comment!'
+              }}>
+            </textarea>
+            <button onClick={() => {
+              comment({ content: commentContent, id: id }, setCommenting, (newComments) => {
+                commentContent = ''
+                setComments(newComments)
+              })
+            }}>
+              <i class="fas fa-caret-square-right"></i>
+            </button>
+          </>)}
+
+        <div className='comments'>
+          {comments.map((com) => {
+            console.log(com)
+            return (<Comment
+              pageColour={com.user_id === userId ? colour : 'transparent'}
+              username={com.username.slice(0, 10)}
+              date={com.formatteddate}
+              content={com.content}
+              avatar={com.avatar} />)
+          })}
+        </div>
+      </aside>
     </div>
   )
 }
