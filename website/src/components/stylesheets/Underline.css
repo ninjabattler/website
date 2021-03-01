@@ -8,3 +8,11 @@
   margin-right: auto;
   filter: drop-shadow(5px 5px 0px black);
 }
+
+@media only screen and (max-width: 480px) {
+  .underline { 
+    border-left-width: 60px;
+    border-right-width: 60px;
+    border-bottom-width: 5px;
+  }
+}

@@ -35,3 +35,22 @@
 .bossCard > .imageContainer > img {
   max-height: 700px;
 }
+
+@media only screen and (max-width: 480px) {
+  .bossCard {
+    margin-bottom: 75px;
+    filter: drop-shadow(3px 2px 0px black);
+  }
+  .bossCard > h2 {
+    font-size: 0.5em;
+    margin-top: 20px
+  }
+  .bossCard > .background1 {
+    border-width: 50px;
+    margin-left: -2px;
+  }
+  .bossCard > .background2 {
+    margin-top: 5px;
+    border-width: 50px;
+  }
+}

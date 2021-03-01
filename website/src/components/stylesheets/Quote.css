@@ -14,3 +14,10 @@
   justify-content: center;
   margin-bottom: -30px;
 }
+
+
+@media only screen and (max-width: 480px) {
+  .quote {
+    font-size: 0.4em;
+  }
+}

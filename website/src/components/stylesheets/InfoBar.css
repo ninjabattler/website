@@ -23,3 +23,17 @@
   margin-left: 2%;
   text-align: left;
 }
+
+@media only screen and (max-width: 480px) {
+  .infoBar {
+    height: 10%;
+  }
+  .infoBar > .infoUnderline {
+    border-width: 25px;
+  }
+  .infoBar > span {
+    font-size: 0.5em;
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
