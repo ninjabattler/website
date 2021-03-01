@@ -117,7 +117,7 @@
   animation-duration: 1s;
 }
 .mobile {
-  display: flex;  
+  display: none;  
   margin-top: 50px;
 }
 
