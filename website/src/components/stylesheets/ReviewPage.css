@@ -102,6 +102,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+}
+#loadingArticle > h3 {
+  color:rgb(20, 20, 20);
+  text-shadow: 2px 2px 0px black;
 }
 #loadingArticle > img {
   width: 50%;
@@ -113,7 +118,7 @@
 }
 
 @keyframes loading {
-  0%{width: 40%;}
-  50%{width: 50%;}
-  100%{width: 40%;}
+  0%{width: 40%; margin: 0%;}
+  50%{width: 50%; margin: -2.8%;}
+  100%{width: 40%; margin: 0%;}
 }
