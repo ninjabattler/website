@@ -9,7 +9,7 @@
 }
 .navBar > div {
   width: 95%;
-  border-top: 60px solid rgb(35, 35, 35);
+  border-top: 60px solid #292929;
   border-right: 60px solid transparent;
   margin-top: -20px;
   position: absolute;
@@ -26,7 +26,7 @@
 .navOptions > input {
   width: 25%;
   background-color: rgb(20, 20, 20);
-  color: rgb(35, 35, 35);
+  color: #292929;
   height: 30px;
   font-size: 2em;
   margin-left: 61%;
@@ -36,7 +36,7 @@
   height: 35px;
   outline: none;
   border: none;
-  color: rgb(35, 35, 35);
+  color: #292929;
   margin-left: 86.5%;
 }
 .navOptions > .option {
@@ -55,7 +55,7 @@ input:focus {
   outline: none;
 }
 select {
-  background-color: rgb(35, 35, 35);
+  background-color: #292929;
   color: rgb(20, 20, 20);
   font-size: 1em;
   outline: none;

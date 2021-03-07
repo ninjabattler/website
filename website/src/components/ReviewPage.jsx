@@ -36,7 +36,8 @@ let QUOTES = [
   "You there, you're the one they call Dragonborn?",
   "What a fool you are. I'm a god, how can you kill a god? What a grand and intoxicating innocence. How could you be so naive? There is no escape. No recall or intervention can work in this place. Come, lay down your weapons, it is not too late for my mercy",
   "Woomy!",
-  "You're dead, your friends are dead, game over"
+  "You're dead, your friends are dead, game over",
+  "Beadichnoa NiGHTS"
 ]
 
 //Grabs the data of an article based off it's title
@@ -177,7 +178,7 @@ export default function PostsPage(props) {
                     console.log(isLiked, isDisliked)
                   })
                 }}
-                  style={{ color: isLiked === true ? colour : 'rgb(35, 35, 35)' }}>
+                  style={{ color: isLiked === true ? colour : '#292929' }}>
                   <i class="far fa-thumbs-up">{likes}</i>
 
                 </button>
@@ -201,7 +202,7 @@ export default function PostsPage(props) {
                     console.log(isLiked, isDisliked)
                   })
                 }}
-                  style={{ color: isDisliked === true ? colour : 'rgb(35, 35, 35)' }}>
+                  style={{ color: isDisliked === true ? colour : '#292929' }}>
                   <i class="far fa-thumbs-down">{dislikes}</i>
                 </button>
               </aside>
@@ -274,7 +275,7 @@ export default function PostsPage(props) {
               console.log(isLiked, isDisliked)
             })
           }}
-            style={{ color: isLiked === true ? colour : 'rgb(35, 35, 35)' }}>
+            style={{ color: isLiked === true ? colour : '#292929' }}>
             <i class="far fa-thumbs-up">{likes}</i>
 
           </button>
@@ -298,7 +299,7 @@ export default function PostsPage(props) {
               console.log(isLiked, isDisliked)
             })
           }}
-            style={{ color: isDisliked === true ? colour : 'rgb(35, 35, 35)' }}>
+            style={{ color: isDisliked === true ? colour : '#292929' }}>
             <i class="far fa-thumbs-down">{dislikes}</i>
           </button>
         </aside>

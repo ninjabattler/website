@@ -9,7 +9,7 @@
   width: 100%;
 }
 .videoHeader > .bar1, .videoHeader > .barC {
-  border-bottom: 100px solid rgb(35,35,35);
+  border-bottom: 100px solid #292929;
   width: 65%;
   border-right: 100px solid transparent;
   position: absolute;

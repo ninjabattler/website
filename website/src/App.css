@@ -10,7 +10,7 @@
 body {
   overflow-x: hidden;
   font-family: 'Righteous', cursive;
-  background-color: rgb(35,35,35);
+  background-color: #292929;
 }
 body::-webkit-scrollbar {
   background: rgb(35, 35, 35);

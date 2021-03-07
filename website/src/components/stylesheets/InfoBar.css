@@ -1,7 +1,7 @@
 .infoBar {
   height: 75px;
   width: 100%;
-  background-color: rgb(35,35,35);
+  background-color: #292929;
   margin-bottom: 35px;
   display: flex;
   align-items: flex-end;
@@ -16,7 +16,7 @@
 .infoBar > span {
   position: absolute;
   margin-bottom: 1%;
-  color: rgb(35,35,35);
+  color: #292929;
   display: flex;
   justify-content: space-between;
   width: 30%;

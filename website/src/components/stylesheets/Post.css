@@ -21,7 +21,7 @@
 .left > .dropDown {
   height: 500px;
   width: 250%;
-  background-color: rgb(35, 35, 35);
+  background-color: #292929;
   border-left: 10px solid rgb(20, 20, 20);
   border-right: 10px solid rgb(20, 20, 20);
   color: rgb(20, 20, 20);
@@ -43,21 +43,21 @@
   display: none;
 }
 .dropDown::-webkit-scrollbar {
-  background: rgb(35, 35, 35);
+  background: #292929;
   outline: 4px solid rgb(20, 20, 20);
 }
 .dropDown::-webkit-scrollbar-track {
-  background: rgb(35, 35, 35);
+  background: #292929;
 }
 .dropDown::-webkit-scrollbar-thumb {
   background: rgb(20, 20, 20);
 }
 .left > .optionsBar {
-  border-top: 3px solid rgb(35, 35, 35);
+  border-top: 3px solid #292929;
   width: 255%;
   height: 50px;
   background-color: rgb(20, 20, 20);
-  color: rgb(35, 35, 35);
+  color: #292929;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -70,7 +70,7 @@
   position: absolute;
   z-index: 20;
   margin-top: -200px;
-  color:rgb(35, 35, 35);
+  color:#292929;
   font-weight: 700;
   text-shadow: 0px 0px 5px black;
 }

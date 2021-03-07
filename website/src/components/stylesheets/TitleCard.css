@@ -8,7 +8,7 @@
 }
 .bossCard > .background1 {
   position: absolute;
-  border-top: 200px solid rgb(35,35,35);
+  border-top: 200px solid #292929;
   border-right: 200px solid transparent;
   width: 60%;
 }

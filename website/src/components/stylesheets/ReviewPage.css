@@ -37,8 +37,8 @@
   background: none;
   border: none;
   outline: none;
-  border-bottom: 3px solid rgb(35, 35, 35);
-  color: rgb(35, 35, 35);
+  border-bottom: 3px solid #292929;
+  color: #292929;
   font-size: 0.75em;
   margin-left: 5%;
   resize: none;
@@ -57,7 +57,7 @@
   border: none;
   outline: none;
   background-color: transparent;
-  color: rgb(35, 35, 35);
+  color: #292929;
   font-size: 1em;
 }
 .commentPanel > button:hover {
@@ -70,18 +70,18 @@
   margin-top: 10%;
 }
 .commentPanel > div::-webkit-scrollbar {
-  background: rgb(35, 35, 35);
+  background: #292929;
   outline: 4px solid rgb(20, 20, 20);
 }
 .commentPanel > div::-webkit-scrollbar-track {
-  background: rgb(35, 35, 35);
+  background: #292929;
 }
 .commentPanel > div::-webkit-scrollbar-thumb {
   background: rgb(20, 20, 20);
-  border: 2px solid rgb(35, 35, 35);
+  border: 2px solid #292929;
 }
 .likePanel > button {
-  color: rgb(35, 35, 35);
+  color: #292929;
   background: none;
   border: none;
   outline: none;
@@ -93,7 +93,7 @@
 .likePanel > #likeBar {
   width: 80%;
   height: 20%;
-  background-color: rgb(35, 35, 35);
+  background-color: #292929;
   margin-top: auto;
   margin-bottom: auto;
 }

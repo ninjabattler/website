@@ -3,7 +3,7 @@
   height: fit-content;
   justify-content: center;
   flex-wrap: wrap;
-  background-color: rgb(35,35,35);
+  background-color: #292929;
 }
 #about > #content {
   width: 50%;
@@ -26,14 +26,14 @@
 #about > .left {
   width: 5%;
   border-right: 350px solid transparent;
-  border-bottom: 350px solid rgb(35,35,35);
+  border-bottom: 350px solid #292929;
   margin-right: -300px;
   z-index: 10;
 }
 #about > .right {
   width: 5%;
   border-left: 350px solid transparent;
-  border-bottom: 350px solid rgb(35,35,35);
+  border-bottom: 350px solid #292929;
   margin-left: -300px;
   z-index: 10;
 }

@@ -19,7 +19,7 @@
   border-top: 80px solid rgb(25,25,25);
   border-right: 80px solid transparent;
   filter: drop-shadow(5px 5px 0px black);
-  color: rgb(35,35,35);
+  color: #292929;
   font-size: 25px;
 }
 .linkDisplay > a:hover {

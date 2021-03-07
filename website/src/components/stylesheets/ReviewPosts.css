@@ -24,7 +24,7 @@
   position: absolute;
   margin-top: -370px;
   text-align: center;
-  color: rgb(35, 35, 35);
+  color: #292929;
   width: 150%;
   border-bottom: 50px solid rgb(20, 20, 20);
   border-left: 50px solid transparent;
@@ -42,7 +42,7 @@
   position: absolute;
   margin-top: 20px;
   text-align: center;
-  color: rgb(35, 35, 35);
+  color: #292929;
   width: 80%;
   border-top: 50px solid rgb(20, 20, 20);
   border-left: 50px solid transparent;
