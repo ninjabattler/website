@@ -2,18 +2,20 @@ import React from 'react';
 import './stylesheets/VideoHeader.css'
 // import video from './test/CosmicCarnage.mp4';
 
-export default function VideoHeader(props){
+export default function VideoHeader(props) {
   return (
     <div className='videoHeader'>
       <video loop muted autoPlay >
+        <source src={props.video} type="video/webm"></source>
+        <source src={props.video} type="video/ogg"></source>
         <source src={props.video} type="video/mp4"></source>
       </video>
 
       <div className='bar2'></div>
-      <div className='barC' style={{borderBottomColor: props.pageColour, borderRightColor: "transparent"}}></div>
+      <div className='barC' style={{ borderBottomColor: props.pageColour, borderRightColor: "transparent" }}></div>
       <div className='bar1'></div>
 
-      <h1 style={{textShadow: `1px 1px 0px ${props.pageColour}`}}>
+      <h1 style={{ textShadow: `1px 1px 0px ${props.pageColour}` }}>
         {props.title}
       </h1>
     </div>
