@@ -183,10 +183,9 @@ export default function PostsPage(props) {
 
                 </button>
 
-                <div id='likeBar' style={{ backgroundImage: `linear-gradient(90deg, ${colour} ${Math.round(likes / (likes + dislikes)) * 100}%, transparent ${Math.round(likes / (likes + dislikes)) * 100}%)` }}>
+                <div id='likeBar' style={{ backgroundImage: `linear-gradient(90deg, ${colour} ${(likes / (likes + dislikes)) * 100}%, transparent ${(likes / (likes + dislikes)) * 100}%)` }}>
 
                 </div>
-
                 <button onClick={() => {
                   like({ like: false, id, }, () => {
                     isDisliked = !isDisliked
