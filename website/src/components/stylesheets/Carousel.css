@@ -1,0 +1,14 @@
+.carousel {
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px;
+  width: 70vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.carousel > main {
+  background-color: #141414;
+  width: 100%;
+  height: 30vw;
+}
