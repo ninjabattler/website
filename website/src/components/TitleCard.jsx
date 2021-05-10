@@ -3,7 +3,7 @@ import "./stylesheets/TitleCard.css";
 
 export default function TitleCard(props){
   return (
-    <div className='bossCard'>
+    <div className={`bossCard ${props.inverse ? 'inverse' : ''}`}>
       <div className='background2' style={{borderColor: props.pageColour, borderRightColor: "transparent"}}></div>
       <div className='background1'></div>
 
