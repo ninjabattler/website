@@ -83,6 +83,11 @@
 .option:hover {
   text-shadow: 2px 2px 0px black;
 }
+
+.socialLinks {
+  flex-direction: column;
+}
+
 .navOptions > .option > div {
   color: #292929;
   font-size: 1.7em;

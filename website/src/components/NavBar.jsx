@@ -37,15 +37,22 @@ export default function NavBar(props) {
         />
       </a>
       <div className='navOptions'>
-        <div className='option'>
+      <div className='option'>
           <div>
-            <i class="fas fa-sticky-note"></i>
             <span><a href='/posts'>Posts</a></span>
+          </div>
+        </div><div className='option'>
+          <div>
+            <span><a href='/articles'>Articles</a></span>
           </div>
         </div>
         <div className='option'>
           <div>
-            <i class="fas fa-info-circle"></i>
+            <span><a href='https://github.com/ninjabattler'>Github</a></span>
+          </div>
+        </div>
+        <div className='option'>
+          <div>
             <span><a href='/about'>About</a></span>
           </div>
         </div>
