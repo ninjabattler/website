@@ -1,92 +1,37 @@
-import { React } from 'react';
+import { React, useEffect, useState } from 'react';
 import './stylesheets/ArticlesPage.css';
 import JsxParser from 'react-jsx-parser';
 import Paragraph from './Paragraph';
 import Carousel from './Carousel'
+// import ParticlesBg from 'particles-bg';
+import axios from 'axios';
 
 export default function ArticlesPage(props) {
 
-  // const [closed, setClosed] = useState(true)
-  const testData = [{
-    name: 'Test 1',
-    image: 'https://files.ninjabattler.ca/image/Cosmic%20Carnage%20Thumbnail.jpg',
-    video: 'https://storage.googleapis.com/personal-webiste/Video/CosmicCarnage.mp4',
-    date: 'NOW',
-    colour: '#FFFF00',
-    content: "<Paragraph text='November 22, 1994, SEGA released their newest console, the 32-bit, SEGA Saturn, as the successor of their previous console, the Genesis. It was a great console, ya know, despite being one of the worst consoles ever and arguably the worst mistake SEGA has ever made but hey, it wasn’t all bad right? The Saturn was home to many great games such as Astal, Panzer Dragoon, Virtua Fighter, Fighting Vipers, Burning Rangers, and the topic of this article, NiGHTS into Dreams!' />\n<Paragraph text='November 22, 1994, SEGA released their newest console, the 32-bit, SEGA Saturn, as the successor of their previous console, the Genesis. It was a great console, ya know, despite being one of the worst consoles ever and arguably the worst mistake SEGA has ever made but hey, it wasn’t all bad right? The Saturn was home to many great games such as Astal, Panzer Dragoon, Virtua Fighter, Fighting Vipers, Burning Rangers, and the topic of this article, NiGHTS into Dreams!' />"
-  }, {
-    name: 'Test 2',
-    image: 'https://files.ninjabattler.ca/image/Cosmic%20Carnage%20Thumbnail.jpg',
-    video: 'https://storage.googleapis.com/personal-webiste/Video/CosmicCarnage.mp4',
-    date: 'NOW',
-    colour: '#FFFF00',
-    content: "<Paragraph text='November 22, 1994, SEGA released their newest console, the 32-bit, SEGA Saturn, as the successor of their previous console, the Genesis. It was a great console, ya know, despite being one of the worst consoles ever and arguably the worst mistake SEGA has ever made but hey, it wasn’t all bad right? The Saturn was home to many great games such as Astal, Panzer Dragoon, Virtua Fighter, Fighting Vipers, Burning Rangers, and the topic of this article, NiGHTS into Dreams!' />\n<Paragraph text='November 22, 1994, SEGA released their newest console, the 32-bit, SEGA Saturn, as the successor of their previous console, the Genesis. It was a great console, ya know, despite being one of the worst consoles ever and arguably the worst mistake SEGA has ever made but hey, it wasn’t all bad right? The Saturn was home to many great games such as Astal, Panzer Dragoon, Virtua Fighter, Fighting Vipers, Burning Rangers, and the topic of this article, NiGHTS into Dreams!' />"
-  }, {
-    name: 'Test 3',
-    image: 'https://files.ninjabattler.ca/image/Cosmic%20Carnage%20Thumbnail.jpg',
-    video: 'https://storage.googleapis.com/personal-webiste/Video/CosmicCarnage.mp4',
-    date: 'NOW',
-    colour: '#FFFF00',
-    content: "<Paragraph text='November 22, 1994, SEGA released their newest console, the 32-bit, SEGA Saturn, as the successor of their previous console, the Genesis. It was a great console, ya know, despite being one of the worst consoles ever and arguably the worst mistake SEGA has ever made but hey, it wasn’t all bad right? The Saturn was home to many great games such as Astal, Panzer Dragoon, Virtua Fighter, Fighting Vipers, Burning Rangers, and the topic of this article, NiGHTS into Dreams!' />\n<Paragraph text='November 22, 1994, SEGA released their newest console, the 32-bit, SEGA Saturn, as the successor of their previous console, the Genesis. It was a great console, ya know, despite being one of the worst consoles ever and arguably the worst mistake SEGA has ever made but hey, it wasn’t all bad right? The Saturn was home to many great games such as Astal, Panzer Dragoon, Virtua Fighter, Fighting Vipers, Burning Rangers, and the topic of this article, NiGHTS into Dreams!' />"
-  }, {
-    name: 'Test 4',
-    image: 'https://files.ninjabattler.ca/image/Cosmic%20Carnage%20Thumbnail.jpg',
-    video: 'https://storage.googleapis.com/personal-webiste/Video/CosmicCarnage.mp4',
-    date: 'NOW',
-    colour: '#FFFF00',
-    content: "<Paragraph text='November 22, 1994, SEGA released their newest console, the 32-bit, SEGA Saturn, as the successor of their previous console, the Genesis. It was a great console, ya know, despite being one of the worst consoles ever and arguably the worst mistake SEGA has ever made but hey, it wasn’t all bad right? The Saturn was home to many great games such as Astal, Panzer Dragoon, Virtua Fighter, Fighting Vipers, Burning Rangers, and the topic of this article, NiGHTS into Dreams!' />\n<Paragraph text='November 22, 1994, SEGA released their newest console, the 32-bit, SEGA Saturn, as the successor of their previous console, the Genesis. It was a great console, ya know, despite being one of the worst consoles ever and arguably the worst mistake SEGA has ever made but hey, it wasn’t all bad right? The Saturn was home to many great games such as Astal, Panzer Dragoon, Virtua Fighter, Fighting Vipers, Burning Rangers, and the topic of this article, NiGHTS into Dreams!' />"
-  }, {
-    name: 'Test 5',
-    image: 'https://files.ninjabattler.ca/image/Cosmic%20Carnage%20Thumbnail.jpg',
-    video: 'https://storage.googleapis.com/personal-webiste/Video/CosmicCarnage.mp4',
-    date: 'NOW',
-    colour: '#FFFF00',
-    content: "<Paragraph text='November 22, 1994, SEGA released their newest console, the 32-bit, SEGA Saturn, as the successor of their previous console, the Genesis. It was a great console, ya know, despite being one of the worst consoles ever and arguably the worst mistake SEGA has ever made but hey, it wasn’t all bad right? The Saturn was home to many great games such as Astal, Panzer Dragoon, Virtua Fighter, Fighting Vipers, Burning Rangers, and the topic of this article, NiGHTS into Dreams!' />\n<Paragraph text='November 22, 1994, SEGA released their newest console, the 32-bit, SEGA Saturn, as the successor of their previous console, the Genesis. It was a great console, ya know, despite being one of the worst consoles ever and arguably the worst mistake SEGA has ever made but hey, it wasn’t all bad right? The Saturn was home to many great games such as Astal, Panzer Dragoon, Virtua Fighter, Fighting Vipers, Burning Rangers, and the topic of this article, NiGHTS into Dreams!' />"
-  }, {
-    name: 'Test 6',
-    image: 'https://files.ninjabattler.ca/image/Cosmic%20Carnage%20Thumbnail.jpg',
-    video: 'https://storage.googleapis.com/personal-webiste/Video/CosmicCarnage.mp4',
-    date: 'NOW',
-    colour: '#FFFF00',
-    content: "<Paragraph text='November 22, 1994, SEGA released their newest console, the 32-bit, SEGA Saturn, as the successor of their previous console, the Genesis. It was a great console, ya know, despite being one of the worst consoles ever and arguably the worst mistake SEGA has ever made but hey, it wasn’t all bad right? The Saturn was home to many great games such as Astal, Panzer Dragoon, Virtua Fighter, Fighting Vipers, Burning Rangers, and the topic of this article, NiGHTS into Dreams!' />\n<Paragraph text='November 22, 1994, SEGA released their newest console, the 32-bit, SEGA Saturn, as the successor of their previous console, the Genesis. It was a great console, ya know, despite being one of the worst consoles ever and arguably the worst mistake SEGA has ever made but hey, it wasn’t all bad right? The Saturn was home to many great games such as Astal, Panzer Dragoon, Virtua Fighter, Fighting Vipers, Burning Rangers, and the topic of this article, NiGHTS into Dreams!' />"
-  }, {
-    name: 'Test 7',
-    image: 'https://files.ninjabattler.ca/image/Cosmic%20Carnage%20Thumbnail.jpg',
-    video: 'https://storage.googleapis.com/personal-webiste/Video/CosmicCarnage.mp4',
-    date: 'NOW',
-    colour: '#FFFF00',
-    content: "<Paragraph text='November 22, 1994, SEGA released their newest console, the 32-bit, SEGA Saturn, as the successor of their previous console, the Genesis. It was a great console, ya know, despite being one of the worst consoles ever and arguably the worst mistake SEGA has ever made but hey, it wasn’t all bad right? The Saturn was home to many great games such as Astal, Panzer Dragoon, Virtua Fighter, Fighting Vipers, Burning Rangers, and the topic of this article, NiGHTS into Dreams!' />\n<Paragraph text='November 22, 1994, SEGA released their newest console, the 32-bit, SEGA Saturn, as the successor of their previous console, the Genesis. It was a great console, ya know, despite being one of the worst consoles ever and arguably the worst mistake SEGA has ever made but hey, it wasn’t all bad right? The Saturn was home to many great games such as Astal, Panzer Dragoon, Virtua Fighter, Fighting Vipers, Burning Rangers, and the topic of this article, NiGHTS into Dreams!' />"
-  }, {
-    name: 'Test 8',
-    image: 'https://files.ninjabattler.ca/image/Cosmic%20Carnage%20Thumbnail.jpg',
-    video: 'https://storage.googleapis.com/personal-webiste/Video/CosmicCarnage.mp4',
-    date: 'NOW',
-    colour: '#FFFF00',
-    content: "<Paragraph text='November 22, 1994, SEGA released their newest console, the 32-bit, SEGA Saturn, as the successor of their previous console, the Genesis. It was a great console, ya know, despite being one of the worst consoles ever and arguably the worst mistake SEGA has ever made but hey, it wasn’t all bad right? The Saturn was home to many great games such as Astal, Panzer Dragoon, Virtua Fighter, Fighting Vipers, Burning Rangers, and the topic of this article, NiGHTS into Dreams!' />\n<Paragraph text='November 22, 1994, SEGA released their newest console, the 32-bit, SEGA Saturn, as the successor of their previous console, the Genesis. It was a great console, ya know, despite being one of the worst consoles ever and arguably the worst mistake SEGA has ever made but hey, it wasn’t all bad right? The Saturn was home to many great games such as Astal, Panzer Dragoon, Virtua Fighter, Fighting Vipers, Burning Rangers, and the topic of this article, NiGHTS into Dreams!' />"
-  }, {
-    name: 'Test 9',
-    image: 'https://files.ninjabattler.ca/image/Cosmic%20Carnage%20Thumbnail.jpg',
-    video: 'https://storage.googleapis.com/personal-webiste/Video/CosmicCarnage.mp4',
-    date: 'NOW',
-    colour: '#FFFF00',
-    content: "<Paragraph text='November 22, 1994, SEGA released their newest console, the 32-bit, SEGA Saturn, as the successor of their previous console, the Genesis. It was a great console, ya know, despite being one of the worst consoles ever and arguably the worst mistake SEGA has ever made but hey, it wasn’t all bad right? The Saturn was home to many great games such as Astal, Panzer Dragoon, Virtua Fighter, Fighting Vipers, Burning Rangers, and the topic of this article, NiGHTS into Dreams!' />\n<Paragraph text='November 22, 1994, SEGA released their newest console, the 32-bit, SEGA Saturn, as the successor of their previous console, the Genesis. It was a great console, ya know, despite being one of the worst consoles ever and arguably the worst mistake SEGA has ever made but hey, it wasn’t all bad right? The Saturn was home to many great games such as Astal, Panzer Dragoon, Virtua Fighter, Fighting Vipers, Burning Rangers, and the topic of this article, NiGHTS into Dreams!' />"
-  }, {
-    name: 'Test 10',
-    image: 'https://files.ninjabattler.ca/image/Cosmic%20Carnage%20Thumbnail.jpg',
-    video: 'https://storage.googleapis.com/personal-webiste/Video/CosmicCarnage.mp4',
-    date: 'NOW',
-    colour: '#FFFF00',
-    content: "<Paragraph text='November 22, 1994, SEGA released their newest console, the 32-bit, SEGA Saturn, as the successor of their previous console, the Genesis. It was a great console, ya know, despite being one of the worst consoles ever and arguably the worst mistake SEGA has ever made but hey, it wasn’t all bad right? The Saturn was home to many great games such as Astal, Panzer Dragoon, Virtua Fighter, Fighting Vipers, Burning Rangers, and the topic of this article, NiGHTS into Dreams!' />\n<Paragraph text='November 22, 1994, SEGA released their newest console, the 32-bit, SEGA Saturn, as the successor of their previous console, the Genesis. It was a great console, ya know, despite being one of the worst consoles ever and arguably the worst mistake SEGA has ever made but hey, it wasn’t all bad right? The Saturn was home to many great games such as Astal, Panzer Dragoon, Virtua Fighter, Fighting Vipers, Burning Rangers, and the topic of this article, NiGHTS into Dreams!' />"
-  }]
+  const [articles, setArticles] = useState(false)
+  // const [empty, setEmpty] = useState(false)
+
+  // const emptyPosts = [];
+
+  useEffect(() => {
+    if (!articles) {
+      axios.get('/postData/articles')
+        .then((res) => {
+          setArticles(res.data.rows)
+          console.log(res.data.rows)
+        })
+    }
+  }, [])
 
   return (
     <>
       <Carousel />
       <main id='articlesPage'>
         <div className='articlesPageContainer'>
-          {testData.slice(0, 4).map((item) => {
+          {articles ?
+            (<>{articles.slice(0, 4).map((item) => {
             return (
-              <section className='articleCard'>
+              <a href={`/posts/${item.title.toLowerCase().replace(' ', '_')}`} className='articleCard'>
                 <article className='articleCardItem'
                   onMouseEnter={(e) => {
                     e.target.parentElement.children["0"].className = 'fade'
@@ -95,15 +40,15 @@ export default function ArticlesPage(props) {
                     e.target.parentElement.children["0"].className = 'fadeIn'
                   }}>
                   <div>
-                    <img src={item.image} alt='thumbnail' />
+                    <img src={item.thumbnail} alt='thumbnail' />
                     <video loop muted autoPlay >
-                      <source src={item.video} type="video/webm"></source>
-                      <source src={item.video} type="video/ogg"></source>
-                      <source src={item.video} type="video/mp4"></source>
+                      <source src={item.video_header} type="video/webm"></source>
+                      <source src={item.video_header} type="video/ogg"></source>
+                      <source src={item.video_header} type="video/mp4"></source>
                     </video>
                     <div> </div>
                     <section>
-                      <h1 style={{ filter: `drop-shadow(1px 1px 0px ${item.colour})` }}>{item.name}</h1>
+                      <h1 style={{ filter: `drop-shadow(1px 1px 0px ${item.colour})` }}>{item.title}</h1>
                     </section>
                   </div>
 
@@ -117,8 +62,11 @@ export default function ArticlesPage(props) {
                     </aside>
                   </div>
                 </article>
-              </section>)
-          })}
+              </a>)
+          })}</>)
+          :
+          (<></>)
+        }
         </div>
       </main>
     </>)

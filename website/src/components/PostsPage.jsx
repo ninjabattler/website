@@ -6,25 +6,25 @@ import Post from './Post';
 import ReviewPost from './ReviewPost';
 import PostShadow from './PostShadow';
 
-export default function PostsPage(props){
+export default function PostsPage(props) {
 
   const [posts, setPosts] = useState(false)
   const [empty, setEmpty] = useState(false)
 
   const emptyPosts = [];
-  
-  useEffect(()=>{
-    if(!posts){
+
+  useEffect(() => {
+    if (!posts) {
       axios.get('/postData')
-      .then((res) => {
-        setPosts(res.data.rows)
+        .then((res) => {
+          setPosts(res.data.rows)
 
-        for(let i = 0; i < 9 - res.data.rows.length; i++ ) {
-          emptyPosts.push((<PostShadow/>))
-        }
+          for (let i = 0; i < 9 - res.data.rows.length; i++) {
+            emptyPosts.push((<PostShadow />))
+          }
 
-        setEmpty(emptyPosts)
-      })
+          setEmpty(emptyPosts)
+        })
     }
   }, [])
 
@@ -32,10 +32,15 @@ export default function PostsPage(props){
 
   return (
     <div id='postsPage'>
-      {!posts ? 
+      <Post
+        title={'New Logo!'}
+        content={'<span>Just got a new logo made for me by <ThunderText text="CigaretteAshe" /></span>'}
+        date={'NO'}
+      />
+      {!posts ?
         (<></>)
         :
-        posts.map((post)=>{
+        posts.map((post) => {
           return !post.review ? (
             <Post
               title={post.title}
@@ -43,14 +48,14 @@ export default function PostsPage(props){
               date={post.formatteddate}
             />
           )
-          :
-          (<ReviewPost
-            title={post.title}
-            content={post.content}
-            thumbnail={post.thumbnail}
-            colour={post.colour}
-            date={post.formatteddate}
-          />)
+            :
+            (<ReviewPost
+              title={post.title}
+              content={post.content}
+              thumbnail={post.thumbnail}
+              colour={post.colour}
+              date={post.formatteddate}
+            />)
         })
       }
       {empty}
