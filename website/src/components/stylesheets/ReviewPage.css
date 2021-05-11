@@ -1,7 +1,7 @@
 #reviewPage > div >.articleContainer {
   display: flex;
   flex-direction: column;
-  background-color: rgb(20,20,20);
+  background-color: var(--dark-gray);
   width: 65%;
   filter: drop-shadow(8px 5px 0px black);
   margin-left: 1%;
@@ -12,7 +12,7 @@
 .likePanel {
   position: absolute;
   height: 50px;
-  background-color: rgb(20,20,20);
+  background-color: var(--dark-gray);
   margin-left: auto;
   margin-right: auto;
   margin-top: -70px;
@@ -24,7 +24,7 @@
   position: sticky;
   width: 30%;
   height: 75vh;
-  background-color: rgb(20,20,20);
+  background-color: var(--dark-gray);
   margin-left: auto;
   margin-right: auto;
   top: 170px;
@@ -37,8 +37,8 @@
   background: none;
   border: none;
   outline: none;
-  border-bottom: 3px solid #292929;
-  color: #292929;
+  border-bottom: 3px solid var(--light-gray);
+  color: var(--light-gray);
   font-size: 0.75em;
   margin-left: 5%;
   resize: none;
@@ -57,7 +57,7 @@
   border: none;
   outline: none;
   background-color: transparent;
-  color: #292929;
+  color: var(--light-gray);
   font-size: 1em;
 }
 .commentPanel > button:hover {
@@ -70,18 +70,18 @@
   margin-top: 10%;
 }
 .commentPanel > div::-webkit-scrollbar {
-  background: #292929;
-  outline: 4px solid rgb(20, 20, 20);
+  background: var(--light-gray);
+  outline: 4px solid var(--dark-gray);
 }
 .commentPanel > div::-webkit-scrollbar-track {
-  background: #292929;
+  background: var(--light-gray);
 }
 .commentPanel > div::-webkit-scrollbar-thumb {
-  background: rgb(20, 20, 20);
-  border: 2px solid #292929;
+  background: var(--dark-gray);
+  border: 2px solid var(--light-gray);
 }
 .likePanel > button {
-  color: #292929;
+  color: var(--light-gray);
   background: none;
   border: none;
   outline: none;
@@ -93,7 +93,7 @@
 .likePanel > #likeBar {
   width: 80%;
   height: 20%;
-  background-color: #292929;
+  background-color: var(--light-gray);
   margin-top: auto;
   margin-bottom: auto;
 }
@@ -105,7 +105,7 @@
   flex-direction: column;
 }
 #loadingArticle > h3 {
-  color:rgb(20, 20, 20);
+  color:var(--dark-gray);
   text-shadow: 2px 2px 0px black;
 }
 #loadingArticle > img {

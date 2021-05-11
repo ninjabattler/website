@@ -1,7 +1,7 @@
 .reviewPost {
   width: 30%;
   filter: drop-shadow(10px 5px 0px black);
-  border-top: 300px solid rgb(20, 20, 20);
+  border-top: 300px solid var(--dark-gray);
   border-left: 300px solid transparent;
   border-right: 300px solid transparent;
   margin-left: 30px;
@@ -24,9 +24,9 @@
   position: absolute;
   margin-top: -370px;
   text-align: center;
-  color: #292929;
+  color: var(--light-gray);
   width: 150%;
-  border-bottom: 50px solid rgb(20, 20, 20);
+  border-bottom: 50px solid var(--dark-gray);
   border-left: 50px solid transparent;
   border-right: 50px solid transparent;
   display: flex;
@@ -42,9 +42,9 @@
   position: absolute;
   margin-top: 20px;
   text-align: center;
-  color: #292929;
+  color: var(--light-gray);
   width: 80%;
-  border-top: 50px solid rgb(20, 20, 20);
+  border-top: 50px solid var(--dark-gray);
   border-left: 50px solid transparent;
   border-right: 50px solid transparent;
   display: flex;

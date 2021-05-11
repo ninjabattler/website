@@ -1,3 +1,8 @@
+:root {
+  --light-gray: #333333;
+  --dark-gray: #161616;
+}
+
 .App {
   text-align: left;
 }
@@ -10,18 +15,18 @@
 body {
   overflow-x: hidden;
   font-family: 'Righteous', cursive;
-  background-color: #292929;
+  background-color: var(--light-gray);
 }
 body::-webkit-scrollbar {
-  background: rgb(35, 35, 35);
-  outline: 4px solid rgb(20, 20, 20);
+  background: var(--light-gray);
+  outline: 4px solid var(--dark-gray);
 }
 body::-webkit-scrollbar-track {
-  background: rgb(35, 35, 35);
-  border: 2px solid rgb(20, 20, 20);
+  background: var(--light-gray);
+  border: 2px solid var(--dark-gray);
 }
 body::-webkit-scrollbar-thumb {
-  background: rgb(20, 20, 20);
+  background: var(--dark-gray);
 }
 ul {
   list-style: none;
@@ -29,7 +34,7 @@ ul {
   margin-right: auto;
 }
 a {
-  color: rgb(20, 20, 20);
+  color: var(--dark-gray);
   text-decoration: none;
 }
 i {

@@ -1,14 +1,15 @@
 .footer {
   width: 100%;
   height: 200px;
-  background-color: #141414;
+  background-color: var(--dark-gray);
   filter: drop-shadow(5px -5px 0px black);
   margin-top: 100px;
   position: sticky;
   bottom: -200px;
+  z-index: 10;
 }
 .footer > .topBar {
-  border-bottom: 25px solid #141414;
+  border-bottom: 25px solid var(--dark-gray);
   position: absolute;
   width: 95vw;
   margin-top: -25px;
@@ -41,10 +42,6 @@
   margin-left: 20px;
 } */
 @media only screen and (max-device-width: 1362px) {
-  .footer {
-    border-right-width: 200px;
-    border-bottom-width: 200px;
-  }
   .footer > .linkDisplay > a {
     border-width: 40px;
     font-size: 15px;
@@ -54,11 +51,6 @@
   }
 }
 @media only screen and (max-device-width: 853px) {
-  .footer {
-    border-right-width: 100px;
-    border-bottom-width: 100px;
-    width: 70%;
-  }
   .footer > .linkDisplay > a {
     border-width: 30px;
     font-size: 10px;
@@ -68,11 +60,6 @@
   }
 }
 @media only screen and (max-device-width: 480px) {
-  .footer {
-    border-right-width: 100px;
-    border-bottom-width: 100px;
-    width: 70%;
-  }
   .footer > .linkDisplay > a {
     border-width: 30px;
     font-size: 8px;

@@ -11,7 +11,7 @@
 .articleCard {
   width: 100%;
   height: 40vw;
-  background-color: #141414;
+  background-color: var(--dark-gray);
   margin: -20px;
   filter: drop-shadow(4px 4px 0px black);
   display: flex;
@@ -46,7 +46,7 @@
   width: 50vw;
   display: flex;
   flex-direction: column;
-  color: #292929;
+  color: var(--light-gray);
 }
 
 .articleCardItem  > div > aside {
@@ -56,19 +56,19 @@
   display: flex;
   flex-direction: column;
   transform: rotate3d(1, 1, 0.5, 30deg);
-  color: #141414;
+  color: var(--dark-gray);
   filter: drop-shadow(2px 2px 0px black);
   z-index: -10;
   font-size: 1.6vw;
 }
 
 .articleCardItem > div > div {
-  border-top: 10vw solid #292929;
+  border-top: 10vw solid var(--light-gray);
   border-right: 10vw solid transparent;
 }
 .articleCardItem > div > section {
   position: absolute;
-  color: #141414;
+  color: var(--dark-gray);
   width: 99%;
   height: 99%;
   display: flex;
@@ -83,7 +83,7 @@
 .articleCardItem > div > img {
   position: absolute;
   width: 50vw;
-  background-color: #141414;
+  background-color: var(--dark-gray);
 }
 .fade {
   opacity: 0;
@@ -97,8 +97,8 @@
 }
 
 #articlesSearchTab {
-  color: #292929;
-  background-color: #141414;
+  color: var(--light-gray);
+  background-color: var(--dark-gray);
   position: -webkit-sticky;
   position: sticky;
   margin: 20px;

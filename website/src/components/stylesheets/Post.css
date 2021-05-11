@@ -8,12 +8,12 @@
 }
 .post > .left {
   width: 20%;
-  border-top: 200px solid rgb(20, 20, 20);
+  border-top: 200px solid var(--dark-gray);
   border-left: 200px solid transparent;
 }
 .post > .right {
   width: 20%;
-  border-bottom: 200px solid rgb(20, 20, 20);
+  border-bottom: 200px solid var(--dark-gray);
   border-right: 200px solid transparent;
   overflow: hidden;
   height: 0;
@@ -21,10 +21,10 @@
 .left > .dropDown {
   height: 500px;
   width: 250%;
-  background-color: #292929;
-  border-left: 10px solid rgb(20, 20, 20);
-  border-right: 10px solid rgb(20, 20, 20);
-  color: rgb(20, 20, 20);
+  background-color: var(--light-gray);
+  border-left: 10px solid var(--dark-gray);
+  border-right: 10px solid var(--dark-gray);
+  color: var(--dark-gray);
   font-weight: 1000;
   overflow-y: scroll;
 }
@@ -43,21 +43,21 @@
   display: none;
 }
 .dropDown::-webkit-scrollbar {
-  background: #292929;
-  outline: 4px solid rgb(20, 20, 20);
+  background: var(--light-gray);
+  outline: 4px solid var(--dark-gray);
 }
 .dropDown::-webkit-scrollbar-track {
-  background: #292929;
+  background: var(--light-gray);
 }
 .dropDown::-webkit-scrollbar-thumb {
-  background: rgb(20, 20, 20);
+  background: var(--dark-gray);
 }
 .left > .optionsBar {
-  border-top: 3px solid #292929;
+  border-top: 3px solid var(--light-gray);
   width: 255%;
   height: 50px;
-  background-color: rgb(20, 20, 20);
-  color: #292929;
+  background-color: var(--dark-gray);
+  color: var(--light-gray);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -70,7 +70,7 @@
   position: absolute;
   z-index: 20;
   margin-top: -200px;
-  color:#292929;
+  color:var(--light-gray);
   font-weight: 700;
   text-shadow: 0px 0px 5px black;
 }

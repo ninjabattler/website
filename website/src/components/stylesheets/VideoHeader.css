@@ -9,7 +9,7 @@
   width: 100%;
 }
 .videoHeader > .bar1, .videoHeader > .barC {
-  border-bottom: 100px solid #292929;
+  border-bottom: 100px solid var(--light-gray);
   width: 65%;
   border-right: 100px solid transparent;
   position: absolute;
@@ -20,7 +20,7 @@
   animation-duration: 2s; */
 }
 .videoHeader > .bar2 {
-  border-top: 100px solid rgb(20,20,20);
+  border-top: 100px solid var(--dark-gray);
   width: 70%;
   border-right: 100px solid transparent;
   position: absolute;
@@ -43,7 +43,7 @@
 .videoHeader > h1 {
   position: absolute;
   margin-top: 880px;
-  color: rgb(20,20,20);
+  color: var(--dark-gray);
   /* animation-name: title;
   animation-iteration-count: 1;
   animation-timing-function: linear;

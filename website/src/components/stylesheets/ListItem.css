@@ -1,6 +1,6 @@
 .listItem {
   display: flex;
-  color: #292929;
+  color: var(--light-gray);
   width: 80%;
   font-size: 0.8em;
   margin-bottom: 10px;

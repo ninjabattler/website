@@ -3,11 +3,11 @@
   height: fit-content;
   justify-content: center;
   flex-wrap: wrap;
-  background-color: #292929;
+  background-color: var(--light-gray);
 }
 #about > #content {
   width: 50%;
-  color: rgb(20, 20, 20);
+  color: var(--dark-gray);
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -26,14 +26,14 @@
 #about > .left {
   width: 5%;
   border-right: 350px solid transparent;
-  border-bottom: 350px solid #292929;
+  border-bottom: 350px solid var(--light-gray);
   margin-right: -300px;
   z-index: 10;
 }
 #about > .right {
   width: 5%;
   border-left: 350px solid transparent;
-  border-bottom: 350px solid #292929;
+  border-bottom: 350px solid var(--light-gray);
   margin-left: -300px;
   z-index: 10;
 }
