@@ -1,9 +1,12 @@
-import React from 'react';
+import { React, useState } from 'react';
 import "./stylesheets/NavBar.css";
 import image from './images/Banner.png'
 import ParticlesBg from 'particles-bg';
 
 export default function NavBar(props) {
+
+  const [drop, setDrop] = useState(false)
+
   return (
     <div className='navBar'>
       <div id='navParticles'>
@@ -37,7 +40,7 @@ export default function NavBar(props) {
         />
       </a>
       <div className='navOptions'>
-      <div className='option'>
+        <div className='option'>
           <div>
             <span><a href='/posts'>Posts</a></span>
           </div>
@@ -46,12 +49,36 @@ export default function NavBar(props) {
             <span><a href='/articles'>Articles</a></span>
           </div>
         </div>
-        <div className='option'>
+        <div className='option' onMouseEnter={() => { setDrop(true) }} onMouseLeave={() => { setDrop(false) }}>
           <div>
-            <span><a href='https://github.com/ninjabattler'>Github</a></span>
+            <span><a>Social</a></span>
           </div>
         </div>
         <div className='option'>
+          <div>
+            <span><a href='/about'>About</a></span>
+          </div>
+        </div>
+      </div>
+
+      {/* Drop down lists */}
+      <div className='navOptions lists' style={{ opacity: drop ? 1 : 0 }}>
+        <div className='option' style={{ opacity: '0' }}>
+          <div>
+            <span><a href='/posts'>Posts</a></span>
+          </div>
+        </div><div className='option' style={{ opacity: '0' }}>
+          <div>
+            <span><a href='/articles'>Articles</a></span>
+          </div>
+        </div>
+        <div className='option' onMouseEnter={() => { drop ? setDrop(true) : setDrop(false) }} onMouseLeave={() => { setDrop(false) }}>
+          <div style={{textAlign: 'left', marginLeft: '-0px', alignItems: 'flex-start'}}>
+            <span><a href='https://www.linkedin.com/in/jayden-tucker-52a5711ba/'><i class="fab fa-linkedin"></i> Linkedin</a></span>
+            <span><a href='https://github.com/ninjabattler'><i class="fab fa-github"></i> Github</a></span>
+          </div>
+        </div>
+        <div className='option' style={{ opacity: '0' }}>
           <div>
             <span><a href='/about'>About</a></span>
           </div>

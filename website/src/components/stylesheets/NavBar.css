@@ -55,6 +55,43 @@
   flex-direction: row;
   justify-content: space-between;
 }
+.navOptions.lists {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 20px;
+  border-color: transparent;
+}
+
+.navOptions.lists > .option {
+  background-color: #141414;
+  margin-top: -40px;
+  height: 100px;
+}
+
+
+.navOptions.lists > .option:hover {
+  text-shadow: none;
+}
+
+.navOptions.lists > .option > div {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.navOptions.lists > .option > div > * {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #292929;
+}
+
+.navOptions.lists > .option > div > *:hover {
+  text-shadow: 2px 2px 0px black;
+}
+
 .navOptions > input {
   width: 25%;
   background-color: rgb(20, 20, 20);

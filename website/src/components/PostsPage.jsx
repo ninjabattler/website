@@ -32,11 +32,6 @@ export default function PostsPage(props) {
 
   return (
     <div id='postsPage'>
-      <Post
-        title={'New Logo!'}
-        content={'<span>Just got a new logo made for me by <ThunderText text="CigaretteAshe" /></span>'}
-        date={'NO'}
-      />
       {!posts ?
         (<></>)
         :
