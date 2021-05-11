@@ -25,7 +25,7 @@ export default function ArticlesPage(props) {
     <>
       <Carousel items={articles ? articles.slice(0, 3) : []} />
       <main id='articlesPage'>
-        <div style={{width: '100%'}}>
+        <div style={{width: '100%', position: 'sticky', top: '0', height: '100%'}}>
           <TitleCard title='Previous Articles' pageColour='black' inverse />
         </div>
         <div className='articlesPageContainer'>
