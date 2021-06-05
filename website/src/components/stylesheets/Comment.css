@@ -41,5 +41,6 @@
   }
   .comment {
     font-size: 0.75em;
+    border-width: 1px;
   }
 }

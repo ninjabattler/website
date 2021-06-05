@@ -204,21 +204,23 @@ select {
   .navBar {
     height: 60px;
     width: 100%;
-    top: -40px;
+    top: -60px;
   }
   .navBar > a > img, .navBar > a > #glow {
-    height: 60px;
+    height: 95px;
+    margin-top: -25px;
   }
   .navBar > div {
     width: 85%;
     border-width: 20px;
-    margin-top: -3px;
+    margin-top: -13px;
   }
   .navOptions > .option {
     border-width: 15px;
     width: 40px;
     margin-left: 5px;
     margin-right: 5px;
+    margin-top: -33px;
   }
   #navParticles {
     height: 100px;

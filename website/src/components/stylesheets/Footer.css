@@ -60,6 +60,9 @@
   }
 }
 @media only screen and (max-device-width: 480px) {
+  .footer {
+    overflow-x: hidden;
+  }
   .footer > .linkDisplay > a {
     border-width: 30px;
     font-size: 8px;

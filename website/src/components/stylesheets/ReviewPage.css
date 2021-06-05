@@ -156,8 +156,29 @@
 
 @media only screen and (max-width: 480px) {
   #reviewPage > div >.articleContainer {
-   width: 80%;
-   margin-left: auto;
-   margin-right: auto;
+   width: 90%;
+   margin-left: 0;
+  }
+  .likePanel {
+    height: 35px;
+  }
+  .likePanel > button {
+    font-size: 0.7em;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+  .likePanel > #likeBar {
+    width: 80%;
+    height: 15%;
+  }
+  #loadingArticle > h3 {
+    font-size: 0.6em;
+  }
+  .commentPanel > textarea {
+    width: 90%;
+    font-size: 0.5em;
+  }
+  .commentPanel > button {
+    margin-left: auto;
   }
 }

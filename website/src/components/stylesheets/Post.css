@@ -108,6 +108,7 @@
   }
   .post > .left, .post > .right {
     border-width: 100px;
+    width: 20vw;
   }
   .left > .optionsBar {
     width: 320%;

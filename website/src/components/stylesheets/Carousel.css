@@ -64,3 +64,9 @@
   filter: drop-shadow(2px 2px 0px black);
   transform: rotate(7deg);
 }
+
+@media only screen and (max-device-width: 480px) {
+  .carousel > main {
+    height: 40vw;
+  }  
+}

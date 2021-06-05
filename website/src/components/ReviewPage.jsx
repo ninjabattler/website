@@ -37,7 +37,10 @@ let QUOTES = [
   "What a fool you are. I'm a god, how can you kill a god? What a grand and intoxicating innocence. How could you be so naive? There is no escape. No recall or intervention can work in this place. Come, lay down your weapons, it is not too late for my mercy",
   "Woomy!",
   "You're dead, your friends are dead, game over",
-  "Beadichnoa NiGHTS"
+  "Beadichnoa NiGHTS",
+  "わたしはにほんじんをはなません",
+  "Seven seconds til the end...",
+  "Are we the future of this burning hell?"
 ]
 
 //Grabs the data of an article based off it's title
@@ -256,7 +259,7 @@ export default function PostsPage(props) {
             <h3>"{QUOTES[Math.floor(Math.random() * QUOTES.length)]}"</h3>
           </div>)}
       </div>
-      <aside className='commentPanel mobile'>
+      {content !== '' && (<aside className='commentPanel mobile'>
         <aside className='likePanel' >
 
           <button onClick={() => {
@@ -345,7 +348,7 @@ export default function PostsPage(props) {
               avatar={com.avatar} />)
           })}
         </div>
-      </aside>
+      </aside>)}
     </div>
   )
 }
