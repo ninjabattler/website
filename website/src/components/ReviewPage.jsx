@@ -14,6 +14,7 @@ import Paragraph from './Paragraph';
 import TitleCard from './TitleCard';
 import ParticlesBg from 'particles-bg';
 import Comment from './Comment';
+import CodeBlock from './CodeBlock';
 import ninjabattler from './images/Ninja placeholder.png'
 
 let ip;
@@ -158,7 +159,7 @@ export default function PostsPage(props) {
           (<>
             <article className='articleContainer' style={{ boxShadow: `5px 5px 0px ${colour}` }}>
               <JsxParser
-                components={{ Picture, ListItem, Underline, Quote, Paragraph, TitleCard }}
+                components={{ Picture, ListItem, Underline, Quote, Paragraph, TitleCard, CodeBlock }}
 
                 jsx={content}
               />
