@@ -12,3 +12,14 @@
 .listItem:hover {
   text-shadow: 2px 2px 0px black;
 }
+
+@media only screen and (max-width: 480px) {
+  .listItem {
+    font-size: 0.4em;
+    margin-left: -20px;
+  }
+  .listItem > img {
+    height: 30px;
+    margin-right: 0px
+  }
+}

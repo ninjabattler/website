@@ -17,7 +17,11 @@
   border-top: 200px solid var(--dark-gray);
   border-right: 200px solid transparent;
   width: 61%;
-  margin-top: 20px
+  margin-top: 20px;
+  /* margin-left: 4px;
+  animation-name: title-glow;
+  animation-duration: 3s;
+  animation-iteration-count: infinite; */
 }
 .bossCard > h2 {
   position: absolute;  
@@ -96,4 +100,10 @@
     margin-top: 5px;
     border-width: 50px;
   }
+}
+
+@keyframes title-glow {
+  0%{filter:blur(2px) brightness(1.5);}
+  50%{filter:blur(1px) brightness(1);}
+  100%{filter:blur(2px) brightness(1.5);}
 }

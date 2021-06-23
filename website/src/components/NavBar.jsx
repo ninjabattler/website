@@ -9,13 +9,14 @@ export default function NavBar(props) {
 
   return (
     <div className='navBar'>
+      <a id='shadow' href='/'></a>
       <div id='navParticles'>
         <ParticlesBg num={5} color='#252525' type="custom" bg={true} config={{
-          num: [4, 4],
+          num: [2, 4],
           rps: 0.1,
           radius: [5, 40],
           life: [1.5, 3],
-          v: [2, 3],
+          v: [1, 2],
           tha: [-40, 40],
           alpha: [0.6, 0],
           scale: [.1, 0.6],
@@ -73,7 +74,7 @@ export default function NavBar(props) {
           </div>
         </div>
         <div className='option' onMouseEnter={() => { drop ? setDrop(true) : setDrop(false) }} onMouseLeave={() => { setDrop(false) }}>
-          <div style={{textAlign: 'left', marginLeft: '-0px', alignItems: 'flex-start'}}>
+          <div style={{ textAlign: 'left', marginLeft: '-0px', alignItems: 'flex-start' }}>
             <span><a href='https://www.linkedin.com/in/jayden-tucker-52a5711ba/'><i class="fab fa-linkedin"></i> Linkedin</a></span>
             <span><a href='https://github.com/ninjabattler'><i class="fab fa-github"></i> Github</a></span>
           </div>

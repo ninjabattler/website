@@ -6,6 +6,9 @@
   filter: drop-shadow(8px 5px 0px black);
   margin-left: 1%;
 }
+.articleContainer > ul {
+  width: 100%;
+}
 #reviewPage > div {
   display: flex;
 }
@@ -103,6 +106,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  background-image: linear-gradient(rgba(0,0,0,0.5),  rgba(255,255,255,0), rgba(255,255,255,0));
 }
 #loadingArticle > h3 {
   color:var(--dark-gray);
