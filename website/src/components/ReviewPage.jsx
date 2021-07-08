@@ -12,6 +12,7 @@ import Underline from './Underline';
 import Quote from './Quote';
 import Paragraph from './Paragraph';
 import TitleCard from './TitleCard';
+import AudioPlayer from './AudioPlayer';
 import ParticlesBg from 'particles-bg';
 import Comment from './Comment';
 import CodeBlock from './CodeBlock';
@@ -71,6 +72,7 @@ const getArticleData = async (params, cb) => {
       data.dislikes,
       data.id,
       data.video_header,
+      data.narration,
       comments.data.rows)
   }
   catch (err) {
@@ -116,13 +118,14 @@ export default function PostsPage(props) {
   const [dislikes, setDislikes] = useState(0)
   const [id, setId] = useState(0)
   const [video, setVideo] = useState('')
+  const [narration, setNarration] = useState('')
   const [comments, setComments] = useState([])
   const [commenting, setCommenting] = useState(false)
 
   const params = useParams();
 
   useEffect(() => {
-    getArticleData(params, (name, colour, content, date, cg, likes, dislikes, id, video, comments) => {
+    getArticleData(params, (name, colour, content, date, cg, likes, dislikes, id, video, narration, comments) => {
       setTitle(name);
       setColour(colour);
       setContent(content);
@@ -132,6 +135,7 @@ export default function PostsPage(props) {
       setDislikes(Number(dislikes));
       setId(id);
       setVideo(video)
+      setNarration(narration)
       setComments(comments)
     })
   }, [])
@@ -158,8 +162,9 @@ export default function PostsPage(props) {
         {content !== '' ?
           (<>
             <article className='articleContainer' style={{ boxShadow: `5px 5px 0px ${colour}` }}>
+              {narration && (<iframe src={`${narration}?color=${colour.split('#')[1]}`} style={{border: 'none', height: '250px', width: '100%'}} ></iframe>)}
               <JsxParser
-                components={{ Picture, ListItem, Underline, Quote, Paragraph, TitleCard, CodeBlock }}
+                components={{ Picture, ListItem, Underline, Quote, Paragraph, TitleCard, CodeBlock, AudioPlayer }}
 
                 jsx={content}
               />
