@@ -5,6 +5,7 @@
   animation-duration: 2s;
   animation-iteration-count: infinite;
   font-family: 'Rock Salt', cursive;
+  font-size: 0.7em;
 }
 
 .earthText > .symbol {
