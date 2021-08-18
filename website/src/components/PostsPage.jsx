@@ -19,12 +19,14 @@ export default function PostsPage(props) {
     ip = await axios({ method: 'get', url: `https://api.ipify.org?format=json`, headers: { 'Content-Type': 'application/json' }, })
     ip = ip.data.ip;
 
-    userId = await axios({ method: 'post', url: `/users/userId`, params: { ip: ip }, headers: { 'Content-Type': 'application/json' }, })
+    await axios({ method: 'post', url: `/users/userId`, params: { ip: ip }, headers: { 'Content-Type': 'application/json' }, })
+    .catch((res) => {
+      userId = res.data.userId
+    })
     .catch((err) => {
       console.log(err)
       userId = {data: { userId: null }}
     })
-    userId = userId.data.userId
 
     if (!posts) {
       axios.get('/postData')
