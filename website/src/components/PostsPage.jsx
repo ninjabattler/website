@@ -5,6 +5,8 @@ import axios from 'axios';
 import Post from './Post';
 import ReviewPost from './ReviewPost';
 import PostShadow from './PostShadow';
+let ip;
+let userId
 
 export default function PostsPage(props) {
 
@@ -13,13 +15,19 @@ export default function PostsPage(props) {
 
   const emptyPosts = [];
 
-  useEffect(() => {
+  useEffect(async () => {
+    ip = await axios({ method: 'get', url: `https://api.ipify.org?format=json`, headers: { 'Content-Type': 'application/json' }, })
+    ip = ip.data.ip;
+
+    userId = await axios({ method: 'post', url: `/users/userId`, params: { ip: ip }, headers: { 'Content-Type': 'application/json' }, })
+    userId = userId.data.userId
+
     if (!posts) {
       axios.get('/postData')
         .then((res) => {
           setPosts(res.data.rows)
 
-          for (let i = 0; i < 9 - res.data.rows.length; i++) {
+          for (let i = 0; i < 1 - res.data.rows.length; i++) {
             emptyPosts.push((<PostShadow />))
           }
 
@@ -40,7 +48,11 @@ export default function PostsPage(props) {
             <Post
               title={post.title}
               content={post.content}
-              date={post.formatteddate}
+              date={post.date}
+              id={post.id}
+              ip={ip}
+              userId={userId}
+              comments={post.comments}
             />
           )
             :

@@ -63,23 +63,27 @@ export default function NavBar(props) {
       </div>
 
       {/* Drop down lists */}
-      <div className='navOptions lists' style={{ opacity: drop ? 1 : 0 }}>
-        <div className='option' style={{ opacity: '0' }}>
+      <div className='navOptions lists' style={{ opacity: drop ? 1 : 0, height: 0 }}>
+        <div className='option' style={{ opacity: '0', zIndex: -10000, height: 0 }}>
           <div>
             <span><a href='/posts'>Posts</a></span>
           </div>
-        </div><div className='option' style={{ opacity: '0' }}>
+        </div><div className='option' style={{ opacity: '0', zIndex: -10000, height: 0 }}>
           <div>
             <span><a href='/articles'>Articles</a></span>
           </div>
         </div>
         <div className='option' onMouseEnter={() => { drop ? setDrop(true) : setDrop(false) }} onMouseLeave={() => { setDrop(false) }}>
-          <div style={{ textAlign: 'left', marginLeft: '-0px', alignItems: 'flex-start' }}>
-            <span><a href='https://www.linkedin.com/in/jayden-tucker-52a5711ba/'><i class="fab fa-linkedin"></i> Linkedin</a></span>
-            <span><a href='https://github.com/ninjabattler'><i class="fab fa-github"></i> Github</a></span>
-          </div>
+          {drop ? 
+            (<div style={{ textAlign: 'left', marginLeft: '-0px', alignItems: 'flex-start' }}>
+              <span><a href='https://www.linkedin.com/in/jayden-tucker-52a5711ba/'><i class="fab fa-linkedin"></i> Linkedin</a></span>
+              <span><a href='https://github.com/ninjabattler'><i class="fab fa-github"></i> Github</a></span>
+            </div>)
+            :
+            (<></>)
+          }
         </div>
-        <div className='option' style={{ opacity: '0' }}>
+        <div className='option' style={{ opacity: '0', zIndex: -10000, height: 0 }}>
           <div>
             <span><a href='/about'>About</a></span>
           </div>
