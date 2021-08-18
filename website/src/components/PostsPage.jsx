@@ -20,6 +20,10 @@ export default function PostsPage(props) {
     ip = ip.data.ip;
 
     userId = await axios({ method: 'post', url: `/users/userId`, params: { ip: ip }, headers: { 'Content-Type': 'application/json' }, })
+    .catch((err) => {
+      console.log(err)
+      userId = {data: { userId: null }}
+    })
     userId = userId.data.userId
 
     if (!posts) {
