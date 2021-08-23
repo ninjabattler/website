@@ -62,6 +62,10 @@
   overflow-y: scroll;
 }
 
+.shrunk {
+  width: 67%;
+}
+
 .postContent::-webkit-scrollbar {
   background: var(--light-gray);
   outline: 4px solid var(--dark-gray);
@@ -120,7 +124,7 @@
   justify-content: flex-end;
 }
 
-.feedBackBar > button {
+.commentPanelButton {
   background-color: var(--dark-gray);
   color: var(--light-gray);
   border: 8px solid var(--dark-gray);
@@ -128,8 +132,12 @@
   font-size: 0.7em;
   font-weight: bolder;
   cursor: pointer;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  filter: drop-shadow(-2px -2px 0px black);
 }
-.feedBackBar > button:hover {
+.commentPanelButton:hover {
   filter: drop-shadow(2px 2px 0px black);
 }
 
@@ -138,7 +146,52 @@
 }
 
 @media only screen and (max-device-width: 480px) {
- 
+  .post, .closed {
+    width: 65vw;
+    height: 25vw;
+    margin-top: 15px;
+  }
+  .post > h1, .expanded > h1 {
+    font-size: 1.7em;
+    margin: 4px;
+    margin-top: -2px;
+  }
+  .post > h2, .expanded > h2 {
+    font-size: 1.7em;
+    margin: 4px;
+    margin-top: 20vw;
+  }
+  .shrunk {
+    width: 100%;
+    height: 45% !important;
+  }
+  .postContent {
+    background-color: var(--light-gray);
+    color: var(--dark-gray);
+    font-size: 1.2em;
+    height: 90%;
+    margin: 2%;
+    margin-top: 7%;
+  }
+  .postContent > .jsx-parser {
+    position: relative;
+  }
+  .postContent > .jsx-parser > img {
+    max-width: 80% !important;
+  }
+  .postContent > .commentPanel {
+    display: inline;
+    width: 100%;
+    height: 50%;
+    position: absolute;
+    margin-top: 50%;
+  }
+  .postContent > .commentPanel > textarea {
+    height: 10%;
+  }
+  .postContent > .commentPanel > .comments > .comment {
+    min-height: 0;
+  }
 }
 
 
@@ -159,4 +212,18 @@
   48%{ width: 50vw; height: 20vh; transform: rotateY(90deg);  background-image:linear-gradient(0deg, var(--light-gray) 0%, var(--light-gray) 0%, var(--dark-gray) 0%,  var(--dark-gray) 100%); }
   50%{ width: 50vw; height: 20vw; transform: rotateY(90deg); background-image:linear-gradient(-21deg, var(--light-gray) 0%, var(--light-gray) 50%, var(--dark-gray) 50%,  var(--dark-gray) 100%); }
   100%{ width: 50vw; height: 20vw; transform: rotateY(0deg); background-image:linear-gradient(-21deg, var(--light-gray) 0%, var(--light-gray) 50%, var(--dark-gray) 50%,  var(--dark-gray) 100%); }
+}
+
+@keyframes openPostMobile {
+  0%{ width: 65vw; height: 35vw; transform: rotateY(0deg); background-image:linear-gradient(-21deg, var(--light-gray) 0%, var(--light-gray) 50%, var(--dark-gray) 50%,  var(--dark-gray) 100%); }
+  50%{ width: 65vw; height: 35vw; transform: rotateY(90deg); background-image:linear-gradient(-21deg, var(--light-gray) 0%, var(--light-gray) 50%, var(--dark-gray) 50%,  var(--dark-gray) 100%); }
+  52%{ width: 65vw; height: 20vh; transform: rotateY(90deg);  background-image:linear-gradient(0deg, var(--light-gray) 0%, var(--light-gray) 0%, var(--dark-gray) 0%,  var(--dark-gray) 100%); }
+  100%{ width: 90vw; height: 85vh; transform: rotateY(0deg); }
+}
+
+@keyframes closePostMobile {
+  0%{ width: 90vw; height: 85vh; transform: rotateY(0deg); }
+  48%{ width: 65vw; height: 20vh; transform: rotateY(90deg);  background-image:linear-gradient(0deg, var(--light-gray) 0%, var(--light-gray) 0%, var(--dark-gray) 0%,  var(--dark-gray) 100%); }
+  50%{ width: 65vw; height: 35vw; transform: rotateY(90deg); background-image:linear-gradient(-21deg, var(--light-gray) 0%, var(--light-gray) 50%, var(--dark-gray) 50%,  var(--dark-gray) 100%); }
+  100%{ width: 65vw; height: 35vw; transform: rotateY(0deg); background-image:linear-gradient(-21deg, var(--light-gray) 0%, var(--light-gray) 50%, var(--dark-gray) 50%,  var(--dark-gray) 100%); }
 }

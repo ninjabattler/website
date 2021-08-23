@@ -86,25 +86,25 @@ export default function Posts(props) {
         !showContent ?
           (<>{
             yearsSincePost ?
-              (<h2>{Math.round(yearsSincePost)} Y</h2>)
+              (<h2>{Math.round(yearsSincePost)} Years</h2>)
               :
               monthsSincePost ?
-                (<h2>{Math.round(monthsSincePost)} M</h2>)
+                (<h2>{Math.round(monthsSincePost)} Months</h2>)
                 :
                 weeksSincePost ?
-                  (<h2>{Math.round(weeksSincePost)} W</h2>)
+                  (<h2>{Math.round(weeksSincePost)} Weeks</h2>)
                   :
                   daysSincePost ?
-                    (<h2>{Math.round(daysSincePost)} D</h2>)
+                    (<h2>{Math.round(daysSincePost)} Days</h2>)
                     :
                     hoursSincePost ?
-                      (<h2>{Math.round(hoursSincePost)} H</h2>)
+                      (<h2>{Math.round(hoursSincePost)} Hours</h2>)
                       :
                       minutesSincePost ?
-                        (<h2>{Math.round(minutesSincePost)} Min</h2>)
+                        (<h2>{Math.round(minutesSincePost)} Minutes</h2>)
                         :
                         secondsSincePost ?
-                          (<h2>{Math.round(secondsSincePost)} S</h2>)
+                          (<h2>{Math.round(secondsSincePost)} Seconds</h2>)
                           :
                           (<h2></h2>)
 
@@ -114,7 +114,7 @@ export default function Posts(props) {
       }
       {
         showContent ?
-          (<div className='postContent' style={{ width: showComments ? '67%' : '100%' }} onClick={(e) => {
+          (<div className={`postContent ${ showComments ? 'shrunk' : '' }`} onClick={(e) => {
             e.stopPropagation()
           }}>
 
@@ -165,13 +165,13 @@ export default function Posts(props) {
                   </div>
                 </aside>)
               :
-              (<div className='feedBackBar'>
-                <button onClick={() => {
+              (
+                <button className='commentPanelButton' onClick={() => {
                   setShowComments(true)
                 }}>
                   <i class="far fa-comments"></i>
                 </button>
-              </div>)
+              )
             }
 
             {/* Content */}
