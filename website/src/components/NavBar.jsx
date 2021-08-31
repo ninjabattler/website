@@ -66,11 +66,11 @@ export default function NavBar(props) {
       <div className='navOptions lists' style={{ opacity: drop ? 1 : 0, height: 0 }}>
         <div className='option' style={{ opacity: '0', zIndex: -10000, height: 0 }}>
           <div>
-            <span><a href='/posts'>Posts</a></span>
+            {/* <span><a href='/posts'>Posts</a></span> */}
           </div>
         </div><div className='option' style={{ opacity: '0', zIndex: -10000, height: 0 }}>
           <div>
-            <span><a href='/articles'>Articles</a></span>
+            {/* <span><a href='/articles'>Articles</a></span> */}
           </div>
         </div>
         <div className='option' onMouseEnter={() => { drop ? setDrop(true) : setDrop(false) }} onMouseLeave={() => { setDrop(false) }}>
@@ -85,7 +85,7 @@ export default function NavBar(props) {
         </div>
         <div className='option' style={{ opacity: '0', zIndex: -10000, height: 0 }}>
           <div>
-            <span><a href='/about'>About</a></span>
+            {/* <span><a href='/about'>About</a></span> */}
           </div>
         </div>
       </div>

@@ -153,48 +153,48 @@
   #homePage {
     font-size: 8px;
     margin-left: 3%;
+    overflow: hidden;
+    margin-left: -27px;
   }
   #homePage > p {
     width: 90%;
-    height: 40vh
+    margin-bottom: 150px;
+    margin-top: 50vh;
+    font-size: 3em;
   }
-  #homePage > video {
-    width: 100%;
-    margin-top: 40px;
-    margin-bottom: -60px;
-  }
-  .homeVideo > video {
-    height: 300px;
-  }
-  .homeVideo > div {
-    height: 300px;
-    border-top: 300px solid var(--dark-gray);
-    border-right: 300px solid transparent;
-  }
-  #homePage > .right > div {
-    border-right: none;
-    border-top: 300px solid transparent;
-    border-left: 300px solid var(--dark-gray);
-  } 
-  #homePage > u {
-    border-width: 5px;
-    border-left-width: 20px;
-    border-right-width: 20px;
+  #homePageRobot {
+    width: 200%;
+    position: absolute;
+    z-index: -1;
   }
   #homePageContainer {
     height: 30vh;
+    margin-top: 15vh;
+  }
+  #homePageContainer > h1 {
+    font-size: 5em;
+    transform: rotateY(-45deg) rotateZ(-20deg) skewX(-20deg);
+    margin-left: -28vw;
+  }
+  #homePageContainer > h4 {
+    font-size: 2.3em;
+    transform: rotateY(-45deg) rotateZ(-20deg) skewX(-20deg);
+    margin-left: -28vw;
   }
   .homePageInfoDiv {
     height: 100px;
     width: 102vw;
-    margin-left: -27px;
+    margin-left: 20px;
+    margin-bottom: 100px;
   }
   #homePageBackground {
     width: 100vw;
     height: 100vh;
     position: fixed;
-    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(255,255,255,0), rgba(255,255,255,0), rgba(255,255,255,0), rgba(0,0,0,0.5));
-    margin-top: -40vh;
+    /* background-image: linear-gradient(rgba(0,0,0,0.5), rgba(255,255,255,0), rgba(255,255,255,0), rgba(255,255,255,0), rgba(0,0,0,0.5)); */
+    background-image: none;
+    margin-top: -6vh;
+    margin-left: 23px;
   }
 }
 

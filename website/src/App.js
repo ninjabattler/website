@@ -4,6 +4,7 @@ import './App.css';
 // import VideoHeader from './components/VideoHeader';
 // import InfoBar from './components/InfoBar';
 import Navbar from './components/NavBar';
+import SideBar from './components/SideBar';
 // import Picture from './components/Picture';
 // import ListItem from './components/ListItem';
 // import Underline from './components/Underline';
@@ -25,6 +26,7 @@ function App() {
       <Navbar
         pageColour={'null'}
       />
+      <SideBar />
       <header className="App-header">
         <BrowserRouter>
           <Switch>

@@ -91,7 +91,7 @@
     filter: drop-shadow(3px 2px 0px black);
   }
   .bossCard > h2 {
-    font-size: 0.5em;
+    font-size: 0.6em;
     margin-top: 20px
   }
   .bossCard > .background1 {
@@ -101,6 +101,12 @@
   .bossCard > .background2 {
     margin-top: 5px;
     border-width: 50px;
+  }
+  .bossCard > .imageContainer > img {
+    max-height: 80px;
+  }
+  .bossCard > .imageContainer {
+    margin-top: -300px;
   }
 }
 
