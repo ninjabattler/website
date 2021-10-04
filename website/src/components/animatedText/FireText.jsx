@@ -28,7 +28,7 @@ export default function FireText(props){
 
   return (
     <span className='fireText'>
-      {flames}
+      {/* {flames} */}
       {props.text}
     </span>
   )

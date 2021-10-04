@@ -28,7 +28,7 @@ export default function IceText(props){
 
   return (
     <span className='iceText'>
-      {snowFlakes}
+      {/* {snowFlakes} */}
       {props.text}
     </span>
   )

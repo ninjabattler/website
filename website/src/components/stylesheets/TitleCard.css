@@ -87,23 +87,27 @@
 
 @media only screen and (max-width: 480px) {
   .bossCard {
-    margin-bottom: 75px;
+    margin-bottom: 100px;
     filter: drop-shadow(3px 2px 0px black);
   }
   .bossCard > h2 {
-    font-size: 0.6em;
-    margin-top: 20px
+    font-size: 0.7em;
+    margin-bottom: -70px;
+    height: auto;
+    width: 70%;
+    bottom: 0;
   }
   .bossCard > .background1 {
-    border-width: 50px;
+    border-width: 75px;
     margin-left: -2px;
   }
   .bossCard > .background2 {
     margin-top: 5px;
-    border-width: 50px;
+    border-width: 75px;
   }
   .bossCard > .imageContainer > img {
-    max-height: 80px;
+    max-height: 70px;
+    margin-bottom: 10px;
   }
   .bossCard > .imageContainer {
     margin-top: -300px;

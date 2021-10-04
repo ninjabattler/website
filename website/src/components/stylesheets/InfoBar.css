@@ -67,4 +67,7 @@
     width: 100%;
     justify-content: flex-start;
   }
+  .infoBar > span > div {
+    margin-right: 10px;
+  }
 }

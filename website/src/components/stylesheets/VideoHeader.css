@@ -114,20 +114,26 @@
 }
 
 @media only screen and (max-width: 480px) {
+  .videoHeader {
+    margin-bottom: 60px;
+  }
   .videoHeader > .bar1 {
-    margin-top: 150px;
+    margin-top: 240px;
+    width: 80%;
     border-width: 40px;
   }
   .videoHeader > .barC {
-    margin-top: 155px;
+    margin-top: 245px;
+    width: 82%;
     border-width: 40px;
   }
   .videoHeader > .bar2 {
-    margin-top: 170px;
+    margin-top: 260px;
+    width: 86%;
     border-width: 40px;
   }
   .videoHeader > h1 {
-    margin-top: 170px;
-    font-size:1em;
+    margin-top: 260px;
+    font-size:0.8em;
   }
 }

@@ -28,7 +28,7 @@ export default function ThunderText(props){
 
   return (
     <span className='thunderText'>
-      {bolts}
+      {/* {bolts} */}
       {props.text}
     </span>
   )

@@ -28,7 +28,7 @@ export default function EarthText(props){
 
   return (
     <span className='earthText'>
-      {leaves}
+      {/* {leaves} */}
       {props.text}
     </span>
   )
