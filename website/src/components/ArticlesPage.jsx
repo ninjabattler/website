@@ -30,7 +30,7 @@ export default function ArticlesPage(props) {
         </div>
         <div className='articlesPageContainer'>
           {articles ?
-            (<>{articles.slice(3, -1).map((item) => {
+            (<>{articles.slice(3).map((item) => {
               return (
                 <a href={`/posts/${item.title.toLowerCase().replace(' ', '_')}`} className='articleCard'>
                   <article className='articleCardItem'

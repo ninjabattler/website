@@ -106,7 +106,7 @@ const comment = async (params, setCommenting, cb) => {
   }
 }
 
-export default function PostsPage(props) {
+export default function PostsPage({ setVideoBackground }) {
   const page = this
 
   const [title, setTitle] = useState('')
@@ -134,9 +134,10 @@ export default function PostsPage(props) {
       setLikes(Number(likes));
       setDislikes(Number(dislikes));
       setId(id);
-      setVideo(video)
-      setNarration(narration)
-      setComments(comments)
+      setVideo(video);
+      setVideoBackground(video)
+      setNarration(narration);
+      setComments(comments);
     })
   }, [])
 

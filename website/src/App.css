@@ -43,6 +43,12 @@ i {
 button {
   font-family: 'Righteous', cursive;
 }
+#backgroundVideo {
+  position: fixed;
+  z-index: -100;
+  filter: blur(20px);
+  width: 100vw;
+}
 @media only screen and (max-device-width: 1362px) {
   body {
     font-size: 12px;
@@ -51,5 +57,12 @@ button {
 @media only screen and (max-device-width: 480px) {
   body {
     font-size: 8px;
+  }
+  #backgroundVideo {
+    position: fixed;
+    z-index: -100;
+    filter: blur(20px);
+    height: 100vh;
+    width: auto;
   }
 }

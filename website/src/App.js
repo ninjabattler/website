@@ -16,13 +16,24 @@ import PostsPage from './components/PostsPage'
 import ArticlesPage from './components/ArticlesPage'
 import ReviewPage from './components/ReviewPage'
 import About from './components/About'
+import { useState } from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
+
 
 function App() {
   // const pageColour = '#0055FF'
+  const [video, setVideo] = useState(null)
 
   return (
     <div className="App">
+      {
+        video ?
+        (<video id="backgroundVideo" loop muted autoPlay >
+          <source src={video} type="video/mp4"></source>
+        </video>)
+        :
+        (<></>)
+      }
       <Navbar
         pageColour={'null'}
       />
@@ -37,7 +48,7 @@ function App() {
               <About/>
             </Route>
             <Route path='/posts/:review'>
-              <ReviewPage/>
+              <ReviewPage setVideoBackground={setVideo}/>
             </Route>
             <Route path='/posts'>
               <PostsPage/>

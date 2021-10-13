@@ -4,7 +4,8 @@
   background-color: var(--dark-gray);
   width: 65%;
   filter: drop-shadow(8px 5px 0px black);
-  margin-left: 1%;
+  /* margin-left: 1%; */
+  border-left: 1vw solid var(--light-gray);
 }
 .articleContainer > ul {
   width: 100%;
