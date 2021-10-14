@@ -17,6 +17,7 @@ import ParticlesBg from 'particles-bg';
 import Comment from './Comment';
 import CodeBlock from './CodeBlock';
 import ninjabattler from './images/Ninja placeholder.png'
+import Head from './Head'
 
 let ip;
 let isLiked = false;
@@ -52,16 +53,16 @@ const getArticleData = async (params, cb) => {
     ip = ip.data.ip;
 
     const res = await axios({ method: 'get', url: `/postData/${params.review}/`, headers: { 'Content-Type': 'application/json' }, })
-    const comments = await axios({ method: 'get', url: `/postData/comments/`, params: { postId: res.data.rows[0].id }, headers: { 'Content-Type': 'application/json' }, })
-    const liked = await axios({ method: 'get', url: `/users/liked/`, params: { ip, postId: res.data.rows[0].id }, headers: { 'Content-Type': 'application/json' } })
+    const comments = await axios({ method: 'get', url: `/postData/comments/`, params: { postId: res.data.post.rows[0].id }, headers: { 'Content-Type': 'application/json' }, })
+    const liked = await axios({ method: 'get', url: `/users/liked/`, params: { ip, postId: res.data.post.rows[0].id }, headers: { 'Content-Type': 'application/json' } })
     userId = liked.data.userId
-    postId = res.data.rows[0].id;
+    postId = res.data.post.rows[0].id;
 
     if (liked.data.liked !== undefined) {
       liked.data.liked.liked === true ? isLiked = true : isDisliked = true;
     }
-    console.log(comments.data.rows)
-    const data = res.data.rows[0];
+    const meta = res.data.meta
+    const data = res.data.post.rows[0];
     cb(
       data.title,
       data.colour,
@@ -73,7 +74,8 @@ const getArticleData = async (params, cb) => {
       data.id,
       data.video_header,
       data.narration,
-      comments.data.rows)
+      comments.data.rows,
+      meta)
   }
   catch (err) {
     console.log(err);
@@ -120,12 +122,13 @@ export default function PostsPage({ setVideoBackground, scrollPercent }) {
   const [video, setVideo] = useState('')
   const [narration, setNarration] = useState('')
   const [comments, setComments] = useState([])
+  const [meta, setMeta] = useState({})
   const [commenting, setCommenting] = useState(false)
 
   const params = useParams();
 
   useEffect(() => {
-    getArticleData(params, (name, colour, content, date, cg, likes, dislikes, id, video, narration, comments) => {
+    getArticleData(params, (name, colour, content, date, cg, likes, dislikes, id, video, narration, comments, meta) => {
       setTitle(name);
       setColour(colour);
       setContent(content);
@@ -138,11 +141,13 @@ export default function PostsPage({ setVideoBackground, scrollPercent }) {
       setVideoBackground(video)
       setNarration(narration);
       setComments(comments);
+      setMeta(meta)
     })
   }, [])
 
   return (
     <div id='reviewPage'>
+      <Head meta={meta}/>
       <style>
         {`
         body::-webkit-scrollbar {
@@ -335,8 +340,8 @@ export default function PostsPage({ setVideoBackground, scrollPercent }) {
 
         <aside id='shareBar'>
           <div style={{cursor: 'default'}}><i class="fas fa-share"></i></div>
-          <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small"><a target="_blank" rel="noreferrer" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"><i class="fab fa-facebook-square"></i></a></div>
-          <div><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false" target="_blank" rel="noreferrer"><i class="fab fa-twitter-square"></i></a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+          <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small"><a target="_blank" rel="noreferrer" href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location).replace(/'/g, "%27").replace(/"/g, "%22")}`} class="fb-xfbml-parse-ignore"><i class="fab fa-facebook-square"></i></a></div>
+          <div><a href={`https://twitter.com/share?ref_src=${encodeURIComponent(window.location).replace(/'/g, "%27").replace(/"/g, "%22")}`} class="twitter-share-button" data-show-count="false" target="_blank" rel="noreferrer"><i class="fab fa-twitter-square"></i></a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div>
           <div><a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location).replace(/'/g, "%27").replace(/"/g, "%22")}`} target="_blank" rel="noreferrer" ><i class="fab fa-linkedin"></i></a></div>
           <div><a href={`http://www.reddit.com/submit?url=${window.location}&title=Ninjabattler-${title}`} target="_blank" rel="noreferrer"><i class="fab fa-reddit-square"></i></a></div>
         </aside>
