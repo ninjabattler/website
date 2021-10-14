@@ -1,10 +1,14 @@
 import React from 'react';
 import './stylesheets/About.css'
+import { Helmet } from "react-helmet";
 import ninjabattler from './images/Ninja placeholder.png'
 
 export default function About(props){
   return (
     <div id='about'>
+      <Helmet>
+        <title>Ninjabattler - About</title>
+      </Helmet>
       <div className='left'></div>
       <img src={ninjabattler} alt='logo'/>
       <div className='right'></div>

@@ -53,6 +53,7 @@ const getArticleData = async (params, cb) => {
     ip = ip.data.ip;
 
     const res = await axios({ method: 'get', url: `/postData/${params.review}/`, headers: { 'Content-Type': 'application/json' }, })
+    console.log(res.data)
     const comments = await axios({ method: 'get', url: `/postData/comments/`, params: { postId: res.data.post.rows[0].id }, headers: { 'Content-Type': 'application/json' }, })
     const liked = await axios({ method: 'get', url: `/users/liked/`, params: { ip, postId: res.data.post.rows[0].id }, headers: { 'Content-Type': 'application/json' } })
     userId = liked.data.userId
@@ -147,7 +148,7 @@ export default function PostsPage({ setVideoBackground, scrollPercent }) {
 
   return (
     <div id='reviewPage'>
-      <Head meta={meta}/>
+      <Head meta={meta} />
       <style>
         {`
         body::-webkit-scrollbar {

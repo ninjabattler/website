@@ -5,6 +5,7 @@ import axios from 'axios';
 import Post from './Post';
 import ReviewPost from './ReviewPost';
 import PostShadow from './PostShadow';
+import { Helmet } from "react-helmet";
 let ip;
 let userId
 
@@ -20,13 +21,13 @@ export default function PostsPage(props) {
     ip = ip.data.ip;
 
     await axios({ method: 'post', url: `/users/userId`, params: { ip: ip }, headers: { 'Content-Type': 'application/json' }, })
-    .catch((res) => {
-      userId = res.data.userId
-    })
-    .catch((err) => {
-      console.log(err)
-      userId = {data: { userId: null }}
-    })
+      .catch((res) => {
+        userId = res.data.userId
+      })
+      .catch((err) => {
+        console.log(err)
+        userId = { data: { userId: null } }
+      })
 
     if (!posts) {
       axios.get('/postData')
@@ -46,6 +47,9 @@ export default function PostsPage(props) {
 
   return (
     <div id='postsPage'>
+      <Helmet>
+        <title>Ninjabattler - Posts</title>
+      </Helmet>
       {!posts ?
         (<></>)
         :
