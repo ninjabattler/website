@@ -106,7 +106,7 @@ const comment = async (params, setCommenting, cb) => {
   }
 }
 
-export default function PostsPage({ setVideoBackground }) {
+export default function PostsPage({ setVideoBackground, scrollPercent }) {
   const page = this
 
   const [title, setTitle] = useState('')
@@ -143,6 +143,18 @@ export default function PostsPage({ setVideoBackground }) {
 
   return (
     <div id='reviewPage'>
+      <style>
+        {`
+        body::-webkit-scrollbar {
+          background-image: linear-gradient(${colour || 'var(--light-gray)'}, ${scrollPercent * 100}%, ${colour || 'var(--light-gray)'}, ${scrollPercent * 100}%, var(--light-gray));
+          outline: 4px solid var(--dark-gray);
+        }
+        body::-webkit-scrollbar-track {
+          background-image: linear-gradient(${colour || 'var(--light-gray)'}, ${scrollPercent * 100}%, ${colour || 'var(--light-gray)'}, ${scrollPercent * 100}%, var(--light-gray));
+          border: 2px solid var(--dark-gray);
+        }
+      `}
+      </style>
       {video !== '' ?
         (<VideoHeader
           pageColour={colour}
@@ -163,7 +175,7 @@ export default function PostsPage({ setVideoBackground }) {
         {content !== '' ?
           (<>
             <article className='articleContainer' style={{ boxShadow: `5px 5px 0px ${colour}` }}>
-              {narration && (<iframe src={`${narration}?color=${colour.split('#')[1]}`} style={{border: 'none', height: '250px', width: '100%'}} ></iframe>)}
+              {narration && (<iframe src={`${narration}?color=${colour.split('#')[1]}`} style={{ border: 'none', height: '250px', width: '100%' }} ></iframe>)}
               <JsxParser
                 components={{ Picture, ListItem, Underline, Quote, Paragraph, TitleCard, CodeBlock, AudioPlayer }}
 
@@ -216,6 +228,14 @@ export default function PostsPage({ setVideoBackground }) {
                 </button>
               </aside>
 
+              <aside id='shareBar'>
+                <div style={{cursor: 'default'}}><i class="fas fa-share"></i></div>
+                <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"><i class="fab fa-facebook-square"></i></a></div>
+                <div><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false"><i class="fab fa-twitter-square"></i></a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+                <div><a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location).replace(/'/g, "%27").replace(/"/g, "%22")}`} target="_blank" ><i class="fab fa-linkedin"></i></a></div>
+                <div><a href={`http://www.reddit.com/submit?url=${window.location}&title=Ninjabattler-${title}`} target="_blank"><i class="fab fa-reddit-square"></i></a></div>
+              </aside>
+
               {commenting === true ?
                 (<>
                   <p id='commentLoading'>
@@ -249,7 +269,7 @@ export default function PostsPage({ setVideoBackground }) {
 
               <div className='comments'>
                 {comments.map((com) => {
-                  console.log(com)
+                  // console.log(com)
                   return (<Comment
                     pageColour={com.user_id === userId ? colour : 'transparent'}
                     username={com.username.slice(0, 10)}
@@ -313,6 +333,14 @@ export default function PostsPage({ setVideoBackground }) {
           </button>
         </aside>
 
+        <aside id='shareBar'>
+          <div style={{cursor: 'default'}}><i class="fas fa-share"></i></div>
+          <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small"><a target="_blank" rel="noreferrer" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"><i class="fab fa-facebook-square"></i></a></div>
+          <div><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false" target="_blank" rel="noreferrer"><i class="fab fa-twitter-square"></i></a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+          <div><a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location).replace(/'/g, "%27").replace(/"/g, "%22")}`} target="_blank" rel="noreferrer" ><i class="fab fa-linkedin"></i></a></div>
+          <div><a href={`http://www.reddit.com/submit?url=${window.location}&title=Ninjabattler-${title}`} target="_blank" rel="noreferrer"><i class="fab fa-reddit-square"></i></a></div>
+        </aside>
+
         {commenting === true ?
           (<>
             <p id='commentLoading'>
@@ -346,7 +374,7 @@ export default function PostsPage({ setVideoBackground }) {
 
         <div className='comments'>
           {comments.map((com) => {
-            console.log(com)
+            // console.log(com)
             return (<Comment
               pageColour={com.user_id === userId ? colour : 'transparent'}
               username={com.username.slice(0, 10)}

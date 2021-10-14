@@ -16,13 +16,23 @@ import PostsPage from './components/PostsPage'
 import ArticlesPage from './components/ArticlesPage'
 import ReviewPage from './components/ReviewPage'
 import About from './components/About'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 
 function App() {
   // const pageColour = '#0055FF'
   const [video, setVideo] = useState(null)
+  const [scrollPercent, setScrollPercent] = useState(0)
+
+  useEffect(() => {
+    document.addEventListener('scroll', () => {
+      let scrollTop = window.scrollY;
+      let docHeight = document.body.offsetHeight;
+      let winHeight = window.innerHeight;
+      setScrollPercent(scrollTop / (docHeight - winHeight))
+    })
+  }, [])
 
   return (
     <div className="App">
@@ -48,7 +58,7 @@ function App() {
               <About/>
             </Route>
             <Route path='/posts/:review'>
-              <ReviewPage setVideoBackground={setVideo}/>
+              <ReviewPage setVideoBackground={setVideo} scrollPercent={scrollPercent}/>
             </Route>
             <Route path='/posts'>
               <PostsPage/>
