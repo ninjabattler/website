@@ -54,16 +54,21 @@ const getArticleData = async (params, cb) => {
 
     const res = await axios({ method: 'get', url: `/postData/${params.review}/`, headers: { 'Content-Type': 'application/json' }, })
     console.log(res.data)
-    const comments = await axios({ method: 'get', url: `/postData/comments/`, params: { postId: res.data.post.rows[0].id }, headers: { 'Content-Type': 'application/json' }, })
-    const liked = await axios({ method: 'get', url: `/users/liked/`, params: { ip, postId: res.data.post.rows[0].id }, headers: { 'Content-Type': 'application/json' } })
+    const comments = await axios({ method: 'get', url: `/postData/comments/`, params: { postId: res.data.rows[0].id }, headers: { 'Content-Type': 'application/json' }, })
+    const liked = await axios({ method: 'get', url: `/users/liked/`, params: { ip, postId: res.data.rows[0].id }, headers: { 'Content-Type': 'application/json' } })
     userId = liked.data.userId
-    postId = res.data.post.rows[0].id;
+    postId = res.data.rows[0].id;
 
     if (liked.data.liked !== undefined) {
       liked.data.liked.liked === true ? isLiked = true : isDisliked = true;
     }
-    const meta = res.data.meta
-    const data = res.data.post.rows[0];
+
+    const data = res.data.rows[0];
+    const meta = {
+      title: 'Ninjabattler - ' + data.title,
+      colour: data.colour,
+      thumbnail: data.thumbnail
+    }
     cb(
       data.title,
       data.colour,

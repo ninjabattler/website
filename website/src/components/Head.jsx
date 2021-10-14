@@ -8,7 +8,7 @@ export default function Head(props) {
   return (
     <Helmet>
       <meta charSet="utf-8" />
-      <title>{'Ninjabattler - ' + props.meta.title}</title>
+      <title>{props.meta.title}</title>
       <meta name='description' content="Some words written by Ninjabattler" />
       <meta property='og:locale' content='en_CA' />
       <meta property='og:author' content='Ninjabattler' />
