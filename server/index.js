@@ -15,6 +15,7 @@ const defaultMetadata = `
 <meta name='theme-color' content="#FFFF00" />
 <meta property='og:type' content='website' />
 <meta property='og:title' content="Ninjabattler" />
+<meta property='og:description' content="Website by a lunatic who knows a little node js and not much else" />
 <meta property='og:image' content="https://ninjabattler.ca/static/media/Website robot.9ca91034.png" />
 `
 
