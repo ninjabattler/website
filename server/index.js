@@ -63,13 +63,14 @@ app.get("/posts/:review", (req, res) => {
     const updated = raw.replace("_META_", `
     <meta charSet="utf-8" />
     <title>Ninjabattler - ${metaData.rows[0].title}</title>
-    <meta name='description' content="Some words written by Ninjabattler" />
+    <meta name='description' content="${metaData.rows[0].description || 'Looks like somebody forgot to write a description...'}" />
     <meta property='og:locale' content='en_CA' />
     <meta property='og:author' content='Ninjabattler' />
-    <meta name='theme-color' content=${metaData.rows[0].colour} />
+    <meta name='theme-color' content="${metaData.rows[0].colour}"" />
     <meta property='og:type' content='website' />
-    <meta property='og:title' content=${metaData.rows[0].title} />
-    <meta property='og:image' content=${metaData.rows[0].thumbnail} />
+    <meta property='og:title' content="${metaData.rows[0].title}" />
+    <meta property='og:description' content="${metaData.rows[0].description || 'Looks like somebody forgot to write a description...'}" />
+    <meta property='og:image' content="${metaData.rows[0].thumbnail}" />
     <meta property='og:url' content="https://ninjabattler.ca/posts/${req.params.review}"" />
     `)
   
