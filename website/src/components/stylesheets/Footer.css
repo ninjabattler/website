@@ -41,7 +41,7 @@
   font-size: 1.3em;
   margin-left: 20px;
 } */
-@media only screen and (max-device-width: 1362px) {
+@media only screen and (max-width: 1362px) {
   .footer > .linkDisplay > a {
     border-width: 40px;
     font-size: 15px;
@@ -50,7 +50,7 @@
    margin-top: -30px;
   }
 }
-@media only screen and (max-device-width: 853px) {
+@media only screen and (max-width: 853px) {
   .footer > .linkDisplay > a {
     border-width: 30px;
     font-size: 10px;
@@ -59,7 +59,7 @@
    margin-top: -25px;
   }
 }
-@media only screen and (max-device-width: 480px) {
+@media only screen and (max-width: 480px) {
   .footer {
     overflow-x: hidden;
   }

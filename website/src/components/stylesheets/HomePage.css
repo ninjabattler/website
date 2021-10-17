@@ -92,7 +92,7 @@
   height: 100%;
 }
 
-@media only screen and (max-device-width: 1362px) {
+@media only screen and (max-width: 1362px) {
   #homePage {
     font-size: 20px;
   }
@@ -116,7 +116,7 @@
   } 
 }
 
-@media only screen and (max-device-width: 853px) {
+@media only screen and (max-width: 853px) {
   #homePage {
     font-size: 15px;
     margin-left: 3%;
@@ -149,7 +149,7 @@
   }
 }
 
-@media only screen and (max-device-width: 480px) {
+@media only screen and (max-width: 480px) {
   #homePage {
     font-size: 8px;
     margin-left: 3%;

@@ -60,6 +60,7 @@ app.get("/posts/:review", (req, res) => {
   
   queries.selectArticleMetadata(db, {title: formattedReview})
   .then((metaData) => {
+    console.log(metaData)
     const raw = fs.readFileSync(pathToIndex, {'encoding': 'utf8'})
     const updated = raw.replace("_META_", `
     <meta charSet="utf-8" />

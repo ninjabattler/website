@@ -241,7 +241,7 @@ export default function PostsPage({ setVideoBackground, scrollPercent }) {
 
               <aside id='shareBar'>
                 <div style={{cursor: 'default'}}><i class="fas fa-share"></i></div>
-                <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"><i class="fab fa-facebook-square"></i></a></div>
+                <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small"><a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location).replace(/'/g, "%27").replace(/"/g, "%22")}`} class="fb-xfbml-parse-ignore"><i class="fab fa-facebook-square"></i></a></div>
                 <div><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false"><i class="fab fa-twitter-square"></i></a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div>
                 <div><a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location).replace(/'/g, "%27").replace(/"/g, "%22")}`} target="_blank" ><i class="fab fa-linkedin"></i></a></div>
                 <div><a href={`http://www.reddit.com/submit?url=${window.location}&title=Ninjabattler-${title}`} target="_blank"><i class="fab fa-reddit-square"></i></a></div>
