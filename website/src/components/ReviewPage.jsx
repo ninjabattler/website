@@ -17,6 +17,7 @@ import ParticlesBg from 'particles-bg';
 import Comment from './Comment';
 import CodeBlock from './CodeBlock';
 import ninjabattler from './images/Ninja placeholder.png'
+import defaultVideo from './images/defaultVideo.mp4'
 import Head from './Head'
 
 let ip;
@@ -143,8 +144,8 @@ export default function PostsPage({ setVideoBackground, scrollPercent }) {
       setLikes(Number(likes));
       setDislikes(Number(dislikes));
       setId(id);
-      setVideo(video);
-      setVideoBackground(video)
+      setVideo(video || defaultVideo);
+      setVideoBackground(video || defaultVideo)
       setNarration(narration);
       setComments(comments);
       setMeta(meta)

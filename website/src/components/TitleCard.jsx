@@ -8,7 +8,7 @@ export default function TitleCard(props){
       <div className='background1'></div>
 
       {props.imageSrc ? 
-      (<div className='imageContainer' style={{filter: `drop-shadow(5px 5px 0px ${props.pageColour})`}}> 
+      (<div className='imageContainer' style={{filter: `drop-shadow(1px 1px 0px ${props.pageColour})`}}> 
         <img
           src={props.imageSrc}
         />

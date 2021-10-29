@@ -2,9 +2,7 @@
   height: fit-content;
   overflow: hidden;
   display: flex;
-  justify-content: center;
   align-items: center;
-  display: flex;
   justify-content: flex-start;
   width: 100%;
 }
@@ -49,7 +47,24 @@
   animation-timing-function: linear;
   animation-duration: 4s; */
 }
-.videoHeader > video {
+#videoOverlay {
+  width: 100%;
+  height: 200%;
+  position: fixed;
+  bottom: 0;
+  background-color: white;
+  mix-blend-mode: multiply;
+}
+.videoHeader > #videoContainer {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  background-color: black;
+}
+
+.videoHeader > #videoContainer > video {
   width: 100%;
   background-color: black;
 }
