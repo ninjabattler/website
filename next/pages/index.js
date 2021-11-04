@@ -1,85 +1,112 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import styles from '../styles/HomePage.module.css'
+import { React, useState, useEffect } from 'react';
+import NavBar from '../components/NavBar';
+import Footer from '../components/Footer';
+import CodeBlock from '../components/CodeBlock';
 
-export default function Home() {
+const QUOTES = [
+  'Welcome Chrome User'
+]
+const SUB_QUOTES = [
+  'I hope'
+]
+
+let i = 0
+
+export default function Home(props) {
+
+  const quoteIndex = Math.floor(Math.random() * QUOTES.length)
+  const chosenQuote = QUOTES[quoteIndex]
+  const chosenSubQuote = SUB_QUOTES[quoteIndex]
+
+  let [displayedQuote, setDisplayedQuote] = useState('|')
+  let [displayedSubQuote, setDisplayedSubQuote] = useState('|')
+
+
+  useEffect(() => {
+    const startQuoteAnim = setTimeout(() => {
+
+      const quoteAnim = setInterval(interval, 100)
+
+      function interval() {
+        setDisplayedQuote(chosenQuote.slice(0, i) + '|')
+        setDisplayedSubQuote(chosenSubQuote.slice(0, i) + '|')
+        i++
+
+
+        if (i >= chosenQuote.length) {
+          setDisplayedQuote(chosenQuote)
+          setDisplayedSubQuote(chosenSubQuote)
+          clearInterval(quoteAnim)
+        }
+      }
+
+    }, 800)
+  }, [])
+
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Ninjabattler</title>
-        <meta name='description' content="Website by a lunatic who knows a little node js and not much else" />
-        <meta property='og:locale' content='en_CA' />
-        <meta name='theme-color' content="#FFFF00" />
-        <meta property='og:type' content='website' />
-        <meta property='og:title' content="Ninjabattler" />
-        <meta property='og:description' content="Website by a lunatic who knows a little node js and not much else" />
-        <meta property='og:image' content="https://ninjabattler.ca/static/media/Website robot.9ca91034.png" />
-        <link rel="icon" href="/favicon.ico" />
-        <meta charset="utf-8" />
-        <meta name="twitter:card" content="summary_large_image"/>
-        <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-        <script src="https://kit.fontawesome.com/8354918fc8.js" crossorigin="anonymous"></script>
+    <>
+      <NavBar />
+      <div className={styles.container}>
+        <Head>
+          <title>Ninjabattler</title>
+          <meta name='description' content="Website by a lunatic who knows a little node js and not much else" />
+          <meta property='og:locale' content='en_CA' />
+          <meta name='theme-color' content="#FFFF00" />
+          <meta property='og:type' content='website' />
+          <meta property='og:title' content="Ninjabattler" />
+          <meta property='og:description' content="Website by a lunatic who knows a little node js and not much else" />
+          <meta property='og:image' content="https://ninjabattler.ca/static/media/Website robot.9ca91034.png" />
+          <link rel="icon" href="/favicon.ico" />
+          <meta charset="utf-8" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+          <script src="https://kit.fontawesome.com/8354918fc8.js" crossOrigin="anonymous"></script>
 
-        {/* <!--FONTS--> */}
-        <link rel="preconnect" href="https://fonts.gstatic.com"/>
-        <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Gloria+Hallelujah&family=Trade+Winds&family=Hanalei+Fill&family=Rock+Salt&display=swap" rel="stylesheet"/>
-      </Head>
+          {/* <!--FONTS--> */}
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Gloria+Hallelujah&family=Trade+Winds&family=Hanalei+Fill&family=Rock+Salt&display=swap" rel="stylesheet" />
+        </Head>
+        <main id={styles.homePage}>
+          <div id={styles.homePageBackground}></div>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+          <div id={styles.homePageContainer}>
+            <h1>{displayedQuote}</h1>
+            <h4>{displayedSubQuote}</h4>
+          </div>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
+          <p>Welcome to the land of uneducated opinions and a few shades of gray! Browsing this place, you will find incredible opinions on:</p>
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+          {/* Video game */}
+          <div className={styles.homePageInfoDiv}>
+            <video autoPlay muted loop>
+              <source src='http://files.ninjabattler.ca/video/chaotix.mp4' type="video/mp4"></source>
+            </video>
+            <p>I've invented the idea of writing words on my opinions on video games! Copyright 2021, do not steal.</p>
+          </div>
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+          {/* Programming */}
+          <div className={styles.homePageInfoDiv}>
+            <p>I write code! Mayhaps I will write an article on the code I've written every now and then!</p>
+            <CodeBlock code={`const Imap = require('imap');\nrequire('dotenv').config();\nconst imap = new Imap({\n  port: 993,\n  host: 'imap.gmail.com',\n  user: process.env.EMAIL,\n  password: process.env.PASSWORD,\n  tls: true\n});\nimap.once('ready', () => {\n  console.log('Imap is ready to hack Nasa');\n  imap.end();\n})\nimap.once('error', (err) => {\n  console.log(err);\n})\nimap.once('end', (err) => {\n  console.log('There is no Nasa');\n})\nimap.connect();`} language='js' />
+          </div>
 
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
+          {/* Stuff */}
+          <div className={styles.homePageInfoDiv}>
+            <video autoPlay muted loop>
+              <source src='http://storage.googleapis.com/personal-webiste/Video/0000-1200.mp4' type="video/mp4"></source>
+            </video>
+            <p>And whatever else I feel like writing about, any and all criticism is encouraged! The comments exist for a reason!</p>
+          </div>
 
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
-    </div>
+          <img id={styles.homePageRobot} src="/Website robot.png" />
+        </main>
+      </div>
+      <Footer />
+    </>
   )
 }

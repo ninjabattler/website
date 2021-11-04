@@ -1,0 +1,206 @@
+.navBar {
+  width: 100%;
+  height: 300px;
+  background-color: var(--dark-gray);
+  filter: drop-shadow(5px 5px 0px black);
+  z-index: 100;
+  position: sticky;
+  top: -285px;
+}
+.navBar > div {
+  width: 90%;
+  border-top: 60px solid var(--light-gray);
+  border-right: 60px solid transparent;
+  border-left: 60px solid transparent;
+  margin-top: -20px;
+  margin-left: 2%;
+  position: absolute;
+}
+#navParticles {
+  position: absolute;
+  height: 300px;
+  width: 100vw;
+  z-index: -99;
+  border: none;
+  filter:blur(6px) brightness(2);
+  mix-blend-mode: lighten;
+  animation-name: glow;
+  animation-duration: 3s;
+  animation-delay: 1.5s;
+  animation-iteration-count: infinite;
+}
+.navBar > a {
+  display: flex;
+  justify-content: center;
+}
+.navBar > a > img {
+  /* filter: drop-shadow(2px 2px 0px black); */
+  height: 300px;
+}
+.navBar > a > #glow {
+  /* filter: drop-shadow(2px 2px 0px black); */
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  filter:blur(6px) brightness(2);
+  mix-blend-mode: lighten;
+  position: absolute;
+  opacity: 0.6;
+  animation-name: glow;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+.navOptions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.navOptions.lists {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 20px;
+  border-color: transparent;
+}
+
+.navOptions.lists > .option {
+  background-color: var(--dark-gray);
+  margin-top: -40px;
+  height: 100px;
+}
+
+
+.navOptions.lists > .option:hover {
+  text-shadow: none;
+}
+
+.navOptions.lists > .option > div {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.navOptions.lists > .option > div > * {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0;
+  margin-bottom: 10px;
+  border-bottom: 2px solid var(--light-gray);
+}
+
+.navOptions.lists > .option > div > *:hover {
+  text-shadow: 2px 2px 0px black;
+}
+
+.navOptions > input {
+  width: 25%;
+  background-color: var(--dark-gray);
+  color: var(--light-gray);
+  height: 30px;
+  font-size: 2em;
+  margin-left: 61%;
+}
+.navOptions > button {
+  background-color: var(--dark-gray);
+  height: 35px;
+  outline: none;
+  border: none;
+  color: var(--light-gray);
+  margin-left: 86.5%;
+}
+.navOptions > .option {
+  display: flex;
+  border-bottom: 40px solid var(--dark-gray);
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
+  width: 200px;
+  margin-top: -90px;
+  z-index: 99;
+}
+.option:hover {
+  text-shadow: 2px 2px 0px black;
+  filter: drop-shadow(0px -4px 0px black);
+}
+
+.socialLinks {
+  flex-direction: column;
+}
+
+.navOptions > .option > div {
+  color: var(--light-gray);
+  font-size: 1.7em;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-left: 50px;
+  margin-top: 54px;
+  position: absolute;
+}
+.navOptions > .option > div > span > a {
+  color: var(--light-gray);
+}
+
+#shadow {
+  background-image: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0), rgba(255,255,255,0), rgba(0,0,0,0.5));
+  filter: blur(20px);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+@keyframes glow {
+  0%{filter:blur(6px) brightness(2);}
+  50%{filter:blur(4px) brightness(1.5);}
+  100%{filter:blur(6px) brightness(2);}
+}
+
+@media (max-device-width: 1362px) {
+  .navBar {
+    height: 180px;
+    top: -185px;
+  }
+  .navBar > a > img, .navBar > a > #glow {
+    height: 200px;
+  }
+  .navBar > div {
+    width: 88%;
+  }
+}
+@media (max-device-width: 853px) {
+  .navBar {
+    height: 100px;
+    width: 100%;
+    padding-right: 0px;
+    top: -100px;
+  }
+  #navParticles {
+    height: 100px;
+  }
+  .navBar > a > img, .navBar > a > #glow {
+    height: 100px;
+  }
+  .navBar > div {
+    width: 80%;
+    border-width: 45px;
+    margin-top: -3px;
+  }
+  .navOptions > .option {
+    margin-top: -45px;
+    margin-left: -5px;
+  }
+  .navOptions > .option > div {
+    color: var(--light-gray);
+    font-size: 1.9em;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-left: 50px;
+    margin-top: 15px;
+    position: absolute;
+  }
+}
+@media (max-device-width: 480px) {
+  .navBar {
+    display: none;
+  }
+}
