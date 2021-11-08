@@ -5,7 +5,7 @@ import IceText from './animatedText/IceText';
 import ThunderText from './animatedText/ThunderText';
 import EarthText from './animatedText/EarthText';
 import JsxParser from 'react-jsx-parser';
-import Comment from './Comment';
+// import Comment from './Comment';
 // import ninjabattler from './images/'
 import axios from 'axios';
 
@@ -65,7 +65,7 @@ export default function Posts(props) {
 
 
   return (
-    <article className={`${closed === 0 ? 'post' : closed === 1 ? 'expanded' : 'post closed'}`} style={{ backgroundImage: '/Ninja placeholder.png' }} onClick={() => {
+    <article key={props.title} className={`${closed === 0 ? 'post' : closed === 1 ? 'expanded' : 'post closed'}`} style={{ backgroundImage: '/Ninja placeholder.png' }} onClick={() => {
       setClosed(closed === 0 || closed === 2 ? 1 : 2)
       setShowComments(false)
       setTimeout(() => {
@@ -152,7 +152,7 @@ export default function Posts(props) {
                       </button>
                     </>)}
 
-                  <div className='comments'>
+                  {/* <div className='comments'>
                     {comments.map((com) => {
                       console.log(com)
                       return (<Comment
@@ -162,7 +162,7 @@ export default function Posts(props) {
                         content={com.content}
                         avatar={com.avatar} />)
                     })}
-                  </div>
+                  </div> */}
                 </aside>)
               :
               (
