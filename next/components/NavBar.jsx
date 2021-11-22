@@ -75,8 +75,8 @@ export default function NavBar(props) {
         <div className={styles.option} onMouseEnter={() => { drop ? setDrop(true) : setDrop(false) }} onMouseLeave={() => { setDrop(false) }}>
           {drop ? 
             (<div style={{ textAlign: 'left', marginLeft: '-0px', alignItems: 'flex-start' }}>
-              <span><a><i class="fab fa-linkedin"></i> Linkedin</a></span>
-              <span><a><i class="fab fa-github"></i> Github</a></span>
+              <span><a><i className="fab fa-linkedin"></i> Linkedin</a></span>
+              <span><a><i className="fab fa-github"></i> Github</a></span>
             </div>)
             :
             (<></>)

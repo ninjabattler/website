@@ -149,7 +149,7 @@ export default function Posts(props) {
                           setComments(newComments)
                         })
                       }}>
-                        <i class="fas fa-caret-square-right"></i>
+                        <i className="fas fa-caret-square-right"></i>
                       </button>
                     </>)}
 

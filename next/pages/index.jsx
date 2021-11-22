@@ -66,7 +66,6 @@ export default function Home(props) {
           <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-          <script src="https://kit.fontawesome.com/8354918fc8.js" crossOrigin="anonymous"></script>
 
           {/* <!--FONTS--> */}
           <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -87,12 +86,12 @@ export default function Home(props) {
             <video autoPlay muted loop>
               <source src='http://files.ninjabattler.ca/video/chaotix.mp4' type="video/mp4"></source>
             </video>
-            <p>I've invented the idea of writing words on my opinions on video games! Copyright 2021, do not steal.</p>
+            <p>I&apos;ve invented the idea of writing words on my opinions on video games! Copyright 2021, do not steal.</p>
           </div>
 
           {/* Programming */}
           <div className={styles.homePageInfoDiv}>
-            <p>I write code! Mayhaps I will write an article on the code I've written every now and then!</p>
+            <p>I write code! Mayhaps I will write an article on the code I&apos;ve written every now and then!</p>
             <CodeBlock code={`const Imap = require('imap');\nrequire('dotenv').config();\nconst imap = new Imap({\n  port: 993,\n  host: 'imap.gmail.com',\n  user: process.env.EMAIL,\n  password: process.env.PASSWORD,\n  tls: true\n});\nimap.once('ready', () => {\n  console.log('Imap is ready to hack Nasa');\n  imap.end();\n})\nimap.once('error', (err) => {\n  console.log(err);\n})\nimap.once('end', (err) => {\n  console.log('There is no Nasa');\n})\nimap.connect();`} language='js' />
           </div>
 

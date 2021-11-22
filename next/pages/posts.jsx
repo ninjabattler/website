@@ -63,7 +63,6 @@ export default function Home(props) {
         <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-        <script src="https://kit.fontawesome.com/8354918fc8.js" crossOrigin="anonymous"></script>
 
         {/* <!--FONTS--> */}
         <link rel="preconnect" href="https://fonts.gstatic.com" />
