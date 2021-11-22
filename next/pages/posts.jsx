@@ -5,18 +5,40 @@ import Footer from '../components/Footer';
 import axios from 'axios';
 import Post from '../components/Post';
 import styles from '../styles/PostsPage.module.css'
+import prisma from '../prisma/prisma';
+import { posts } from '@prisma/client'
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   let ip = await axios({ method: 'get', url: `https://api.ipify.org?format=json`, headers: { 'Content-Type': 'application/json' }, })
   ip = ip.data.ip;
 
-  const posts = await axios.get('http://localhost:4000/api/posts');
-  const userId = await axios({ method: 'post', url: `http://localhost:4000/api/users/userId`, params: { ip: ip }, headers: { 'Content-Type': 'application/json' }, })
+  const postsArray = await prisma.$queryRaw`
+  SELECT posts.*, json_agg(
+    json_build_object(
+      'content', comments.content,
+      'date', comments.date,
+      'avatar', users.avatar,
+      'username', users.username
+    )
+  ) as comments
+  FROM posts
+  FULL OUTER JOIN comments ON comments.post_id = posts.id
+  FULL OUTER JOIN users ON comments.user_id = users.id
+  WHERE review = false
+  GROUP BY posts.id`
 
+  const userId = await prisma.users.findMany({
+    select: {
+      id: true
+    },
+    where: {
+      ip: ip
+    }
+  })
   return {
     props: {
-      posts: posts.data,
-      userId: userId.data,
+      posts: postsArray,
+      userId: userId,
       ip: ip
     }
   }
@@ -36,7 +58,7 @@ export default function Home(props) {
         <meta property='og:description' content="A mad man's ramblings and sometimes blender renders" />
         <meta property='og:image' content="https://ninjabattler.ca/static/media/Website robot.9ca91034.png" />
         <link rel="icon" href="/favicon.ico" />
-        <meta charset="utf-8" />
+        <meta charSet="utf-8" />
         <meta name="twitter:card" content="summary_large_image" />
         <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -56,9 +78,10 @@ export default function Home(props) {
                 content={post.content}
                 date={post.date}
                 id={post.id}
+                key={post.id}
                 ip={props.ip}
                 userId={props.userId}
-                comments={[]}
+                comments={post.comments}
               />
             )
           })

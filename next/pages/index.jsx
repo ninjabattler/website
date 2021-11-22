@@ -5,7 +5,7 @@ import { React, useState, useEffect } from 'react';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import CodeBlock from '../components/CodeBlock';
-require('dotenv').config();
+// require('dotenv').config();
 
 const QUOTES = [
   'Welcome Chrome User'
@@ -61,7 +61,7 @@ export default function Home(props) {
           <meta property='og:description' content="Website by a lunatic who knows a little node js and not much else" />
           <meta property='og:image' content="https://ninjabattler.ca/static/media/Website robot.9ca91034.png" />
           <link rel="icon" href="/favicon.ico" />
-          <meta charset="utf-8" />
+          <meta charSet="utf-8" />
           <meta name="twitter:card" content="summary_large_image" />
           <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />

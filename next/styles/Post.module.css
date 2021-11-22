@@ -99,11 +99,62 @@
   margin-top: -6px;
 }
 
-.postContent > .commentPanel {
-  margin-top: -8%;
-  height: 100%;
-  right: 0;
+.commentPanel {
   position: absolute;
+  width: 30%;
+  height: 100%;
+  background-color: var(--dark-gray);
+  margin-top: 1% !important;
+  margin-left: auto;
+  margin-right: auto;
+  top: 0;
+  right: 0;
+  margin-top: 130px;
+  filter: drop-shadow(8px 8px 0px black);
+}
+
+.commentPanel > textarea {
+  width: 70%;
+  height: 110px;
+  background: none;
+  border: none;
+  outline: none;
+  border-bottom: 3px solid var(--light-gray);
+  color: var(--light-gray);
+  font-size: 0.75em;
+  margin-left: 5%;
+  resize: none;
+}
+.commentPanel > button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: var(--light-gray);
+  font-size: 1em;
+}
+.commentPanel > button:hover {
+  cursor: pointer;
+  text-shadow: 2px 2px 0px black;
+}
+
+.commentPanel > div {
+  overflow-y: scroll;
+  height: 70%;
+  margin-top: 10%;
+}
+
+.commentPanel > div::-webkit-scrollbar {
+  background: var(--light-gray);
+  outline: 4px solid var(--dark-gray);
+}
+
+.commentPanel > div::-webkit-scrollbar-track {
+  background: var(--light-gray);
+}
+
+.commentPanel > div::-webkit-scrollbar-thumb {
+  background: var(--dark-gray);
+  border: 2px solid var(--light-gray);
 }
 
 .post > h2, .expanded > h2 {
@@ -135,10 +186,6 @@
   position: absolute;
   right: 0;
   bottom: 0;
-  filter: drop-shadow(-2px -2px 0px black);
-}
-.commentPanelButton:hover {
-  filter: drop-shadow(2px 2px 0px black);
 }
 
 @media only screen and (max-device-width: 853px) {
@@ -179,17 +226,17 @@
   .postContent > .jsx-parser > img {
     max-width: 80% !important;
   }
-  .postContent > .commentPanel {
+  .commentPanel {
     display: inline;
     width: 100%;
     height: 50%;
     position: absolute;
     margin-top: 50%;
   }
-  .postContent > .commentPanel > textarea {
+  #commentArea {
     height: 10%;
   }
-  .postContent > .commentPanel > .comments > .comment {
+  .commentPanel > .comments > .comment {
     min-height: 0;
   }
 }

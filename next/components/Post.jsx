@@ -1,11 +1,12 @@
 import { React, useState, useEffect } from 'react';
-// import styles from '../styles/Post.module.css';
+import styles from '../styles/Post.module.css';
 import FireText from './animatedText/FireText';
 import IceText from './animatedText/IceText';
 import ThunderText from './animatedText/ThunderText';
 import EarthText from './animatedText/EarthText';
 import JsxParser from 'react-jsx-parser';
-// import Comment from './Comment';
+import Comment from './Comment';
+import { CommentTwoTone } from '@material-ui/icons'
 // import ninjabattler from './images/'
 import axios from 'axios';
 
@@ -65,7 +66,7 @@ export default function Posts(props) {
 
 
   return (
-    <article key={props.title} className={`${closed === 0 ? 'post' : closed === 1 ? 'expanded' : 'post closed'}`} style={{ backgroundImage: '/Ninja placeholder.png' }} onClick={() => {
+    <article key={props.title} className={`${closed === 0 ? styles.post : closed === 1 ? styles.expanded : `${styles.post} ${styles.closed}`}`} style={{ backgroundImage: '/Ninja placeholder.png' }} onClick={() => {
       setClosed(closed === 0 || closed === 2 ? 1 : 2)
       setShowComments(false)
       setTimeout(() => {
@@ -114,22 +115,22 @@ export default function Posts(props) {
       }
       {
         showContent ?
-          (<div className={`postContent ${ showComments ? 'shrunk' : '' }`} onClick={(e) => {
+          (<div className={`${styles.postContent} ${showComments ? styles.shrunk : ''}`} onClick={(e) => {
             e.stopPropagation()
           }}>
 
             {showComments ?
               (
-                <aside className='commentPanel'>
+                <aside className={styles.commentPanel}>
                   {commenting === true ?
                     (<>
-                      <p id='commentLoading'>
+                      <p id={styles.commentLoading}>
                         <img src={'/Ninja placeholder.png'} />
                       </p>
                     </>) :
                     (<>
                       <textarea
-                        id='commentArea'
+                        id={styles.commentArea}
                         name="comment"
                         placeholder="Leave a comment!"
                         onChange={(e) => {
@@ -152,24 +153,25 @@ export default function Posts(props) {
                       </button>
                     </>)}
 
-                  {/* <div className='comments'>
+                  <div className={styles.comments}>
                     {comments.map((com) => {
                       console.log(com)
                       return (<Comment
+                        key={comment.id}
                         pageColour={com.user_id === props.userId ? '#000000' : 'transparent'}
                         username={com.username.slice(0, 10)}
                         date={com.formatteddate}
                         content={com.content}
                         avatar={com.avatar} />)
                     })}
-                  </div> */}
+                  </div>
                 </aside>)
               :
               (
-                <button className='commentPanelButton' onClick={() => {
+                <button className={styles.commentPanelButton} onClick={() => {
                   setShowComments(true)
                 }}>
-                  <i class="far fa-comments"></i>
+                  <CommentTwoTone style={{ transform: 'scale(2)' }} />
                 </button>
               )
             }
