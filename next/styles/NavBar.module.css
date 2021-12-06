@@ -67,6 +67,7 @@
   background-color: var(--dark-gray);
   margin-top: -40px;
   height: 100px;
+  transition: text-shadow 0.3s;
 }
 
 
@@ -86,6 +87,7 @@
   margin-top: 0;
   margin-bottom: 10px;
   border-bottom: 2px solid var(--light-gray);
+  transition: text-shadow 0.3s;
 }
 
 .navOptions.lists > .option > div > *:hover {
@@ -116,6 +118,7 @@
   width: 200px;
   margin-top: -90px;
   z-index: 99;
+  transition: filter 0.3s;
 }
 .option:hover {
   text-shadow: 2px 2px 0px black;

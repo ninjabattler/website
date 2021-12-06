@@ -6,12 +6,10 @@ import ThunderText from './animatedText/ThunderText';
 import EarthText from './animatedText/EarthText';
 import JsxParser from 'react-jsx-parser';
 import Comment from './Comment';
-import { CommentTwoTone } from '@material-ui/icons'
-// import ninjabattler from './images/'
+import { CommentTwoTone, ArrowForwardIosRounded } from '@material-ui/icons'
 import axios from 'axios';
 
 export default function Posts(props) {
-
 
   const today = new Date();
 
@@ -52,12 +50,17 @@ export default function Posts(props) {
   const comment = async (params, setCommenting, cb) => {
     try {
       setCommenting(true)
-      const res = await axios({ method: 'post', url: `/users/comment`, params: { ip: params.ip, content: params.content, postId: params.id }, headers: { 'Content-Type': 'application/json' }, })
-      const comments = await axios({ method: 'get', url: `/postData/comments/`, params: { postId: params.id }, headers: { 'Content-Type': 'application/json' }, })
+      const newComment = await axios({
+        method: 'post',
+        url: `/api/comments/newComment/`,
+        params: { postId: params.id, content: params.content, userId: props.userId[0].id },
+        headers: { 'Content-Type': 'application/json' }
+      })
 
-      // console.log(res)
+      const newCommentsList = [newComment.data, ...comments]
+
       setCommenting(false)
-      cb(comments.data.rows)
+      cb(newCommentsList)
     }
     catch (err) {
       console.log(err);
@@ -149,7 +152,7 @@ export default function Posts(props) {
                           setComments(newComments)
                         })
                       }}>
-                        <i className="fas fa-caret-square-right"></i>
+                        <ArrowForwardIosRounded />
                       </button>
                     </>)}
 

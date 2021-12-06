@@ -6,35 +6,15 @@ import axios from 'axios';
 import Post from '../components/Post';
 import styles from '../styles/PostsPage.module.css'
 import prisma from '../prisma/prisma';
-import { posts } from '@prisma/client'
+import { selectAllPostsData, selectUserId } from '../prisma/queries/queries';
 
 export const getServerSideProps = async () => {
   let ip = await axios({ method: 'get', url: `https://api.ipify.org?format=json`, headers: { 'Content-Type': 'application/json' }, })
   ip = ip.data.ip;
 
-  const postsArray = await prisma.$queryRaw`
-  SELECT posts.*, json_agg(
-    json_build_object(
-      'content', comments.content,
-      'date', comments.date,
-      'avatar', users.avatar,
-      'username', users.username
-    )
-  ) as comments
-  FROM posts
-  FULL OUTER JOIN comments ON comments.post_id = posts.id
-  FULL OUTER JOIN users ON comments.user_id = users.id
-  WHERE review = false
-  GROUP BY posts.id`
-
-  const userId = await prisma.users.findMany({
-    select: {
-      id: true
-    },
-    where: {
-      ip: ip
-    }
-  })
+  const postsArray = await selectAllPostsData(prisma)
+  const userId = await selectUserId(prisma, ip)
+  
   return {
     props: {
       posts: postsArray,

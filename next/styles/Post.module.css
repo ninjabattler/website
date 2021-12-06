@@ -10,6 +10,7 @@
   cursor: pointer;
   overflow: hidden;
   animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: filter 0.3s, margin 0.3s;
 }
 .post  {
   animation-name: slideIn;
