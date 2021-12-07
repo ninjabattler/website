@@ -7,6 +7,7 @@ const selectAllPostsData = async (prisma) => {
       'avatar', users.avatar,
       'username', users.username
     )
+    ORDER BY comments.date DESC
   ) as comments
   FROM posts
   FULL OUTER JOIN comments ON comments.post_id = posts.id

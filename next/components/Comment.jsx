@@ -15,7 +15,7 @@ export default function Comment(props){
   <article className={styles.comment}>
     <img className={styles.avatar} src={avatars[`avatar${props.avatar}`]} style={{filter: `drop-shadow(2px 2px 0px ${props.pageColour || 'transparent'})`}} alt='profile pic' />
     <header style={{textShadow: `1px 1px 0px ${props.pageColour || 'transparent'}`}}>
-      <i>Anon-{props.username}</i>
+      <i>Ninja #{props.username}</i>
       <p>{props.date}</p>
     </header>
     <span>{props.content}</span>
