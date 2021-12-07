@@ -1,0 +1,169 @@
+.carousel {
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px;
+  width: 100vw;
+  font-size: 20px;
+  /* filter: drop-shadow(3px 3px 0px black); */
+}
+
+.carousel > main {
+  background-color: var(--dark-gray);
+  width: 100%;
+  height: 30vw;
+  display: flex;
+  flex-direction: row;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.carouselOptions {
+  display: flex;
+  justify-content: center;
+  filter: drop-shadow(3px 3px 0px black);
+}
+.carouselOptions > input {
+  -webkit-appearance: none;
+	background-color: var(--light-gray);
+	border: 5px solid var(--dark-gray);
+  padding: 20px;
+	border-radius: 100%;
+}
+
+.carouselOptions > input:checked {
+  -webkit-appearance: none;
+	background-color: var(--dark-gray);
+	border: 5px solid var(--dark-gray);
+  padding: 20px;
+	border-radius: 100%;
+}
+
+.carouselItem {
+  display: flex;
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 100vw;
+  animation-duration: 1s;
+  animation-iteration-count: 10;
+}
+
+.carouselItem.hidden {
+  display: none;
+}
+
+.carouselItem > img{
+  height: 100%;
+  /* filter: drop-shadow(5px 5px 0px black); */
+}
+
+.carouselItem > aside{
+  width: 45%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.carouselItem > aside > div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 5px solid var(--light-gray);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+}
+
+.carouselItem > aside > div > h3{
+  color: var(--light-gray);
+  font-size: 1.3vw;
+  margin: 5px;
+  margin-right: 2vw;
+  filter: drop-shadow(1px 1px 0px black);
+}
+
+.carouselItem > aside > h1{
+  color: var(--light-gray);
+  font-size: 2.5vw;
+  text-align: center;
+  width: 100%;
+  margin: 0;
+  filter: drop-shadow(2px 2px 0px black);
+}
+
+.carouselItem > aside > .jsx-parser{
+  color: var(--light-gray);
+  font-size: 1.3vw;
+  width: 100%;
+  flex-direction: column;
+}
+
+.mid {
+  margin-left: -100vw !important;
+  transition: margin-left 1s;
+}
+
+.right {
+  margin-left: -200vw !important;
+  transition: margin-left 1s;
+}
+
+.left {
+  margin-left: -0vw !important;
+  transition: margin-left 1s;
+}
+
+@media only screen and (max-device-width: 480px) {
+  .carousel > main {
+    height: 65vw;
+    overflow-x: hidden;
+  }
+
+  .carouselItem {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .carouselItem > img {
+    width: 100%;
+  }
+
+  .carouselItem > aside {
+    background-color: var(--dark-gray);
+  }
+
+  .carouselItem > aside > div {
+    width: 100%;
+    image-resolution: from-image;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border: none;
+  }
+
+  .carouselItem > aside > div > h3{
+    font-size: 2.8vw;
+    margin: 5px;
+    margin-right: 2vw;
+    filter: drop-shadow(1px 1px 0px black);
+  }
+
+  .carouselItem > aside > h1{
+    display: none;
+  }
+
+  .carouselItem > aside > .jsx-parser{
+    display: none;
+  }
+  .carouselOptions > input {
+    border: 2px solid var(--dark-gray);
+    padding: 10px;
+  }
+  
+  .carouselOptions > input:checked {
+    border: 2px solid var(--dark-gray);
+    padding: 10px;
+  }
+}
