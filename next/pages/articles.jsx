@@ -10,7 +10,7 @@ import prisma from '../prisma/prisma';
 import { selectAllArticles } from '../prisma/queries/queries';
 import Footer from '../components/Footer';
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
 
   const articlesArray = await selectAllArticles(prisma)
 
@@ -56,7 +56,7 @@ export default function ArticlesPage(props) {
         <div className={styles.articlesPageContainer}>
           {props.articles.slice(3).map((item) => {
             return (
-              <a href={`/posts/${item.title.toLowerCase().replace(' ', '_')}`} className={styles.articleCard}>
+              <a key={item.title} href={`/posts/${item.title.toLowerCase().replace(' ', '_')}`} className={styles.articleCard}>
                 <article className={styles.articleCardItem}
                   onMouseEnter={(e) => {
                     e.target.parentElement.children["0"].className = 'fade'
@@ -66,11 +66,6 @@ export default function ArticlesPage(props) {
                   }}>
                   <div>
                     <img src={item.thumbnail} alt='thumbnail' />
-                    <video loop muted autoPlay >
-                      <source src={item.video_header} type="video/webm"></source>
-                      <source src={item.video_header} type="video/ogg"></source>
-                      <source src={item.video_header} type="video/mp4"></source>
-                    </video>
                     <div> </div>
                     <section>
                       <h1 style={{ filter: `drop-shadow(1px 1px 0px ${item.colour})` }}>{item.title}</h1>

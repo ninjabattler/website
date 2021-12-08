@@ -1,5 +1,6 @@
 import { React, useState } from 'react';
 import styles from "../styles/NavBar.module.css";
+import Link from 'next/link'
 // import ParticlesBg from 'particles-bg';
 
 export default function NavBar(props) {
@@ -26,27 +27,29 @@ export default function NavBar(props) {
           random: 15
         }} /> */}
       </div>
-      <a>
-        <img
-          id={styles.glow}
-          style={{ filter: `drop-shadow(5px 5px 0px ${props.pageColour})` }}
-          src='/Banner.png'
-          alt='logo'
-        />
-        <img
-          style={{ filter: `drop-shadow(5px 5px 0px ${props.pageColour})` }}
-          src='/Banner.png'
-          alt='logo'
-        />
-      </a>
+      <Link href="/">
+        <a>
+          <img
+            id={styles.glow}
+            style={{ filter: `drop-shadow(5px 5px 0px ${props.pageColour})` }}
+            src='/Banner.png'
+            alt='logo'
+          />
+          <img
+            style={{ filter: `drop-shadow(5px 5px 0px ${props.pageColour})` }}
+            src='/Banner.png'
+            alt='logo'
+          />
+        </a>
+      </Link>
       <div className={styles.navOptions}>
         <div className={styles.option}>
           <div>
-            <span><a>Posts</a></span>
+            <Link href="/posts" ><a>Posts</a></Link>
           </div>
         </div><div className={styles.option}>
           <div>
-            <span><a>Articles</a></span>
+            <Link href="/articles" ><a>Articles</a></Link>
           </div>
         </div>
         <div className={styles.option} onMouseEnter={() => { setDrop(true) }} onMouseLeave={() => { setDrop(false) }}>
@@ -56,7 +59,7 @@ export default function NavBar(props) {
         </div>
         <div className={styles.option}>
           <div>
-            <span><a>About</a></span>
+            <Link href="/about" ><a>About</a></Link>
           </div>
         </div>
       </div>
@@ -73,7 +76,7 @@ export default function NavBar(props) {
           </div>
         </div>
         <div className={styles.option} onMouseEnter={() => { drop ? setDrop(true) : setDrop(false) }} onMouseLeave={() => { setDrop(false) }}>
-          {drop ? 
+          {drop ?
             (<div style={{ textAlign: 'left', marginLeft: '-0px', alignItems: 'flex-start' }}>
               <span><a><i className="fab fa-linkedin"></i> Linkedin</a></span>
               <span><a><i className="fab fa-github"></i> Github</a></span>

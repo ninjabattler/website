@@ -139,7 +139,7 @@
   margin-top: 54px;
   position: absolute;
 }
-.navOptions > .option > div > span > a {
+.navOptions > .option > div > span > a, .navOptions > .option > div > a {
   color: var(--light-gray);
 }
 

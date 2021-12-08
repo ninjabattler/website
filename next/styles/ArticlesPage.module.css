@@ -63,6 +63,7 @@
 }
 
 .articleCardItem > div > div {
+  margin-top: 28vw;
   border-top: 10vw solid var(--light-gray);
   border-right: 10vw solid transparent;
 }

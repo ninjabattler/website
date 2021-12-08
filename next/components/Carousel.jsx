@@ -6,6 +6,7 @@ import ThunderText from './animatedText/ThunderText';
 import EarthText from './animatedText/EarthText';
 import JsxParser from 'react-jsx-parser';
 import Paragraph from './Paragraph';
+import Image from 'next/image';
 // import Underline from './Underline';
 
 export default function Carousel({ items }) {
@@ -26,13 +27,16 @@ export default function Carousel({ items }) {
         {items.map((item) => {
           i++
           return (
-            <a href={`/posts/${item.title.toLowerCase().replace(' ', '_')}`} className={`${styles.carouselItem} ${i < 2 ? styles[currentOption] : ''}`}>
-              <img src={item.thumbnail} />
+            <a key={item.title} href={`/posts/${item.title.toLowerCase().replace(' ', '_')}`} className={`${styles.carouselItem} ${i < 2 ? styles[currentOption] : ''}`}>
+
+              <div className={styles.imageContainer}>
+                <Image width={16} height={9.55} layout="responsive" src={item.thumbnail} />
+              </div>
               <aside id={styles.carouselItemAside}>
                 <h1>{item.title}</h1>
                 <div>
-                  <h3><i class="fas fa-calendar-alt"></i>{item.formatteddate}</h3>
-                  <h3><i class="fas fa-gamepad"></i>{item.category}/{item.genre}</h3>
+                  <h3><i className="fas fa-calendar-alt"></i>{item.formatteddate}</h3>
+                  <h3><i className="fas fa-gamepad"></i>{item.category}/{item.genre}</h3>
                 </div>
 
                 <JsxParser
@@ -45,9 +49,9 @@ export default function Carousel({ items }) {
         })}
       </main>
       <div className={styles.carouselOptions}>
-        <input type='checkbox' checked={currentOption === 'left'} onClick={() => { selectItem('left') }}/>
-        <input type='checkbox' checked={currentOption === 'mid'} onClick={() => { selectItem('mid') }}/>
-        <input type='checkbox' checked={currentOption === 'right'} onClick={() => { selectItem('right') }}/>
+        <input type='checkbox' checked={currentOption === 'left'} onClick={() => { selectItem('left') }} />
+        <input type='checkbox' checked={currentOption === 'mid'} onClick={() => { selectItem('mid') }} />
+        <input type='checkbox' checked={currentOption === 'right'} onClick={() => { selectItem('right') }} />
       </div>
     </section>)
 }
