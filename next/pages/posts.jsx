@@ -24,7 +24,7 @@ export const getServerSideProps = async () => {
   }
 }
 
-export default function Home(props) {
+export default function PostsPage(props) {
   return (
     <>
       <NavBar />

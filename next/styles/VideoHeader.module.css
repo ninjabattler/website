@@ -1,0 +1,155 @@
+.videoHeader {
+  height: fit-content;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  font-size: 30px;
+}
+.videoHeader > .bar1, .videoHeader > .barC {
+  border-bottom: 100px solid var(--light-gray);
+  width: 65%;
+  border-right: 100px solid transparent;
+  position: absolute;
+  margin-top: 840px;
+  /* animation-name: bar1;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  animation-duration: 2s; */
+}
+.videoHeader > .bar2 {
+  border-top: 100px solid var(--dark-gray);
+  width: 70%;
+  border-right: 100px solid transparent;
+  position: absolute;
+  margin-top: 890px;
+  filter: drop-shadow(8px 5px 0px black);
+  /* animation-name: bar2;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  animation-duration: 2s; */
+}
+.videoHeader > .barC {
+  margin-top: 850px;
+  width: 65.6%;
+  filter: drop-shadow(8px 5px 0px black);
+  /* animation-name: barc;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  animation-duration: 2s; */
+}
+.videoHeader > h1 {
+  position: absolute;
+  margin-top: 880px;
+  color: var(--dark-gray);
+  /* animation-name: title;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  animation-duration: 4s; */
+}
+#videoOverlay {
+  width: 100%;
+  height: 200%;
+  position: fixed;
+  bottom: 0;
+  background-color: white;
+  mix-blend-mode: multiply;
+}
+.videoHeader > #videoContainer {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  background-color: black;
+}
+
+.videoHeader > #videoContainer > video {
+  width: 100%;
+  background-color: black;
+}
+
+@keyframes bar2 {
+  0%{margin-top: 340px; margin-left: -100px}
+  100%{margin-top: 390px; margin-left: -0px}
+}
+
+@keyframes bar1 {
+  0%{margin-top: 390px; margin-left: -100px}
+  100%{margin-top: 340px; margin-left: -0px}
+}
+
+@keyframes barc {
+  0%{margin-top: 400px; margin-left: -100px}
+  100%{margin-top: 350px; margin-left: -0px}
+}
+
+@keyframes title {
+  0%{opacity: 0}
+  50%{opacity: 0}
+  100%{opacity: 1}
+}
+
+@media only screen and (max-width: 1362px) {
+  .videoHeader > .bar1 {
+    margin-top: 430px;
+    border-width: 75px;
+  }
+  .videoHeader > .barC {
+    margin-top: 435px;
+    border-width: 75px;
+  }
+  .videoHeader > .bar2 {
+    margin-top: 450px;
+    border-width: 75px;
+  }
+  .videoHeader > h1 {
+    margin-top: 460px;
+    font-size:1.5em;
+  }
+}
+
+@media only screen and (max-width: 853px) {
+  .videoHeader > .bar1 {
+    margin-top: 230px;
+    border-width: 50px;
+  }
+  .videoHeader > .barC {
+    margin-top: 235px;
+    border-width: 50px;
+  }
+  .videoHeader > .bar2 {
+    margin-top: 250px;
+    border-width: 50px;
+  }
+  .videoHeader > h1 {
+    margin-top: 240px;
+    font-size:0.8em;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .videoHeader {
+    margin-bottom: 60px;
+  }
+  .videoHeader > .bar1 {
+    margin-top: 220px;
+    width: 80%;
+    border-width: 40px;
+  }
+  .videoHeader > .barC {
+    margin-top: 225px;
+    width: 82%;
+    border-width: 40px;
+  }
+  .videoHeader > .bar2 {
+    margin-top: 240px;
+    width: 86%;
+    border-width: 40px;
+  }
+  .videoHeader > h1 {
+    margin-top: 240px;
+    font-size:0.8em;
+  }
+}

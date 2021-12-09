@@ -1,14 +1,15 @@
 import { React, useEffect, useState } from 'react';
-import styles from '../styles/ArticlesPage.module.css'
+import styles from '../../styles/ArticlesPage.module.css'
 import JsxParser from 'react-jsx-parser';
-import NavBar from '../components/NavBar';
-import Paragraph from '../components/Paragraph';
-import TitleCard from '../components/TitleCard'
-import Carousel from '../components/Carousel';
+import NavBar from '../../components/NavBar';
+import Paragraph from '../../components/Paragraph';
+import TitleCard from '../../components/TitleCard'
+import Carousel from '../../components/Carousel';
 import Head from 'next/dist/shared/lib/head';
-import prisma from '../prisma/prisma';
-import { selectAllArticles } from '../prisma/queries/queries';
-import Footer from '../components/Footer';
+import prisma from '../../prisma/prisma';
+import { selectAllArticles } from '../../prisma/queries/queries';
+import Footer from '../../components/Footer';
+import Link from 'next/link';
 
 export const getStaticProps = async () => {
 
@@ -56,33 +57,35 @@ export default function ArticlesPage(props) {
         <div className={styles.articlesPageContainer}>
           {props.articles.slice(3).map((item) => {
             return (
-              <a key={item.title} href={`/posts/${item.title.toLowerCase().replace(' ', '_')}`} className={styles.articleCard}>
-                <article className={styles.articleCardItem}
-                  onMouseEnter={(e) => {
-                    e.target.parentElement.children["0"].className = 'fade'
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.parentElement.children["0"].className = 'fadeIn'
-                  }}>
-                  <div>
-                    <img src={item.thumbnail} alt='thumbnail' />
-                    <div> </div>
-                    <section>
-                      <h1 style={{ filter: `drop-shadow(1px 1px 0px ${item.colour})` }}>{item.title}</h1>
-                    </section>
-                  </div>
+              <Link key={item.title} href={`/articles/${item.title.toLowerCase().replace(' ', '_')}`} >
+                <a className={styles.articleCard}>
+                  <article className={styles.articleCardItem}
+                    onMouseEnter={(e) => {
+                      e.target.parentElement.children["0"].className = 'fade'
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.parentElement.children["0"].className = 'fadeIn'
+                    }}>
+                    <div>
+                      <img src={item.thumbnail} alt='thumbnail' />
+                      <div> </div>
+                      <section>
+                        <h1 style={{ filter: `drop-shadow(1px 1px 0px ${item.colour})` }}>{item.title}</h1>
+                      </section>
+                    </div>
 
-                  <div>
-                    <aside>
-                      <JsxParser
-                        components={{ Paragraph }}
+                    <div>
+                      <aside>
+                        <JsxParser
+                          components={{ Paragraph }}
 
-                        jsx={item.content ? item.content.split(/\/n/g).slice(0, 4).join('') : ''}
-                      />
-                    </aside>
-                  </div>
-                </article>
-              </a>)
+                          jsx={item.content ? item.content.split(/\/n/g).slice(0, 4).join('') : ''}
+                        />
+                      </aside>
+                    </div>
+                  </article>
+                </a>
+              </Link>)
           })}
         </div>
       </main>
