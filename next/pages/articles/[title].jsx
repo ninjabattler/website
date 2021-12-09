@@ -1,4 +1,5 @@
 import { React, useEffect, useState } from 'react';
+import styles from '../../styles/ReviewPage.module.css';
 import JsxParser from 'react-jsx-parser';
 import NavBar from '../../components/NavBar';
 import Footer from '../../components/Footer';
@@ -7,11 +8,16 @@ import prisma from '../../prisma/prisma';
 import { selectSingleArticle } from '../../prisma/queries/queries';
 import VideoHeader from '../../components/VideoHeader';
 import InfoBar from '../../components/InfoBar';
+import Picture from '../../components/Picture';
+import ListItem from '../../components/ListItem';
+import Underline from '../../components/Underline';
+import Quote from '../../components/Quote';
+import Paragraph from '../../components/Paragraph';
+import TitleCard from '../../components/TitleCard';
 
 export const getServerSideProps = async (req) => {
   const articleTitle = req.query.title.replace('_', ' ');
   const articleData = await selectSingleArticle(prisma, articleTitle);
-  console.log(articleData)
 
   return {
     props: {
@@ -46,8 +52,22 @@ export default function ArticlePage(props) {
         <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Gloria+Hallelujah&family=Trade+Winds&family=Hanalei+Fill&family=Rock+Salt&display=swap" rel="stylesheet" />
       </Head>
 
-      <VideoHeader video={props.articleData.video_header} title={props.articleData.title} pageColour={props.articleData.colour} />
-      <InfoBar date={props.articleData.formatteddate} categoryGenre={`${props.articleData.category}/${props.articleData.genre}`} />
+      <main id={styles.reviewPage}>
+        <VideoHeader video={props.articleData.video_header} title={props.articleData.title} pageColour={props.articleData.colour} />
+        <InfoBar date={props.articleData.formatteddate} categoryGenre={`${props.articleData.category}/${props.articleData.genre}`} />
+        
+        <div>
+          <article className={styles.articleContainer} style={{ boxShadow: `5px 5px 0px ${props.articleData.colour}` }}>
+            {props.articleData.narration && (<iframe src={`${props.articleData.narration}?color=${props.articleData.colour.split('#')[1]}`} style={{ border: 'none', height: '250px', width: '100%' }} ></iframe>)}
+            <JsxParser
+              components={{ Picture, ListItem, Underline, Quote, Paragraph, TitleCard }}
+
+              jsx={props.articleData.content}
+            />
+          </article>
+        </div>
+
+      </main>
       <Footer />
     </>)
 }

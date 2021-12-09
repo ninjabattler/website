@@ -2,7 +2,6 @@ import React from 'react';
 import styles from "../styles/InfoBar.module.css";
 
 export default function InfoBar(props){
-  console.log(props)
   return (
     <div className={styles.infoBar}>
       <div className={styles.infoUnderline}></div>

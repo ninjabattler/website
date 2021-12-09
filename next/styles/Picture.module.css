@@ -1,0 +1,11 @@
+.picture > img{
+  max-width: 100%;
+  min-width: 50%;
+  image-rendering: pixelated;
+  margin-left: auto;
+  margin-right: auto;
+}
+.picture {
+  display: flex;
+  justify-content: center;
+}
