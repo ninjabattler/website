@@ -5,7 +5,7 @@ import NavBar from '../../components/NavBar';
 import Footer from '../../components/Footer';
 import Head from 'next/dist/shared/lib/head';
 import prisma from '../../prisma/prisma';
-import { selectSingleArticle, selectUserId } from '../../prisma/queries/queries';
+import { selectSingleArticle, selectUserId, selectUsersLike } from '../../prisma/queries/queries';
 import VideoHeader from '../../components/VideoHeader';
 import InfoBar from '../../components/InfoBar';
 import Picture from '../../components/Picture';
@@ -22,29 +22,55 @@ export const getServerSideProps = async (req) => {
   let ip = await axios({ method: 'get', url: `https://api.ipify.org?format=json`, headers: { 'Content-Type': 'application/json' }, })
   ip = ip.data.ip;
 
+
   const userId = await selectUserId(prisma, ip)
+  const userLike = await selectUsersLike(prisma, userId[0].id)
   const articleTitle = req.query.title.replace('_', ' ');
   const articleData = await selectSingleArticle(prisma, articleTitle);
 
-  return {
-    props: {
-      articleData: articleData[0],
-      userId: userId
+  let liked = false;
+  let disliked = false;
+
+  if (userLike[0]) {
+    if (userLike[0].liked) {
+      liked = true;
+    } else {
+      disliked = true;
     }
   }
+
+    return {
+      props: {
+        articleData: articleData[0],
+        userId: userId[0].id,
+        liked,
+        disliked
+      }
+    }
 }
 
 export default function ArticlePage(props) {
   const [commenting, setCommenting] = useState(false)
   const [likes, setLikes] = useState(props.articleData.likes)
   const [dislikes, setDislikes] = useState(props.articleData.dislikes)
-  const [isLiked, setIsLiked] = useState(false)
-  const [isDisliked, setIsDisliked] = useState(false)
+  const [isLiked, setIsLiked] = useState(props.liked)
+  const [isDisliked, setIsDisliked] = useState(props.disliked)
   const [windowServer, setWindow] = useState({})
 
   useEffect(() => {
     setWindow(window)
   }, [])
+
+  const like = async ({ like }, cb) => {
+    const newLike = await axios({
+      method: 'post',
+      url: `/api/likes/newLike/`,
+      params: { like: like, postId: props.articleData.id, userId: props.userId },
+      headers: { 'Content-Type': 'application/json' }
+    })
+
+    cb()
+  }
 
   return (
     <>
@@ -88,21 +114,21 @@ export default function ArticlePage(props) {
             <aside className={styles.likePanel} >
 
               <button onClick={() => {
-                like({ like: true, id, }, () => {
-                  isLiked = !isLiked
-                  if (isLiked === true) {
+                like({ like: true, }, () => {
+                  setIsLiked(!isLiked)
+                  if (isLiked === false) {
                     setLikes(likes + 1)
                   } else {
                     setLikes(likes - 1)
                   }
                   if (isDisliked) {
-                    isDisliked = !isDisliked
+                    setIsDisliked(!isDisliked)
                     setDislikes(dislikes - 1)
                   }
                   console.log(isLiked, isDisliked)
                 })
               }}
-                style={{ color: isLiked === true ? colour : '#292929' }}>
+                style={{ color: isLiked === true ? props.articleData.colour : '#292929' }}>
                 <span className={styles.likeOption}><ThumbUpSharp />{likes}</span>
 
               </button>
@@ -111,28 +137,28 @@ export default function ArticlePage(props) {
 
               </div>
               <button onClick={() => {
-                like({ like: false, id, }, () => {
-                  isDisliked = !isDisliked
-                  if (isDisliked === true) {
+                like({ like: false }, () => {
+                  setIsDisliked(!isDisliked)
+                  if (isDisliked === false) {
                     setDislikes(dislikes + 1)
                   } else {
                     setDislikes(dislikes - 1)
                   }
                   if (isLiked) {
-                    isLiked = !isLiked
+                    setIsLiked(!isLiked)
                     setLikes(likes - 1)
                   }
                   console.log(isLiked, isDisliked)
                 })
               }}
-                style={{ color: isDisliked === true ? colour : '#292929' }}>
+                style={{ color: isDisliked === true ? props.articleData.colour : '#292929' }}>
                 <span className={styles.likeOption}><ThumbDownSharp />{dislikes}</span>
               </button>
             </aside>
 
             <aside id={styles.shareBar}>
               <div className="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small"><a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(windowServer.location).replace(/'/g, "%27").replace(/"/g, "%22")}`} class="fb-xfbml-parse-ignore"><Facebook /></a></div>
-              <div><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" className="twitter-share-button" data-show-count="false"><Twitter /></a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+              <div><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-show-count="false"><Twitter /></a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div>
               <div><a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(windowServer.location).replace(/'/g, "%27").replace(/"/g, "%22")}`} target="_blank" ><LinkedIn /></a></div>
               <div><a href={`http://www.reddit.com/submit?url=${windowServer.location}&title=Ninjabattler-${props.articleData.title}`} target="_blank"><Reddit /></a></div>
             </aside>
