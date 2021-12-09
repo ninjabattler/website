@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from "../styles/InfoBar.module.css";
+import { GamepadSharp, CalendarTodaySharp } from '@material-ui/icons'
 
 export default function InfoBar(props){
   return (
@@ -7,11 +8,11 @@ export default function InfoBar(props){
       <div className={styles.infoUnderline}></div>
       <span>
         <div>
-          <i className="fas fa-calendar-alt"></i>
+          <CalendarTodaySharp />
           {props.date}
         </div>
         <div>
-          <i className="fas fa-gamepad"></i>
+          <GamepadSharp />
           {props.categoryGenre}
         </div>
       </span>

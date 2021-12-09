@@ -45,13 +45,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden !important;
 }
 #shareBar > div > a {
-  width: 100% !important;
+  width: 50%;
   color: var(--light-gray);
   cursor: pointer;
   text-align: center;
-  font-size: 1.5em;
+  font-size: 1em;
+  transform: scale(2);
 }
 
 #shareBar > div > a:hover {
@@ -161,6 +163,15 @@
 .mobile {
   display: none;  
   margin-top: 50px;
+}
+
+.likeOption {
+  display: flex;
+  align-items: center;
+}
+
+.likeOption > * {
+  margin: 5px;
 }
 
 @keyframes loading {

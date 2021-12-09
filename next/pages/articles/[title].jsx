@@ -15,6 +15,7 @@ import Quote from '../../components/Quote';
 import Paragraph from '../../components/Paragraph';
 import TitleCard from '../../components/TitleCard';
 import Comment from '../../components/Comment';
+import { ThumbUpSharp, ThumbDownSharp, ArrowForwardIosRounded, Reddit, Twitter, LinkedIn, Facebook } from '@material-ui/icons'
 import axios from 'axios';
 
 export const getServerSideProps = async (req) => {
@@ -102,7 +103,7 @@ export default function ArticlePage(props) {
                 })
               }}
                 style={{ color: isLiked === true ? colour : '#292929' }}>
-                <i class="far fa-thumbs-up">{likes}</i>
+                <span className={styles.likeOption}><ThumbUpSharp />{likes}</span>
 
               </button>
 
@@ -125,16 +126,15 @@ export default function ArticlePage(props) {
                 })
               }}
                 style={{ color: isDisliked === true ? colour : '#292929' }}>
-                <i class="far fa-thumbs-down">{dislikes}</i>
+                <span className={styles.likeOption}><ThumbDownSharp />{dislikes}</span>
               </button>
             </aside>
 
             <aside id={styles.shareBar}>
-              <div style={{ cursor: 'default' }}><i class="fas fa-share"></i></div>
-              <div className="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small"><a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(windowServer.location).replace(/'/g, "%27").replace(/"/g, "%22")}`} class="fb-xfbml-parse-ignore"><i class="fab fa-facebook-square"></i></a></div>
-              <div><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" className="twitter-share-button" data-show-count="false"><i class="fab fa-twitter-square"></i></a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div>
-              <div><a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(windowServer.location).replace(/'/g, "%27").replace(/"/g, "%22")}`} target="_blank" ><i class="fab fa-linkedin"></i></a></div>
-              <div><a href={`http://www.reddit.com/submit?url=${windowServer.location}&title=Ninjabattler-${props.articleData.title}`} target="_blank"><i class="fab fa-reddit-square"></i></a></div>
+              <div className="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small"><a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(windowServer.location).replace(/'/g, "%27").replace(/"/g, "%22")}`} class="fb-xfbml-parse-ignore"><Facebook /></a></div>
+              <div><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" className="twitter-share-button" data-show-count="false"><Twitter /></a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+              <div><a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(windowServer.location).replace(/'/g, "%27").replace(/"/g, "%22")}`} target="_blank" ><LinkedIn /></a></div>
+              <div><a href={`http://www.reddit.com/submit?url=${windowServer.location}&title=Ninjabattler-${props.articleData.title}`} target="_blank"><Reddit /></a></div>
             </aside>
 
             {commenting === true ?
@@ -164,7 +164,7 @@ export default function ArticlePage(props) {
                     setComments(newComments)
                   })
                 }}>
-                  <i class="fas fa-caret-square-right"></i>
+                  <ArrowForwardIosRounded />
                 </button>
               </>)}
 
