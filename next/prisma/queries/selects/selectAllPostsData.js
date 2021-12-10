@@ -5,7 +5,8 @@ const selectAllPostsData = async (prisma) => {
       'content', comments.content,
       'date', comments.date,
       'avatar', users.avatar,
-      'username', users.username
+      'username', users.username,
+      'user_id', users.id
     )
     ORDER BY comments.date DESC
   ) as comments

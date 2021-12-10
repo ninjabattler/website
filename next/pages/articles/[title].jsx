@@ -51,11 +51,13 @@ export const getServerSideProps = async (req) => {
 
 export default function ArticlePage(props) {
   const [commenting, setCommenting] = useState(false)
+  const [comments, setComments] = useState(props.articleData.comments)
   const [likes, setLikes] = useState(props.articleData.likes)
   const [dislikes, setDislikes] = useState(props.articleData.dislikes)
   const [isLiked, setIsLiked] = useState(props.liked)
   const [isDisliked, setIsDisliked] = useState(props.disliked)
   const [windowServer, setWindow] = useState({})
+  let commentContent = '';
 
   useEffect(() => {
     setWindow(window)
@@ -70,6 +72,26 @@ export default function ArticlePage(props) {
     })
 
     cb()
+  }
+
+  const comment = async (params, setCommenting, cb) => {
+    try {
+      setCommenting(true)
+      const newComment = await axios({
+        method: 'post',
+        url: `/api/comments/newComment/`,
+        params: { postId: params.id, content: params.content, userId: props.userId },
+        headers: { 'Content-Type': 'application/json' }
+      })
+
+      const newCommentsList = [{...newComment.data, user_id: props.userId}, ...comments]
+
+      setCommenting(false)
+      cb(newCommentsList)
+    }
+    catch (err) {
+      console.log(err);
+    }
   }
 
   return (
@@ -166,7 +188,7 @@ export default function ArticlePage(props) {
             {commenting === true ?
               (<>
                 <p id={styles.commentLoading}>
-                  <img src={ninjabattler} />
+                  <img src={'/Ninja placeholder.png'} />
                 </p>
               </>) :
               (<>
@@ -185,7 +207,7 @@ export default function ArticlePage(props) {
                   }}>
                 </textarea>
                 <button onClick={() => {
-                  comment({ content: commentContent, id: id }, setCommenting, (newComments) => {
+                  comment({ content: commentContent, id: props.articleData.id }, setCommenting, (newComments) => {
                     commentContent = ''
                     setComments(newComments)
                   })
@@ -195,9 +217,9 @@ export default function ArticlePage(props) {
               </>)}
 
             <div className={styles.comments}>
-              {props.articleData.comments.map((com) => {
+              {comments.map((com) => {
                 return (<Comment
-                  pageColour={com.user_id === props.userId ? colour : 'transparent'}
+                  pageColour={com.user_id === props.userId ? props.articleData.colour : 'transparent'}
                   username={com.username.slice(0, 10)}
                   date={com.formatteddate}
                   content={com.content}
