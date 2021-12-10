@@ -16,3 +16,12 @@
   width: 120vw;
   height: 120vh;
 }
+
+#videoBackground > div{
+  width: 120vw;
+  height: 120vh;
+  position: fixed;
+  z-index: 5;
+  background-color: white;
+  mix-blend-mode: multiply;
+}

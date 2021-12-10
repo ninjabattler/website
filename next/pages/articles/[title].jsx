@@ -119,10 +119,10 @@ export default function ArticlePage(props) {
         <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Gloria+Hallelujah&family=Trade+Winds&family=Hanalei+Fill&family=Rock+Salt&display=swap" rel="stylesheet" />
       </Head>
 
-      <VideoBackground video={props.articleData.video_header} />
+      <VideoBackground video={props.articleData.video_header || ""} pageColour={props.articleData.colour} />
 
       <main id={styles.reviewPage}>
-        <VideoHeader video={props.articleData.video_header} title={props.articleData.title} pageColour={props.articleData.colour} />
+        <VideoHeader video={props.articleData.video_header || ""} title={props.articleData.title} pageColour={props.articleData.colour} />
         <InfoBar date={props.articleData.formatteddate} categoryGenre={`${props.articleData.category}/${props.articleData.genre}`} />
 
         <div>
