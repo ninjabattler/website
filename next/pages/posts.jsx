@@ -34,7 +34,7 @@ export default function PostsPage(props) {
         <meta property='og:locale' content='en_CA' />
         <meta name='theme-color' content="#FFFF00" />
         <meta property='og:type' content='website' />
-        <meta property='og:title' content="Ninjabattler" />
+        <meta property='og:title' content="Ninjabattler - Posts" />
         <meta property='og:description' content="A mad man's ramblings and sometimes blender renders" />
         <meta property='og:image' content="https://ninjabattler.ca/static/media/Website robot.9ca91034.png" />
         <link rel="icon" href="/favicon.ico" />
