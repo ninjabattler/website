@@ -11,7 +11,7 @@ import { selectAllArticles } from '../../prisma/queries/queries';
 import Footer from '../../components/Footer';
 import Link from 'next/link';
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
 
   const articlesArray = await selectAllArticles(prisma)
 

@@ -1,6 +1,7 @@
 import { React, useState } from 'react';
 import styles from "../styles/NavBar.module.css";
 import Link from 'next/link'
+import { LinkedIn, GitHub } from '@material-ui/icons'
 // import ParticlesBg from 'particles-bg';
 
 export default function NavBar(props) {
@@ -77,9 +78,9 @@ export default function NavBar(props) {
         </div>
         <div className={styles.option} onMouseEnter={() => { drop ? setDrop(true) : setDrop(false) }} onMouseLeave={() => { setDrop(false) }}>
           {drop ?
-            (<div style={{ textAlign: 'left', marginLeft: '-0px', alignItems: 'flex-start' }}>
-              <span><a><i className="fab fa-linkedin"></i> Linkedin</a></span>
-              <span><a><i className="fab fa-github"></i> Github</a></span>
+            (<div className={styles.socialLinks} style={{ textAlign: 'left', alignItems: 'flex-start', marginTop: drop ? "90px" : "-100px" }}>
+              <span><a href='https://www.linkedin.com/in/jayden-tucker-52a5711ba/'><LinkedIn /> Linkedin</a></span>
+              <span><a href='https://github.com/ninjabattler'><GitHub /> Github</a></span>
             </div>)
             :
             (<></>)

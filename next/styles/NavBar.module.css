@@ -127,6 +127,10 @@
 
 .socialLinks {
   flex-direction: column;
+  background-color: var(--dark-gray) !important;
+  width: 100%;
+  padding: 30px;
+  margin-left: -16% !important;
 }
 
 .navOptions > .option > div {
