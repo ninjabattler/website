@@ -10,7 +10,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 // import Underline from './Underline';
 
-export default function Carousel({ items }) {
+export default function Carousel({ items, setLinkClicked }) {
 
   const [currentOption, setCurrentOption] = useState('left');
 
@@ -29,7 +29,7 @@ export default function Carousel({ items }) {
           i++
           return (
             <Link key={item.title} href={`/articles/${item.title.toLowerCase().replace(' ', '_')}`} >
-              <a className={`${styles.carouselItem} ${i < 2 ? styles[currentOption] : ''}`}>
+              <a onClick={() => { setLinkClicked(true) }} className={`${styles.carouselItem} ${i < 2 ? styles[currentOption] : ''}`}>
 
                 <div className={styles.imageContainer}>
                   <Image width={16} height={9.55} layout="responsive" src={item.thumbnail} />

@@ -10,6 +10,7 @@ import prisma from '../../prisma/prisma';
 import { selectAllArticles } from '../../prisma/queries/queries';
 import Footer from '../../components/Footer';
 import Link from 'next/link';
+import LoadingOverlay from '../../components/LoadingOverlay';
 
 export const getServerSideProps = async () => {
 
@@ -23,9 +24,11 @@ export const getServerSideProps = async () => {
 }
 
 export default function ArticlesPage(props) {
+  const [linkClicked, setLinkClicked] = useState(false);
 
   return (
     <>
+      {linkClicked && (<LoadingOverlay />)}
       <NavBar />
       <Head>
         <title>Ninjabattler - Articles</title>
@@ -48,7 +51,7 @@ export default function ArticlesPage(props) {
         <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Gloria+Hallelujah&family=Trade+Winds&family=Hanalei+Fill&family=Rock+Salt&display=swap" rel="stylesheet" />
       </Head>
 
-      <Carousel items={props.articles ? props.articles.slice(0, 3) : []} />
+      <Carousel setLinkClicked={setLinkClicked} items={props.articles ? props.articles.slice(0, 3) : []} />
 
       <main id={styles.articlesPage}>
         <div style={{ width: '100%', position: 'sticky', top: '0', height: '100%' }}>
@@ -58,7 +61,7 @@ export default function ArticlesPage(props) {
           {props.articles.slice(3).map((item) => {
             return (
               <Link key={item.title} href={`/articles/${item.title.toLowerCase().replace(' ', '_')}`} >
-                <a className={styles.articleCard}>
+                <a onClick={() => { setLinkClicked(true) }} className={styles.articleCard}>
                   <article className={styles.articleCardItem}
                     onMouseEnter={(e) => {
                       e.target.parentElement.children["0"].className = 'fade'

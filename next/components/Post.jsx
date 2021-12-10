@@ -158,10 +158,9 @@ export default function Posts(props) {
 
                   <div className={styles.comments}>
                     {comments.map((com) => {
-                      console.log(com)
                       return (<Comment
                         key={comment.id}
-                        pageColour={com.user_id === props.userId ? '#000000' : 'transparent'}
+                        pageColour={com.user_id === props.userId[0].id ? '#000000' : 'transparent'}
                         username={com.username.slice(0, 10)}
                         date={com.formatteddate}
                         content={com.content}

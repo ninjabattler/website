@@ -40,14 +40,14 @@ export const getServerSideProps = async (req) => {
     }
   }
 
-    return {
-      props: {
-        articleData: articleData[0],
-        userId: userId[0].id,
-        liked,
-        disliked
-      }
+  return {
+    props: {
+      articleData: articleData[0],
+      userId: userId[0].id,
+      liked,
+      disliked
     }
+  }
 }
 
 export default function ArticlePage(props) {
@@ -85,7 +85,7 @@ export default function ArticlePage(props) {
         headers: { 'Content-Type': 'application/json' }
       })
 
-      const newCommentsList = [{...newComment.data, user_id: props.userId}, ...comments]
+      const newCommentsList = [{ ...newComment.data, user_id: props.userId }, ...comments]
 
       setCommenting(false)
       cb(newCommentsList)
@@ -221,12 +221,14 @@ export default function ArticlePage(props) {
 
             <div className={styles.comments}>
               {comments.map((com) => {
-                return (<Comment
-                  pageColour={com.user_id === props.userId ? props.articleData.colour : 'transparent'}
-                  username={com.username.slice(0, 10)}
-                  date={com.formatteddate}
-                  content={com.content}
-                  avatar={com.avatar} />)
+                if (com.username) {
+                  return (<Comment
+                    pageColour={com.user_id === props.userId ? props.articleData.colour : 'transparent'}
+                    username={com.username.slice(0, 10)}
+                    date={com.formatteddate}
+                    content={com.content}
+                    avatar={com.avatar} />)
+                }
               })}
             </div>
           </aside>
