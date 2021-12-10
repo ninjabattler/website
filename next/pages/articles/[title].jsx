@@ -17,6 +17,7 @@ import TitleCard from '../../components/TitleCard';
 import Comment from '../../components/Comment';
 import { ThumbUpSharp, ThumbDownSharp, ArrowForwardIosRounded, Reddit, Twitter, LinkedIn, Facebook } from '@material-ui/icons'
 import axios from 'axios';
+import VideoBackground from '../../components/VideoBackground';
 
 export const getServerSideProps = async (req) => {
   let ip = await axios({ method: 'get', url: `https://api.ipify.org?format=json`, headers: { 'Content-Type': 'application/json' }, })
@@ -117,6 +118,8 @@ export default function ArticlePage(props) {
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Gloria+Hallelujah&family=Trade+Winds&family=Hanalei+Fill&family=Rock+Salt&display=swap" rel="stylesheet" />
       </Head>
+
+      <VideoBackground video={props.articleData.video_header} />
 
       <main id={styles.reviewPage}>
         <VideoHeader video={props.articleData.video_header} title={props.articleData.title} pageColour={props.articleData.colour} />
