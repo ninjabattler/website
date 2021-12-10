@@ -27,6 +27,7 @@
 
 #homePageRobot {
   width: 80%;
+  margin-left: 10%;
   filter: drop-shadow(5px 5px 0px black) drop-shadow(10px 5px 0px rgba(0,0,0,0.75)) drop-shadow(20px 5px 0px rgba(0,0,0,0.5)) drop-shadow(35px 5px 0px rgba(0,0,0,0.25));
   animation-name: robot;
   animation-duration: 2.5s;

@@ -25,7 +25,7 @@ export default function LoadingOverlay() {
   return (
     <div id={styles.loadingOverlay}>
       <img src='/Ninja placeholder.png' />
-      <p>"{QUOTES[Math.floor(Math.random() * QUOTES.length)]}"</p>
+      <p>&quot;{QUOTES[Math.floor(Math.random() * QUOTES.length)]}&quot;</p>
     </div>
   )
 }

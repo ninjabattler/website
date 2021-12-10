@@ -182,10 +182,10 @@ export default function ArticlePage(props) {
             </aside>
 
             <aside id={styles.shareBar}>
-              <div className="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small"><a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(windowServer.location).replace(/'/g, "%27").replace(/"/g, "%22")}`} class="fb-xfbml-parse-ignore"><Facebook /></a></div>
-              <div><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-show-count="false"><Twitter /></a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div>
-              <div><a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(windowServer.location).replace(/'/g, "%27").replace(/"/g, "%22")}`} target="_blank" ><LinkedIn /></a></div>
-              <div><a href={`http://www.reddit.com/submit?url=${windowServer.location}&title=Ninjabattler-${props.articleData.title}`} target="_blank"><Reddit /></a></div>
+              <div className="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small"><a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(windowServer.location).replace(/'/g, "%27").replace(/"/g, "%22")}`} className="fb-xfbml-parse-ignore" rel="noreferrer"><Facebook /></a></div>
+              <div><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-show-count="false" rel="noreferrer"><Twitter /></a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+              <div><a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(windowServer.location).replace(/'/g, "%27").replace(/"/g, "%22")}`} target="_blank" rel="noreferrer"><LinkedIn /></a></div>
+              <div><a href={`http://www.reddit.com/submit?url=${windowServer.location}&title=Ninjabattler-${props.articleData.title}`} target="_blank" rel="noreferrer"><Reddit /></a></div>
             </aside>
 
             {commenting === true ?

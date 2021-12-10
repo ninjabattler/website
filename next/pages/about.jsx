@@ -16,7 +16,7 @@ export default function About(props) {
         <meta property='og:type' content='website' />
         <meta property='og:title' content="Ninjabattler - About" />
         <meta property='og:description' content="A mad man's description" />
-        <meta property='og:image' content="https://ninjabattler.ca/static/media/Website robot.9ca91034.png" />
+        <meta property='og:image' content="/Website Robot 2.png" />
         <link rel="icon" href="/favicon.ico" />
         <meta charSet="utf-8" />
         <meta name="twitter:card" content="summary_large_image" />
@@ -43,7 +43,7 @@ export default function About(props) {
             <img src="/next.png" />
           </h1>
           <p>
-            I've put links to my github and linkedin in the navbar of this site if for some reason you would want that. Other than that
+            I&apos;ve put links to my github and linkedin in the navbar of this site if for some reason you would want that. Other than that
             you can read my posts. Criticism would be much appreciated, likes, dislikes, and comments exist for a reason!
           </p>
         </div>

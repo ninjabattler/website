@@ -59,7 +59,7 @@ export default function Home(props) {
           <meta property='og:type' content='website' />
           <meta property='og:title' content="Ninjabattler" />
           <meta property='og:description' content="Website by a lunatic who knows a little node js and not much else" />
-          <meta property='og:image' content="https://ninjabattler.ca/static/media/Website robot.9ca91034.png" />
+          <meta property='og:image' content="/Website Robot 2.png" />
           <link rel="icon" href="/favicon.ico" />
           <meta charSet="utf-8" />
           <meta name="twitter:card" content="summary_large_image" />
@@ -103,7 +103,7 @@ export default function Home(props) {
             <p>And whatever else I feel like writing about, any and all criticism is encouraged! The comments exist for a reason!</p>
           </div>
 
-          <img id={styles.homePageRobot} src="/Website robot.png" />
+          <img id={styles.homePageRobot} src="/Website Robot 2.png" />
         </main>
       </div>
       <Footer />

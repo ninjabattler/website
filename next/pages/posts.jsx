@@ -36,7 +36,7 @@ export default function PostsPage(props) {
         <meta property='og:type' content='website' />
         <meta property='og:title' content="Ninjabattler - Posts" />
         <meta property='og:description' content="A mad man's ramblings and sometimes blender renders" />
-        <meta property='og:image' content="https://ninjabattler.ca/static/media/Website robot.9ca91034.png" />
+        <meta property='og:image' content="/Website Robot 2.png" />
         <link rel="icon" href="/favicon.ico" />
         <meta charSet="utf-8" />
         <meta name="twitter:card" content="summary_large_image" />
