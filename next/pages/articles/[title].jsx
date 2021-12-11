@@ -4,8 +4,8 @@ import JsxParser from 'react-jsx-parser';
 import NavBar from '../../components/NavBar';
 import Footer from '../../components/Footer';
 import Head from 'next/dist/shared/lib/head';
-import prisma from '../../prisma/prisma';
-import { selectSingleArticle, selectUserId, selectUsersLike } from '../../prisma/queries/queries';
+import db from '../../db/db';
+import { selectSingleArticle, selectUserId, selectUsersLike, insertNewUser } from '../../db/queries';
 import VideoHeader from '../../components/VideoHeader';
 import InfoBar from '../../components/InfoBar';
 import Picture from '../../components/Picture';
@@ -24,10 +24,15 @@ export const getServerSideProps = async (req) => {
   ip = ip.data.ip;
 
 
-  const userId = await selectUserId(prisma, ip)
-  const userLike = await selectUsersLike(prisma, userId[0].id)
+  let userId = await selectUserId(db, ip)
+
+  if (!userId[0]) {
+    userId = await insertNewUser(db, ip)
+  }
+
+  const userLike = await selectUsersLike(db, userId[0].id)
   const articleTitle = req.query.title.replace('_', ' ');
-  const articleData = await selectSingleArticle(prisma, articleTitle);
+  const articleData = await selectSingleArticle(db, articleTitle);
 
   let liked = false;
   let disliked = false;

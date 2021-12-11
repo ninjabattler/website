@@ -5,15 +5,19 @@ import Footer from '../components/Footer';
 import axios from 'axios';
 import Post from '../components/Post';
 import styles from '../styles/PostsPage.module.css'
-import prisma from '../prisma/prisma';
-import { selectAllPostsData, selectUserId } from '../prisma/queries/queries';
+import db from '../db/db';
+import { selectAllPostsData, selectUserId, insertNewUser } from '../db/queries';
 
 export const getServerSideProps = async () => {
   let ip = await axios({ method: 'get', url: `https://api.ipify.org?format=json`, headers: { 'Content-Type': 'application/json' }, })
   ip = ip.data.ip;
 
-  const postsArray = await selectAllPostsData(prisma)
-  const userId = await selectUserId(prisma, ip)
+  const postsArray = await selectAllPostsData(db)
+  const userId = await selectUserId(db, ip)
+
+  if (!userId) {
+    userId = await insertNewUser(db, ip)
+  }
   
   return {
     props: {
