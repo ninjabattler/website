@@ -1,25 +1,38 @@
 const { createServer } = require('http')
+const { parse } = require('url')
 const next = require('next')
+const test = require('./.next/build-manifest.json')
 
-const isDevMode = process.env.NODE_ENV !== 'production'
-const port = process.env.PORT ? process.env.PORT : 4000
+const dev = process.env.NODE_ENV !== 'production'
+const app = next({
+  dev: false,
+  dir: "./",
+  conf: {
+    reactStrictMode: true,
+    images: {
+      domains: ['files.ninjabattler.ca', 'storage.googleapis.com'],
+    }
+  }
+})
+const handle = app.getRequestHandler()
 
-const nextjsApp = next({ dev: isDevMode })
-const nextjsRequestHandler = nextjsApp.getRequestHandler()
+app.prepare().then(() => {
+  console.log(test)
+  createServer((req, res) => {
+    // Be sure to pass `true` as the second argument to `url.parse`.
+    // This tells it to parse the query portion of the URL.
+    const parsedUrl = parse(req.url, true)
+    const { pathname, query } = parsedUrl
 
-nextjsApp
-  .prepare()
-  .then(() => {
-    createServer((req, res) => {
-      // The request url likely will not include a protocol or host, therefore
-      // resolve the request url against a dummy base url.
-      const url = new URL(req.url, "http://w.w")
-      nextjsRequestHandler(req, res, url)
-    }).listen(port, (err) => {
-      if (err) throw err
-    })
+    if (pathname === '/a') {
+      app.render(req, res, '/a', query)
+    } else if (pathname === '/b') {
+      app.render(req, res, '/b', query)
+    } else {
+      handle(req, res, parsedUrl)
+    }
+  }).listen(4000, (err) => {
+    if (err) throw err
+    console.log('> Ready on http://localhost:4000')
   })
-  .catch((ex) => {
-    console.error(ex.stack)
-    process.exit(1)
-  })
+})
