@@ -78,17 +78,17 @@
   background: var(--dark-gray);
 }
 
-.postContent > .jsx-parser {
+.postContent > div {
   display: flex;
   align-items: center;
   flex-direction: column;
 }
 
-.postContent > .jsx-parser > img {
-  max-width: 50% !important;
+.postContent > div > img {
+  max-width: 70% !important;
 }
 
-.postContent > .jsx-parser > p, .postContent > .jsx-parser > span, .postContent > .jsx-parser > h1 {
+.postContent > div > p, .postContent > div > span, .postContent > div > h1 {
   width: 95% !important;
 }
 
@@ -232,10 +232,10 @@
     margin: 2%;
     margin-top: 7%;
   }
-  .postContent > .jsx-parser {
+  .postContent > div {
     position: relative;
   }
-  .postContent > .jsx-parser > img {
+  .postContent > div > img {
     max-width: 80% !important;
   }
   .commentPanel {

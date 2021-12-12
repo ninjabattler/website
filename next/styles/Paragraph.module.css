@@ -5,16 +5,16 @@
   margin-bottom: 30px;
   margin-top: 30px;
 }
-.paragraph > .jsx-parser > p > a {
-  color: rgb(45, 29, 83);
+.paragraph > div > p > a {
+  color: rgb(45, 29, 83) !important;
 }
 
-.paragraph > .jsx-parser > p > em {
+.paragraph > div > p > em {
   color: var(--light-gray);
   filter: brightness(1.2);
 }
 
-.paragraph > .jsx-parser > p > strong {
+.paragraph > div > p > strong {
   color: var(--light-gray);
   opacity: 0.7;
   filter: drop-shadow(1px 1px 0px black) drop-shadow(-1px -1px 0px black) drop-shadow(1px -1px 0px black) drop-shadow(-1px 1px 0px black);

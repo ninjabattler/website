@@ -18,7 +18,7 @@ export const getServerSideProps = async () => {
   if (!userId) {
     userId = await insertNewUser(db, ip)
   }
-  
+
   return {
     props: {
       posts: postsArray,

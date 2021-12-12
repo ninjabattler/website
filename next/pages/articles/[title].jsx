@@ -15,6 +15,7 @@ import Quote from '../../components/Quote';
 import Paragraph from '../../components/Paragraph';
 import TitleCard from '../../components/TitleCard';
 import Comment from '../../components/Comment';
+import CodeBlock from '../../components/CodeBlock';
 import { ThumbUpSharp, ThumbDownSharp, ArrowForwardIosRounded, Reddit, Twitter, LinkedIn, Facebook } from '@material-ui/icons'
 import axios from 'axios';
 import VideoBackground from '../../components/VideoBackground';
@@ -58,8 +59,8 @@ export const getServerSideProps = async (req) => {
 export default function ArticlePage(props) {
   const [commenting, setCommenting] = useState(false)
   const [comments, setComments] = useState(props.articleData.comments)
-  const [likes, setLikes] = useState(props.articleData.likes)
-  const [dislikes, setDislikes] = useState(props.articleData.dislikes)
+  const [likes, setLikes] = useState(Number(props.articleData.likes))
+  const [dislikes, setDislikes] = useState(Number(props.articleData.dislikes))
   const [isLiked, setIsLiked] = useState(props.liked)
   const [isDisliked, setIsDisliked] = useState(props.disliked)
   const [windowServer, setWindow] = useState({})
@@ -107,7 +108,7 @@ export default function ArticlePage(props) {
         <title>Ninjabattler - {props.articleData.title}</title>
         <meta name='description' content={props.articleData.description} />
         <meta property='og:locale' content='en_CA' />
-        <meta name='theme-color' content={`#${props.articleData.colour}`} />
+        <meta name='theme-color' content={`${props.articleData.colour}`} />
         <meta property='og:type' content='website' />
         <meta property='og:title' content={`Ninjabattler - ${props.articleData.title}`} />
         <meta property='og:description' content={props.articleData.description} />
@@ -134,7 +135,7 @@ export default function ArticlePage(props) {
           <article className={styles.articleContainer} style={{ boxShadow: `5px 5px 0px ${props.articleData.colour}` }}>
             {props.articleData.narration && (<iframe src={`${props.articleData.narration}?color=${props.articleData.colour.split('#')[1]}`} style={{ border: 'none', height: '250px', width: '100%' }} ></iframe>)}
             <JsxParser
-              components={{ Picture, ListItem, Underline, Quote, Paragraph, TitleCard }}
+              components={{ Picture, ListItem, Underline, Quote, Paragraph, TitleCard, CodeBlock }}
 
               jsx={props.articleData.content}
             />

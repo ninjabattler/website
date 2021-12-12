@@ -158,13 +158,15 @@ export default function Posts(props) {
 
                   <div className={styles.comments}>
                     {comments.map((com) => {
-                      return (<Comment
-                        key={comment.id}
-                        pageColour={com.user_id === props.userId[0].id ? '#000000' : 'transparent'}
-                        username={com.username.slice(0, 10)}
-                        date={com.formatteddate}
-                        content={com.content}
-                        avatar={com.avatar} />)
+                      if (com.username) {
+                        return (<Comment
+                          key={comment.id}
+                          pageColour={com.user_id === props.userId[0].id ? '#000000' : 'transparent'}
+                          username={com.username.slice(0, 10)}
+                          date={com.formatteddate}
+                          content={com.content}
+                          avatar={com.avatar} />)
+                      }
                     })}
                   </div>
                 </aside>)

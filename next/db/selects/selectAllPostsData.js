@@ -19,6 +19,7 @@ const selectAllPostsData = async (db) => {
     FULL OUTER JOIN users ON comments.user_id = users.id
     WHERE review = false
     GROUP BY posts.id
+    ORDER BY posts.date DESC
     `)
 
     return posts.rows
