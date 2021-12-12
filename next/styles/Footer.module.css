@@ -59,9 +59,10 @@
    margin-top: -25px;
   }
 }
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 425px) {
   .footer {
     overflow-x: hidden;
+    height: 50px;
   }
   .footer > .linkDisplay > a {
     border-width: 30px;

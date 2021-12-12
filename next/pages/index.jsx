@@ -74,6 +74,7 @@ export default function Home(props) {
         <main id={styles.homePage}>
           <div id={styles.homePageBackground}></div>
 
+          <img id={styles.homePageRobot} src="/Website Robot 2.png" />
           <div id={styles.homePageContainer}>
             <h1>{displayedQuote}</h1>
             <h4>{displayedSubQuote}</h4>
@@ -103,7 +104,6 @@ export default function Home(props) {
             <p>And whatever else I feel like writing about, any and all criticism is encouraged! The comments exist for a reason!</p>
           </div>
 
-          <img id={styles.homePageRobot} src="/Website Robot 2.png" />
         </main>
       </div>
       <Footer />
