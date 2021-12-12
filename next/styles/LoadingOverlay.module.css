@@ -37,3 +37,17 @@
   50% {width: 55%; }
   100% {width: 45%; }
 }
+
+@media only screen and (max-width: 425px) {
+  #loadingOverlay > p {
+    font-size: 15px;
+    margin-top: 55%;
+  }
+
+  @keyframes expand{
+    0% {width: 85%; }
+    50% {width: 100%; }
+    100% {width: 85%; }
+  }
+  
+}

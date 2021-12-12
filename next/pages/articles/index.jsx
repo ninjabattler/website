@@ -54,7 +54,7 @@ export default function ArticlesPage(props) {
       <Carousel setLinkClicked={setLinkClicked} items={props.articles ? props.articles.slice(0, 3) : []} />
 
       <main id={styles.articlesPage}>
-        <div style={{ width: '100%', position: 'sticky', top: '0', height: '100%' }}>
+        <div id={styles.previousMarker} style={{ width: '100%', position: 'sticky', top: '0', height: '100%' }}>
           <TitleCard title='Previous Articles' pageColour='black' inverse />
         </div>
         <div className={styles.articlesPageContainer}>

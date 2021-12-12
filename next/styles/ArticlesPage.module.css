@@ -155,3 +155,14 @@
     transform: rotate3d(4, 0.2, 0.5, -30deg) scale(1) translateX(-50%);
   }
 }
+
+@media only screen and (max-width: 425px) {
+  #previousMarker {
+    display: none;
+  }
+  .articleCard {
+    transform: rotate3d(4, 0.2, 0.5, 30deg) scale(1.4);
+    margin-bottom: 100px;
+    margin-left: -70px;
+  }
+}

@@ -116,9 +116,13 @@
   transition: margin-left 1s;
 }
 
-@media only screen and (max-device-width: 480px) {
+@media only screen and (max-device-width: 425px) {
+  .carousel {
+    margin-top: 50px;
+  }
+
   .carousel > main {
-    height: 65vw;
+    height: 69vw;
     overflow-x: hidden;
   }
 
@@ -131,7 +135,12 @@
     width: 100%;
   }
 
+  .carouselItem > .imageContainer{
+    width: 100%;
+  }
+
   .carouselItem > aside {
+    margin-top: 15px;
     background-color: var(--dark-gray);
   }
 
