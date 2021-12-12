@@ -19,11 +19,13 @@ import CodeBlock from '../../components/CodeBlock';
 import { ThumbUpSharp, ThumbDownSharp, ArrowForwardIosRounded, Reddit, Twitter, LinkedIn, Facebook } from '@material-ui/icons'
 import axios from 'axios';
 import VideoBackground from '../../components/VideoBackground';
+import requestIp from 'request-ip'
 
 export const getServerSideProps = async (req) => {
-  let ip = await axios({ method: 'get', url: `https://api.ipify.org?format=json`, headers: { 'Content-Type': 'application/json' }, })
-  ip = ip.data.ip;
+  // let ip = await axios({ method: 'get', url: `https://api.ipify.org?format=json`, headers: { 'Content-Type': 'application/json' }, })
+  // ip = ip.data.ip;
 
+  const ip = requestIp.getClientIp(req.req)
 
   let userId = await selectUserId(db, ip)
 
