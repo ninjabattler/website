@@ -92,7 +92,7 @@
     filter: drop-shadow(3px 2px 0px black);
   }
   .bossCard > h2 {
-    font-size: 0.7em;
+    font-size: 0.5em;
     margin-bottom: -70px;
     height: auto;
     width: 70%;
@@ -108,7 +108,7 @@
   }
   .bossCard > .imageContainer > img {
     max-height: 70px;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
   }
   .bossCard > .imageContainer {
     margin-top: -300px;

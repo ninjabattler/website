@@ -25,3 +25,8 @@
   background-color: white;
   mix-blend-mode: multiply;
 }
+@media only screen and (max-width: 425px) {
+  #videoBackground > video {
+    width: 200vh;
+  }
+}

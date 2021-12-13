@@ -207,10 +207,12 @@
    }
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 425px) {
   #reviewPage > div >.articleContainer {
-   width: 90%;
-   margin-left: 0;
+   width: 85%;
+   margin-left: auto;
+   font-size: 20px;
+   overflow-x: hidden;
   }
   .likePanel {
     height: 35px;
@@ -241,6 +243,13 @@
   }
   .commentPanel > button {
     margin-left: auto;
+  }
+  #adAurisIframe {
+    width: 1280px !important;
+    transform: scale(0.4);
+    margin-left: -490px;
+    margin-top: -90px;
+    margin-bottom: -100px;
   }
   @keyframes loading {
     0%{width: 80%; margin: 0%;}

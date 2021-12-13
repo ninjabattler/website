@@ -54,11 +54,11 @@
   }
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 425px) {
   .infoBar {
     height: 10%;
-    width: 100%;
-    margin-top: -7px;
+    width: 90%;
+    margin-top: -10px;
   }
   .infoBar > .infoUnderline {
     border-width: 25px;
@@ -71,5 +71,10 @@
   }
   .infoBar > span > div {
     margin-right: 10px;
+    font-size: 10px;
+  }
+  .infoBar > span > div > svg {
+    transform: scale(0.5);
+    margin-bottom: -8px;
   }
 }
