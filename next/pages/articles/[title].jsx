@@ -48,6 +48,14 @@ export const getServerSideProps = async (req) => {
     }
   }
 
+  console.log(articleData)
+
+  if (!articleData[0]) {
+    return {
+      notFound: true,
+    }
+  }
+
   return {
     props: {
       articleData: articleData[0],
