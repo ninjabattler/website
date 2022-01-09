@@ -5,7 +5,7 @@ export default function Picture(props) {
   return (
     <div className={styles.picture}>
       <img
-        src={props.imageSrc}
+        src={props.imageSrc.replace('http://', 'https://')}
         style={{ filter: `drop-shadow(5px 5px 0px ${props.pageColour})` }}
         alt=''
       />

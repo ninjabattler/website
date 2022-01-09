@@ -17,7 +17,7 @@ export default function TitleCard(props) {
       {props.imageSrc ?
         (<div className={styles.imageContainer} style={{ filter: windowVar.innerWidth > 414 ? `drop-shadow(1px 1px 0px ${props.pageColour})` : `drop-shadow(0.3px 0.3px 0px ${props.pageColour})` }}>
           <img
-            src={props.imageSrc}
+            src={props.imageSrc.replace('http://', 'https://')}
           />
         </div>)
         :

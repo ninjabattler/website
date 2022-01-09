@@ -75,7 +75,7 @@ export default function ArticlesPage(props) {
                       e.target.parentElement.children["0"].className = 'fadeIn'
                     }}>
                     <div>
-                      <img src={item.thumbnail} alt='thumbnail' />
+                      <img src={item.thumbnail.replace('http://', 'https://')} alt='thumbnail' />
                       <div> </div>
                       <section>
                         <h1 style={windowServer.innerWidth < 426 ? { filter: `drop-shadow(0.7px 0.7px 0px ${item.colour})` } : { filter: `drop-shadow(1px 1px 0px ${item.colour})` }}>{item.title}</h1>

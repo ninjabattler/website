@@ -48,14 +48,21 @@
   color: var(--light-gray);
 }
 
-@media only screen and (max-width: 1362px) {
+@media only screen and (max-width: 1280px) {
   .bossCard {
     margin-bottom: 150px;
     filter: drop-shadow(3px 2px 0px black);
   }
   .bossCard > h2 {
-    font-size: 1.4em;
-    margin-top: 40px
+    font-size: 1.2em;
+    margin-top: 70px
+  }
+  .bossCard > .imageContainer {
+    height: 200px;
+    margin-top: -130px;
+  }
+  .bossCard > .imageContainer > img {
+    max-height: 130px;
   }
   .bossCard > .background1 {
     border-width: 125px;

@@ -8,7 +8,7 @@ export default function ListItem(props){
       {props.imgSrc ? 
       (<img
         style={{filter: `drop-shadow(5px 5px 0px ${props.pageColour})`}}
-        src={props.imgSrc}
+        src={props.imgSrc.replace('http://', 'https://')}
         alt=''
       />)
       :

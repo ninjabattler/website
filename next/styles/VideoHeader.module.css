@@ -91,21 +91,21 @@
   100%{opacity: 1}
 }
 
-@media only screen and (max-width: 1362px) {
+@media only screen and (max-width: 1280px) {
   .videoHeader > .bar1 {
-    margin-top: 430px;
+    margin-top: 560px;
     border-width: 75px;
   }
   .videoHeader > .barC {
-    margin-top: 435px;
+    margin-top: 565px;
     border-width: 75px;
   }
   .videoHeader > .bar2 {
-    margin-top: 450px;
+    margin-top: 580px;
     border-width: 75px;
   }
   .videoHeader > h1 {
-    margin-top: 460px;
+    margin-top: 590px;
     font-size:1.5em;
   }
 }

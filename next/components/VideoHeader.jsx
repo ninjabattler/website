@@ -14,9 +14,9 @@ export default function VideoHeader(props) {
       <div id={styles.videoContainer}>
         {!props.video.startsWith('htt') && (<div id={styles.videoOverlay} style={{backgroundColor: props.pageColour}}></div>)}
         <video loop muted autoPlay >
-          <source src={props.video || "/defaultVideo.mp4"} type="video/webm"></source>
-          <source src={props.video || "/defaultVideo.mp4"} type="video/ogg"></source>
-          <source src={props.video || "/defaultVideo.mp4"} type="video/mp4"></source>
+          <source src={props.video ? props.video.replace('http://', 'https://') : "/defaultVideo.mp4"} type="video/webm"></source>
+          <source src={props.video ? props.video.replace('http://', 'https://') : "/defaultVideo.mp4"} type="video/ogg"></source>
+          <source src={props.video ? props.video.replace('http://', 'https://') : "/defaultVideo.mp4"} type="video/mp4"></source>
         </video>
       </div>
 

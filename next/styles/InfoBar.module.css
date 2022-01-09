@@ -24,7 +24,7 @@
   text-align: left;
 }
 
-@media only screen and (max-width: 1362px) {
+@media only screen and (max-width: 1280px) {
   .infoBar {
     height: 20%;
     width: 80%;
@@ -33,9 +33,7 @@
     border-width: 50px;
   }
   .infoBar > span {
-    font-size: 0.6em;
-    width: 100%;
-    justify-content: flex-start;
+    font-size: 0.7em;
   }
 }
 
