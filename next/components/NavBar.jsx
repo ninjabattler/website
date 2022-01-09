@@ -57,9 +57,9 @@ export default function NavBar(props) {
               <Link href="/articles" ><a onClick={() => { setLinkClicked(true) }}>Articles</a></Link>
             </div>
           </div>
-          <div className={styles.option} onMouseEnter={() => { setDrop(true) }} onMouseLeave={() => { setDrop(false) }}>
+          <div className={styles.option} onMouseLeave={() => { setDrop(false) }}>
             <div>
-              <span><a onClick={() => { setLinkClicked(true) }}>Social</a></span>
+              <span><a href='https://github.com/ninjabattler' target='_blank' rel="noreferrer">Github</a></span>
             </div>
           </div>
           <div className={styles.option}>
@@ -70,14 +70,12 @@ export default function NavBar(props) {
         </div>
 
         {/* Drop down lists */}
-        <div className={styles.navOptions} style={{ opacity: drop ? 1 : 0, height: 0 }}>
+        {/* <div className={styles.navOptions} style={{ opacity: drop ? 1 : 0, height: 0 }}>
           <div className={styles.option} style={{ opacity: '0', zIndex: -10000, height: 0 }}>
             <div>
-              {/* <span><a onClick={() => { setLinkClicked(true) }}>Posts</a></span> */}
             </div>
           </div><div className={styles.option} style={{ opacity: '0', zIndex: -10000, height: 0 }}>
             <div>
-              {/* <span><a onClick={() => { setLinkClicked(true) }}>Articles</a></span> */}
             </div>
           </div>
           <div className={styles.option} onMouseEnter={() => { drop ? setDrop(true) : setDrop(false) }} onMouseLeave={() => { setDrop(false) }}>
@@ -92,10 +90,9 @@ export default function NavBar(props) {
           </div>
           <div className={styles.option} style={{ opacity: '0', zIndex: -10000, height: 0 }}>
             <div>
-              {/* <span><a onClick={() => { setLinkClicked(true) }}>About</a></span> */}
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   )

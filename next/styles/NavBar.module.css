@@ -161,18 +161,38 @@
   100%{filter:blur(6px) brightness(2);}
 }
 
-@media (max-device-width: 1362px) {
+@media (max-device-width: 1366px) {
   .navBar {
-    height: 180px;
-    top: -185px;
+    height: 220px;
+    top: -210px;
   }
   .navBar > a > img, .navBar > a > #glow {
-    height: 200px;
+    height: 220px;
   }
   .navBar > div {
-    width: 88%;
+    border-width: 45px;
+    width: 89%;
+  }
+
+  .navOptions > .option {
+    border-width: 30px;
+    width: 170px;
+    margin-top: -90px;
+  }
+
+  .navOptions > .option > div {
+    font-size: 1.4em;
+    margin-left: 45px;
+    margin-top: 60px;
   }
 }
+
+@media (max-device-width: 1280px) {
+  .navOptions > .option > div {
+    font-size: 1.7em;
+  }
+}
+
 @media (max-device-width: 853px) {
   .navBar {
     height: 100px;
