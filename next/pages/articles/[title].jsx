@@ -145,7 +145,7 @@ export default function ArticlePage(props) {
             />
           </article>
 
-          <aside className={styles.commentPanel} style={windowServer.innerWidth < 426 ? { marginLeft: showPanel ? "-80%" : "0%" } : {}}>
+          <aside className={styles.commentPanel} style={windowServer.innerWidth < 426 ? { marginLeft: showPanel ? "-81%" : "0%" } : {}}>
             <aside className={styles.likePanel} >
 
               <button onClick={() => {

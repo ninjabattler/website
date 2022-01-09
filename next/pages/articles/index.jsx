@@ -25,6 +25,11 @@ export const getServerSideProps = async () => {
 
 export default function ArticlesPage(props) {
   const [linkClicked, setLinkClicked] = useState(false);
+  const [windowServer, setWindow] = useState({})
+  
+  useEffect(() => {
+    setWindow(window)
+  }, [])
 
   return (
     <>
@@ -73,7 +78,7 @@ export default function ArticlesPage(props) {
                       <img src={item.thumbnail} alt='thumbnail' />
                       <div> </div>
                       <section>
-                        <h1 style={{ filter: `drop-shadow(1px 1px 0px ${item.colour})` }}>{item.title}</h1>
+                        <h1 style={windowServer.innerWidth < 426 ? { filter: `drop-shadow(0.7px 0.7px 0px ${item.colour})` } : { filter: `drop-shadow(1px 1px 0px ${item.colour})` }}>{item.title}</h1>
                       </section>
                     </div>
 
