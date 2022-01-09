@@ -207,6 +207,9 @@
   }
 }
 @media (max-device-width: 480px) {
+  .navBar {
+    filter: drop-shadow(2px 2px 0px black);
+  }
   .navBar > div {
     width: 83%;
     border-width: 20px;

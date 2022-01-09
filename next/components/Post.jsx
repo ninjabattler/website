@@ -69,13 +69,17 @@ export default function Posts(props) {
 
 
   return (
-    <article key={props.title} className={`${closed === 0 ? styles.post : closed === 1 ? styles.expanded : `${styles.post} ${styles.closed}`}`} style={{ backgroundImage: '/Ninja placeholder.png' }} onClick={() => {
-      setClosed(closed === 0 || closed === 2 ? 1 : 2)
-      setShowComments(false)
-      setTimeout(() => {
-        setShowContent(!showContent)
-      }, 700)
-    }}>
+    <article
+      key={props.title}
+      className={`${closed === 0 ? styles.post : closed === 1 ? styles.expanded : `${styles.post} ${styles.closed}`}`}
+      style={{ backgroundImage: '/Ninja placeholder.png', height: closed === 1 && showComments && '85vh' }}
+      onClick={() => {
+        setClosed(closed === 0 || closed === 2 ? 1 : 2)
+        setShowComments(false)
+        setTimeout(() => {
+          setShowContent(!showContent)
+        }, 700)
+      }}>
       {
         !showContent ?
           (<img src={'/Ninja placeholder.png'} />)
@@ -160,6 +164,7 @@ export default function Posts(props) {
                     {comments.map((com) => {
                       if (com.username) {
                         return (<Comment
+                          style={{ minHeight: '45px' }}
                           key={comment.id}
                           pageColour={com.user_id === props.userId[0].id ? '#000000' : 'transparent'}
                           username={com.username.slice(0, 10)}

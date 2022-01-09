@@ -63,6 +63,7 @@
   .footer {
     overflow-x: hidden;
     height: 50px;
+    filter: drop-shadow(2px -2px 0px black);
   }
   .footer > .linkDisplay > a {
     border-width: 30px;
