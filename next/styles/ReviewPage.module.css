@@ -174,15 +174,16 @@
   margin: 5px;
 }
 
+#mobileCommentButton {
+  display: none;
+}
+
 @keyframes loading {
   0%{width: 40%; margin: 0%;}
   50%{width: 50%; margin: -2.8%;}
   100%{width: 40%; margin: 0%;}
 }
 @media only screen and (max-width: 1362px) {
-  .commentPanel {
-    display: none;
-  }
   .mobile {
     display: flex;  
     flex-direction: column;
@@ -208,6 +209,22 @@
 }
 
 @media only screen and (max-width: 425px) {
+  #mobileCommentButton {
+    display: initial;
+    position: fixed;
+    background-color: var(--dark-gray);
+    margin-left: 300px !important;
+    margin-top: -30px;
+  }
+  #mobileCover {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background-color: rgba(50, 50, 50, 0.5);
+  }
   #reviewPage > div >.articleContainer {
    width: 85%;
    margin-left: auto;
@@ -235,10 +252,22 @@
     filter: drop-shadow(8px 8px 0px black);
   }
   .commentPanel {
-    margin-top: 150px;
+    display: initial;
+    position: fixed;
+    width: 80%;
+    margin-top: 45%;
+    left: 0;
+    top: 0;
+    z-index: 101;
+    filter: drop-shadow(3px 3px 0px black);
+    transition: margin-left 0.5s;
+  }
+  .commentPanel > div {
+    height: 340px;
   }
   .commentPanel > textarea {
     width: 90%;
+    height: 15%;
     font-size: 0.5em;
   }
   .commentPanel > button {

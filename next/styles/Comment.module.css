@@ -40,6 +40,7 @@
     height: 1.5em;
   }
   .comment {
+    min-height: 70px;
     font-size: 0.75em;
     border-width: 1px;
   }

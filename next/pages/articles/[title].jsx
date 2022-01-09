@@ -16,7 +16,7 @@ import Paragraph from '../../components/Paragraph';
 import TitleCard from '../../components/TitleCard';
 import Comment from '../../components/Comment';
 import CodeBlock from '../../components/CodeBlock';
-import { ThumbUpSharp, ThumbDownSharp, ArrowForwardIosRounded, Reddit, Twitter, LinkedIn, Facebook } from '@material-ui/icons'
+import { ThumbUpSharp, ThumbDownSharp, ArrowForwardIosRounded, Reddit, Twitter, LinkedIn, Facebook, CommentTwoTone } from '@material-ui/icons'
 import axios from 'axios';
 import VideoBackground from '../../components/VideoBackground';
 import requestIp from 'request-ip'
@@ -66,6 +66,7 @@ export default function ArticlePage(props) {
   const [isLiked, setIsLiked] = useState(props.liked)
   const [isDisliked, setIsDisliked] = useState(props.disliked)
   const [windowServer, setWindow] = useState({})
+  const [showPanel, setShowPanel] = useState(true)
   let commentContent = '';
 
   useEffect(() => {
@@ -130,6 +131,7 @@ export default function ArticlePage(props) {
       <VideoBackground video={props.articleData.video_header || ""} pageColour={props.articleData.colour} />
 
       <main id={styles.reviewPage}>
+        {!showPanel && (<div id={styles.mobileCover}></div>)}
         <VideoHeader video={props.articleData.video_header || ""} title={props.articleData.title} pageColour={props.articleData.colour} />
         <InfoBar date={props.articleData.formatteddate} categoryGenre={`${props.articleData.category}/${props.articleData.genre}`} />
 
@@ -143,7 +145,7 @@ export default function ArticlePage(props) {
             />
           </article>
 
-          <aside className={styles.commentPanel}>
+          <aside className={styles.commentPanel} style={windowServer.innerWidth < 426 ? { marginLeft: showPanel ? "-80%" : "0%" } : {}}>
             <aside className={styles.likePanel} >
 
               <button onClick={() => {
@@ -239,6 +241,8 @@ export default function ArticlePage(props) {
                 }
               })}
             </div>
+            
+            <button id={styles.mobileCommentButton} onClick={() => { setShowPanel(!showPanel) }}><CommentTwoTone/></button>
           </aside>
         </div>
 
