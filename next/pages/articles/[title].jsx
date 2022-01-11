@@ -144,7 +144,7 @@ export default function ArticlePage(props) {
         <InfoBar date={props.articleData.formatteddate} categoryGenre={`${props.articleData.category}/${props.articleData.genre}`} />
 
         <div>
-          <article className={styles.articleContainer} style={{ boxShadow: `5px 5px 0px ${props.articleData.colour}` }}>
+          <article className={styles.articleContainer} style={windowServer.innerWidth < 426 ? { boxShadow: `2px 2px 0px ${props.articleData.colour}` } : { boxShadow: `5px 5px 0px ${props.articleData.colour}` }}>
             {props.articleData.narration && (<iframe id={styles.adAurisIframe} src={`${props.articleData.narration}?color=${props.articleData.colour.split('#')[1]}`} style={{ border: 'none', height: '250px', width: '100%' }} ></iframe>)}
             <JsxParser
               components={{ Picture, ListItem, Underline, Quote, Paragraph, TitleCard, CodeBlock }}
@@ -172,7 +172,7 @@ export default function ArticlePage(props) {
                 })
               }}
                 style={{ color: isLiked === true ? props.articleData.colour : '#292929' }}>
-                <span className={styles.likeOption}><ThumbUpSharp />{likes}</span>
+                <span className={styles.likeOption}><ThumbUpSharp className={styles.shareIcon} />{likes}</span>
 
               </button>
 
@@ -195,15 +195,32 @@ export default function ArticlePage(props) {
                 })
               }}
                 style={{ color: isDisliked === true ? props.articleData.colour : '#292929' }}>
-                <span className={styles.likeOption}><ThumbDownSharp />{dislikes}</span>
+                <span className={styles.likeOption}><ThumbDownSharp className={styles.shareIcon} />{dislikes}</span>
               </button>
             </aside>
 
             <aside id={styles.shareBar}>
-              <div className="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small"><a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(windowServer.location).replace(/'/g, "%27").replace(/"/g, "%22")}`} className="fb-xfbml-parse-ignore" rel="noreferrer"><Facebook /></a></div>
-              <div><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-show-count="false" rel="noreferrer"><Twitter /></a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div>
-              <div><a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(windowServer.location).replace(/'/g, "%27").replace(/"/g, "%22")}`} target="_blank" rel="noreferrer"><LinkedIn /></a></div>
-              <div><a href={`http://www.reddit.com/submit?url=${windowServer.location}&title=Ninjabattler-${props.articleData.title}`} target="_blank" rel="noreferrer"><Reddit /></a></div>
+              <div className="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small">
+                <a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(windowServer.location).replace(/'/g, "%27").replace(/"/g, "%22")}`} className="fb-xfbml-parse-ignore" rel="noreferrer">
+                  <Facebook className={styles.shareIcon} />
+                </a>
+              </div>
+              <div>
+                <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-show-count="false" rel="noreferrer">
+                  <Twitter className={styles.shareIcon} />
+                </a>
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+              </div>
+              <div>
+                <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(windowServer.location).replace(/'/g, "%27").replace(/"/g, "%22")}`} target="_blank" rel="noreferrer">
+                  <LinkedIn className={styles.shareIcon} />
+                </a>
+              </div>
+              <div>
+                <a href={`http://www.reddit.com/submit?url=${windowServer.location}&title=Ninjabattler-${props.articleData.title}`} target="_blank" rel="noreferrer">
+                  <Reddit className={styles.shareIcon} />
+                </a>
+              </div>
             </aside>
 
             {commenting === true ?
@@ -249,8 +266,8 @@ export default function ArticlePage(props) {
                 }
               })}
             </div>
-            
-            <button id={styles.mobileCommentButton} onClick={() => { setShowPanel(!showPanel) }}><CommentTwoTone/></button>
+
+            <button id={styles.mobileCommentButton} onClick={() => { setShowPanel(!showPanel) }}><CommentTwoTone /></button>
           </aside>
         </div>
 

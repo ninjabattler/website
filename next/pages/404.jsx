@@ -31,7 +31,7 @@ export default function FourOhFour() {
         </Head>
         <h1>404</h1>
         <img src='/errorRobot.png' />
-        <p>Could've sworn this page existed...</p>
+        <p>Could&apos;ve sworn this page existed...</p>
       </div>
       <Footer />
     </>

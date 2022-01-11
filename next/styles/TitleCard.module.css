@@ -101,30 +101,31 @@
 
 @media only screen and (max-width: 480px) {
   .bossCard {
+    margin-top: 70px;
     margin-bottom: 100px;
     filter: drop-shadow(3px 2px 0px black);
   }
   .bossCard > h2 {
     font-size: 0.5em;
-    margin-bottom: -70px;
+    margin-bottom: -60px;
     height: auto;
     width: 70%;
     bottom: 0;
   }
   .bossCard > .background1 {
-    border-width: 75px;
+    border-width: 65px;
     margin-left: -2px;
   }
   .bossCard > .background2 {
     margin-top: 5px;
-    border-width: 75px;
+    border-width: 65px;
   }
   .bossCard > .imageContainer > img {
     max-height: 70px;
     margin-bottom: 0px;
   }
   .bossCard > .imageContainer {
-    margin-top: -300px;
+    margin-top: -160px;
   }
 }
 

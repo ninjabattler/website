@@ -184,20 +184,22 @@
   .videoHeader > .bar1 {
     margin-top: 220px;
     width: 80%;
-    border-width: 40px;
+    border-width: 35px;
   }
   .videoHeader > .barC {
-    margin-top: 225px;
-    width: 82%;
-    border-width: 40px;
+    margin-top: 222px;
+    width: 81%;
+    border-width: 35px;
+    filter: drop-shadow(4px 2px 0px black);
   }
   .videoHeader > .bar2 {
-    margin-top: 240px;
+    margin-top: 238px;
     width: 86%;
-    border-width: 40px;
+    border-width: 35px;
+    filter: drop-shadow(3px 2px 0px black);
   }
   .videoHeader > h1 {
-    margin-top: 240px;
+    margin-top: 235px;
     font-size: 0.6em;
   }
 }

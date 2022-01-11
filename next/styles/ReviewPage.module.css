@@ -234,6 +234,7 @@
    margin-left: auto;
    font-size: 20px;
    overflow-x: hidden;
+   filter: drop-shadow(2px 2px 0px black);
   }
   .likePanel {
     height: 35px;
@@ -267,7 +268,7 @@
     transition: margin-left 0.5s;
   }
   .commentPanel > div {
-    height: 340px;
+    height: 65%;
   }
   .commentPanel > textarea {
     width: 90%;
@@ -283,6 +284,12 @@
     margin-left: -490px;
     margin-top: -90px;
     margin-bottom: -100px;
+  }
+  #shareBar {
+    height: 40px;
+  }
+  .shareIcon {
+    transform: scale(0.7);
   }
   @keyframes loading {
     0%{width: 80%; margin: 0%;}
