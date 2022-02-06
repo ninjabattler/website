@@ -7,7 +7,7 @@ export default function ListItem(props){
       {/* If given an image source, show that otherwise show the shuriken svgs */}
       {props.imgSrc ? 
       (<img
-        style={{filter: `drop-shadow(5px 5px 0px ${props.pageColour})`}}
+        style={{filter: `drop-shadow(2px 2px 0px ${props.pageColour})`}}
         src={props.imgSrc.replace('http://', 'https://')}
         alt=''
       />)
