@@ -59,7 +59,7 @@ export const getServerSideProps = async (req) => {
 
   return {
     props: {
-      articleData: articleData[0],
+      articleData: {...articleData[0], narration: 'http://localhost:3000/widget/ninjabattler/cosmic_carnage'},
       userId: userId[0].id,
       liked,
       disliked
@@ -146,7 +146,7 @@ export default function ArticlePage(props) {
 
         <div>
           <article className={styles.articleContainer} style={windowServer.innerWidth < 426 ? { boxShadow: `2px 2px 0px ${props.articleData.colour}` } : { boxShadow: `5px 5px 0px ${props.articleData.colour}` }}>
-            {props.articleData.narration && (<iframe id={styles.adAurisIframe} src={`${props.articleData.narration}?color=${props.articleData.colour.split('#')[1]}`} style={{ border: 'none', height: '250px', width: '100%' }} ></iframe>)}
+            {props.articleData.narration && (<iframe id={styles.adAurisIframe} src={`http://localhost:3000/widget/ninjabattler/cosmic-carnage?color=${props.articleData.colour.split('#')[1]}`} style={{ border: 'none', height: '250px', width: '100%' }} ></iframe>)}
             <JsxParser
               components={{ Picture, ListItem, Underline, Quote, Paragraph, TitleCard, CodeBlock, SubtitleCard }}
 
