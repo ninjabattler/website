@@ -1,7 +1,7 @@
 import { React, useEffect, useState } from 'react';
-import styles from "../styles/TitleCard.module.css";
+import styles from "../styles/SubtitleCard.module.css";
 
-export default function TitleCard(props) {
+export default function SubtitleCard(props) {
 
   const [windowVar, setWindowVar] = useState({});
 
@@ -11,7 +11,7 @@ export default function TitleCard(props) {
 
   return (
     <div className={`${styles.bossCard} ${props.inverse ? styles.inverse : ''}`}>
-      <div className={styles.background2} style={{ borderColor: props.pageColour, borderRightColor: "transparent" }}></div>
+      <div className={styles.background2} style={{ borderColor: props.pageColour, borderLeftColor: "transparent" }}></div>
       <div className={styles.background1}></div>
 
       {props.imageSrc ?

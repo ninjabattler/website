@@ -1,24 +1,24 @@
 .bossCard  {
-  margin-bottom: 280px;
+  margin-bottom: 150px;
   margin-top: 100px;
   display: flex;
-  justify-content: left;
+  justify-content: right;
   align-items: flex-start;
-  filter: drop-shadow(8px 5px 0px black);
-  font-size: 30px;
+  filter: drop-shadow(-6px 3px 0px black);
+  font-size: 17px;
 }
 .background1 {
   position: absolute;
-  border-top: 200px solid var(--light-gray);
-  border-right: 200px solid transparent;
-  width: 60%;
+  border-top: 100px solid var(--light-gray);
+  border-left: 100px solid transparent;
+  width: 40%;
 }
 .background2 {
   position: absolute;
-  border-top: 200px solid var(--dark-gray);
-  border-right: 200px solid transparent;
-  width: 61%;
-  margin-top: 20px;
+  border-top: 100px solid var(--dark-gray);
+  border-left: 100px solid transparent;
+  width: 40.5%;
+  margin-top: 15px;
   /* margin-left: 4px;
   animation-name: title-glow;
   animation-duration: 3s;
@@ -26,9 +26,11 @@
 }
 .bossCard > h2 {
   position: absolute;  
+  text-align: right;
   color: var(--dark-gray);
   text-shadow: 4px 4px 0px;
-  margin-top: 100px;
+  margin-top: 50px;
+  margin-right: 5px;
   font-size: 2em;
 }
 .bossCard > .imageContainer {
@@ -54,87 +56,78 @@
 @media only screen and (max-width: 1536px) {
   .bossCard > h2 {
     font-size: 1.6em;
-    margin-top: 125px;
+    margin-top: 50px;
   }
 }
 
 @media only screen and (max-width: 1280px) {
   .bossCard {
     margin-bottom: 150px;
-    filter: drop-shadow(3px 2px 0px black);
+    filter: drop-shadow(-3px 2px 0px black);
   }
   .bossCard > h2 {
     font-size: 1.2em;
-    margin-top: 70px
+    margin-top: 50px
   }
   .bossCard > .imageContainer {
     height: 200px;
     margin-top: -130px;
   }
   .imageContainer.lower {
-    margin-top: -120px;
-  }
+    margin-top: -20px;
+  } 
   .bossCard > .imageContainer > img {
     max-height: 130px;
   }
-  .imageContainer.lower > img {
-    max-height: 200px;
-  } 
   .bossCard > .background1 {
-    border-width: 125px;
+    border-width: 80px;
     margin-left: -2px;
   }
   .bossCard > .background2 {
     margin-top: 5px;
-    border-width: 125px;
+    border-width: 80px;
   }
 }
 
 @media only screen and (max-width: 853px) {
   .bossCard {
     margin-bottom: 100px;
-    filter: drop-shadow(3px 2px 0px black);
+    filter: drop-shadow(-3px 2px 0px black);
   }
   .bossCard > h2 {
     font-size: 0.7em;
-    margin-top: 30px
+    margin-top: 35px
   }
   .bossCard > .background1 {
-    border-width: 75px;
+    border-width: 60px;
     margin-left: -2px;
   }
   .bossCard > .background2 {
     margin-top: 5px;
-    border-width: 75px;
+    border-width: 60px;
   }
-  .imageContainer.lower {
-    margin-top: -150px;
-  } 
-  .imageContainer.lower > img {
-    max-height: 140px;
-  } 
 }
 
 @media only screen and (max-width: 480px) {
   .bossCard {
     margin-top: 70px;
     margin-bottom: 100px;
-    filter: drop-shadow(3px 2px 0px black);
+    filter: drop-shadow(-3px 2px 0px black);
   }
   .bossCard > h2 {
     font-size: 0.5em;
-    margin-bottom: -60px;
+    margin-bottom: -40px;
     height: auto;
     width: 70%;
     bottom: 0;
   }
   .bossCard > .background1 {
-    border-width: 65px;
+    border-width: 45px;
     margin-left: -2px;
   }
   .bossCard > .background2 {
     margin-top: 5px;
-    border-width: 65px;
+    border-width: 45px;
   }
   .bossCard > .imageContainer > img {
     max-height: 70px;
@@ -144,10 +137,7 @@
     margin-top: -160px;
   }
   .imageContainer.lower {
-    margin-top: -150px;
-  } 
-  .imageContainer.lower > img {
-    max-height: 120px;
+    margin-top: -70px;
   } 
 }
 

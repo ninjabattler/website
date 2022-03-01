@@ -5,6 +5,7 @@ import { React, useState, useEffect } from 'react';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import CodeBlock from '../components/CodeBlock';
+import VideoBackground from '../components/VideoBackground';
 // require('dotenv').config();
 
 const QUOTES = [
@@ -50,6 +51,7 @@ export default function Home(props) {
   return (
     <>
       <NavBar />
+      <VideoBackground overlayColour pageColour="#404040" />
       <div className={styles.container}>
         <Head>
           <title>Ninjabattler</title>
@@ -85,7 +87,7 @@ export default function Home(props) {
           {/* Video game */}
           <div className={styles.homePageInfoDiv}>
             <video autoPlay muted loop>
-              <source src='http://files.ninjabattler.ca/video/chaotix.mp4' type="video/mp4"></source>
+              <source src='https://files.ninjabattler.ca/video/chaotix.mp4' type="video/mp4"></source>
             </video>
             <p>I&apos;ve invented the idea of writing words on my opinions on video games! Copyright 2021, do not steal.</p>
           </div>
