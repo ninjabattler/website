@@ -65,7 +65,7 @@ export default function ArticlesPage(props) {
         <div className={styles.articlesPageContainer}>
           {props.articles.slice(3).map((item) => {
             return (
-              <Link key={item.title} href={`/articles/${item.title.toLowerCase().replace(' ', '_')}`} >
+              <Link key={item.title} href={`/articles/${item.title.toLowerCase().replace(/ /g, '_')}`} >
                 <a onClick={() => { setLinkClicked(true) }} className={styles.articleCard}>
                   <article className={styles.articleCardItem}
                     onMouseEnter={(e) => {

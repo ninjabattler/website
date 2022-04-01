@@ -14,7 +14,7 @@ export default function NavBar(props) {
     <>
       {linkClicked && (<LoadingOverlay />)}
       <div className={styles.navBar}>
-        <a onClick={() => { setLinkClicked(true) }} id={styles.shadow}></a>
+        <p onClick={() => { setLinkClicked(true) }} id={styles.shadow}></p>
         {/* <div id={styles.navParticles}>
           <ParticlesBg num={5} color='#252525' type="custom" bg={true} config={{
           num: [2, 4],

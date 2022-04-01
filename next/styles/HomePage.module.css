@@ -15,6 +15,7 @@
   margin-bottom: 300px;
   margin-top: -150px;
   text-align: center;
+  -webkit-text-stroke: 1px black;
 }
 #homePage > .right {
   flex-direction: row-reverse;

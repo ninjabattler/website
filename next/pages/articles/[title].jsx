@@ -35,7 +35,7 @@ export const getServerSideProps = async (req) => {
   }
 
   const userLike = await selectUsersLike(db, userId[0].id)
-  const articleTitle = req.query.title.replace('_', ' ');
+  const articleTitle = req.query.title.replace(/_/g, ' ');
   const articleData = await selectSingleArticle(db, articleTitle);
 
   let liked = false;
@@ -59,10 +59,11 @@ export const getServerSideProps = async (req) => {
 
   return {
     props: {
-      articleData: {...articleData[0], narration: 'http://localhost:3000/widget/ninjabattler/cosmic_carnage'},
+      articleData: {...articleData[0]},
       userId: userId[0].id,
       liked,
-      disliked
+      disliked,
+      url: `https://ninjabattler.ca/articles/${req.params.title}`
     }
   }
 }
@@ -121,16 +122,25 @@ export default function ArticlePage(props) {
         <meta name='description' content={props.articleData.description} />
         <meta property='og:locale' content='en_CA' />
         <meta name='theme-color' content={`${props.articleData.colour}`} />
+        <link rel="icon" href="/favicon.ico" />
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/* <!-- Google / Search Engine Tags --> */}
+        <meta itemProp="name" content={`Ninjabattler - ${props.articleData.title}`}></meta>
+        <meta itemProp="description" content={props.articleData.description}></meta>
+        <meta itemProp="image" content={props.articleData.thumbnail}></meta>
+        {/* <!-- Facebook Meta Tags --> */}
+        <meta property="og:url" content={props.url}></meta>
         <meta property='og:type' content='website' />
         <meta property='og:title' content={`Ninjabattler - ${props.articleData.title}`} />
         <meta property='og:description' content={props.articleData.description} />
         <meta property='og:image' content={props.articleData.thumbnail} />
-        <link rel="icon" href="/favicon.ico" />
-        <meta charSet="utf-8" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+        {/* <!-- Twitter Meta Tags --> */}
+        <meta name="twitter:card" content="summary_large_image"></meta>
+        <meta name="twitter:title" content={`Ninjabattler - ${props.articleData.title}`}></meta>
+        <meta name="twitter:description" content={props.articleData.description}></meta>
+        <meta name="twitter:image" content={props.articleData.thumbnail}></meta>
+        {/* <!-- Meta Tags Generated via http://heymeta.com -->*/}
 
         {/* <!--FONTS--> */}
         <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -146,7 +156,7 @@ export default function ArticlePage(props) {
 
         <div>
           <article className={styles.articleContainer} style={windowServer.innerWidth < 426 ? { boxShadow: `2px 2px 0px ${props.articleData.colour}` } : { boxShadow: `5px 5px 0px ${props.articleData.colour}` }}>
-            {props.articleData.narration && (<iframe id={styles.adAurisIframe} src={`http://localhost:3000/widget/ninjabattler/cosmic-carnage?color=${props.articleData.colour.split('#')[1]}`} style={{ border: 'none', height: '250px', width: '100%' }} ></iframe>)}
+            {props.articleData.narration && (<iframe id={styles.adAurisIframe} src={`${props.articleData.narration}?color=${props.articleData.colour.split('#')[1]}`} style={{ border: 'none', height: '100px', width: '80%' }} ></iframe>)}
             <JsxParser
               components={{ Picture, ListItem, Underline, Quote, Paragraph, TitleCard, CodeBlock, SubtitleCard }}
 

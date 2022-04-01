@@ -28,7 +28,7 @@ export default function Carousel({ items, setLinkClicked }) {
         {items.map((item) => {
           i++
           return (
-            <Link key={item.title} href={`/articles/${item.title.toLowerCase().replace(' ', '_')}`} >
+            <Link key={item.title} href={`/articles/${item.title.toLowerCase().replace(/ /g, '_')}`} >
               <a onClick={() => { setLinkClicked(true) }} className={`${styles.carouselItem} ${i < 2 ? styles[currentOption] : ''}`}>
 
                 <div className={styles.imageContainer}>

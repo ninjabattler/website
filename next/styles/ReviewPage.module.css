@@ -179,6 +179,10 @@
   display: none;
 }
 
+#adAurisIframe {
+    margin: auto;
+}
+
 @keyframes loading {
   0%{width: 40%; margin: 0%;}
   50%{width: 50%; margin: -2.8%;}
@@ -279,11 +283,9 @@
     margin-left: auto;
   }
   #adAurisIframe {
-    width: 1280px !important;
-    transform: scale(0.4);
-    margin-left: -490px;
-    margin-top: -90px;
-    margin-bottom: -100px;
+    width: 100vw !important;
+    transform: scale(0.7);
+    margin-left: -7.5vw;
   }
   #shareBar {
     height: 40px;
