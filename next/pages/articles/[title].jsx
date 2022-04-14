@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from 'react';
+import { React, useEffect, useState, useRef } from 'react';
 import styles from '../../styles/ReviewPage.module.css';
 import JsxParser from 'react-jsx-parser';
 import NavBar from '../../components/NavBar';
@@ -59,7 +59,7 @@ export const getServerSideProps = async (req) => {
 
   return {
     props: {
-      articleData: {...articleData[0]},
+      articleData: { ...articleData[0] },
       userId: userId[0].id,
       liked,
       disliked,
@@ -69,15 +69,17 @@ export const getServerSideProps = async (req) => {
 }
 
 export default function ArticlePage(props) {
-  const [commenting, setCommenting] = useState(false)
-  const [comments, setComments] = useState(props.articleData.comments)
-  const [likes, setLikes] = useState(Number(props.articleData.likes))
-  const [dislikes, setDislikes] = useState(Number(props.articleData.dislikes))
-  const [isLiked, setIsLiked] = useState(props.liked)
-  const [isDisliked, setIsDisliked] = useState(props.disliked)
-  const [windowServer, setWindow] = useState({})
-  const [showPanel, setShowPanel] = useState(true)
-  let commentContent = '';
+  const [commenting, setCommenting] = useState(false);
+  const [comments, setComments] = useState(props.articleData.comments);
+  const [likes, setLikes] = useState(Number(props.articleData.likes));
+  const [dislikes, setDislikes] = useState(Number(props.articleData.dislikes));
+  const [isLiked, setIsLiked] = useState(props.liked);
+  const [isDisliked, setIsDisliked] = useState(props.disliked);
+  const [windowServer, setWindow] = useState({});
+  const [showPanel, setShowPanel] = useState(true);
+  const [viewComment, setViewComment] = useState(false);
+  const [commentContent, setCommentContent] = useState('');
+  const commentRef = useRef();
 
   useEffect(() => {
     setWindow(window)
@@ -112,6 +114,19 @@ export default function ArticlePage(props) {
     catch (err) {
       console.log(err);
     }
+  }
+
+  const styleText = (text) => {
+    const boldPattern = new RegExp('(\\*{2}|_{2})([a-zA-Z0-9^\s]*)(\\*{2}|_{2})', 'g');
+    const italicPattern = new RegExp('(\\*|_)([a-zA-Z0-9^\s]*)(\\*|_)', 'g');
+    const blockQuotePattern = new RegExp('^>(.*)$', 'gm');
+
+    let styledText = text.replace(/<\/?[a-zA-Z0-9]*>/g, '');
+    styledText = styledText.replace(boldPattern, '<b>$2</b>');
+    styledText = styledText.replace(italicPattern, '<i>$2</i>');
+    styledText = styledText.replace(blockQuotePattern, '</p><blockquote>$1</blockquote><p>');
+
+    return `<p>${styledText}</p>`
   }
 
   return (
@@ -241,28 +256,49 @@ export default function ArticlePage(props) {
                 </p>
               </>) :
               (<>
-                <textarea
-                  id={styles.commentArea}
-                  name="comment"
-                  placeholder="Leave a comment!"
-                  onChange={(e) => {
-                    commentContent = e.target.value
-                  }}
-                  onFocus={(e) => {
-                    e.target.placeholder = ''
-                  }}
-                  onBlur={(e) => {
-                    e.target.placeholder = 'Leave a comment!'
-                  }}>
-                </textarea>
-                <button onClick={() => {
-                  comment({ content: commentContent, id: props.articleData.id }, setCommenting, (newComments) => {
-                    commentContent = ''
+                <div id={styles.commentViewBar}>
+                  <button className={!viewComment && styles.selected} onClick={() => { setViewComment(false) }}>
+                    <b>
+                      Edit
+                    </b>
+                  </button>
+                  <button className={viewComment && styles.selected} onClick={() => { setViewComment(true) }}>
+                    <b>
+                      View
+                    </b>
+                  </button>
+                </div>
+
+                {
+                  viewComment ?
+                    (<div id={styles.commentArea} dangerouslySetInnerHTML={{ __html: styleText(commentContent) }}></div>)
+                    :
+                    (<textarea
+                      id={styles.commentArea}
+                      placeholder='Leave a comment'
+                      value={commentContent}
+                      onChange={(e) => { setCommentContent(e.target.value) }}
+                    >
+                    </textarea>)
+                }
+
+                <div id={styles.commentStylingBar}>
+                  <button>
+                    <b>B</b>
+                  </button>
+                  <button>
+                    <i>i</i>
+                  </button>
+                  <button onClick={() => {
+                  comment({ content: styleText(commentContent), id: props.articleData.id }, setCommenting, (newComments) => {
+                    setCommentContent('')
                     setComments(newComments)
                   })
                 }}>
-                  <ArrowForwardIosRounded />
-                </button>
+                    <b>{'>'}</b>
+                  </button>
+                  <button id={styles.styleFiller}></button>
+                </div>
               </>)}
 
             <div className={styles.comments}>

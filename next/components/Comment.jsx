@@ -16,7 +16,7 @@ export default function Comment(props) {
       <img className={styles.avatar} src={avatars[`avatar${props.avatar}`]} style={{ filter: `drop-shadow(1px 1px 0px ${props.pageColour || 'transparent'})` }} alt='profile pic' />
       <div>
         <i style={{ textShadow: `1px 1px 0px ${props.pageColour || 'transparent'}` }}>Ninja #{props.username}</i>
-        <p>{props.content}</p>
+        <p dangerouslySetInnerHTML={{__html: props.content}}></p>
       </div>
     </article>)
 }

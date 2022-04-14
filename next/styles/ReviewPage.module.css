@@ -74,18 +74,48 @@
   margin-top: 130px;
   filter: drop-shadow(8px 8px 0px black);
 }
-.commentPanel > textarea {
-  width: 70%;
-  height: 110px;
+#commentArea {
+  width: calc(99% - 10px);
+  height: 100px !important;
+  padding: 5px;
   background: none;
   border: none;
   outline: none;
-  border-bottom: 3px solid var(--light-gray);
+  border-top: 2px solid var(--light-gray);
+  border-bottom: 2px solid var(--light-gray);
   color: var(--light-gray);
-  font-size: 0.75em;
-  margin-left: 5%;
+  font-size: 0.6em;
+  margin-top: 0;
   resize: none;
+  display: flex;
+  flex-direction: column;
 }
+#commentArea > p {
+  margin: 0px;
+  margin-left: 5px;
+}
+
+/* #commentArea > p > i {
+  color: var(--light-gray);
+  filter: brightness(1.2);
+}
+
+#commentArea > p > b {
+  color: var(--light-gray);
+  opacity: 0.7;
+  filter: drop-shadow(1px 1px 0px black) drop-shadow(-1px -1px 0px black) drop-shadow(1px -1px 0px black) drop-shadow(-1px 1px 0px black);
+  text-shadow: 1px 1px 0px black;
+} */
+
+#commentArea > blockquote {
+  margin: 5px;
+  padding: 5px;
+  padding-left: 10px;
+  border-left: 2px solid var(--light-gray);
+  background-color: rgba(0,0,0,0.5);
+  opacity: 0.7;
+}
+
 #commentLoading {
   width: 70%;
   height: 120px;
@@ -110,7 +140,7 @@
 .commentPanel > div {
   overflow-y: scroll;
   height: 70%;
-  margin-top: 10%;
+  margin-top: 5px;
   width: 99%;
 }
 .commentPanel > div::-webkit-scrollbar {
@@ -124,6 +154,60 @@
   background: var(--dark-gray);
   border: 2px solid var(--light-gray);
 }
+
+#commentStylingBar {
+  width: 100%;
+  height: 30px;
+  margin: 0;
+  /* margin-top: -10px; */
+  overflow: hidden;
+  display: flex;
+  border-bottom: 2px solid var(--light-gray);
+}
+
+#commentStylingBar > button {
+  min-width: 32px;
+  height: 32px;
+  border: none;
+  outline: none;
+  margin-right: 2px;
+  font-size: 0.8em;
+  color: var(--dark-gray);
+  /* border: 2px solid var(--dark-gray); */
+  background-color: var(--light-gray);
+  cursor: pointer;
+}
+
+#commentStylingBar > #styleFiller {
+  cursor: unset;
+  width: 100%;
+}
+
+#commentViewBar {
+  width: 100%;
+  height: 30px;
+  margin: 0;
+  overflow: hidden;
+  display: flex;
+}
+
+#commentViewBar > button {
+  width: 50%;
+  height: 32px;
+  border: none;
+  outline: none;
+  margin-right: 2px;
+  font-size: 0.8em;
+  color: var(--dark-gray);
+  background-color: var(--light-gray);
+  cursor: pointer;
+}
+
+#commentViewBar > .selected {
+  color: var(--light-gray);
+  background-color: var(--dark-gray);
+}
+
 .likePanel > button {
   color: var(--light-gray);
   background: none;
