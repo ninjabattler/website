@@ -15,17 +15,17 @@
   border: 3px solid var(--dark-gray);
   margin-right: 10px;
 }
-.comment > div > p {
+.comment > div > div > p {
   font-size: 0.6em;
   margin-top: 0;
   width: 100%;
 }
 
-.comment > div > p > p{
+.comment > div > div > p > p{
   margin: 0;
 }
 
-.comment > div > p > blockquote {
+.comment > div > div > p > blockquote {
   margin: 5px;
   padding: 5px;
   padding-left: 10px;

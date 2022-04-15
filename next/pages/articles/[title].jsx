@@ -21,6 +21,12 @@ import axios from 'axios';
 import VideoBackground from '../../components/VideoBackground';
 import requestIp from 'request-ip'
 import SubtitleCard from '../../components/SubtitleCard';
+import FireText from '../../components/animatedText/FireText';
+import ThunderText from '../../components/animatedText/ThunderText';
+import IceText from '../../components/animatedText/IceText';
+import EarthText from '../../components/animatedText/EarthText';
+import RegexText from '../../components/animatedText/RegexText';
+import MetalHeadText from '../../components/animatedText/MetalHeadText';
 
 export const getServerSideProps = async (req) => {
   // let ip = await axios({ method: 'get', url: `https://api.ipify.org?format=json`, headers: { 'Content-Type': 'application/json' }, })
@@ -48,8 +54,6 @@ export const getServerSideProps = async (req) => {
       disliked = true;
     }
   }
-
-  console.log(articleData)
 
   if (!articleData[0]) {
     return {
@@ -120,11 +124,13 @@ export default function ArticlePage(props) {
     const boldPattern = new RegExp('(\\*{2}|_{2})([a-zA-Z0-9^\s]*)(\\*{2}|_{2})', 'g');
     const italicPattern = new RegExp('(\\*|_)([a-zA-Z0-9^\s]*)(\\*|_)', 'g');
     const blockQuotePattern = new RegExp('^>(.*)$', 'gm');
+    const animatedTextPattern = new RegExp('\\{(.*)\\}\\[(.*)\\]', 'g');
 
     let styledText = text.replace(/<\/?[a-zA-Z0-9]*>/g, '');
     styledText = styledText.replace(boldPattern, '<b>$2</b>');
     styledText = styledText.replace(italicPattern, '<i>$2</i>');
     styledText = styledText.replace(blockQuotePattern, '</p><blockquote>$1</blockquote><p>');
+    styledText = styledText.replace(animatedTextPattern, '<$1Text text="$2"/>');
 
     return `<p>${styledText}</p>`
   }
@@ -271,7 +277,12 @@ export default function ArticlePage(props) {
 
                 {
                   viewComment ?
-                    (<div id={styles.commentArea} dangerouslySetInnerHTML={{ __html: styleText(commentContent) }}></div>)
+                    (<div id={styles.commentArea}>
+                      <JsxParser
+                        components={{ FireText, EarthText, IceText, ThunderText, RegexText, MetalHeadText }}
+                        jsx={styleText(commentContent)}
+                      />
+                    </div>)
                     :
                     (<textarea
                       id={styles.commentArea}
@@ -290,11 +301,11 @@ export default function ArticlePage(props) {
                     <i>i</i>
                   </button>
                   <button onClick={() => {
-                  comment({ content: styleText(commentContent), id: props.articleData.id }, setCommenting, (newComments) => {
-                    setCommentContent('')
-                    setComments(newComments)
-                  })
-                }}>
+                    comment({ content: styleText(commentContent), id: props.articleData.id }, setCommenting, (newComments) => {
+                      setCommentContent('')
+                      setComments(newComments)
+                    })
+                  }}>
                     <b>{'>'}</b>
                   </button>
                   <button id={styles.styleFiller}></button>
