@@ -120,6 +120,18 @@ export default function ArticlePage(props) {
     }
   }
 
+  const addMarkdownToSelection = (openingTag, closingTag) => {
+    if (commentRef.current) {
+      const text = commentRef.current.innerText
+      const selection = windowServer.getSelection()
+      const startText = text.slice(0, selection.anchorOffset);
+      const endText = text.slice(selection.focusOffset, text.length);
+      const markdown = `${openingTag}${text.slice(selection.anchorOffset, selection.focusOffset)}${closingTag}`
+
+      setCommentContent(startText + markdown + endText);
+    }
+  }
+
   const styleText = (text) => {
     const boldPattern = new RegExp('(\\*{2}|_{2})([a-zA-Z0-9^\s]*)(\\*{2}|_{2})', 'g');
     const italicPattern = new RegExp('(\\*|_)([a-zA-Z0-9^\s]*)(\\*|_)', 'g');
@@ -268,7 +280,12 @@ export default function ArticlePage(props) {
                       Edit
                     </b>
                   </button>
-                  <button className={viewComment && styles.selected} onClick={() => { setViewComment(true) }}>
+                  <button className={viewComment && styles.selected} onClick={() => {
+                    if (commentRef.current) {
+                      setCommentContent(commentRef.current.innerText);
+                    };
+                    setViewComment(true)
+                  }}>
                     <b>
                       View
                     </b>
@@ -276,39 +293,71 @@ export default function ArticlePage(props) {
                 </div>
 
                 {
-                  viewComment ?
-                    (<div id={styles.commentArea}>
-                      <JsxParser
-                        components={{ FireText, EarthText, IceText, ThunderText, RegexText, MetalHeadText }}
-                        jsx={styleText(commentContent)}
-                      />
-                    </div>)
-                    :
-                    (<textarea
-                      id={styles.commentArea}
-                      placeholder='Leave a comment'
-                      value={commentContent}
-                      onChange={(e) => { setCommentContent(e.target.value) }}
-                    >
-                    </textarea>)
+                  viewComment &&
+                  (<div id={styles.commentAreaView}>
+                    <JsxParser
+                      components={{ FireText, EarthText, IceText, ThunderText, RegexText, MetalHeadText }}
+                      jsx={styleText(commentContent)}
+                    />
+                  </div>)
+                }
+                {
+                  !viewComment &&
+                  (<div
+                    id={styles.commentArea}
+                    placeholder='Leave a comment'
+                    contentEditable
+                    ref={commentRef}
+                    dangerouslySetInnerHTML={{ __html: commentContent }}
+                  // value={commentContent}
+                  // onChange={(e) => { setCommentContent(e.target.value) }}
+                  >
+                  </div>)
                 }
 
                 <div id={styles.commentStylingBar}>
-                  <button>
+                  <button onClick={() => { addMarkdownToSelection('**', '**') }}>
                     <b>B</b>
                   </button>
-                  <button>
+                  <button onClick={() => { addMarkdownToSelection('_', '_') }}>
                     <i>i</i>
                   </button>
-                  <button onClick={() => {
+                  <button onClick={() => { addMarkdownToSelection('> ', '') }}>
+                    <b>{'>'}</b>
+                  </button>
+                  <div id={styles.animTextDropdown}>
+                    <p>Anim Text</p>
+                    <div>
+                      <button onClick={() => { addMarkdownToSelection('{Fire}[', ']') }}>
+                        <FireText text='Anim Text' />
+                      </button>
+                      <button onClick={() => { addMarkdownToSelection('{Ice}[', ']') }}>
+                        <IceText text='Anim Text' />
+                      </button>
+                      <button onClick={() => { addMarkdownToSelection('{Thunder}[', ']') }}>
+                        <ThunderText text='Anim Text' />
+                      </button>
+                      <button onClick={() => { addMarkdownToSelection('{Earth}[', ']') }}>
+                        <EarthText text='Anim Text' />
+                      </button>
+                      <button onClick={() => { addMarkdownToSelection('{Regex}[', ']') }}>
+                        <RegexText text='Anim Text' />
+                      </button>
+                      <button onClick={() => { addMarkdownToSelection('{MetalHead}[', ']') }}>
+                        <MetalHeadText text='Anim Text' />
+                      </button>
+                    </div>
+                  </div>
+
+                  <button id={styles.styleFiller}></button>
+                  <button id={styles.postComment} onClick={() => {
                     comment({ content: styleText(commentContent), id: props.articleData.id }, setCommenting, (newComments) => {
                       setCommentContent('')
                       setComments(newComments)
                     })
                   }}>
-                    <b>{'>'}</b>
+                    <b>Post</b>
                   </button>
-                  <button id={styles.styleFiller}></button>
                 </div>
               </>)}
 
