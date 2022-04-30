@@ -81,8 +81,10 @@
   background: none;
   border: none;
   outline: none;
-  border-top: 2px solid var(--light-gray);
-  border-bottom: 2px solid var(--light-gray);
+  /* border-top: 2px solid var(--light-gray);
+  border-bottom: 2px solid var(--light-gray); */
+  margin-top: 2px;
+  margin-bottom: 2px;
   color: var(--light-gray);
   font-size: 0.6em;
   margin-top: 0;

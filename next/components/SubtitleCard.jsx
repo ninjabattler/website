@@ -15,7 +15,7 @@ export default function SubtitleCard(props) {
       <div className={styles.background1}></div>
 
       {props.imageSrc ?
-        (<div className={`${styles.imageContainer} ${props.lower && styles.lower}`} style={{ filter: windowVar.innerWidth > 414 ? `drop-shadow(1px 1px 0px ${props.pageColour})` : `drop-shadow(0.3px 0.3px 0px ${props.pageColour})` }}>
+        (<div className={`${styles.imageContainer} ${props.lower && styles.lower} ${props.higher && styles.higher}`} style={{ filter: windowVar.innerWidth > 414 ? `drop-shadow(1px 1px 0px ${props.pageColour})` : `drop-shadow(0.3px 0.3px 0px ${props.pageColour})` }}>
           <img
             src={props.imageSrc.replace('http://', 'https://')}
           />

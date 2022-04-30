@@ -49,6 +49,10 @@
   margin-top: -160px;
 } 
 
+.imageContainer.higher {
+  margin-top: -300px;
+} 
+
 .inverse > .background1, .inverse > .background2, .inverse > h2 {
   border-top-color: #141414;
   color: var(--light-gray);

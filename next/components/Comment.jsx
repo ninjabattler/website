@@ -19,7 +19,7 @@ const avatars = {
 export default function Comment(props) {
 
   return (
-    <article className={styles.comment} style={props.style}>
+    <article className={`${styles.comment} ${props.postComment && styles.postComment}`} style={props.style}>
       <img className={styles.avatar} src={avatars[`avatar${props.avatar}`]} style={{ filter: `drop-shadow(1px 1px 0px ${props.pageColour || 'transparent'})` }} alt='profile pic' />
       <div>
         <i style={{ textShadow: `1px 1px 0px ${props.pageColour || 'transparent'}` }}>Ninja #{props.username}</i>

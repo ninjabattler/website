@@ -1,9 +1,11 @@
-import { React, useState, useEffect } from 'react';
+import { React, useState, useEffect, useRef } from 'react';
 import styles from '../styles/Post.module.css';
 import FireText from './animatedText/FireText';
 import IceText from './animatedText/IceText';
 import ThunderText from './animatedText/ThunderText';
 import EarthText from './animatedText/EarthText';
+import RegexText from './animatedText/RegexText';
+import MetalHeadText from './animatedText/MetalHeadText';
 import JsxParser from 'react-jsx-parser';
 import Comment from './Comment';
 import { CommentTwoTone, ArrowForwardIosRounded } from '@material-ui/icons'
@@ -45,9 +47,13 @@ export default function Posts(props) {
   const [showComments, setShowComments] = useState(false)
   const [comments, setComments] = useState(props.comments || [])
   const [commenting, setCommenting] = useState(false)
-  let commentContent = '';
+  const [viewComment, setViewComment] = useState(false);
+  const [commentContent, setCommentContent] = useState('');
+  const commentRef = useRef();
+  // let commentContent = '';
 
   const comment = async (params, setCommenting, cb) => {
+    console.log(props)
     try {
       setCommenting(true)
       const newComment = await axios({
@@ -67,6 +73,32 @@ export default function Posts(props) {
     }
   }
 
+  const addMarkdownToSelection = (openingTag, closingTag) => {
+    if (commentRef.current) {
+      const text = commentRef.current.innerText
+      const selection = window.getSelection()
+      const startText = text.slice(0, selection.anchorOffset);
+      const endText = text.slice(selection.focusOffset, text.length);
+      const markdown = `${openingTag}${text.slice(selection.anchorOffset, selection.focusOffset)}${closingTag}`
+
+      setCommentContent(startText + markdown + endText);
+    }
+  }
+
+  const styleText = (text) => {
+    const boldPattern = new RegExp('(\\*{2}|_{2})([a-zA-Z0-9^\s]*)(\\*{2}|_{2})', 'g');
+    const italicPattern = new RegExp('(\\*|_)([a-zA-Z0-9^\s]*)(\\*|_)', 'g');
+    const blockQuotePattern = new RegExp('^>(.*)$', 'gm');
+    const animatedTextPattern = new RegExp('\\{(.*)\\}\\[(.*)\\]', 'g');
+
+    let styledText = text.replace(/<\/?[a-zA-Z0-9]*>/g, '');
+    styledText = styledText.replace(boldPattern, '<b>$2</b>');
+    styledText = styledText.replace(italicPattern, '<i>$2</i>');
+    styledText = styledText.replace(blockQuotePattern, '</p><blockquote>$1</blockquote><p>');
+    styledText = styledText.replace(animatedTextPattern, '<$1Text text="$2"/>');
+
+    return `<p>${styledText}</p>`
+  }
 
   return (
     <article
@@ -136,35 +168,98 @@ export default function Posts(props) {
                       </p>
                     </>) :
                     (<>
-                      <textarea
-                        id={styles.commentArea}
-                        name="comment"
-                        placeholder="Leave a comment!"
-                        onChange={(e) => {
-                          commentContent = e.target.value
-                        }}
-                        onFocus={(e) => {
-                          e.target.placeholder = ''
-                        }}
-                        onBlur={(e) => {
-                          e.target.placeholder = 'Leave a comment!'
+                      <div id={styles.commentViewBar}>
+                        <button className={!viewComment && styles.selected} onClick={() => { setViewComment(false) }}>
+                          <b>
+                            Edit
+                          </b>
+                        </button>
+                        <button className={viewComment && styles.selected} onClick={() => {
+                          if (commentRef.current) {
+                            setCommentContent(commentRef.current.innerText);
+                          };
+                          setViewComment(true)
                         }}>
-                      </textarea>
-                      <button onClick={() => {
-                        comment({ content: commentContent, id: props.id, ip: props.ip }, setCommenting, (newComments) => {
-                          commentContent = ''
-                          setComments(newComments)
-                        })
-                      }}>
-                        <ArrowForwardIosRounded />
-                      </button>
+                          <b>
+                            View
+                          </b>
+                        </button>
+                      </div>
+
+                      {
+                        viewComment &&
+                        (<div id={styles.commentAreaView}>
+                          <JsxParser
+                            components={{ FireText, EarthText, IceText, ThunderText, RegexText, MetalHeadText }}
+                            jsx={styleText(commentContent)}
+                          />
+                        </div>)
+                      }
+                      {
+                        !viewComment &&
+                        (<div
+                          id={styles.commentArea}
+                          placeholder='Leave a comment'
+                          contentEditable
+                          ref={commentRef}
+                          dangerouslySetInnerHTML={{ __html: commentContent }}
+                        // value={commentContent}
+                        // onChange={(e) => { setCommentContent(e.target.value) }}
+                        >
+                        </div>)
+                      }
+
+                      <div id={styles.commentStylingBar}>
+                        <button onClick={() => { addMarkdownToSelection('**', '**') }}>
+                          <b>B</b>
+                        </button>
+                        <button onClick={() => { addMarkdownToSelection('_', '_') }}>
+                          <i>i</i>
+                        </button>
+                        <button onClick={() => { addMarkdownToSelection('> ', '') }}>
+                          <b>{'>'}</b>
+                        </button>
+                        <div id={styles.animTextDropdown}>
+                          <p>Anim Text</p>
+                          <div>
+                            <button onClick={() => { addMarkdownToSelection('{Fire}[', ']') }}>
+                              <FireText text='Anim Text' />
+                            </button>
+                            <button onClick={() => { addMarkdownToSelection('{Ice}[', ']') }}>
+                              <IceText text='Anim Text' />
+                            </button>
+                            <button onClick={() => { addMarkdownToSelection('{Thunder}[', ']') }}>
+                              <ThunderText text='Anim Text' />
+                            </button>
+                            <button onClick={() => { addMarkdownToSelection('{Earth}[', ']') }}>
+                              <EarthText text='Anim Text' />
+                            </button>
+                            <button onClick={() => { addMarkdownToSelection('{Regex}[', ']') }}>
+                              <RegexText text='Anim Text' />
+                            </button>
+                            <button onClick={() => { addMarkdownToSelection('{MetalHead}[', ']') }}>
+                              <MetalHeadText text='Anim Text' />
+                            </button>
+                          </div>
+                        </div>
+
+                        <button id={styles.styleFiller}></button>
+                        <button id={styles.postComment} onClick={() => {
+                          comment({ content: styleText(commentContent), id: props.id }, setCommenting, (newComments) => {
+                            setCommentContent('')
+                            setComments(newComments)
+                          })
+                        }}>
+                          <b>Post</b>
+                        </button>
+                      </div>
                     </>)}
 
                   <div className={styles.comments}>
                     {comments.map((com) => {
                       if (com.username) {
                         return (<Comment
-                          style={{ minHeight: '45px' }}
+                          postComment
                           key={comment.id}
                           pageColour={com.user_id === props.userId[0].id ? '#000000' : 'transparent'}
                           username={com.username.slice(0, 10)}

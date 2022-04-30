@@ -105,13 +105,160 @@
   width: 30%;
   height: 100%;
   background-color: var(--dark-gray);
-  margin-top: 1% !important;
   margin-left: auto;
   margin-right: auto;
   top: 0;
   right: 0;
-  margin-top: 130px;
+  font-size: 1.645vw;
+  /* margin-top: 120px; */
   filter: drop-shadow(8px 8px 0px black);
+}
+
+#commentArea, #commentAreaView {
+  width: calc(99% - 10px);
+  height: 100px !important;
+  padding: 5px;
+  background: none;
+  border: none;
+  outline: none;
+  /* border-top: 2px solid var(--light-gray);
+  border-bottom: 2px solid var(--light-gray); */
+  color: var(--light-gray);
+  font-size: 0.6em;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  resize: none;
+  display: flex;
+  flex-direction: column;
+}
+#commentArea > div > p, #commentAreaView > div > p {
+  margin: 0px;
+  margin-left: 5px;
+}
+
+/* #commentArea > div > p > i {
+  color: var(--light-gray);
+  filter: brightness(1.2);
+}
+
+#commentArea > div > p > b {
+  color: var(--light-gray);
+  opacity: 0.7;
+  filter: drop-shadow(1px 1px 0px black) drop-shadow(-1px -1px 0px black) drop-shadow(1px -1px 0px black) drop-shadow(-1px 1px 0px black);
+  text-shadow: 1px 1px 0px black;
+} */
+
+#commentArea > div > blockquote, #commentAreaView > div > blockquote {
+  margin: 5px;
+  padding: 5px;
+  padding-left: 10px;
+  border-left: 2px solid var(--light-gray);
+  background-color: rgba(0,0,0,0.5);
+  opacity: 0.7;
+}
+
+#commentStylingBar {
+  width: 100%;
+  height: 30px;
+  margin: 0;
+  /* margin-top: -10px; */
+  overflow: hidden;
+  display: flex;
+  border-bottom: 2px solid var(--light-gray);
+  border-top: 2px solid var(--light-gray);
+}
+
+#commentStylingBar > button {
+  min-width: 32px;
+  height: 32px;
+  border: none;
+  outline: none;
+  margin-right: 2px;
+  font-size: 0.7em;
+  color: var(--dark-gray);
+  /* border: 2px solid var(--dark-gray); */
+  background-color: var(--light-gray);
+  cursor: pointer;
+}
+
+#commentStylingBar > #styleFiller {
+  cursor: unset;
+  width: 10%;
+}
+
+#commentViewBar {
+  width: 100%;
+  height: 30px;
+  margin: 0;
+  overflow: hidden;
+  display: flex;
+}
+
+#commentViewBar > button {
+  width: 50%;
+  height: 32px;
+  border: none;
+  outline: none;
+  margin-right: 2px;
+  font-size: 0.7em;
+  color: var(--dark-gray);
+  background-color: var(--light-gray);
+  cursor: pointer;
+}
+
+#postComment {
+  width: 120px;
+  color: var(--light-gray) !important;
+  background-color: var(--dark-gray) !important;
+  border-right: 2px solid var(--light-gray) !important;
+}
+
+#commentViewBar > .selected {
+  color: var(--light-gray);
+  background-color: var(--dark-gray);
+}
+
+#animTextDropdown {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin-right: 2px;
+  min-height: 32px;
+  font-size: 0.7em;
+  color: var(--dark-gray);
+  background-color: var(--light-gray);
+}
+
+#animTextDropdown > p {
+  margin: 0;
+  text-align: center;
+}
+
+#animTextDropdown > div > button {
+  display: none;
+}
+
+#animTextDropdown:hover > div {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  height: fit-content;
+  z-index: 10;
+  margin-top: 23px;
+}
+
+#animTextDropdown:hover > div > button {
+  display: block;
+  cursor: pointer;
+  width: 100%;
+  height: 32px;
+  font-size: 0.8em;
+  border: none;
+  border-bottom: 1px solid var(--dark-gray);
+  outline: none;
+  color: var(--dark-gray);
+  background-color: var(--light-gray);
 }
 
 .commentPanel > textarea {
@@ -205,6 +352,44 @@
 }
 
 @media only screen and (max-device-width: 480px) {
+  #commentStylingBar, #commentViewBar {
+    height: 20px;
+  }
+
+  #commentStylingBar > #styleFiller {
+    cursor: unset;
+    width: 10%;
+  }
+  
+  #commentStylingBar > button {
+    min-width: 20px;
+    height: 20px;
+    margin-right: 1px;
+    font-size: 0.6em;
+  }
+  #commentViewBar > button {
+    width: 50%;
+    height: 20px;
+    margin-right: 1px;
+    font-size: 0.6em;
+  }
+  #animTextDropdown {
+    width: 100px;
+    margin-right: 1px;
+    min-height: 20px;
+    height: 20px;
+    font-size: 0.6em;
+  }
+
+  #animTextDropdown:hover > div {
+    width: 100px;
+  }
+
+  #commentArea, #commentAreaView {
+    font-size: 0.45em;
+    height: 70px !important;
+  }
+
   .post, .closed {
     width: 65vw;
     height: 25vw;
@@ -265,9 +450,11 @@
     margin-right: 5px;
     filter: none;
     z-index: 10;
+    font-size: 5vw;
   }
   .comments {
-    height: 70% !important;
+    height: 60% !important;
+    margin-top: 0 !important;
   }
   .commentPanelButton {
     width: 30px;
