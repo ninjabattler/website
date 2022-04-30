@@ -358,7 +358,7 @@
 
   #commentStylingBar > #styleFiller {
     cursor: unset;
-    width: 10%;
+    width: 33%;
   }
   
   #commentStylingBar > button {
@@ -388,6 +388,11 @@
   #commentArea, #commentAreaView {
     font-size: 0.45em;
     height: 70px !important;
+  }
+
+  #postComment {
+    width: 80px;
+    border-right: 22px solid var(--light-gray) !important;
   }
 
   .post, .closed {
