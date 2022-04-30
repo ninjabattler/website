@@ -244,6 +244,7 @@
   width: 200px;
   height: fit-content;
   z-index: 10;
+  margin-top: 25px;
 }
 
 #animTextDropdown:hover > div > button {
@@ -383,6 +384,10 @@
 
   #commentArea, #commentAreaView {
     font-size: 0.45em;
+  }
+
+  #animTextDropdown:hover > div {
+    width: 100px;
   }
 
   #mobileCommentButton {
