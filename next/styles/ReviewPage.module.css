@@ -158,13 +158,15 @@
 }
 
 #commentStylingBar {
-  width: 100%;
+  width: 96%;
   height: 30px;
   margin: 0;
   /* margin-top: -10px; */
   overflow: hidden;
   display: flex;
-  border-bottom: 2px solid var(--light-gray);
+  border-right: 4% solid var(--light-gray);
+  border-bottom: 1px solid var(--light-gray);
+  border-top: 1px solid var(--light-gray);
 }
 
 #commentStylingBar > button {
@@ -191,6 +193,7 @@
   margin: 0;
   overflow: hidden;
   display: flex;
+  border-bottom: 1px solid var(--light-gray);
 }
 
 #commentViewBar > button {
@@ -200,8 +203,8 @@
   outline: none;
   margin-right: 2px;
   font-size: 0.8em;
-  color: var(--dark-gray);
-  background-color: var(--light-gray);
+  color: var(--light-gray);
+  background-color: var(--dark-gray);
   cursor: pointer;
 }
 
@@ -213,8 +216,8 @@
 }
 
 #commentViewBar > .selected {
-  color: var(--light-gray);
-  background-color: var(--dark-gray);
+  color: var(--dark-gray);
+  background-color: var(--light-gray);
 }
 
 #animTextDropdown {

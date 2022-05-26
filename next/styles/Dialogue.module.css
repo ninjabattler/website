@@ -1,0 +1,69 @@
+.dialogue {
+  width: 90%;
+  margin-left: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  height: 11vw;
+  margin-top: 8vw;
+  color: var(--light-gray);
+  background-color: var(--light-gray);
+  font-size: 1em;
+}
+
+.dialogue > img {
+  height: 150%;
+  image-rendering: pixelated;
+}
+
+.dialogueText {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.dialogueText > p {
+  width: 100%;
+  padding: 5px;
+  margin: 0;
+  font-size: 0.8em;
+  color: var(--dark-gray);
+}
+
+.dialogueText > h3 {
+  height: 40px;
+  width: 95%;
+  margin: 0;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 1em;
+  text-align: right;
+  opacity: 75%;
+  background-color: var(--dark-gray);
+}
+
+@media only screen and (max-width: 1280px) {
+  .dialogueText > h3 {
+    height: 30px;
+  }
+}
+
+@media only screen and (max-width: 853px) {
+  .dialogue {
+    height: 14vw;
+    font-size: 0.45em;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .dialogue {
+    height: 17.5vw;
+  }
+
+  .dialogueText > h3 {
+    height: 14px;
+    width: 85%;
+  }
+}

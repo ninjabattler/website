@@ -14,7 +14,6 @@
     "@prisma/client": "3.5.0",
     "axios": "^0.24.0",
     "dotenv": "^10.0.0",
-    "draft-js": "^0.11.7",
     "next": "^12.1.4",
     "particles-bg": "^2.5.5",
     "pg": "^8.7.1",
@@ -23,7 +22,6 @@
     "react-code-blocks": "0.0.9-0",
     "react-dom": "17.0.2",
     "react-jsx-parser": "^1.28.4",
-    "react-native": "^0.68.0",
     "react-vfx": "^0.5.0",
     "request-ip": "^2.1.3"
   },

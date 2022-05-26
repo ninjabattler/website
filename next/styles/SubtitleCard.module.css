@@ -45,6 +45,10 @@
   max-height: 700px;
 }
 
+.bossCard > .imageContainer > .smaller {
+  max-height: 300px;
+}
+
 .imageContainer.lower {
   margin-top: -160px;
 } 
@@ -75,13 +79,14 @@
   }
   .bossCard > .imageContainer {
     height: 200px;
-    margin-top: -130px;
+    margin-top: -150px;
   }
   .imageContainer.lower {
     margin-top: -20px;
   } 
   .bossCard > .imageContainer > img {
     max-height: 130px;
+    max-width: 25vw;
   }
   .bossCard > .background1 {
     border-width: 80px;
@@ -115,27 +120,31 @@
 @media only screen and (max-width: 480px) {
   .bossCard {
     margin-top: 70px;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
     filter: drop-shadow(-3px 2px 0px black);
   }
   .bossCard > h2 {
     font-size: 0.5em;
-    margin-bottom: -40px;
+    margin-bottom: -30px;
     height: auto;
     width: 70%;
     bottom: 0;
   }
   .bossCard > .background1 {
-    border-width: 45px;
+    border-width: 30px;
     margin-left: -2px;
   }
   .bossCard > .background2 {
     margin-top: 5px;
-    border-width: 45px;
+    border-width: 30px;
   }
   .bossCard > .imageContainer > img {
-    max-height: 70px;
-    margin-bottom: 0px;
+    max-height: 50px;
+    max-width: 35vw;
+    margin-bottom: 20px;
+  }
+  .bossCard > .imageContainer > .smaller {
+    max-height: 50px;
   }
   .bossCard > .imageContainer {
     margin-top: -160px;

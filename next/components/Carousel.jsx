@@ -22,8 +22,18 @@ export default function Carousel({ items, setLinkClicked }) {
 
   let i = 0;
 
+  const optionIndexMap = {
+    left: 0,
+    mid: 1,
+    right: 2
+  }
+
   return (
     <section className={styles.carousel}>
+      {items.map((item, index) => {
+        return <img key={index} style={{opacity: index === optionIndexMap[currentOption] ? 1 : 0}} className={styles.backgroundImg} src={item.thumbnail} />
+      })
+      }
       <main>
         {items.map((item) => {
           i++

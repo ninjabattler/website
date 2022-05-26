@@ -1,7 +1,7 @@
 const { createServer } = require('http')
 const { parse } = require('url')
 const next = require('next')
-const test = require('./.next/build-manifest.json')
+// const test = require('./.next/build-manifest.json')
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({
@@ -17,7 +17,7 @@ const app = next({
 const handle = app.getRequestHandler()
 
 app.prepare().then(() => {
-  console.log(test)
+  // console.log(test)
   createServer((req, res) => {
     // Be sure to pass `true` as the second argument to `url.parse`.
     // This tells it to parse the query portion of the URL.

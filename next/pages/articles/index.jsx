@@ -11,6 +11,7 @@ import { selectAllArticles } from '../../db/queries';
 import Footer from '../../components/Footer';
 import Link from 'next/link';
 import LoadingOverlay from '../../components/LoadingOverlay';
+import VideoBackground from '../../components/VideoBackground';
 
 export const getServerSideProps = async () => {
 
@@ -35,6 +36,7 @@ export default function ArticlesPage(props) {
     <>
       {linkClicked && (<LoadingOverlay />)}
       <NavBar />
+      <VideoBackground nonArticlePage overlayColour pageColour="#AAAAAA" />
       <Head>
         <title>Ninjabattler - Articles</title>
         <meta name='description' content="A mad man's ramblings about games you don't care about" />

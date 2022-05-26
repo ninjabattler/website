@@ -1,4 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Black+Ops+One&display=swap');
+
+@font-face {
+  font-family: "Andy Bold";
+  src: url("/Andy Bold.ttf");
+  font-style: normal;
+  font-weight: 1000;
+  font-display: swap;
+}
+
 body {
   margin: 0;
   font-family: Righteous, cursive, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
