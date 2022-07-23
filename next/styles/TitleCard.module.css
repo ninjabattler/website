@@ -8,10 +8,12 @@
   font-size: 30px;
 }
 .background1 {
+  --gradientColour: rgba(0, 0, 0, 0.5);
   position: absolute;
   border-top: 200px solid var(--light-gray);
   border-right: 200px solid transparent;
   width: 60%;
+  mask: linear-gradient(-45deg, black 20%, var(--gradientColour) 20%, var(--gradientColour) 22%, black 22%, black 24%, var(--gradientColour) 24%, var(--gradientColour) 26%, black 26%);
 }
 .background2 {
   position: absolute;
@@ -51,6 +53,30 @@
   border-top-color: #141414;
   color: var(--light-gray);
 }
+
+.backgroundGlow {
+  mix-blend-mode: lighten;
+  position: absolute;
+  opacity: 0.6;
+  animation-name: glow;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  z-index: -1;
+}
+
+.background2Glow {
+  margin-left: 11px;
+  width: calc(61% - 9px);
+  mix-blend-mode: lighten;
+  position: absolute;
+  opacity: 1;
+  animation-name: glow2;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  z-index: -1;
+}
+
+
 @media only screen and (max-width: 1536px) {
   .bossCard > h2 {
     font-size: 1.6em;
@@ -155,4 +181,16 @@
   0%{filter:blur(2px) brightness(1.5);}
   50%{filter:blur(1px) brightness(1);}
   100%{filter:blur(2px) brightness(1.5);}
+}
+
+@keyframes glow {
+  0%{filter:blur(6px) brightness(2);}
+  50%{filter:blur(4px) brightness(1.5);}
+  100%{filter:blur(6px) brightness(2);}
+}
+
+@keyframes glow2 {
+  0%{filter:blur(6px) brightness(3);}
+  50%{filter:blur(2px) brightness(1.5);}
+  100%{filter:blur(6px) brightness(3);}
 }

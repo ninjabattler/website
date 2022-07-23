@@ -8,12 +8,30 @@ export default function Picture(props) {
     setWindow(window)
   }, [])
 
+  const calcMargin = (width) => {
+    if (!width) {
+      return undefined;
+    } else {
+      const widthNumber = Number(width.split('%')[0]);
+      const margin = (100 - widthNumber) / 2;
+
+      return `-${margin}%`;
+    }
+  }
+
   return (
-    <div className={styles.picture}>
+    <div className={styles.picture} style={{display: 'inline'}}>
       <img
         src={props.imageSrc.replace('http://', 'https://')}
-        style={windowServer.innerWidth < 426 ? { filter: `drop-shadow(2px 2px 0px ${props.pageColour})` } : { filter: `drop-shadow(5px 5px 0px ${props.pageColour})` }}
+        style={{ 
+          filter: windowServer.innerWidth < 426 ? `drop-shadow(2px 2px 0px ${props.pageColour})` : `drop-shadow(5px 5px 0px ${props.pageColour})`, 
+          width: props.width,
+          float: props.float,
+          marginLeft: props.float === 'left' && '-12.5%',
+          marginRight: (props.float === 'right' && '-12.5%') || (props.float === 'left' && '10px')
+        }}
         alt=''
+        loading="lazy"
       />
     </div>
   )

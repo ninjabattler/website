@@ -9,12 +9,13 @@ import MetalHeadText from './animatedText/MetalHeadText';
 import TerrariaText from './animatedText/TerrariaText';
 import Emoji from './Emoji';
 import styles from "../styles/Paragraph.module.css";
+import Picture from './Picture';
 
 export default function Paragraph(props) {
   return (
     <div className={styles.paragraph}>
       <JsxParser
-        components={{ FireText, EarthText, IceText, ThunderText, RegexText, MetalHeadText, TerrariaText, Emoji }}
+        components={{ FireText, EarthText, IceText, ThunderText, RegexText, MetalHeadText, TerrariaText, Emoji, Picture }}
 
         jsx={`<p>${props.text}</p>`}
       />

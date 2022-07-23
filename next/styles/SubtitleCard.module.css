@@ -8,10 +8,13 @@
   font-size: 17px;
 }
 .background1 {
+  --gradientColour: rgba(0, 0, 0, 0.5);
   position: absolute;
   border-top: 100px solid var(--light-gray);
   border-left: 100px solid transparent;
   width: 40%;
+  z-index: 2;
+  mask: linear-gradient(45deg, black 20%, var(--gradientColour) 20%, var(--gradientColour) 22%, black 22%, black 24%, var(--gradientColour) 24%, var(--gradientColour) 26%, black 26%);
 }
 .background2 {
   position: absolute;
@@ -24,22 +27,29 @@
   animation-duration: 3s;
   animation-iteration-count: infinite; */
 }
+
 .bossCard > h2 {
   position: absolute;  
   text-align: right;
   color: var(--dark-gray);
-  text-shadow: 4px 4px 0px;
-  margin-top: 50px;
+  margin-top: 40px;
   margin-right: 5px;
   font-size: 2em;
+  backdrop-filter: blur(3px);
+  filter: drop-shadow(1px 1px 0px var(--light-gray)) drop-shadow(-1px -1px 0px var(--light-gray));
+  padding-top: 10px;
+  padding-bottom: 10px;
+  z-index: 3;
+  mask: linear-gradient(transparent, black 30%, black 70%, transparent 100%);
 }
 .bossCard > .imageContainer {
   position: absolute;
   display: flex;
   height: 350px;
-  overflow-y: hidden;
+  /* overflow-y: hidden; */
   margin-top: -250px;
   flex-direction: column-reverse;
+  z-index: 3;
 }
 .bossCard > .imageContainer > img {
   max-height: 700px;
@@ -47,6 +57,10 @@
 
 .bossCard > .imageContainer > .smaller {
   max-height: 300px;
+}
+
+.bossCard > .imageContainer > .extraSmaller {
+  max-height: 200px;
 }
 
 .imageContainer.lower {
@@ -61,6 +75,28 @@
   border-top-color: #141414;
   color: var(--light-gray);
 }
+
+.backgroundGlow {
+  transform: scale(1.01);
+  mix-blend-mode: lighten;
+  position: absolute;
+  opacity: 0.6;
+  animation-name: glow;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  z-index: -1;
+}
+
+.background2Glow {
+  mix-blend-mode: lighten;
+  position: absolute;
+  opacity: 1;
+  animation-name: glow2;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  z-index: -1;
+}
+
 @media only screen and (max-width: 1536px) {
   .bossCard > h2 {
     font-size: 1.6em;
@@ -158,4 +194,16 @@
   0%{filter:blur(2px) brightness(1.5);}
   50%{filter:blur(1px) brightness(1);}
   100%{filter:blur(2px) brightness(1.5);}
+}
+
+@keyframes glow {
+  0%{filter:blur(6px) brightness(2);}
+  50%{filter:blur(4px) brightness(1.5);}
+  100%{filter:blur(6px) brightness(2);}
+}
+
+@keyframes glow2 {
+  0%{filter:blur(6px) brightness(3);}
+  50%{filter:blur(2px) brightness(1.5);}
+  100%{filter:blur(6px) brightness(3);}
 }
