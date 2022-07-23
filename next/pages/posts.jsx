@@ -1,7 +1,5 @@
 import Head from 'next/head'
-import { React, useState, useEffect } from 'react';
-import NavBar from '../components/NavBar';
-import Footer from '../components/Footer';
+import { React } from 'react';
 import Post from '../components/Post';
 import styles from '../styles/PostsPage.module.css'
 import { postsServerSideProps } from '../ssr/posts';
@@ -11,7 +9,6 @@ export const getServerSideProps = postsServerSideProps;
 export default function PostsPage(props) {
   return (
     <>
-      <NavBar />
       <Head>
         <title>Ninjabattler - Posts</title>
         <meta name='description' content="A mad man's ramblings and sometimes blender renders" />
@@ -50,7 +47,6 @@ export default function PostsPage(props) {
           })
         }
       </div>
-      <Footer />
     </>
   )
 }

@@ -1,13 +1,11 @@
 import Head from 'next/head'
 import styles from '../styles/ErrorPage.module.css'
 import { React } from 'react';
-import NavBar from '../components/NavBar';
-import Footer from '../components/Footer';
+
 export default function FourOhFour() {
 
   return (
     <>
-      <NavBar />
       <div id={styles.errorPage}>
         <Head>
           <title>404 - Ninjabattler</title>
@@ -33,7 +31,6 @@ export default function FourOhFour() {
         <img src='/errorRobot.png' />
         <p>Could&apos;ve sworn this page existed...</p>
       </div>
-      <Footer />
     </>
   )
 }

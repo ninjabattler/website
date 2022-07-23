@@ -1,12 +1,10 @@
 import { React, useEffect, useState } from 'react';
 import styles from '../../styles/ArticlesPage.module.css'
 import JsxParser from 'react-jsx-parser';
-import NavBar from '../../components/NavBar';
 import Paragraph from '../../components/Paragraph';
 import TitleCard from '../../components/TitleCard'
 import Carousel from '../../components/Carousel';
 import Head from 'next/dist/shared/lib/head';
-import Footer from '../../components/Footer';
 import Link from 'next/link';
 import LoadingOverlay from '../../components/LoadingOverlay';
 import VideoBackground from '../../components/VideoBackground';
@@ -25,7 +23,6 @@ export default function ArticlesPage(props) {
   return (
     <>
       {linkClicked && (<LoadingOverlay />)}
-      <NavBar />
       <VideoBackground nonArticlePage overlayColour pageColour="#AAAAAA" />
       <Head>
         <title>Ninjabattler - Articles</title>
@@ -89,6 +86,5 @@ export default function ArticlesPage(props) {
           })}
         </div>
       </main>
-      <Footer />
     </>)
 }

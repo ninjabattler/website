@@ -1,9 +1,6 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/HomePage.module.css'
 import { React, useState, useEffect } from 'react';
-import NavBar from '../components/NavBar';
-import Footer from '../components/Footer';
 import CodeBlock from '../components/CodeBlock';
 import VideoBackground from '../components/VideoBackground';
 // require('dotenv').config();
@@ -50,7 +47,6 @@ export default function Home(props) {
 
   return (
     <>
-      <NavBar />
       <VideoBackground overlayColour pageColour="#404040" />
       <div className={styles.container}>
         <Head>
@@ -109,7 +105,6 @@ export default function Home(props) {
 
         </main>
       </div>
-      <Footer />
     </>
   )
 }

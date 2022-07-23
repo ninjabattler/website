@@ -1,8 +1,6 @@
 import { React, useEffect, useState, useRef } from 'react';
 import styles from '../../styles/ReviewPage.module.css';
 import JsxParser from 'react-jsx-parser';
-import NavBar from '../../components/NavBar';
-import Footer from '../../components/Footer';
 import Head from 'next/dist/shared/lib/head';
 import VideoHeader from '../../components/VideoHeader';
 import InfoBar from '../../components/InfoBar';
@@ -106,7 +104,6 @@ export default function ArticlePage(props) {
 
   return (
     <>
-      <NavBar />
       <Head>
         <title>Ninjabattler - {props.articleData.title}</title>
         <meta name='description' content={props.articleData.description} />
@@ -336,6 +333,5 @@ export default function ArticlePage(props) {
         </div>
 
       </main>
-      <Footer />
     </>)
 }

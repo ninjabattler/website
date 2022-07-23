@@ -1,13 +1,10 @@
 import React from 'react';
-import styles from '../styles/About.module.css'
-import NavBar from '../components/NavBar';
+import styles from '../styles/About.module.css';
 import Head from 'next/head';
-import Footer from '../components/Footer';
 
 export default function About(props) {
   return (
     <>
-      <NavBar />
       <Head>
         <title>Ninjabattler - About</title>
         <meta name='description' content="A mad man's description" />
@@ -48,7 +45,6 @@ export default function About(props) {
           </p>
         </div>
       </div>
-      <Footer />
     </>
   )
 }
