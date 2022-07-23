@@ -24,6 +24,7 @@ import RegexText from '../../components/animatedText/RegexText';
 import MetalHeadText from '../../components/animatedText/MetalHeadText';
 import Dialogue from '../../components/Dialogue';
 import { articlePageServerSideProps } from '../../ssr/articles/title';
+import { styleText, addMarkdownToSelection, like, comment } from '../../helpers/articlePageHelpers'
 
 export const getServerSideProps = articlePageServerSideProps;
 
@@ -43,64 +44,6 @@ export default function ArticlePage(props) {
   useEffect(() => {
     setWindow(window)
   }, [])
-
-  const like = async ({ like }, cb) => {
-    const newLike = await axios({
-      method: 'post',
-      url: `/api/likes/newLike/`,
-      params: { like: like, postId: props.articleData.id, userId: props.userId },
-      headers: { 'Content-Type': 'application/json' }
-    })
-
-    cb()
-  }
-
-  const comment = async (params, setCommenting, cb) => {
-    try {
-      setCommenting(true)
-      const newComment = await axios({
-        method: 'post',
-        url: `/api/comments/newComment/`,
-        params: { postId: params.id, content: params.content, userId: props.userId },
-        headers: { 'Content-Type': 'application/json' }
-      })
-
-      const newCommentsList = [{ ...newComment.data, user_id: props.userId }, ...comments]
-
-      setCommenting(false)
-      cb(newCommentsList)
-    }
-    catch (err) {
-      console.log(err);
-    }
-  }
-
-  const addMarkdownToSelection = (openingTag, closingTag) => {
-    if (commentRef.current) {
-      const text = commentRef.current.innerText
-      const selection = windowServer.getSelection()
-      const startText = text.slice(0, selection.anchorOffset);
-      const endText = text.slice(selection.focusOffset, text.length);
-      const markdown = `${openingTag}${text.slice(selection.anchorOffset, selection.focusOffset)}${closingTag}`
-
-      setCommentContent(startText + markdown + endText);
-    }
-  }
-
-  const styleText = (text) => {
-    const boldPattern = new RegExp('(\\*{2}|_{2})([a-zA-Z0-9^\s]*)(\\*{2}|_{2})', 'g');
-    const italicPattern = new RegExp('(\\*|_)([a-zA-Z0-9^\s]*)(\\*|_)', 'g');
-    const blockQuotePattern = new RegExp('^>(.*)$', 'gm');
-    const animatedTextPattern = new RegExp('\\{(.*)\\}\\[(.*)\\]', 'g');
-
-    let styledText = text.replace(/<\/?[a-zA-Z0-9]*>/g, '');
-    styledText = styledText.replace(boldPattern, '<b>$2</b>');
-    styledText = styledText.replace(italicPattern, '<i>$2</i>');
-    styledText = styledText.replace(blockQuotePattern, '</p><blockquote>$1</blockquote><p>');
-    styledText = styledText.replace(animatedTextPattern, '<$1Text text="$2"/>');
-
-    return `<p>${styledText}</p>`
-  }
 
   return (
     <>
@@ -155,7 +98,7 @@ export default function ArticlePage(props) {
             <aside className={styles.likePanel} >
 
               <button onClick={() => {
-                like({ like: true, }, () => {
+                like( true, props.articleData.id, props.userId, () => {
                   setIsLiked(!isLiked)
                   if (isLiked === false) {
                     setLikes(likes + 1)
@@ -178,7 +121,7 @@ export default function ArticlePage(props) {
 
               </div>
               <button onClick={() => {
-                like({ like: false }, () => {
+                like( false, props.articleData.id, props.userId, () => {
                   setIsDisliked(!isDisliked)
                   if (isDisliked === false) {
                     setDislikes(dislikes + 1)
@@ -270,34 +213,34 @@ export default function ArticlePage(props) {
                 }
 
                 <div id={styles.commentStylingBar}>
-                  <button onClick={() => { addMarkdownToSelection('**', '**') }}>
+                  <button onClick={() => { addMarkdownToSelection(commentRef, '**', '**', setCommentContent) }}>
                     <b>B</b>
                   </button>
-                  <button onClick={() => { addMarkdownToSelection('_', '_') }}>
+                  <button onClick={() => { addMarkdownToSelection(commentRef, '_', '_', setCommentContent) }}>
                     <i>i</i>
                   </button>
-                  <button onClick={() => { addMarkdownToSelection('> ', '') }}>
+                  <button onClick={() => { addMarkdownToSelection(commentRef, '> ', '', setCommentContent) }}>
                     <b>{'>'}</b>
                   </button>
                   <div id={styles.animTextDropdown}>
                     <p>Anim Text</p>
                     <div>
-                      <button onClick={() => { addMarkdownToSelection('{Fire}[', ']') }}>
+                      <button onClick={() => { addMarkdownToSelection(commentRef, '{Fire}[', ']', setCommentContent) }}>
                         <FireText text='Anim Text' />
                       </button>
-                      <button onClick={() => { addMarkdownToSelection('{Ice}[', ']') }}>
+                      <button onClick={() => { addMarkdownToSelection(commentRef, '{Ice}[', ']', setCommentContent) }}>
                         <IceText text='Anim Text' />
                       </button>
-                      <button onClick={() => { addMarkdownToSelection('{Thunder}[', ']') }}>
+                      <button onClick={() => { addMarkdownToSelection(commentRef, '{Thunder}[', ']', setCommentContent) }}>
                         <ThunderText text='Anim Text' />
                       </button>
-                      <button onClick={() => { addMarkdownToSelection('{Earth}[', ']') }}>
+                      <button onClick={() => { addMarkdownToSelection(commentRef, '{Earth}[', ']', setCommentContent) }}>
                         <EarthText text='Anim Text' />
                       </button>
-                      <button onClick={() => { addMarkdownToSelection('{Regex}[', ']') }}>
+                      <button onClick={() => { addMarkdownToSelection(commentRef, '{Regex}[', ']', setCommentContent) }}>
                         <RegexText text='Anim Text' />
                       </button>
-                      <button onClick={() => { addMarkdownToSelection('{MetalHead}[', ']') }}>
+                      <button onClick={() => { addMarkdownToSelection(commentRef, '{MetalHead}[', ']', setCommentContent) }}>
                         <MetalHeadText text='Anim Text' />
                       </button>
                     </div>
@@ -305,7 +248,9 @@ export default function ArticlePage(props) {
 
                   <button id={styles.styleFiller}></button>
                   <button id={styles.postComment} onClick={() => {
-                    comment({ content: styleText(commentContent), id: props.articleData.id }, setCommenting, (newComments) => {
+                    const content = styleText(commentRef.current.innerText);
+                    
+                    comment({ content: content, id: props.articleData.id }, props.userId, comments, setCommenting, (newComments) => {
                       setCommentContent('')
                       setComments(newComments)
                     })
