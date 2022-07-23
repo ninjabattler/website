@@ -4,8 +4,6 @@ import JsxParser from 'react-jsx-parser';
 import NavBar from '../../components/NavBar';
 import Footer from '../../components/Footer';
 import Head from 'next/dist/shared/lib/head';
-import db from '../../db/db';
-import { selectSingleArticle, selectUserId, selectUsersLike, insertNewUser } from '../../db/queries';
 import VideoHeader from '../../components/VideoHeader';
 import InfoBar from '../../components/InfoBar';
 import Picture from '../../components/Picture';
@@ -16,10 +14,9 @@ import Paragraph from '../../components/Paragraph';
 import TitleCard from '../../components/TitleCard';
 import Comment from '../../components/Comment';
 import CodeBlock from '../../components/CodeBlock';
-import { ThumbUpSharp, ThumbDownSharp, ArrowForwardIosRounded, Reddit, Twitter, LinkedIn, Facebook, CommentTwoTone } from '@material-ui/icons'
+import { ThumbUpSharp, ThumbDownSharp, Reddit, Twitter, LinkedIn, Facebook, CommentTwoTone } from '@material-ui/icons'
 import axios from 'axios';
 import VideoBackground from '../../components/VideoBackground';
-import requestIp from 'request-ip'
 import SubtitleCard from '../../components/SubtitleCard';
 import FireText from '../../components/animatedText/FireText';
 import ThunderText from '../../components/animatedText/ThunderText';
@@ -28,50 +25,9 @@ import EarthText from '../../components/animatedText/EarthText';
 import RegexText from '../../components/animatedText/RegexText';
 import MetalHeadText from '../../components/animatedText/MetalHeadText';
 import Dialogue from '../../components/Dialogue';
+import { articlePageServerSideProps } from '../../ssr/articles/title';
 
-export const getServerSideProps = async (req) => {
-  // let ip = await axios({ method: 'get', url: `https://api.ipify.org?format=json`, headers: { 'Content-Type': 'application/json' }, })
-  // ip = ip.data.ip;
-
-  const ip = requestIp.getClientIp(req.req)
-
-  let userId = await selectUserId(db, ip)
-
-  if (!userId[0]) {
-    userId = await insertNewUser(db, ip)
-  }
-
-  const userLike = await selectUsersLike(db, userId[0].id)
-  const articleTitle = req.query.title.replace(/_/g, ' ');
-  const articleData = await selectSingleArticle(db, articleTitle);
-
-  let liked = false;
-  let disliked = false;
-
-  if (userLike[0]) {
-    if (userLike[0].liked) {
-      liked = true;
-    } else {
-      disliked = true;
-    }
-  }
-
-  if (!articleData[0]) {
-    return {
-      notFound: true,
-    }
-  }
-
-  return {
-    props: {
-      articleData: { ...articleData[0] },
-      userId: userId[0].id,
-      liked,
-      disliked,
-      url: `https://ninjabattler.ca/articles/${req.params.title}`
-    }
-  }
-}
+export const getServerSideProps = articlePageServerSideProps;
 
 export default function ArticlePage(props) {
   const [commenting, setCommenting] = useState(false);

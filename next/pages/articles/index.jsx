@@ -6,23 +6,13 @@ import Paragraph from '../../components/Paragraph';
 import TitleCard from '../../components/TitleCard'
 import Carousel from '../../components/Carousel';
 import Head from 'next/dist/shared/lib/head';
-import db from '../../db/db';
-import { selectAllArticles } from '../../db/queries';
 import Footer from '../../components/Footer';
 import Link from 'next/link';
 import LoadingOverlay from '../../components/LoadingOverlay';
 import VideoBackground from '../../components/VideoBackground';
+import { articlesServerSideProps } from '../../ssr/articles/index';
 
-export const getServerSideProps = async () => {
-
-  const articlesArray = await selectAllArticles(db)
-
-  return {
-    props: {
-      articles: articlesArray,
-    }
-  }
-}
+export const getServerSideProps = articlesServerSideProps;
 
 export default function ArticlesPage(props) {
   const [linkClicked, setLinkClicked] = useState(false);

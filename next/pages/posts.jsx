@@ -2,31 +2,11 @@ import Head from 'next/head'
 import { React, useState, useEffect } from 'react';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
-import axios from 'axios';
 import Post from '../components/Post';
 import styles from '../styles/PostsPage.module.css'
-import db from '../db/db';
-import { selectAllPostsData, selectUserId, insertNewUser } from '../db/queries';
+import { postsServerSideProps } from '../ssr/posts';
 
-export const getServerSideProps = async () => {
-  let ip = await axios({ method: 'get', url: `https://api.ipify.org?format=json`, headers: { 'Content-Type': 'application/json' }, })
-  ip = ip.data.ip;
-
-  const postsArray = await selectAllPostsData(db)
-  const userId = await selectUserId(db, ip)
-
-  if (!userId) {
-    userId = await insertNewUser(db, ip)
-  }
-
-  return {
-    props: {
-      posts: postsArray,
-      userId: userId,
-      ip: ip
-    }
-  }
-}
+export const getServerSideProps = postsServerSideProps;
 
 export default function PostsPage(props) {
   return (
