@@ -8,6 +8,10 @@
   width: 100%;
   display: flex;
   overflow: hidden;
+  animation-name: panelFadeIn;
+  animation-duration: 0.9375s;
+  animation-timing-function: linear;
+  mask: linear-gradient(45deg, black 3%, rgba(0, 0, 0, 0.5) 3%, rgba(0, 0, 0, 0.5) 5%, black 5%, black 95%, rgba(0, 0, 0, 0.5) 95%, rgba(0, 0, 0, 0.5) 97%, black 97%);
 }
 #shareBar > div {
   width: 100%;
@@ -41,4 +45,10 @@
   .shareIcon {
     transform: scale(0.7);
   }
+}
+
+@keyframes panelFadeIn {
+  0% { width: 0%; margin-left: 50%; }
+  50% { width: 0%; margin-left: 50%; }
+  100% { width: 100%; margin-left: 0%; }
 }

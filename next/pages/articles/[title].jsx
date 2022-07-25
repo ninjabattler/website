@@ -39,12 +39,21 @@ export default function ArticlePage(props) {
   const [windowServer, setWindow] = useState({});
   const [showPanel, setShowPanel] = useState(true);
   const [viewComment, setViewComment] = useState(false);
+  const [showCommentPanel, setShowCommentPanel] = useState(false);
   const [commentContent, setCommentContent] = useState('');
   const commentRef = useRef();
 
   useEffect(() => {
     setWindow(window)
+    window.addEventListener('scroll', scrollListener)
   }, [])
+
+  const scrollListener = (ev) => {
+    if (window.scrollY >= window.innerHeight + 300) {
+      setShowCommentPanel(true);
+      window.removeEventListener('scroll', scrollListener)
+    }
+  }
 
   return (
     <>
@@ -95,7 +104,7 @@ export default function ArticlePage(props) {
             />
           </article>
 
-          <aside className={styles.commentPanel} style={windowServer.innerWidth < 426 ? { marginLeft: showPanel ? "-81%" : "0%" } : {}}>
+          <aside className={styles.commentPanel} style={windowServer.innerWidth < 426 ? { marginLeft: showPanel ? "-81%" : "0%", display: showCommentPanel ? 'initial' : 'none' } : { display: showCommentPanel ? 'initial' : 'none' }}>
             <LikePanel
               postId={props.articleData.id}
               userId={props.userId}
@@ -112,6 +121,7 @@ export default function ArticlePage(props) {
 
             <ShareBar
               title={props.articleData.title}
+              windowServer={windowServer}
             />
 
             {commenting === true ?
@@ -199,7 +209,7 @@ export default function ArticlePage(props) {
                   <button id={styles.styleFiller}></button>
                   <button id={styles.postComment} onClick={() => {
                     const content = styleText(commentRef.current.innerText);
-                    
+
                     comment({ content: content, id: props.articleData.id }, props.userId, comments, setCommenting, (newComments) => {
                       setCommentContent('')
                       setComments(newComments)

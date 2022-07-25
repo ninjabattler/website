@@ -6,7 +6,7 @@ import { like } from '../../../helpers/articlePageHelpers';
 export default function LikePanel({ postId, userId, likes, isLiked, setIsLiked, setLikes, dislikes, isDisliked, setIsDisliked, setDislikes, pageColour }) {
   return (
     <aside className={styles.likePanel} >
-      <button onClick={() => {
+      <button className={styles.like} onClick={() => {
         like( true, postId, userId, () => {
           setIsLiked(!isLiked)
           if (isLiked === false) {
@@ -29,7 +29,7 @@ export default function LikePanel({ postId, userId, likes, isLiked, setIsLiked, 
       <div id={styles.likeBar} style={{ backgroundImage: `linear-gradient(90deg, ${pageColour} ${(likes / (likes + dislikes)) * 100}%, transparent ${(likes / (likes + dislikes)) * 100}%)` }}>
 
       </div>
-      <button onClick={() => {
+      <button className={styles.dislike} onClick={() => {
         like( false, postId, userId, () => {
           setIsDisliked(!isDisliked)
           if (isDisliked === false) {
