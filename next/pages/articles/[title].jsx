@@ -15,17 +15,11 @@ import CodeBlock from '../../components/CodeBlock';
 import { ThumbUpSharp, ThumbDownSharp, Reddit, Twitter, LinkedIn, Facebook, CommentTwoTone } from '@material-ui/icons';
 import VideoBackground from '../../components/VideoBackground';
 import SubtitleCard from '../../components/SubtitleCard';
-import FireText from '../../components/animatedText/FireText';
-import ThunderText from '../../components/animatedText/ThunderText';
-import IceText from '../../components/animatedText/IceText';
-import EarthText from '../../components/animatedText/EarthText';
-import RegexText from '../../components/animatedText/RegexText';
-import MetalHeadText from '../../components/animatedText/MetalHeadText';
 import Dialogue from '../../components/Dialogue';
 import { articlePageServerSideProps } from '../../ssr/articles/title';
-import { styleText, addMarkdownToSelection, like, comment } from '../../helpers/articlePageHelpers';
 import LikePanel from '../../components/feedbackAndShare/LikePanel/LikePanel';
 import ShareBar from '../../components/feedbackAndShare/ShareBar/ShareBar';
+import CommentArea from '../../components/feedbackAndShare/CommentArea/CommentArea';
 
 export const getServerSideProps = articlePageServerSideProps;
 
@@ -124,101 +118,19 @@ export default function ArticlePage(props) {
               windowServer={windowServer}
             />
 
-            {commenting === true ?
-              (<>
-                <p id={styles.commentLoading}>
-                  <img src={'/Ninja placeholder.png'} />
-                </p>
-              </>) :
-              (<>
-                <div id={styles.commentViewBar}>
-                  <button className={!viewComment && styles.selected} onClick={() => { setViewComment(false) }}>
-                    <b>
-                      Edit
-                    </b>
-                  </button>
-                  <button className={viewComment && styles.selected} onClick={() => {
-                    if (commentRef.current) {
-                      setCommentContent(commentRef.current.innerText);
-                    };
-                    setViewComment(true)
-                  }}>
-                    <b>
-                      View
-                    </b>
-                  </button>
-                </div>
-
-                {
-                  viewComment &&
-                  (<div id={styles.commentAreaView}>
-                    <JsxParser
-                      components={{ FireText, EarthText, IceText, ThunderText, RegexText, MetalHeadText }}
-                      jsx={styleText(commentContent)}
-                    />
-                  </div>)
-                }
-                {
-                  !viewComment &&
-                  (<div
-                    id={styles.commentArea}
-                    placeholder='Leave a comment'
-                    contentEditable
-                    ref={commentRef}
-                    dangerouslySetInnerHTML={{ __html: commentContent }}
-                  // value={commentContent}
-                  // onChange={(e) => { setCommentContent(e.target.value) }}
-                  >
-                  </div>)
-                }
-
-                <div id={styles.commentStylingBar}>
-                  <button onClick={() => { addMarkdownToSelection(commentRef, '**', '**', setCommentContent) }}>
-                    <b>B</b>
-                  </button>
-                  <button onClick={() => { addMarkdownToSelection(commentRef, '_', '_', setCommentContent) }}>
-                    <i>i</i>
-                  </button>
-                  <button onClick={() => { addMarkdownToSelection(commentRef, '> ', '', setCommentContent) }}>
-                    <b>{'>'}</b>
-                  </button>
-                  <div id={styles.animTextDropdown}>
-                    <p>Anim Text</p>
-                    <div>
-                      <button onClick={() => { addMarkdownToSelection(commentRef, '{Fire}[', ']', setCommentContent) }}>
-                        <FireText text='Anim Text' />
-                      </button>
-                      <button onClick={() => { addMarkdownToSelection(commentRef, '{Ice}[', ']', setCommentContent) }}>
-                        <IceText text='Anim Text' />
-                      </button>
-                      <button onClick={() => { addMarkdownToSelection(commentRef, '{Thunder}[', ']', setCommentContent) }}>
-                        <ThunderText text='Anim Text' />
-                      </button>
-                      <button onClick={() => { addMarkdownToSelection(commentRef, '{Earth}[', ']', setCommentContent) }}>
-                        <EarthText text='Anim Text' />
-                      </button>
-                      <button onClick={() => { addMarkdownToSelection(commentRef, '{Regex}[', ']', setCommentContent) }}>
-                        <RegexText text='Anim Text' />
-                      </button>
-                      <button onClick={() => { addMarkdownToSelection(commentRef, '{MetalHead}[', ']', setCommentContent) }}>
-                        <MetalHeadText text='Anim Text' />
-                      </button>
-                    </div>
-                  </div>
-
-                  <button id={styles.styleFiller}></button>
-                  <button id={styles.postComment} onClick={() => {
-                    const content = styleText(commentRef.current.innerText);
-
-                    comment({ content: content, id: props.articleData.id }, props.userId, comments, setCommenting, (newComments) => {
-                      setCommentContent('')
-                      setComments(newComments)
-                    })
-                  }}>
-                    <b>Post</b>
-                  </button>
-                </div>
-              </>)}
+            <CommentArea 
+              commentRef={commentRef}
+              comments={comments}
+              setComments={setComments}
+              postId={props.articleData.id}
+              userId={props.userId}
+              commenting={commenting}
+              setCommentContent={setCommentContent}
+              setViewComment={setViewComment}
+              viewComment={viewComment}
+              setCommenting={setCommenting}
+              commentContent={commentContent}
+            />
 
             <div className={styles.comments}>
               {comments.map((com) => {
