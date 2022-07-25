@@ -12,8 +12,7 @@ import Paragraph from '../../components/Paragraph';
 import TitleCard from '../../components/TitleCard';
 import Comment from '../../components/Comment';
 import CodeBlock from '../../components/CodeBlock';
-import { ThumbUpSharp, ThumbDownSharp, Reddit, Twitter, LinkedIn, Facebook, CommentTwoTone } from '@material-ui/icons'
-import axios from 'axios';
+import { ThumbUpSharp, ThumbDownSharp, Reddit, Twitter, LinkedIn, Facebook, CommentTwoTone } from '@material-ui/icons';
 import VideoBackground from '../../components/VideoBackground';
 import SubtitleCard from '../../components/SubtitleCard';
 import FireText from '../../components/animatedText/FireText';
@@ -24,7 +23,9 @@ import RegexText from '../../components/animatedText/RegexText';
 import MetalHeadText from '../../components/animatedText/MetalHeadText';
 import Dialogue from '../../components/Dialogue';
 import { articlePageServerSideProps } from '../../ssr/articles/title';
-import { styleText, addMarkdownToSelection, like, comment } from '../../helpers/articlePageHelpers'
+import { styleText, addMarkdownToSelection, like, comment } from '../../helpers/articlePageHelpers';
+import LikePanel from '../../components/feedbackAndShare/LikePanel/LikePanel';
+import ShareBar from '../../components/feedbackAndShare/ShareBar/ShareBar';
 
 export const getServerSideProps = articlePageServerSideProps;
 
@@ -95,52 +96,21 @@ export default function ArticlePage(props) {
           </article>
 
           <aside className={styles.commentPanel} style={windowServer.innerWidth < 426 ? { marginLeft: showPanel ? "-81%" : "0%" } : {}}>
-            <aside className={styles.likePanel} >
+            <LikePanel
+              postId={props.articleData.id}
+              userId={props.userId}
+              pageColour={props.articleData.colour}
+              likes={likes}
+              isLiked={isLiked}
+              setLikes={setLikes}
+              setIsLiked={setIsLiked}
+              dislikes={dislikes}
+              isDisliked={isDisliked}
+              setDislikes={setDislikes}
+              setIsDisliked={setIsDisliked}
+            />
 
-              <button onClick={() => {
-                like( true, props.articleData.id, props.userId, () => {
-                  setIsLiked(!isLiked)
-                  if (isLiked === false) {
-                    setLikes(likes + 1)
-                  } else {
-                    setLikes(likes - 1)
-                  }
-                  if (isDisliked) {
-                    setIsDisliked(!isDisliked)
-                    setDislikes(dislikes - 1)
-                  }
-                  console.log(isLiked, isDisliked)
-                })
-              }}
-                style={{ color: isLiked === true ? props.articleData.colour : '#292929' }}>
-                <span className={styles.likeOption}><ThumbUpSharp className={styles.shareIcon} />{likes}</span>
-
-              </button>
-
-              <div id={styles.likeBar} style={{ backgroundImage: `linear-gradient(90deg, ${props.articleData.colour} ${(likes / (likes + dislikes)) * 100}%, transparent ${(likes / (likes + dislikes)) * 100}%)` }}>
-
-              </div>
-              <button onClick={() => {
-                like( false, props.articleData.id, props.userId, () => {
-                  setIsDisliked(!isDisliked)
-                  if (isDisliked === false) {
-                    setDislikes(dislikes + 1)
-                  } else {
-                    setDislikes(dislikes - 1)
-                  }
-                  if (isLiked) {
-                    setIsLiked(!isLiked)
-                    setLikes(likes - 1)
-                  }
-                  console.log(isLiked, isDisliked)
-                })
-              }}
-                style={{ color: isDisliked === true ? props.articleData.colour : '#292929' }}>
-                <span className={styles.likeOption}><ThumbDownSharp className={styles.shareIcon} />{dislikes}</span>
-              </button>
-            </aside>
-
-            <aside id={styles.shareBar}>
+            {/* <aside id={styles.shareBar}>
               <div className="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small">
                 <a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(windowServer.location).replace(/'/g, "%27").replace(/"/g, "%22")}`} className="fb-xfbml-parse-ignore" rel="noreferrer">
                   <Facebook className={styles.shareIcon} />
@@ -162,7 +132,11 @@ export default function ArticlePage(props) {
                   <Reddit className={styles.shareIcon} />
                 </a>
               </div>
-            </aside>
+            </aside> */}
+
+            <ShareBar
+              title={props.articleData.title}
+            />
 
             {commenting === true ?
               (<>

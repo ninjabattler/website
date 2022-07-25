@@ -1,0 +1,44 @@
+#shareBar {
+  position: absolute;
+  height: 50px;
+  background-color: var(--dark-gray);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -65px;
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+}
+#shareBar > div {
+  width: 100%;
+  color: var(--light-gray);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden !important;
+}
+#shareBar > div > a {
+  width: 50%;
+  color: var(--light-gray);
+  cursor: pointer;
+  text-align: center;
+  font-size: 1em;
+  transform: scale(2);
+}
+
+#shareBar > div > a:hover {
+  filter: drop-shadow(2px 2px 0px black);
+}
+#shareBar > div > span {
+  font-size: 0.6em;
+}
+
+@media only screen and (max-width: 425px) {
+  #shareBar {
+    height: 40px;
+  }
+  .shareIcon {
+    transform: scale(0.7);
+  }
+}

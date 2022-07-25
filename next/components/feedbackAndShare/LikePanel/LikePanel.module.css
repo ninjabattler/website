@@ -1,0 +1,55 @@
+.likePanel {
+  position: absolute;
+  height: 50px;
+  background-color: var(--dark-gray);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -130px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.likePanel > button {
+  color: var(--light-gray);
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1em;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+#likeBar {
+  width: 80%;
+  height: 20%;
+  background-color: var(--light-gray);
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.likeOption {
+  display: flex;
+  align-items: center;
+}
+
+.likeOption > * {
+  margin: 5px;
+}
+
+@media only screen and (max-width: 425px) {
+  .likePanel {
+    height: 35px;
+    margin-top: -110px;
+  }
+  .likePanel > button {
+    font-size: 0.7em;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+  #likeBar {
+    width: 80%;
+    height: 15%;
+  }
+}

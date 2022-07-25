@@ -16,52 +16,6 @@
 #reviewPage > div {
   display: flex;
 }
-.likePanel {
-  position: absolute;
-  height: 50px;
-  background-color: var(--dark-gray);
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: -130px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-#shareBar {
-  position: absolute;
-  height: 50px;
-  background-color: var(--dark-gray);
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: -65px;
-  width: 100%;
-  display: flex;
-  overflow: hidden;
-}
-#shareBar > div {
-  width: 100%;
-  color: var(--light-gray);
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden !important;
-}
-#shareBar > div > a {
-  width: 50%;
-  color: var(--light-gray);
-  cursor: pointer;
-  text-align: center;
-  font-size: 1em;
-  transform: scale(2);
-}
-
-#shareBar > div > a:hover {
-  filter: drop-shadow(2px 2px 0px black);
-}
-#shareBar > div > span {
-  font-size: 0.6em;
-}
 
 .commentPanel {
   position: sticky;
@@ -263,23 +217,6 @@
   background-color: var(--light-gray);
 }
 
-.likePanel > button {
-  color: var(--light-gray);
-  background: none;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  font-size: 1em;
-  padding-left: 5%;
-  padding-right: 5%;
-}
-.likePanel > #likeBar {
-  width: 80%;
-  height: 20%;
-  background-color: var(--light-gray);
-  margin-top: auto;
-  margin-bottom: auto;
-}
 #loadingArticle {
   height: 65vh;
   display: flex;
@@ -303,15 +240,6 @@
 .mobile {
   display: none;  
   margin-top: 50px;
-}
-
-.likeOption {
-  display: flex;
-  align-items: center;
-}
-
-.likeOption > * {
-  margin: 5px;
 }
 
 #mobileCommentButton {
@@ -416,19 +344,6 @@
    overflow-x: hidden;
    filter: drop-shadow(2px 2px 0px black);
   }
-  .likePanel {
-    height: 35px;
-    margin-top: -110px;
-  }
-  .likePanel > button {
-    font-size: 0.7em;
-    padding-left: 5%;
-    padding-right: 5%;
-  }
-  .likePanel > #likeBar {
-    width: 80%;
-    height: 15%;
-  }
   #loadingArticle > h3 {
     font-size: 0.5em;
     text-align: center;
@@ -462,12 +377,6 @@
     width: 100vw !important;
     transform: scale(0.7);
     margin-left: -7.5vw;
-  }
-  #shareBar {
-    height: 40px;
-  }
-  .shareIcon {
-    transform: scale(0.7);
   }
   @keyframes loading {
     0%{width: 80%; margin: 0%;}
