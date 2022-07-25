@@ -32,6 +32,7 @@ export default function NavBar(props) {
           random: 15
         }} />
         </div> */}
+        <div className={styles.spaceBackground}></div>
         <Link href="/">
           <a onClick={() => { setLinkClicked(true) }}>
             <img
@@ -47,6 +48,7 @@ export default function NavBar(props) {
             />
           </a>
         </Link>
+        <div className={`${styles.navOptions} ${styles.navOptionsOverlay}`}></div>
         <div className={styles.navOptions}>
           <div className={styles.option}>
             <div>
