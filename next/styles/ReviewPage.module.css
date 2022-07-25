@@ -27,6 +27,9 @@
   top: 210px;
   margin-top: 130px;
   filter: drop-shadow(8px 8px 0px black);
+  animation-name: commentPanelFadeIn;
+  animation-timing-function: linear;
+  animation-duration: 1.25s;
 }
 
 .commentPanel > button {
@@ -46,6 +49,13 @@
   margin-top: 5px;
   width: 99%;
 }
+
+.comments {
+  animation-name: commentsFadeIn;
+  animation-timing-function: linear;
+  animation-duration: 1.875s;
+}
+
 .commentPanel > div::-webkit-scrollbar {
   background: var(--light-gray);
   outline: 4px solid var(--dark-gray);
@@ -187,4 +197,16 @@
     50%{width: 90%; margin: -2.8%;}
     100%{width: 80%; margin: 0%;}
   }
+}
+
+@keyframes commentPanelFadeIn {
+  0%{height: 0vh;}
+  66%{height: 0vh;}
+  100%{height: 70vh}
+}
+
+@keyframes commentsFadeIn {
+  0%{height: 0%;}
+  66%{height: 0%;}
+  100%{height: 70%;}
 }
