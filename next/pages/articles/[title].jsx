@@ -12,7 +12,7 @@ import Paragraph from '../../components/Paragraph';
 import TitleCard from '../../components/TitleCard';
 import Comment from '../../components/Comment';
 import CodeBlock from '../../components/CodeBlock';
-import { ThumbUpSharp, ThumbDownSharp, Reddit, Twitter, LinkedIn, Facebook, CommentTwoTone } from '@material-ui/icons';
+import { CommentTwoTone } from '@material-ui/icons';
 import VideoBackground from '../../components/VideoBackground';
 import SubtitleCard from '../../components/SubtitleCard';
 import Dialogue from '../../components/Dialogue';
@@ -20,6 +20,7 @@ import { articlePageServerSideProps } from '../../ssr/articles/title';
 import LikePanel from '../../components/feedbackAndShare/LikePanel/LikePanel';
 import ShareBar from '../../components/feedbackAndShare/ShareBar/ShareBar';
 import CommentArea from '../../components/feedbackAndShare/CommentArea/CommentArea';
+import noCommentMessages from '../../constants/noCommentMessages.json';
 
 export const getServerSideProps = articlePageServerSideProps;
 
@@ -133,6 +134,9 @@ export default function ArticlePage(props) {
             />
 
             <div className={styles.comments}>
+              {comments.length === 0 && (
+                <p id={styles.noCommentMessage} dangerouslySetInnerHTML={{__html: noCommentMessages[props.randomQuoteIndex]}}></p>
+              )}
               {comments.map((com) => {
                 if (com.username) {
                   return (<Comment
