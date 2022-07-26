@@ -87,7 +87,7 @@ export default function ArticlePage(props) {
       <main id={styles.reviewPage}>
         {!showPanel && (<div id={styles.mobileCover}></div>)}
         <VideoHeader video={props.articleData.video_header || ""} title={props.articleData.title} pageColour={props.articleData.colour} />
-        <InfoBar date={props.articleData.formatteddate} categoryGenre={`${props.articleData.category}/${props.articleData.genre}`} />
+        <InfoBar date={props.articleData.formatteddate} category={props.articleData.category} genre={props.articleData.genre} />
 
         <div>
           <article className={styles.articleContainer} style={windowServer.innerWidth < 426 ? { boxShadow: `2px 2px 0px ${props.articleData.colour}` } : { boxShadow: `5px 5px 0px ${props.articleData.colour}` }}>
