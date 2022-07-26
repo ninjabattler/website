@@ -1,11 +1,12 @@
 .navBar {
-  width: 100%;
-  height: 300px;
+  width: 100vw;
+  height: 16.25vw;
   background-color: var(--dark-gray);
   filter: drop-shadow(5px 5px 5px black);
   z-index: 100;
   position: sticky;
-  top: -285px;
+  top: -15.8vw;
+  font-size: 1.4vw;
 }
 
 .spaceBackground {
@@ -20,33 +21,17 @@
   filter: blur(3px);
 }
 
-#navParticles {
-  position: absolute;
-  height: 300px;
-  width: 100vw;
-  z-index: -99;
-  border: none;
-  filter:blur(6px) brightness(2);
-  mix-blend-mode: lighten;
-  animation-name: glow;
-  animation-duration: 3s;
-  animation-delay: 1.5s;
-  animation-iteration-count: infinite;
-}
-
 .navBar > a {
   display: flex;
   justify-content: center;
 }
 
 .navBar > a > img {
-  /* filter: drop-shadow(2px 2px 0px black); */
-  height: 300px;
+  height: 16.25vw;
 }
 
 .navBar > a > #glow {
-  /* filter: drop-shadow(2px 2px 0px black); */
-  height: 300px;
+  height: 16.25vw;
   margin-left: auto;
   margin-right: auto;
   filter:blur(6px) brightness(2);
@@ -59,12 +44,12 @@
 }
 
 .navOptions {
-  width: 90%;
-  border-top: 60px solid var(--light-gray);
-  border-right: 60px solid transparent;
-  border-left: 60px solid transparent;
-  margin-top: -20px;
-  margin-left: 2%;
+  width: 90vw;
+  border-top: 3.25vw solid var(--light-gray);
+  border-right: 3.25vw solid transparent;
+  border-left: 3.25vw solid transparent;
+  margin-top: -0.5vw;
+  margin-left: 1.75vw;
   position: absolute;
   display: flex;
   flex-direction: row;
@@ -86,37 +71,6 @@
   border-color: transparent;
 }
 
-.navOptions.lists > .option {
-  background-color: var(--dark-gray);
-  margin-top: -40px;
-  height: 100px;
-  transition: text-shadow 0.3s;
-}
-
-
-.navOptions.lists > .option:hover {
-  text-shadow: none;
-}
-
-.navOptions.lists > .option > div {
-  display: flex;
-  flex-direction: column;
-  margin-top: 20px;
-}
-
-.navOptions.lists > .option > div > * {
-  display: flex;
-  flex-direction: column;
-  margin-top: 0;
-  margin-bottom: 10px;
-  border-bottom: 2px solid var(--light-gray);
-  transition: text-shadow 0.3s;
-}
-
-.navOptions.lists > .option > div > *:hover {
-  text-shadow: 2px 2px 0px black;
-}
-
 .navOptions > input {
   width: 25%;
   background-color: var(--dark-gray);
@@ -133,16 +87,29 @@
   color: var(--light-gray);
   margin-left: 86.5%;
 }
-.navOptions > .option {
+.option {
   display: flex;
-  border-bottom: 40px solid var(--dark-gray);
-  border-left: 40px solid transparent;
-  border-right: 40px solid transparent;
-  width: 200px;
-  margin-top: -90px;
+  border-bottom: 2.2vw solid var(--dark-gray);
+  border-left: 2.2vw solid transparent;
+  border-right: 2.2vw solid transparent;
+  width: 10.5vw;
+  margin-top: -4.8vw;
   z-index: 99;
   transition: filter 0.3s;
+  font-size: 1em;
 }
+
+.option > div {
+  color: var(--light-gray);
+  width: 10.5vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2.9vw;
+  position: absolute;
+  text-align: center;
+}
+
 .option:hover {
   filter: drop-shadow(0px -3px 0px var(--light-gray)) drop-shadow(0px -3px 0px var(--dark-gray));
 }
@@ -155,22 +122,12 @@
   margin-left: -16% !important;
 }
 
-.navOptions > .option > div {
-  color: var(--light-gray);
-  font-size: 1.7em;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin-left: 50px;
-  margin-top: 54px;
-  position: absolute;
-}
 .navOptions > .option > div > span > a, .navOptions > .option > div > a {
   color: var(--light-gray);
 }
 
 #shadow {
-  background-image: linear-gradient(rgba(0,0,0,0) 50%, rgb(2, 2, 2) 88%, var(--dark-gray) 88%);
+  background-image: linear-gradient(rgba(0,0,0,0) 60%, rgb(7, 7, 7) 88%, var(--dark-gray) 88%);
   filter: blur(0);
   width: 100%;
   height: 100%;
@@ -185,101 +142,30 @@
   100%{filter:blur(6px) brightness(2);}
 }
 
-@media (max-device-width: 1366px) {
-  .navBar {
-    height: 220px;
-    top: -210px;
-  }
-  .navBar > a > img, .navBar > a > #glow {
-    height: 220px;
-  }
-  .navOptions {
-    border-width: 45px;
-    width: 89%;
-  }
-
-  .navOptions > .option {
-    border-width: 30px;
-    width: 170px;
-    margin-top: -90px;
-  }
-
-  .navOptions > .option > div {
-    font-size: 1.4em;
-    margin-left: 45px;
-    margin-top: 60px;
-  }
-}
-
-@media (max-device-width: 1280px) {
-  .navOptions > .option > div {
-    font-size: 1.7em;
-  }
-}
-
-@media (max-device-width: 853px) {
-  .navBar {
-    height: 100px;
-    width: 100%;
-    padding-right: 0px;
-    top: -100px;
-  }
-  #navParticles {
-    height: 100px;
-  }
-  .navBar > a > img, .navBar > a > #glow {
-    height: 100px;
-  }
-  .navOptions {
-    width: 80%;
-    border-width: 45px;
-    margin-top: -3px;
-  }
-  .navOptions > .option {
-    margin-top: -45px;
-    margin-left: -5px;
-  }
-  .navOptions > .option > div {
-    color: var(--light-gray);
-    font-size: 1.9em;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-left: 50px;
-    margin-top: 15px;
-    position: absolute;
-  }
-}
 @media (max-device-width: 480px) {
   .navBar {
     filter: drop-shadow(2px 2px 0px black);
+    height: 27.7777vw;
+    font-size: 1.8vw;
+    top: -26vw;
   }
+
+  .navBar > a > img, .navBar > a > #glow {
+    height: 27.7777vw;
+  }
+
   .navOptions {
-    width: 83%;
-    border-width: 20px;
-    margin-top: -3px;
+    margin-left: 2.9vw;
+    margin-top: -1.8vw;
+    width: 85vw;
+    border-width: 4.6vw;
   }
-  .navOptions {
-    margin-left: 3% !important;
-  }
+
   .navOptions > .option {
-    margin-top: -20px;
-    margin-left: -5px;
-    border-width: 15px;
-    width: 35px;
+    border-width: 3.5vw;
+    width: 9vw;
   }
   .navOptions > .option > div {
-    color: var(--light-gray);
-    font-size: 1em;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-left: 3px;
-    margin-top: 10px;
-    position: absolute;
-  }
-  .option:hover {
-    text-shadow: 1px 1px 0px black;
-    filter: drop-shadow(0px -1.5px 0px black);
+    margin-top: 2.4vw;
   }
 }
