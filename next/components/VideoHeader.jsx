@@ -22,9 +22,10 @@ export default function VideoHeader(props) {
 
       <div className={styles.bar2}></div>
       <div className={styles.barC} style={{ borderBottomColor: props.pageColour, borderRightColor: "transparent" }}></div>
+      <div className={`${styles.barC} ${styles.barGlow}`} style={{ borderBottomColor: props.pageColour, borderRightColor: "transparent" }}></div>
       <div className={styles.bar1}></div>
 
-      <h1 style={{ textShadow: windowVar.innerWidth > 414 ? `1px 1px 0px ${props.pageColour}` : `0.5px 0.5px 0px ${props.pageColour}` }}>
+      <h1>
         {props.title}
       </h1>
     </div>

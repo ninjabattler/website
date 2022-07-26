@@ -119,7 +119,7 @@ export default function ArticlePage(props) {
               windowServer={windowServer}
             />
 
-            <CommentArea 
+            <CommentArea
               commentRef={commentRef}
               comments={comments}
               setComments={setComments}
@@ -134,8 +134,8 @@ export default function ArticlePage(props) {
             />
 
             <div className={styles.comments}>
-              {comments.length === 0 && (
-                <p id={styles.noCommentMessage} dangerouslySetInnerHTML={{__html: noCommentMessages[props.randomQuoteIndex]}}></p>
+              {comments.length <= 1 && (
+                <p id={styles.noCommentMessage} dangerouslySetInnerHTML={{ __html: noCommentMessages[props.randomQuoteIndex] }}></p>
               )}
               {comments.map((com) => {
                 if (com.username) {
