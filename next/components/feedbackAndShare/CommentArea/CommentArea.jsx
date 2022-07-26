@@ -7,7 +7,7 @@ import IceText from '../../animatedText/IceText';
 import EarthText from '../../animatedText/EarthText';
 import RegexText from '../../animatedText/RegexText';
 import MetalHeadText from '../../animatedText/MetalHeadText';
-import { addMarkdownToSelection, comment } from '../../../helpers/articlePageHelpers';
+import { addMarkdownToSelection, comment, styleText } from '../../../helpers/articlePageHelpers';
 
 export default function CommentArea({ commentRef, comments, setComments, postId, userId, commenting, setCommenting, viewComment, setViewComment, setCommentContent, commentContent }) {
   return (
