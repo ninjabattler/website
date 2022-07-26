@@ -111,10 +111,10 @@
 #postComment {
   width: 15%;
   margin-left: auto;
-  margin-right: 10px;
   color: var(--light-gray) !important;
   background-color: var(--dark-gray) !important;
   border-right: 2px solid var(--light-gray) !important;
+  transform: none !important;
 }
 
 #commentViewBar > .selected {

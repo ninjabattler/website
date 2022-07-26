@@ -7,6 +7,10 @@ export default function Footer(props){
       <div className={styles.topBar}>
       
       </div>
+      <section id={styles.copyrightSection}>
+        <img src={'/Ninja placeholder.png'} />
+        <p>© Ninjabattler 2020</p>
+      </section>
     </footer>
   )
 }
