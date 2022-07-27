@@ -1,10 +1,10 @@
 #shareBar {
   position: absolute;
-  height: 50px;
+  height: 2.7vw;
   background-color: var(--dark-gray);
   margin-left: auto;
   margin-right: auto;
-  margin-top: -65px;
+  margin-top: -3.55vw;
   width: 100%;
   display: flex;
   overflow: hidden;
@@ -27,15 +27,17 @@
   color: var(--light-gray);
   cursor: pointer;
   text-align: center;
-  font-size: 1em;
-  transform: scale(2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shareIcon {
+  font-size: 2.4vw !important;
 }
 
 #shareBar > div > a:hover {
   filter: drop-shadow(2px 2px 0px black);
-}
-#shareBar > div > span {
-  font-size: 0.6em;
 }
 
 @media only screen and (max-width: 425px) {

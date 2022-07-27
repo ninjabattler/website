@@ -18,13 +18,12 @@
 }
 
 #noCommentMessage {
-  font-size: 0.75em;
+  font-size: 1.2vw;
   padding: 10px;
   padding-top: 0;
   margin: 0;
   color: var(--light-gray);
-  filter: drop-shadow(0px 0px 5px var(--light-gray));
-  opacity: 0.5;
+  opacity: 0.8;
   cursor: default;
 }
 
@@ -32,12 +31,11 @@
   position: sticky;
   width: 30%;
   height: 70vh;
-  /* background-color: var(--dark-gray); */
   background-image: linear-gradient(45deg, var(--dark-gray) 3%, rgba(0, 0, 0, 0.5) 3%, rgba(0, 0, 0, 0.5) 5%, var(--dark-gray) 5%);
   margin-left: auto;
   margin-right: auto;
-  top: 210px;
-  margin-top: 130px;
+  top: 11.5vw;
+  margin-top: 7.1vw;
   filter: drop-shadow(6px 6px 0px black);
   animation-name: commentPanelFadeIn;
   animation-timing-function: linear;
@@ -128,14 +126,6 @@
     width: 65%;
     margin-right: auto;
   }
-
-  .commentPanel {
-    height: 65vh;
-  }
-
-  .commentPanel > div {
-    height: 60%;
-  }
 }
 
 @media only screen and (max-width: 853px) {
@@ -187,9 +177,6 @@
     z-index: 101;
     filter: drop-shadow(3px 3px 0px black);
     transition: margin-left 0.5s;
-  }
-  .commentPanel > div {
-    height: 62%;
   }
   .commentPanel > textarea {
     width: 90%;

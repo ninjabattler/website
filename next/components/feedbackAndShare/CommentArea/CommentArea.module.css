@@ -1,17 +1,15 @@
 
 #commentArea, #commentAreaView {
   width: calc(99% - 10px);
-  height: 100px !important;
+  height: 5.4vw !important;
   padding: 5px;
   background: none;
   border: none;
   outline: none;
-  /* border-top: 2px solid var(--light-gray);
-  border-bottom: 2px solid var(--light-gray); */
   margin-top: 2px;
   margin-bottom: 2px;
   color: var(--light-gray);
-  font-size: 0.6em;
+  font-size: 0.9vw;
   margin-top: 0;
   resize: none;
   display: flex;
@@ -49,9 +47,8 @@
 
 #commentStylingBar {
   width: 100%;
-  height: 30px;
+  height: 1.62vw;
   margin: 0;
-  /* margin-top: -10px; */
   overflow: hidden;
   display: flex;
   background-color: var(--light-gray);
@@ -64,14 +61,13 @@
 }
 
 #commentStylingBar > button {
-  min-width: 32px;
-  height: 32px;
+  min-width: 1.75vw;
+  height: 1.75vw;
   border: none;
   outline: none;
   border-right: 2px solid var(--dark-gray);
-  font-size: 0.8em;
+  font-size: 1.3vw;
   color: var(--dark-gray);
-  /* border: 2px solid var(--dark-gray); */
   background-color: var(--light-gray);
   cursor: pointer;
   transform: skewX(10deg);
@@ -83,7 +79,7 @@
 
 #commentViewBar {
   width: 100%;
-  height: 30px;
+  height: 1.62vw;
   margin: 0;
   overflow: hidden;
   display: flex;
@@ -97,11 +93,11 @@
 
 #commentViewBar > button {
   width: 50%;
-  height: 32px;
+  height: 1.75vw;
   border: none;
   outline: none;
   margin-right: 2px;
-  font-size: 0.8em;
+  font-size: 1.3vw;
   color: var(--light-gray);
   background-color: var(--dark-gray);
   cursor: pointer;
@@ -126,8 +122,8 @@
   display: flex;
   flex-direction: column;
   min-width: 25%;
-  min-height: 32px;
-  font-size: 0.8em;
+  min-height: 1.75vw;
+  font-size: 1.3vw;
   color: var(--dark-gray);
   background-color: var(--light-gray);
 }
@@ -155,7 +151,7 @@
   display: block;
   cursor: pointer;
   width: 100%;
-  height: 32px;
+  height: 1.75vw;
   font-size: 0.8em;
   border: none;
   border-bottom: 1px solid var(--dark-gray);

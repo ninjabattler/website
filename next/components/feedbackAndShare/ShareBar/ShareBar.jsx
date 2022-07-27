@@ -14,7 +14,6 @@ export default function ShareBar({ title, windowServer }) {
         <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-show-count="false" rel="noreferrer">
           <Twitter className={styles.shareIcon} />
         </a>
-        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </div>
       <div>
         <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(windowServer.location).replace(/'/g, "%27").replace(/"/g, "%22")}`} target="_blank" rel="noreferrer">
