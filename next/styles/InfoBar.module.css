@@ -48,8 +48,8 @@
   .infoBar > span {
     margin-bottom: 0.6%;
     font-size: 2vw;
-    width: 50vw;
-    margin-left: 25vw;
+    width: 75vw;
+    margin-left: 12.5vw;
     justify-content: center;
   }
   .infoBar > span > div {
