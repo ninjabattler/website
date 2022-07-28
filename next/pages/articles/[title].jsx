@@ -117,6 +117,8 @@ export default function ArticlePage(props) {
             <ShareBar
               title={props.articleData.title}
               windowServer={windowServer}
+              articleLink={props.url}
+              pageColour={props.articleData.colour}
             />
 
             <CommentArea

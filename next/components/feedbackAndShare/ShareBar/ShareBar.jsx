@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from "./ShareBar.module.css";
-import { Reddit, Twitter, LinkedIn, Facebook, } from '@material-ui/icons';
+import { Reddit, Twitter, LinkedIn, LinkSharp } from '@material-ui/icons';
 
-export default function ShareBar({ title, windowServer }) {
+export default function ShareBar({ title, windowServer, articleLink, pageColour }) {
+  const [linkCopied, setLinkCopied] = useState(false);
+
+  const copyLink = () => { 
+    window.navigator.clipboard.writeText(articleLink);
+    setLinkCopied(true);
+  }
+
   return (
     <aside id={styles.shareBar}>
-      <div className="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small">
-        <a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(windowServer.location).replace(/'/g, "%27").replace(/"/g, "%22")}`} className="fb-xfbml-parse-ignore" rel="noreferrer">
-          <Facebook className={styles.shareIcon} />
+      <div>
+        <a onClick={copyLink} rel="noreferrer">
+          <LinkSharp className={styles.shareIcon} style={{ fill: linkCopied && pageColour }} />
         </a>
       </div>
       <div>
