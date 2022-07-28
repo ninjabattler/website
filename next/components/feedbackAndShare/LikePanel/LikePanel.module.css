@@ -63,17 +63,16 @@
 
 @media only screen and (max-width: 425px) {
   .likePanel {
-    height: 35px;
-    margin-top: -110px;
+    height: 7.5vw;
+    margin-top: -20vw;
   }
   .likePanel > button {
-    font-size: 0.7em;
-    padding-left: 5%;
-    padding-right: 5%;
+    font-size: 4vw;
+    padding-left: 2.4vw;
+    padding-right: 2.4vw;
   }
-  #likeBar {
-    width: 80%;
-    height: 15%;
+  .shareIcon {
+    font-size: 3vw !important;
   }
 }
 

@@ -162,41 +162,29 @@
 
 @media only screen and (max-width: 425px) {
   #commentStylingBar, #commentViewBar {
-    height: 20px;
+    height: 4vw;
   }
 
-  #commentStylingBar > #styleFiller {
-    cursor: unset;
-    width: 10%;
-  }
-  
   #commentStylingBar > button {
-    min-width: 20px;
-    height: 20px;
-    margin-right: 1px;
-    font-size: 0.6em;
+    height: 4vw;
+    font-size: 2.5vw;
   }
   #commentViewBar > button {
-    width: 50%;
-    height: 20px;
-    margin-right: 1px;
-    font-size: 0.6em;
+    height: 4vw;
+    font-size: 2.5vw;
   }
   #animTextDropdown {
-    width: 100px;
-    margin-right: 1px;
-    min-height: 20px;
-    height: 20px;
-    font-size: 0.6em;
+    font-size: 2.5vw;
   }
 
   #commentArea, #commentAreaView {
-    font-size: 0.45em;
+    height: 15vw !important;
   }
 
-  #animTextDropdown:hover > div {
-    width: 100px;
+  #animTextDropdown:hover > div > button {
+    height: 4.3vw;
   }
+
 }
 
 @keyframes commentBarsFadeIn {
