@@ -1,74 +1,71 @@
 .bossCard  {
-  margin-bottom: 150px;
-  margin-top: 100px;
+  margin-bottom: 8.1vw;
+  margin-top: 5.4vw;
   display: flex;
   justify-content: right;
   align-items: flex-start;
   filter: drop-shadow(-6px 3px 0px black);
-  font-size: 17px;
+  --border-width: 5.4vw;
 }
 .background1 {
   --gradientColour: rgba(0, 0, 0, 0.5);
   position: absolute;
-  border-top: 100px solid var(--light-gray);
-  border-left: 100px solid transparent;
+  border-top: var(--border-width) solid var(--light-gray);
+  border-left: var(--border-width) solid transparent;
   width: 40%;
   z-index: 2;
   mask: linear-gradient(45deg, black 20%, var(--gradientColour) 20%, var(--gradientColour) 22%, black 22%, black 24%, var(--gradientColour) 24%, var(--gradientColour) 26%, black 26%);
 }
 .background2 {
   position: absolute;
-  border-top: 100px solid var(--dark-gray);
-  border-left: 100px solid transparent;
+  border-top: var(--border-width) solid var(--dark-gray);
+  border-left: var(--border-width) solid transparent;
   width: 40.5%;
-  margin-top: 15px;
-  /* margin-left: 4px;
-  animation-name: title-glow;
-  animation-duration: 3s;
-  animation-iteration-count: infinite; */
+  margin-top: 0.8vw;
 }
 
 .bossCard > h2 {
   position: absolute;  
   text-align: right;
   color: var(--dark-gray);
-  margin-top: 40px;
-  margin-right: 5px;
-  font-size: 2em;
+  margin-top: 2.3vw;
+  margin-right: 0.25vw;
+  font-size: 1.75vw;
   backdrop-filter: blur(3px);
   filter: drop-shadow(1px 1px 0px var(--light-gray)) drop-shadow(-1px -1px 0px var(--light-gray));
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 0.5vw;
+  padding-bottom: 0.5vw;
   z-index: 3;
   mask: linear-gradient(transparent, black 30%, black 70%, transparent 100%);
 }
 .bossCard > .imageContainer {
   position: absolute;
   display: flex;
-  height: 350px;
+  height: 19vw;
   /* overflow-y: hidden; */
-  margin-top: -250px;
+  margin-top: -13.9vw;
   flex-direction: column-reverse;
   z-index: 3;
 }
 .bossCard > .imageContainer > img {
-  max-height: 700px;
+  max-height: 12vw;
+  max-width: 20vw;
 }
 
 .bossCard > .imageContainer > .smaller {
-  max-height: 300px;
+  max-height: 11.5vw;
 }
 
 .bossCard > .imageContainer > .extraSmaller {
-  max-height: 200px;
+  max-height: 11vw;
 }
 
 .imageContainer.lower {
-  margin-top: -160px;
+  margin-top: -8.5vw;
 } 
 
 .imageContainer.higher {
-  margin-top: -300px;
+  margin-top: -16vw;
 } 
 
 .inverse > .background1, .inverse > .background2, .inverse > h2 {
@@ -80,10 +77,11 @@
   transform: scale(1.01);
   mix-blend-mode: lighten;
   position: absolute;
-  opacity: 0.6;
+  opacity: 1;
   animation-name: glow;
   animation-duration: 3s;
   animation-iteration-count: infinite;
+  animation-timing-function: linear;
   z-index: -1;
 }
 
@@ -97,105 +95,6 @@
   z-index: -1;
 }
 
-@media only screen and (max-width: 1536px) {
-  .bossCard > h2 {
-    font-size: 1.6em;
-    margin-top: 50px;
-  }
-}
-
-@media only screen and (max-width: 1280px) {
-  .bossCard {
-    margin-bottom: 150px;
-    filter: drop-shadow(-3px 2px 0px black);
-  }
-  .bossCard > h2 {
-    font-size: 1.2em;
-    margin-top: 50px
-  }
-  .bossCard > .imageContainer {
-    height: 200px;
-    margin-top: -150px;
-  }
-  .imageContainer.lower {
-    margin-top: -20px;
-  } 
-  .bossCard > .imageContainer > img {
-    max-height: 130px;
-    max-width: 25vw;
-  }
-  .bossCard > .background1 {
-    border-width: 80px;
-    margin-left: -2px;
-  }
-  .bossCard > .background2 {
-    margin-top: 5px;
-    border-width: 80px;
-  }
-}
-
-@media only screen and (max-width: 853px) {
-  .bossCard {
-    margin-bottom: 100px;
-    filter: drop-shadow(-3px 2px 0px black);
-  }
-  .bossCard > h2 {
-    font-size: 0.7em;
-    margin-top: 35px
-  }
-  .bossCard > .background1 {
-    border-width: 60px;
-    margin-left: -2px;
-  }
-  .bossCard > .background2 {
-    margin-top: 5px;
-    border-width: 60px;
-  }
-}
-
-@media only screen and (max-width: 480px) {
-  .bossCard {
-    margin-top: 70px;
-    margin-bottom: 50px;
-    filter: drop-shadow(-3px 2px 0px black);
-  }
-  .bossCard > h2 {
-    font-size: 0.5em;
-    margin-bottom: -30px;
-    height: auto;
-    width: 70%;
-    bottom: 0;
-  }
-  .bossCard > .background1 {
-    border-width: 30px;
-    margin-left: -2px;
-  }
-  .bossCard > .background2 {
-    margin-top: 5px;
-    border-width: 30px;
-  }
-  .bossCard > .imageContainer > img {
-    max-height: 50px;
-    max-width: 35vw;
-    margin-bottom: 20px;
-  }
-  .bossCard > .imageContainer > .smaller {
-    max-height: 50px;
-  }
-  .bossCard > .imageContainer {
-    margin-top: -160px;
-  }
-  .imageContainer.lower {
-    margin-top: -70px;
-  } 
-}
-
-@keyframes title-glow {
-  0%{filter:blur(2px) brightness(1.5);}
-  50%{filter:blur(1px) brightness(1);}
-  100%{filter:blur(2px) brightness(1.5);}
-}
-
 @keyframes glow {
   0%{filter:blur(6px) brightness(2);}
   50%{filter:blur(4px) brightness(1.5);}
@@ -206,4 +105,68 @@
   0%{filter:blur(6px) brightness(3);}
   50%{filter:blur(2px) brightness(1.5);}
   100%{filter:blur(6px) brightness(3);}
+}
+
+@media only screen and (max-width: 480px) {
+  .bossCard {
+    margin-bottom: 12vw;
+    margin-top: 7vw;
+    --border-width: 9vw;
+    filter: drop-shadow(-2px 1px 0px black);
+  }
+  
+  .bossCard > h2 {
+    margin-top: 4vw;
+    margin-right: 1vw;
+    font-size: 3vw;
+    padding-top: 0.5vw;
+    padding-bottom: 0.5vw;
+  }
+
+  .bossCard > .imageContainer {
+    height: 19vw;
+    margin-top: -10vw;
+  }
+
+  .bossCard > .background1 {
+    width: 50%;
+  }
+
+  .bossCard > .background2 {
+    width: 51%;
+  }
+
+  .bossCard > .imageContainer > img {
+    max-height: 18vw;
+    max-width: 40vw;
+  }
+
+  .bossCard > .imageContainer > .smaller {
+    max-height: 16vw;
+  }
+  
+  .bossCard > .imageContainer > .extraSmaller {
+    max-height: 14vw;
+  }
+  
+  .imageContainer.lower {
+    margin-top: -6vw;
+  } 
+  
+  .imageContainer.higher {
+    margin-top: -14vw;
+  } 
+
+
+  @keyframes glow {
+    0%{filter:blur(2px) brightness(2);}
+    50%{filter:blur(1px) brightness(1.5);}
+    100%{filter:blur(2px) brightness(2);}
+  }
+
+  @keyframes glow2 {
+    0%{filter:blur(2px) brightness(3);}
+    50%{filter:blur(1px) brightness(1.5);}
+    100%{filter:blur(2px) brightness(3);}
+  }
 }
