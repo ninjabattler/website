@@ -38,7 +38,7 @@
   z-index: 3;
   mask: linear-gradient(transparent, black 30%, black 70%, transparent 100%);
 }
-.bossCard > .imageContainer {
+.imageContainer {
   position: absolute;
   display: flex;
   height: 19vw;
@@ -47,16 +47,16 @@
   flex-direction: column-reverse;
   z-index: 3;
 }
-.bossCard > .imageContainer > img {
+.imageContainer > img {
   max-height: 12vw;
   max-width: 20vw;
 }
 
-.bossCard > .imageContainer > .smaller {
+.imageContainer > .smaller {
   max-height: 11.5vw;
 }
 
-.bossCard > .imageContainer > .extraSmaller {
+.imageContainer > .extraSmaller {
   max-height: 11vw;
 }
 
@@ -123,29 +123,29 @@
     padding-bottom: 0.5vw;
   }
 
-  .bossCard > .imageContainer {
+  .imageContainer {
     height: 19vw;
     margin-top: -10vw;
   }
 
-  .bossCard > .background1 {
+  .background1 {
     width: 50%;
   }
 
-  .bossCard > .background2 {
+  .background2 {
     width: 51%;
   }
 
-  .bossCard > .imageContainer > img {
+  .imageContainer > img {
     max-height: 18vw;
     max-width: 40vw;
   }
 
-  .bossCard > .imageContainer > .smaller {
+  .imageContainer > .smaller {
     max-height: 16vw;
   }
   
-  .bossCard > .imageContainer > .extraSmaller {
+  .imageContainer > .extraSmaller {
     max-height: 14vw;
   }
   
@@ -159,9 +159,9 @@
 
 
   @keyframes glow {
-    0%{filter:blur(2px) brightness(2);}
-    50%{filter:blur(1px) brightness(1.5);}
-    100%{filter:blur(2px) brightness(2);}
+    0%{filter:blur(2px) brightness(1.5);}
+    50%{filter:blur(1px) brightness(1);}
+    100%{filter:blur(2px) brightness(1.5);}
   }
 
   @keyframes glow2 {

@@ -24,7 +24,7 @@ export default function Picture(props) {
       <img
         src={props.imageSrc.replace('http://', 'https://')}
         style={{ 
-          filter: windowServer.innerWidth < 426 ? `drop-shadow(2px 2px 0px ${props.pageColour})` : `drop-shadow(5px 5px 0px ${props.pageColour})`, 
+          filter: windowServer.innerWidth < 426 ? `drop-shadow(0px 2px 0px ${props.pageColour})` : `drop-shadow(0px 5px 0px ${props.pageColour})`, 
           width: props.width,
           float: props.float,
           marginLeft: props.float === 'left' && '-12.5%',
