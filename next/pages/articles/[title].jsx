@@ -80,6 +80,13 @@ export default function ArticlePage(props) {
         {/* <!--FONTS--> */}
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Gloria+Hallelujah&family=Trade+Winds&family=Hanalei+Fill&family=Rock+Salt&display=swap" rel="stylesheet" />
+        <style>
+          {`
+            :root {
+              --article-colour: ${props.articleData.colour};
+            }
+          `}
+        </style>
       </Head>
 
       <VideoBackground video={props.articleData.video_header || ""} pageColour={props.articleData.colour} />

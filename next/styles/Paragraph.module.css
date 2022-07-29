@@ -36,6 +36,8 @@
 
 @media only screen and (max-width: 480px) {
   .paragraph {
-    font-size: 0.5em;
+    font-size: 0.55em;
+    margin-bottom: 15px;
+    margin-top: 15px;
   }
 }
