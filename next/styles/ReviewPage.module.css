@@ -9,6 +9,7 @@
   filter: drop-shadow(8px 5px 0px black);
   /* margin-left: 1%; */
   border-left: 1vw solid var(--light-gray);
+  overflow-x: hidden;
 }
 .articleContainer > ul {
   width: 100%;

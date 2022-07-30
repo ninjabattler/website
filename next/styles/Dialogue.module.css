@@ -4,66 +4,80 @@
   display: flex;
   flex-direction: row;
   align-items: flex-end;
-  height: 11vw;
-  margin-top: 8vw;
+  height: 9.5vw;
+  margin-top: 5vw;
   color: var(--light-gray);
-  background-color: var(--light-gray);
   font-size: 1em;
 }
 
 .dialogue > img {
-  height: 150%;
+  max-height: 16.5vw;
+  width: 14.25vw;
   image-rendering: pixelated;
+  filter: drop-shadow(1vw 0px 0px var(--dark-gray));
 }
 
 .dialogueText {
   height: 100%;
-  width: 100%;
+  width: 90%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  align-items: flex-end;
 }
 
 .dialogueText > p {
-  width: 100%;
-  padding: 5px;
+  width: 80%;
+  padding: 0.3vw;
   margin: 0;
-  font-size: 0.8em;
+  margin-top: 2.2vw;
+  right: 0;
+  font-size: 0.75em;
+  text-align: right;
   color: var(--dark-gray);
 }
 
 .dialogueText > h3 {
-  height: 40px;
-  width: 95%;
+  position: absolute;
+  height: 2.2vw;
+  width: 50%;
   margin: 0;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 0.6vw;
+  padding-right: 22%;
+  right: 0;
   font-size: 1em;
   text-align: right;
   opacity: 75%;
-  background-color: var(--dark-gray);
+  background-image: linear-gradient(-45deg, var(--dark-gray) 80%, transparent 80%, transparent 82%, var(--dark-gray) 82%, var(--dark-gray) 84%, transparent 84%, transparent 86%);
 }
 
-@media only screen and (max-width: 1280px) {
-  .dialogueText > h3 {
-    height: 30px;
-  }
-}
-
-@media only screen and (max-width: 853px) {
-  .dialogue {
-    height: 14vw;
-    font-size: 0.45em;
-  }
+.background1 {
+  position: absolute;
+  width: 85%;
+  border-top: 9.5vw solid var(--light-gray);
+  border-left: 9.5vw solid transparent;
+  z-index: -1;
+  right: 0;
 }
 
 @media only screen and (max-width: 425px) {
   .dialogue {
-    height: 17.5vw;
+    height: 14vw;
+    margin-top: 10vw;
+    font-size: 0.45em;
+  }
+
+  .dialogue > img {
+    max-height: 40vw;
+    width: 20vw;
   }
 
   .dialogueText > h3 {
-    height: 14px;
-    width: 85%;
+    height: 2.5vw;
+    padding-right: 27%;
+  }
+
+  .background1 {
+    border-width: 14vw;
   }
 }
