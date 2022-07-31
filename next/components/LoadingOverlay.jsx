@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from "../styles/LoadingOverlay.module.css";
 
-export default function LoadingOverlay() {
+export default function LoadingOverlay({ shrink }) {
   let QUOTES = [
     'Ware wa meshia nari!',
     "Falcon... I'm not the only copy of you.",
@@ -23,7 +23,7 @@ export default function LoadingOverlay() {
   ]
 
   return (
-    <div id={styles.loadingOverlay}>
+    <div id={styles.loadingOverlay} className={shrink && styles.shrink}>
       <img src='/Ninja placeholder.png' />
       <p>&quot;{QUOTES[Math.floor(Math.random() * QUOTES.length)]}&quot;</p>
     </div>

@@ -1,11 +1,41 @@
-import Footer from '../components/Footer'
-import NavBar from '../components/NavBar'
-import '../styles/globals.css'
+import { useState, useEffect } from 'react';
+import Footer from '../components/Footer';
+import LoadingOverlay from '../components/LoadingOverlay';
+import NavBar from '../components/NavBar';
+import '../styles/globals.css';
+import { useRouter } from 'next/router';
 
 function MyApp({ Component, pageProps }) {
+  const [linkClicked, setLinkClicked] = useState(null);
+  const router = useRouter();
+  
+  useEffect(() => {
+    router.events.on('routeChangeComplete', () => {
+      setLinkClicked('')
+    })
+  }, [])
+
+  useEffect(() => {
+    if (linkClicked) {
+
+      setTimeout(() => {
+        router.push(linkClicked);
+      }, 1200)
+
+    } else if (linkClicked === '') {
+
+      setTimeout(() => {
+        setLinkClicked(null);
+      }, 1200)
+
+    }
+  }, [linkClicked])
+
   return (
     <>
-      <NavBar />
+      <NavBar setLinkClicked={setLinkClicked} />
+      {linkClicked && <LoadingOverlay />}
+      {linkClicked === '' && <LoadingOverlay shrink />}
       <Component {...pageProps} />
       <Footer />
     </>

@@ -1,7 +1,7 @@
 #loadingOverlay {
   width: 100vw;
   height: 100vh;
-  background-color: rgba(50, 50, 50, 0.5);
+  background-color: var(--dark-gray);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,32 +10,40 @@
   z-index: 10000 !important;
   top: 0;
   left: 0;
+  mask-image: url('/Ninja placeholder.png');
+  mask-size: 400vw;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  animation-name: openOverlay;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
 }
 
-#loadingOverlay > * {
-  filter: drop-shadow(1px 1px 0px black);
+#loadingOverlay.shrink {
+  animation-name: closeOverlay;
+  mask-size: 0vw;
 }
 
 #loadingOverlay > img {
   width: 45%;
-  /* height: 50%; */
-  animation-name: expand;
-  animation-duration: 1s;
-  animation-iteration-count: infinite;
 }
 
 #loadingOverlay > p {
   font-size: 30px;
   max-width: 70%;
-  color: var(--dark-gray);
+  color: var(--light-gray);
   position: absolute;
   margin-top: 30%;
 }
 
-@keyframes expand{
-  0% {width: 45%; }
-  50% {width: 55%; }
-  100% {width: 45%; }
+@keyframes openOverlay{
+  0% { mask-size: 0vw; }
+  100% { mask-size: 400vw; }
+}
+
+@keyframes closeOverlay{
+  0% { mask-size: 400vw; }
+  100% { mask-size: 0vw; }
 }
 
 @media only screen and (max-width: 425px) {
@@ -44,10 +52,4 @@
     margin-top: 55%;
   }
 
-  @keyframes expand{
-    0% {width: 85%; }
-    50% {width: 100%; }
-    100% {width: 85%; }
-  }
-  
 }
