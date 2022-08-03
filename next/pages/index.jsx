@@ -54,8 +54,8 @@ export default function Home(props) {
           <section id={styles.part1}>
             <div id={styles.scrollToOne} />
 
-            <div id={styles.gradient1} />
-            <div id={styles.gradient2} />
+            <div className={styles.gradient1} />
+            <div className={styles.gradient2} />
 
             <h1>{chosenQuote}</h1>
             <h4>{chosenSubQuote}</h4>
@@ -69,12 +69,19 @@ export default function Home(props) {
           {/* Video Games */}
           <section id={styles.part2}>
             <img src="/videogames.webp" />
-            <div id={styles.gradient1} />
+            <div className={styles.gradient1} />
             <h2>Video Games</h2>
             <h4>Never said I was original</h4>
-            <div id={styles.gradient2}>
+
+            <div className={styles.imageCollection}>
+              <img src="https://files.ninjabattler.ca/image/Deamon.png" />
+              <img src="https://files.ninjabattler.ca/image/calscourgefight.png" />
+              <img src="https://files.ninjabattler.ca/image/cnightsgil.png" />
+            </div>
+
+            <div className={styles.gradient2}>
               <p>
-                Video games, I play them, do you play them? Trick question. I also write opinionated words about them. If that interests you, check the articles page to see what I've got and find out if any of it interests you. If you have any opinionated comments of your own, feel free to posts them, comments exists for a reason after all.
+                Video games, I play them, do you play them? Trick question. I also write opinionated words about them. If that interests you, check the articles page to see what I've got and find out if any of it interests you. If you have any opinionated comments of your own, feel free to post them, comments exists for a reason after all.
               </p>
             </div>
           </section>

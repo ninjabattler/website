@@ -39,7 +39,7 @@
   z-index: -1;
 }
 
-#part1 > #gradient1 {
+#part1 > .gradient1 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -57,7 +57,7 @@
   animation-duration: 0.75s;
 }
 
-#part1 > #gradient2 {
+#part1 > .gradient2 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -112,9 +112,10 @@
   position: absolute;
   width: 40vw;
   z-index: 1;
+  filter: drop-shadow(1px 1px 0px var(--dark-gray)) drop-shadow(1px 1px 2px black);
 }
 
-#part2 > #gradient1 {
+#part2 > .gradient1 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -125,9 +126,10 @@
     var(--dark-gray) 63%,
     transparent 63%
   );
+  filter: drop-shadow(1px 1px 0px var(--dark-gray)) drop-shadow(1px 1px 2px black);
 }
 
-#part2 > #gradient2 {
+#part2 > .gradient2 {
   position: absolute;
   width: 100%;
   height: 20%;
@@ -136,9 +138,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  filter: drop-shadow(1px 1px 0px var(--dark-gray)) drop-shadow(1px 1px 2px black);
 }
 
-#part2 > #gradient2  > p {
+#part2 > .gradient2  > p {
   color: var(--light-gray);
   padding: 1vw;
 }
@@ -150,6 +153,8 @@
   transform: skewY(-16.5deg);
   margin-left: 39vw;
   margin-top: 7vw;
+  filter: drop-shadow(1px 1px 0px var(--dark-gray)) drop-shadow(1px 1px 2px black);
+  cursor: default;
 }
 
 #part2 > h4 {
@@ -159,6 +164,29 @@
   transform: skewY(-16.5deg);
   margin-left: 40vw;
   margin-top: 15vw;
+  cursor: default;
+}
+
+#part2 > .imageCollection {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin: 5vw; */
+  margin-top: -10vw;
+  z-index: -1;
+  right: 0;
+  transform: skewY(6deg) scale(1.4);
+  flex-wrap: wrap;
+  filter: blur(5px);
+}
+
+#part2 > .imageCollection > img {
+  width: 32%;
+  height: 32%;
+  margin: 0.5vw;
 }
 
 @keyframes gradientSlide {
