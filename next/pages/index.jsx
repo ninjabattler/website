@@ -50,6 +50,7 @@ export default function Home(props) {
           <img id={styles.homePageRobot} src="/websiterobot.webp" />
           <img id={styles.homePageRobotFade} src="/websiterobot.webp" />
           
+          {/* Introduction */}
           <section id={styles.part1}>
             <div id={styles.scrollToOne} />
 
@@ -62,6 +63,23 @@ export default function Home(props) {
               Here in this small corner of the internet, you'll find lots of words, words written by me, if you can believe it. There's even pictures and videos, and some blender stuff. But what topics do these words speak of?
             </p>
           </section>
+
+          <div className={styles.divider} />
+
+          {/* Video Games */}
+          <section id={styles.part2}>
+            <img src="/videogames.webp" />
+            <div id={styles.gradient1} />
+            <h2>Video Games</h2>
+            <h4>Never said I was original</h4>
+            <div id={styles.gradient2}>
+              <p>
+                Video games, I play them, do you play them? Trick question. I also write opinionated words about them. If that interests you, check the articles page to see what I've got and find out if any of it interests you. If you have any opinionated comments of your own, feel free to posts them, comments exists for a reason after all.
+              </p>
+            </div>
+          </section>
+
+          <div className={styles.divider} />
 
         </main>
       </div>
