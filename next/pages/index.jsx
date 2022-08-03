@@ -48,8 +48,14 @@ export default function Home(props) {
           <div id={styles.homePageBackground}></div>
 
           <img id={styles.homePageRobot} src="/websiterobot.webp" />
+          <img id={styles.homePageRobotFade} src="/websiterobot.webp" />
+          
           <section id={styles.part1}>
             <div id={styles.scrollToOne} />
+
+            <div id={styles.gradient1} />
+            <div id={styles.gradient2} />
+
             <h1>{chosenQuote}</h1>
             <h4>{chosenSubQuote}</h4>
             <p>
