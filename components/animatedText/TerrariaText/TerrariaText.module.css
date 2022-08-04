@@ -1,0 +1,56 @@
+.terrariaText {
+  color: white;
+  font-size: 1.1em;
+  font-family: Andy Bold;
+  font-weight: 1000;
+  display: inline-block;
+  -webkit-text-stroke: 0.05vw black;
+}
+
+.draedon {
+  animation-name: draedon-colour;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.yharim {
+  animation-name: yharim-colour;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes draedon-colour {
+  0% {
+    color: #ff6392;
+    filter: drop-shadow(0px 0px 3px #ff6392);
+  }
+  33% {
+    color: #ffe45e;
+    filter: drop-shadow(0px 0px 3px #ffe45e);
+  }
+  66% {
+    color: #7fc8f8;
+    filter: drop-shadow(0px 0px 3px #7fc8f8);
+  }
+  100% {
+    color: #ff6392;
+    filter: drop-shadow(0px 0px 3px #ff6392);
+  }
+}
+
+@keyframes yharim-colour {
+  0% {
+    color: #ff8416;
+    filter: drop-shadow(0px 0px 3px #ff8416);
+  }
+  50% {
+    color: #dd5507;
+    filter: drop-shadow(0px 0px 3px #dd5507);
+  }
+  100% {
+    color: #ff8416;
+    filter: drop-shadow(0px 0px 3px #ff8416);
+  }
+}

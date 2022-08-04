@@ -1,0 +1,134 @@
+.likePanel {
+  position: absolute;
+  height: 2.7vw;
+  background-color: var(--dark-gray);
+  margin-top: -7.1vw;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  mask: linear-gradient(
+    45deg,
+    black 3%,
+    rgba(0, 0, 0, 0.5) 3%,
+    rgba(0, 0, 0, 0.5) 5%,
+    black 5%,
+    black 95%,
+    rgba(0, 0, 0, 0.5) 95%,
+    rgba(0, 0, 0, 0.5) 97%,
+    black 97%
+  );
+  animation-name: panelFadeIn;
+  animation-duration: 0.625s;
+  animation-timing-function: linear;
+}
+
+.likePanel > button {
+  color: var(--light-gray);
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1.5vw;
+  padding-left: 1.3vw;
+  padding-right: 1.3vw;
+}
+
+.shareIcon {
+  font-size: 1.3vw !important;
+}
+
+#likeBar {
+  width: 80%;
+  height: 20%;
+  background-color: var(--light-gray);
+  margin-top: auto;
+  margin-bottom: auto;
+  animation-name: barFadeIn;
+  animation-duration: 1.25s;
+  animation-timing-function: linear;
+}
+
+.likeOption {
+  display: flex;
+  align-items: center;
+}
+
+.likeOption > * {
+  margin: 5px;
+}
+
+.like {
+  margin-top: 0;
+  animation-name: likeFadeIn;
+  animation-duration: 1.25s;
+  animation-timing-function: linear;
+}
+
+.dislike {
+  margin-top: 0;
+  animation-name: dislikeFadeIn;
+  animation-duration: 1.25s;
+  animation-timing-function: linear;
+}
+
+@media only screen and (max-width: 425px) {
+  .likePanel {
+    height: 7.5vw;
+    margin-top: -20vw;
+  }
+  .likePanel > button {
+    font-size: 4vw;
+    padding-left: 2.4vw;
+    padding-right: 2.4vw;
+  }
+  .shareIcon {
+    font-size: 3vw !important;
+  }
+}
+
+@keyframes panelFadeIn {
+  0% {
+    width: 0%;
+    margin-left: 50%;
+  }
+  100% {
+    width: 100%;
+    margin-left: 0%;
+  }
+}
+
+@keyframes barFadeIn {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 0%;
+  }
+  100% {
+    width: 80%;
+  }
+}
+
+@keyframes likeFadeIn {
+  0% {
+    margin-top: -30%;
+  }
+  50% {
+    margin-top: -30%;
+  }
+  100% {
+    margin-top: 0%;
+  }
+}
+
+@keyframes dislikeFadeIn {
+  0% {
+    margin-top: 30%;
+  }
+  50% {
+    margin-top: 30%;
+  }
+  100% {
+    margin-top: 0%;
+  }
+}

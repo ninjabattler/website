@@ -1,0 +1,57 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model comments {
+  id             Int        @id @default(autoincrement())
+  content        String     @db.VarChar(255)
+  date           DateTime   @default(now()) @db.Timestamp(6)
+  post_id        Int?
+  user_id        Int?
+  comment_id     Int?
+  comments       comments?  @relation("commentsTocomments_comment_id", fields: [comment_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  posts          posts?     @relation(fields: [post_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  users          users?     @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  other_comments comments[] @relation("commentsTocomments_comment_id")
+}
+
+model likes {
+  id      Int     @id @default(autoincrement())
+  liked   Boolean
+  post_id Int?
+  user_id Int?
+  posts   posts?  @relation(fields: [post_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  users   users?  @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model posts {
+  id           Int        @id @default(autoincrement())
+  title        String?    @db.VarChar(255)
+  thumbnail    String?    @db.VarChar(255)
+  video_header String?    @db.VarChar(255)
+  date         DateTime   @default(now()) @db.Timestamp(6)
+  review       Boolean    @default(false)
+  colour       String?    @db.VarChar(255)
+  content      String?
+  category     String?    @db.VarChar(255)
+  genre        String?    @db.VarChar(255)
+  narration    String?    @db.VarChar(255)
+  description  String?
+  comments     comments[]
+  likes        likes[]
+}
+
+model users {
+  id       Int        @id @default(autoincrement())
+  username String     @db.VarChar(255)
+  avatar   String     @db.VarChar(255)
+  ip       String?    @db.VarChar(50)
+  date     DateTime   @default(now()) @db.Timestamp(6)
+  comments comments[]
+  likes    likes[]
+}

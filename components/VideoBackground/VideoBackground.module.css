@@ -1,0 +1,32 @@
+#videoBackground {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: -10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: blur(10px);
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+#videoBackground > video {
+  width: 120vw;
+  height: 120vh;
+}
+
+#videoBackground > div {
+  width: 120vw;
+  height: 120vh;
+  position: fixed;
+  z-index: 5;
+  background-color: white;
+  mix-blend-mode: multiply;
+}
+@media only screen and (max-width: 425px) {
+  #videoBackground > video {
+    width: 200vh;
+  }
+}

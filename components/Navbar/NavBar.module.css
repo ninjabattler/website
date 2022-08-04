@@ -1,0 +1,179 @@
+.navBar {
+  width: 100vw;
+  height: 16.25vw;
+  background-color: var(--dark-gray);
+  filter: drop-shadow(5px 5px 5px black);
+  z-index: 100;
+  position: sticky;
+  top: -15.8vw;
+  font-size: 1.4vw;
+}
+
+.spaceBackground {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-image: url("/spacebanner.png");
+  background-size: cover;
+  mix-blend-mode: normal;
+  opacity: 0.55;
+  z-index: -2;
+  filter: blur(3px);
+}
+
+.navBar > a {
+  display: flex;
+  justify-content: center;
+}
+
+.navBar > a > img {
+  height: 16.25vw;
+}
+
+.navBar > a > #glow {
+  height: 16.25vw;
+  margin-left: auto;
+  margin-right: auto;
+  filter: blur(6px) brightness(2);
+  mix-blend-mode: lighten;
+  position: absolute;
+  opacity: 0.6;
+  animation-name: glow;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+.navOptions {
+  width: 90vw;
+  border-top: 3.25vw solid var(--light-gray);
+  border-right: 3.25vw solid transparent;
+  border-left: 3.25vw solid transparent;
+  margin-top: -0.5vw;
+  margin-left: 1.75vw;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.navOptionsOverlay {
+  mask: linear-gradient(0deg, transparent 75%, black 100%);
+  z-index: 1;
+  mix-blend-mode: darken;
+  border-top: 60px solid rgb(37, 37, 37);
+}
+
+.navOptions.lists {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 20px;
+  border-color: transparent;
+}
+
+.navOptions > input {
+  width: 25%;
+  background-color: var(--dark-gray);
+  color: var(--light-gray);
+  height: 30px;
+  font-size: 2em;
+  margin-left: 61%;
+}
+.navOptions > button {
+  background-color: var(--dark-gray);
+  height: 35px;
+  outline: none;
+  border: none;
+  color: var(--light-gray);
+  margin-left: 86.5%;
+}
+.option {
+  display: flex;
+  border-bottom: 2.2vw solid var(--dark-gray);
+  border-left: 2.2vw solid transparent;
+  border-right: 2.2vw solid transparent;
+  width: 10.5vw;
+  margin-top: -4.8vw;
+  z-index: 99;
+  transition: filter 0.3s;
+  font-size: 1em;
+}
+
+.option > div {
+  color: var(--light-gray);
+  width: 10.5vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2.9vw;
+  position: absolute;
+  text-align: center;
+}
+
+.option:hover {
+  filter: drop-shadow(0px -3px 0px var(--light-gray)) drop-shadow(0px -3px 0px var(--dark-gray));
+}
+
+.socialLinks {
+  flex-direction: column;
+  background-color: var(--dark-gray) !important;
+  width: 100%;
+  padding: 30px;
+  margin-left: -16% !important;
+}
+
+.navOptions > .option > div > span > a,
+.navOptions > .option > div > a {
+  color: var(--light-gray);
+}
+
+#shadow {
+  background-image: linear-gradient(rgba(0, 0, 0, 0) 60%, rgb(7, 7, 7) 88%, var(--dark-gray) 88%);
+  filter: blur(0);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+  mix-blend-mode: normal;
+}
+
+@keyframes glow {
+  0% {
+    filter: blur(6px) brightness(2);
+  }
+  50% {
+    filter: blur(4px) brightness(1.5);
+  }
+  100% {
+    filter: blur(6px) brightness(2);
+  }
+}
+
+@media (max-device-width: 480px) {
+  .navBar {
+    filter: drop-shadow(2px 2px 0px black);
+    height: 27.7777vw;
+    font-size: 1.8vw;
+    top: -26vw;
+  }
+
+  .navBar > a > img,
+  .navBar > a > #glow {
+    height: 27.7777vw;
+  }
+
+  .navOptions {
+    margin-left: 2.9vw;
+    margin-top: -1.8vw;
+    width: 85vw;
+    border-width: 4.6vw;
+  }
+
+  .navOptions > .option {
+    border-width: 3.5vw;
+    width: 9vw;
+  }
+  .navOptions > .option > div {
+    margin-top: 2.4vw;
+  }
+}

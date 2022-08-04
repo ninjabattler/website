@@ -1,0 +1,64 @@
+.picture > img {
+  max-width: 100%;
+  min-width: 50%;
+  image-rendering: pixelated;
+  margin-left: auto;
+  margin-right: auto;
+  filter: drop-shadow(0px 5px 0px var(--article-colour));
+}
+
+.picture {
+  display: flex;
+  justify-content: center;
+}
+
+.floatingLeft > img,
+.floatingRight > img {
+  filter: none !important;
+}
+
+.floatingLeft {
+  filter: drop-shadow(3px -3px 0px var(--dark-gray)) drop-shadow(3px -3px 0px var(--article-colour));
+  padding-left: 20px;
+}
+
+.floatingLeft > img {
+  margin-top: 2vw;
+  margin-right: 1.3vw !important;
+}
+
+.floatingRight {
+  filter: drop-shadow(-3px -3px 0px var(--dark-gray)) drop-shadow(-3px -3px 0px var(--article-colour));
+  padding-left: 20px;
+}
+
+.floatingRight > img {
+  margin-top: 1.3vw;
+  margin-left: 1.3vw !important;
+}
+
+@media only screen and (max-device-width: 480px) {
+  .picture > img {
+    filter: drop-shadow(0px 2px 0px var(--article-colour));
+  }
+
+  .floatingLeft {
+    filter: drop-shadow(2px -2px 0px var(--dark-gray)) drop-shadow(2px -2px 0px var(--article-colour));
+    padding-left: 20px;
+  }
+
+  .floatingLeft > img {
+    margin-top: 2.5vw;
+    margin-right: 2.5vw !important;
+  }
+
+  .floatingRight {
+    filter: drop-shadow(-2px -2px 0px var(--dark-gray)) drop-shadow(-2px -2px 0px var(--article-colour));
+    padding-left: 20px;
+  }
+
+  .floatingRight > img {
+    margin-top: 2.5vw;
+    margin-left: 2.5vw !important;
+  }
+}

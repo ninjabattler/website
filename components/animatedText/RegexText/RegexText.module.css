@@ -1,0 +1,22 @@
+.regexText {
+  text-shadow: -2px -2px 3px #7cff7c, 2px -2px 6px #285528, 2px 2px 3px #7cff7c, 2px -2px 6px #285528;
+  color: rgba(33, 33, 33, 0.7);
+  animation-name: regexGlow;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  font-size: 0.7em;
+  font-family: "Press Start 2P";
+}
+
+@keyframes regexGlow {
+  0% {
+    text-shadow: -2px -2px 3px #7cff7c, 2px -2px 6px #285528, 2px 2px 3px #7cff7c, 2px -2px 6px #285528;
+  }
+  50% {
+    text-shadow: 4px 2px 8px #7cff7c, -4px 2px 4px #285528, -4px -2px 8px #7cff7c, -4px 2px 4px #285528;
+  }
+  100% {
+    text-shadow: -2px -2px 3px #7cff7c, 2px -2px 6px #285528, 2px 2px 3px #7cff7c, 2px -2px 6px #285528;
+  }
+}

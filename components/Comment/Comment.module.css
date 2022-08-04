@@ -1,0 +1,60 @@
+.comment {
+  display: flex;
+  color: var(--light-gray);
+  flex-wrap: none;
+  margin-left: 10px;
+  min-height: 100px;
+  padding-top: 5px;
+  border-bottom: 3px solid var(--light-gray);
+}
+
+.comment > .avatar {
+  background-color: #292929;
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 100%;
+  border: 3px solid var(--dark-gray);
+  margin-right: 10px;
+}
+
+.comment > div > div > p {
+  font-size: 0.6em;
+  margin-top: 0;
+  width: 100%;
+}
+
+.comment > div > div > p > p {
+  margin: 0;
+}
+
+.comment > div > div > p > blockquote {
+  margin: 5px;
+  padding: 5px;
+  padding-left: 10px;
+  border-left: 2px solid var(--light-gray);
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0.7;
+}
+
+.comment > .div {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment > div > i {
+  color: var(--light-gray);
+  margin-top: -0.3em;
+}
+
+@media only screen and (max-width: 480px) {
+  .comment > .avatar {
+    width: 2em;
+    height: 2em;
+  }
+  
+  .comment {
+    min-height: 50px;
+    font-size: 0.75em;
+    border-width: 2px;
+  }
+}

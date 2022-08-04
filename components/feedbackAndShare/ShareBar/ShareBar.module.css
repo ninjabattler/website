@@ -1,0 +1,76 @@
+#shareBar {
+  position: absolute;
+  height: 2.7vw;
+  background-color: var(--dark-gray);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -3.55vw;
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+  animation-name: panelFadeIn;
+  animation-duration: 0.9375s;
+  animation-timing-function: linear;
+  mask: linear-gradient(
+    45deg,
+    black 3%,
+    rgba(0, 0, 0, 0.5) 3%,
+    rgba(0, 0, 0, 0.5) 5%,
+    black 5%,
+    black 95%,
+    rgba(0, 0, 0, 0.5) 95%,
+    rgba(0, 0, 0, 0.5) 97%,
+    black 97%
+  );
+}
+#shareBar > div {
+  width: 100%;
+  color: var(--light-gray);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden !important;
+}
+#shareBar > div > a {
+  width: 50%;
+  color: var(--light-gray);
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shareIcon {
+  font-size: 2.4vw !important;
+}
+
+#shareBar > div > a:hover {
+  filter: drop-shadow(2px 2px 0px black);
+}
+
+@media only screen and (max-width: 425px) {
+  #shareBar {
+    height: 7.5vw;
+    margin-top: -10vw;
+  }
+  .shareIcon {
+    font-size: 6vw !important;
+  }
+}
+
+@keyframes panelFadeIn {
+  0% {
+    width: 0%;
+    margin-left: 50%;
+  }
+  50% {
+    width: 0%;
+    margin-left: 50%;
+  }
+  100% {
+    width: 100%;
+    margin-left: 0%;
+  }
+}

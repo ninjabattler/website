@@ -1,0 +1,25 @@
+.listItem {
+  display: flex;
+  color: var(--light-gray);
+  width: 80%;
+  font-size: 0.8em;
+  margin-bottom: 10px;
+}
+.listItem > img {
+  height: 80px;
+  margin-right: 10px;
+}
+.listItem:hover {
+  text-shadow: 2px 2px 0px black;
+}
+
+@media only screen and (max-width: 480px) {
+  .listItem {
+    font-size: 0.4em;
+    margin-left: -20px;
+  }
+  .listItem > img {
+    height: 30px;
+    margin-right: 0px;
+  }
+}
