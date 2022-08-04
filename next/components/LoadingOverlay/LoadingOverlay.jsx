@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from "../styles/LoadingOverlay.module.css";
+import styles from "./LoadingOverlay.module.css";
 
 export default function LoadingOverlay({ shrink }) {
   let QUOTES = [

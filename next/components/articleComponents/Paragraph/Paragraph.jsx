@@ -9,7 +9,7 @@ import MetalHeadText from '../../animatedText/MetalHeadText/MetalHeadText';
 import TerrariaText from '../../animatedText/TerrariaText/TerrariaText';
 import Emoji from '../Emoji/Emoji';
 import styles from "./Paragraph.module.css";
-import Picture from '../../Picture';
+import Picture from '../Picture/Picture';
 
 export default function Paragraph(props) {
   return (

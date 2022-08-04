@@ -1,12 +1,7 @@
-import { React, useState, useEffect } from 'react';
-import styles from "../styles/Picture.module.css";
+import { React } from 'react';
+import styles from "./Picture.module.css";
 
 export default function Picture(props) {
-  const [windowServer, setWindow] = useState({})
-
-  useEffect(() => {
-    setWindow(window)
-  }, [])
 
   const floatLeft = props.float === 'left';
   const floatRight = props.float === 'right';

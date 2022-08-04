@@ -1,18 +1,12 @@
-import { React, useEffect, useState } from 'react';
-import styles from '../styles/VideoHeader.module.css'
-// import video from './test/CosmicCarnage.mp4';
+import { React } from 'react';
+import styles from './VideoHeader.module.css'
 
 export default function VideoHeader(props) {
-  const [windowVar, setWindowVar] = useState({});
-
-  useEffect(() => {
-    setWindowVar(window)
-  }, [])
 
   return (
     <div className={styles.videoHeader}>
       <div id={styles.videoContainer}>
-        {!props.video.startsWith('htt') && (<div id={styles.videoOverlay} style={{backgroundColor: props.pageColour}}></div>)}
+        {!props.video.startsWith('htt') && (<div id={styles.videoOverlay} style={{ backgroundColor: props.pageColour }}></div>)}
         <video loop muted autoPlay >
           <source src={props.video ? props.video.replace('http://', 'https://') : "/defaultVideo.mp4"} type="video/webm"></source>
           <source src={props.video ? props.video.replace('http://', 'https://') : "/defaultVideo.mp4"} type="video/ogg"></source>

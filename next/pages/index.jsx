@@ -2,7 +2,7 @@ import Head from 'next/head'
 import styles from '../styles/HomePage.module.css'
 import { React, useState } from 'react';
 import CodeBlock from '../components/articleComponents/CodeBlock/CodeBlock';
-import VideoBackground from '../components/VideoBackground';
+import VideoBackground from '../components/VideoBackground/VideoBackground';
 import { homePageServerSideProps } from '../ssr/index'
 import Link from 'next/link';
 

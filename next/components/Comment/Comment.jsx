@@ -1,11 +1,11 @@
 import { React } from 'react';
-import styles from '../styles/Comment.module.css';
-import FireText from './animatedText/FireText/FireText';
-import ThunderText from './animatedText/ThunderText/ThunderText';
-import IceText from './animatedText/IceText/IceText';
-import EarthText from './animatedText/EarthText/EarthText';
-import RegexText from './animatedText/RegexText/RegexText';
-import MetalHeadText from './animatedText/MetalHeadText/MetalHeadText';
+import styles from './Comment.module.css';
+import FireText from '../animatedText/FireText/FireText';
+import ThunderText from '../animatedText/ThunderText/ThunderText';
+import IceText from '../animatedText/IceText/IceText';
+import EarthText from '../animatedText/EarthText/EarthText';
+import RegexText from '../animatedText/RegexText/RegexText';
+import MetalHeadText from '../animatedText/MetalHeadText/MetalHeadText';
 import JsxParser from 'react-jsx-parser';
 
 const avatars = {
@@ -23,12 +23,11 @@ export default function Comment(props) {
       <img className={styles.avatar} src={avatars[`avatar${props.avatar}`]} style={{ filter: `drop-shadow(1px 1px 0px ${props.pageColour || 'transparent'})` }} alt='profile pic' />
       <div>
         <i style={{ textShadow: `1px 1px 0px ${props.pageColour || 'transparent'}` }}>Ninja #{props.username}</i>
-        {/* <p dangerouslySetInnerHTML={{__html: props.content}}></p> */}
         <JsxParser
-        components={{ FireText, EarthText, IceText, ThunderText, RegexText, MetalHeadText }}
+          components={{ FireText, EarthText, IceText, ThunderText, RegexText, MetalHeadText }}
 
-        jsx={`<p>${props.content}</p>`}
-      />
+          jsx={`<p>${props.content}</p>`}
+        />
       </div>
     </article>)
 }

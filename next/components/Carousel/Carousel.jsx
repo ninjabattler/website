@@ -1,7 +1,7 @@
 import { React, useState } from 'react';
-import styles from '../styles/Carousel.module.css';
+import styles from './Carousel.module.css';
 import JsxParser from 'react-jsx-parser';
-import Paragraph from './articleComponents/Paragraph/Paragraph';
+import Paragraph from '../articleComponents/Paragraph/Paragraph';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -26,7 +26,7 @@ export default function Carousel({ items, setLinkClicked }) {
   return (
     <section className={styles.carousel}>
       {items.map((item, index) => {
-        return <img key={index} style={{opacity: index === optionIndexMap[currentOption] ? 1 : 0}} className={styles.backgroundImg} src={item.thumbnail} />
+        return <img key={index} style={{ opacity: index === optionIndexMap[currentOption] ? 1 : 0 }} className={styles.backgroundImg} src={item.thumbnail} />
       })
       }
       <main>

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from "../styles/VideoBackground.module.css";
+import styles from "./VideoBackground.module.css";
 
 export default function VideoBackground(props) {
   return (
