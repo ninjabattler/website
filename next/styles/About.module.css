@@ -43,15 +43,21 @@
   padding-right: 150px;
   padding-left: 150px;
   background-image: url(/cubes.png);
-  background-color: rgb(20,20,20);
+  background-color: rgb(20, 20, 20);
   animation-name: backgroundOffset;
   animation-duration: 4s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
 @keyframes backgroundOffset {
-  0%{background-position-x: 0px; background-position-y: 0px;}
-  100%{background-position-x: 67px; background-position-y: 100px;}
+  0% {
+    background-position-x: 0px;
+    background-position-y: 0px;
+  }
+  100% {
+    background-position-x: 67px;
+    background-position-y: 100px;
+  }
 }
 
 @media only screen and (max-device-width: 853px) {
@@ -79,7 +85,8 @@
     z-index: 20;
     margin-top: 30px;
   }
-  .left, .right {
+  .left,
+  .right {
     display: none;
   }
   #about > img {

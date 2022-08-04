@@ -1,4 +1,4 @@
-.picture > img{
+.picture > img {
   max-width: 100%;
   min-width: 50%;
   image-rendering: pixelated;
@@ -12,7 +12,8 @@
   justify-content: center;
 }
 
-.floatingLeft > img, .floatingRight > img {
+.floatingLeft > img,
+.floatingRight > img {
   filter: none !important;
 }
 
@@ -45,20 +46,19 @@
     filter: drop-shadow(2px -2px 0px var(--dark-gray)) drop-shadow(2px -2px 0px var(--article-colour));
     padding-left: 20px;
   }
-  
+
   .floatingLeft > img {
     margin-top: 2.5vw;
     margin-right: 2.5vw !important;
   }
-  
+
   .floatingRight {
     filter: drop-shadow(-2px -2px 0px var(--dark-gray)) drop-shadow(-2px -2px 0px var(--article-colour));
     padding-left: 20px;
   }
-  
+
   .floatingRight > img {
     margin-top: 2.5vw;
     margin-left: 2.5vw !important;
   }
-  
 }

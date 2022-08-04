@@ -46,8 +46,8 @@
     font-size: 8px;
   }
 
-  .footer > .linkDisplay > a > *{
-   margin-top: -25px;
+  .footer > .linkDisplay > a > * {
+    margin-top: -25px;
   }
 
   #copyrightSection {

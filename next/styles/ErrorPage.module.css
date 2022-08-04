@@ -12,12 +12,12 @@
   height: 80%;
 }
 
-#errorPage > h1{
+#errorPage > h1 {
   font-size: 3em;
   color: var(--dark-gray);
 }
 
-#errorPage > p{
+#errorPage > p {
   color: var(--dark-gray);
 }
 

@@ -1,4 +1,4 @@
-.bossCard  {
+.bossCard {
   margin-bottom: 8.1vw;
   margin-top: 5.4vw;
   display: flex;
@@ -14,7 +14,17 @@
   border-left: var(--border-width) solid transparent;
   width: 40%;
   z-index: 2;
-  mask: linear-gradient(45deg, black 20%, var(--gradientColour) 20%, var(--gradientColour) 22%, black 22%, black 24%, var(--gradientColour) 24%, var(--gradientColour) 26%, black 26%);
+  mask: linear-gradient(
+    45deg,
+    black 20%,
+    var(--gradientColour) 20%,
+    var(--gradientColour) 22%,
+    black 22%,
+    black 24%,
+    var(--gradientColour) 24%,
+    var(--gradientColour) 26%,
+    black 26%
+  );
 }
 .background2 {
   position: absolute;
@@ -25,7 +35,7 @@
 }
 
 .bossCard > h2 {
-  position: absolute;  
+  position: absolute;
   text-align: right;
   color: var(--dark-gray);
   margin-top: 2.3vw;
@@ -62,13 +72,15 @@
 
 .imageContainer.lower {
   margin-top: -8.5vw;
-} 
+}
 
 .imageContainer.higher {
   margin-top: -16vw;
-} 
+}
 
-.inverse > .background1, .inverse > .background2, .inverse > h2 {
+.inverse > .background1,
+.inverse > .background2,
+.inverse > h2 {
   border-top-color: #141414;
   color: var(--light-gray);
 }
@@ -96,15 +108,27 @@
 }
 
 @keyframes glow {
-  0%{filter:blur(6px) brightness(2);}
-  50%{filter:blur(4px) brightness(1.5);}
-  100%{filter:blur(6px) brightness(2);}
+  0% {
+    filter: blur(6px) brightness(2);
+  }
+  50% {
+    filter: blur(4px) brightness(1.5);
+  }
+  100% {
+    filter: blur(6px) brightness(2);
+  }
 }
 
 @keyframes glow2 {
-  0%{filter:blur(6px) brightness(3);}
-  50%{filter:blur(2px) brightness(1.5);}
-  100%{filter:blur(6px) brightness(3);}
+  0% {
+    filter: blur(6px) brightness(3);
+  }
+  50% {
+    filter: blur(2px) brightness(1.5);
+  }
+  100% {
+    filter: blur(6px) brightness(3);
+  }
 }
 
 @media only screen and (max-width: 480px) {
@@ -114,7 +138,7 @@
     --border-width: 9vw;
     filter: drop-shadow(-2px 1px 0px black);
   }
-  
+
   .bossCard > h2 {
     margin-top: 4vw;
     margin-right: 1vw;
@@ -144,29 +168,40 @@
   .imageContainer > .smaller {
     max-height: 16vw;
   }
-  
+
   .imageContainer > .extraSmaller {
     max-height: 14vw;
   }
-  
+
   .imageContainer.lower {
     margin-top: -6vw;
-  } 
-  
+  }
+
   .imageContainer.higher {
     margin-top: -14vw;
-  } 
-
+  }
 
   @keyframes glow {
-    0%{filter:blur(2px) brightness(1.5);}
-    50%{filter:blur(1px) brightness(1);}
-    100%{filter:blur(2px) brightness(1.5);}
+    0% {
+      filter: blur(2px) brightness(1.5);
+    }
+    50% {
+      filter: blur(1px) brightness(1);
+    }
+    100% {
+      filter: blur(2px) brightness(1.5);
+    }
   }
 
   @keyframes glow2 {
-    0%{filter:blur(2px) brightness(3);}
-    50%{filter:blur(1px) brightness(1.5);}
-    100%{filter:blur(2px) brightness(3);}
+    0% {
+      filter: blur(2px) brightness(3);
+    }
+    50% {
+      filter: blur(1px) brightness(1.5);
+    }
+    100% {
+      filter: blur(2px) brightness(3);
+    }
   }
 }

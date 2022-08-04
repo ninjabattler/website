@@ -6,7 +6,17 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  mask: linear-gradient(45deg, black 3%, rgba(0, 0, 0, 0.5) 3%, rgba(0, 0, 0, 0.5) 5%, black 5%, black 95%, rgba(0, 0, 0, 0.5) 95%, rgba(0, 0, 0, 0.5) 97%, black 97%);
+  mask: linear-gradient(
+    45deg,
+    black 3%,
+    rgba(0, 0, 0, 0.5) 3%,
+    rgba(0, 0, 0, 0.5) 5%,
+    black 5%,
+    black 95%,
+    rgba(0, 0, 0, 0.5) 95%,
+    rgba(0, 0, 0, 0.5) 97%,
+    black 97%
+  );
   animation-name: panelFadeIn;
   animation-duration: 0.625s;
   animation-timing-function: linear;
@@ -77,24 +87,48 @@
 }
 
 @keyframes panelFadeIn {
-  0% { width: 0%; margin-left: 50%; }
-  100% { width: 100%; margin-left: 0%; }
+  0% {
+    width: 0%;
+    margin-left: 50%;
+  }
+  100% {
+    width: 100%;
+    margin-left: 0%;
+  }
 }
 
 @keyframes barFadeIn {
-  0% { width: 0%; }
-  50% { width: 0%; }
-  100% { width: 80%; }
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 0%;
+  }
+  100% {
+    width: 80%;
+  }
 }
 
 @keyframes likeFadeIn {
-  0% { margin-top: -30% }
-  50% { margin-top: -30% }
-  100% { margin-top: 0% }
+  0% {
+    margin-top: -30%;
+  }
+  50% {
+    margin-top: -30%;
+  }
+  100% {
+    margin-top: 0%;
+  }
 }
 
 @keyframes dislikeFadeIn {
-  0% { margin-top: 30% }
-  50% { margin-top: 30% }
-  100% { margin-top: 0% }
+  0% {
+    margin-top: 30%;
+  }
+  50% {
+    margin-top: 30%;
+  }
+  100% {
+    margin-top: 0%;
+  }
 }

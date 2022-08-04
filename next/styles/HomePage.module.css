@@ -14,7 +14,8 @@
 }
 
 /* Part 1 */
-#homePageRobot, #homePageRobotFade {
+#homePageRobot,
+#homePageRobotFade {
   height: 54vw;
   padding-left: 6vw;
   padding-right: 48vw;
@@ -31,7 +32,9 @@
   animation-name: robotFadeIn2;
 }
 
-#part1, #part2, #part3 {
+#part1,
+#part2,
+#part3 {
   width: 100vw;
   height: 50vw;
   filter: drop-shadow(1px 1px 0px var(--dark-gray)) drop-shadow(1px 1px 2px black);
@@ -75,7 +78,7 @@
 #part1 > .gradient2 > img {
   position: absolute;
   width: 60vw;
-  mask: linear-gradient(-45deg, transparent 10%,black 10%,black 64%, transparent 64%);
+  mask: linear-gradient(-45deg, transparent 10%, black 10%, black 64%, transparent 64%);
   margin-right: -4vw;
   margin-top: -3vw;
   right: 0;
@@ -91,7 +94,8 @@
   color: var(--light-gray);
 }
 
-#part1 > h1, #part1 > h4 {
+#part1 > h1,
+#part1 > h4 {
   color: var(--light-gray);
   margin: 0;
   padding: 0;
@@ -159,7 +163,7 @@
   filter: drop-shadow(1px 1px 0px var(--dark-gray)) drop-shadow(1px 1px 2px black);
 }
 
-#part2 > .gradient2  > p {
+#part2 > .gradient2 > p {
   color: var(--light-gray);
   padding: 1vw;
 }
@@ -271,34 +275,6 @@
   cursor: default;
 }
 
-@keyframes gradientSlide {
-  0% { margin-left: 100%; margin-top: -100%; }
-  100% { margin-left: 0%; margin-top: 0%; }
-}
-
-@keyframes fadeIn {
-  0% { opacity: 0; filter: blur(30px) brightness(0) }
-  50% { opacity: 0; filter: blur(30px) brightness(0) }
-  75% { opacity: 1; filter: blur(50px) brightness(2) }
-  100% { opacity: 1; filter: blur(0px) brightness(1) }
-}
-
-@keyframes robotFadeIn {
-  0% { margin-top: 0vh; opacity: 0; filter: blur(30px) brightness(0) }
-  50% { opacity: 0; filter: blur(30px) brightness(0) }
-  75% { opacity: 1; filter: blur(50px) brightness(0) }
-  90% { opacity: 1; filter: blur(0px) brightness(0) }
-  100% { margin-top: -4vh; opacity: 1; filter: blur(0px) brightness(1) }
-}
-
-@keyframes robotFadeIn2 {
-  0% { margin-top: 0vh; opacity: 0; filter: blur(30px) brightness(0) }
-  50% { opacity: 0; filter: blur(30px) brightness(0) }
-  75% { opacity: 1; filter: blur(50px) brightness(0) }
-  90% { opacity: 1; filter: blur(20px) brightness(10) }
-  100% { margin-top: -4vh; opacity: 0; filter: blur(100px) brightness(0) }
-}
-
 @media only screen and (max-width: 425px) {
   #homePage {
     font-size: 3vw;
@@ -306,7 +282,9 @@
     padding-bottom: 30vw;
   }
 
-  #part1, #part2, #part3 {
+  #part1,
+  #part2,
+  #part3 {
     width: 100vw;
     height: 177vw;
     filter: drop-shadow(1px 1px 0px var(--dark-gray)) drop-shadow(1px 1px 2px black);
@@ -352,7 +330,7 @@
   #part1 > .gradient2 > img {
     position: absolute;
     width: 100vw;
-    mask: linear-gradient(-45deg, black 10%,black 64%, transparent 64%);
+    mask: linear-gradient(-45deg, black 10%, black 64%, transparent 64%);
     margin-right: 0vw;
     margin-top: 74vw;
     right: 0;
@@ -367,7 +345,8 @@
     color: var(--light-gray);
   }
 
-  #part1 > .gradient1, #part1 > .gradient2  {
+  #part1 > .gradient1,
+  #part1 > .gradient2 {
     animation-name: none;
   }
 
@@ -393,7 +372,7 @@
     margin-top: 100vw;
   }
 
-  #part2 > .gradient2  > p {
+  #part2 > .gradient2 > p {
     padding: 2vw;
     font-size: 1.3em;
   }
@@ -474,5 +453,84 @@
     margin-left: 39.7vw;
     margin-top: 103vw;
   }
+}
 
+@keyframes gradientSlide {
+  0% {
+    margin-left: 100%;
+    margin-top: -100%;
+  }
+  100% {
+    margin-left: 0%;
+    margin-top: 0%;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    filter: blur(30px) brightness(0);
+  }
+  50% {
+    opacity: 0;
+    filter: blur(30px) brightness(0);
+  }
+  75% {
+    opacity: 1;
+    filter: blur(50px) brightness(2);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0px) brightness(1);
+  }
+}
+
+@keyframes robotFadeIn {
+  0% {
+    margin-top: 0vh;
+    opacity: 0;
+    filter: blur(30px) brightness(0);
+  }
+  50% {
+    opacity: 0;
+    filter: blur(30px) brightness(0);
+  }
+  75% {
+    opacity: 1;
+    filter: blur(50px) brightness(0);
+  }
+  90% {
+    opacity: 1;
+    filter: blur(0px) brightness(0);
+  }
+  100% {
+    margin-top: -4vh;
+    opacity: 1;
+    filter: blur(0px) brightness(1);
+  }
+}
+
+@keyframes robotFadeIn2 {
+  0% {
+    margin-top: 0vh;
+    opacity: 0;
+    filter: blur(30px) brightness(0);
+  }
+  50% {
+    opacity: 0;
+    filter: blur(30px) brightness(0);
+  }
+  75% {
+    opacity: 1;
+    filter: blur(50px) brightness(0);
+  }
+  90% {
+    opacity: 1;
+    filter: blur(20px) brightness(10);
+  }
+  100% {
+    margin-top: -4vh;
+    opacity: 0;
+    filter: blur(100px) brightness(0);
+  }
 }

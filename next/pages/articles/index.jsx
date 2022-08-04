@@ -2,7 +2,6 @@ import { React, useEffect, useState } from 'react';
 import styles from '../../styles/ArticlesPage.module.css'
 import JsxParser from 'react-jsx-parser';
 import Paragraph from '../../components/Paragraph';
-import TitleCard from '../../components/TitleCard'
 import Carousel from '../../components/Carousel';
 import Head from 'next/dist/shared/lib/head';
 import Link from 'next/link';
@@ -48,9 +47,6 @@ export default function ArticlesPage(props) {
       <Carousel setLinkClicked={setLinkClicked} items={props.articles ? props.articles.slice(0, 3) : []} />
 
       <main id={styles.articlesPage}>
-        <div id={styles.previousMarker} style={{ width: '100%', position: 'sticky', top: '0', height: '100%' }}>
-          <TitleCard title='Previous Articles' pageColour='black' inverse />
-        </div>
         <div className={styles.articlesPageContainer}>
           {props.articles.slice(3).map((item) => {
             return (

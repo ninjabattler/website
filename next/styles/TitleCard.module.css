@@ -1,4 +1,4 @@
-.bossCard  {
+.bossCard {
   margin-bottom: 12vw;
   margin-top: 5.4vw;
   display: flex;
@@ -13,7 +13,17 @@
   border-top: var(--border-width) solid var(--light-gray);
   border-right: var(--border-width) solid transparent;
   width: 80%;
-  mask: linear-gradient(-45deg, black 20%, var(--gradientColour) 20%, var(--gradientColour) 22%, black 22%, black 24%, var(--gradientColour) 24%, var(--gradientColour) 26%, black 26%);
+  mask: linear-gradient(
+    -45deg,
+    black 20%,
+    var(--gradientColour) 20%,
+    var(--gradientColour) 22%,
+    black 22%,
+    black 24%,
+    var(--gradientColour) 24%,
+    var(--gradientColour) 26%,
+    black 26%
+  );
 }
 
 .background2 {
@@ -33,11 +43,21 @@
   right: 0;
   opacity: 0.75;
   z-index: -1;
-  mask: linear-gradient(-45deg, black 20%, var(--gradientColour) 20%, var(--gradientColour) 22%, black 22%, black 24%, var(--gradientColour) 24%, var(--gradientColour) 26%, black 26%);
+  mask: linear-gradient(
+    -45deg,
+    black 20%,
+    var(--gradientColour) 20%,
+    var(--gradientColour) 22%,
+    black 22%,
+    black 24%,
+    var(--gradientColour) 24%,
+    var(--gradientColour) 26%,
+    black 26%
+  );
 }
 
 .bossCard > h2 {
-  position: absolute;  
+  position: absolute;
   color: var(--dark-gray);
   margin-top: 7vw;
   font-size: 3vw;
@@ -57,9 +77,11 @@
 
 .imageContainer.lower {
   margin-top: -6.5vw;
-} 
+}
 
-.inverse > .background1, .inverse > .background2, .inverse > h2 {
+.inverse > .background1,
+.inverse > .background2,
+.inverse > h2 {
   border-top-color: #141414;
   color: var(--light-gray);
 }
@@ -87,15 +109,27 @@
 }
 
 @keyframes glow {
-  0%{filter:blur(6px) brightness(2);}
-  50%{filter:blur(4px) brightness(1.5);}
-  100%{filter:blur(6px) brightness(2);}
+  0% {
+    filter: blur(6px) brightness(2);
+  }
+  50% {
+    filter: blur(4px) brightness(1.5);
+  }
+  100% {
+    filter: blur(6px) brightness(2);
+  }
 }
 
 @keyframes glow2 {
-  0%{filter:blur(6px) brightness(1.5);}
-  50%{filter:blur(2px) brightness(1);}
-  100%{filter:blur(6px) brightness(1.5);}
+  0% {
+    filter: blur(6px) brightness(1.5);
+  }
+  50% {
+    filter: blur(2px) brightness(1);
+  }
+  100% {
+    filter: blur(6px) brightness(1.5);
+  }
 }
 
 @media only screen and (max-width: 480px) {
@@ -126,14 +160,26 @@
   }
 
   @keyframes glow {
-    0%{filter:blur(3px) brightness(2);}
-    50%{filter:blur(1px) brightness(1.5);}
-    100%{filter:blur(3px) brightness(2);}
+    0% {
+      filter: blur(3px) brightness(2);
+    }
+    50% {
+      filter: blur(1px) brightness(1.5);
+    }
+    100% {
+      filter: blur(3px) brightness(2);
+    }
   }
 
   @keyframes glow2 {
-    0%{filter:blur(3px) brightness(1.5);}
-    50%{filter:blur(1px) brightness(1);}
-    100%{filter:blur(3px) brightness(1.5);}
+    0% {
+      filter: blur(3px) brightness(1.5);
+    }
+    50% {
+      filter: blur(1px) brightness(1);
+    }
+    100% {
+      filter: blur(3px) brightness(1.5);
+    }
   }
 }

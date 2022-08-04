@@ -12,12 +12,12 @@
   right: 0;
 }
 
-#videoBackground > video{
+#videoBackground > video {
   width: 120vw;
   height: 120vh;
 }
 
-#videoBackground > div{
+#videoBackground > div {
   width: 120vw;
   height: 120vh;
   position: fixed;

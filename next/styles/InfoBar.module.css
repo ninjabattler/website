@@ -14,7 +14,17 @@
   border-right: var(--border-thickness) solid transparent;
   width: 77vw;
   filter: drop-shadow(4px 5px 0px black);
-  mask: linear-gradient(-45deg, black 6.9%, var(--gradient-color) 6.9%, var(--gradient-color) 9.15%, black 9.15%, black 11.1%, var(--gradient-color) 11.1%, var(--gradient-color) 13.5%, black 13.5%);
+  mask: linear-gradient(
+    -45deg,
+    black 6.9%,
+    var(--gradient-color) 6.9%,
+    var(--gradient-color) 9.15%,
+    black 9.15%,
+    black 11.1%,
+    var(--gradient-color) 11.1%,
+    var(--gradient-color) 13.5%,
+    black 13.5%
+  );
 }
 .infoBar > span {
   position: absolute;

@@ -17,7 +17,8 @@
 .paragraph > div > p > strong {
   color: var(--light-gray);
   opacity: 0.7;
-  filter: drop-shadow(1px 1px 0px black) drop-shadow(-1px -1px 0px black) drop-shadow(1px -1px 0px black) drop-shadow(-1px 1px 0px black);
+  filter: drop-shadow(1px 1px 0px black) drop-shadow(-1px -1px 0px black) drop-shadow(1px -1px 0px black)
+    drop-shadow(-1px 1px 0px black);
   text-shadow: 2px 2px 0px black;
 }
 

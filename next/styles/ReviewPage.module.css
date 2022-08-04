@@ -1,7 +1,7 @@
 #reviewPage {
   font-size: 1.6vw;
 }
-#reviewPage > div >.articleContainer {
+#reviewPage > div > .articleContainer {
   display: flex;
   flex-direction: column;
   background-color: var(--dark-gray);
@@ -32,7 +32,13 @@
   position: sticky;
   width: 30%;
   height: 70vh;
-  background-image: linear-gradient(45deg, var(--dark-gray) 3%, rgba(0, 0, 0, 0.5) 3%, rgba(0, 0, 0, 0.5) 5%, var(--dark-gray) 5%);
+  background-image: linear-gradient(
+    45deg,
+    var(--dark-gray) 3%,
+    rgba(0, 0, 0, 0.5) 3%,
+    rgba(0, 0, 0, 0.5) 5%,
+    var(--dark-gray) 5%
+  );
   margin-left: auto;
   margin-right: auto;
   top: 11.5vw;
@@ -85,10 +91,10 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-image: linear-gradient(rgba(0,0,0,0.5),  rgba(255,255,255,0), rgba(255,255,255,0));
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
 }
 #loadingArticle > h3 {
-  color:var(--dark-gray);
+  color: var(--dark-gray);
   text-shadow: 2px 2px 0px black;
 }
 #loadingArticle > img {
@@ -100,7 +106,7 @@
   animation-duration: 1s;
 }
 .mobile {
-  display: none;  
+  display: none;
   margin-top: 50px;
 }
 
@@ -109,13 +115,22 @@
 }
 
 #adAurisIframe {
-    margin: auto;
+  margin: auto;
 }
 
 @keyframes loading {
-  0%{width: 40%; margin: 0%;}
-  50%{width: 50%; margin: -2.8%;}
-  100%{width: 40%; margin: 0%;}
+  0% {
+    width: 40%;
+    margin: 0%;
+  }
+  50% {
+    width: 50%;
+    margin: -2.8%;
+  }
+  100% {
+    width: 40%;
+    margin: 0%;
+  }
 }
 
 @media only screen and (max-width: 425px) {
@@ -140,13 +155,13 @@
     background-color: rgba(50, 50, 50, 0.5);
     backdrop-filter: blur(3px);
   }
-  #reviewPage > div >.articleContainer {
-   width: 85%;
-   margin-right: auto;
-   margin-left: auto;
-   font-size: 20px;
-   overflow-x: hidden;
-   filter: drop-shadow(2px 2px 0px black);
+  #reviewPage > div > .articleContainer {
+    width: 85%;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 20px;
+    overflow-x: hidden;
+    filter: drop-shadow(2px 2px 0px black);
   }
   #loadingArticle > h3 {
     font-size: 0.5em;
@@ -195,26 +210,53 @@
   }
 
   @keyframes loading {
-    0%{width: 80%; margin: 0%;}
-    50%{width: 90%; margin: -2.8%;}
-    100%{width: 80%; margin: 0%;}
+    0% {
+      width: 80%;
+      margin: 0%;
+    }
+    50% {
+      width: 90%;
+      margin: -2.8%;
+    }
+    100% {
+      width: 80%;
+      margin: 0%;
+    }
   }
 }
 
 @keyframes commentPanelFadeIn {
-  0%{height: 0vh;}
-  66%{height: 0vh;}
-  100%{height: 70vh}
+  0% {
+    height: 0vh;
+  }
+  66% {
+    height: 0vh;
+  }
+  100% {
+    height: 70vh;
+  }
 }
 
 @keyframes commentsFadeIn {
-  0%{height: 0%;}
-  66%{height: 0%;}
-  100%{height: 70%;}
+  0% {
+    height: 0%;
+  }
+  66% {
+    height: 0%;
+  }
+  100% {
+    height: 70%;
+  }
 }
 
 @keyframes commentButtonFadeIn {
-  0%{margin-left: 0px;}
-  66%{margin-left: 0px;}
-  100%{margin-left: 330px;}
+  0% {
+    margin-left: 0px;
+  }
+  66% {
+    margin-left: 0px;
+  }
+  100% {
+    margin-left: 330px;
+  }
 }
