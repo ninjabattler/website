@@ -32,7 +32,7 @@
   animation-name: robotFadeIn2;
 }
 
-#part1, #part2 {
+#part1, #part2, #part3 {
   width: 100vw;
   height: 100vh;
   filter: drop-shadow(1px 1px 0px var(--dark-gray)) drop-shadow(1px 1px 2px black);
@@ -187,6 +187,70 @@
   width: 32%;
   height: 32%;
   margin: 0.5vw;
+}
+
+/* Part 3 */
+
+#part3 > img {
+  position: absolute;
+  width: 30vw;
+  right: 0;
+  margin-right: 10vw;
+  z-index: 1;
+  filter: drop-shadow(1px 1px 0px var(--dark-gray)) drop-shadow(1px 1px 2px black);
+}
+
+#part3 > .gradient1 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+    31deg,
+    transparent 54%,
+    var(--dark-gray) 54%,
+    var(--dark-gray) 60%,
+    transparent 60%
+  );
+  z-index: -1;
+  filter: drop-shadow(1px 1px 0px var(--dark-gray)) drop-shadow(1px 1px 2px black);
+}
+
+#part3 > .gradient2 {
+  width: 25%;
+  height: 100%;
+  margin-left: 2vw;
+  margin-top: -1vw;
+  padding-top: 1vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--dark-gray);
+}
+
+#part3 > .gradient2 > span {
+  color: var(--light-gray);
+  margin-left: 1vw;
+  font-size: 0.7em;
+}
+
+#part3 > h2 {
+  position: absolute;
+  font-size: 3.5em;
+  color: var(--light-gray);
+  transform: skewY(31deg);
+  margin-left: 39.7vw;
+  margin-top: 7.4vw;
+  cursor: default;
+}
+
+#part3 > h4 {
+  position: absolute;
+  font-size: 1.5em;
+  color: var(--light-gray);
+  transform: skewY(31deg);
+  margin-left: 35vw;
+  margin-top: 13vw;
+  cursor: default;
 }
 
 @keyframes gradientSlide {

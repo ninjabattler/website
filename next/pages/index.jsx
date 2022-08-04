@@ -88,6 +88,27 @@ export default function Home(props) {
 
           <div className={styles.divider} />
 
+          {/* Coding */}
+          <section id={styles.part3}>
+            <img src="/coding.webp" />
+            <div className={styles.gradient1} />
+            <h2>Coding</h2>
+            <h4>Words that do stuff</h4>
+            <div className={styles.gradient2}>
+              <span>content.js</span>
+              <CodeBlock 
+                code={'const betterConsoleLog = (message) => {\n\tconsole.log(`Better ${message}`);\n};\n\nconst messageYouWillRead = `\nI write code, and coded this website.\n\nI mostly work with web development, JS, TS, React, NextJs etc, but I do have an interest in other languages as well.\n\nI also like to write words about code to, you can read that here, or just visit my Github and check that out.`;\n\nbetterConsoleLog(messageYouWillRead);\n\n\n\n\n'} 
+                language={'js'}
+                highlight={"6-9, 10"}
+              />
+              <span>filler.html</span>
+              <CodeBlock 
+                code={'<body>\n\t<h1>Filler Text</h1>\n\t<h2>Because why not</h2>\n\t<p>gotta do something with this empty space. So here you go, have some html.</p>\n</body>'} 
+                language={'html'}
+              />
+            </div>
+          </section>
+
         </main>
       </div>
     </>
