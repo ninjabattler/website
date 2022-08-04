@@ -47,9 +47,26 @@
 }
 
 @media only screen and (max-width: 425px) {
+  #loadingOverlay {
+    mask-size: 650vh;
+  }
+  
   #loadingOverlay > p {
     font-size: 15px;
     margin-top: 55%;
   }
 
+  #loadingOverlay > img {
+    width: 100%;
+  }
+
+  @keyframes openOverlay{
+    0% { mask-size: 0vh; }
+    100% { mask-size: 650vh; }
+  }
+  
+  @keyframes closeOverlay{
+    0% { mask-size: 650vh; }
+    100% { mask-size: 0vh; }
+  }
 }
