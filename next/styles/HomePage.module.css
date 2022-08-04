@@ -275,11 +275,28 @@
   cursor: default;
 }
 
+/* Part 4 */
+
+#part4 {
+  width: 100vw;
+  height: 15vw;
+  background-color: var(--dark-gray);
+}
+
+#part4 > h2 {
+  color: var(--light-gray);
+  margin: 1vw;
+}
+
+#part4 > p {
+  color: var(--light-gray);
+  margin: 1vw;
+}
+
 @media only screen and (max-width: 425px) {
   #homePage {
     font-size: 3vw;
     margin-bottom: -30vw;
-    padding-bottom: 30vw;
   }
 
   #part1,
@@ -452,6 +469,12 @@
   #part3 > h4 {
     margin-left: 39.7vw;
     margin-top: 103vw;
+  }
+
+  /* Part 4 */
+
+  #part4 {
+    height: 30vw;
   }
 }
 
