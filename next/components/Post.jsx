@@ -1,11 +1,11 @@
 import { React, useState, useEffect, useRef } from 'react';
 import styles from '../styles/Post.module.css';
-import FireText from './animatedText/FireText';
-import IceText from './animatedText/IceText';
-import ThunderText from './animatedText/ThunderText';
-import EarthText from './animatedText/EarthText';
-import RegexText from './animatedText/RegexText';
-import MetalHeadText from './animatedText/MetalHeadText';
+import FireText from './animatedText/FireText/FireText';
+import IceText from './animatedText/IceText/IceText';
+import ThunderText from './animatedText/ThunderText/ThunderText';
+import EarthText from './animatedText/EarthText/EarthText';
+import RegexText from './animatedText/RegexText/RegexText';
+import MetalHeadText from './animatedText/MetalHeadText/MetalHeadText';
 import JsxParser from 'react-jsx-parser';
 import Comment from './Comment';
 import { CommentTwoTone, ArrowForwardIosRounded } from '@material-ui/icons'

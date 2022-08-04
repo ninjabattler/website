@@ -1,9 +1,9 @@
 import { React, useState } from 'react';
 import styles from '../styles/Carousel.module.css';
-import FireText from './animatedText/FireText';
-import IceText from './animatedText/IceText';
-import ThunderText from './animatedText/ThunderText';
-import EarthText from './animatedText/EarthText';
+import FireText from './animatedText/FireText/FireText';
+import IceText from './animatedText/IceText/IceText';
+import ThunderText from './animatedText/ThunderText/ThunderText';
+import EarthText from './animatedText/EarthText/EarthText';
 import JsxParser from 'react-jsx-parser';
 import Paragraph from './Paragraph';
 import Image from 'next/image';

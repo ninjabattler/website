@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../../styles/TerrariaText.module.css'
+import styles from './TerrariaText.module.css'
 
 export default function TerrariaText(props) {
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../../styles/RegexText.module.css'
+import styles from './RegexText.module.css'
 
 export default function RegexText(props){
 

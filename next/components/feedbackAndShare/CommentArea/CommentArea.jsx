@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from "./CommentArea.module.css";
 import JsxParser from 'react-jsx-parser';
-import FireText from '../../animatedText/FireText';
-import ThunderText from '../../animatedText/ThunderText';
-import IceText from '../../animatedText/IceText';
-import EarthText from '../../animatedText/EarthText';
-import RegexText from '../../animatedText/RegexText';
-import MetalHeadText from '../../animatedText/MetalHeadText';
+import FireText from '../../animatedText/FireText/FireText';
+import ThunderText from '../../animatedText/ThunderText/ThunderText';
+import IceText from '../../animatedText/IceText/IceText';
+import EarthText from '../../animatedText/EarthText/EarthText';
+import RegexText from '../../animatedText/RegexText/RegexText';
+import MetalHeadText from '../../animatedText/MetalHeadText/MetalHeadText';
 import { addMarkdownToSelection, comment, styleText } from '../../../helpers/articlePageHelpers';
 
 export default function CommentArea({ commentRef, comments, setComments, postId, userId, commenting, setCommenting, viewComment, setViewComment, setCommentContent, commentContent }) {

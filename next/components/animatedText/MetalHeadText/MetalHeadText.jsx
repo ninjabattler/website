@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../../styles/MetalHeadText.module.css'
+import styles from './MetalHeadText.module.css'
 
 export default function MetalHeadText(props){
 
