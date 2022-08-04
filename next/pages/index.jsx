@@ -3,18 +3,19 @@ import styles from '../styles/HomePage.module.css'
 import { React, useState, useEffect } from 'react';
 import CodeBlock from '../components/CodeBlock';
 import VideoBackground from '../components/VideoBackground';
-// require('dotenv').config();
+import { homePageServerSideProps } from '../ssr/index'
+import Link from 'next/link';
 
 const QUOTES = [
-  'Welcome Chrome User'
+  'Status: 200, successfully connected'
 ]
 const SUB_QUOTES = [
   'to the land of uneducated opinions and a few shades of gray!'
 ]
 
-let i = 0
+export const getServerSideProps = homePageServerSideProps;
 
-export default function Home(props) {
+export default function Home({ article_title, article_thumbnail, setLinkClicked }) {
   const [quoteIndex, setQuoteIndex] = useState(Math.floor(Math.random() * QUOTES.length));
   const chosenQuote = QUOTES[quoteIndex]
   const chosenSubQuote = SUB_QUOTES[quoteIndex]
@@ -49,13 +50,21 @@ export default function Home(props) {
 
           <img id={styles.homePageRobot} src="/websiterobot.webp" />
           <img id={styles.homePageRobotFade} src="/websiterobot.webp" />
-          
+
           {/* Introduction */}
           <section id={styles.part1}>
             <div id={styles.scrollToOne} />
 
             <div className={styles.gradient1} />
-            <div className={styles.gradient2} />
+            <div className={styles.gradient2}>
+              <Link href={`/articles/${article_title.toLowerCase().replace(/ /g, '_')}`}>
+                <img 
+                  onClick={(e) => { e.preventDefault(); setLinkClicked(`/articles/${article_title.toLowerCase().replace(/ /g, '_')}`) }}
+                  src={article_thumbnail}
+                />
+              </Link>
+              <h2>Newest Article: <br/>{article_title}</h2>
+            </div>
 
             <h1>{chosenQuote}</h1>
             <h4>{chosenSubQuote}</h4>
@@ -96,14 +105,14 @@ export default function Home(props) {
             <h4>Words that do stuff</h4>
             <div className={styles.gradient2}>
               <span>content.js</span>
-              <CodeBlock 
-                code={'const betterConsoleLog = (message) => {\n\tconsole.log(`Better ${message}`);\n};\n\nconst messageYouWillRead = `\nI write code, and coded this website.\n\nI mostly work with web development, JS, TS, React, NextJs etc, but I do have an interest in other languages as well.\n\nI also like to write words about code to, you can read that here, or just visit my Github and check that out.`;\n\nbetterConsoleLog(messageYouWillRead);\n\n\n\n\n'} 
+              <CodeBlock
+                code={'const betterConsoleLog = (message) => {\n\tconsole.log(`Better ${message}`);\n};\n\nconst messageYouWillRead = `\nI write code, and coded this website.\n\nI mostly work with web development, JS, TS, React, NextJs etc, but I do have an interest in other languages as well.\n\nI also like to write words about code to, you can read that here, or just visit my Github and check that out.`;\n\nbetterConsoleLog(messageYouWillRead);\n\n\n\n\n'}
                 language={'js'}
                 highlight={"6-9, 10"}
               />
               <span>filler.html</span>
-              <CodeBlock 
-                code={'<body>\n\t<h1>Filler Text</h1>\n\t<h2>Because why not</h2>\n\t<p>gotta do something with this empty space. So here you go, have some html.</p>\n</body>'} 
+              <CodeBlock
+                code={'<body>\n\t<h1>Filler Text</h1>\n\t<h2>Because why not</h2>\n\t<p>gotta do something with this empty space. So here you go, have some html.</p>\n</body>'}
                 language={'html'}
               />
             </div>

@@ -36,7 +36,7 @@ function MyApp({ Component, pageProps }) {
       <NavBar setLinkClicked={setLinkClicked} />
       {linkClicked && <LoadingOverlay />}
       {linkClicked === '' && <LoadingOverlay shrink />}
-      <Component {...pageProps} />
+      <Component {...pageProps} setLinkClicked={setLinkClicked} />
       <Footer />
     </>
   )
