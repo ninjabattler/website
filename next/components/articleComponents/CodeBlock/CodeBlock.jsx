@@ -1,5 +1,5 @@
-import { React, useState } from 'react';
-import styles from '../styles/CodeBlock.module.css';
+import { React } from 'react';
+import styles from './CodeBlock.module.css';
 import { CopyBlock, vs2015 } from "react-code-blocks";
 
 export default function CodeBlock({ code, language, highlight }) {

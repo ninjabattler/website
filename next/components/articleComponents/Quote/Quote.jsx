@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from "../styles/Quote.module.css";
+import styles from "./Quote.module.css";
 
 export default function Quote(props){
   return (

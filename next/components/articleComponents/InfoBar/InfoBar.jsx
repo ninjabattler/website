@@ -1,7 +1,6 @@
 import React from 'react';
-import styles from "../styles/InfoBar.module.css";
-import { GamepadSharp, CalendarTodaySharp } from '@material-ui/icons'
-import { formatSqlDate } from '../helpers/dateHelpers';
+import styles from "./InfoBar.module.css";
+import { formatSqlDate } from '../../../helpers/dateHelpers';
 
 export default function InfoBar(props){
   return (

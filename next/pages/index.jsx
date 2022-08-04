@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import styles from '../styles/HomePage.module.css'
-import { React, useState, useEffect } from 'react';
-import CodeBlock from '../components/CodeBlock';
+import { React, useState } from 'react';
+import CodeBlock from '../components/articleComponents/CodeBlock/CodeBlock';
 import VideoBackground from '../components/VideoBackground';
 import { homePageServerSideProps } from '../ssr/index'
 import Link from 'next/link';

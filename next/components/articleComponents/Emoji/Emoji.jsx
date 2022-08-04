@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from "../styles/Dialogue.module.css";
 import Image from 'next/image'
 
 export default function Emoji(props){

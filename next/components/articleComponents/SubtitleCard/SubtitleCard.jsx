@@ -1,13 +1,7 @@
-import { React, useEffect, useState } from 'react';
-import styles from "../styles/SubtitleCard.module.css";
+import { React } from 'react';
+import styles from "./SubtitleCard.module.css";
 
 export default function SubtitleCard(props) {
-
-  const [windowVar, setWindowVar] = useState({});
-
-  useEffect(() => {
-    setWindowVar(window)
-  }, [])
 
   return (
     <div className={`${styles.bossCard} ${props.inverse ? styles.inverse : ''}`}>

@@ -1,5 +1,5 @@
 import { React, useEffect, useState } from 'react';
-import styles from "../styles/TitleCard.module.css";
+import styles from "./TitleCard.module.css";
 
 export default function TitleCard(props) {
 

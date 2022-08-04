@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from "../styles/Dialogue.module.css";
+import styles from "./Dialogue.module.css";
 
 export default function Dialogue(props){
   return (
