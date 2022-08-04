@@ -69,7 +69,7 @@ export default function Home({ article_title, article_thumbnail, setLinkClicked 
             <h1>{chosenQuote}</h1>
             <h4>{chosenSubQuote}</h4>
             <p>
-              Here in this small corner of the internet, you'll find lots of words, words written by me, if you can believe it. There's even pictures and videos, and some blender stuff. But what topics do these words speak of?
+              Here in this small corner of the internet, you&apos;ll find lots of words, words written by me, if you can believe it. There&apos;s even pictures and videos, and some blender stuff. But what topics do these words speak of?
             </p>
           </section>
 
@@ -90,7 +90,7 @@ export default function Home({ article_title, article_thumbnail, setLinkClicked 
 
             <div className={styles.gradient2}>
               <p>
-                Video games, I play them, do you play them? Trick question. I also write opinionated words about them. If that interests you, check the articles page to see what I've got and find out if any of it interests you. If you have any opinionated comments of your own, feel free to post them, comments exists for a reason after all.
+                Video games, I play them, do you play them? Trick question. I also write opinionated words about them. If that interests you, check the articles page to see what I&apos;ve got and find out if any of it interests you. If you have any opinionated comments of your own, feel free to post them, comments exists for a reason after all.
               </p>
             </div>
           </section>
