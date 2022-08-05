@@ -3,31 +3,35 @@
   display: flex;
   flex-direction: row;
   margin-top: 100px;
+  font-size: 1.6vw;
+  --gradientColour: rgba(0, 0, 0, 0.5);
+  --shadow-colour: black;
 }
 .articlesPageContainer {
   width: 50%;
   margin-left: auto;
 }
 .articleCard {
+  font-size: 1em;
   width: 100%;
-  height: 40vw;
+  height: 37.95vw;
   background-color: var(--dark-gray);
-  margin: -20px;
-  filter: drop-shadow(4px 4px 0px black);
+  margin: -0.8vw;
+  filter: drop-shadow(0.3vw 0.3vw 0px black);
   display: flex;
   overflow: hidden;
   flex-direction: row;
   justify-content: flex-start;
-  transform: rotate3d(4, 0.2, 0.5, 30deg) scale(0.9);
+  transform: scale(0.9);
+  transition: width 0.5s, transform 0.5s, filter 0.5s, font-size 0.5s;
 }
 
 .articleCard:hover {
+  font-size: 1.3em !important;
   width: 150%;
-  filter: drop-shadow(20px 20px 0px black);
-  transform: rotate3d(4, 0.2, 0.5, -30deg) scale(1) translateX(-50%);
+  filter: drop-shadow(1vw 1vw 0px var(--shadow-colour));
+  transform: scale(1) translateX(-50%);
   z-index: 200;
-  animation-name: expand;
-  animation-duration: 1s;
 }
 
 .articleCard.shrink {
@@ -50,36 +54,59 @@
 }
 
 .articleCardItem > div > aside {
-  width: 23vw;
+  width: 25vw;
   height: 100%;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transform: rotate3d(1, 1, 0.5, 30deg);
   color: var(--dark-gray);
-  filter: drop-shadow(2px 2px 0px black);
   z-index: -10;
-  font-size: 1.6vw;
+  font-size: 1.4vw;
 }
 
-.articleCardItem > div > div {
+.articleCardItem > div > .infoBackground {
+  width: 40vw;
   margin-top: 28vw;
   border-top: 10vw solid var(--light-gray);
   border-right: 10vw solid transparent;
+  mask: linear-gradient(
+    -45deg,
+    black 20%,
+    var(--gradientColour) 20%,
+    var(--gradientColour) 22%,
+    black 22%,
+    black 24%,
+    var(--gradientColour) 24%,
+    var(--gradientColour) 26%,
+    black 26%
+  );
+  transition: width 0.5s, filter 0.5s;
 }
+
+.articleCard:hover > .articleCardItem > div > .infoBackground {
+  width: 65vw;
+  filter: drop-shadow(10vw 0 0px var(--shadow-colour));
+}
+
 .articleCardItem > div > section {
   position: absolute;
   color: var(--dark-gray);
   width: 99%;
-  height: 99%;
+  height: 10vw;
+  bottom: 0;
+  margin-left: 1vw;
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.articleCardItem > div > section > u {
+  font-size: 0.8em;
 }
 
 .articleCardItem > div > section > h1 {
-  margin-left: 20px;
-  margin-top: -20px;
-  font-size: 2.4vw;
+  font-size: 1.5em;
+  margin: 0;
 }
 .articleCardItem > div > img {
   position: absolute;
@@ -95,19 +122,6 @@
   opacity: 1;
   animation-name: fadeIn;
   animation-duration: 1s;
-}
-
-#articlesSearchTab {
-  color: var(--light-gray);
-  background-color: var(--dark-gray);
-  position: -webkit-sticky;
-  position: sticky;
-  margin: 20px;
-  top: 15vh;
-  height: 70vh;
-  width: 20vw;
-  filter: drop-shadow(3px 3px 0px black);
-  transform: rotate3d(-3, 30, 6, -20deg);
 }
 
 @keyframes fadeAway {

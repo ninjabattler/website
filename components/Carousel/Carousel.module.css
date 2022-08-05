@@ -1,10 +1,9 @@
 .carousel {
   display: flex;
   flex-direction: column;
-  margin-top: 100px;
+  margin-top: 5.4vw;
   width: 100vw;
-  font-size: 20px;
-  /* filter: drop-shadow(3px 3px 0px black); */
+  font-size: 1em;
 }
 
 .backgroundImg {
@@ -12,7 +11,7 @@
   width: 100vw;
   z-index: -10;
   margin-top: -23.5%;
-  filter: blur(13px);
+  filter: blur(0.6vw);
   transition: opacity 1s;
 }
 
@@ -29,21 +28,21 @@
 .carouselOptions {
   display: flex;
   justify-content: center;
-  filter: drop-shadow(3px 3px 0px black);
+  filter: drop-shadow(2px 2px 0px black);
 }
 .carouselOptions > input {
   -webkit-appearance: none;
   background-color: var(--light-gray);
-  border: 5px solid var(--dark-gray);
-  padding: 20px;
+  border: 0.3vw solid var(--dark-gray);
+  padding: 1.1vw;
   border-radius: 100%;
 }
 
 .carouselOptions > input:checked {
   -webkit-appearance: none;
   background-color: var(--dark-gray);
-  border: 5px solid var(--dark-gray);
-  padding: 20px;
+  border: 0.3vw solid var(--dark-gray);
+  padding: 1.1vw;
   border-radius: 100%;
 }
 
@@ -91,7 +90,6 @@
   font-size: 1.3vw;
   margin: 5px;
   margin-right: 2vw;
-  filter: drop-shadow(1px 1px 0px black);
 }
 
 .carouselItem > aside > h1 {
@@ -100,7 +98,6 @@
   text-align: center;
   width: 100%;
   margin: 0;
-  filter: drop-shadow(2px 2px 0px black);
 }
 
 .carouselItem > aside > .jsx-parser {

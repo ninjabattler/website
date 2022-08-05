@@ -8,20 +8,20 @@ import Link from 'next/link';
 import LoadingOverlay from '../../components/LoadingOverlay/LoadingOverlay';
 import VideoBackground from '../../components/VideoBackground/VideoBackground';
 import { articlesServerSideProps } from '../../ssr/articles/index';
+import { formatSqlDate } from '../../helpers/dateHelpers';
 
 export const getServerSideProps = articlesServerSideProps;
 
 export default function ArticlesPage(props) {
-  const [linkClicked, setLinkClicked] = useState(false);
   const [windowServer, setWindow] = useState({})
-  
+  const setLinkClicked = props.setLinkClicked;
+
   useEffect(() => {
     setWindow(window)
   }, [])
 
   return (
     <>
-      {linkClicked && (<LoadingOverlay />)}
       <VideoBackground nonArticlePage overlayColour pageColour="#AAAAAA" />
       <Head>
         <title>Ninjabattler - Articles</title>
@@ -49,9 +49,16 @@ export default function ArticlesPage(props) {
       <main id={styles.articlesPage}>
         <div className={styles.articlesPageContainer}>
           {props.articles.slice(3).map((item) => {
+            const formattedDate = formatSqlDate(item.formatteddate);
+            const link = `/articles/${item.title.toLowerCase().replace(/ /g, '_')}`;
+
             return (
-              <Link key={item.title} href={`/articles/${item.title.toLowerCase().replace(/ /g, '_')}`} >
-                <a onClick={() => { setLinkClicked(true) }} className={styles.articleCard}>
+              <Link key={item.title} href={link} >
+                <a
+                  onClick={() => { setLinkClicked(link) }}
+                  className={styles.articleCard}
+                  style={{ "--shadow-colour": item.colour }}
+                >
                   <article className={styles.articleCardItem}
                     onMouseEnter={(e) => {
                       e.target.parentElement.children["0"].className = 'fade'
@@ -61,19 +68,17 @@ export default function ArticlesPage(props) {
                     }}>
                     <div>
                       <img src={item.thumbnail ? item.thumbnail.replace('http://', 'https://') : null} alt='thumbnail' />
-                      <div> </div>
+                      <div className={styles.infoBackground}/>
+
                       <section>
-                        <h1 style={windowServer.innerWidth < 426 ? { filter: `drop-shadow(0.7px 0.7px 0px ${item.colour})` } : { filter: `drop-shadow(1px 1px 0px ${item.colour})` }}>{item.title}</h1>
+                        <u>{formattedDate} / {item.category} / {item.genre}</u>
+                        <h1>{item.title}</h1>
                       </section>
                     </div>
 
                     <div>
                       <aside>
-                        <JsxParser
-                          components={{ Paragraph }}
-
-                          jsx={item.content ? item.content.split(/\/n/g).slice(0, 4).join('') : ''}
-                        />
+                        <Paragraph text={item.description} />
                       </aside>
                     </div>
                   </article>

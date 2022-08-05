@@ -8,6 +8,7 @@ const selectAllArticles = async (db) => {
       content,
       category,
       genre,
+      description,
       TO_CHAR(date, 'MM, DD, YYYY') as formattedDate 
       FROM posts
       WHERE review = true

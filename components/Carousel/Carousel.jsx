@@ -4,6 +4,7 @@ import JsxParser from 'react-jsx-parser';
 import Paragraph from '../articleComponents/Paragraph/Paragraph';
 import Image from 'next/image';
 import Link from 'next/link';
+import { formatSqlDate } from '../../helpers/dateHelpers';
 
 export default function Carousel({ items, setLinkClicked }) {
 
@@ -42,7 +43,7 @@ export default function Carousel({ items, setLinkClicked }) {
                 <aside id={styles.carouselItemAside}>
                   <h1>{item.title}</h1>
                   <div>
-                    <h3><i className="fas fa-calendar-alt"></i>{item.formatteddate}</h3>
+                    <h3><i className="fas fa-calendar-alt"></i>{formatSqlDate(item.formatteddate)}</h3>
                     <h3><i className="fas fa-gamepad"></i>{item.category}/{item.genre}</h3>
                   </div>
 
