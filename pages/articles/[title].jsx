@@ -35,6 +35,7 @@ export default function ArticlePage(props) {
   const [showPanel, setShowPanel] = useState(true);
   const [viewComment, setViewComment] = useState(false);
   const [showCommentPanel, setShowCommentPanel] = useState(false);
+  const [noAnim, setNoAnim] = useState(false);
   const [commentContent, setCommentContent] = useState('');
   const commentRef = useRef();
 
@@ -46,7 +47,10 @@ export default function ArticlePage(props) {
   const scrollListener = (ev) => {
     if (window.scrollY >= window.innerHeight + 300) {
       setShowCommentPanel(true);
-      window.removeEventListener('scroll', scrollListener)
+      window.removeEventListener('scroll', scrollListener);
+      setTimeout(() => {
+        setNoAnim(true)
+      }, 2000)
     }
   }
 
@@ -140,6 +144,7 @@ export default function ArticlePage(props) {
               viewComment={viewComment}
               setCommenting={setCommenting}
               commentContent={commentContent}
+              noAnim={noAnim}
             />
 
             <div className={styles.comments}>

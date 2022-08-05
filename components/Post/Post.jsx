@@ -121,6 +121,7 @@ export default function Posts(props) {
                     viewComment={viewComment}
                     setCommenting={setCommenting}
                     commentContent={commentContent}
+                    noAnim={true}
                   />
 
                   <div className={styles.comments}>

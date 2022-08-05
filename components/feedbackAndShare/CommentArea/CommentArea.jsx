@@ -9,7 +9,7 @@ import RegexText from '../../animatedText/RegexText/RegexText';
 import MetalHeadText from '../../animatedText/MetalHeadText/MetalHeadText';
 import { addMarkdownToSelection, comment, styleText } from '../../../helpers/articlePageHelpers';
 
-export default function CommentArea({ commentRef, comments, setComments, postId, userId, commenting, setCommenting, viewComment, setViewComment, setCommentContent, commentContent }) {
+export default function CommentArea({ commentRef, comments, setComments, postId, userId, commenting, setCommenting, viewComment, setViewComment, setCommentContent, commentContent, noAnim }) {
   return (
     <>
       {commenting === true ?
@@ -19,7 +19,7 @@ export default function CommentArea({ commentRef, comments, setComments, postId,
           </p>
         </>) :
         (<>
-          <div id={styles.commentViewBar}>
+          <div id={styles.commentViewBar} className={noAnim && styles.noAnim}>
             <button className={!viewComment && styles.selected} onClick={() => { setViewComment(false) }}>
               <b>
                 Edit
@@ -39,7 +39,7 @@ export default function CommentArea({ commentRef, comments, setComments, postId,
 
           {
             viewComment &&
-            (<div id={styles.commentAreaView}>
+            (<div id={styles.commentAreaView} className={noAnim && styles.noAnim}>
               <JsxParser
                 components={{ FireText, EarthText, IceText, ThunderText, RegexText, MetalHeadText }}
                 jsx={styleText(commentContent)}
@@ -50,6 +50,7 @@ export default function CommentArea({ commentRef, comments, setComments, postId,
             !viewComment &&
             (<div
               id={styles.commentArea}
+              className={noAnim && styles.noAnim}
               placeholder='Leave a comment'
               contentEditable
               ref={commentRef}
@@ -58,7 +59,7 @@ export default function CommentArea({ commentRef, comments, setComments, postId,
             </div>)
           }
 
-          <div id={styles.commentStylingBar}>
+          <div id={styles.commentStylingBar} className={noAnim && styles.noAnim}>
             <button onClick={() => { addMarkdownToSelection(commentRef, '**', '**', setCommentContent) }}>
               <b>B</b>
             </button>
