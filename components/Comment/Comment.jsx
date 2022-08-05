@@ -22,7 +22,7 @@ export default function Comment(props) {
     <article className={`${styles.comment} ${props.postComment && styles.postComment}`} style={props.style}>
       <img className={styles.avatar} src={avatars[`avatar${props.avatar}`]} style={{ filter: `drop-shadow(1px 1px 0px ${props.pageColour || 'transparent'})` }} alt='profile pic' />
       <div>
-        <i style={{ textShadow: `1px 1px 0px ${props.pageColour || 'transparent'}` }}>Ninja #{props.username}</i>
+        <i>Ninja #{props.username}</i>
         <JsxParser
           components={{ FireText, EarthText, IceText, ThunderText, RegexText, MetalHeadText }}
 

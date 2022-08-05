@@ -183,6 +183,7 @@
   #commentArea,
   #commentAreaView {
     height: 15vw !important;
+    font-size: 3vw;
   }
 
   #animTextDropdown:hover > div > button {

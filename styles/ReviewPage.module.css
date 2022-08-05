@@ -138,7 +138,7 @@
     display: initial;
     position: fixed;
     background-color: var(--dark-gray);
-    margin-left: 330px;
+    margin-left: 83vw;
     margin-top: 6vw;
     animation-name: commentButtonFadeIn;
     animation-timing-function: linear;
@@ -156,7 +156,7 @@
     backdrop-filter: blur(3px);
   }
   #reviewPage > div > .articleContainer {
-    width: 85%;
+    width: 90%;
     margin-right: auto;
     margin-left: auto;
     font-size: 20px;
@@ -251,12 +251,12 @@
 
 @keyframes commentButtonFadeIn {
   0% {
-    margin-left: 0px;
+    margin-left: 0vw;
   }
   66% {
-    margin-left: 0px;
+    margin-left: 0vw;
   }
   100% {
-    margin-left: 330px;
+    margin-left: 83vw;
   }
 }

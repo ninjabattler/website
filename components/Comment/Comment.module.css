@@ -2,10 +2,11 @@
   display: flex;
   color: var(--light-gray);
   flex-wrap: none;
-  margin-left: 10px;
-  min-height: 100px;
-  padding-top: 5px;
-  border-bottom: 3px solid var(--light-gray);
+  margin-left: 0.5vw;
+  min-height: 5.4vw;
+  padding-top: 0.25vw;
+  border-bottom: 0.2vw solid var(--light-gray);
+  font-size: 1.6vw;
 }
 
 .comment > .avatar {
@@ -13,8 +14,8 @@
   width: 2.5em;
   height: 2.5em;
   border-radius: 100%;
-  border: 3px solid var(--dark-gray);
-  margin-right: 10px;
+  border: 0.2vw solid var(--dark-gray);
+  margin-right: 0.5vw;
 }
 
 .comment > div > div > p {
@@ -28,10 +29,10 @@
 }
 
 .comment > div > div > p > blockquote {
-  margin: 5px;
-  padding: 5px;
-  padding-left: 10px;
-  border-left: 2px solid var(--light-gray);
+  margin: 0.25vw;
+  padding: 0.25vw;
+  padding-left: 0.5vw;
+  border-left: 0.1vw solid var(--light-gray);
   background-color: rgba(0, 0, 0, 0.5);
   opacity: 0.7;
 }
@@ -43,18 +44,19 @@
 
 .comment > div > i {
   color: var(--light-gray);
-  margin-top: -0.3em;
+  margin-top: -0.3vw;
 }
 
 @media only screen and (max-width: 480px) {
+  .comment {
+    min-height: 16vw;
+    padding-top: 2vw;
+    font-size: 5vw;
+  }
+
   .comment > .avatar {
     width: 2em;
     height: 2em;
-  }
-  
-  .comment {
-    min-height: 50px;
-    font-size: 0.75em;
-    border-width: 2px;
+    margin-right: 3vw;
   }
 }

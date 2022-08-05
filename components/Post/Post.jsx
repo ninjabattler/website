@@ -129,7 +129,7 @@ export default function Posts(props) {
                         return (<Comment
                           postComment
                           key={com.id}
-                          pageColour={com.user_id === props.userId[0].id ? '#000000' : 'transparent'}
+                          pageColour={com.user_id === props.userId[0].id ? '#aaaa44' : 'transparent'}
                           username={com.username.slice(0, 10)}
                           date={com.formatteddate}
                           content={com.content}
