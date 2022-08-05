@@ -35,7 +35,7 @@ export default function Carousel({ items, setLinkClicked }) {
           i++
           return (
             <Link key={item.title} href={`/articles/${item.title.toLowerCase().replace(/ /g, '_')}`} >
-              <a onClick={() => { setLinkClicked(true) }} className={`${styles.carouselItem} ${i < 2 ? styles[currentOption] : ''}`}>
+              <a onClick={(e) => { e.preventDefault(); setLinkClicked(`/articles/${item.title.toLowerCase().replace(/ /g, '_')}`) }} className={`${styles.carouselItem} ${i < 2 ? styles[currentOption] : ''}`}>
 
                 <div className={styles.imageContainer}>
                   <Image width={16} height={9.55} layout="responsive" src={item.thumbnail} />

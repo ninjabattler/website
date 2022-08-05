@@ -55,17 +55,11 @@ export default function ArticlesPage(props) {
             return (
               <Link key={item.title} href={link} >
                 <a
-                  onClick={() => { setLinkClicked(link) }}
+                  onClick={(e) => { e.preventDefault(); setLinkClicked(link) }}
                   className={styles.articleCard}
                   style={{ "--shadow-colour": item.colour }}
                 >
-                  <article className={styles.articleCardItem}
-                    onMouseEnter={(e) => {
-                      e.target.parentElement.children["0"].className = 'fade'
-                    }}
-                    onMouseLeave={(e) => {
-                      e.target.parentElement.children["0"].className = 'fadeIn'
-                    }}>
+                  <article className={styles.articleCardItem}>
                     <div>
                       <img src={item.thumbnail ? item.thumbnail.replace('http://', 'https://') : null} alt='thumbnail' />
                       <div className={styles.infoBackground}/>

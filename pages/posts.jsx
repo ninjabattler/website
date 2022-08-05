@@ -3,6 +3,7 @@ import { React } from 'react';
 import Post from '../components/Post/Post';
 import styles from '../styles/PostsPage.module.css'
 import { postsServerSideProps } from '../ssr/posts';
+import VideoBackground from '../components/VideoBackground/VideoBackground';
 
 export const getServerSideProps = postsServerSideProps;
 
@@ -29,6 +30,7 @@ export default function PostsPage(props) {
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Gloria+Hallelujah&family=Trade+Winds&family=Hanalei+Fill&family=Rock+Salt&display=swap" rel="stylesheet" />
       </Head>
+      <VideoBackground nonArticlePage overlayColour pageColour="#AAAAAA" />
       <div id={styles.postsPage}>
         {
           props.posts.map((post) => {
