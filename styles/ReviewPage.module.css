@@ -139,7 +139,7 @@
     position: fixed;
     background-color: var(--dark-gray);
     margin-left: 83vw;
-    margin-top: 6vw;
+    /* margin-top: 6vw; */
     animation-name: commentButtonFadeIn;
     animation-timing-function: linear;
     animation-duration: 2.6s;
@@ -174,7 +174,7 @@
     display: initial;
     position: fixed;
     width: 80%;
-    height: 80vh;
+    height: 70vh;
     margin-top: 27vw;
     left: 0;
     top: 0;
