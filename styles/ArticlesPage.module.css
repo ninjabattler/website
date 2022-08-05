@@ -2,15 +2,18 @@
   width: 100vw;
   display: flex;
   flex-direction: row;
-  margin-top: 100px;
+  margin-top: 5.4vw;
   font-size: 1.6vw;
   --gradientColour: rgba(0, 0, 0, 0.5);
   --shadow-colour: black;
 }
+
 .articlesPageContainer {
   width: 50%;
+  margin-top: -4vw;
   margin-left: auto;
 }
+
 .articleCard {
   font-size: 1em;
   width: 100%;
