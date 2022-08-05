@@ -37,11 +37,6 @@
   z-index: 200;
 }
 
-.articleCard.shrink {
-  animation-name: close;
-  animation-duration: 1s;
-}
-
 .articleCardItem {
   display: flex;
   flex-direction: row;
@@ -111,83 +106,50 @@
   font-size: 1.5em;
   margin: 0;
 }
+
 .articleCardItem > div > img {
   position: absolute;
   width: 50vw;
   background-color: var(--dark-gray);
 }
-.fade {
-  opacity: 0;
-  animation-name: fadeAway;
-  animation-duration: 1s;
-}
-.fadeIn {
-  opacity: 1;
-  animation-name: fadeIn;
-  animation-duration: 1s;
-}
-
-@keyframes fadeAway {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes expand {
-  0% {
-    width: 100%;
-    filter: drop-shadow(2px 2px 0px black);
-    transform: rotate3d(4, 0.2, 0.5, 30deg) scale(0.8) translateX(0%);
-  }
-  50% {
-    width: 100%;
-    filter: drop-shadow(20px 20px 0px black);
-    transform: rotate3d(4, 0.2, 0.5, -30deg) scale(1) translateX(-25%);
-  }
-  100% {
-    width: 150%;
-    filter: drop-shadow(20px 20px 0px black);
-    transform: rotate3d(4, 0.2, 0.5, -30deg) scale(1) translateX(-50%);
-  }
-}
-
-@keyframes close {
-  0% {
-    width: 150%;
-    filter: drop-shadow(20px 20px 0px black);
-    transform: rotate3d(4, 0.2, 0.5, -30deg) scale(1) translateX(-50%);
-  }
-  50% {
-    width: 150%;
-    filter: drop-shadow(20px 20px 0px black);
-    transform: rotate3d(4, 0.2, 0.5, -30deg) scale(1) translateX(-50%);
-  }
-  100% {
-    width: 100%;
-    filter: drop-shadow(20px 20px 0px black);
-    transform: rotate3d(4, 0.2, 0.5, -30deg) scale(1) translateX(-50%);
-  }
-}
 
 @media only screen and (max-width: 425px) {
-  #previousMarker {
-    display: none;
+  #articlesPage {
+    font-size: 2.6vw;
   }
-  .articleCard {
-    transform: rotate3d(4, 0.2, 0.5, 30deg) scale(1.4);
-    margin-bottom: 100px;
-    margin-left: -70px;
+
+  .articlesPageContainer {
+    width: 90vw;
+    margin-left: 5vw;
+  }
+
+  .articleCard,
+  .articleCard:hover {
+    width: 100%;
+    height: 45vw;
+  }
+
+  .articleCardItem > div > .infoBackground,
+  .articleCard:hover > .articleCardItem > div > .infoBackground {
+    width: 75vw;
+    margin-top: 30vw;
+    border-top: 15vw solid var(--light-gray);
+    border-right: 15vw solid transparent;
+  }
+
+  .articleCardItem > div > section {
+    height: 15vw;
+    margin-left: 2vw;
+  }
+
+  .articleCardItem > div > aside {
+    width: 40vw;
+    font-size: 3.5vw;
+    margin-top: -4vw;
+    margin-left: 2vw;
+  }
+
+  .articleCardItem > div > img {
+    width: 53vw;
   }
 }

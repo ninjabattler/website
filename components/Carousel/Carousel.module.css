@@ -124,7 +124,7 @@
 
 @media only screen and (max-device-width: 425px) {
   .carousel {
-    margin-top: 50px;
+    margin-top: 8vw;
   }
 
   .carousel > main {
@@ -160,14 +160,14 @@
   }
 
   .carouselItem > aside > div > h3 {
-    font-size: 2.8vw;
+    font-size: 2.2vw;
     margin: 5px;
     margin-right: 2vw;
-    filter: drop-shadow(1px 1px 0px black);
   }
 
   .carouselItem > aside > h1 {
-    display: none;
+    margin-top: -3vw;
+    font-size: 2.8vw;
   }
 
   .carouselItem > aside > .jsx-parser {
@@ -181,5 +181,9 @@
   .carouselOptions > input:checked {
     border: 2px solid var(--dark-gray);
     padding: 10px;
+  }
+
+  .backgroundImg {
+    filter: blur(2vw);
   }
 }
