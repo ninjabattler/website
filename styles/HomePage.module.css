@@ -90,7 +90,9 @@
   position: absolute;
   right: 0;
   margin-top: 31vw;
-  margin-right: 23vw;
+  margin-right: 6vw;
+  width: 54vw;
+  text-align: left;
   color: var(--light-gray);
 }
 

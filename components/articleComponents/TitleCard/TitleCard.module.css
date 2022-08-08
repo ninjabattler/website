@@ -66,13 +66,11 @@
   position: absolute;
   display: flex;
   height: 19vw;
-  overflow-y: hidden;
   margin-top: -11.5vw;
   flex-direction: column-reverse;
 }
 .imageContainer > img {
   max-height: 38vw;
-  width: 25vw;
 }
 
 .imageContainer.lower {
@@ -149,11 +147,11 @@
     margin-top: 5px;
   }
   .imageContainer > img {
-    width: 40vw;
+    max-height: 17vw;
   }
   .imageContainer {
     height: 25vw;
-    margin-top: -14vw;
+    margin-top: -15vw;
   }
   .imageContainer.lower {
     margin-top: -10vw;

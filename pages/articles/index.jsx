@@ -1,11 +1,9 @@
 import { React, useEffect, useState } from 'react';
 import styles from '../../styles/ArticlesPage.module.css'
-import JsxParser from 'react-jsx-parser';
 import Paragraph from '../../components/articleComponents/Paragraph/Paragraph';
 import Carousel from '../../components/Carousel/Carousel';
 import Head from 'next/dist/shared/lib/head';
 import Link from 'next/link';
-import LoadingOverlay from '../../components/LoadingOverlay/LoadingOverlay';
 import VideoBackground from '../../components/VideoBackground/VideoBackground';
 import { articlesServerSideProps } from '../../ssr/articles/index';
 import { formatSqlDate } from '../../helpers/dateHelpers';
@@ -72,7 +70,7 @@ export default function ArticlesPage(props) {
 
                     <div>
                       <aside>
-                        <Paragraph text={item.description} />
+                        <Paragraph text={item.description || 'Opps, looks like I forgot a description...'} />
                       </aside>
                     </div>
                   </article>
