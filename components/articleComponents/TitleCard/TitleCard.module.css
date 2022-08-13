@@ -70,7 +70,7 @@
   flex-direction: column-reverse;
 }
 .imageContainer > img {
-  max-height: 38vw;
+  max-height: 12.5vw;
 }
 
 .imageContainer.lower {
