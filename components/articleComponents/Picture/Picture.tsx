@@ -1,18 +1,24 @@
-import { React } from 'react';
+import React, { ComponentType } from 'react';
 import styles from "./Picture.module.css";
 
-export default function Picture(props) {
+type PictureProps = {
+  imageSrc: string;
+  width: string;
+  float: 'left' | 'right';
+}
 
-  const floatLeft = props.float === 'left';
-  const floatRight = props.float === 'right';
+const Picture: ComponentType<PictureProps> = ({ imageSrc, width, float }) => {
+
+  const floatLeft = float === 'left';
+  const floatRight = float === 'right';
 
   return (
     <div className={`${styles.picture} ${floatLeft && styles.floatingLeft} ${floatRight && styles.floatingRight}`} style={{display: 'inline'}}>
       <img
-        src={props.imageSrc.replace('http://', 'https://')}
+        src={imageSrc.replace('http://', 'https://')}
         style={{ 
-          width: props.width,
-          float: props.float,
+          width: width,
+          float: float,
           marginLeft: floatLeft && '-12.5%',
           marginRight: (floatRight && '-12.5%') || (floatLeft && '10px')
         }}
@@ -22,3 +28,5 @@ export default function Picture(props) {
     </div>
   )
 }
+
+export default Picture
