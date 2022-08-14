@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement, RefObject } from 'react';
 import styles from "./CommentArea.module.css";
 import JsxParser from 'react-jsx-parser';
 import FireText from '../../animatedText/FireText/FireText';
@@ -8,8 +8,25 @@ import EarthText from '../../animatedText/EarthText/EarthText';
 import RegexText from '../../animatedText/RegexText/RegexText';
 import MetalHeadText from '../../animatedText/MetalHeadText/MetalHeadText';
 import { addMarkdownToSelection, comment, styleText } from '../../../helpers/articlePageHelpers';
+import { PostIdType, UserIdType } from '../../../types';
 
-export default function CommentArea({ commentRef, comments, setComments, postId, userId, commenting, setCommenting, viewComment, setViewComment, setCommentContent, commentContent, noAnim }) {
+interface CommentAreaProps {
+  commentRef: RefObject<any>;
+  comments: Array<any>;
+  setComments: Function;
+  postId: PostIdType;
+  userId: UserIdType;
+  commenting: boolean;
+  setCommenting: Function;
+  viewComment: boolean;
+  setViewComment: Function;
+  setCommentContent: Function;
+  commentContent: string;
+  noAnim: boolean;
+}
+
+export default function CommentArea({ commentRef, comments, setComments, postId, userId, commenting, setCommenting, viewComment, setViewComment, setCommentContent, commentContent, noAnim }: CommentAreaProps): ReactElement {
+  
   return (
     <>
       {commenting === true ?
@@ -41,7 +58,7 @@ export default function CommentArea({ commentRef, comments, setComments, postId,
             viewComment &&
             (<div id={styles.commentAreaView} className={noAnim && styles.noAnim}>
               <JsxParser
-                components={{ FireText, EarthText, IceText, ThunderText, RegexText, MetalHeadText }}
+                components={{ FireText, EarthText, IceText, ThunderText, RegexText, MetalHeadText } as {}}
                 jsx={styleText(commentContent)}
               />
             </div>)

@@ -1,14 +1,14 @@
-import React, { ReactElement } from 'react';
+import React, { ComponentType } from 'react';
 import styles from './FireText.module.css';
 
-export interface FireTextProps {
+type FireTextProps = {
   text: string;
 }
 
-export default function FireText({ text }: FireTextProps): ReactElement {
-  return (
-    <span className={styles.fireText}>
-      {text}
-    </span>
-  )
-}
+const FireText: ComponentType<FireTextProps> = ({ text }) => (
+  <span className={styles.fireText}>
+    {text}
+  </span>
+)
+
+export default FireText

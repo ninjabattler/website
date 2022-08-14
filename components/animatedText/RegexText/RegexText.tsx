@@ -1,14 +1,14 @@
-import React, { ReactElement } from 'react';
+import React, { ComponentType } from 'react';
 import styles from './RegexText.module.css';
 
-export interface RegexTextProps {
+type RegexTextProps = {
   text: string;
 }
 
-export default function RegexText({ text }: RegexTextProps): ReactElement {
-  return (
-    <span className={styles.regexText}>
-      {text}
-    </span>
-  )
-}
+const RegexText: ComponentType<RegexTextProps> = ({ text }) => (
+  <span className={styles.regexText}>
+    {text}
+  </span>
+)
+
+export default RegexText

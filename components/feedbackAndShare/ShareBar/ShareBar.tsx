@@ -1,11 +1,21 @@
-import React, { useState } from 'react';
+import React, { ReactElement, useState } from 'react';
 import styles from "./ShareBar.module.css";
 import { Reddit, Twitter, LinkedIn, LinkSharp } from '@material-ui/icons';
+import { ColourType, TitleType, UrlType } from '../../../types';
 
-export default function ShareBar({ title, windowServer, articleLink, pageColour }) {
-  const [linkCopied, setLinkCopied] = useState(false);
+interface ShareBarProps {
+  title: TitleType;
+  windowServer: {
+    location: string;
+  };
+  articleLink: UrlType;
+  pageColour: ColourType;
+}
 
-  const copyLink = () => { 
+export default function ShareBar({ title, windowServer, articleLink, pageColour }: ShareBarProps): ReactElement {
+  const [linkCopied, setLinkCopied] = useState<boolean>(false);
+
+  const copyLink = (): void => {
     window.navigator.clipboard.writeText(articleLink);
     setLinkCopied(true);
   }

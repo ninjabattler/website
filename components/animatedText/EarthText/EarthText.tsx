@@ -1,14 +1,14 @@
-import React, { ReactElement } from 'react';
+import React, { ComponentType } from 'react';
 import styles from './EarthText.module.css'
 
-export interface EarthTextProps {
+type EarthTextProps = {
   text: string;
 }
 
-export default function EarthText({ text }: EarthTextProps): ReactElement {
-  return (
-    <span className={styles.earthText}>
-      {text}
-    </span>
-  )
-}
+const EarthText: ComponentType<EarthTextProps> = ({ text }) => (
+  <span className={styles.earthText}>
+    {text}
+  </span>
+)
+
+export default EarthText

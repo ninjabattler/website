@@ -1,14 +1,14 @@
-import React, { ReactElement } from 'react';
+import React, { ComponentType } from 'react';
 import styles from './IceText.module.css';
 
-export interface IceTextProps {
+type IceTextProps = {
   text: string;
 }
 
-export default function IceText({ text }: IceTextProps): ReactElement {
-  return (
-    <span className={styles.iceText}>
-      {text}
-    </span>
-  )
-}
+const IceText: ComponentType<IceTextProps> = ({ text }) => (
+  <span className={styles.iceText}>
+    {text}
+  </span>
+)
+
+export default IceText

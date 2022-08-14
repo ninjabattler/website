@@ -1,14 +1,14 @@
-import React, { ReactElement } from 'react';
+import React, { ComponentType } from 'react';
 import styles from './MetalHeadText.module.css';
 
-export interface MetalHeadTextProps {
+type MetalHeadTextProps = {
   text: string;
 }
 
-export default function MetalHeadText({ text }: MetalHeadTextProps): ReactElement {
-  return (
-    <span className={styles.metalHeadText}>
-      {text}
-    </span>
-  )
-}
+const MetalHeadText: ComponentType<MetalHeadTextProps> = ({ text }) => (
+  <span className={styles.metalHeadText}>
+    {text}
+  </span>
+)
+
+export default MetalHeadText

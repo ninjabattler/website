@@ -1,14 +1,14 @@
-import React, { ReactElement } from 'react';
+import React, { ComponentType } from 'react';
 import styles from './ThunderText.module.css';
 
-export interface ThunderTextProps {
+type ThunderTextProps = {
   text: string;
 }
 
-export default function ThunderText({ text }: ThunderTextProps): ReactElement {
-  return (
-    <span className={styles.thunderText}>
-      {text}
-    </span>
-  )
-}
+const ThunderText: ComponentType<ThunderTextProps> = ({ text }) => (
+  <span className={styles.thunderText}>
+    {text}
+  </span>
+)
+
+export default ThunderText
