@@ -42,7 +42,7 @@ export default function PostsPage(props) {
                 id={post.id}
                 key={post.id}
                 ip={props.ip}
-                userId={props.userId}
+                userId={props.userId[0].id}
                 comments={post.comments}
               />
             )

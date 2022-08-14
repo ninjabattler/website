@@ -1,4 +1,4 @@
-import { React, useState, useRef } from 'react';
+import React, { useState, useRef, MutableRefObject, ReactElement } from 'react';
 import styles from './Post.module.css';
 import FireText from '../animatedText/FireText/FireText';
 import IceText from '../animatedText/IceText/IceText';
@@ -10,51 +10,60 @@ import JsxParser from 'react-jsx-parser';
 import Comment from '../Comment/Comment';
 import { CommentTwoTone } from '@material-ui/icons'
 import CommentArea from '../feedbackAndShare/CommentArea/CommentArea';
+import { PostIdType, TitleType, UserIdType } from '../../types';
 
-export default function Posts(props) {
+type PostProps = {
+  title: TitleType;
+  date: string;
+  comments: Array<any>;
+  content: string;
+  id: PostIdType;
+  userId: UserIdType;
+}
 
-  const today = new Date();
+export default function Post({ title, date, comments, content, id, userId }: PostProps): ReactElement {
 
-  const secondsSincePost = ((today.getTime() / 1000) - (new Date(props.date.replace(' ', 'T')).getTime() / 1000))
-  let minutesSincePost
-  let hoursSincePost
-  let daysSincePost
-  let weeksSincePost
-  let monthsSincePost
-  let yearsSincePost
+  const today: Date = new Date();
+
+  const secondsSincePost: number = ((today.getTime() / 1000) - (new Date(date.replace(' ', 'T')).getTime() / 1000));
+  let minutesSincePost: number;
+  let hoursSincePost: number;
+  let daysSincePost: number;
+  let weeksSincePost: number;
+  let monthsSincePost: number;
+  let yearsSincePost: number;
 
   if (secondsSincePost > 60) {
-    minutesSincePost = secondsSincePost / 60
+    minutesSincePost = secondsSincePost / 60;
   }
   if (minutesSincePost > 60) {
-    hoursSincePost = minutesSincePost / 60
+    hoursSincePost = minutesSincePost / 60;
   }
   if (hoursSincePost > 24) {
-    daysSincePost = hoursSincePost / 24
+    daysSincePost = hoursSincePost / 24;
   }
   if (daysSincePost > 7) {
-    weeksSincePost = daysSincePost / 7
+    weeksSincePost = daysSincePost / 7;
   }
   if (weeksSincePost > 4) {
-    monthsSincePost = weeksSincePost / 4
+    monthsSincePost = weeksSincePost / 4;
   }
   if (monthsSincePost > 12) {
-    yearsSincePost = monthsSincePost / 12
+    yearsSincePost = monthsSincePost / 12;
   }
 
-  const [closed, setClosed] = useState(0)
-  const [showContent, setShowContent] = useState(false)
-  const [showComments, setShowComments] = useState(false)
-  const [comments, setComments] = useState(props.comments || [])
-  const [commenting, setCommenting] = useState(false)
-  const [viewComment, setViewComment] = useState(false);
-  const [commentContent, setCommentContent] = useState('');
-  const commentRef = useRef();
-  // let commentContent = '';
+  const [closed, setClosed] = useState<number>(0);
+  const [showContent, setShowContent] = useState<boolean>(false);
+  const [showComments, setShowComments] = useState<boolean>(false);
+  const [commentList, setCommentList] = useState<Array<any>>(comments || []);
+  const [commenting, setCommenting] = useState<boolean>(false);
+  const [viewComment, setViewComment] = useState<boolean>(false);
+  const [commentContent, setCommentContent] = useState<string>('');
+  const commentRef: MutableRefObject<undefined> = useRef();
 
   return (
     <article
-      key={props.title}
+      key={title}
       className={`${closed === 0 ? styles.post : closed === 1 ? styles.expanded : `${styles.post} ${styles.closed}`}`}
       style={{ backgroundImage: '/Ninja placeholder.png', height: closed === 1 && showComments && '85vh' }}
       onClick={() => {
@@ -66,11 +75,11 @@ export default function Posts(props) {
       }}>
       {!showContent && <img src={'/Ninja placeholder.png'} />}
 
-      <h1>{props.title}</h1>
+      <h1>{title}</h1>
 
       {/* Date */}
       {
-        !showContent ?
+        !showContent &&
           (<>{
             yearsSincePost ?
               (<h2>{Math.round(yearsSincePost)} Years</h2>)
@@ -96,8 +105,6 @@ export default function Posts(props) {
                           (<h2></h2>)
 
           }</>)
-          :
-          (<></>)
       }
       {
         showContent ?
@@ -111,10 +118,10 @@ export default function Posts(props) {
 
                   <CommentArea
                     commentRef={commentRef}
-                    comments={comments}
-                    setComments={setComments}
-                    postId={props.id}
-                    userId={props.userId[0].id}
+                    comments={commentList}
+                    setComments={setCommentList}
+                    postId={id}
+                    userId={userId}
                     commenting={commenting}
                     setCommentContent={setCommentContent}
                     setViewComment={setViewComment}
@@ -125,12 +132,11 @@ export default function Posts(props) {
                   />
 
                   <div className={styles.comments}>
-                    {comments.map((com) => {
+                    {commentList.map((com) => {
                       if (com.username) {
                         return (<Comment
-                          postComment
                           key={com.id}
-                          pageColour={com.user_id === props.userId[0].id ? '#aaaa44' : 'transparent'}
+                          pageColour={com.user_id === userId ? '#aaaa44' : 'transparent'}
                           username={com.username.slice(0, 10)}
                           date={com.formatteddate}
                           content={com.content}
@@ -151,8 +157,8 @@ export default function Posts(props) {
 
             {/* Content */}
             <JsxParser
-              components={{ FireText, IceText, ThunderText, EarthText, MetalHeadText, RegexText }}
-              jsx={props.content}
+              components={{ FireText, IceText, ThunderText, EarthText, MetalHeadText, RegexText } as {}}
+              jsx={content}
             />
 
           </div>)

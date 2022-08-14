@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import React, { ReactElement, useState } from 'react';
 import styles from './Carousel.module.css';
 import JsxParser from 'react-jsx-parser';
 import Paragraph from '../articleComponents/Paragraph/Paragraph';
@@ -6,7 +6,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { formatSqlDate } from '../../helpers/dateHelpers';
 
-export default function Carousel({ items, setLinkClicked }) {
+type CarouselProps = {
+  items: Array<any>;
+  setLinkClicked: Function;
+}
+
+const Carousel = ({ items, setLinkClicked }: CarouselProps): ReactElement => {
 
   const [currentOption, setCurrentOption] = useState('left');
 
@@ -48,7 +53,7 @@ export default function Carousel({ items, setLinkClicked }) {
                   </div>
 
                   <JsxParser
-                    components={{ Paragraph }}
+                    components={{ Paragraph } as {}}
 
                     jsx={item.content ? item.content.split(/\n/g).slice(0, 2).join('') : ''}
                   />
@@ -64,3 +69,5 @@ export default function Carousel({ items, setLinkClicked }) {
       </div>
     </section>)
 }
+
+export default Carousel
