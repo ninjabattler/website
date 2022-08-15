@@ -10,12 +10,13 @@ import TerrariaText from '../../animatedText/TerrariaText/TerrariaText';
 import styles from "./Paragraph.module.css";
 import Picture from '../Picture/Picture';
 
-type ParagraphType = {
+type ParagraphProps = {
   text: string;
 }
 
-const Paragraph: ComponentType<ParagraphType> = ({ text }) => (
+const Paragraph: ComponentType<ParagraphProps> = ({ text }) => (
   <div className={styles.paragraph}>
+    {/* @ts-ignore - JsxParser has an error with how it exports, works perfectly fine though */}
     <JsxParser
       components={{ FireText, EarthText, IceText, ThunderText, RegexText, MetalHeadText, TerrariaText, Picture } as {}}
 

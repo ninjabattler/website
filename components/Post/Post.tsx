@@ -19,6 +19,7 @@ type PostProps = {
   content: string;
   id: PostIdType;
   userId: UserIdType;
+  ip: string | null;
 }
 
 export default function Post({ title, date, comments, content, id, userId }: PostProps): ReactElement {
@@ -156,6 +157,7 @@ export default function Post({ title, date, comments, content, id, userId }: Pos
             }
 
             {/* Content */}
+            {/* @ts-ignore - JsxParser has an error with how it exports, works perfectly fine though */}
             <JsxParser
               components={{ FireText, IceText, ThunderText, EarthText, MetalHeadText, RegexText } as {}}
               jsx={content}

@@ -31,6 +31,7 @@ const Comment: ComponentType<CommentProps> = ({ username, content, style, pageCo
     <img className={styles.avatar} src={avatars[`avatar${avatar}`]} style={{ filter: `drop-shadow(1px 1px 0px ${pageColour || 'transparent'})` }} alt='profile pic' />
     <div>
       <i>Ninja #{username}</i>
+      {/* @ts-ignore - JsxParser has an error with how it exports, works perfectly fine though */}
       <JsxParser
         components={{ FireText, EarthText, IceText, ThunderText, RegexText, MetalHeadText } as {}}
 

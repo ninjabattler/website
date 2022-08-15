@@ -1,17 +1,17 @@
-import axios from 'axios';
-import React from 'react';
+import { GetServerSidePropsContext } from 'next';
 import db from '../db/db';
-const { selectAllArticles } = require('../db/queries');
+import { ArticleData, TitleType } from '../types';
+import selectAllArticles from '../db/selects/selectAllArticles';
 
 const Sitemap = () => {
   return null;
 };
 
-export const getServerSideProps = async ({ res }) => {
+export const getServerSideProps = async ({ res }: GetServerSidePropsContext) => {
   const BASE_URL = 'https://ninjabattler.ca/';
 
-  const articles = await selectAllArticles(db)
-  const articleTitles = []
+  const articles: ArticleData[] = await selectAllArticles(db)
+  const articleTitles: TitleType[] = []
 
   articles.forEach(article => {
     articleTitles.push(article.title.toLowerCase().replace(/ /g, '_'))

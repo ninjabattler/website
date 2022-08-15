@@ -1,24 +1,16 @@
 import Head from 'next/head'
 import styles from '../styles/HomePage.module.css'
-import { React, useState } from 'react';
+import React from 'react';
 import CodeBlock from '../components/articleComponents/CodeBlock/CodeBlock';
 import VideoBackground from '../components/VideoBackground/VideoBackground';
 import { homePageServerSideProps } from '../ssr/index'
 import Link from 'next/link';
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import { AppData } from '../types';
 
-const QUOTES = [
-  'Status: 200, successfully connected'
-]
-const SUB_QUOTES = [
-  'to the land of uneducated opinions and a few shades of gray!'
-]
+export const getServerSideProps: GetServerSideProps = homePageServerSideProps;
 
-export const getServerSideProps = homePageServerSideProps;
-
-export default function Home({ article_title, article_thumbnail, setLinkClicked }) {
-  const [quoteIndex, setQuoteIndex] = useState(Math.floor(Math.random() * QUOTES.length));
-  const chosenQuote = QUOTES[quoteIndex]
-  const chosenSubQuote = SUB_QUOTES[quoteIndex]
+export default function Home({ title, thumbnail, setLinkClicked }: InferGetServerSidePropsType<typeof homePageServerSideProps> & AppData) {
 
   return (
     <>
@@ -57,17 +49,17 @@ export default function Home({ article_title, article_thumbnail, setLinkClicked 
 
             <div className={styles.gradient1} />
             <div className={styles.gradient2}>
-              <Link href={`/articles/${article_title.toLowerCase().replace(/ /g, '_')}`}>
+              <Link href={`/articles/${title.toLowerCase().replace(/ /g, '_')}`}>
                 <img 
-                  onClick={(e) => { e.preventDefault(); setLinkClicked(`/articles/${article_title.toLowerCase().replace(/ /g, '_')}`) }}
-                  src={article_thumbnail}
+                  onClick={(e) => { e.preventDefault(); setLinkClicked(`/articles/${title.toLowerCase().replace(/ /g, '_')}`) }}
+                  src={thumbnail}
                 />
               </Link>
-              <h2>Newest Article: <br/>{article_title}</h2>
+              <h2>Newest Article: <br/>{title}</h2>
             </div>
 
-            <h1>{chosenQuote}</h1>
-            <h4>{chosenSubQuote}</h4>
+            <h1>Status: 200, successfully connected</h1>
+            <h4>to the land of uneducated opinions and a few shades of gray!</h4>
             <p>
               Here in this small corner of the internet, you&apos;ll find lots of words, words written by me, if you can believe it. There&apos;s even pictures and videos, and some blender stuff. But what topics do these words speak of?
             </p>

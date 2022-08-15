@@ -4,7 +4,7 @@ import { ArticleData } from "../../types";
 const selectNewestArticle = async (db: Pool): Promise<ArticleData | null> => {
   try {
     const posts: QueryResult<ArticleData> = await db.query(`
-      SELECT title AS article_title, thumbnail AS article_thumbnail
+      SELECT title, thumbnail
       FROM posts
       WHERE review = true
       ORDER BY date DESC

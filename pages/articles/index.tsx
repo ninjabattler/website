@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from 'react';
+import React from 'react';
 import styles from '../../styles/ArticlesPage.module.css'
 import Paragraph from '../../components/articleComponents/Paragraph/Paragraph';
 import Carousel from '../../components/Carousel/Carousel';
@@ -7,17 +7,12 @@ import Link from 'next/link';
 import VideoBackground from '../../components/VideoBackground/VideoBackground';
 import { articlesServerSideProps } from '../../ssr/articles/index';
 import { formatSqlDate } from '../../helpers/dateHelpers';
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import { AppData } from '../../types';
 
-export const getServerSideProps = articlesServerSideProps;
+export const getServerSideProps: GetServerSideProps = articlesServerSideProps;
 
-export default function ArticlesPage(props) {
-  const [windowServer, setWindow] = useState({})
-  const setLinkClicked = props.setLinkClicked;
-
-  useEffect(() => {
-    setWindow(window)
-  }, [])
-
+export default function ArticlesPage({ articles, setLinkClicked }: InferGetServerSidePropsType<typeof articlesServerSideProps> & AppData) {
   return (
     <>
       <VideoBackground nonArticlePage overlayColour pageColour="#AAAAAA" />
@@ -42,20 +37,20 @@ export default function ArticlesPage(props) {
         <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Gloria+Hallelujah&family=Trade+Winds&family=Hanalei+Fill&family=Rock+Salt&display=swap" rel="stylesheet" />
       </Head>
 
-      <Carousel setLinkClicked={setLinkClicked} items={props.articles ? props.articles.slice(0, 3) : []} />
+      <Carousel setLinkClicked={setLinkClicked} items={articles ? articles.slice(0, 3) : []} />
 
       <main id={styles.articlesPage}>
         <div className={styles.articlesPageContainer}>
-          {props.articles.slice(3).map((item) => {
-            const formattedDate = formatSqlDate(item.formatteddate);
-            const link = `/articles/${item.title.toLowerCase().replace(/ /g, '_')}`;
+          {articles.slice(3).map((item) => {
+            const formattedDate: string = formatSqlDate(item.formatteddate);
+            const link: string = `/articles/${item.title.toLowerCase().replace(/ /g, '_')}`;
 
             return (
               <Link key={item.title} href={link} >
                 <a
                   onClick={(e) => { e.preventDefault(); setLinkClicked(link) }}
                   className={styles.articleCard}
-                  style={{ "--shadow-colour": item.colour }}
+                  style={{ "--shadow-colour": item.colour } as React.CSSProperties}
                 >
                   <article className={styles.articleCardItem}>
                     <div>

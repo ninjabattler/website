@@ -1,13 +1,15 @@
 import Head from 'next/head'
-import { React } from 'react';
+import React from 'react';
 import Post from '../components/Post/Post';
 import styles from '../styles/PostsPage.module.css'
 import { postsServerSideProps } from '../ssr/posts';
 import VideoBackground from '../components/VideoBackground/VideoBackground';
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import { AppData } from '../types';
 
-export const getServerSideProps = postsServerSideProps;
+export const getServerSideProps: GetServerSideProps = postsServerSideProps;
 
-export default function PostsPage(props) {
+export default function PostsPage({ ip, posts, userId }: InferGetServerSidePropsType<typeof postsServerSideProps> & AppData) {
   return (
     <>
       <Head>
@@ -33,7 +35,7 @@ export default function PostsPage(props) {
       <VideoBackground nonArticlePage overlayColour pageColour="#AAAAAA" />
       <div id={styles.postsPage}>
         {
-          props.posts.map((post) => {
+          posts.map((post) => {
             return (
               <Post
                 title={post.title}
@@ -41,8 +43,8 @@ export default function PostsPage(props) {
                 date={post.date}
                 id={post.id}
                 key={post.id}
-                ip={props.ip}
-                userId={props.userId[0].id}
+                ip={ip}
+                userId={typeof userId === 'number' ? userId : typeof userId[0] === 'number' ? userId[0] : userId[0].id}
                 comments={post.comments}
               />
             )

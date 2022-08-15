@@ -10,15 +10,14 @@ import { GetServerSidePropsContext } from 'next';
 
 export type ArticleServerSideData = {
   props: {
-    articleData: ArticleData;
-    userId: UserIdType;
-    liked: boolean;
-    disliked: boolean;
-    url: UrlType;
-    randomQuoteIndex: number;
-  } 
-} | {
-  notFound: boolean
+    articleData?: ArticleData;
+    userId?: UserIdType;
+    liked?: boolean;
+    disliked?: boolean;
+    url?: UrlType;
+    randomQuoteIndex?: number;
+  };
+  notFound?: boolean
 }
 
 export const articlePageServerSideProps = async ({ req, query, params }: GetServerSidePropsContext): Promise<ArticleServerSideData> => {
@@ -49,6 +48,7 @@ export const articlePageServerSideProps = async ({ req, query, params }: GetServ
 
   if (!articleData[0]) {
     return {
+      props: {},
       notFound: true,
     }
   }

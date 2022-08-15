@@ -3,11 +3,12 @@ import Footer from '../components/Footer/Footer';
 import LoadingOverlay from '../components/LoadingOverlay/LoadingOverlay';
 import NavBar from '../components/Navbar/NavBar';
 import '../styles/globals.css';
-import { useRouter } from 'next/router';
+import { NextRouter, useRouter } from 'next/router';
+import { AppProps } from 'next/app';
 
-function MyApp({ Component, pageProps }) {
-  const [linkClicked, setLinkClicked] = useState(null);
-  const router = useRouter();
+function MyApp({ Component, pageProps }: AppProps) {
+  const [linkClicked, setLinkClicked] = useState<string | null>(null);
+  const router: NextRouter = useRouter();
   
   useEffect(() => {
     router.events.on('routeChangeComplete', () => {

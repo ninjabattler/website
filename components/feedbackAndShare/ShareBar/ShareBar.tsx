@@ -1,13 +1,11 @@
 import React, { ReactElement, useState } from 'react';
 import styles from "./ShareBar.module.css";
 import { Reddit, Twitter, LinkedIn, LinkSharp } from '@material-ui/icons';
-import { ColourType, TitleType, UrlType } from '../../../types';
+import { ColourType, TitleType, UrlType, WindowServerType } from '../../../types';
 
 interface ShareBarProps {
   title: TitleType;
-  windowServer: {
-    location: string;
-  };
+  windowServer: WindowServerType;
   articleLink: UrlType;
   pageColour: ColourType;
 }
@@ -33,7 +31,7 @@ export default function ShareBar({ title, windowServer, articleLink, pageColour 
         </a>
       </div>
       <div>
-        <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(windowServer.location).replace(/'/g, "%27").replace(/"/g, "%22")}`} target="_blank" rel="noreferrer">
+        <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(windowServer.location as string).replace(/'/g, "%27").replace(/"/g, "%22")}`} target="_blank" rel="noreferrer">
           <LinkedIn className={styles.shareIcon} />
         </a>
       </div>

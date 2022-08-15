@@ -8,6 +8,12 @@ export type GenreType = string;
 export type CategoryType = string;
 export type ContentType = string;
 export type CommentIdType = number;
+export type WindowServerType = (Window & typeof globalThis) | { innerWidth?: number; location?: string; };
+export type PostCommentType = CommentData & UserData & {formatteddate?: string};
+
+export interface AppData {
+  setLinkClicked: Function;
+}
 
 export interface CommentData {
   id: CommentIdType;
@@ -31,10 +37,16 @@ export interface ArticleData {
   genre: GenreType;
   narration: UrlType;
   description: string;
+  formatteddate?: string;
+  liked?: boolean;
+  disliked?: boolean;
+  likes?: number;
+  dislikes?: number;
+  comments?: PostCommentType[];
 }
 
 export interface PostData extends ArticleData {
-  comments: CommentData[];
+  // comments: CommentData[];
 }
 
 export interface UserData {

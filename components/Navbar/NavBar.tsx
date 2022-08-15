@@ -5,7 +5,7 @@ import { ColourType } from '../../types';
 
 type NavBarProps = {
   setLinkClicked: Function;
-  pageColour: ColourType;
+  pageColour?: ColourType;
 }
 
 const NavBar: ComponentType<NavBarProps> = ({ setLinkClicked, pageColour }) => (

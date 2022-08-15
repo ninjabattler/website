@@ -57,6 +57,7 @@ export default function CommentArea({ commentRef, comments, setComments, postId,
           {
             viewComment &&
             (<div id={styles.commentAreaView} className={noAnim && styles.noAnim}>
+              {/* @ts-ignore - JsxParser has an error with how it exports, works perfectly fine though */}
               <JsxParser
                 components={{ FireText, EarthText, IceText, ThunderText, RegexText, MetalHeadText } as {}}
                 jsx={styleText(commentContent)}

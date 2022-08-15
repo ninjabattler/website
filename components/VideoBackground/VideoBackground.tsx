@@ -3,10 +3,10 @@ import { ColourType } from '../../types';
 import styles from "./VideoBackground.module.css";
 
 type VideoBackgroundProps = {
-  video: string;
-  pageColour: ColourType;
-  overlayColour: boolean;
-  nonArticlePage: boolean;
+  video?: string;
+  pageColour?: ColourType;
+  overlayColour?: boolean;
+  nonArticlePage?: boolean;
 }
 
 const VideoBackground: ComponentType<VideoBackgroundProps> = ({ video, pageColour, overlayColour, nonArticlePage }) => (

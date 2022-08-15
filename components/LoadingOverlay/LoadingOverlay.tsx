@@ -3,7 +3,7 @@ import styles from "./LoadingOverlay.module.css";
 import quotes from '../../constants/loadingOverlayQuotes.json';
 
 type LoadingOverlayProps = {
-  shrink: boolean
+  shrink?: boolean
 }
 
 const LoadingOverlay: ComponentType<LoadingOverlayProps> = ({ shrink }) => (

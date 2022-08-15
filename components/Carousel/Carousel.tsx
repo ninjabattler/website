@@ -52,6 +52,7 @@ const Carousel = ({ items, setLinkClicked }: CarouselProps): ReactElement => {
                     <h3><i className="fas fa-gamepad"></i>{item.category}/{item.genre}</h3>
                   </div>
 
+                  {/* @ts-ignore - JsxParser has an error with how it exports, works perfectly fine though */}
                   <JsxParser
                     components={{ Paragraph } as {}}
 
