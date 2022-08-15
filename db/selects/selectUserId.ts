@@ -1,7 +1,7 @@
 import { Pool, QueryResult } from "pg"
-import { UserData } from "../../types"
+import { IpType, UserData } from "../../types"
 
-const selectUserId = async (db: Pool, ip: string | null): Promise<UserData[]> => {
+const selectUserId = async (db: Pool, ip: IpType): Promise<UserData[]> => {
   try {
     const userId: QueryResult<any> = await db.query(`
       SELECT id FROM users WHERE ip = $1

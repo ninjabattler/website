@@ -5,7 +5,7 @@ import selectUserId from '../../db/selects/selectUserId';
 import selectUsersLike from '../../db/selects/selectUsersLike';
 import insertNewUser from '../../db/inserts/insertNewUser';
 import noCommentMessages from '../../constants/noCommentMessages.json';
-import { ArticleData, UrlType, UserData, UserIdType } from '../../types';
+import { ArticleData, IpType, UrlType, UserData, UserIdType } from '../../types';
 import { GetServerSidePropsContext } from 'next';
 
 export type ArticleServerSideData = {
@@ -21,7 +21,7 @@ export type ArticleServerSideData = {
 }
 
 export const articlePageServerSideProps = async ({ req, query, params }: GetServerSidePropsContext): Promise<ArticleServerSideData> => {
-  const ip: string | null = requestIp.getClientIp(req)
+  const ip: IpType = requestIp.getClientIp(req)
 
   let userId: UserData[] = await selectUserId(db, ip)
 

@@ -1,8 +1,8 @@
 import { Pool, QueryResult } from 'pg';
 import { encrypt } from '../../helpers/encryptHelper';
-import { UserData } from '../../types';
+import { IpType, UserData } from '../../types';
 
-const insertNewUser = async (db: Pool, ip: string | null): Promise<UserData[]> => {
+const insertNewUser = async (db: Pool, ip: IpType): Promise<UserData[]> => {
   try {
     const newUser: QueryResult<UserData> = await db.query(`
       INSERT INTO users(username, avatar, ip)

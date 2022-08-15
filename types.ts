@@ -10,6 +10,7 @@ export type ContentType = string;
 export type CommentIdType = number;
 export type WindowServerType = (Window & typeof globalThis) | { innerWidth?: number; location?: string; };
 export type PostCommentType = CommentData & UserData & {formatteddate?: string};
+export type IpType = string | null;
 
 export interface AppData {
   setLinkClicked: Function;

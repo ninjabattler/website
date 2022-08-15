@@ -10,7 +10,7 @@ import JsxParser from 'react-jsx-parser';
 import Comment from '../Comment/Comment';
 import { CommentTwoTone } from '@material-ui/icons'
 import CommentArea from '../feedbackAndShare/CommentArea/CommentArea';
-import { PostIdType, TitleType, UserIdType } from '../../types';
+import { IpType, PostIdType, TitleType, UserIdType } from '../../types';
 
 type PostProps = {
   title: TitleType;
@@ -19,7 +19,7 @@ type PostProps = {
   content: string;
   id: PostIdType;
   userId: UserIdType;
-  ip: string | null;
+  ip: IpType;
 }
 
 export default function Post({ title, date, comments, content, id, userId }: PostProps): ReactElement {
