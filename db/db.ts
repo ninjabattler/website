@@ -1,8 +1,8 @@
-const Pool= require("pg").Pool;
+import { Pool } from "pg";
 require('dotenv').config();
-let pool;
+let pool: Pool;
 
-if(process.env.DB_URL){
+if (process.env.DB_URL) {
   pool = new Pool({
     connectionString: process.env.DB_URL
   });
@@ -11,10 +11,10 @@ if(process.env.DB_URL){
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     host: process.env.DB_HOST,
-    port:process.env.DB_PORT,
-    database:process.env.DB_NAME
+    port: process.env.DB_PORT as unknown as number,
+    database: process.env.DB_NAME
   });
 }
 
 
-module.exports = pool;
+export default pool;

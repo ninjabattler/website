@@ -1,6 +1,9 @@
-const selectSingleArticle = async (db, title) => {
+import { Pool, QueryResult } from "pg";
+import { ArticleData, TitleType } from "../../types";
+
+const selectSingleArticle = async (db: Pool, title: TitleType): Promise<ArticleData[]> => {
   try {
-    const article = await db.query(`
+    const article: QueryResult<ArticleData> = await db.query(`
     SELECT posts.*, TO_CHAR(posts.date, 'MM, DD, YYYY') as formattedDate, TO_CHAR(posts.date, 'YYYY-MM-DD HH24:MI:SS.MSZ') as date,
     (SELECT COUNT(*) FROM likes WHERE liked = true AND likes.post_id = posts.id) as likes,
     (SELECT COUNT(*) FROM likes WHERE liked = false AND likes.post_id = posts.id) as dislikes,
@@ -19,14 +22,14 @@ const selectSingleArticle = async (db, title) => {
     FULL OUTER JOIN users ON comments.user_id = users.id
     WHERE lower(title) = $1
     GROUP BY posts.id;
-    `, [title])
+    `, [title]);
 
-    return article.rows
+    return article.rows;
   }
   catch (err) {
-    console.log(err)
-    return err
+    console.log(err);
+    return err;
   }
 }
 
-module.exports = selectSingleArticle;
+export default selectSingleArticle;

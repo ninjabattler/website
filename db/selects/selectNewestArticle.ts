@@ -1,6 +1,9 @@
-const selectNewestArticle = async (db) => {
+import { Pool, QueryResult } from "pg";
+import { ArticleData } from "../../types";
+
+const selectNewestArticle = async (db: Pool): Promise<ArticleData | null> => {
   try {
-    const posts = await db.query(`
+    const posts: QueryResult<ArticleData> = await db.query(`
       SELECT title AS article_title, thumbnail AS article_thumbnail
       FROM posts
       WHERE review = true
@@ -21,4 +24,4 @@ const selectNewestArticle = async (db) => {
   }
 }
 
-module.exports = selectNewestArticle;
+export default selectNewestArticle;

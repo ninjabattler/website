@@ -1,8 +1,9 @@
-// 2021-01-19T14:59:38.844Z
+import { Pool, QueryResult } from "pg";
+import { PostData } from "../../types";
 
-const selectAllPostsData = async (db) => {
+const selectAllPostsData = async (db: Pool): Promise<PostData[]> => {
   try {
-    const posts = await db.query(`
+    const posts: QueryResult<PostData> = await db.query(`
     SELECT posts.*, TO_CHAR(posts.date, 'YYYY-MM-DD HH24:MI:SS.MSZ') as date,
     json_agg(
       json_build_object(
@@ -20,14 +21,14 @@ const selectAllPostsData = async (db) => {
     WHERE review = false
     GROUP BY posts.id
     ORDER BY posts.date DESC
-    `)
+    `);
 
-    return posts.rows
+    return posts.rows;
   }
   catch(err) {
-    console.log(err)
-    return err
+    console.log(err);
+    return err;
   }
 }
 
-module.exports = selectAllPostsData;
+export default selectAllPostsData;

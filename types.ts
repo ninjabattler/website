@@ -36,3 +36,10 @@ export interface ArticleData {
 export interface PostData extends ArticleData {
   comments: CommentData[];
 }
+
+export interface UserData {
+  id: number;
+  ip: string | null;
+  username: string;
+  avatar: number;
+}

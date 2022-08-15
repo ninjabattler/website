@@ -1,14 +1,14 @@
 import db from '../../db/db';
-import { selectAllArticles } from '../../db/queries';
+import selectAllArticles from '../../db/selects/selectAllArticles';
 import { ArticleData } from '../../types';
 
-export type TitleServerProps = {
+export type ArticlesServerProps = {
   props: {
     articles: ArticleData[];
   }
 }
 
-export const articlesServerSideProps = async (): Promise<TitleServerProps> => {
+export const articlesServerSideProps = async (): Promise<ArticlesServerProps> => {
   const articlesArray: ArticleData[] = await selectAllArticles(db)
 
   return {

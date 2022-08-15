@@ -1,8 +1,11 @@
 import requestIp from 'request-ip';
 import db from '../../db/db';
-import { selectSingleArticle, selectUserId, selectUsersLike, insertNewUser } from '../../db/queries';
+import selectSingleArticle from '../../db/selects/selectSingleArticle';
+import selectUserId from '../../db/selects/selectUserId';
+import selectUsersLike from '../../db/selects/selectUsersLike';
+import insertNewUser from '../../db/inserts/insertNewUser';
 import noCommentMessages from '../../constants/noCommentMessages.json';
-import { ArticleData, UrlType, UserIdType } from '../../types';
+import { ArticleData, UrlType, UserData, UserIdType } from '../../types';
 import { GetServerSidePropsContext } from 'next';
 
 export type ArticleServerSideData = {
@@ -21,7 +24,7 @@ export type ArticleServerSideData = {
 export const articlePageServerSideProps = async ({ req, query, params }: GetServerSidePropsContext): Promise<ArticleServerSideData> => {
   const ip: string | null = requestIp.getClientIp(req)
 
-  let userId: UserIdType = await selectUserId(db, ip)
+  let userId: UserData[] = await selectUserId(db, ip)
 
   if (!userId[0]) {
     userId = await insertNewUser(db, ip)
@@ -31,7 +34,7 @@ export const articlePageServerSideProps = async ({ req, query, params }: GetServ
   const title: string = query.title as string;
   const userLike: boolean = await selectUsersLike(db, userId[0].id)
   const articleTitle: string = title.replace(/_/g, ' ');
-  const articleData: ArticleData = await selectSingleArticle(db, articleTitle);
+  const articleData: ArticleData[] = await selectSingleArticle(db, articleTitle);
 
   let liked: boolean = false;
   let disliked: boolean = false;
