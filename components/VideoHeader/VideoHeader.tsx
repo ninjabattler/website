@@ -1,6 +1,6 @@
 import React, { ComponentType } from 'react';
 import { ColourType, TitleType } from '../../types';
-import styles from './VideoHeader.module.css';
+import styles from './VideoHeader.module.scss';
 
 type VideoHeaderProps = {
   video: string;

@@ -1,6 +1,6 @@
 import React, { ComponentType } from 'react';
 import { ColourType } from '../../types';
-import styles from "./VideoBackground.module.css";
+import styles from "./VideoBackground.module.scss";
 
 type VideoBackgroundProps = {
   video?: string;
