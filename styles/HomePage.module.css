@@ -4,7 +4,7 @@
   font-size: 1.6vw;
   margin-bottom: -8.5vw;
   backdrop-filter: blur(10px) brightness(2);
-  background-color: rgb(80, 80, 80, 0.4);
+  background-color: var(--light-gray);
 }
 
 .divider {

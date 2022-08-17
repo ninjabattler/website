@@ -7,6 +7,12 @@
   padding-top: 0.25vw;
   border-bottom: 0.2vw solid var(--light-gray);
   font-size: 1.6vw;
+
+  @media only screen and (max-width: 425px) {
+    min-height: 16vw;
+    padding-top: 2vw;
+    font-size: 6vw;
+  }
 }
 
 .comment > .avatar {
@@ -16,6 +22,12 @@
   border-radius: 100%;
   border: 0.2vw solid var(--dark-gray);
   margin-right: 0.5vw;
+
+  @media only screen and (max-width: 425px) {
+    width: 2em;
+    height: 2em;
+    margin-right: 3vw;
+  }
 }
 
 .comment > div > div > p {
@@ -45,18 +57,4 @@
 .comment > div > i {
   color: var(--light-gray);
   margin-top: -0.3vw;
-}
-
-@media only screen and (max-width: 480px) {
-  .comment {
-    min-height: 16vw;
-    padding-top: 2vw;
-    font-size: 5vw;
-  }
-
-  .comment > .avatar {
-    width: 2em;
-    height: 2em;
-    margin-right: 3vw;
-  }
 }

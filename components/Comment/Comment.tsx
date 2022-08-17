@@ -1,5 +1,5 @@
 import React, { ComponentType, CSSProperties } from 'react';
-import styles from './Comment.module.css';
+import styles from './Comment.module.scss';
 import FireText from '../animatedText/FireText/FireText';
 import ThunderText from '../animatedText/ThunderText/ThunderText';
 import IceText from '../animatedText/IceText/IceText';

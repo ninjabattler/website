@@ -7,6 +7,13 @@
   position: sticky;
   bottom: -10.5vw;
   z-index: 10;
+
+  @media only screen and (max-width: 425px) {
+    overflow-x: hidden;
+    height: 25vw;
+    filter: drop-shadow(0px -3px 3px black);
+    bottom: -25vw;
+  }
 }
 
 .footer > .topBar {
@@ -25,6 +32,11 @@
   color: var(--light-gray);
   font-size: 1.5vw;
   opacity: 0.5;
+
+  @media only screen and (max-width: 425px) {
+    align-items: center;
+    font-size: 5vw;
+  }
 }
 
 #copyrightSection > img {
@@ -32,26 +44,21 @@
   filter: invert(0.5);
   opacity: 0.2;
   mix-blend-mode: exclusion;
+  @media only screen and (max-width: 425px) {
+    margin-left: -8vw;
+    margin-right: -8vw;
+  }
 }
 
-@media only screen and (max-width: 425px) {
-  .footer {
-    overflow-x: hidden;
-    height: 50px;
-    filter: drop-shadow(0px -2px 5px black);
-  }
-
-  .footer > .linkDisplay > a {
+.footer > .linkDisplay > a {
+  @media only screen and (max-width: 425px) {
     border-width: 30px;
     font-size: 8px;
   }
+}
 
-  .footer > .linkDisplay > a > * {
+.footer > .linkDisplay > a > * {
+  @media only screen and (max-width: 425px) {
     margin-top: -25px;
-  }
-
-  #copyrightSection {
-    align-items: center;
-    font-size: 3vw;
   }
 }

@@ -10,7 +10,7 @@
   top: 0;
   left: 0;
   right: 0;
-  
+
   @media only screen and (max-width: 425px) {
     display: none;
   }
@@ -19,6 +19,10 @@
 #videoBackground > video {
   width: 120vw;
   height: 120vh;
+
+  @media only screen and (max-width: 425px) {
+    display: none;
+  }
 }
 
 #videoBackground > div {
@@ -28,4 +32,8 @@
   z-index: 5;
   background-color: white;
   mix-blend-mode: multiply;
+
+  @media only screen and (max-width: 425px) {
+    display: none;
+  }
 }

@@ -1,5 +1,5 @@
 import React, { ReactElement, useState } from 'react';
-import styles from './Carousel.module.css';
+import styles from './Carousel.module.scss';
 import JsxParser from 'react-jsx-parser';
 import Paragraph from '../articleComponents/Paragraph/Paragraph';
 import Image from 'next/image';

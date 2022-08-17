@@ -17,6 +17,10 @@
   animation-name: openOverlay;
   animation-duration: 0.5s;
   animation-timing-function: linear;
+
+  @media only screen and (max-width: 425px) {
+    mask-size: 650vh;
+  }
 }
 
 #loadingOverlay.shrink {
@@ -26,6 +30,10 @@
 
 #loadingOverlay > img {
   width: 45%;
+
+  @media only screen and (max-width: 425px) {
+    width: 100%;
+  }
 }
 
 #loadingOverlay > p {
@@ -34,6 +42,11 @@
   color: var(--light-gray);
   position: absolute;
   margin-top: 30%;
+
+  @media only screen and (max-width: 425px) {
+    font-size: 15px;
+    margin-top: 55%;
+  }
 }
 
 @keyframes openOverlay {
@@ -55,19 +68,6 @@
 }
 
 @media only screen and (max-width: 425px) {
-  #loadingOverlay {
-    mask-size: 650vh;
-  }
-
-  #loadingOverlay > p {
-    font-size: 15px;
-    margin-top: 55%;
-  }
-
-  #loadingOverlay > img {
-    width: 100%;
-  }
-
   @keyframes openOverlay {
     0% {
       mask-size: 0vh;

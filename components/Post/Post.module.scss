@@ -18,20 +18,37 @@
   overflow: hidden;
   animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
   transition: filter 0.3s, margin 0.3s;
+
+  @media only screen and (max-device-width: 425px) {
+    width: 94vw;
+    height: 36.154vw;
+    margin-left: 3vw;
+    margin-top: 15px;
+    filter: drop-shadow(5px 2.5px 0px black);
+  }
 }
+
 .post {
   animation-name: slideIn;
   animation-duration: 2s;
+  @media only screen and (max-device-width: 425px) {
+    animation-name: none;
+  }
 }
+
 .closed {
   animation-name: closePost;
   animation-duration: 1.4s;
+
+  @media only screen and (max-device-width: 425px) {
+    animation-name: closePostMobile;
+  }
 }
 
 .expanded {
   display: flex;
   filter: drop-shadow(10px 5px 0px black);
-  width: 90vw;
+  width: 95vw;
   height: 85vh;
   background-image: linear-gradient(
     0deg,
@@ -41,12 +58,19 @@
     var(--dark-gray) 100%
   );
   font-size: 3.4vw;
-  margin-left: 5vw;
+  margin-left: 2.5vw;
   margin-top: 30px;
   overflow: hidden;
   animation-name: openPost;
   animation-duration: 1.4s;
   animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  @media only screen and (max-device-width: 425px) {
+    height: 45vh;
+    overflow: unset;
+    filter: drop-shadow(5px 2.5px 0px black);
+    animation-name: openPostMobile;
+  }
 }
 
 .post:hover {
@@ -55,6 +79,14 @@
   margin-top: 25px;
   margin-bottom: 5px;
   margin-right: 5px;
+
+  @media only screen and (max-device-width: 425px) {
+    filter: drop-shadow(5px 2.5px 0px black);;
+    margin-left: 3vw;
+    margin-top: 15px;
+    margin-bottom: 0;
+    margin-right: 0;
+  }
 }
 
 .post > img,
@@ -64,6 +96,11 @@
   height: auto;
   filter: invert(0.5);
   opacity: 0.2;
+
+  @media only screen and (max-device-width: 425px) {
+    width: 65.2vw;
+    height: auto;
+  }
 }
 
 .postContent {
@@ -75,15 +112,35 @@
   margin: 2%;
   margin-top: 7%;
   overflow-y: scroll;
+
+  @media only screen and (max-device-width: 425px) {
+    background-color: var(--light-gray);
+    color: var(--dark-gray);
+    font-size: 1.4em;
+    font-weight: 100;
+    height: 80%;
+    margin: 2%;
+    margin-top: 7%;
+  }
 }
 
 .shrunk {
   width: 67.6%;
+
+  @media only screen and (max-device-width: 425px) {
+    width: 100%;
+    height: 45% !important;
+  }
 }
 
 .postContent::-webkit-scrollbar {
   background: var(--light-gray);
   outline: 4px solid var(--dark-gray);
+
+  @media only screen and (max-device-width: 425px) {
+    outline: 2px solid var(--dark-gray);
+    width: 5px;
+  }
 }
 .postContent::-webkit-scrollbar-track {
   background: var(--light-gray);
@@ -96,10 +153,18 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+
+  @media only screen and (max-device-width: 425px) {
+    position: relative;
+  }
 }
 
 .postContent > div > img {
   max-width: 70% !important;
+
+  @media only screen and (max-device-width: 425px) {
+    max-width: 80% !important;
+  }
 }
 
 .postContent > div > p,
@@ -115,6 +180,12 @@
   color: var(--light-gray);
   margin: 4px;
   margin-top: -6px;
+
+  @media only screen and (max-device-width: 425px) {
+    font-size: 2em;
+    margin: 4px;
+    margin-top: -2px;
+  }
 }
 
 .commentPanel {
@@ -128,6 +199,18 @@
   right: 0;
   font-size: 1.645vw;
   filter: drop-shadow(8px 8px 0px black);
+
+  @media only screen and (max-device-width: 425px) {
+    display: inline;
+    width: 97%;
+    height: 50%;
+    position: absolute;
+    margin-top: 40vh !important;
+    margin-right: 5px;
+    filter: none;
+    z-index: 10;
+    font-size: 5vw;
+  }
 }
 
 .commentPanel > div {
@@ -158,6 +241,12 @@
   margin: 4px;
   margin-top: 17vw;
   width: 100%;
+
+  @media only screen and (max-device-width: 425px) {
+    font-size: 2em;
+    margin: 4px;
+    margin-top: 30vw;
+  }
 }
 
 .feedBackBar {
@@ -189,94 +278,19 @@
   justify-content: center;
   align-items: center;
 }
+
 #commentLoading > img {
   width: 100%;
 }
 
-
-@media only screen and (max-device-width: 480px) {
-  .post,
-  .closed {
-    width: 65vw;
-    height: 25vw;
-    margin-top: 15px;
-    filter: drop-shadow(5px 2.5px 0px black);
-  }
-
-  .post > img,
-  .expanded > img {
-    width: 45vw;
-    height: auto;
-  }
-
-  .expanded {
-    height: 45vh;
-    overflow: unset;
-    filter: drop-shadow(5px 2.5px 0px black);
-    animation-name: openPostMobile;
-  }
-
-  .closed {
-    animation-name: closePostMobile;
-  }
-
-  .post > h1,
-  .expanded > h1 {
-    font-size: 1.7em;
-    margin: 4px;
-    margin-top: -2px;
-  }
-  
-  .post > h2,
-  .expanded > h2 {
-    font-size: 1.7em;
-    margin: 4px;
-    margin-top: 20vw;
-  }
-
-  .shrunk {
-    width: 100%;
-    height: 45% !important;
-  }
-
-  .postContent {
-    background-color: var(--light-gray);
-    color: var(--dark-gray);
-    font-size: 1.2em;
-    height: 80%;
-    margin: 2%;
-    margin-top: 7%;
-  }
-
-  .postContent > div {
-    position: relative;
-  }
-
-  .postContent > div > img {
-    max-width: 80% !important;
-  }
-
-  .commentPanel {
-    display: inline;
-    width: 97%;
-    height: 50%;
-    position: absolute;
-    margin-top: 40vh !important;
-    margin-right: 5px;
-    filter: none;
-    z-index: 10;
-    font-size: 5vw;
-  }
-
-  .comments {
+.comments {
+  @media only screen and (max-device-width: 425px) {
     height: 68% !important;
     margin-top: 2vw !important;
   }
+}
 
-  .postContent::-webkit-scrollbar {
-    outline: 2px solid var(--dark-gray);
-  }
-
+@media only screen and (max-device-width: 425px) {
   .commentPanelButton {
     transform: scale(0.8);
     margin-bottom: -1vw;
@@ -384,8 +398,8 @@
 
 @keyframes openPostMobile {
   0% {
-    width: 65vw;
-    height: 35vw;
+    width: 94vw;
+    height: 36.154vw;
     transform: rotateY(0deg);
     background-image: linear-gradient(
       -21deg,
@@ -396,8 +410,8 @@
     );
   }
   50% {
-    width: 65vw;
-    height: 35vw;
+    width: 94vw;
+    height: 36.154vw;
     transform: rotateY(90deg);
     background-image: linear-gradient(
       -21deg,
@@ -408,7 +422,7 @@
     );
   }
   52% {
-    width: 65vw;
+    width: 94vw;
     height: 20vh;
     transform: rotateY(90deg);
     background-image: linear-gradient(
@@ -420,7 +434,7 @@
     );
   }
   100% {
-    width: 90vw;
+    width: 94vw;
     height: 45vh;
     transform: rotateY(0deg);
   }
@@ -428,12 +442,12 @@
 
 @keyframes closePostMobile {
   0% {
-    width: 90vw;
+    width: 94vw;
     height: 45vh;
     transform: rotateY(0deg);
   }
   48% {
-    width: 65vw;
+    width: 94vw;
     height: 20vh;
     transform: rotateY(90deg);
     background-image: linear-gradient(
@@ -445,8 +459,8 @@
     );
   }
   50% {
-    width: 65vw;
-    height: 35vw;
+    width: 94vw;
+    height: 36.154vw;
     transform: rotateY(90deg);
     background-image: linear-gradient(
       -21deg,
@@ -457,8 +471,8 @@
     );
   }
   100% {
-    width: 65vw;
-    height: 35vw;
+    width: 94vw;
+    height: 36.154vw;
     transform: rotateY(0deg);
     background-image: linear-gradient(
       -21deg,

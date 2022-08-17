@@ -1,5 +1,5 @@
 import React, { ComponentType } from 'react';
-import styles from "./NavBar.module.css";
+import styles from "./NavBar.module.scss";
 import Link from 'next/link'
 import { ColourType } from '../../types';
 

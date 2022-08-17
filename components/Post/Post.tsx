@@ -1,5 +1,5 @@
 import React, { useState, useRef, MutableRefObject, ReactElement } from 'react';
-import styles from './Post.module.css';
+import styles from './Post.module.scss';
 import FireText from '../animatedText/FireText/FireText';
 import IceText from '../animatedText/IceText/IceText';
 import ThunderText from '../animatedText/ThunderText/ThunderText';
