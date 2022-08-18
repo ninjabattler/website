@@ -222,6 +222,11 @@
 .commentPanel > div::-webkit-scrollbar {
   background: var(--light-gray);
   outline: 4px solid var(--dark-gray);
+  
+  @media only screen and (max-device-width: 425px) {
+    outline: 2px solid var(--dark-gray);
+    width: 5px;
+  }
 }
 
 .commentPanel > div::-webkit-scrollbar-track {
@@ -231,6 +236,10 @@
 .commentPanel > div::-webkit-scrollbar-thumb {
   background: var(--dark-gray);
   border: 2px solid var(--light-gray);
+
+  @media only screen and (max-device-width: 425px) {
+    border: 1px solid var(--light-gray);
+  }
 }
 
 .post > h2,
