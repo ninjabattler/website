@@ -22,10 +22,6 @@ export default function FourOhFour() {
           <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-
-          {/* <!--FONTS--> */}
-          <link rel="preconnect" href="https://fonts.gstatic.com" />
-          <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Gloria+Hallelujah&family=Trade+Winds&family=Hanalei+Fill&family=Rock+Salt&display=swap" rel="stylesheet" />
         </Head>
         <h1>404</h1>
         <img src='/errorRobot.png' />

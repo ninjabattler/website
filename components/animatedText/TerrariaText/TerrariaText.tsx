@@ -1,6 +1,6 @@
 import React, { ComponentType } from 'react';
 import { ColourType } from '../../../types';
-import styles from './TerrariaText.module.css';
+import styles from './TerrariaText.module.scss';
 
 type TerrariaTextProps = {
   text: string;

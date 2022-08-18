@@ -1,5 +1,5 @@
 import React, { ComponentType } from 'react';
-import styles from './FireText.module.css';
+import styles from './FireText.module.scss';
 
 type FireTextProps = {
   text: string;

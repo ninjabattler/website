@@ -1,0 +1,23 @@
+.thunderText {
+  color: transparent;
+  animation-name: thunderGlow;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  font-family: "Trade Winds", cursive;
+  background-image: linear-gradient(0deg, lightseagreen 70%, darkcyan 80%);
+  background-clip: text;
+  -webkit-text-stroke: 0.05vw rgba(0, 0, 0, 0.3);
+}
+
+@keyframes thunderGlow {
+  0% {
+    filter: drop-shadow(0px 0px 0.1vw skyblue);
+  }
+  50% {
+    filter: drop-shadow(0px 0px 0.2vw skyblue);
+  }
+  100% {
+    filter: drop-shadow(0px 0px 0.1vw skyblue);
+  }
+}

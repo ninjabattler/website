@@ -82,10 +82,6 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
         <meta name="twitter:description" content={articleData.description}></meta>
         <meta name="twitter:image" content={articleData.thumbnail}></meta>
         {/* <!-- Meta Tags Generated via http://heymeta.com -->*/}
-
-        {/* <!--FONTS--> */}
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Gloria+Hallelujah&family=Trade+Winds&family=Hanalei+Fill&family=Rock+Salt&display=swap" rel="stylesheet" />
         <style>
           {`
             :root {

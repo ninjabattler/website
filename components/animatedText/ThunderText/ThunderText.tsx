@@ -1,5 +1,5 @@
 import React, { ComponentType } from 'react';
-import styles from './ThunderText.module.css';
+import styles from './ThunderText.module.scss';
 
 type ThunderTextProps = {
   text: string;

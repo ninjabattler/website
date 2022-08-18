@@ -1,5 +1,5 @@
 import React, { ComponentType } from 'react';
-import styles from './RegexText.module.css';
+import styles from './RegexText.module.scss';
 
 type RegexTextProps = {
   text: string;

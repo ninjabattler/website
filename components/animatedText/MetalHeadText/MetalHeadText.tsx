@@ -1,5 +1,5 @@
 import React, { ComponentType } from 'react';
-import styles from './MetalHeadText.module.css';
+import styles from './MetalHeadText.module.scss';
 
 type MetalHeadTextProps = {
   text: string;

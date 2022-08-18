@@ -1,5 +1,5 @@
 import React, { ComponentType } from 'react';
-import styles from './EarthText.module.css'
+import styles from './EarthText.module.scss'
 
 type EarthTextProps = {
   text: string;

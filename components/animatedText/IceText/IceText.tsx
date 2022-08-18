@@ -1,5 +1,5 @@
 import React, { ComponentType } from 'react';
-import styles from './IceText.module.css';
+import styles from './IceText.module.scss';
 
 type IceTextProps = {
   text: string;
