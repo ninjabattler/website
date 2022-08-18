@@ -22,6 +22,11 @@
     rgba(0, 0, 0, 0.5) 97%,
     black 97%
   );
+
+  @media only screen and (max-width: 425px) {
+    height: 10vw;
+    margin-top: -12.5vw;
+  }
 }
 #shareBar > div {
   width: 100%;
@@ -44,20 +49,14 @@
 
 .shareIcon {
   font-size: 2.4vw !important;
+
+  @media only screen and (max-width: 425px) {
+    font-size: 8vw !important;
+  }
 }
 
 #shareBar > div > a:hover {
   filter: drop-shadow(2px 2px 0px black);
-}
-
-@media only screen and (max-width: 425px) {
-  #shareBar {
-    height: 7.5vw;
-    margin-top: -10vw;
-  }
-  .shareIcon {
-    font-size: 6vw !important;
-  }
 }
 
 @keyframes panelFadeIn {

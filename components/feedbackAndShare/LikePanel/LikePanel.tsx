@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import styles from "./LikePanel.module.css";
+import styles from "./LikePanel.module.scss";
 import { ThumbUpSharp, ThumbDownSharp } from '@material-ui/icons';
 import { like } from '../../../helpers/articlePageHelpers';
 import { ColourType, PostIdType, UserIdType } from '../../../types';

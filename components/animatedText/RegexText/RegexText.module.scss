@@ -2,7 +2,7 @@ $regexGlow1: #7cff7c;
 $regexGlow2: #285528;
 
 .regexText {
-  color: rgba(33, 33, 33, 0.7);
+  color: $regexGlow2;
   animation-name: regexGlow;
   animation-duration: 1.5s;
   animation-iteration-count: infinite;
@@ -13,12 +13,12 @@ $regexGlow2: #285528;
 
 @keyframes regexGlow {
   0% {
-    text-shadow: -0.1vw -0.1vw -0.16vw $regexGlow1, 0.1vw -0.1vw -0.32vw $regexGlow2, 0.1vw 0.1vw -0.16vw $regexGlow1, 0.1vw -0.1vw -0.32vw $regexGlow2;
+    text-shadow: -0.15vw -0.15vw -0.16vw $regexGlow1, 0.15vw -0.15vw -0.32vw $regexGlow2, 0.15vw 0.15vw -0.16vw $regexGlow1, 0.15vw -0.15vw -0.32vw $regexGlow2;
   }
   50% {
-    text-shadow: 0.2vw 0.1vw 0.4vw $regexGlow1, -0.2vw 0.1vw 0.2vw $regexGlow2, -0.2vw -0.1vw 0.4vw $regexGlow1, -0.2vw 0.1vw 0.2vw $regexGlow2;
+    text-shadow: 0.2vw 0.15vw 0.4vw $regexGlow1, -0.2vw 0.15vw 0.2vw $regexGlow2, -0.2vw -0.15vw 0.4vw $regexGlow1, -0.2vw 0.15vw 0.2vw $regexGlow2;
   }
   100% {
-    text-shadow: -0.1vw -0.1vw -0.16vw $regexGlow1, 0.1vw -0.1vw -0.32vw $regexGlow2, 0.1vw 0.1vw -0.16vw $regexGlow1, 0.1vw -0.1vw -0.32vw $regexGlow2;
+    text-shadow: -0.15vw -0.15vw -0.16vw $regexGlow1, 0.15vw -0.15vw -0.32vw $regexGlow2, 0.15vw 0.15vw -0.16vw $regexGlow1, 0.15vw -0.15vw -0.32vw $regexGlow2;
   }
 }

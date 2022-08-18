@@ -20,6 +20,11 @@
   animation-name: panelFadeIn;
   animation-duration: 0.625s;
   animation-timing-function: linear;
+
+  @media only screen and (max-width: 425px) {
+    height: 10vw;
+    margin-top: -25vw;
+  }
 }
 
 .likePanel > button {
@@ -31,10 +36,20 @@
   font-size: 1.5vw;
   padding-left: 1.3vw;
   padding-right: 1.3vw;
+
+  @media only screen and (max-width: 425px) {
+    font-size: 6vw;
+    padding-left: 2.4vw;
+    padding-right: 2.4vw;
+  }
 }
 
 .shareIcon {
   font-size: 1.3vw !important;
+
+  @media only screen and (max-width: 425px) {
+    font-size: 5vw !important;
+  }
 }
 
 #likeBar {
@@ -69,21 +84,6 @@
   animation-name: dislikeFadeIn;
   animation-duration: 1.25s;
   animation-timing-function: linear;
-}
-
-@media only screen and (max-width: 425px) {
-  .likePanel {
-    height: 7.5vw;
-    margin-top: -20vw;
-  }
-  .likePanel > button {
-    font-size: 4vw;
-    padding-left: 2.4vw;
-    padding-right: 2.4vw;
-  }
-  .shareIcon {
-    font-size: 3vw !important;
-  }
 }
 
 @keyframes panelFadeIn {

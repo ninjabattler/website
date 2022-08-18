@@ -1,5 +1,5 @@
 import React, { ReactElement, useState } from 'react';
-import styles from "./ShareBar.module.css";
+import styles from "./ShareBar.module.scss";
 import { Reddit, Twitter, LinkedIn, LinkSharp } from '@material-ui/icons';
 import { ColourType, TitleType, UrlType, WindowServerType } from '../../../types';
 

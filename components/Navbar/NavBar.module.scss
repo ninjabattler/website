@@ -147,6 +147,10 @@
 
 .option:hover {
   filter: drop-shadow(0px -3px 0px var(--light-gray)) drop-shadow(0px -3px 0px var(--dark-gray));
+
+  @media (max-device-width: 425px) {
+    filter: none;
+  }
 }
 
 .socialLinks {

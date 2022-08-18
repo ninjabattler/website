@@ -1,5 +1,5 @@
 import React, { ReactElement, RefObject } from 'react';
-import styles from "./CommentArea.module.css";
+import styles from "./CommentArea.module.scss";
 import JsxParser from 'react-jsx-parser';
 import FireText from '../../animatedText/FireText/FireText';
 import ThunderText from '../../animatedText/ThunderText/ThunderText';
