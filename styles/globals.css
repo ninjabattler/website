@@ -86,7 +86,7 @@ select {
     font-size: 12px;
   }
 }
-@media only screen and (max-device-width: 480px) {
+@media only screen and (max-device-width: 425px) {
   body {
     font-size: 8px;
   }
@@ -96,5 +96,10 @@ select {
     filter: blur(20px);
     height: 100vh;
     width: auto;
+  }
+
+  :root {
+    --light-gray: #434343;
+    --dark-gray: #191919;
   }
 }

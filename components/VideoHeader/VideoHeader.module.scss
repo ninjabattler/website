@@ -1,5 +1,6 @@
-$border-thickness: 7vw;
-$gradient-color: rgba(0, 0, 0, 0.5);
+$borderThickness: 7vw;
+$mobileBorderThickness: 12.5vw;
+$gradientColor: rgba(0, 0, 0, 0.5);
 
 .videoHeader {
   height: fit-content;
@@ -10,75 +11,74 @@ $gradient-color: rgba(0, 0, 0, 0.5);
   width: 100%;
   font-size: 30px;
 
-  @media only screen and (max-width: 480px) {
-    margin-bottom: 60px;
+  @media only screen and (max-width: 425px) {
+    margin-bottom: 28vw;
   }
 }
 
 .bar2 {
-  border-top: $border-thickness solid var(--dark-gray);
+  border-top: $borderThickness solid var(--dark-gray);
   opacity: 0.9;
   width: 80%;
-  border-right: $border-thickness solid transparent;
+  border-right: $borderThickness solid transparent;
   position: absolute;
   margin-top: 48vw;
   filter: drop-shadow(8px 5px 0px black);
   mask: linear-gradient(
     -45deg,
-    black 10%,
-    $gradient-color 10%,
-    $gradient-color 12%,
-    black 12%,
-    black 14%,
-    $gradient-color 14%,
-    $gradient-color 16%,
-    black 16%
+    black 15%,
+    $gradientColor 15%,
+    $gradientColor 17%,
+    black 17%,
+    black 19%,
+    $gradientColor 19%,
+    $gradientColor 21%,
+    black 21%
   );
 
-  @media only screen and (max-width: 480px) {
-    width: 86vw;
-    border-left: $border-thickness solid transparent;
+  @media only screen and (max-width: 425px) {
+    width: 88vw;
+    border-width: $mobileBorderThickness;
     filter: drop-shadow(0px 2px 0px black);
-    margin-top: 50vw;
+    margin-top: 69vw;
   }
 }
 
 .bar1,
 .barC {
-  border-bottom: $border-thickness solid var(--light-gray);
+  border-bottom: $borderThickness solid var(--light-gray);
   width: 75%;
-  border-right: $border-thickness solid transparent;
+  border-right: $borderThickness solid transparent;
   position: absolute;
   margin-top: 45vw;
   mask: linear-gradient(
     45deg,
     black 80%,
-    $gradient-color 80%,
-    $gradient-color 82%,
+    $gradientColor 80%,
+    $gradientColor 82%,
     black 82%,
     black 84%,
-    $gradient-color 84%,
-    $gradient-color 86%,
+    $gradientColor 84%,
+    $gradientColor 86%,
     black 86%
   );
 }
 
 .bar1 {
-  @media only screen and (max-width: 480px) {
-    width: 80vw;
-    margin-left: 3vw;
-    border-left: $border-thickness solid transparent;
-    mask: none;
+  @media only screen and (max-width: 425px) {
+    width: 85vw;
+    border-width: $mobileBorderThickness;
+    margin-top: 62vw;
     mask: linear-gradient(
-      -45deg,
-      black 85%,
-      $gradient-color 85%,
-      $gradient-color 87%,
-      black 87%,
-      black 89%,
-      $gradient-color 89%,
-      $gradient-color 91%,
-      black 91%
+      45deg,
+      black 80%,
+      $gradientColor 80%,
+      $gradientColor 82%,
+      black 82%,
+      black 84%,
+      $gradientColor 84%,
+      $gradientColor 86%,
+      black 86%
     );
   }
 }
@@ -89,10 +89,11 @@ $gradient-color: rgba(0, 0, 0, 0.5);
   filter: drop-shadow(8px 5px 0px black);
   mask: none;
 
-  @media only screen and (max-width: 480px) {
-    width: 80vw;
-    margin-left: 3vw;
-    border-left: $border-thickness solid transparent;
+  @media only screen and (max-width: 425px) {
+    width: 87vw;
+    border-width: $mobileBorderThickness;
+    margin-top: 64vw;
+    filter: drop-shadow(2px 2px 0px black);
   }
 }
 
@@ -108,11 +109,12 @@ $gradient-color: rgba(0, 0, 0, 0.5);
   color: var(--dark-gray);
   font-size: 3.2vw;
 
-  @media only screen and (max-width: 480px) {
-    width: 100vw;
-    font-size: 4vw;
+  @media only screen and (max-width: 425px) {
+    width: 80vw;
+    font-size: 5.2vw;
     font-weight: 200;
-    text-align: center;
+    text-align: left;
+    margin-top: 65vw;
   }
 }
 

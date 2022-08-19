@@ -1,5 +1,5 @@
 import React, { ComponentType } from 'react';
-import styles from "./InfoBar.module.css";
+import styles from "./InfoBar.module.scss";
 import { formatSqlDate } from '../../../helpers/dateHelpers';
 
 type InfoBarProps = {
