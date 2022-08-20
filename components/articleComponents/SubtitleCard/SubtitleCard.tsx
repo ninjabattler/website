@@ -1,6 +1,6 @@
 import React, { ComponentType } from 'react';
 import { ColourType } from '../../../types';
-import styles from "./SubtitleCard.module.css";
+import styles from "./SubtitleCard.module.scss";
 
 type SubtitleCardProps = {
   imageSrc: string;

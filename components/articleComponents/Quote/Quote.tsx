@@ -1,5 +1,5 @@
 import React, { ComponentType } from 'react';
-import styles from "./Quote.module.css";
+import styles from "./Quote.module.scss";
 
 type QuoteProps = {
   quote: string;

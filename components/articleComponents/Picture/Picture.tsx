@@ -1,5 +1,5 @@
 import React, { ComponentType } from 'react';
-import styles from "./Picture.module.css";
+import styles from "./Picture.module.scss";
 
 type PictureProps = {
   imageSrc: string;

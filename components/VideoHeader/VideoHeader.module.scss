@@ -37,7 +37,7 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   );
 
   @media only screen and (max-width: 425px) {
-    width: 88vw;
+    width: 87.5vw;
     border-width: $mobileBorderThickness;
     filter: drop-shadow(0px 2px 0px black);
     margin-top: 69vw;

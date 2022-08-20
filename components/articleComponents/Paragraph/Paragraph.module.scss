@@ -4,7 +4,20 @@
   margin-left: 10%;
   margin-bottom: 30px;
   margin-top: 30px;
+
+  @media only screen and (max-width: 425px) {
+    width: 95%;
+    margin-left: 2.5%;
+    font-size: 0.75em;
+    margin-bottom: 1%;
+    margin-top: 1%;
+  }
 }
+
+.paragraph > div > p {
+  font-weight: 100;
+}
+
 .paragraph > div > p > a {
   color: rgb(45, 29, 83) !important;
 }
@@ -19,22 +32,4 @@
   opacity: 0.7;
   filter: drop-shadow(1px 1px 0px black) drop-shadow(-1px -1px 0px black) drop-shadow(1px -1px 0px black)
     drop-shadow(-1px 1px 0px black);
-  text-shadow: 2px 2px 0px black;
-}
-
-@media only screen and (max-width: 853px) {
-  .paragraph {
-    font-size: 0.7em;
-  }
-  .paragraph > div > p > strong {
-    text-shadow: none;
-  }
-}
-
-@media only screen and (max-width: 480px) {
-  .paragraph {
-    font-size: 0.55em;
-    margin-bottom: 15px;
-    margin-top: 15px;
-  }
 }

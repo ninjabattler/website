@@ -8,6 +8,13 @@
   margin-top: 5vw;
   color: var(--light-gray);
   font-size: 1em;
+
+  @media only screen and (max-width: 425px) {
+    height: 23vw;
+    margin-top: 10vw;
+    font-size: 0.7em;
+    line-height: 0.65em;
+  }
 }
 
 .dialogue > img {
@@ -15,6 +22,12 @@
   width: 14.25vw;
   image-rendering: pixelated;
   filter: drop-shadow(1vw 0px 0px var(--dark-gray));
+
+  @media only screen and (max-width: 425px) {
+    max-height: 40vw;
+    width: 25vw;
+    filter: drop-shadow(2vw 0px 0px var(--dark-gray));
+  }
 }
 
 .dialogueText {
@@ -35,6 +48,11 @@
   font-size: 0.7em;
   text-align: right;
   color: var(--dark-gray);
+  
+  @media only screen and (max-width: 425px) {
+    margin-top: 5vw;
+    font-size: 0.65em;
+  }
 }
 
 .dialogueText > h3 {
@@ -58,6 +76,14 @@
     transparent 84%,
     transparent 86%
   );
+
+  @media only screen and (max-width: 425px) {
+    width: 70%;
+    height: 4vw;
+    font-size: 1em;
+    padding-top: 1%;
+    padding-right: 25vw;
+  }
 }
 
 .background1 {
@@ -67,26 +93,8 @@
   border-left: 9.5vw solid transparent;
   z-index: -1;
   right: 0;
-}
 
-@media only screen and (max-width: 425px) {
-  .dialogue {
-    height: 14vw;
-    margin-top: 10vw;
-    font-size: 0.45em;
-  }
-
-  .dialogue > img {
-    max-height: 40vw;
-    width: 20vw;
-  }
-
-  .dialogueText > h3 {
-    height: 2.5vw;
-    padding-right: 27%;
-  }
-
-  .background1 {
-    border-width: 14vw;
+  @media only screen and (max-width: 425px) {
+    border-width: 23vw;
   }
 }

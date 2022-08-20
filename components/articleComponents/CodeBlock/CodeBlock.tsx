@@ -1,5 +1,5 @@
 import React, { ComponentType } from 'react';
-import styles from './CodeBlock.module.css';
+import styles from './CodeBlock.module.scss';
 import { CopyBlock, vs2015 } from "react-code-blocks";
 
 type CodeBlockProps = {

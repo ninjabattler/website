@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import styles from '../../styles/ReviewPage.module.css';
+import styles from '../../styles/ReviewPage.module.scss';
 import JsxParser from 'react-jsx-parser';
 import Head from 'next/dist/shared/lib/head';
 import VideoHeader from '../../components/VideoHeader/VideoHeader';
@@ -109,7 +109,7 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
             />
           </article>
 
-          <aside className={styles.commentPanel} style={windowServer.innerWidth < 426 ? { marginLeft: showPanel ? "-81%" : "0%", display: showCommentPanel ? 'initial' : 'none' } : { display: showCommentPanel ? 'initial' : 'none' }}>
+          <aside className={styles.commentPanel} style={windowServer.innerWidth < 426 ? { marginLeft: showPanel ? "-100%" : "0%", display: showCommentPanel ? 'initial' : 'none' } : { display: showCommentPanel ? 'initial' : 'none' }}>
             <LikePanel
               postId={articleData.id}
               userId={userId}
@@ -162,10 +162,13 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
               })}
             </div>
 
-            <button id={styles.mobileCommentButton} onClick={() => { setShowPanel(!showPanel) }}><CommentTwoTone /></button>
           </aside>
         </div>
-
+        <button
+          id={styles.mobileCommentButton}
+          style={{ display: showCommentPanel ? 'initial' : 'none' }}
+          onClick={() => { setShowPanel(!showPanel) }}
+        ><CommentTwoTone /></button>
       </main>
     </>)
 }

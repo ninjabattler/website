@@ -1,6 +1,6 @@
 import React, { ComponentType } from 'react';
 import { ColourType } from '../../../types';
-import styles from "./ListItem.module.css";
+import styles from "./ListItem.module.scss";
 
 type ListItemProps = {
   imgSrc: string;

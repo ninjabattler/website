@@ -1,6 +1,10 @@
 .codeBlock {
   font-size: 0.5em;
   tab-size: 2;
+
+  @media only screen and (max-device-width: 425px) {
+    font-size: 0.35em;
+  }
 }
 .codeBlock > * {
   width: 90%;
@@ -8,10 +12,4 @@
   margin-right: auto;
   margin-top: 10px;
   margin-bottom: 10px;
-}
-
-@media only screen and (max-device-width: 425px) {
-  .codeBlock {
-    font-size: 0.35em;
-  }
 }

@@ -1,6 +1,6 @@
 import React, { ComponentType } from 'react';
 import { ColourType } from '../../../types';
-import styles from "./Dialogue.module.css";
+import styles from "./Dialogue.module.scss";
 
 type DialogueProps = {
   speaker: string;

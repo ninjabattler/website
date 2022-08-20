@@ -7,7 +7,7 @@ import EarthText from '../../animatedText/EarthText/EarthText';
 import RegexText from '../../animatedText/RegexText/RegexText';
 import MetalHeadText from '../../animatedText/MetalHeadText/MetalHeadText';
 import TerrariaText from '../../animatedText/TerrariaText/TerrariaText';
-import styles from "./Paragraph.module.css";
+import styles from "./Paragraph.module.scss";
 import Picture from '../Picture/Picture';
 
 type ParagraphProps = {
