@@ -55,7 +55,7 @@ export default function LikePanel({ postId, userId, likes, isLiked, setIsLiked, 
   return (
     <aside className={styles.likePanel} >
       <button className={styles.like} onClick={clickLike}
-        style={{ color: isLiked === true ? pageColour : '#292929' }}>
+        style={{ color: isLiked === true ? pageColour : 'var(--light-gray)' }}>
         <span className={styles.likeOption}><ThumbUpSharp className={styles.shareIcon} />
           {likes}
         </span>
@@ -66,7 +66,7 @@ export default function LikePanel({ postId, userId, likes, isLiked, setIsLiked, 
 
       </div>
       <button className={styles.dislike} onClick={clickDislike}
-        style={{ color: isDisliked === true ? pageColour : '#292929' }}>
+        style={{ color: isDisliked === true ? pageColour : 'var(--light-gray)' }}>
         <span className={styles.likeOption}><ThumbDownSharp className={styles.shareIcon} />
           {dislikes}
         </span>

@@ -5,7 +5,7 @@
 #reviewPage > div > .articleContainer {
   display: flex;
   flex-direction: column;
-  background-color: var(--dark-gray);
+  background-color: var(--secondary-colour);
   width: 65%;
   filter: drop-shadow(8px 5px 0px black);
   border-left: 1vw solid var(--light-gray);
@@ -49,10 +49,10 @@
   height: 70vh;
   background-image: linear-gradient(
     45deg,
-    var(--dark-gray) 3%,
+    var(--secondary-colour) 3%,
     rgba(0, 0, 0, 0.5) 3%,
     rgba(0, 0, 0, 0.5) 5%,
-    var(--dark-gray) 5%
+    var(--secondary-colour) 5%
   );
   margin-left: auto;
   margin-right: auto;
@@ -109,10 +109,10 @@
 
 .commentPanel > div::-webkit-scrollbar {
   background: var(--light-gray);
-  outline: 4px solid var(--dark-gray);
+  outline: 4px solid var(--secondary-colour);
 
   @media only screen and (max-width: 425px) {
-    outline: 1px solid var(--dark-gray);
+    outline: 1px solid var(--secondary-colour);
     width: 8px;
   }
 }
@@ -122,11 +122,11 @@
 }
 
 .commentPanel > div::-webkit-scrollbar-thumb {
-  background: var(--dark-gray);
+  background: var(--secondary-colour);
   border: 2px solid var(--light-gray);
 
   @media only screen and (max-width: 425px) {
-    background: var(--dark-gray);
+    background: var(--secondary-colour);
     border: 1px solid var(--light-gray);
   }
 }
@@ -137,7 +137,7 @@
 }
 
 #mobileCommentButton {
-  display: none;
+  display: none !important;
 
   @media only screen and (max-width: 425px) {
     display: initial;
@@ -147,7 +147,7 @@
     color: var(--light-gray);
     font-size: 1em;
     position: fixed;
-    background-color: var(--dark-gray);
+    background-color: var(--secondary-colour);
     left: 0;
     bottom: 0;
     margin-bottom: 2.5vw;

@@ -85,9 +85,9 @@
   height: 1.75vw;
   border: none;
   outline: none;
-  border-right: 2px solid var(--dark-gray);
+  border-right: 2px solid var(--secondary-colour);
   font-size: 1.3vw;
-  color: var(--dark-gray);
+  color: var(--secondary-colour);
   background-color: var(--light-gray);
   cursor: pointer;
   transform: skewX(10deg);
@@ -125,7 +125,7 @@
   margin-right: 2px;
   font-size: 1.3vw;
   color: var(--light-gray);
-  background-color: var(--dark-gray);
+  background-color: var(--secondary-colour);
   cursor: pointer;
   transform: skewX(10deg);
 
@@ -146,7 +146,7 @@
   width: 15%;
   margin-left: auto;
   color: var(--light-gray) !important;
-  background-color: var(--dark-gray) !important;
+  background-color: var(--secondary-colour) !important;
   border-right: 2px solid var(--light-gray) !important;
   transform: none !important;
 
@@ -156,7 +156,7 @@
 }
 
 #commentViewBar > .selected {
-  color: var(--dark-gray);
+  color: var(--secondary-colour);
   background-color: var(--light-gray);
 }
 
@@ -166,7 +166,7 @@
   min-width: 25%;
   min-height: 1.75vw;
   font-size: 1.3vw;
-  color: var(--dark-gray);
+  color: var(--secondary-colour);
   background-color: var(--light-gray);
 
   @media only screen and (max-width: 425px) {
@@ -209,9 +209,9 @@
   height: 1.75vw;
   font-size: 0.8em;
   border: none;
-  border-bottom: 1px solid var(--dark-gray);
+  border-bottom: 1px solid var(--secondary-colour);
   outline: none;
-  color: var(--dark-gray);
+  color: var(--secondary-colour);
   background-color: var(--light-gray);
 
   @media only screen and (max-width: 425px) {

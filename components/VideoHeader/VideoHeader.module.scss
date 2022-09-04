@@ -17,7 +17,7 @@ $gradientColor: rgba(0, 0, 0, 0.5);
 }
 
 .bar2 {
-  border-top: $borderThickness solid var(--dark-gray);
+  border-top: $borderThickness solid var(--secondary-colour);
   opacity: 0.9;
   width: 80%;
   border-right: $borderThickness solid transparent;
@@ -106,7 +106,7 @@ $gradientColor: rgba(0, 0, 0, 0.5);
 .videoHeader > h1 {
   position: absolute;
   margin-top: 47.5vw;
-  color: var(--dark-gray);
+  color: var(--secondary-colour);
   font-size: 3.2vw;
 
   @media only screen and (max-width: 425px) {

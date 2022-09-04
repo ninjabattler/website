@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Footer from '../components/Footer/Footer';
 import LoadingOverlay from '../components/LoadingOverlay/LoadingOverlay';
 import NavBar from '../components/Navbar/NavBar';
-import '../styles/globals.css';
+import '../styles/globals.scss';
 import { NextRouter, useRouter } from 'next/router';
 import { AppProps } from 'next/app';
 

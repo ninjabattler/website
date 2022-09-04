@@ -18,7 +18,7 @@ $gradientColor: rgba(0, 0, 0, 0.5);
 }
 
 .infoUnderline {
-  border-top: $borderThickness solid var(--dark-gray);
+  border-top: $borderThickness solid var(--secondary-colour);
   border-right: $borderThickness solid transparent;
   width: 77vw;
   filter: drop-shadow(4px 5px 0px black);
