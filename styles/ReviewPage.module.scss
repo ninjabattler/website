@@ -140,14 +140,14 @@
   display: none !important;
 
   @media only screen and (max-width: 425px) {
-    display: initial;
+    display: initial !important;
     border: none;
     outline: 2px solid var(--light-gray);
     background-color: transparent;
     color: var(--light-gray);
     font-size: 1em;
     position: fixed;
-    background-color: var(--secondary-colour);
+    background-color: var(--dark-gray);
     left: 0;
     bottom: 0;
     margin-bottom: 2.5vw;
