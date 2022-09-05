@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import styles from '../styles/HomePage.module.css'
+import styles from '../styles/HomePage.module.scss'
 import React from 'react';
 import CodeBlock from '../components/articleComponents/CodeBlock/CodeBlock';
 import VideoBackground from '../components/VideoBackground/VideoBackground';
@@ -113,7 +113,7 @@ export default function Home({ title, thumbnail, setLinkClicked }: InferGetServe
 
           <section id={styles.part4}>
             <h2>And Whatever Else</h2>
-            <p>Movies, MTG, the giant eye in the sky bring the end of the world, if it interests me, you may see it here at some point. Except the end of the world, I don&apos;t write fast enough to cover that.</p>
+            <p>Movies, MTG, the giant eye in the sky bringing the end of the world, if it interests me, you may see it here at some point. Except the end of the world, I don&apos;t write fast enough to cover that.</p>
           </section>
 
         </main>

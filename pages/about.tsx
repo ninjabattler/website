@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../styles/About.module.css';
+import styles from '../styles/About.module.scss';
 import Head from 'next/head';
 
 export default function About(props) {

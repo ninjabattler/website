@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import React from 'react';
 import Post from '../components/Post/Post';
-import styles from '../styles/PostsPage.module.css'
+import styles from '../styles/PostsPage.module.scss'
 import { postsServerSideProps } from '../ssr/posts';
 import VideoBackground from '../components/VideoBackground/VideoBackground';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';

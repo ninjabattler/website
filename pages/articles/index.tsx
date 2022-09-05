@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../../styles/ArticlesPage.module.css'
+import styles from '../../styles/ArticlesPage.module.scss'
 import Paragraph from '../../components/articleComponents/Paragraph/Paragraph';
 import Carousel from '../../components/Carousel/Carousel';
 import Head from 'next/dist/shared/lib/head';

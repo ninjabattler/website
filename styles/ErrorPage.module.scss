@@ -6,10 +6,19 @@
   justify-content: center;
   margin-top: 50px;
   font-size: 30px;
+
+  @media only screen and (max-width: 425px) {
+    font-size: 20px;
+    height: 80vh;
+  }
 }
 
 #errorPage > img {
   height: 80%;
+
+  @media only screen and (max-width: 425px) {
+    height: 69%;
+  }
 }
 
 #errorPage > h1 {
@@ -19,14 +28,4 @@
 
 #errorPage > p {
   color: var(--dark-gray);
-}
-
-@media only screen and (max-width: 480px) {
-  #errorPage {
-    font-size: 20px;
-    height: 80vh;
-  }
-  #errorPage > img {
-    height: 69%;
-  }
 }

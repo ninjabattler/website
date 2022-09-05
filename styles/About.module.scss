@@ -3,16 +3,28 @@
   height: fit-content;
   justify-content: center;
   flex-wrap: wrap;
-  /* background-color: var(--light-gray); */
-  font-size: 30px;
+  font-size: 1.6vw;
+
+  @media only screen and (max-device-width: 425px) {
+    font-size: 4vw;
+    overflow: hidden;
+  }
 }
+
 #content {
   width: 50%;
   color: var(--dark-gray);
   display: flex;
   align-items: center;
   flex-direction: column;
+
+  @media only screen and (max-device-width: 425px) {
+    width: 90%;
+    z-index: 20;
+    margin-top: 30px;
+  }
 }
+
 #content > h1 {
   font-weight: 1000;
   font-size: 3em;
@@ -20,10 +32,18 @@
   text-shadow: 2px 2px 0px black;
   text-align: center;
 }
+
 #content > h1 > span {
   font-size: 0.5em;
   margin: 0;
 }
+
+#content > h1 > img {
+  @media only screen and (max-device-width: 425px) {
+    width: 80vw !important;
+  }
+}
+
 .left {
   width: 5%;
   border-right: 350px solid transparent;
@@ -31,6 +51,7 @@
   margin-right: -300px;
   z-index: 10;
 }
+
 .right {
   width: 5%;
   border-left: 350px solid transparent;
@@ -38,6 +59,14 @@
   margin-left: -300px;
   z-index: 10;
 }
+
+.left,
+.right {
+  @media only screen and (max-device-width: 425px) {
+    display: none;
+  }
+}
+
 #about > img {
   height: 350px;
   padding-right: 150px;
@@ -48,7 +77,16 @@
   animation-duration: 4s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
+
+  @media only screen and (max-device-width: 425px) {
+    width: 100vw;
+    height: unset;
+    padding-right: 30px;
+    padding-left: 30px;
+    margin-top: 20px;
+  }
 }
+
 @keyframes backgroundOffset {
   0% {
     background-position-x: 0px;
@@ -57,45 +95,5 @@
   100% {
     background-position-x: 67px;
     background-position-y: 100px;
-  }
-}
-
-@media only screen and (max-device-width: 853px) {
-  #about {
-    font-size: 18px;
-  }
-  #content {
-    margin-top: -150px;
-    z-index: 20;
-  }
-  #about > img {
-    height: 150px;
-    padding-right: 50px;
-    padding-left: 50px;
-    margin-top: 20px;
-  }
-}
-
-@media only screen and (max-device-width: 425px) {
-  #about {
-    font-size: 13px;
-    overflow: hidden;
-  }
-  #content {
-    z-index: 20;
-    margin-top: 30px;
-  }
-  .left,
-  .right {
-    display: none;
-  }
-  #about > img {
-    width: 100vw;
-    padding-right: 30px;
-    padding-left: 30px;
-    margin-top: 20px;
-  }
-  #content > h1 > img {
-    width: 80vw !important;
   }
 }

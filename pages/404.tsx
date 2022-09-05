@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import styles from '../styles/ErrorPage.module.css'
+import styles from '../styles/ErrorPage.module.scss'
 import React from 'react';
 
 export default function FourOhFour() {

@@ -3,10 +3,8 @@
   min-height: 1000px;
   display: flex;
   flex-direction: column;
-}
 
-@media only screen and (max-device-width: 480px) {
-  #postsPage {
+  @media only screen and (max-device-width: 425px) {
     padding-top: 30px;
   }
 }
