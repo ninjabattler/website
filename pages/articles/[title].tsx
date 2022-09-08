@@ -22,7 +22,8 @@ import ShareBar from '../../components/feedbackAndShare/ShareBar/ShareBar';
 import CommentArea from '../../components/feedbackAndShare/CommentArea/CommentArea';
 import noCommentMessages from '../../constants/noCommentMessages.json';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import { AppData, PostCommentType, WindowServerType } from '../../types';
+import { AppData, ArticleJson, PostCommentType, WindowServerType } from '../../types';
+import { parseJsonArticle } from '../../helpers/parseJsonArticle';
 
 export const getServerSideProps: GetServerSideProps = articlePageServerSideProps;
 
