@@ -22,8 +22,9 @@ import ShareBar from '../../components/feedbackAndShare/ShareBar/ShareBar';
 import CommentArea from '../../components/feedbackAndShare/CommentArea/CommentArea';
 import noCommentMessages from '../../constants/noCommentMessages.json';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import { AppData, ArticleJson, PostCommentType, WindowServerType } from '../../types';
+import { AppData, PostCommentType, WindowServerType } from '../../types';
 import { parseJsonArticle } from '../../helpers/parseJsonArticle';
+import MainSettings from '../../components/articleCreationComponents/MainSettings/MainSettings';
 
 export const getServerSideProps: GetServerSideProps = articlePageServerSideProps;
 
@@ -109,6 +110,10 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
               jsx={parseJsonArticle(articleData.content)}
             />
           </article>
+
+          {/* <aside className={styles.creationPanel}>
+            <MainSettings />
+          </aside> */}
 
           <aside className={styles.commentPanel} style={windowServer.innerWidth < 426 ? { marginLeft: showPanel ? "-100%" : "0%", display: showCommentPanel ? 'initial' : 'none' } : { display: showCommentPanel ? 'initial' : 'none' }}>
             <LikePanel
