@@ -13,7 +13,7 @@ export type PostCommentType = CommentData & UserData & { formatteddate?: string 
 export type IpType = string | null;
 export type ArticleJsonItemType = string;
 export type ArticleJsonItemContent = string;
-export type ArticleJson = (ParagraphItem | TitleCardItem | PictureItem | QuoteItem | ArticleList | CodeBlockItem | DialogueItem )[];
+export type ArticleJson = (ParagraphItem | TitleCardItem | PictureItem | QuoteItem | ArticleList | CodeBlockItem | DialogueItem | SubtitleCardItem | HtmlItem )[];
 
 export interface ArticleJsonItem {
   type: ArticleJsonItemType;
@@ -26,6 +26,10 @@ export interface AnimTextItem {
   draedon?: boolean;
   yharim?: boolean;
   moonlord?: boolean;
+}
+
+export interface HtmlItem extends ArticleJsonItem {
+  content: ArticleJsonItemContent;
 }
 
 export interface DialogueItem extends ArticleJsonItem {

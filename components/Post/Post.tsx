@@ -10,7 +10,8 @@ import JsxParser from 'react-jsx-parser';
 import Comment from '../Comment/Comment';
 import { CommentTwoTone } from '@material-ui/icons'
 import CommentArea from '../feedbackAndShare/CommentArea/CommentArea';
-import { IpType, PostIdType, TitleType, UserIdType } from '../../types';
+import { ArticleJson, IpType, PostIdType, TitleType, UserIdType } from '../../types';
+import { parseJsonPost } from '../../helpers/parseJsonPost';
 
 type PostProps = {
   title: TitleType;
