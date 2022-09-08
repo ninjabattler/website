@@ -22,13 +22,13 @@ import ShareBar from '../../components/feedbackAndShare/ShareBar/ShareBar';
 import CommentArea from '../../components/feedbackAndShare/CommentArea/CommentArea';
 import noCommentMessages from '../../constants/noCommentMessages.json';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import { AppData, PostCommentType, WindowServerType } from '../../types';
+import { AppData, ArticleData, PostCommentType, WindowServerType } from '../../types';
 import { parseJsonArticle } from '../../helpers/parseJsonArticle';
 import MainSettings from '../../components/articleCreationComponents/MainSettings/MainSettings';
 
 export const getServerSideProps: GetServerSideProps = articlePageServerSideProps;
 
-export default function ArticlePage({ articleData, disliked, liked, randomQuoteIndex, url, userId }: InferGetServerSidePropsType<typeof articlePageServerSideProps> & AppData) {
+export default function ArticlePage({ articleData, disliked, liked, randomQuoteIndex, url, userId, edit, jsonLocation }: InferGetServerSidePropsType<typeof articlePageServerSideProps> & AppData) {
   const [commenting, setCommenting] = useState<boolean>(false);
   const [comments, setComments] = useState<PostCommentType[]>(articleData.comments);
   const [likes, setLikes] = useState<number>(Number(articleData.likes));
@@ -41,6 +41,7 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
   const [showCommentPanel, setShowCommentPanel] = useState<boolean>(false);
   const [noAnim, setNoAnim] = useState<boolean>(false);
   const [commentContent, setCommentContent] = useState<string>('');
+  const [article, setArticle] = useState<ArticleData>(articleData);
   const commentRef = useRef();
 
   useEffect(() => {
@@ -58,117 +59,125 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
     }
   }
 
+  const updateArticleData = (data): void => {
+    setArticle(data);
+  }
+
   return (
     <>
       <Head>
-        <title>Ninjabattler - {articleData.title}</title>
-        <meta name='description' content={articleData.description} />
+        <title>Ninjabattler - {article.title}</title>
+        <meta name='description' content={article.description} />
         <meta property='og:locale' content='en_CA' />
-        <meta name='theme-color' content={`${articleData.colour}`} />
+        <meta name='theme-color' content={`${article.colour}`} />
         <link rel="icon" href="/favicon.ico" />
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {/* <!-- Google / Search Engine Tags --> */}
-        <meta itemProp="name" content={`Ninjabattler - ${articleData.title}`}></meta>
-        <meta itemProp="description" content={articleData.description}></meta>
-        <meta itemProp="image" content={articleData.thumbnail}></meta>
+        <meta itemProp="name" content={`Ninjabattler - ${article.title}`}></meta>
+        <meta itemProp="description" content={article.description}></meta>
+        <meta itemProp="image" content={article.thumbnail}></meta>
         {/* <!-- Facebook Meta Tags --> */}
         <meta property="og:url" content={url}></meta>
         <meta property='og:type' content='website' />
-        <meta property='og:title' content={`Ninjabattler - ${articleData.title}`} />
-        <meta property='og:description' content={articleData.description} />
-        <meta property='og:image' content={articleData.thumbnail} />
+        <meta property='og:title' content={`Ninjabattler - ${article.title}`} />
+        <meta property='og:description' content={article.description} />
+        <meta property='og:image' content={article.thumbnail} />
         {/* <!-- Twitter Meta Tags --> */}
         <meta name="twitter:card" content="summary_large_image"></meta>
-        <meta name="twitter:title" content={`Ninjabattler - ${articleData.title}`}></meta>
-        <meta name="twitter:description" content={articleData.description}></meta>
-        <meta name="twitter:image" content={articleData.thumbnail}></meta>
+        <meta name="twitter:title" content={`Ninjabattler - ${article.title}`}></meta>
+        <meta name="twitter:description" content={article.description}></meta>
+        <meta name="twitter:image" content={article.thumbnail}></meta>
         {/* <!-- Meta Tags Generated via http://heymeta.com -->*/}
         <style>
           {`
             :root {
-              --article-colour: ${articleData.colour};
+              --article-colour: ${article.colour};
             }
           `}
         </style>
       </Head>
 
-      <VideoBackground video={articleData.video_header || ""} pageColour={articleData.colour} />
+      <VideoBackground video={article.video_header || ""} pageColour={article.colour} />
 
       <main id={styles.reviewPage}>
         {!showPanel && (<div id={styles.mobileCover}></div>)}
-        <VideoHeader video={articleData.video_header || ""} title={articleData.title} pageColour={articleData.colour} />
-        <InfoBar date={articleData.formatteddate} category={articleData.category} genre={articleData.genre} />
+        <VideoHeader video={article.video_header || ""} title={article.title} pageColour={article.colour} />
+        <InfoBar date={article.formatteddate} category={article.category} genre={article.genre} />
 
         <div>
-          <article className={styles.articleContainer} style={windowServer.innerWidth < 426 ? { boxShadow: `2px 2px 0px ${articleData.colour}` } : { boxShadow: `5px 5px 0px ${articleData.colour}` }}>
-            {articleData.narration && (<iframe id={styles.adAurisIframe} src={`${articleData.narration}?color=${articleData.colour.split('#')[1]}`} style={{ border: 'none', height: '100px', width: '80%' }} ></iframe>)}
+          <article className={styles.articleContainer} style={windowServer.innerWidth < 426 ? { boxShadow: `2px 2px 0px ${article.colour}` } : { boxShadow: `5px 5px 0px ${article.colour}` }}>
+            {article.narration && (<iframe id={styles.adAurisIframe} src={`${article.narration}?color=${article.colour.split('#')[1]}`} style={{ border: 'none', height: '100px', width: '80%' }} ></iframe>)}
             {/* @ts-ignore - JsxParser has an error with how it exports, works perfectly fine though */}
             <JsxParser
               components={{ Picture, ListItem, Underline, Quote, Paragraph, TitleCard, CodeBlock, SubtitleCard, Dialogue } as {}}
 
-              jsx={parseJsonArticle(articleData.content)}
+              jsx={parseJsonArticle(article.content)}
             />
           </article>
 
-          {/* <aside className={styles.creationPanel}>
-            <MainSettings />
-          </aside> */}
+          {edit &&
+            <aside className={styles.creationPanel}>
+              <MainSettings articleData={article} jsonLocation={jsonLocation} updateArticleData={updateArticleData} />
+            </aside>
+          }
 
-          <aside className={styles.commentPanel} style={windowServer.innerWidth < 426 ? { marginLeft: showPanel ? "-100%" : "0%", display: showCommentPanel ? 'initial' : 'none' } : { display: showCommentPanel ? 'initial' : 'none' }}>
-            <LikePanel
-              postId={articleData.id}
-              userId={userId}
-              pageColour={articleData.colour}
-              likes={likes}
-              isLiked={isLiked}
-              setLikes={setLikes}
-              setIsLiked={setIsLiked}
-              dislikes={dislikes}
-              isDisliked={isDisliked}
-              setDislikes={setDislikes}
-              setIsDisliked={setIsDisliked}
-            />
+          {!edit &&
+            <aside className={styles.commentPanel} style={windowServer.innerWidth < 426 ? { marginLeft: showPanel ? "-100%" : "0%", display: showCommentPanel ? 'initial' : 'none' } : { display: showCommentPanel ? 'initial' : 'none' }}>
+              <LikePanel
+                postId={articleData.id}
+                userId={userId}
+                pageColour={articleData.colour}
+                likes={likes}
+                isLiked={isLiked}
+                setLikes={setLikes}
+                setIsLiked={setIsLiked}
+                dislikes={dislikes}
+                isDisliked={isDisliked}
+                setDislikes={setDislikes}
+                setIsDisliked={setIsDisliked}
+              />
 
-            <ShareBar
-              title={articleData.title}
-              windowServer={windowServer}
-              articleLink={url}
-              pageColour={articleData.colour}
-            />
+              <ShareBar
+                title={articleData.title}
+                windowServer={windowServer}
+                articleLink={url}
+                pageColour={articleData.colour}
+              />
 
-            <CommentArea
-              commentRef={commentRef}
-              comments={comments}
-              setComments={setComments}
-              postId={articleData.id}
-              userId={userId}
-              commenting={commenting}
-              setCommentContent={setCommentContent}
-              setViewComment={setViewComment}
-              viewComment={viewComment}
-              setCommenting={setCommenting}
-              commentContent={commentContent}
-              noAnim={noAnim}
-            />
+              <CommentArea
+                commentRef={commentRef}
+                comments={comments}
+                setComments={setComments}
+                postId={articleData.id}
+                userId={userId}
+                commenting={commenting}
+                setCommentContent={setCommentContent}
+                setViewComment={setViewComment}
+                viewComment={viewComment}
+                setCommenting={setCommenting}
+                commentContent={commentContent}
+                noAnim={noAnim}
+              />
 
-            <div className={styles.comments}>
-              {comments.length <= 1 && (
-                <p id={styles.noCommentMessage} dangerouslySetInnerHTML={{ __html: noCommentMessages[randomQuoteIndex] }}></p>
-              )}
-              {comments.map((com) => {
-                if (com.username) {
-                  return (<Comment
-                    pageColour={com.user_id === userId ? articleData.colour : 'transparent'}
-                    username={com.username.slice(0, 10)}
-                    date={com.formatteddate}
-                    content={com.content}
-                    avatar={com.avatar} />)
-                }
-              })}
-            </div>
+              <div className={styles.comments}>
+                {comments.length <= 1 && (
+                  <p id={styles.noCommentMessage} dangerouslySetInnerHTML={{ __html: noCommentMessages[randomQuoteIndex] }}></p>
+                )}
+                {comments.map((com) => {
+                  if (com.username) {
+                    return (<Comment
+                      pageColour={com.user_id === userId ? articleData.colour : 'transparent'}
+                      username={com.username.slice(0, 10)}
+                      date={com.formatteddate}
+                      content={com.content}
+                      avatar={com.avatar} />)
+                  }
+                })}
+              </div>
 
-          </aside>
+            </aside>
+          }
         </div>
         <button
           id={styles.mobileCommentButton}

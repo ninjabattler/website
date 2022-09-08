@@ -41,3 +41,18 @@
   border: none;
   outline: 2px solid var(--light-gray);
 }
+
+#saveButton {
+  margin: 1vw;
+  background-color: var(--light-gray);
+  color: var(--secondary-colour);
+  border: none;
+  cursor: pointer;
+  outline: 1px solid var(--secondary-colour );
+  border: 2px solid var(--secondary-colour);
+}
+
+#saveButton:hover {
+  outline: 1px solid var(--light-gray);
+  border: 2px solid var(--secondary-colour);
+}
