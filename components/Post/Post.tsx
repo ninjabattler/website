@@ -17,7 +17,7 @@ type PostProps = {
   title: TitleType;
   date: string;
   comments: Array<any>;
-  content: string;
+  content: ArticleJson;
   id: PostIdType;
   userId: UserIdType;
   ip: IpType;
@@ -161,7 +161,7 @@ export default function Post({ title, date, comments, content, id, userId }: Pos
             {/* @ts-ignore - JsxParser has an error with how it exports, works perfectly fine though */}
             <JsxParser
               components={{ FireText, IceText, ThunderText, EarthText, MetalHeadText, RegexText } as {}}
-              jsx={content}
+              jsx={parseJsonPost(content)}
             />
 
           </div>)

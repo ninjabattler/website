@@ -106,7 +106,7 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
             <JsxParser
               components={{ Picture, ListItem, Underline, Quote, Paragraph, TitleCard, CodeBlock, SubtitleCard, Dialogue } as {}}
 
-              jsx={articleData.content}
+              jsx={parseJsonArticle(articleData.content)}
             />
           </article>
 

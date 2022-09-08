@@ -5,6 +5,7 @@ import Paragraph from '../articleComponents/Paragraph/Paragraph';
 import Image from 'next/image';
 import Link from 'next/link';
 import { formatSqlDate } from '../../helpers/dateHelpers';
+import { parseJsonArticle } from '../../helpers/parseJsonArticle';
 
 type CarouselProps = {
   items: Array<any>;
@@ -56,7 +57,7 @@ const Carousel = ({ items, setLinkClicked }: CarouselProps): ReactElement => {
                   <JsxParser
                     components={{ Paragraph } as {}}
 
-                    jsx={item.content ? item.content.split(/\n/g).slice(0, 2).join('') : ''}
+                    jsx={item.content ? parseJsonArticle(item.content.slice(0, 2)) : ''}
                   />
                 </aside>
               </a>

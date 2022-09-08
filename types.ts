@@ -109,7 +109,7 @@ export interface ArticleData {
   date: SqlDateType;
   review: boolean;
   colour: ColourType;
-  content: ContentType;
+  content: ArticleJson;
   category: CategoryType;
   genre: GenreType;
   narration: UrlType;
