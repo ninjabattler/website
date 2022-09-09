@@ -1,5 +1,6 @@
 import React, { ComponentType, useState } from 'react';
-import { ArticleJson, ParagraphItem } from '../../../types';
+import { AnimTextItem, ArticleJson, ParagraphItem } from '../../../types';
+import AnimTextInput from '../AnimTextInput/AnimTextInput';
 import styles from "./ParagraphInput.module.scss";
 
 type ParagraphInputProps = {
@@ -29,6 +30,17 @@ const ParagraphInput: ComponentType<ParagraphInputProps> = ({ paragraph, index, 
           paragraphContent.content.map((item, i) => {
             if (typeof item === 'string') {
               return (<textarea value={item} onChange={(e) => { updateText(e.target.value, i) }}></textarea>)
+            } else if (item.type.endsWith('Text')) {
+              return (
+                <AnimTextInput
+                  animText={item as AnimTextItem}
+                  index={i}
+                  parentIndex={index}
+                  articleContent={content}
+                  parentContent={paragraphContent}
+                  setArticleContent={setContent}
+                />
+              )
             }
           })
         }

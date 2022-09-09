@@ -49,11 +49,36 @@
   width: 30%;
   height: 88vh;
   overflow-y: scroll;
+  overflow-x: hidden;
   margin-left: auto;
   margin-right: auto;
   top: 4vw;
   margin-top: 7.1vw;
   filter: drop-shadow(6px 6px 0px black);
+}
+
+.creationPanel::-webkit-scrollbar {
+  background: var(--light-gray);
+  outline: 4px solid var(--secondary-colour);
+
+  @media only screen and (max-width: 425px) {
+    outline: 1px solid var(--secondary-colour);
+    width: 8px;
+  }
+}
+
+.creationPanel::-webkit-scrollbar-track {
+  background: var(--light-gray);
+}
+
+.creationPanel::-webkit-scrollbar-thumb {
+  background: var(--secondary-colour);
+  border: 2px solid var(--light-gray);
+
+  @media only screen and (max-width: 425px) {
+    background: var(--secondary-colour);
+    border: 1px solid var(--light-gray);
+  }
 }
 
 .commentPanel {
