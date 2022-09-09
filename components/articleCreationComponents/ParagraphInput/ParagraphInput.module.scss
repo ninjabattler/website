@@ -1,0 +1,30 @@
+.paragraphInput {
+  font-size: 0.8em;
+  width: 95%;
+  margin: 1vw;
+  background-color: var(--dark-gray);
+}
+
+.inputContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin: 0.5vw;
+}
+
+.paragraphInput > span {
+  color: var(--primary-text);
+  margin-left: 1vw;
+}
+
+.inputContainer > textarea {
+  height: 7vw;
+  width: 80%;
+  color: var(--primary-text);
+  font-size: 0.65em;
+  background-color: transparent;
+  margin-right: 1vw;
+  border: none;
+  outline: 2px solid var(--light-gray);
+}

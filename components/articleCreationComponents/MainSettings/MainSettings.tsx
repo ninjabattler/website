@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { ComponentType, useState } from 'react';
-import { ArticleData } from '../../../types';
+import { ArticleData, ArticleJson, ParagraphItem } from '../../../types';
+import ParagraphInput from '../ParagraphInput/ParagraphInput';
 import styles from "./MainSettings.module.scss";
 
 const save = async (
@@ -12,6 +13,7 @@ const save = async (
   thumbnail: string,
   videoHeader: string,
   narration: string,
+  content: ArticleJson,
   jsonLocation: string
 ): Promise<any> => {
   const data = {
@@ -25,7 +27,7 @@ const save = async (
     videoHeader,
     narration,
     comments: [],
-    content: []
+    content
   }
 
   await axios.post('/api/articles/update', { data, jsonLocation });
@@ -48,10 +50,11 @@ const MainSettings: ComponentType<MainSettingsProps> = ({ articleData, jsonLocat
   const [thumbnail, setThumbnail] = useState<string>(articleData.thumbnail);
   const [videoHeader, setVideoHeader] = useState<string>(articleData.video_header);
   const [narration, setNarration] = useState<string>(articleData.narration);
+  const [content, setContent] = useState<ArticleJson>(articleData.content);
 
   return (<div id={styles.mainSettings}>
-    <button id={styles.saveButton} onClick={async() => {
-      const data = await save( title, category, genre, colour, description, thumbnail, videoHeader, narration, jsonLocation);
+    <button id={styles.saveButton} onClick={async () => {
+      const data = await save(title, category, genre, colour, description, thumbnail, videoHeader, narration, content, jsonLocation);
 
       updateArticleData(data);
     }}>Save</button>
@@ -95,7 +98,26 @@ const MainSettings: ComponentType<MainSettingsProps> = ({ articleData, jsonLocat
       <span>Narration: </span>
       <input value={narration} onChange={(e) => { setNarration(e.target.value) }}></input>
     </div>
-  </div>)
+
+    <span id={styles.contentBreakpoint}>Content:</span>
+    {
+      content.map((item, index) => {
+        switch (item.type) {
+          case "Paragraph":
+            return (
+              <ParagraphInput
+                paragraph={item as ParagraphItem}
+                index={index}
+                content={content}
+                setContent={setContent}
+              />
+            )
+            break;
+        }
+      })
+    }
+  </div>
+  )
 }
 
 export default MainSettings

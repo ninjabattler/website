@@ -45,15 +45,10 @@
 
 .creationPanel {
   position: sticky;
+  background-color: var(--secondary-colour);
   width: 30%;
   height: 88vh;
-  background-image: linear-gradient(
-    45deg,
-    var(--secondary-colour) 3%,
-    rgba(0, 0, 0, 0.5) 3%,
-    rgba(0, 0, 0, 0.5) 5%,
-    var(--secondary-colour) 5%
-  );
+  overflow-y: scroll;
   margin-left: auto;
   margin-right: auto;
   top: 4vw;
