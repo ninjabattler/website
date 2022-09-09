@@ -14,10 +14,11 @@ type AnimTextInputProps = {
 const AnimTextInput: ComponentType<AnimTextInputProps> = ({ animText, parentIndex, index, parentContent, articleContent, setArticleContent }) => {
   const [textContent, setTextContent] = useState<AnimTextItem>(animText);
 
-  const updateAnimText = ({ type, content, draedon, yharim, moonlord }: AnimTextItem): void => {
+  const updateAnimText = ({ type, content, colour, draedon, yharim, moonlord }: AnimTextItem): void => {
     const newTextContent: AnimTextItem = { ...textContent }
     newTextContent.type = type as AnimTextItem["type"];
     newTextContent.content = content;
+    newTextContent.colour = colour;
     newTextContent.draedon = draedon;
     newTextContent.yharim = yharim;
     newTextContent.moonlord = moonlord;

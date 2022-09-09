@@ -18,9 +18,20 @@
   margin-left: 1vw;
 }
 
-.inputContainer > textarea {
+.paragraphInput > select {
+  color: var(--dark-gray);
+  font-size: 0.7em;
+  right: 0;
+}
+
+.paragraphTextInput {
+  width: 100%;
+  display: flex;
+}
+
+.paragraphTextInput > textarea {
   height: 7vw;
-  width: 80%;
+  width: 100%;
   color: var(--primary-text);
   font-size: 0.65em;
   background-color: transparent;
@@ -28,4 +39,29 @@
   margin-bottom: 1vw;
   border: none;
   outline: 2px solid var(--light-gray);
+}
+
+.paragraphTextInput > .arrowContainer {
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  margin-right: 1vw;
+}
+
+.paragraphTextInput:hover > .arrowContainer {
+  opacity: 1;
+}
+
+.arrowContainer > button {
+  color: var(--dark-gray);
+  background-color: var(--primary-text);
+  border: 1px solid var(--secondary-colour);
+  outline: 1px solid var(--secondary-colour);
+  margin-bottom: 0.5vw;
+}
+
+.arrowContainer > button:hover {
+  border: 1px solid var(--secondary-colour);
+  outline: 1px solid var(--light-gray);
+  cursor: pointer;
 }
