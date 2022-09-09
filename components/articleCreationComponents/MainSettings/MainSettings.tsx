@@ -1,7 +1,8 @@
 import axios from 'axios';
 import React, { ComponentType, useState } from 'react';
-import { ArticleData, ArticleJson, ParagraphItem } from '../../../types';
+import { ArticleData, ArticleJson, ParagraphItem, TitleCardItem } from '../../../types';
 import ParagraphInput from '../ParagraphInput/ParagraphInput';
+import TitleCardInput from '../TitleCardInput/TitleCardInput';
 import styles from "./MainSettings.module.scss";
 
 const save = async (
@@ -112,7 +113,15 @@ const MainSettings: ComponentType<MainSettingsProps> = ({ articleData, jsonLocat
                 setContent={setContent}
               />
             )
-            break;
+          case "TitleCard":
+            return (
+              <TitleCardInput
+                titleCard={item as TitleCardItem}
+                index={index}
+                articleContent={content}
+                setArticleContent={setContent}
+              />
+            )
         }
       })
     }
