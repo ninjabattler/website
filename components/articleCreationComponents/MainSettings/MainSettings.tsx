@@ -1,10 +1,13 @@
 import axios from 'axios';
 import React, { ComponentType, useEffect, useState } from 'react';
-import { ArticleData, ArticleJson, ArticleList, ParagraphItem, PictureItem, QuoteItem, TitleCardItem } from '../../../types';
+import { ArticleData, ArticleJson, ArticleList, CodeBlockItem, DialogueItem, ParagraphItem, PictureItem, QuoteItem, SubtitleCardItem, TitleCardItem } from '../../../types';
+import CodeBlockInput from '../CodeBlockInput/CodeBlockInput';
+import DialogueInput from '../DialogueInput/DialogueInput';
 import ListInput from '../ListInput/ListInput';
 import ParagraphInput from '../ParagraphInput/ParagraphInput';
 import PictureInput from '../PictureInput/PictureInput';
 import QuoteInput from '../QuoteInput/QuoteInput';
+import SubtitleCardInput from '../SubtitleCardInput/SubtitleCardInput';
 import TitleCardInput from '../TitleCardInput/TitleCardInput';
 import styles from "./MainSettings.module.scss";
 
@@ -109,6 +112,29 @@ const MainSettings: ComponentType<MainSettingsProps> = ({ articleData, jsonLocat
           ]
         } as ArticleList);
         break;
+      
+      case 'Dialogue':
+        newContent.push({
+          type: "Dialogue",
+          content: "",
+          speaker: ""
+        } as DialogueItem);
+        break;
+
+      case 'Code Block':
+        newContent.push({
+          type: "CodeBlock",
+          code: "",
+          language: ""
+        } as CodeBlockItem);
+        break;
+
+      case 'Subtitle Card':
+        newContent.push({
+          type: "SubtitleCard",
+          title: ""
+        } as SubtitleCardItem);
+        break;
     }
 
     setContent(newContent);
@@ -170,6 +196,36 @@ const MainSettings: ComponentType<MainSettingsProps> = ({ articleData, jsonLocat
             setContent={setContent}
           />
         )
+
+      case "Dialogue":
+        return (
+          <DialogueInput
+            dialogue={item as DialogueItem}
+            index={i}
+            articleContent={content}
+            setArticleContent={setContent}
+          />
+        )
+
+      case "CodeBlock":
+        return (
+          <CodeBlockInput
+            codeBlock={item as CodeBlockItem}
+            index={i}
+            articleContent={content}
+            setArticleContent={setContent}
+          />
+        )
+
+      case "SubtitleCard":
+        return (
+          <SubtitleCardInput
+            subtitle={item as SubtitleCardItem}
+            index={i}
+            articleContent={content}
+            setArticleContent={setContent}
+          />
+        )
     }
   }
 
@@ -220,10 +276,13 @@ const MainSettings: ComponentType<MainSettingsProps> = ({ articleData, jsonLocat
         <option style={{ display: 'none' }} value="+">+</option>
         <option value="Paragraph">Paragraph</option>
         <option value="Title Card">Title Card</option>
+        <option value="Subtitle Card">Subtitle Card</option>
         <option value="Quote">Quote</option>
         <option value="Picture">Picture</option>
         <option value="Underline">Underline</option>
         <option value="List">List</option>
+        <option value="Dialogue">Dialogue</option>
+        <option value="Code Block">Code Block</option>
       </select>
     </div>
 

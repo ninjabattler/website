@@ -1,11 +1,11 @@
-.titleCardInput {
+.subtitleCardInput {
   font-size: 0.8em;
-  width: 95%;
+  width: 80%;
   margin: 1vw;
   background-color: var(--dark-gray);
 }
 
-.titleCardInput > span {
+.subtitleCardInput > span {
   color: var(--primary-text);
   margin-left: 1vw;
 }
@@ -34,4 +34,18 @@
 .inputContainer > span {
   color: var(--primary-text);
   margin-left: 1vw;
+}
+
+.inputContainer > .checkbox {
+  -webkit-appearance: none;
+  width: 2vw;
+  height: 2vw;
+  background-color: var(--dark-gray);
+  border: 0.3vw solid var(--dark-gray);
+}
+
+.inputContainer > .checkbox:checked {
+  -webkit-appearance: none;
+  background-color: var(--light-gray);
+  border: 0.3vw solid var(--dark-gray);
 }

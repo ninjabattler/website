@@ -1,11 +1,11 @@
-.titleCardInput {
+.codeBlockInput {
   font-size: 0.8em;
   width: 95%;
   margin: 1vw;
   background-color: var(--dark-gray);
 }
 
-.titleCardInput > span {
+.codeBlockInput > span {
   color: var(--primary-text);
   margin-left: 1vw;
 }
@@ -27,6 +27,18 @@
   font-size: 0.8em;
   margin-right: 1vw;
   background-color: transparent;
+  border: none;
+  outline: 2px solid var(--light-gray);
+}
+
+.inputContainer > textarea {
+  height: 7vw;
+  width: 70%;
+  color: var(--primary-text);
+  font-size: 0.65em;
+  background-color: transparent;
+  margin-right: 1vw;
+  margin-bottom: 1vw;
   border: none;
   outline: 2px solid var(--light-gray);
 }
