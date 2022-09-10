@@ -60,7 +60,7 @@ export interface ArticleList extends ArticleJsonItem {
 }
 
 export interface ArticleListItem {
-  imageSrc: UrlType;
+  imageSrc?: UrlType;
   content: ArticleJsonItemContent;
   pageColour?: ColourType;
 }

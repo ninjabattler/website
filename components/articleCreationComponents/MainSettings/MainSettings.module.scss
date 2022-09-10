@@ -140,3 +140,13 @@
   outline: 1px solid var(--light-gray);
   cursor: pointer;
 }
+
+.underlineMarker {
+  font-size: 0.8em;
+  width: 95%;
+  margin: 1vw;
+  background-color: var(--dark-gray);
+  color: var(--primary-text);
+  padding-top: 1vw;
+  padding-left: 1vw;
+}

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { ComponentType, useEffect, useState } from 'react';
-import { ArticleData, ArticleJson, ParagraphItem, PictureItem, QuoteItem, TitleCardItem } from '../../../types';
+import { ArticleData, ArticleJson, ArticleList, ParagraphItem, PictureItem, QuoteItem, TitleCardItem } from '../../../types';
+import ListInput from '../ListInput/ListInput';
 import ParagraphInput from '../ParagraphInput/ParagraphInput';
 import PictureInput from '../PictureInput/PictureInput';
 import QuoteInput from '../QuoteInput/QuoteInput';
@@ -91,6 +92,23 @@ const MainSettings: ComponentType<MainSettingsProps> = ({ articleData, jsonLocat
           imageSrc: ""
         } as PictureItem);
         break;
+
+      case 'Underline':
+        newContent.push({
+          type: "Underline"
+        } as any);
+        break;
+      
+      case 'List':
+        newContent.push({
+          type: "List",
+          items: [
+            {
+              content: ""
+            }
+          ]
+        } as ArticleList);
+        break;
     }
 
     setContent(newContent);
@@ -135,6 +153,21 @@ const MainSettings: ComponentType<MainSettingsProps> = ({ articleData, jsonLocat
             index={i}
             articleContent={content}
             setArticleContent={setContent}
+          />
+        )
+
+      case "Underline":
+        return (
+          <span className={styles.underlineMarker}>Underline</span>
+        )
+
+      case "List":
+        return (
+          <ListInput
+            list={item as ArticleList}
+            index={i}
+            content={content}
+            setContent={setContent}
           />
         )
     }
@@ -189,6 +222,8 @@ const MainSettings: ComponentType<MainSettingsProps> = ({ articleData, jsonLocat
         <option value="Title Card">Title Card</option>
         <option value="Quote">Quote</option>
         <option value="Picture">Picture</option>
+        <option value="Underline">Underline</option>
+        <option value="List">List</option>
       </select>
     </div>
 
