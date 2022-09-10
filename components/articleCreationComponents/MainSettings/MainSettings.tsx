@@ -1,7 +1,9 @@
 import axios from 'axios';
 import React, { ComponentType, useEffect, useState } from 'react';
-import { ArticleData, ArticleJson, ParagraphItem, TitleCardItem } from '../../../types';
+import { ArticleData, ArticleJson, ParagraphItem, PictureItem, QuoteItem, TitleCardItem } from '../../../types';
 import ParagraphInput from '../ParagraphInput/ParagraphInput';
+import PictureInput from '../PictureInput/PictureInput';
+import QuoteInput from '../QuoteInput/QuoteInput';
 import TitleCardInput from '../TitleCardInput/TitleCardInput';
 import styles from "./MainSettings.module.scss";
 
@@ -74,6 +76,21 @@ const MainSettings: ComponentType<MainSettingsProps> = ({ articleData, jsonLocat
           imageSrc: ""
         } as TitleCardItem);
         break;
+
+      case 'Quote':
+        newContent.push({
+          type: "Quote",
+          quote: "",
+          source: ""
+        } as QuoteItem);
+        break;
+
+      case 'Picture':
+        newContent.push({
+          type: "Picture",
+          imageSrc: ""
+        } as PictureItem);
+        break;
     }
 
     setContent(newContent);
@@ -90,10 +107,31 @@ const MainSettings: ComponentType<MainSettingsProps> = ({ articleData, jsonLocat
             setContent={setContent}
           />
         )
+
       case "TitleCard":
         return (
           <TitleCardInput
             titleCard={item as TitleCardItem}
+            index={i}
+            articleContent={content}
+            setArticleContent={setContent}
+          />
+        )
+
+      case "Quote":
+        return (
+          <QuoteInput
+            quote={item as QuoteItem}
+            index={i}
+            articleContent={content}
+            setArticleContent={setContent}
+          />
+        )
+
+      case "Picture":
+        return (
+          <PictureInput
+            picture={item as PictureItem}
             index={i}
             articleContent={content}
             setArticleContent={setContent}
@@ -149,6 +187,8 @@ const MainSettings: ComponentType<MainSettingsProps> = ({ articleData, jsonLocat
         <option style={{ display: 'none' }} value="+">+</option>
         <option value="Paragraph">Paragraph</option>
         <option value="Title Card">Title Card</option>
+        <option value="Quote">Quote</option>
+        <option value="Picture">Picture</option>
       </select>
     </div>
 

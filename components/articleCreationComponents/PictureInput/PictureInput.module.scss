@@ -1,0 +1,38 @@
+.pictureInput {
+  font-size: 0.8em;
+  width: 95%;
+  margin: 1vw;
+  background-color: var(--dark-gray);
+}
+
+.pictureInput > span {
+  color: var(--primary-text);
+  margin-left: 1vw;
+}
+
+
+.inputContainer {
+  width: 85%;
+  font-size: 0.85em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5vw;
+  margin-left: auto;
+}
+
+.inputContainer > input {
+  height: 1.5vw;
+  width: 50%;
+  color: var(--primary-text);
+  font-size: 0.8em;
+  margin-right: 1vw;
+  background-color: transparent;
+  border: none;
+  outline: 2px solid var(--light-gray);
+}
+
+.inputContainer > span {
+  color: var(--primary-text);
+  margin-left: 1vw;
+}
