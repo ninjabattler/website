@@ -1,6 +1,33 @@
 #mainSettings {
   font-size: 1em;
   width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+#mainSettings::-webkit-scrollbar {
+  background: var(--light-gray);
+  outline: 4px solid var(--secondary-colour);
+
+  @media only screen and (max-width: 425px) {
+    outline: 1px solid var(--secondary-colour);
+    width: 8px;
+  }
+}
+
+#mainSettings::-webkit-scrollbar-track {
+  background: var(--light-gray);
+}
+
+#mainSettings::-webkit-scrollbar-thumb {
+  background: var(--secondary-colour);
+  border: 2px solid var(--light-gray);
+
+  @media only screen and (max-width: 425px) {
+    background: var(--secondary-colour);
+    border: 1px solid var(--light-gray);
+  }
 }
 
 .inputContainer {
@@ -42,13 +69,33 @@
   outline: 2px solid var(--light-gray);
 }
 
+#emptySpace {
+  height: 3vw;
+}
+
+#optionsPanel {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  background-color: var(--dark-gray);
+  width: calc(100% - 20px);
+  height: 2vw;
+  border-bottom: 2px solid var(--secondary-colour);
+  filter: drop-shadow(0px 1px 2px black);
+}
+
+#optionsPanel > select {
+  height: 70%;
+  font-size: 0.7em;
+}
+
 #saveButton {
   margin: 1vw;
   background-color: var(--light-gray);
   color: var(--secondary-colour);
   border: none;
   cursor: pointer;
-  outline: 1px solid var(--secondary-colour );
+  outline: 1px solid var(--secondary-colour);
   border: 2px solid var(--secondary-colour);
 }
 
@@ -58,7 +105,38 @@
 }
 
 #contentBreakpoint {
-  color: var(--primary-text);;
+  color: var(--primary-text);
   border-top: 0.25vw solid var(--light-gray);
   margin: 1vw;
+}
+
+.contentInputContainer {
+  display: flex;
+}
+
+.contentInputContainer > .arrowContainer {
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1vw;
+  margin-right: 0.5vw;
+  margin-left: 0.5vw;
+}
+
+.contentInputContainer:hover > .arrowContainer {
+  opacity: 1;
+}
+
+.arrowContainer > button {
+  color: var(--dark-gray);
+  background-color: var(--primary-text);
+  border: 1px solid var(--secondary-colour);
+  outline: 1px solid var(--secondary-colour);
+  margin-bottom: 0.5vw;
+}
+
+.arrowContainer > button:hover {
+  border: 1px solid var(--secondary-colour);
+  outline: 1px solid var(--light-gray);
+  cursor: pointer;
 }

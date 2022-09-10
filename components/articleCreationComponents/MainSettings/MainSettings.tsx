@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { ComponentType, useState } from 'react';
+import React, { ComponentType, useEffect, useState } from 'react';
 import { ArticleData, ArticleJson, ParagraphItem, TitleCardItem } from '../../../types';
 import ParagraphInput from '../ParagraphInput/ParagraphInput';
 import TitleCardInput from '../TitleCardInput/TitleCardInput';
@@ -52,13 +52,107 @@ const MainSettings: ComponentType<MainSettingsProps> = ({ articleData, jsonLocat
   const [videoHeader, setVideoHeader] = useState<string>(articleData.video_header);
   const [narration, setNarration] = useState<string>(articleData.narration);
   const [content, setContent] = useState<ArticleJson>(articleData.content);
+  const [refresh, setRefresh] = useState<boolean>(false);
+
+  const newItem = (item: string): void => {
+    const newContent = [...content];
+
+    switch (item) {
+      case 'Paragraph':
+        newContent.push({
+          type: "Paragraph",
+          content: [
+            ""
+          ]
+        } as ParagraphItem);
+        break;
+
+      case 'Title Card':
+        newContent.push({
+          type: "TitleCard",
+          title: "",
+          imageSrc: ""
+        } as TitleCardItem);
+        break;
+    }
+
+    setContent(newContent);
+  }
+
+  const chooseInputItem = (item: any, i: number): any => {
+    switch (item.type) {
+      case "Paragraph":
+        return (
+          <ParagraphInput
+            paragraph={item as ParagraphItem}
+            index={i}
+            content={content}
+            setContent={setContent}
+          />
+        )
+      case "TitleCard":
+        return (
+          <TitleCardInput
+            titleCard={item as TitleCardItem}
+            index={i}
+            articleContent={content}
+            setArticleContent={setContent}
+          />
+        )
+    }
+  }
+
+  const moveItem = (i: number, direction: 'up' | 'down'): void => {
+    const newIndex = direction == 'up' ? i - 1 : i + 1;
+    const newContent = [...content];
+
+    const currentItem = newContent[i];
+    const itemToSwap = newContent[newIndex];
+
+    newContent[i] = itemToSwap;
+    newContent[newIndex] = currentItem;
+
+    console.log(newContent[0])
+
+    setContent(newContent);
+    setRefresh(true);
+  }
+
+  const deleteItem = (i: number): void => {
+    const newContent = [...content];
+    newContent.splice(i, 1);
+
+    setContent(newContent);
+  }
+
+  // Paragraphs don't seem to be refreshing properly so this is a bandaid solution
+  useEffect(() => {
+    if (refresh) {
+      setRefresh(false)
+    }
+  }, [refresh])
 
   return (<div id={styles.mainSettings}>
-    <button id={styles.saveButton} onClick={async () => {
-      const data = await save(title, category, genre, colour, description, thumbnail, videoHeader, narration, content, jsonLocation);
+    <div id={styles.optionsPanel}>
+      <button
+        id={styles.saveButton}
+        onClick={async () => {
+          const data = await save(title, category, genre, colour, description, thumbnail, videoHeader, narration, content, jsonLocation);
 
-      updateArticleData(data);
-    }}>Save</button>
+          updateArticleData(data);
+        }}
+      >
+        Save
+      </button>
+
+      <select value="+" onChange={(e) => { newItem(e.target.value); }}>
+        <option style={{ display: 'none' }} value="+">+</option>
+        <option value="Paragraph">Paragraph</option>
+        <option value="Title Card">Title Card</option>
+      </select>
+    </div>
+
+    <div id={styles.emptySpace}></div>
 
     <div className={styles.inputContainer}>
       <span>Title: </span>
@@ -102,27 +196,17 @@ const MainSettings: ComponentType<MainSettingsProps> = ({ articleData, jsonLocat
 
     <span id={styles.contentBreakpoint}>Content:</span>
     {
-      content.map((item, index) => {
-        switch (item.type) {
-          case "Paragraph":
-            return (
-              <ParagraphInput
-                paragraph={item as ParagraphItem}
-                index={index}
-                content={content}
-                setContent={setContent}
-              />
-            )
-          case "TitleCard":
-            return (
-              <TitleCardInput
-                titleCard={item as TitleCardItem}
-                index={index}
-                articleContent={content}
-                setArticleContent={setContent}
-              />
-            )
-        }
+      !refresh && content.map((item, index) => {
+        return (
+          <div key={index} id={`item-${index}`} className={styles.contentInputContainer}>
+            <div className={styles.arrowContainer}>
+              <button onClick={() => { deleteItem(index); }}>X</button>
+              <button onClick={() => { index !== 0 && moveItem(index, 'up') }}>↑</button>
+              <button onClick={() => { index !== content.length - 1 && moveItem(index, 'down') }}>↓</button>
+            </div>
+            {chooseInputItem(item, index)}
+          </div>
+        )
       })
     }
   </div>
