@@ -8,7 +8,7 @@ import Link from 'next/link';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { AppData } from '../types';
 import { Application, Sprite } from 'pixi.js';
-import { BloomFilter } from 'pixi-filters'
+import { BloomFilter, GodrayFilter, GlowFilter } from 'pixi-filters'
 
 export const getServerSideProps: GetServerSideProps = homePageServerSideProps;
 
@@ -24,13 +24,36 @@ export default function Home({ title, thumbnail, setLinkClicked }: InferGetServe
 
     const spaceBackground = Sprite.from('homespace.png');
     const spaceGlow = new BloomFilter(20);
-    spaceBackground.filters = [spaceGlow]
+    const sunRays = new GodrayFilter({
+      alpha: 0.7,
+      parallel: false,
+      center: [app.view.width, 0],
+      gain: 0.3,
+      lacunarity: 5
+    });
+    spaceBackground.filters = [spaceGlow, sunRays];
     spaceBackground.x = app.view.width / 2;
     spaceBackground.y = app.view.height / 2;
     spaceBackground.anchor.x = 0.5;
     spaceBackground.anchor.y = 0.5;
 
+    const sun = Sprite.from('homesun.png');
+    const sunGlow = new GlowFilter({
+      color: 0xffffaa,
+      distance: 20
+    });
+    sun.filters = [sunGlow]
+    sun.x = app.view.width / 2;
+    sun.y = app.view.height / 2;
+    sun.anchor.x = 0.5;
+    sun.anchor.y = 0.5;
+
     app.stage.addChild(spaceBackground)
+    app.stage.addChild(sun)
+
+    app.ticker.add(() => {
+      sunRays.time += 0.05;
+    })
   }, [])
 
   return (
