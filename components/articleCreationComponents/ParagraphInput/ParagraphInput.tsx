@@ -1,6 +1,7 @@
 import React, { ComponentType, useState } from 'react';
-import { AnimTextItem, ArticleJson, ParagraphItem } from '../../../types';
+import { AnimTextItem, ArticleJson, ParagraphItem, PictureItem } from '../../../types';
 import AnimTextInput from '../AnimTextInput/AnimTextInput';
+import PictureInput from '../PictureInput/PictureInput';
 import styles from "./ParagraphInput.module.scss";
 
 type ParagraphInputProps = {
@@ -56,6 +57,11 @@ const ParagraphInput: ComponentType<ParagraphInputProps> = ({ paragraph, index, 
         type: "FireText",
         content: ""
       })
+    } else if (item === 'Picture') {
+      newParagraph.content.push({
+        type: "Picture",
+        imageSrc: ""
+      })
     }
 
     content[index] = newParagraph;
@@ -71,6 +77,7 @@ const ParagraphInput: ComponentType<ParagraphInputProps> = ({ paragraph, index, 
         <option style={{ display: 'none' }} value="+">+</option>
         <option value="Text">Text</option>
         <option value="Anim Text">Anim Text</option>
+        <option value="Picture">Picture</option>
       </select>
 
       <div className={styles.inputContainer}>
@@ -98,6 +105,24 @@ const ParagraphInput: ComponentType<ParagraphInputProps> = ({ paragraph, index, 
                   </div>
                   <AnimTextInput
                     animText={item as AnimTextItem}
+                    index={i}
+                    parentIndex={index}
+                    articleContent={content}
+                    parentContent={paragraphContent}
+                    setArticleContent={setContent}
+                  />
+                </div>
+              )
+            } else if (item.type === 'Picture') {
+              return (
+                <div className={styles.paragraphTextInput}>
+                  <div className={styles.arrowContainer}>
+                    <button onClick={() => { deleteItem(i); }}>X</button>
+                    <button onClick={() => { i !== 0 && changeItemIndex(i, 'up') }}>↑</button>
+                    <button onClick={() => { i !== paragraphContent.content.length - 1 && changeItemIndex(i, 'down') }}>↓	</button>
+                  </div>
+                  <PictureInput
+                    picture={item as PictureItem}
                     index={i}
                     parentIndex={index}
                     articleContent={content}

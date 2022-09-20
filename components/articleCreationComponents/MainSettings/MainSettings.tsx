@@ -31,7 +31,7 @@ const save = async (
     description,
     formatteddate: '00, 00, 0000',
     thumbnail,
-    videoHeader,
+    video_header: videoHeader,
     narration,
     comments: [],
     content

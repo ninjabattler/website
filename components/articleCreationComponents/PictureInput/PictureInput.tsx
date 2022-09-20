@@ -1,22 +1,32 @@
 import React, { ComponentType, useState } from 'react';
-import { ArticleJson, PictureItem } from '../../../types';
+import { ArticleJson, ParagraphItem, PictureItem } from '../../../types';
 import styles from "./PictureInput.module.scss";
 
 type PictureInputProps = {
   picture: PictureItem,
   index: number,
   articleContent: ArticleJson,
-  setArticleContent: Function
+  setArticleContent: Function,
+  parentIndex?: number,
+  parentContent?: ParagraphItem,
 }
 
-const PictureInput: ComponentType<PictureInputProps> = ({ picture, index, articleContent, setArticleContent }) => {
+const PictureInput: ComponentType<PictureInputProps> = ({ picture, index, parentIndex, articleContent, parentContent, setArticleContent }) => {
   const [pictureContent, setPictureContent] = useState<PictureItem>(picture);
 
-  const updatePicture = (newQuote: PictureItem): void => {
+  const updatePicture = (newPicture: PictureItem): void => {
+    if (typeof parentIndex !== 'number') {
+      articleContent[index] = newPicture;
+      setArticleContent(articleContent);
+      setPictureContent(newPicture);
+    } else {
+      let contentItem = { ...parentContent };
+      contentItem.content[index] = newPicture;
 
-    articleContent[index] = newQuote;
-    setArticleContent(articleContent);
-    setPictureContent(newQuote);
+      articleContent[parentIndex] = contentItem;
+      setArticleContent(articleContent);
+      setPictureContent(newPicture);
+    }
   }
 
   return (
@@ -32,6 +42,20 @@ const PictureInput: ComponentType<PictureInputProps> = ({ picture, index, articl
         <span>Colour: </span>
         <input value={pictureContent.pageColour} onChange={(e) => { updatePicture({ ...pictureContent, pageColour: e.target.value }) }}></input>
       </div>
+
+      {typeof parentIndex === 'number' &&
+        <>
+          <div className={styles.inputContainer}>
+            <span>Width: </span>
+            <input value={pictureContent.width} onChange={(e) => { updatePicture({ ...pictureContent, width: e.target.value }) }}></input>
+          </div>
+
+          <div className={styles.inputContainer}>
+            <span>Float: </span>
+            <input value={pictureContent.float} onChange={(e) => { updatePicture({ ...pictureContent, float: e.target.value as 'left' | 'right' }) }}></input>
+          </div>
+        </>
+      }
     </div>
   )
 }
