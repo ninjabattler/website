@@ -40,7 +40,7 @@ export default function PostsPage({ ip, posts, userId }: InferGetServerSideProps
                 id={post.id}
                 key={post.id}
                 ip={ip}
-                userId={typeof userId === 'number' ? userId : typeof userId[0] === 'number' ? userId[0] : userId[0].id}
+                userId={typeof userId === 'number' ? userId : typeof userId[0] === 'number' ? userId[0] : typeof userId[0].id === 'number' ? userId[0].id : 1}
                 comments={post.comments}
               />
             )
