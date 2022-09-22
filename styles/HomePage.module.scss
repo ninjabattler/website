@@ -3,8 +3,7 @@
   flex-direction: column;
   font-size: 1.6vw;
   margin-bottom: -8.5vw;
-  backdrop-filter: blur(10px) brightness(2);
-  background-color: var(--light-gray);
+  // backdrop-filter: blur(4px) brightness(1);
 
   @media only screen and (max-width: 425px) {
     font-size: 3vw;
@@ -318,7 +317,7 @@
   right: 0;
   transform: skewY(6deg) scale(1.4);
   flex-wrap: wrap;
-  filter: blur(5px);
+  filter: blur(1px);
 
   @media only screen and (max-width: 425px) {
     flex-direction: column;

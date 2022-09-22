@@ -4,18 +4,18 @@ import Paragraph from '../../components/articleComponents/Paragraph/Paragraph';
 import Carousel from '../../components/Carousel/Carousel';
 import Head from 'next/dist/shared/lib/head';
 import Link from 'next/link';
-import VideoBackground from '../../components/VideoBackground/VideoBackground';
 import { articlesServerSideProps } from '../../ssr/articles/index';
 import { formatSqlDate } from '../../helpers/dateHelpers';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { AppData } from '../../types';
+import PixiBackground from '../../components/PixiBackground/PixiBackground';
 
 export const getServerSideProps: GetServerSideProps = articlesServerSideProps;
 
 export default function ArticlesPage({ articles, setLinkClicked }: InferGetServerSidePropsType<typeof articlesServerSideProps> & AppData) {
   return (
     <>
-      <VideoBackground nonArticlePage overlayColour pageColour="#AAAAAA" />
+      <PixiBackground />
       <Head>
         <title>Ninjabattler - Articles</title>
         <meta name='description' content="A mad man's ramblings about games you don't care about" />

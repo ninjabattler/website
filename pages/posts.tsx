@@ -3,15 +3,16 @@ import React from 'react';
 import Post from '../components/Post/Post';
 import styles from '../styles/PostsPage.module.scss'
 import { postsServerSideProps } from '../ssr/posts';
-import VideoBackground from '../components/VideoBackground/VideoBackground';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { AppData } from '../types';
+import PixiBackground from '../components/PixiBackground/PixiBackground';
 
 export const getServerSideProps: GetServerSideProps = postsServerSideProps;
 
 export default function PostsPage({ ip, posts, userId }: InferGetServerSidePropsType<typeof postsServerSideProps> & AppData) {
   return (
     <>
+      <PixiBackground />
       <Head>
         <title>Ninjabattler - Posts</title>
         <meta name='description' content="A mad man's ramblings and sometimes blender renders" />
@@ -28,7 +29,6 @@ export default function PostsPage({ ip, posts, userId }: InferGetServerSideProps
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
       </Head>
-      <VideoBackground nonArticlePage overlayColour pageColour="#AAAAAA" />
       <div id={styles.postsPage}>
         {
           posts.map((post) => {

@@ -68,7 +68,7 @@ const ListInput: ComponentType<ListInputProps> = ({ list, index, content, setCon
         {
           listContent.items.map((item, i) => {
             return (
-              <div className={styles.listTextInput}>
+              <div key={i} className={styles.listTextInput}>
                 <div className={styles.arrowContainer}>
                   <button onClick={() => { deleteItem(i); }}>X</button>
                   <button onClick={() => { i !== 0 && changeItemIndex(i, 'up') }}>↑</button>
