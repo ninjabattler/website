@@ -4,4 +4,8 @@
   position: fixed;
   z-index: -10;
   margin-top: -16.25vw;
+
+  @media (max-device-width: 425px) {
+    margin-top: -31vw;
+  }
 }
