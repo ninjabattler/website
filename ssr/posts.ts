@@ -20,6 +20,8 @@ export const postsServerSideProps = async ({ req }: GetServerSidePropsContext): 
   const postsArray: PostData[] = await selectAllPostsData(db)
   let userId: UserIdType[] | UserData[] = await selectUserId(db, ip)
 
+  console.log(ip, userId);
+
   if (!userId) {
     userId = await insertNewUser(db, ip)
   }
