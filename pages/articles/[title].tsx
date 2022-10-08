@@ -108,12 +108,35 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
         <div>
           <article className={styles.articleContainer} style={windowServer.innerWidth < 426 ? { boxShadow: `2px 2px 0px ${article.colour}` } : { boxShadow: `5px 5px 0px ${article.colour}` }}>
             {article.narration && (<iframe id={styles.adAurisIframe} src={`${article.narration}?color=${article.colour.split('#')[1]}`} style={{ border: 'none', height: '100px', width: '80%' }} ></iframe>)}
+
             {/* @ts-ignore - JsxParser has an error with how it exports, works perfectly fine though */}
             <JsxParser
               components={{ Picture, ListItem, Underline, Quote, Paragraph, TitleCard, CodeBlock, SubtitleCard, Dialogue } as {}}
 
               jsx={parseJsonArticle(article.content)}
             />
+
+            {article.footnotes &&
+              <>
+                <h1 id={styles.footnotesHeader}>References</h1>
+                <ul id={styles.footnotes}>
+                  {article.footnotes?.map((footnote, i) => {
+                    return (
+                      <li>
+                        • <a
+                          href={footnote.link}
+                          target="_blank"
+                          rel="noreffer"
+                          id={`f-${i + 1}`}
+                        >{
+                            footnote.title}
+                        </a>
+                      </li>
+                    )
+                  })}
+                </ul>
+              </>
+            }
           </article>
 
           {edit &&
@@ -179,6 +202,7 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
             </aside>
           }
         </div>
+
         <button
           id={styles.mobileCommentButton}
           style={{ display: showCommentPanel ? 'initial' : 'none' }}

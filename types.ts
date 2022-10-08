@@ -15,6 +15,11 @@ export type ArticleJsonItemType = string;
 export type ArticleJsonItemContent = string;
 export type ArticleJson = (ParagraphItem | TitleCardItem | PictureItem | QuoteItem | ArticleList | CodeBlockItem | DialogueItem | SubtitleCardItem | HtmlItem | SpoilerItem)[];
 
+export interface Footnote {
+  title: TitleType;
+  link: UrlType;
+}
+
 export interface SpoilerItem extends ArticleJsonItem {
   type: "Spoiler";
   content: ArticleJsonItemContent;
@@ -125,6 +130,7 @@ export interface ArticleData {
   likes?: number;
   dislikes?: number;
   comments?: PostCommentType[];
+  footnotes?: Footnote[];
 }
 
 export interface PostData extends ArticleData {
