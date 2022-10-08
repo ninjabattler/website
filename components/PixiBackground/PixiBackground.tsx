@@ -7,7 +7,7 @@ const PixiBackground: ComponentType<{}> = () => {
   useEffect(() => {
     const app = new Application({
       height: window.innerHeight,
-      width: window.innerWidth
+      width: window.innerWidth,
     });
     document.getElementById(styles.pixiBackground).appendChild(app.view);
 

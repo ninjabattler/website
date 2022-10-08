@@ -1,0 +1,13 @@
+.spoiler {
+  background-color: var(--dark-gray);
+  color: var(--dark-gray);
+  border-radius: 1vmin;
+  cursor: pointer;
+  transition: color 1s, background-color 1s;
+}
+
+.revealed {
+  color: var(--light-gray);
+  background-color: rgba(18, 18, 18, 0.4);
+  cursor: unset;
+}

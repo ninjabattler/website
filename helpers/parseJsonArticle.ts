@@ -1,4 +1,11 @@
-import { AnimTextItem, ArticleJson, ArticleList, ArticleListItem, CodeBlockItem, DialogueItem, ParagraphItem, PictureItem, QuoteItem, SubtitleCardItem, TitleCardItem } from '../types';
+import { AnimTextItem, ArticleJson, ArticleList, ArticleListItem, CodeBlockItem, DialogueItem, ParagraphItem, PictureItem, QuoteItem, SpoilerItem, SubtitleCardItem, TitleCardItem } from '../types';
+
+export const convertSpoilerItem = (spoilerItem: SpoilerItem): string => {
+  const content = spoilerItem.content;
+  const spoilerString = `<Spoiler text='${content}'/>`;
+
+  return spoilerString;
+}
 
 export const convertAnimTextItem = (animTextItem: AnimTextItem): string => {
   const type = animTextItem.type;
@@ -23,6 +30,8 @@ export const convertParagraphItem = (paragraphItem: ParagraphItem): string => {
       paragraphString += convertAnimTextItem(contentItem as AnimTextItem);
     } else if (contentItem.type === 'Picture') {
       paragraphString += convertPictureItem(contentItem as PictureItem);
+    } else if (contentItem.type === 'Spoiler') {
+      paragraphString += convertSpoilerItem(contentItem as SpoilerItem);
     }
   })
 

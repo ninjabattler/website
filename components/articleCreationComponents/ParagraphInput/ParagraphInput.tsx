@@ -1,5 +1,5 @@
 import React, { ComponentType, useState } from 'react';
-import { AnimTextItem, ArticleJson, ParagraphItem, PictureItem } from '../../../types';
+import { AnimTextItem, ArticleJson, ParagraphItem, PictureItem, SpoilerItem } from '../../../types';
 import AnimTextInput from '../AnimTextInput/AnimTextInput';
 import PictureInput from '../PictureInput/PictureInput';
 import styles from "./ParagraphInput.module.scss";
@@ -21,6 +21,19 @@ const ParagraphInput: ComponentType<ParagraphInputProps> = ({ paragraph, index, 
     content[index] = contentItem;
     setContent(content);
     setParagraphContent(contentItem);
+  }
+
+  const updateSpoiler = (newSpoiler: string, newIndex: number): void => {
+    let paragraph = { ...paragraphContent };
+
+    if (typeof paragraph.content[newIndex] === 'object') {
+      {/* @ts-ignore */ }
+      paragraph.content[newIndex].content = newSpoiler;
+
+      content[index] = paragraph;
+      setContent(content);
+      setParagraphContent(paragraph);
+    }
   }
 
   const changeItemIndex = (i: number, direction: 'up' | 'down'): void => {
@@ -93,7 +106,6 @@ const ParagraphInput: ComponentType<ParagraphInputProps> = ({ paragraph, index, 
                   </div>
                   <textarea value={item} onChange={(e) => { updateText(e.target.value, i) }}></textarea>
                 </div>
-
               )
             } else if (item.type.endsWith('Text')) {
               return (
@@ -130,6 +142,20 @@ const ParagraphInput: ComponentType<ParagraphInputProps> = ({ paragraph, index, 
                     setArticleContent={setContent}
                   />
                 </div>
+              )
+            } else if (item.type === 'Spoiler') {
+              return (
+                <>
+                  <h3 className={styles.spoilerTag}>Spoiler</h3>
+                  <div className={styles.paragraphTextInput}>
+                    <div className={styles.arrowContainer}>
+                      <button onClick={() => { deleteItem(i); }}>X</button>
+                      <button onClick={() => { i !== 0 && changeItemIndex(i, 'up') }}>↑</button>
+                      <button onClick={() => { i !== paragraphContent.content.length - 1 && changeItemIndex(i, 'down') }}>↓	</button>
+                    </div>
+                    <textarea value={item.content} onChange={(e) => { updateText(e.target.value, i) }}></textarea>
+                  </div>
+                </>
               )
             }
           })

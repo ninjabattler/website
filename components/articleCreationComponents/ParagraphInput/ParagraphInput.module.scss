@@ -65,3 +65,13 @@
   outline: 1px solid var(--light-gray);
   cursor: pointer;
 }
+
+.spoilerTag {
+  color: var(--light-gray);
+  border-bottom: 1px solid red;
+  font-size: 0.8em;
+  margin-right: auto;
+  margin-bottom: 3px;
+  margin-left: 2vw;
+  font-weight: lighter;
+}
