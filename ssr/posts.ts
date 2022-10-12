@@ -9,7 +9,7 @@ import { IpType, PostData, UserData, UserIdType } from '../types';
 export type PostsServerSideData = {
   props: {
     posts: PostData[];
-    userId: UserIdType[] | UserData[];
+    userId: UserIdType | UserIdType[] | UserData[];
     ip: IpType;
   };
 }
@@ -20,16 +20,14 @@ export const postsServerSideProps = async ({ req }: GetServerSidePropsContext): 
   const postsArray: PostData[] = await selectAllPostsData(db)
   let userId: UserIdType[] | UserData[] = await selectUserId(db, ip)
 
-  console.log(ip, userId);
-
-  if (!userId) {
+  if (!userId[0]) {
     userId = await insertNewUser(db, ip)
   }
 
   return {
     props: {
       posts: postsArray,
-      userId: userId,
+      userId: userId[0].id,
       ip: ip
     }
   }

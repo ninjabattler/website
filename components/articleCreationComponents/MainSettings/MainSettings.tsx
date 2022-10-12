@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { ComponentType, useEffect, useState } from 'react';
+import { articleToNarration } from '../../../helpers/articleNarrationHelper';
 import { ArticleData, ArticleJson, ArticleList, CodeBlockItem, DialogueItem, ParagraphItem, PictureItem, QuoteItem, SubtitleCardItem, TitleCardItem } from '../../../types';
 import CodeBlockInput from '../CodeBlockInput/CodeBlockInput';
 import DialogueInput from '../DialogueInput/DialogueInput';
@@ -101,7 +102,7 @@ const MainSettings: ComponentType<MainSettingsProps> = ({ articleData, jsonLocat
           type: "Underline"
         } as any);
         break;
-      
+
       case 'List':
         newContent.push({
           type: "List",
@@ -112,7 +113,7 @@ const MainSettings: ComponentType<MainSettingsProps> = ({ articleData, jsonLocat
           ]
         } as ArticleList);
         break;
-      
+
       case 'Dialogue':
         newContent.push({
           type: "Dialogue",
@@ -284,6 +285,15 @@ const MainSettings: ComponentType<MainSettingsProps> = ({ articleData, jsonLocat
         <option value="Dialogue">Dialogue</option>
         <option value="Code Block">Code Block</option>
       </select>
+
+      <button
+        id={styles.saveButton}
+        onClick={() => {
+          console.log(articleToNarration(content))
+        }}
+      >
+        Create Narration
+      </button>
     </div>
 
     <div id={styles.emptySpace}></div>

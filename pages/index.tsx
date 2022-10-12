@@ -13,8 +13,6 @@ export const getServerSideProps: GetServerSideProps = homePageServerSideProps;
 
 export default function Home({ title, thumbnail, setLinkClicked }: InferGetServerSidePropsType<typeof homePageServerSideProps> & AppData) {
 
-  
-
   return (
     <>
       <PixiBackground />

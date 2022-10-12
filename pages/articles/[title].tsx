@@ -184,7 +184,7 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
               />
 
               <div className={styles.comments}>
-                {comments.length <= 1 && (
+                {comments.length < 1 && (
                   <p id={styles.noCommentMessage} dangerouslySetInnerHTML={{ __html: noCommentMessages[randomQuoteIndex] }}></p>
                 )}
                 {comments.map((com) => {
