@@ -116,17 +116,17 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
               jsx={parseJsonArticle(article.content)}
             />
 
-            {article.footnotes &&
+            {article.footnotes[0] &&
               <>
                 <h1 id={styles.footnotesHeader}>References</h1>
-                <ul id={styles.footnotes}>
+                <ol id={styles.footnotes}>
                   {article.footnotes?.map((footnote, i) => {
                     return (
-                      <li>
-                        • <a
+                      <li key='i'>
+                        <a
                           href={footnote.link}
                           target="_blank"
-                          rel="noreffer"
+                          rel="noreferrer"
                           id={`f-${i + 1}`}
                         >{
                             footnote.title}
@@ -134,7 +134,7 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
                       </li>
                     )
                   })}
-                </ul>
+                </ol>
               </>
             }
           </article>

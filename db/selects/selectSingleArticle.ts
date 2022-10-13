@@ -8,22 +8,39 @@ const selectSingleArticle = async (db: Pool, title: TitleType): Promise<ArticleD
     (SELECT COUNT(*) FROM likes WHERE liked = true AND likes.post_id = posts.id) as likes,
     (SELECT COUNT(*) FROM likes WHERE liked = false AND likes.post_id = posts.id) as dislikes,
     json_agg(
-      json_build_object(
+      DISTINCT 
+      jsonb_build_object(
         'content', comments.content,
         'date', comments.date,
         'avatar', users.avatar,
         'username', users.username,
         'user_id', users.id
       )
-      ORDER BY comments.date DESC
-    ) as comments
+    ) AS comments,
+
+
+    COALESCE(
+      json_agg(
+        DISTINCT
+        jsonb_build_object(
+          'title', footnotes.title,
+          'link', footnotes.link
+        )
+      )
+      FILTER
+      (WHERE footnotes.title IS NOT NULL),
+      '[]'
+    ) AS footnotes
+
+    
     FROM posts
     FULL OUTER JOIN comments ON comments.post_id = posts.id
     FULL OUTER JOIN users ON comments.user_id = users.id
-    WHERE lower(title) = $1
+    FULL OUTER JOIN footnotes ON footnotes.post_id = posts.id
+    WHERE lower(posts.title) = $1
     GROUP BY posts.id;
     `, [title]);
-
+      console.log(article.rows[0])
     return article.rows;
   }
   catch (err) {
