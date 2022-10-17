@@ -6,13 +6,13 @@ import Head from 'next/dist/shared/lib/head';
 import Link from 'next/link';
 import { articlesServerSideProps } from '../../ssr/articles/index';
 import { formatSqlDate } from '../../helpers/dateHelpers';
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { AppData } from '../../types';
 import PixiBackground from '../../components/PixiBackground/PixiBackground';
 
-export const getServerSideProps: GetServerSideProps = articlesServerSideProps;
+export const getStaticProps: GetStaticProps = articlesServerSideProps;
 
-export default function ArticlesPage({ articles, setLinkClicked }: InferGetServerSidePropsType<typeof articlesServerSideProps> & AppData) {
+export default function ArticlesPage({ articles, setLinkClicked }: InferGetStaticPropsType<typeof articlesServerSideProps> & AppData) {
   return (
     <>
       <PixiBackground />

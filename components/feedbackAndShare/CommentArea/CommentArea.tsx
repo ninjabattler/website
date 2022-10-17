@@ -113,7 +113,7 @@ export default function CommentArea({ commentRef, comments, setComments, postId,
 
             <button id={styles.styleFiller}></button>
             <button id={styles.postComment} onClick={() => {
-              const content = styleText(commentRef.current.innerText);
+              const content = styleText(commentContent);
 
               comment({ content: content, id: postId }, userId, comments, setCommenting, (newComments) => {
                 setCommentContent('')

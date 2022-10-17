@@ -5,13 +5,13 @@ import CodeBlock from '../components/articleComponents/CodeBlock/CodeBlock';
 import VideoBackground from '../components/VideoBackground/VideoBackground';
 import { homePageServerSideProps } from '../ssr/index'
 import Link from 'next/link';
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { AppData } from '../types';
 import PixiBackground from '../components/PixiBackground/PixiBackground';
 
-export const getServerSideProps: GetServerSideProps = homePageServerSideProps;
+export const getStaticProps: GetStaticProps = homePageServerSideProps;
 
-export default function Home({ title, thumbnail, setLinkClicked }: InferGetServerSidePropsType<typeof homePageServerSideProps> & AppData) {
+export default function Home({ title, thumbnail, setLinkClicked }: InferGetStaticPropsType<typeof homePageServerSideProps> & AppData) {
 
   return (
     <>
