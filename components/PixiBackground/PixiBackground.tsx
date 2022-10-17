@@ -5,13 +5,16 @@ import { BloomFilter, GodrayFilter } from 'pixi-filters';
 
 const PixiBackground: ComponentType<{}> = () => {
   useEffect(() => {
+    const appWidth = window.innerWidth / 2
+    const appHeight = window.innerHeight / 2
+
     const app = new Application({
-      height: window.innerHeight,
-      width: window.innerWidth,
+      height: appHeight,
+      width: appWidth,
     });
     document.getElementById(styles.pixiBackground).appendChild(app.view);
 
-    const isMobile = window.innerWidth <= 425;
+    const isMobile = appWidth <= 425;
 
     const spaceBackground = Sprite.from(isMobile ? 'homespacemobile.png' : 'homespace.png');
     const spaceGlow = new BloomFilter(40);
@@ -32,13 +35,13 @@ const PixiBackground: ComponentType<{}> = () => {
     sun.filters = [spaceGlow, sunRays]
     sun.x = app.view.width / 2;
     sun.y = app.view.height / 2;
-    sun.width = window.innerWidth + (window.innerHeight / 10);
-    sun.height = window.innerHeight + (window.innerHeight / 10);
+    sun.width = appWidth + (appHeight / 10);
+    sun.height = appHeight + (appHeight / 10);
     sun.anchor.x = 0.5;
     sun.anchor.y = 0.5;
 
     if (isMobile) {
-      sun.width = window.innerWidth + (window.innerHeight * 0.15)
+      sun.width = appWidth + (appHeight * 0.15)
 
       sunRays.center = [app.view.width, app.view.height / 10]
     }
@@ -51,7 +54,24 @@ const PixiBackground: ComponentType<{}> = () => {
     })
   }, []);
 
-  return <section id={styles.pixiBackground}></section>
+  return (
+    <div id={styles.container}>
+      <svg viewBox='0 0 1920 1080' id={styles.grain}>
+        <filter id='noiseFilter'>
+          <feTurbulence
+            type='fractalNoise'
+            baseFrequency='0.65'
+            numOctaves='3'
+            stitchTiles='stitch'
+          />
+        </filter>
+
+        <rect width='100%' height='100%' filter='url(#noiseFilter)'></rect>
+      </svg>
+
+      <section id={styles.pixiBackground}></section>
+    </div>
+  )
 }
 
 export default PixiBackground
