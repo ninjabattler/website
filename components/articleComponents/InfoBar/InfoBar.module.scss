@@ -20,18 +20,18 @@ $gradientColor: rgba(0, 0, 0, 0.5);
 .infoUnderline {
   border-top: $borderThickness solid var(--secondary-colour);
   border-right: $borderThickness solid transparent;
-  width: 77vw;
+  width: 76.5vw;
   filter: drop-shadow(4px 5px 0px black);
   mask: linear-gradient(
     -45deg,
-    black 6.9%,
-    $gradientColor 6.9%,
-    $gradientColor 9.15%,
-    black 9.15%,
-    black 11.1%,
-    $gradientColor 11.1%,
-    $gradientColor 13.5%,
-    black 13.5%
+    black 11.9%,
+    $gradientColor 11.9%,
+    $gradientColor 14.15%,
+    black 14.15%,
+    black 16.6%,
+    $gradientColor 16.6%,
+    $gradientColor 18.9%,
+    black 18.9%
   );
 
   @media only screen and (max-width: 425px) {

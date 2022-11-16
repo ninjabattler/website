@@ -33,7 +33,11 @@ const Carousel = ({ items, setLinkClicked }: CarouselProps): ReactElement => {
   return (
     <section className={styles.carousel}>
       {items.map((item, index) => {
-        return <img key={index} style={{ opacity: index === optionIndexMap[currentOption] ? 1 : 0 }} className={styles.backgroundImg} src={item.thumbnail} />
+        return (
+          <div key={index} style={{ opacity: index === optionIndexMap[currentOption] ? 1 : 0 }} className={styles.backgroundImg}>
+            <img src={item.thumbnail} />
+          </div>
+        )
       })
       }
       <main>
@@ -48,10 +52,11 @@ const Carousel = ({ items, setLinkClicked }: CarouselProps): ReactElement => {
                 </div>
                 <aside id={styles.carouselItemAside}>
                   <h1>{item.title}</h1>
-                  <div>
-                    <h3><i className="fas fa-calendar-alt"></i>{formatSqlDate(item.formatteddate)}</h3>
-                    <h3><i className="fas fa-gamepad"></i>{item.category}/{item.genre}</h3>
-                  </div>
+                  <section>
+                    <div className={styles.background}></div>
+                    <h3><i>{formatSqlDate(item.formatteddate)}</i></h3>
+                    <h3><i>{item.category}/{item.genre}</i></h3>
+                  </section>
 
                   {/* @ts-ignore - JsxParser has an error with how it exports, works perfectly fine though */}
                   <JsxParser

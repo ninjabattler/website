@@ -25,8 +25,20 @@ interface CommentAreaProps {
   noAnim: boolean;
 }
 
-export default function CommentArea({ commentRef, comments, setComments, postId, userId, commenting, setCommenting, viewComment, setViewComment, setCommentContent, commentContent, noAnim }: CommentAreaProps): ReactElement {
-  
+export default function CommentArea({
+  commentRef,
+  comments,
+  setComments,
+  postId,
+  userId,
+  commenting,
+  setCommenting,
+  viewComment,
+  setViewComment,
+  setCommentContent,
+  commentContent,
+  noAnim }: CommentAreaProps): ReactElement {
+
   return (
     <>
       {commenting === true ?

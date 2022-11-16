@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { ComponentType, useEffect, useState } from 'react';
 import { articleToNarration } from '../../../helpers/articleNarrationHelper';
-import { ArticleData, ArticleJson, ArticleList, CodeBlockItem, DialogueItem, ParagraphItem, PictureItem, QuoteItem, SubtitleCardItem, TitleCardItem } from '../../../types';
+import { ArticleData, ArticleJson, ArticleList, CodeBlockItem, DialogueItem, Footnote, ParagraphItem, PictureItem, QuoteItem, SubtitleCardItem, TitleCardItem } from '../../../types';
 import CodeBlockInput from '../CodeBlockInput/CodeBlockInput';
 import DialogueInput from '../DialogueInput/DialogueInput';
 import ListInput from '../ListInput/ListInput';
@@ -22,6 +22,7 @@ const save = async (
   videoHeader: string,
   narration: string,
   content: ArticleJson,
+  footnotes: Footnote[],
   jsonLocation: string
 ): Promise<any> => {
   const data = {
@@ -35,6 +36,7 @@ const save = async (
     video_header: videoHeader,
     narration,
     comments: [],
+    footnotes,
     content
   }
 
@@ -265,7 +267,7 @@ const MainSettings: ComponentType<MainSettingsProps> = ({ articleData, jsonLocat
       <button
         id={styles.saveButton}
         onClick={async () => {
-          const data = await save(title, category, genre, colour, description, thumbnail, videoHeader, narration, content, jsonLocation);
+          const data = await save(title, category, genre, colour, description, thumbnail, videoHeader, narration, content, articleData.footnotes, jsonLocation);
 
           updateArticleData(data);
         }}

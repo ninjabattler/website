@@ -21,6 +21,10 @@
 
 .paragraph > div > p > a, .paragraph > div > p > sup > a {
   color: var(--article-colour) !important;
+
+  &:hover {
+    text-decoration: underline dashed;
+  }
 }
 
 .paragraph > div > p > em {
