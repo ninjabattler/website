@@ -53,8 +53,8 @@ export default function Home({ title, thumbnail, setLinkClicked }: InferGetStati
               <h2>Newest Article: <br />{title}</h2>
             </div>
 
-            <h1>Status: 200, successfully connected</h1>
-            <h4>to the land of uneducated opinions and a few shades of gray!</h4>
+            <h1><i>Status: 200, successfully connected</i></h1>
+            <h4><i>to the land of uneducated opinions and a few shades of gray!</i></h4>
             <p>
               Here in this small corner of the internet, you&apos;ll find lots of words, words written by me, if you can believe it. There&apos;s even pictures and videos, and some blender stuff. But what topics do these words speak of?
             </p>

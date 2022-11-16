@@ -1,6 +1,6 @@
 .comment {
   display: flex;
-  color: var(--light-gray);
+  color: var(--primary-text);
   flex-wrap: none;
   margin-left: 0.5vw;
   min-height: 5.4vw;
@@ -55,6 +55,8 @@
 }
 
 .comment > div > i {
-  color: var(--light-gray);
+  color: var(--primary-text);
   margin-top: -0.3vw;
+  font-family: "Russo One";
+  font-weight: 100;
 }

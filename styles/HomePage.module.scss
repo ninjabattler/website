@@ -14,7 +14,7 @@
 .divider {
   height: 2vw;
   width: 100vw;
-  background-color: var(--dark-gray);
+  background-color: var(--secondary-colour);
 }
 
 /* Part 1 */
@@ -54,13 +54,13 @@
 #part3 {
   width: 100vw;
   height: 50vw;
-  filter: drop-shadow(1px 1px 0px var(--dark-gray)) drop-shadow(1px 1px 2px black);
+  filter: drop-shadow(1px 1px 0px var(--secondary-colour)) drop-shadow(1px 1px 2px black);
   z-index: -1;
 
   @media only screen and (max-width: 425px) {
     width: 100vw;
     height: 177vw;
-    filter: drop-shadow(1px 1px 0px var(--dark-gray)) drop-shadow(1px 1px 2px black);
+    filter: drop-shadow(1px 1px 0px var(--secondary-colour)) drop-shadow(1px 1px 2px black);
     z-index: -1;
   }
 }
@@ -72,10 +72,10 @@
   background-image: linear-gradient(
     -45deg,
     transparent 57%,
-    var(--light-gray) 57%,
-    var(--light-gray) 59%,
-    var(--dark-gray) 59%,
-    var(--dark-gray) 62%,
+    var(--primary-text) 57%,
+    var(--primary-text) 59%,
+    var(--secondary-colour) 59%,
+    var(--secondary-colour) 62%,
     transparent 62%
   );
   animation-name: gradientSlide;
@@ -90,8 +90,8 @@
   background-image: linear-gradient(
     -45deg,
     transparent 13%,
-    var(--dark-gray) 13%,
-    var(--dark-gray) 53%,
+    var(--secondary-colour) 13%,
+    var(--secondary-colour) 53%,
     transparent 53%
   );
   animation-name: gradientSlide;
@@ -109,7 +109,7 @@
 #part1 > .gradient2 > img {
   position: absolute;
   width: 60vw;
-  mask: linear-gradient(-45deg, transparent 10%, black 10%, black 64%, transparent 64%);
+  mask: linear-gradient(-45deg, transparent 0%, black 0%, black 68.5%, transparent 68.5%);
   margin-right: -4vw;
   margin-top: -3vw;
   right: 0;
@@ -119,7 +119,7 @@
   @media only screen and (max-width: 425px) {
     position: absolute;
     width: 100vw;
-    mask: linear-gradient(-45deg, black 10%, black 64%, transparent 64%);
+    mask: linear-gradient(-45deg, black 0%, black 64%, transparent 64%);
     margin-right: 0vw;
     margin-top: 74vw;
     right: 0;
@@ -135,31 +135,35 @@
   margin-right: 6vw;
   width: 54vw;
   text-align: left;
-  color: var(--light-gray);
+  color: var(--primary-text);
+  font-family: "Russo One";
+  font-weight: 100;
 
   @media only screen and (max-width: 425px) {
     position: absolute;
     left: 1vw;
     margin-top: 135vw;
-    color: var(--light-gray);
+    color: var(--primary-text);
   }
 }
 
 #part1 > h1,
 #part1 > h4 {
-  color: var(--light-gray);
+  color: var(--primary-text);
   margin: 0;
   padding: 0;
-  transform: skewY(-45deg);
+  transform: rotate(-45deg);
   animation-name: fadeIn;
   animation-timing-function: linear;
   animation-duration: 2s;
+  font-family: "Russo One";
+  font-weight: 100;
 }
 
 #part1 > h1 {
   font-size: 1.5em;
-  margin-left: 11vw;
-  margin-top: 2vw;
+  margin-left: -5vw;
+  margin-top: 10vw;
 
   @media only screen and (max-width: 425px) {
     font-size: 1.5em;
@@ -170,13 +174,13 @@
 }
 
 #part1 > h4 {
-  color: var(--dark-gray);
+  color: var(--secondary-colour);
   font-size: 0.9em;
-  margin-left: 14vw;
+  margin-left: -1vw;
   margin-top: -0.4vw;
 
   @media only screen and (max-width: 425px) {
-    color: var(--dark-gray);
+    color: var(--secondary-colour);
     font-size: 0.9em;
     margin-left: 4vw;
     margin-top: 2.4vw;
@@ -186,7 +190,7 @@
 
 #part1 > p {
   width: 48vw;
-  color: var(--light-gray);
+  color: var(--primary-text);
   right: 20vw;
   bottom: 0;
   position: absolute;
@@ -207,7 +211,7 @@
   position: absolute;
   width: 40vw;
   z-index: 1;
-  filter: drop-shadow(1px 1px 0px var(--dark-gray)) drop-shadow(1px 1px 2px black);
+  filter: drop-shadow(1px 1px 0px var(--secondary-colour)) drop-shadow(1px 1px 2px black);
 
   @media only screen and (max-width: 425px) {
     width: 70vw;
@@ -222,19 +226,19 @@
   background-image: linear-gradient(
     -16.5deg,
     transparent 55.3%,
-    var(--dark-gray) 55.3%,
-    var(--dark-gray) 63%,
+    var(--secondary-colour) 55.3%,
+    var(--secondary-colour) 63%,
     transparent 63%
   );
-  filter: drop-shadow(1px 1px 0px var(--dark-gray)) drop-shadow(1px 1px 2px black);
+  filter: drop-shadow(1px 1px 0px var(--secondary-colour)) drop-shadow(1px 1px 2px black);
 
   @media only screen and (max-width: 425px) {
     margin-top: -5vw;
     background-image: linear-gradient(
       -16.5deg,
       transparent 57%,
-      var(--dark-gray) 57%,
-      var(--dark-gray) 68%,
+      var(--secondary-colour) 57%,
+      var(--secondary-colour) 68%,
       transparent 68%
     );
   }
@@ -245,11 +249,11 @@
   width: 100%;
   height: 20%;
   margin-top: 35%;
-  background-color: var(--dark-gray);
+  background-color: var(--secondary-colour);
   display: flex;
   justify-content: center;
   align-items: center;
-  filter: drop-shadow(1px 1px 0px var(--dark-gray)) drop-shadow(1px 1px 2px black);
+  filter: drop-shadow(1px 1px 0px var(--secondary-colour)) drop-shadow(1px 1px 2px black);
 
   @media only screen and (max-width: 425px) {
     height: 24%;
@@ -258,7 +262,7 @@
 }
 
 #part2 > .gradient2 > p {
-  color: var(--light-gray);
+  color: var(--primary-text);
   padding: 1vw;
 
   @media only screen and (max-width: 425px) {
@@ -270,11 +274,13 @@
 #part2 > h2 {
   position: absolute;
   font-size: 3.5em;
-  color: var(--light-gray);
+  font-family: "Russo One";
+  font-weight: 100;
+  color: var(--primary-text);
   transform: skewY(-16.5deg);
   margin-left: 39vw;
   margin-top: 7vw;
-  filter: drop-shadow(1px 1px 0px var(--dark-gray)) drop-shadow(1px 1px 2px black);
+  filter: drop-shadow(1px 1px 0px var(--secondary-colour)) drop-shadow(1px 1px 2px black);
   cursor: default;
 
   @media only screen and (max-width: 425px) {
@@ -289,15 +295,17 @@
 #part2 > h4 {
   position: absolute;
   font-size: 1.5em;
-  color: var(--light-gray);
+  font-family: "Russo One";
+  font-weight: 100;
+  color: var(--primary-text);
   transform: skewY(-16.5deg);
   margin-left: 40vw;
   margin-top: 15vw;
   cursor: default;
 
   @media only screen and (max-width: 425px) {
-    color: var(--dark-gray);
-    text-shadow: 0px 0px 2px var(--light-gray);
+    color: var(--secondary-colour);
+    text-shadow: 0px 0px 2px var(--primary-text);
     font-size: 1.5em;
     margin-left: 3vw;
     margin-top: 75vw;
@@ -315,9 +323,9 @@
   margin-top: -10vw;
   z-index: -1;
   right: 0;
-  transform: skewY(6deg) scale(1.4);
+  transform: skewY(3deg) scale(1.4);
   flex-wrap: wrap;
-  filter: blur(1px);
+  filter: blur(0.3vw);
 
   @media only screen and (max-width: 425px) {
     flex-direction: column;
@@ -358,7 +366,7 @@
   right: 0;
   margin-right: 10vw;
   z-index: 1;
-  filter: drop-shadow(1px 1px 0px var(--dark-gray)) drop-shadow(1px 1px 2px black);
+  filter: drop-shadow(1px 1px 0px var(--secondary-colour)) drop-shadow(1px 1px 2px black);
 
   @media only screen and (max-width: 425px) {
     width: 60vw;
@@ -374,20 +382,20 @@
   background-image: linear-gradient(
     31deg,
     transparent 54%,
-    var(--dark-gray) 54%,
-    var(--dark-gray) 60%,
+    var(--secondary-colour) 54%,
+    var(--secondary-colour) 60%,
     transparent 60%
   );
   z-index: -1;
-  filter: drop-shadow(1px 1px 0px var(--dark-gray)) drop-shadow(1px 1px 2px black);
+  filter: drop-shadow(1px 1px 0px var(--secondary-colour)) drop-shadow(1px 1px 2px black);
 
   @media only screen and (max-width: 425px) {
     margin-top: 43vw;
     background-image: linear-gradient(
       31deg,
       transparent 55.5%,
-      var(--dark-gray) 55.5%,
-      var(--dark-gray) 65%,
+      var(--secondary-colour) 55.5%,
+      var(--secondary-colour) 65%,
       transparent 65%
     );
   }
@@ -402,7 +410,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: var(--dark-gray);
+  background-color: var(--secondary-colour);
 
   @media only screen and (max-width: 425px) {
     font-size: 1.5em;
@@ -414,12 +422,12 @@
 }
 
 #part3 > .gradient2 > span {
-  color: var(--light-gray);
+  color: var(--primary-text);
   margin-left: 1vw;
   font-size: 0.7em;
 
   @media only screen and (max-width: 425px) {
-    color: var(--light-gray);
+    color: var(--primary-text);
     margin-left: 1vw;
     font-size: 0.7em;
   }
@@ -428,7 +436,9 @@
 #part3 > h2 {
   position: absolute;
   font-size: 3.5em;
-  color: var(--light-gray);
+  font-family: "Russo One";
+  font-weight: 100;
+  color: var(--primary-text);
   transform: skewY(31deg);
   margin-left: 39.7vw;
   margin-top: 7.4vw;
@@ -443,7 +453,9 @@
 #part3 > h4 {
   position: absolute;
   font-size: 1.5em;
-  color: var(--light-gray);
+  font-family: "Russo One";
+  font-weight: 100;
+  color: var(--primary-text);
   transform: skewY(31deg);
   margin-left: 35vw;
   margin-top: 13vw;
@@ -460,7 +472,7 @@
 #part4 {
   width: 100vw;
   height: 15vw;
-  background-color: var(--dark-gray);
+  background-color: var(--secondary-colour);
 
   @media only screen and (max-width: 425px) {
     height: 30vw;
@@ -468,12 +480,12 @@
 }
 
 #part4 > h2 {
-  color: var(--light-gray);
+  color: var(--primary-text);
   margin: 1vw;
 }
 
 #part4 > p {
-  color: var(--light-gray);
+  color: var(--primary-text);
   margin: 1vw;
 }
 

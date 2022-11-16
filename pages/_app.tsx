@@ -5,9 +5,11 @@ import NavBar from '../components/Navbar/NavBar';
 import '../styles/globals.scss';
 import { NextRouter, useRouter } from 'next/router';
 import { AppProps } from 'next/app';
+import quotes from '../constants/loadingOverlayQuotes.json';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [linkClicked, setLinkClicked] = useState<string | null>(null);
+  const [quoteIndex, setQuoteIndex] = useState<number>(Math.floor(Math.random() * quotes.length));
   const router: NextRouter = useRouter();
   
   useEffect(() => {
@@ -18,7 +20,8 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   useEffect(() => {
     if (linkClicked) {
-
+      
+      setQuoteIndex(Math.floor(Math.random() * quotes.length));
       setTimeout(() => {
         router.push(linkClicked);
       }, 1200)
@@ -35,8 +38,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <NavBar setLinkClicked={setLinkClicked} />
-      {linkClicked && <LoadingOverlay />}
-      {linkClicked === '' && <LoadingOverlay shrink />}
+      {linkClicked && <LoadingOverlay quoteIndex={quoteIndex} />}
+      {linkClicked === '' && <LoadingOverlay shrink quoteIndex={quoteIndex} />}
       <Component {...pageProps} setLinkClicked={setLinkClicked} />
       <Footer />
     </>

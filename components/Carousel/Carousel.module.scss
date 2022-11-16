@@ -120,7 +120,6 @@
   @media only screen and (max-device-width: 425px) {
     margin-top: 15px;
     width: 100%;
-    background-color: var(--dark-gray);
   }
 }
 
@@ -157,6 +156,10 @@
     transparent 16%,
     black 16%
   );
+
+  @media only screen and (max-device-width: 425px) {
+    display: none;
+  }
 }
 
 .carouselItem > aside > section > h3 {
@@ -172,6 +175,7 @@
     font-size: 3.5vw;
     margin: 5px;
     margin-right: 2vw;
+    color: var(--primary-text);
   }
 }
 
@@ -180,14 +184,14 @@
   font-size: 2.5vw;
   font-family: "Russo One";
   font-weight: 100;
-  // text-align: center;
   width: 100%;
   margin: 0;
   margin-left: 1vw;
 
   @media only screen and (max-device-width: 425px) {
     margin-top: -3vw;
-    font-size: 4.8vw;
+    font-size: 5vw;
+    text-align: center;
   }
 }
 

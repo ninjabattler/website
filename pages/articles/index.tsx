@@ -54,7 +54,7 @@ export default function ArticlesPage({ articles, setLinkClicked }: InferGetStati
                       <div className={styles.infoBackground}/>
 
                       <section>
-                        <u>{formattedDate} / {item.category} / {item.genre}</u>
+                        <i>{formattedDate} / {item.category} / {item.genre}</i>
                         <h1>{item.title}</h1>
                       </section>
                     </div>

@@ -8,10 +8,10 @@
   height: 20vw;
   background-image: linear-gradient(
     -21deg,
-    var(--light-gray) 0%,
-    var(--light-gray) 50%,
-    var(--dark-gray) 50%,
-    var(--dark-gray) 100%
+    var(--primary-text) 0%,
+    var(--primary-text) 50%,
+    var(--secondary-colour) 50%,
+    var(--secondary-colour) 100%
   );
   font-size: 2.4vw;
   cursor: pointer;
@@ -52,10 +52,10 @@
   height: 85vh;
   background-image: linear-gradient(
     0deg,
-    var(--light-gray) 0%,
-    var(--light-gray) 0%,
-    var(--dark-gray) 0%,
-    var(--dark-gray) 100%
+    var(--primary-text) 0%,
+    var(--primary-text) 0%,
+    var(--secondary-colour) 0%,
+    var(--secondary-colour) 100%
   );
   font-size: 3.4vw;
   margin-left: 2.5vw;
@@ -83,7 +83,7 @@
   margin-right: 5px;
 
   @media only screen and (max-device-width: 425px) {
-    filter: drop-shadow(5px 2.5px 0px black);;
+    filter: drop-shadow(5px 2.5px 0px black);
     margin-left: 3vw;
     margin-top: 15px;
     margin-bottom: 0;
@@ -106,18 +106,18 @@
 }
 
 .postContent {
-  background-color: var(--light-gray);
-  color: var(--dark-gray);
-  font-size: 0.6em;
+  background-color: var(--primary-text);
+  color: var(--secondary-colour);
+  font-size: 0.55em;
   width: 100%;
-  height: 80%;
-  margin: 2%;
-  margin-top: 7%;
+  height: 90%;
+  margin: 0.5%;
+  margin-top: 4%;
   overflow-y: scroll;
 
   @media only screen and (max-device-width: 425px) {
-    background-color: var(--light-gray);
-    color: var(--dark-gray);
+    background-color: var(--primary-text);
+    color: var(--secondary-colour);
     font-size: 1.4em;
     font-weight: 100;
     height: 80%;
@@ -136,19 +136,19 @@
 }
 
 .postContent::-webkit-scrollbar {
-  background: var(--light-gray);
-  outline: 4px solid var(--dark-gray);
+  background: var(--primary-text);
+  outline: 4px solid var(--secondary-colour);
 
   @media only screen and (max-device-width: 425px) {
-    outline: 2px solid var(--dark-gray);
+    outline: 2px solid var(--secondary-colour);
     width: 5px;
   }
 }
 .postContent::-webkit-scrollbar-track {
-  background: var(--light-gray);
+  background: var(--primary-text);
 }
 .postContent::-webkit-scrollbar-thumb {
-  background: var(--dark-gray);
+  background: var(--secondary-colour);
 }
 
 .postContent > div {
@@ -173,6 +173,7 @@
 .postContent > div > span,
 .postContent > div > h1 {
   width: 95% !important;
+  margin-bottom: 0.5vw;
 
   @media only screen and (max-device-width: 425px) {
     margin-bottom: 0;
@@ -183,7 +184,9 @@
 .expanded > h1 {
   position: absolute;
   font-size: 1em;
-  color: var(--light-gray);
+  font-family: "Russo One";
+  font-weight: 100;
+  color: var(--primary-text);
   margin: 4px;
   margin-top: -6px;
 
@@ -198,7 +201,7 @@
   position: absolute;
   width: 30%;
   height: 100%;
-  background-color: var(--dark-gray);
+  background-color: var(--secondary-colour);
   margin-left: auto;
   margin-right: auto;
   top: 0;
@@ -226,32 +229,34 @@
 }
 
 .commentPanel > div::-webkit-scrollbar {
-  background: var(--light-gray);
-  outline: 4px solid var(--dark-gray);
-  
+  background: var(--primary-text);
+  outline: 4px solid var(--secondary-colour);
+
   @media only screen and (max-device-width: 425px) {
-    outline: 2px solid var(--dark-gray);
+    outline: 2px solid var(--secondary-colour);
     width: 5px;
   }
 }
 
 .commentPanel > div::-webkit-scrollbar-track {
-  background: var(--light-gray);
+  background: var(--primary-text);
 }
 
 .commentPanel > div::-webkit-scrollbar-thumb {
-  background: var(--dark-gray);
-  border: 2px solid var(--light-gray);
+  background: var(--secondary-colour);
+  border: 2px solid var(--primary-text);
 
   @media only screen and (max-device-width: 425px) {
-    border: 1px solid var(--light-gray);
+    border: 1px solid var(--primary-text);
   }
 }
 
 .post > h2,
 .expanded > h2 {
   font-size: 1em;
-  color: var(--dark-gray);
+  font-family: "Russo One";
+  font-weight: 100;
+  color: var(--secondary-colour);
   text-align: right;
   margin: 4px;
   margin-top: 17vw;
@@ -274,16 +279,28 @@
 }
 
 .commentPanelButton {
-  background-color: var(--dark-gray);
-  color: var(--light-gray);
-  border: 8px solid var(--dark-gray);
-  margin: 5px;
+  width: 3vw;
+  height: 3vw;
+  background-color: var(--secondary-colour);
+  color: var(--primary-text);
+  border: 8px solid var(--secondary-colour);
+  margin: 1vw;
+  margin-right: calc(1vw + 16px);
   font-size: 0.7em;
   font-weight: bolder;
   cursor: pointer;
   position: absolute;
   right: 0;
   bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  filter: drop-shadow(0 0 0vw black);
+  transition: filter 0.1s;
+
+  &:hover {
+    filter: drop-shadow(0 0 0.15vw black);
+  }
 }
 
 #commentLoading {
@@ -307,10 +324,14 @@
 
 @media only screen and (max-device-width: 425px) {
   .commentPanelButton {
-    transform: scale(0.8);
-    margin-bottom: -1vw;
+    transform: scale(0.7);
+    margin-bottom: 2.5vw;
   }
 }
+
+//
+// Animation
+//
 
 @keyframes slideIn {
   0% {
@@ -330,10 +351,10 @@
     transform: rotateY(0deg);
     background-image: linear-gradient(
       -21deg,
-      var(--light-gray) 0%,
-      var(--light-gray) 50%,
-      var(--dark-gray) 50%,
-      var(--dark-gray) 100%
+      var(--primary-text) 0%,
+      var(--primary-text) 50%,
+      var(--secondary-colour) 50%,
+      var(--secondary-colour) 100%
     );
   }
   50% {
@@ -342,10 +363,10 @@
     transform: rotateY(90deg);
     background-image: linear-gradient(
       -21deg,
-      var(--light-gray) 0%,
-      var(--light-gray) 50%,
-      var(--dark-gray) 50%,
-      var(--dark-gray) 100%
+      var(--primary-text) 0%,
+      var(--primary-text) 50%,
+      var(--secondary-colour) 50%,
+      var(--secondary-colour) 100%
     );
   }
   52% {
@@ -354,10 +375,10 @@
     transform: rotateY(90deg);
     background-image: linear-gradient(
       0deg,
-      var(--light-gray) 0%,
-      var(--light-gray) 0%,
-      var(--dark-gray) 0%,
-      var(--dark-gray) 100%
+      var(--primary-text) 0%,
+      var(--primary-text) 0%,
+      var(--secondary-colour) 0%,
+      var(--secondary-colour) 100%
     );
   }
   100% {
@@ -379,10 +400,10 @@
     transform: rotateY(90deg);
     background-image: linear-gradient(
       0deg,
-      var(--light-gray) 0%,
-      var(--light-gray) 0%,
-      var(--dark-gray) 0%,
-      var(--dark-gray) 100%
+      var(--primary-text) 0%,
+      var(--primary-text) 0%,
+      var(--secondary-colour) 0%,
+      var(--secondary-colour) 100%
     );
   }
   50% {
@@ -391,10 +412,10 @@
     transform: rotateY(90deg);
     background-image: linear-gradient(
       -21deg,
-      var(--light-gray) 0%,
-      var(--light-gray) 50%,
-      var(--dark-gray) 50%,
-      var(--dark-gray) 100%
+      var(--primary-text) 0%,
+      var(--primary-text) 50%,
+      var(--secondary-colour) 50%,
+      var(--secondary-colour) 100%
     );
   }
   100% {
@@ -403,10 +424,10 @@
     transform: rotateY(0deg);
     background-image: linear-gradient(
       -21deg,
-      var(--light-gray) 0%,
-      var(--light-gray) 50%,
-      var(--dark-gray) 50%,
-      var(--dark-gray) 100%
+      var(--primary-text) 0%,
+      var(--primary-text) 50%,
+      var(--secondary-colour) 50%,
+      var(--secondary-colour) 100%
     );
   }
 }
@@ -418,10 +439,10 @@
     transform: rotateY(0deg);
     background-image: linear-gradient(
       -21deg,
-      var(--light-gray) 0%,
-      var(--light-gray) 50%,
-      var(--dark-gray) 50%,
-      var(--dark-gray) 100%
+      var(--primary-text) 0%,
+      var(--primary-text) 50%,
+      var(--secondary-colour) 50%,
+      var(--secondary-colour) 100%
     );
   }
   50% {
@@ -430,10 +451,10 @@
     transform: rotateY(90deg);
     background-image: linear-gradient(
       -21deg,
-      var(--light-gray) 0%,
-      var(--light-gray) 50%,
-      var(--dark-gray) 50%,
-      var(--dark-gray) 100%
+      var(--primary-text) 0%,
+      var(--primary-text) 50%,
+      var(--secondary-colour) 50%,
+      var(--secondary-colour) 100%
     );
   }
   52% {
@@ -442,10 +463,10 @@
     transform: rotateY(90deg);
     background-image: linear-gradient(
       0deg,
-      var(--light-gray) 0%,
-      var(--light-gray) 0%,
-      var(--dark-gray) 0%,
-      var(--dark-gray) 100%
+      var(--primary-text) 0%,
+      var(--primary-text) 0%,
+      var(--secondary-colour) 0%,
+      var(--secondary-colour) 100%
     );
   }
   100% {
@@ -467,10 +488,10 @@
     transform: rotateY(90deg);
     background-image: linear-gradient(
       0deg,
-      var(--light-gray) 0%,
-      var(--light-gray) 0%,
-      var(--dark-gray) 0%,
-      var(--dark-gray) 100%
+      var(--primary-text) 0%,
+      var(--primary-text) 0%,
+      var(--secondary-colour) 0%,
+      var(--secondary-colour) 100%
     );
   }
   50% {
@@ -479,10 +500,10 @@
     transform: rotateY(90deg);
     background-image: linear-gradient(
       -21deg,
-      var(--light-gray) 0%,
-      var(--light-gray) 50%,
-      var(--dark-gray) 50%,
-      var(--dark-gray) 100%
+      var(--primary-text) 0%,
+      var(--primary-text) 50%,
+      var(--secondary-colour) 50%,
+      var(--secondary-colour) 100%
     );
   }
   100% {
@@ -491,10 +512,10 @@
     transform: rotateY(0deg);
     background-image: linear-gradient(
       -21deg,
-      var(--light-gray) 0%,
-      var(--light-gray) 50%,
-      var(--dark-gray) 50%,
-      var(--dark-gray) 100%
+      var(--primary-text) 0%,
+      var(--primary-text) 50%,
+      var(--secondary-colour) 50%,
+      var(--secondary-colour) 100%
     );
   }
 }

@@ -82,8 +82,11 @@ $gradientColour: rgba(0, 0, 0, 0.5);
 .bossCard > h2 {
   position: absolute;
   color: var(--dark-gray);
-  margin-top: 7vw;
+  margin-top: 7.3vw;
+  margin-left: 0.5vw;
   font-size: 3vw;
+  font-family: "Russo One";
+  font-weight: 100;
 
   @media only screen and (max-width: 425px) {
     height: auto;

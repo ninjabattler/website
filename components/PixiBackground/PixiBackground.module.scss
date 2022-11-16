@@ -12,8 +12,8 @@
     position: absolute;
     z-index: 1;
     mix-blend-mode: soft-light;
-    opacity: 0.7;
-    backdrop-filter: blur(0.5vmin);
+    opacity: 0.6;
+    backdrop-filter: blur(1vmin);
   }
 
   #pixiBackground {
@@ -23,6 +23,11 @@
   }
 
   @media (max-device-width: 425px) {
+    #grain {
+      display: none;
+    }
+
+    filter: blur(1vmin);
     margin-top: -31vw;
   } 
 }

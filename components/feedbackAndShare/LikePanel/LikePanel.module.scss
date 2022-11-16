@@ -28,7 +28,7 @@
 }
 
 .likePanel > button {
-  color: var(--light-gray);
+  color: var(--primary-text);
   background: none;
   border: none;
   outline: none;
@@ -36,11 +36,17 @@
   font-size: 1.5vw;
   padding-left: 1.3vw;
   padding-right: 1.3vw;
+  filter: drop-shadow(0 0 0vw black);
+  transition: filter 0.25s;
 
   @media only screen and (max-width: 425px) {
     font-size: 6vw;
     padding-left: 2.4vw;
     padding-right: 2.4vw;
+  }
+
+  &:hover {
+    filter: drop-shadow(0 0 0.1vw black);
   }
 }
 
@@ -55,7 +61,7 @@
 #likeBar {
   width: 80%;
   height: 20%;
-  background-color: var(--light-gray);
+  background-color: var(--primary-text);
   margin-top: auto;
   margin-bottom: auto;
   animation-name: barFadeIn;
