@@ -14,8 +14,10 @@
 
 # production
 /build
-/articles
-/posts
+/articles/*.json
+/posts/*.json
+/articles/*.sql
+/posts/*.sql
 
 # misc
 .DS_Store

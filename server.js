@@ -1,9 +1,7 @@
-const { createServer } = require('http')
-const { parse } = require('url')
+const express = require('express')
 const next = require('next')
-// const test = require('./.next/build-manifest.json')
 
-const dev = process.env.NODE_ENV !== 'production'
+const dev = process.env.NODE_ENV === 'production'
 const app = next({
   dev: false,
   dir: "./",
@@ -12,27 +10,28 @@ const app = next({
     images: {
       domains: ['files.ninjabattler.ca', 'storage.googleapis.com'],
     }
-  }
+  },
+  
 })
 const handle = app.getRequestHandler()
 
-app.prepare().then(() => {
-  // console.log(test)
-  createServer((req, res) => {
-    // Be sure to pass `true` as the second argument to `url.parse`.
-    // This tells it to parse the query portion of the URL.
-    const parsedUrl = parse(req.url, true)
-    const { pathname, query } = parsedUrl
+app.prepare()
+.then(() => {
+  const server = express()
 
-    if (pathname === '/a') {
-      app.render(req, res, '/a', query)
-    } else if (pathname === '/b') {
-      app.render(req, res, '/b', query)
-    } else {
-      handle(req, res, parsedUrl)
-    }
-  }).listen(4000, (err) => {
+  console.log(handle)
+
+  server.get('*', (req, res) => {
+    return handle(req, res)
+  })
+
+  server.listen(80, (err) => {
+    console.log(err)
     if (err) throw err
     console.log('> Ready on http://localhost:4000')
   })
+})
+.catch((ex) => {
+  console.error(ex.stack)
+  process.exit(1)
 })
