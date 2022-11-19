@@ -1,24 +1,90 @@
 [
-  "Ware wa meshia nari!",
-  "Falcon... I'm not the only copy of you.",
-  "This is like taking candy from a baby, which is fine by me",
-  "I am the Eggman, that's what I am, I am the Eggman, I've got the master plan",
-  "Zero! You were a Maverick?!",
-  "Poyo!",
-  "You mean... Craymen?!",
-  "Impending doom aproaches",
-  "But that's what it takes to be infinite!",
-  "You there, you're the one they call Dragonborn?",
-  "Come, lay down your weapons, it is not too late for my mercy",
-  "Woomy!",
-  "You're dead, your friends are dead, game over",
-  "Beadichnoa NiGHTS",
-  "わたしはにほんじんをはなません",
-  "Seven seconds til the end...",
-  "Are we the future of this burning hell?",
-  "The enemy ascended beyond your control, or was that all your intention?",
-  "This is my message to my master!",
-  "No more holding back, they'll wish for demise",
-  "Wash away the sorrow, all the stains of time",
-  "A GOD DOES NOT FEAR DEATH!"
+  {
+    "quote": "Ware wa meshia nari!",
+    "source": "Omega, Mega Man Zero 3"
+  },
+  {
+    "quote": "Falcon... I'm not the only copy of you.",
+    "source": "Blood Falcon, F-Zero GX"
+  },
+  {
+    "quote": "This is like taking candy from a baby, which is fine by me",
+    "source": "Shadow, Shadow the Hedgehog"
+  },
+  {
+    "quote": "I am the Eggman, that's what I am, I am the Eggman, I've got the master plan",
+    "source": "E.G.G.M.A.N, Sonic Adventure 2 OST"
+  },
+  {
+    "quote": "Zero! You were a Maverick?!",
+    "source": "Sigma, Mega Man X 4"
+  },
+  {
+    "quote": "Poyo!",
+    "source": "Kirby"
+  },
+  {
+    "quote": "You mean... Craymen?!",
+    "source": "Edge, Panzer Dragoon Saga"
+  },
+  {
+    "quote": "Impending doom aproaches",
+    "source": "Moonlord Summon, Terraria"
+  },
+  {
+    "quote": "But that's what it takes to be infinite!",
+    "source": "Infinite, Sonic Forces OST"
+  },
+  {
+    "quote": "You there, you're the one they call Dragonborn?",
+    "source": "Cultist, Elder Scrolls V: Skyrim"
+  },
+  {
+    "quote": "Come, lay down your weapons, it is not too late for my mercy",
+    "source": "Dagoth Ur, Elder Scrolls III: Morrowind"
+  },
+  {
+    "quote": "Woomy!",
+    "source": "Inkling, Splatoon"
+  },
+  {
+    "quote": "You're dead, your friends are dead, game over",
+    "source": "Game over screen, Friady the 13th NES"
+  },
+  {
+    "quote": "Beadichnoa NiGHTS",
+    "source": "Reala, NiGHTS into Dreams"
+  },
+  {
+    "quote": "わたしはにほんじんをはなません",
+    "source": "Me"
+  },
+  {
+    "quote": "Seven seconds til the end...",
+    "source": "Sephiroth, Final Fantasy 7 Remake"
+  },
+  {
+    "quote": "Are we the future of this burning hell?",
+    "source": "Savior, Astral Chain OST"
+  },
+  {
+    "quote": "The enemy ascended beyond your control, or was that all your intention?",
+    "source": "Roar of the Jungle Dragon, Calamity OST"
+  },
+  {
+    "quote": "This is my message to my master!",
+    "source": "Roar of the Jungle Dragon, Calamity OST"
+  },
+  {
+    "quote": "No more holding back, they'll wish for demise",
+    "source": "Stained, Brutal Calamity, Calamity OST"
+  },
+  {
+    "quote": "Wash away the sorrow, all the stains of time",
+    "source": "The Stains of Time, Metal Gear Rising OST"
+  },
+  {
+    "quote": "A GOD DOES NOT FEAR DEATH!",
+    "source": "The Devourer of Gods, Calamity"
+  }
 ]

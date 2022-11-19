@@ -7,15 +7,21 @@ const selectSingleArticle = async (db: Pool, title: TitleType): Promise<ArticleD
     SELECT posts.*, TO_CHAR(posts.date, 'MM, DD, YYYY') as formattedDate, TO_CHAR(posts.date, 'YYYY-MM-DD HH24:MI:SS.MSZ') as date,
     (SELECT COUNT(*) FROM likes WHERE liked = true AND likes.post_id = posts.id) as likes,
     (SELECT COUNT(*) FROM likes WHERE liked = false AND likes.post_id = posts.id) as dislikes,
-    json_agg(
-      DISTINCT 
-      jsonb_build_object(
-        'content', comments.content,
-        'date', comments.date,
-        'avatar', users.avatar,
-        'username', users.username,
-        'user_id', users.id
+
+    COALESCE(
+      json_agg(
+        DISTINCT 
+        jsonb_build_object(
+          'content', comments.content,
+          'date', comments.date,
+          'avatar', users.avatar,
+          'username', users.username,
+          'user_id', users.id
+        )
       )
+      FILTER
+      (WHERE comments.date IS NOT NULL),
+      '[]'
     ) AS comments,
 
 
