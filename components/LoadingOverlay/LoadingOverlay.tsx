@@ -11,8 +11,13 @@ const LoadingOverlay: ComponentType<LoadingOverlayProps> = ({ shrink, quoteIndex
   <div id={styles.loadingOverlay} className={shrink && styles.shrink}>
     <div id={styles.backgroundFilter}/>
     <img src='/Ninja placeholder.png' />
-    <p>&quot; <i>{quotes[quoteIndex].quote}</i> &quot;</p>
-    <span>{quotes[quoteIndex].source}</span>
+
+    <h1>Loading...</h1>
+
+    <section id={styles.quoteSection}>
+      <p>&quot; <i>{quotes[quoteIndex].quote}</i> &quot;</p>
+      <span>{quotes[quoteIndex].source}</span>
+    </section>
   </div>
 )
 

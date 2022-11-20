@@ -28,9 +28,13 @@
   width: 100%;
   height: 100%;
   position: absolute;
-  background-color: var(--dark-gray);
-  mix-blend-mode: exclusion;
-  backdrop-filter: blur(0.5vw);
+  background-color: var(--light-gray);
+  mix-blend-mode: color-dodge;
+  backdrop-filter: brightness(3) contrast(0.9) blur(1vw);
+
+  @media only screen and (max-width: 425px) {
+    backdrop-filter: brightness(3) contrast(0.9) blur(1vh);
+  }
 }
 
 #loadingOverlay.shrink {
@@ -51,36 +55,66 @@
   }
 }
 
-#loadingOverlay > p,
-#loadingOverlay > span {
-  font-size: 1.6vw;
-  max-width: 70%;
-  color: var(--primary-text);
-  position: absolute;
-  margin-top: 30%;
-  filter: drop-shadow(0 0 0.2vw var(--dark-gray));
+#loadingOverlay > h1 {
+  width: 99%;
+  color: var(--dark-gray);
+  font-family: "Russo One";
+  font-weight: 100;
+  font-size: 4vw;
+  z-index: 1;
 
   @media only screen and (max-width: 425px) {
-    font-size: 15px;
-    margin-top: 85%;
+    font-size: 8vw;
+    position: absolute;
+    bottom: 0;
+    color: var(--primary-text);
+    margin-bottom: 40vmin;
   }
 }
 
-#loadingOverlay > span {
-  border-top: 0.25vw solid var(--light-gray);
-  border-left: 0.25vw solid transparent;
-  border-right: 0.25vw solid transparent;
-  padding-left: 1vw;
-  padding-right: 1vw;
-  padding-top: 0.5vw;
-  margin-top: 34%;
-  font-family: "Russo One";
-  font-weight: 100;
-  font-size: 1.3vw;
+#quoteSection {
+  width: 100%;
+  min-height: 20%;
+  background-color: var(--dark-gray);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  bottom: 0;
+
+  p,
+  span {
+    font-size: 1.6vw;
+    max-width: 70%;
+    color: var(--primary-text);
+    filter: drop-shadow(0 0 0.2vw var(--dark-gray));
+    margin: 0.3vw;
+
+    @media only screen and (max-width: 425px) {
+      font-size: 4vw;
+    }
+  }
+
+  span {
+    border-top: 0.25vw solid var(--light-gray);
+    border-left: 0.25vw solid transparent;
+    border-right: 0.25vw solid transparent;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    padding-top: 0.5vw;
+    font-family: "Russo One";
+    font-weight: 100;
+    font-size: 1.3vw;
+
+    @media only screen and (max-width: 425px) {
+      font-size: 3vw;
+      padding-top: 1.5vw;
+    }
+  }
 
   @media only screen and (max-width: 425px) {
-    font-size: 12px;
-    margin-top: 92%;
+    height: 10vh;
   }
 }
 
