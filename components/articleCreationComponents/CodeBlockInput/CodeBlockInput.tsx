@@ -29,6 +29,11 @@ const CodeBlockInput: ComponentType<CodeBlockInputProps> = ({ codeBlock, index, 
       </div>
 
       <div className={styles.inputContainer}>
+        <span>Title: </span>
+        <input value={codeBlockContent.title} onChange={(e) => { updateCodeBlock({ ...codeBlockContent, title: e.target.value }) }}></input>
+      </div>
+
+      <div className={styles.inputContainer}>
         <span>Language: </span>
         <input value={codeBlockContent.language} onChange={(e) => { updateCodeBlock({ ...codeBlockContent, language: e.target.value }) }}></input>
       </div>
@@ -37,6 +42,7 @@ const CodeBlockInput: ComponentType<CodeBlockInputProps> = ({ codeBlock, index, 
         <span>Highlight: </span>
         <input value={codeBlockContent.highlight} onChange={(e) => { updateCodeBlock({ ...codeBlockContent, highlight: e.target.value }) }}></input>
       </div>
+      
     </div>
   )
 }

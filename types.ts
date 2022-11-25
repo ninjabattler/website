@@ -63,6 +63,7 @@ export interface CodeBlockItem extends ArticleJsonItem {
   code: string;
   language: string;
   highlight?: string;
+  title?: string;
 }
 
 export interface ArticleList extends ArticleJsonItem {

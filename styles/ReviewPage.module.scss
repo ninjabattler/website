@@ -7,7 +7,7 @@
   flex-direction: column;
   background-color: var(--secondary-colour);
   width: 65%;
-  filter: drop-shadow(8px 5px 0px black);
+  filter: drop-shadow(8px 5px 0.3vw black);
   border-left: 1vw solid var(--light-gray);
   overflow-x: hidden;
 
@@ -17,7 +17,7 @@
     font-size: 20px;
     overflow-x: hidden;
     border-left: none;
-    filter: drop-shadow(2px 2px 0px black);
+    filter: drop-shadow(2px 2px 0.3vw black);
   }
 }
 
@@ -51,7 +51,7 @@
   margin-left: auto;
   margin-right: auto;
   top: 4vw;
-  filter: drop-shadow(6px 6px 0px black);
+  filter: drop-shadow(6px 6px 0.3vw black);
 }
 
 .commentPanel {
@@ -69,7 +69,7 @@
   margin-right: auto;
   top: 11.5vw;
   margin-top: 7.1vw;
-  filter: drop-shadow(6px 6px 0px black);
+  filter: drop-shadow(6px 6px 0.3vw black);
   animation-name: commentPanelFadeIn;
   animation-timing-function: linear;
   animation-duration: 1.25s;
@@ -83,7 +83,7 @@
     left: 0;
     top: 0;
     z-index: 101;
-    filter: drop-shadow(3px 3px 0px black);
+    filter: drop-shadow(3px 3px 0.3vw black);
     transition: margin-left 0.5s;
   }
 }

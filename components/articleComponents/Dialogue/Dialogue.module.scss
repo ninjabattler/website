@@ -21,12 +21,12 @@
   max-height: 16.5vw;
   width: 14.25vw;
   image-rendering: pixelated;
-  filter: drop-shadow(1vw 0px 0px var(--dark-gray));
+  filter: drop-shadow(1vw 0px 0.2vw var(--dark-gray));
 
   @media only screen and (max-width: 425px) {
     max-height: 40vw;
     width: 25vw;
-    filter: drop-shadow(2vw 0px 0px var(--dark-gray));
+    filter: drop-shadow(2vw 0px 0.2vw var(--dark-gray));
   }
 }
 

@@ -82,8 +82,9 @@ export const convertList = (list: ArticleList): string => {
 export const convertCodeBlockItem = (codeBlockItem: CodeBlockItem): string => {
   const code = codeBlockItem.code;
   const language = codeBlockItem.language;
+  const title = codeBlockItem.title ? `title="${codeBlockItem.title}"` : '';
   const highlight = codeBlockItem.highlight ? `highlight="${codeBlockItem.highlight}"` : '';
-  const codeBlockString = `<CodeBlock code="${code}" language="${language}" ${highlight} />`;
+  const codeBlockString = `<CodeBlock code="${code}" language="${language}" ${highlight} ${title} />`;
 
   return codeBlockString;
 }

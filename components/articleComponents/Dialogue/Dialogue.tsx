@@ -10,7 +10,7 @@ type DialogueProps = {
 }
 
 const Dialogue: ComponentType<DialogueProps> = ({ speaker, text, imageSrc, pageColour }) => (
-  <div className={styles.dialogue} style={{ filter: `drop-shadow(0px 0.3vw 0px ${pageColour})` }}>
+  <div className={styles.dialogue} style={{ filter: `drop-shadow(0px 0.3vw 0px ${pageColour}) drop-shadow(0px 0.3vw 0.15vw black)` }}>
     <div className={styles.dialogueText}>
       <h3>
         {speaker}

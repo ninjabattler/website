@@ -8,13 +8,13 @@ $gradientColour: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: right;
   align-items: flex-start;
-  filter: drop-shadow(-6px 3px 0px black);
+  filter: drop-shadow(-6px 3px 0.2vw black);
 
   @media only screen and (max-width: 425px) {
     margin-bottom: 18vw;
     margin-top: 13vw;
     --border-width: 9vw;
-    filter: drop-shadow(-2px 1px 0px black);
+    filter: drop-shadow(-2px 1px 0.2vw black);
   }
 }
 
@@ -86,6 +86,7 @@ $gradientColour: rgba(0, 0, 0, 0.5);
   display: flex;
   height: 19vw;
   margin-top: -13.9vw;
+  margin-right: 0.5vw;
   flex-direction: column-reverse;
   z-index: 3;
 

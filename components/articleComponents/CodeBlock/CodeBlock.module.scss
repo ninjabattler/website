@@ -1,15 +1,46 @@
 .codeBlock {
-  font-size: 0.5em;
+  background-color: rgba(26, 26, 26, 1);
+  font-size: 0.55em;
   tab-size: 2;
+  margin-top: 0.1vw;
+  margin-bottom: 0.1vw;
+  filter: drop-shadow(0 0.3vw 0 var(--article-colour)) drop-shadow(0 0 0.3vw rgba(0, 0, 0, 0.65));
+
+  h3 {
+    background-color: var(--secondary-colour);
+    color: var(--primary-text);
+    display: flex;
+    align-items: center;
+    font-size: 1.7em;
+    font-family: "Russo One";
+    font-weight: 100;
+    padding-left: 1.3vw;
+    padding-right: 1.3vw;
+    margin-bottom: 0;
+    border-bottom: 0.1vw solid var(--light-gray);
+
+    button {
+      background-color: var(--primary-text);
+      border: none;
+      color: var(--secondary-colour);
+      margin: 0.2vw;
+      margin-right: 0.8vw;
+      border-radius: 3px;
+      transition: filter 0.25s;
+
+      &:hover {
+        filter: drop-shadow(0 0 0.15vw black);
+        cursor: pointer;
+      }
+    }
+  }
+
+  pre {
+    background-color: transparent !important;
+    width: 100%;
+  }
 
   @media only screen and (max-device-width: 425px) {
     font-size: 0.35em;
   }
-}
-.codeBlock > * {
-  width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 10px;
-  margin-bottom: 10px;
 }
