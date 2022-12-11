@@ -1,8 +1,8 @@
 import React, { ComponentType, useEffect, useState } from 'react';
 import styles from './CodeBlock.module.scss';
-import SyntaxHighlighter from 'react-syntax-highlighter';
+import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
 import { FileCopy, Check } from '@material-ui/icons';
-import vs2015 from './vs2015.json';
+import vscDarkPlus from './vscDarkPlus.json';
 
 type CodeBlockProps = {
   code: string;
@@ -52,7 +52,7 @@ const CodeBlock: ComponentType<CodeBlockProps> = ({ code, language, highlight, t
       
       <SyntaxHighlighter
         language={language}
-        style={vs2015}
+        style={vscDarkPlus}
         showLineNumbers
         wrapLines
         wrapLongLines

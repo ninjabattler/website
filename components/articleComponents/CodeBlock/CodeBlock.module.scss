@@ -38,6 +38,17 @@
   pre {
     background-color: transparent !important;
     width: 100%;
+    font-size: 1em !important;
+
+    code {
+      font-size: 1em !important;
+
+      span {
+        font-size: 1em !important;
+        margin: 0;
+        line-height: 1.3em !important;
+      }
+    }
   }
 
   @media only screen and (max-device-width: 425px) {
