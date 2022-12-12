@@ -1,5 +1,5 @@
 .dialogue {
-  width: 90%;
+  width: 100%;
   margin-left: auto;
   display: flex;
   flex-direction: row;
@@ -19,20 +19,24 @@
 
 .dialogue > img {
   max-height: 16.5vw;
-  width: 14.25vw;
+  width: 13vw;
   image-rendering: pixelated;
-  filter: drop-shadow(1vw 0px 0.2vw var(--dark-gray));
+  position: absolute;
+  right: 0;
+  filter: drop-shadow(1vw 0px 0vw var(--article-colour));
 
   @media only screen and (max-width: 425px) {
     max-height: 40vw;
     width: 25vw;
-    filter: drop-shadow(2vw 0px 0.2vw var(--dark-gray));
+    filter: drop-shadow(2vw 0px 0vw var(--article-colour));
   }
 }
 
 .dialogueText {
-  height: 100%;
-  width: 90%;
+  min-height: 100%;
+  width: calc(100% - 13vw);
+  padding-right: 13vw;
+  background-color: var(--light-gray);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -40,14 +44,14 @@
 }
 
 .dialogueText > p {
-  width: 80%;
+  width: 90%;
   padding: 0.3vw;
   margin: 0;
   margin-top: 2.2vw;
   right: 0;
-  font-size: 0.7em;
+  font-size: 0.85em;
   text-align: right;
-  color: var(--dark-gray);
+  color: var(--secondary-colour);
   
   @media only screen and (max-width: 425px) {
     margin-top: 5vw;
@@ -57,24 +61,29 @@
 
 .dialogueText > h3 {
   position: absolute;
+  color: var(--primary-text);
   height: 2.2vw;
-  width: 50%;
+  width: 100%;
   margin: 0;
   padding-left: 0.6vw;
-  padding-right: 22%;
+  padding-right: 21%;
   right: 0;
-  font-size: 1em;
+  font-size: 1.2em;
+  font-family: "Russo One";
+  font-weight: 100;
+  border-bottom: 1px solid black;
   text-align: right;
   opacity: 75%;
+  background-color: var(--secondary-colour);
   background-image: linear-gradient(
     -45deg,
-    var(--dark-gray) 80%,
-    transparent 80%,
-    transparent 82%,
-    var(--dark-gray) 82%,
-    var(--dark-gray) 84%,
-    transparent 84%,
-    transparent 86%
+    var(--dark-gray) 40%,
+    transparent 40%,
+    transparent 42%,
+    var(--dark-gray) 42%,
+    var(--dark-gray) 44%,
+    transparent 44%,
+    transparent 46%
   );
 
   @media only screen and (max-width: 425px) {

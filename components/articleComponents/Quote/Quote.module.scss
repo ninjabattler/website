@@ -1,6 +1,6 @@
 $borderThickness: 0.33vw;
 $mobileBorderThickness: 0.6vw;
-$gradientColour: rgba(40, 40, 40, 0.8);
+$gradientColour: rgba(24, 24, 24, 0.8);
 
 .quote {
   color: var(--light-gray);
@@ -42,14 +42,14 @@ $gradientColour: rgba(40, 40, 40, 0.8);
   padding-top: 0.4vw;
   background-image: linear-gradient(
     45deg,
-    transparent 10%,
-    $gradientColour 10%,
+    transparent calc(12% - 0.3vw),
+    $gradientColour calc(12% - 0.3vw),
     $gradientColour 12%,
     transparent 12%,
     transparent 87%,
     $gradientColour 87%,
-    $gradientColour 89%,
-    transparent 89%
+    $gradientColour calc(87% + 0.3vw),
+    transparent calc(87% + 0.3vw)
   );
   font-family: "Russo One";
   font-weight: 100;
