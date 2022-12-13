@@ -8,11 +8,12 @@ type TerrariaTextProps = {
   draedon: boolean;
   yharim: boolean;
   moonlord: boolean;
+  dog: boolean;
 }
 
-const TerrariaText: ComponentType<TerrariaTextProps> = ({ text, colour, draedon, yharim, moonlord }) => (
+const TerrariaText: ComponentType<TerrariaTextProps> = ({ text, colour, draedon, yharim, moonlord, dog }) => (
   <span
-    className={`${styles.terrariaText} ${draedon && styles.draedon} ${moonlord && styles.moonlord} ${yharim && styles.yharim}`}
+    className={`${styles.terrariaText} ${draedon && styles.draedon} ${moonlord && styles.moonlord} ${yharim && styles.yharim} ${dog && styles.dog}`}
     style={colour && { color: colour }}
   >
     <b>{text}</b>
