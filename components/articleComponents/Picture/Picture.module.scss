@@ -22,11 +22,11 @@
 }
 
 .floatingLeft {
-  filter: drop-shadow(3px -3px 0px var(--dark-gray)) drop-shadow(3px -3px 0px var(--shadowColour));
+  filter: drop-shadow(0.2vw -0.2vw 0px var(--secondary-colour)) drop-shadow(0.2vw -0.2vw 0px var(--shadowColour));
   padding-left: 20px;
 
   @media only screen and (max-device-width: 425px) {
-    filter: drop-shadow(2px -2px 0px var(--dark-gray)) drop-shadow(2px -2px 0px var(--shadowColour));
+    filter: drop-shadow(2px -2px 0px var(--secondary-colour)) drop-shadow(2px -2px 0px var(--shadowColour));
     padding-left: 20px;
   }
 }
@@ -42,11 +42,11 @@
 }
 
 .floatingRight {
-  filter: drop-shadow(-3px -3px 0px var(--dark-gray)) drop-shadow(-3px -3px 0px var(--shadowColour));
+  filter: drop-shadow(-0.2vw -0.2vw 0px var(--secondary-colour)) drop-shadow(-0.2vw -0.2vw 0px var(--shadowColour));
   padding-left: 20px;
 
   @media only screen and (max-device-width: 425px) {
-    filter: drop-shadow(-2px -2px 0px var(--dark-gray)) drop-shadow(-2px -2px 0px var(--shadowColour));
+    filter: drop-shadow(-2px -2px 0px var(--secondary-colour)) drop-shadow(-2px -2px 0px var(--shadowColour));
     padding-left: 20px;
   }
 }

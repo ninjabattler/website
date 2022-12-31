@@ -23,7 +23,7 @@
   image-rendering: pixelated;
   position: absolute;
   right: 0;
-  filter: drop-shadow(1vw 0px 0vw var(--article-colour));
+  filter: drop-shadow(0.7vw 0px 0vw var(--article-colour));
 
   @media only screen and (max-width: 425px) {
     max-height: 40vw;
@@ -70,7 +70,7 @@
   right: 0;
   font-size: 1.2em;
   font-family: "Russo One";
-  font-weight: 100;
+  font-weight: 900;
   border-bottom: 1px solid black;
   text-align: right;
   opacity: 75%;
@@ -85,6 +85,7 @@
     transparent 44%,
     transparent 46%
   );
+  -webkit-text-stroke: 0.15vw var(--dark-gray);
 
   @media only screen and (max-width: 425px) {
     width: 70%;
