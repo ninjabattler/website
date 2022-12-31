@@ -16,7 +16,7 @@ export default function Home({ title, thumbnail, setLinkClicked }: InferGetStati
   return (
     <>
       <PixiBackground />
-      <div className={styles.container}>
+      {/* <div className={styles.container}> */}
         <Head>
           <title>Ninjabattler</title>
           <meta name='description' content="Website by a lunatic who knows a little node js and not much else" />
@@ -35,26 +35,26 @@ export default function Home({ title, thumbnail, setLinkClicked }: InferGetStati
           <meta name="google-site-verification" content="Cq6r13JSr-HUsKYp5H2wxCqR7tIK4SQGxMxodWHx1i4" />
         </Head>
         <main id={styles.homePage}>
-          <img id={styles.homePageRobot} src="/websiterobot.webp" />
-          <img id={styles.homePageRobotFade} src="/websiterobot.webp" />
+          <img id={styles.homePageRobot} src="/websiterobot3.webp" />
+          <img id={styles.homePageRobotFade} src="/websiterobot3.webp" />
 
           {/* Introduction */}
           <section id={styles.part1}>
             <div id={styles.scrollToOne} />
 
             <div className={styles.gradient1} />
-            <div className={styles.gradient2}>
-              <Link href={`/articles/${title.toLowerCase().replace(/ /g, '_')}`}>
-                <img
-                  onClick={(e) => { e.preventDefault(); setLinkClicked(`/articles/${title.toLowerCase().replace(/ /g, '_')}`) }}
-                  src={thumbnail}
-                />
+            <Link href={`/articles/${title.toLowerCase().replace(/ /g, '_')}`}>
+                <a className={styles.gradient2}>
+                    <img
+                      onClick={(e) => { e.preventDefault(); setLinkClicked(`/articles/${title.toLowerCase().replace(/ /g, '_')}`) }}
+                      src={thumbnail}
+                    />
+                  <h2>Newest Article: <br /><span>{title}</span></h2>
+                </a>
               </Link>
-              <h2>Newest Article: <br />{title}</h2>
-            </div>
 
-            <h1><i>Status: 200, successfully connected</i></h1>
-            <h4><i>to the land of uneducated opinions and a few shades of gray!</i></h4>
+            <h1>Status: 200, successfully connected</h1>
+            <h4>to the land of uneducated opinions and a few shades of gray!</h4>
             <p>
               Here in this small corner of the internet, you&apos;ll find lots of words, words written by me, if you can believe it. There&apos;s even pictures and videos, and some blender stuff. But what topics do these words speak of?
             </p>
@@ -113,7 +113,7 @@ export default function Home({ title, thumbnail, setLinkClicked }: InferGetStati
             <p>Movies, MTG, the giant eye in the sky bringing the end of the world, if it interests me, you may see it here at some point. Except the end of the world, I don&apos;t write fast enough to cover that.</p>
           </section>
         </main>
-      </div>
+      {/* </div> */}
     </>
   )
 }
