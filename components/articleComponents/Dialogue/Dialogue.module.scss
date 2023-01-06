@@ -51,7 +51,7 @@
   right: 0;
   font-size: 0.85em;
   text-align: right;
-  color: var(--secondary-colour);
+  color: var(--dark-gray);
   
   @media only screen and (max-width: 425px) {
     margin-top: 5vw;
@@ -85,7 +85,7 @@
     transparent 44%,
     transparent 46%
   );
-  -webkit-text-stroke: 0.15vw var(--dark-gray);
+  -webkit-text-stroke: 0.05vw var(--dark-gray);
 
   @media only screen and (max-width: 425px) {
     width: 70%;
