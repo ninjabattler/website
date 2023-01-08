@@ -37,14 +37,15 @@
 
 .inputContainer > .checkbox {
   -webkit-appearance: none;
-  width: 2vw;
-  height: 2vw;
+  width: 1vw;
+  height: 1vw;
   background-color: var(--dark-gray);
-  border: 0.3vw solid var(--dark-gray);
+  border: 0.2vw solid var(--dark-gray);
+  border-radius: 100%;
 }
 
 .inputContainer > .checkbox:checked {
   -webkit-appearance: none;
   background-color: var(--light-gray);
-  border: 0.3vw solid var(--dark-gray);
+  border: 0.2vw solid var(--dark-gray);
 }

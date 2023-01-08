@@ -15,8 +15,9 @@ export const convertAnimTextItem = (animTextItem: AnimTextItem): string => {
   const yharim = animTextItem.yharim ? 'yharim' : '';
   const moonlord = animTextItem.moonlord ? 'moonlord' : '';
   const dog = animTextItem.dog ? 'dog' : '';
+  const scal = animTextItem.scal ? 'scal' : '';
 
-  const animTextString = `<${type} text='${content}' ${colour} ${draedon} ${yharim} ${moonlord} ${dog} />`;
+  const animTextString = `<${type} text='${content}' ${colour} ${draedon} ${yharim} ${moonlord} ${dog} ${scal} />`;
 
   return animTextString;
 }

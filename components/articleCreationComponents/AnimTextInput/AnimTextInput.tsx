@@ -14,7 +14,7 @@ type AnimTextInputProps = {
 const AnimTextInput: ComponentType<AnimTextInputProps> = ({ animText, parentIndex, index, parentContent, articleContent, setArticleContent }) => {
   const [textContent, setTextContent] = useState<AnimTextItem>(animText);
 
-  const updateAnimText = ({ type, content, colour, draedon, yharim, moonlord, dog }: AnimTextItem): void => {
+  const updateAnimText = ({ type, content, colour, draedon, yharim, moonlord, dog, scal }: AnimTextItem): void => {
     const newTextContent: AnimTextItem = { ...textContent }
     newTextContent.type = type as AnimTextItem["type"];
     newTextContent.content = content;
@@ -23,6 +23,7 @@ const AnimTextInput: ComponentType<AnimTextInputProps> = ({ animText, parentInde
     newTextContent.yharim = yharim;
     newTextContent.moonlord = moonlord;
     newTextContent.dog = dog;
+    newTextContent.scal = scal;
 
     let contentItem = { ...parentContent };
     contentItem.content[index] = newTextContent;
@@ -73,6 +74,11 @@ const AnimTextInput: ComponentType<AnimTextInputProps> = ({ animText, parentInde
           <div className={styles.inputContainer}>
             <span>D.O.G.: </span>
             <input type='checkbox' className={styles.checkbox} checked={textContent.dog} onClick={(e) => { updateAnimText({ ...textContent, dog: !textContent.dog }) }}></input>
+          </div>
+
+          <div className={styles.inputContainer}>
+            <span>SCAL: </span>
+            <input type='checkbox' className={styles.checkbox} checked={textContent.scal} onClick={(e) => { updateAnimText({ ...textContent, scal: !textContent.scal }) }}></input>
           </div>
         </>
       }

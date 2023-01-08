@@ -37,6 +37,7 @@ export interface AnimTextItem {
   yharim?: boolean;
   moonlord?: boolean;
   dog?: boolean;
+  scal?: boolean;
 }
 
 export interface HtmlItem extends ArticleJsonItem {

@@ -17,13 +17,13 @@ $gradientColor: rgba(0, 0, 0, 0.5);
 }
 
 .bar2 {
-  border-top: $borderThickness solid var(--secondary-colour);
+  border-top: $borderThickness solid var(--dark-gray);
   opacity: 0.9;
   width: 80%;
   border-right: $borderThickness solid transparent;
   position: absolute;
   margin-top: 48vw;
-  filter: drop-shadow(8px 5px 0px black);
+  filter: drop-shadow(0.3vw 0.3vw 0.3vw black);
   mask: linear-gradient(
     -45deg,
     black 15%,
@@ -86,7 +86,7 @@ $gradientColor: rgba(0, 0, 0, 0.5);
 .barC {
   margin-top: 46vw;
   width: 75.6%;
-  filter: drop-shadow(8px 5px 0px black);
+  filter: drop-shadow(0.3vw 0.3vw 0.3vw black);
   mask: none;
 
   @media only screen and (max-width: 425px) {

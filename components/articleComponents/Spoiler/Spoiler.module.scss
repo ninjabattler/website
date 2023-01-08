@@ -1,8 +1,8 @@
 $revealColour: rgba(18, 18, 18, 0.4);
 
 .spoiler {
-  background-image: linear-gradient(0deg, var(--secondary-colour) 3%, var(--dark-gray) 3%, var(--dark-gray) 97%, var(--secondary-colour) 97%);
-  color: var(--dark-gray);
+  background-image: linear-gradient(0deg, var(--dark-gray) 3%, var(--secondary-colour) 3%, var(--secondary-colour) 97%, var(--dark-gray) 97%);
+  color: var(--secondary-colour);
   border-radius: 1vmin;
   cursor: pointer;
   transition: color 1s, background-image 1s;
@@ -10,6 +10,6 @@ $revealColour: rgba(18, 18, 18, 0.4);
 
 .revealed {
   color: var(--primary-text);
-  background-image: linear-gradient(0deg, var(--secondary-colour) 3%, $revealColour 3%, $revealColour 97%, var(--secondary-colour) 97%);
+  background-image: linear-gradient(0deg, var(--dark-gray) 3%, $revealColour 3%, $revealColour 97%, var(--dark-gray) 97%);
   cursor: unset;
 }
