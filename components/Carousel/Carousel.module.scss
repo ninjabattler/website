@@ -4,7 +4,7 @@
   margin-top: 5.4vw;
   width: 100vw;
   font-size: 1em;
-  overflow-y: hidden;
+  // overflow-y: hidden;
 
   @media only screen and (max-device-width: 425px) {
     margin-top: 8vw;
@@ -39,7 +39,7 @@
   flex-direction: row;
   overflow-x: hidden;
   overflow-y: hidden;
-  filter: drop-shadow(0px 0.3vw 0.3vw black);
+  filter: drop-shadow(0px 0 0.3vw black);
 
   @media only screen and (max-device-width: 425px) {
     height: 75vw;
@@ -184,7 +184,7 @@
   font-size: 2.5vw;
   font-family: "Russo One";
   font-weight: 100;
-  width: 100%;
+  width: 90%;
   margin: 0;
   margin-left: 1vw;
 

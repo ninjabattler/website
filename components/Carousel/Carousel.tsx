@@ -48,14 +48,14 @@ const Carousel = ({ items, setLinkClicked }: CarouselProps): ReactElement => {
               <a onClick={(e) => { e.preventDefault(); setLinkClicked(`/articles/${item.title.toLowerCase().replace(/ /g, '_')}`) }} className={`${styles.carouselItem} ${i < 2 ? styles[currentOption] : ''}`}>
 
                 <div className={styles.imageContainer}>
-                  <Image width={16} height={9.55} layout="responsive" src={item.thumbnail} />
+                  <Image width={16} height={9.6} layout="responsive" src={item.thumbnail} />
                 </div>
                 <aside id={styles.carouselItemAside}>
                   <h1>{item.title}</h1>
                   <section>
                     <div className={styles.background}></div>
-                    <h3><i>{formatSqlDate(item.formatteddate)}</i></h3>
-                    <h3><i>{item.category}/{item.genre}</i></h3>
+                    <h3>{formatSqlDate(item.formatteddate)}</h3>
+                    <h3>{item.category}/{item.genre}</h3>
                   </section>
 
                   {/* @ts-ignore - JsxParser has an error with how it exports, works perfectly fine though */}

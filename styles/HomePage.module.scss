@@ -164,10 +164,11 @@
     color: var(--primary-text);
   }
 }
+
 #part1 > .gradient2 > h3 {
   position: absolute;
   margin-top: 31vw;
-  width: 90%;
+  width: 100%;
   margin-right: -0.5vw;
   padding-left: 0.5vw;
   text-align: left;
@@ -175,8 +176,6 @@
   font-family: "Russo One";
   font-weight: 100;
   font-size: larger;
-  border-bottom: 0.2vw solid var(--light-gray);
-  border-right: 0.2vw solid transparent;
 
   @media only screen and (max-width: 425px) {
     position: absolute;
