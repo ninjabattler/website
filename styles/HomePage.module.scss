@@ -14,7 +14,7 @@
 .divider {
   height: 2vw;
   width: 100vw;
-  background-color: var(--secondary-colour);
+  background-color: var(--dark-gray);
   z-index: 2;
 }
 
@@ -55,13 +55,13 @@
 #part3 {
   width: 100vw;
   height: 50vw;
-  filter: drop-shadow(1px 1px 0px var(--secondary-colour)) drop-shadow(1px 1px 2px black);
+  filter: drop-shadow(1px 1px 0px var(--dark-gray)) drop-shadow(1px 1px 2px black);
   // z-index: 1;
 
   @media only screen and (max-width: 425px) {
     width: 100vw;
     height: 177vw;
-    filter: drop-shadow(1px 1px 0px var(--secondary-colour)) drop-shadow(1px 1px 2px black);
+    filter: drop-shadow(1px 1px 0px var(--dark-gray)) drop-shadow(1px 1px 2px black);
     // z-index: 1;
   }
 }
@@ -75,8 +75,8 @@
     transparent 27%,
     var(--primary-text) 27%,
     var(--primary-text) 31%,
-    var(--secondary-colour) 31%,
-    var(--secondary-colour) 37%,
+    var(--dark-gray) 31%,
+    var(--dark-gray) 37%,
     transparent 37%
   );
   filter: drop-shadow(0 0 0.3vw black);
@@ -91,7 +91,7 @@
   width: 45%;
   height: 100%;
   margin-left: 50vw;
-  background-color: var(--secondary-colour);
+  background-color: var(--dark-gray);
   filter: drop-shadow(0 0 0.3vw black);
   animation-name: gradientSlide2;
   animation-timing-function: linear;
@@ -134,13 +134,49 @@
 #part1 > .gradient2 > h2 {
   position: absolute;
   right: 0;
-  margin-top: 29vw;
+  margin-top: 28.3vw;
   width: 100%;
+  margin-right: -0.5vw;
+  padding-left: 0.5vw;
+  text-align: left;
+  color: var(--dark-gray);
+  font-family: "Russo One";
+  font-weight: 100;
+  font-size: larger;
+  background-image: linear-gradient(
+    -45deg,
+    transparent 16%,
+    var(--light-gray) 16%,
+    var(--light-gray) 20%,
+    transparent 20%,
+    transparent 22%,
+    var(--light-gray) 22%,
+    var(--light-gray) 24%,
+    transparent 24%,
+    transparent 26%,
+    var(--light-gray) 26%
+  );
+
+  @media only screen and (max-width: 425px) {
+    position: absolute;
+    left: 1vw;
+    margin-top: 135vw;
+    color: var(--primary-text);
+  }
+}
+#part1 > .gradient2 > h3 {
+  position: absolute;
+  margin-top: 31vw;
+  width: 90%;
+  margin-right: -0.5vw;
+  padding-left: 0.5vw;
   text-align: left;
   color: var(--primary-text);
   font-family: "Russo One";
   font-weight: 100;
   font-size: larger;
+  border-bottom: 0.2vw solid var(--light-gray);
+  border-right: 0.2vw solid transparent;
 
   @media only screen and (max-width: 425px) {
     position: absolute;
@@ -176,13 +212,13 @@
 }
 
 #part1 > h4 {
-  color: var(--secondary-colour);
+  color: var(--dark-gray);
   font-size: 0.9em;
   padding-left: 1vw;
   margin-top: 0.2vw;
 
   @media only screen and (max-width: 425px) {
-    color: var(--secondary-colour);
+    color: var(--dark-gray);
     font-size: 0.9em;
     padding-left: 4vw;
     margin-top: 2.4vw;
@@ -213,7 +249,7 @@
   position: absolute;
   width: 40vw;
   z-index: 1;
-  filter: drop-shadow(1px 1px 0px var(--secondary-colour)) drop-shadow(1px 1px 2px black);
+  filter: drop-shadow(1px 1px 0px var(--dark-gray)) drop-shadow(1px 1px 2px black);
 
   @media only screen and (max-width: 425px) {
     width: 70vw;
@@ -228,19 +264,19 @@
   background-image: linear-gradient(
     -16.5deg,
     transparent 55.3%,
-    var(--secondary-colour) 55.3%,
-    var(--secondary-colour) 63%,
+    var(--dark-gray) 55.3%,
+    var(--dark-gray) 63%,
     transparent 63%
   );
-  filter: drop-shadow(1px 1px 0px var(--secondary-colour)) drop-shadow(1px 1px 2px black);
+  filter: drop-shadow(1px 1px 0px var(--dark-gray)) drop-shadow(1px 1px 2px black);
 
   @media only screen and (max-width: 425px) {
     margin-top: -5vw;
     background-image: linear-gradient(
       -16.5deg,
       transparent 57%,
-      var(--secondary-colour) 57%,
-      var(--secondary-colour) 68%,
+      var(--dark-gray) 57%,
+      var(--dark-gray) 68%,
       transparent 68%
     );
   }
@@ -251,11 +287,11 @@
   width: 100%;
   height: 20%;
   margin-top: 35%;
-  background-color: var(--secondary-colour);
+  background-color: var(--dark-gray);
   display: flex;
   justify-content: center;
   align-items: center;
-  filter: drop-shadow(1px 1px 0px var(--secondary-colour)) drop-shadow(1px 1px 2px black);
+  filter: drop-shadow(1px 1px 0px var(--dark-gray)) drop-shadow(1px 1px 2px black);
 
   @media only screen and (max-width: 425px) {
     height: 24%;
@@ -282,7 +318,7 @@
   transform: skewY(-16.5deg);
   margin-left: 39vw;
   margin-top: 7vw;
-  filter: drop-shadow(1px 1px 0px var(--secondary-colour)) drop-shadow(1px 1px 2px black);
+  filter: drop-shadow(1px 1px 0px var(--dark-gray)) drop-shadow(1px 1px 2px black);
   cursor: default;
 
   @media only screen and (max-width: 425px) {
@@ -306,7 +342,7 @@
   cursor: default;
 
   @media only screen and (max-width: 425px) {
-    color: var(--secondary-colour);
+    color: var(--dark-gray);
     text-shadow: 0px 0px 2px var(--primary-text);
     font-size: 1.5em;
     margin-left: 3vw;
@@ -368,7 +404,7 @@
   right: 0;
   margin-right: 10vw;
   z-index: 1;
-  filter: drop-shadow(1px 1px 0px var(--secondary-colour)) drop-shadow(1px 1px 2px black);
+  filter: drop-shadow(1px 1px 0px var(--dark-gray)) drop-shadow(1px 1px 2px black);
 
   @media only screen and (max-width: 425px) {
     width: 60vw;
@@ -384,20 +420,20 @@
   background-image: linear-gradient(
     31deg,
     transparent 54%,
-    var(--secondary-colour) 54%,
-    var(--secondary-colour) 60%,
+    var(--dark-gray) 54%,
+    var(--dark-gray) 60%,
     transparent 60%
   );
   z-index: -1;
-  filter: drop-shadow(1px 1px 0px var(--secondary-colour)) drop-shadow(1px 1px 2px black);
+  filter: drop-shadow(1px 1px 0px var(--dark-gray)) drop-shadow(1px 1px 2px black);
 
   @media only screen and (max-width: 425px) {
     margin-top: 43vw;
     background-image: linear-gradient(
       31deg,
       transparent 55.5%,
-      var(--secondary-colour) 55.5%,
-      var(--secondary-colour) 65%,
+      var(--dark-gray) 55.5%,
+      var(--dark-gray) 65%,
       transparent 65%
     );
   }
@@ -412,7 +448,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: var(--secondary-colour);
+  background-color: var(--dark-gray);
 
   @media only screen and (max-width: 425px) {
     font-size: 1.5em;
@@ -474,7 +510,7 @@
 #part4 {
   width: 100vw;
   height: 15vw;
-  background-color: var(--secondary-colour);
+  background-color: var(--dark-gray);
 
   @media only screen and (max-width: 425px) {
     height: 30vw;

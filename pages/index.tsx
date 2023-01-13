@@ -49,7 +49,8 @@ export default function Home({ title, thumbnail, setLinkClicked }: InferGetStati
                       onClick={(e) => { e.preventDefault(); setLinkClicked(`/articles/${title.toLowerCase().replace(/ /g, '_')}`) }}
                       src={thumbnail}
                     />
-                  <h2>Newest Article: <br /><span>{title}</span></h2>
+                  <h2>Newest Article: </h2>
+                  <h3>{title}</h3>
                 </a>
               </Link>
 
