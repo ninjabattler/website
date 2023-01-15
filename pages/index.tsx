@@ -66,7 +66,6 @@ export default function Home({ title, thumbnail, setLinkClicked }: InferGetStati
           {/* Video Games */}
           <section id={styles.part2}>
             <img src="/videogames.webp" />
-            <div className={styles.gradient1} />
             <h2>Video Games</h2>
             <h4>Never said I was original</h4>
 
