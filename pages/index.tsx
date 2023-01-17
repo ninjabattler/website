@@ -1,8 +1,7 @@
 import Head from 'next/head'
 import styles from '../styles/HomePage.module.scss'
-import React, { useEffect } from 'react';
+import React from 'react';
 import CodeBlock from '../components/articleComponents/CodeBlock/CodeBlock';
-import VideoBackground from '../components/VideoBackground/VideoBackground';
 import { homePageServerSideProps } from '../ssr/index'
 import Link from 'next/link';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
@@ -82,26 +81,17 @@ export default function Home({ title, thumbnail, setLinkClicked }: InferGetStati
             </div>
           </section>
 
-          <div className={styles.divider} />
-
           {/* Coding */}
           <section id={styles.part3}>
             <img src="/coding.webp" />
-            <div className={styles.gradient1} />
             <h2>Coding</h2>
             <h4>Words that do stuff</h4>
             <div className={styles.gradient2}>
               <CodeBlock
-                code={'const betterConsoleLog = (message) => {\n\tconsole.log(`Better ${message}`);\n};\n\nconst messageYouWillRead = `\nI write code, and coded this website.\n\nI mostly work with web development, JS, TS, React, NextJs etc, but I do have an interest in other languages as well.\n\nI also like to write words about code to, you can read that here, or just visit my Github and check that out.`;\n\nbetterConsoleLog(messageYouWillRead);\n\n\n\n\n'}
+                code={'const betterConsoleLog = (message) => {\n\tconsole.log(`Better ${message}`);\n};\n\nconst messageYouWillRead = `\nI write code, and coded this website.\n\nI mostly work with web development, JS, TS, React, NextJs etc, but I do have an interest in other languages as well.\n\nI also like to write words about code to, you can read that here, or just visit my Github and check that out.`;\n\nbetterConsoleLog(messageYouWillRead);'}
                 language={'javascript'}
                 highlight={"6-10"}
                 title="content.js"
-              />
-
-              <CodeBlock
-                code={'<body>\n\t<h1>Filler Text</h1>\n\t<h2>Because why not</h2>\n\t<p>\ngotta do something with this empty space. So here you go, have some text.\n</p>\n</body>'}
-                language={'html'}
-                title="filler.html"
               />
             </div>
           </section>

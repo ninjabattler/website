@@ -270,13 +270,15 @@
 }
 
 #part2 > h2 {
+  width: 68vw;
   position: absolute;
   font-size: 3.5em;
   font-family: "Russo One";
   font-weight: 100;
-  color: var(--primary-text);
-  margin-left: 32vw;
-  margin-top: 8.25vw;
+  color: var(--dark-gray);
+  background-color: var(--light-gray);
+  padding-left: 32vw;
+  margin-top: 7.5vw;
   cursor: default;
 
   @media only screen and (max-width: 425px) {
@@ -361,9 +363,9 @@
 
 #part3 > img {
   position: absolute;
-  width: 30vw;
+  width: 33vw;
   right: 0;
-  margin-right: 10vw;
+  margin-right: 2vw;
   z-index: 1;
   filter: drop-shadow(1px 1px 0px var(--dark-gray)) drop-shadow(1px 1px 2px black);
 
@@ -374,42 +376,14 @@
   }
 }
 
-#part3 > .gradient1 {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(
-    31deg,
-    transparent 54%,
-    var(--dark-gray) 54%,
-    var(--dark-gray) 60%,
-    transparent 60%
-  );
-  z-index: -1;
-  filter: drop-shadow(1px 1px 0px var(--dark-gray)) drop-shadow(1px 1px 2px black);
-
-  @media only screen and (max-width: 425px) {
-    margin-top: 43vw;
-    background-image: linear-gradient(
-      31deg,
-      transparent 55.5%,
-      var(--dark-gray) 55.5%,
-      var(--dark-gray) 65%,
-      transparent 65%
-    );
-  }
-}
-
 #part3 > .gradient2 {
-  width: 25%;
-  height: 100%;
-  margin-left: 2vw;
-  margin-top: -1vw;
-  padding-top: 1vw;
+  width: 60%;
+  height: fit-content;
+  margin-left: 1.5vw;
+  margin-top: 22.5vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: var(--dark-gray);
 
   @media only screen and (max-width: 425px) {
     font-size: 1.5em;
@@ -420,27 +394,17 @@
   }
 }
 
-#part3 > .gradient2 > span {
-  color: var(--primary-text);
-  margin-left: 1vw;
-  font-size: 0.7em;
-
-  @media only screen and (max-width: 425px) {
-    color: var(--primary-text);
-    margin-left: 1vw;
-    font-size: 0.7em;
-  }
-}
-
 #part3 > h2 {
+  width: 43vw;
+  height: fit-content;
   position: absolute;
-  font-size: 3.5em;
+  font-size: 3em;
   font-family: "Russo One";
   font-weight: 100;
-  color: var(--primary-text);
-  transform: skewY(31deg);
-  margin-left: 39.7vw;
-  margin-top: 7.4vw;
+  color: var(--dark-gray);
+  background-color: var(--light-gray);
+  padding-left: 57vw;
+  margin-top: 11.75vw;
   cursor: default;
 
   @media only screen and (max-width: 425px) {
@@ -450,14 +414,17 @@
 }
 
 #part3 > h4 {
+  width: 58vw;
   position: absolute;
   font-size: 1.5em;
   font-family: "Russo One";
   font-weight: 100;
   color: var(--primary-text);
-  transform: skewY(31deg);
-  margin-left: 35vw;
-  margin-top: 13vw;
+  background-color: var(--dark-gray);
+  padding-top: 0.5vw;
+  padding-bottom: 0.5vw;
+  padding-left: 42vw;
+  margin-top: 17vw;
   cursor: default;
 
   @media only screen and (max-width: 425px) {
