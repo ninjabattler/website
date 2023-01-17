@@ -60,8 +60,6 @@ export default function Home({ title, thumbnail, setLinkClicked }: InferGetStati
             </p>
           </section>
 
-          <div className={styles.divider} />
-
           {/* Video Games */}
           <section id={styles.part2}>
             <img src="/videogames.webp" />
@@ -95,8 +93,6 @@ export default function Home({ title, thumbnail, setLinkClicked }: InferGetStati
               />
             </div>
           </section>
-
-          <div className={styles.divider} />
 
           <section id={styles.part4}>
             <h2>And Whatever Else</h2>
