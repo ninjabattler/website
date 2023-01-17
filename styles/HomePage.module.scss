@@ -1,10 +1,11 @@
+$gradientColour: rgba(27, 27, 27, 0.5);
+
 #homePage {
   display: flex;
   flex-direction: column;
   font-size: 1.6vw;
   margin-bottom: -8.5vw;
   filter: drop-shadow(0 0 0.3vw black);
-  // backdrop-filter: blur(4px) brightness(1);
 
   @media only screen and (max-width: 425px) {
     font-size: 3vw;
@@ -247,7 +248,6 @@
   position: absolute;
   width: 40vw;
   z-index: 1;
-  // filter: drop-shadow(1px 1px 0px var(--dark-gray)) drop-shadow(1px 1px 2px black);
 
   @media only screen and (max-width: 425px) {
     width: 70vw;
@@ -276,9 +276,19 @@
   font-family: "Russo One";
   font-weight: 100;
   color: var(--dark-gray);
-  background-color: var(--light-gray);
   padding-left: 32vw;
-  margin-top: 7.5vw;
+  margin-top: 6.75vw;
+  background-image: linear-gradient(
+    -45deg,
+    var(--light-gray) 10vw,
+    $gradientColour 10vw,
+    $gradientColour 12vw,
+    var(--light-gray) 12vw,
+    var(--light-gray) 14vw,
+    $gradientColour 14vw,
+    $gradientColour 16vw,
+    var(--light-gray) 16vw
+  );
   cursor: default;
 
   @media only screen and (max-width: 425px) {
@@ -297,11 +307,21 @@
   font-family: "Russo One";
   font-weight: 100;
   color: var(--primary-text);
-  background-color: var(--dark-gray);
   padding-top: 0.5vw;
   padding-bottom: 0.5vw;
   padding-left: 34vw;
   margin-top: 13.5vw;
+  background-image: linear-gradient(
+    -45deg,
+    var(--dark-gray) 36.75vw,
+    $gradientColour 36.75vw,
+    $gradientColour 38.75vw,
+    var(--dark-gray) 38.75vw,
+    var(--dark-gray) 40.75vw,
+    $gradientColour 40.75vw,
+    $gradientColour 42.75vw,
+    var(--dark-gray) 42.75vw
+  );
   cursor: default;
 
   @media only screen and (max-width: 425px) {
@@ -402,10 +422,20 @@
   font-family: "Russo One";
   font-weight: 100;
   color: var(--dark-gray);
-  background-color: var(--light-gray);
   padding-left: 57vw;
-  margin-top: 11.75vw;
+  margin-top: 11.2vw;
   cursor: default;
+  background-image: linear-gradient(
+    45deg,
+    var(--light-gray) 10vw,
+    $gradientColour 10vw,
+    $gradientColour 12vw,
+    var(--light-gray) 12vw,
+    var(--light-gray) 14vw,
+    $gradientColour 14vw,
+    $gradientColour 16vw,
+    var(--light-gray) 16vw
+  );
 
   @media only screen and (max-width: 425px) {
     margin-left: 39.7vw;
@@ -420,11 +450,21 @@
   font-family: "Russo One";
   font-weight: 100;
   color: var(--primary-text);
-  background-color: var(--dark-gray);
   padding-top: 0.5vw;
   padding-bottom: 0.5vw;
   padding-left: 42vw;
   margin-top: 17vw;
+  background-image: linear-gradient(
+    45deg,
+    var(--dark-gray) 12.75vw,
+    $gradientColour 12.75vw,
+    $gradientColour 14.75vw,
+    var(--dark-gray) 14.75vw,
+    var(--dark-gray) 16.75vw,
+    $gradientColour 16.75vw,
+    $gradientColour 18.75vw,
+    var(--dark-gray) 18.75vw
+  );
   cursor: default;
 
   @media only screen and (max-width: 425px) {
