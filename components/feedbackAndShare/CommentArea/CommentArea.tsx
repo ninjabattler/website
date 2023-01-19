@@ -1,4 +1,4 @@
-import React, { ReactElement, RefObject } from 'react';
+import React, { ReactElement, RefObject, useMemo, useCallback } from 'react';
 import styles from "./CommentArea.module.scss";
 import JsxParser from 'react-jsx-parser';
 import FireText from '../../animatedText/FireText/FireText';
@@ -9,6 +9,12 @@ import RegexText from '../../animatedText/RegexText/RegexText';
 import MetalHeadText from '../../animatedText/MetalHeadText/MetalHeadText';
 import { addMarkdownToSelection, comment, styleText } from '../../../helpers/articlePageHelpers';
 import { PostIdType, UserIdType } from '../../../types';
+import { Editable, ReactEditor, Slate, withReact } from 'slate-react'
+import { createEditor, Text } from 'slate'
+import Prism from 'prismjs';
+
+// eslint-disable-next-line
+;Prism.languages.markdown=Prism.languages.extend("markup",{}),Prism.languages.insertBefore("markdown","prolog",{blockquote:{pattern:/^>(?:[\t ]*>)*/m,alias:"punctuation"},code:[{pattern:/^(?: {4}|\t).+/m,alias:"keyword"},{pattern:/``.+?``|`[^`\n]+`/,alias:"keyword"}],title:[{pattern:/\w+.*(?:\r?\n|\r)(?:==+|--+)/,alias:"important",inside:{punctuation:/==+$|--+$/}},{pattern:/(^\s*)#+.+/m,lookbehind:!0,alias:"important",inside:{punctuation:/^#+|#+$/}}],hr:{pattern:/(^\s*)([*-])([\t ]*\2){2,}(?=\s*$)/m,lookbehind:!0,alias:"punctuation"},list:{pattern:/(^\s*)(?:[*+-]|\d+\.)(?=[\t ].)/m,lookbehind:!0,alias:"punctuation"},"url-reference":{pattern:/!?\[[^\]]+\]:[\t ]+(?:\S+|<(?:\\.|[^>\\])+>)(?:[\t ]+(?:"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\((?:\\.|[^)\\])*\)))?/,inside:{variable:{pattern:/^(!?\[)[^\]]+/,lookbehind:!0},string:/(?:"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\((?:\\.|[^)\\])*\))$/,punctuation:/^[\[\]!:]|[<>]/},alias:"url"},bold:{pattern:/(^|[^\\])(\*\*|__)(?:(?:\r?\n|\r)(?!\r?\n|\r)|.)+?\2/,lookbehind:!0,inside:{punctuation:/^\*\*|^__|\*\*$|__$/}},italic:{pattern:/(^|[^\\])([*_])(?:(?:\r?\n|\r)(?!\r?\n|\r)|.)+?\2/,lookbehind:!0,inside:{punctuation:/^[*_]|[*_]$/}},url:{pattern:/!?\[[^\]]+\](?:\([^\s)]+(?:[\t ]+"(?:\\.|[^"\\])*")?\)| ?\[[^\]\n]*\])/,inside:{variable:{pattern:/(!?\[)[^\]]+(?=\]$)/,lookbehind:!0},string:{pattern:/"(?:\\.|[^"\\])*"(?=\)$)/}}}}),Prism.languages.markdown.bold.inside.url=Prism.util.clone(Prism.languages.markdown.url),Prism.languages.markdown.italic.inside.url=Prism.util.clone(Prism.languages.markdown.url),Prism.languages.markdown.bold.inside.italic=Prism.util.clone(Prism.languages.markdown.italic),Prism.languages.markdown.italic.inside.bold=Prism.util.clone(Prism.languages.markdown.bold); // prettier-ignore
 
 interface CommentAreaProps {
   commentRef: RefObject<any>;
@@ -39,6 +45,47 @@ export default function CommentArea({
   commentContent,
   noAnim }: CommentAreaProps): ReactElement {
 
+  const editor: ReactEditor = useMemo(() => withReact(createEditor()), []);
+  const decorate = useCallback(([node, path]) => {
+    const ranges = []
+
+    if (!Text.isText(node)) {
+      return ranges
+    }
+
+    const getLength = token => {
+      if (typeof token === 'string') {
+        return token.length
+      } else if (typeof token.content === 'string') {
+        return token.content.length
+      } else {
+        return token.content.reduce((l, t) => l + getLength(t), 0)
+      }
+    }
+
+    const tokens = Prism.tokenize(node.text, Prism.languages.markdown)
+    let start = 0
+
+    for (const token of tokens) {
+      const length = getLength(token)
+      const end = start + length
+
+      if (typeof token !== 'string') {
+        ranges.push({
+          [token.type]: true,
+          anchor: { path, offset: start },
+          focus: { path, offset: end },
+        })
+      }
+
+      start = end
+    }
+
+    console.log(ranges)
+
+    return ranges
+  }, [])
+
   return (
     <>
       {commenting === true ?
@@ -48,14 +95,33 @@ export default function CommentArea({
           </p>
         </>) :
         (<>
-          <div contentEditable ref={commentRef} id={styles.commentAreaView} className={noAnim && styles.noAnim}>
-            {/* @ts-ignore - JsxParser has an error with how it exports, works perfectly fine though */}
-            <JsxParser
-              components={{ FireText, EarthText, IceText, ThunderText, RegexText, MetalHeadText } as {}}
-              jsx={styleText(commentContent)}
+          <Slate editor={editor} value={[
+            {
+              type: 'paragraph',
+              children: [
+                {
+                  text: ''
+                }
+              ]
+            }
+          ]}>
+            <Editable 
+              decorate={decorate}
+              id={styles.commentAreaView}
+              className={noAnim && styles.noAnim}
+              renderLeaf={({ attributes, leaf, children }) => {
+                if (leaf.bold) {
+                  return <b {...attributes}>{children}</b>
+                } else if (leaf.italic) {
+                  return <i {...attributes}>{children}</i>
+                } else if (leaf.blockquote) {
+                  return <span className={styles.blockQuote} {...attributes}>{children}</span>
+                } else {
+                  return <span {...attributes}>{children}</span>
+                }
+              }}
             />
-          </div>
-          
+          </Slate>
 
           <div id={styles.commentStylingBar} className={noAnim && styles.noAnim}>
             <button onClick={() => { addMarkdownToSelection(commentRef, '**', '**', setCommentContent) }}>
