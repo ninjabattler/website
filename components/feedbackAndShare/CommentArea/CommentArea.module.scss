@@ -1,4 +1,3 @@
-#commentArea,
 #commentAreaView {
   width: calc(100% - 0.6vw);
   height: 5.4vw !important;
@@ -36,14 +35,12 @@
   border: 0.1vw solid var(--light-gray);
 }
 
-#commentArea > div > p,
-#commentAreaView > div > span {
-  margin: 0.1vw;
+#commentAreaView > div {
+  // margin: 0.1vw;
   margin-left: 0.3vw;
   line-height: 1.4em;
 }
 
-#commentArea > div > blockquote,
 #commentAreaView > div > span > .blockQuote {
   width: 1vw;
   margin-left: 0.4vw;
@@ -71,7 +68,7 @@
 
 #commentStylingBar {
   width: 100%;
-  height: 1.75vw;
+  height: 1.25vw;
   margin: 0;
   overflow: visible;
   display: flex;
@@ -83,31 +80,29 @@
 }
 
 #commentStylingBar > button {
-  min-width: 2vw;
-  height: 1.75vw;
+  min-width: 1.75vw;
+  height: 1.25vw;
   border: none;
   outline: none;
-  border-right: 0.15vw solid var(--dark-gray);
   font-family: "Russo One";
   font-weight: 100;
-  font-size: 1.3vw;
+  font-size: 1.1vw;
   color: var(--dark-gray);
   background-color: var(--light-gray);
   margin-top: 0;
   cursor: pointer;
-  transition: margin 0.2s, height 0.2s, border 0.2s, color 0.2s, background-color 0.2s;
+  transition: margin-top 0.2s, height 0.2s, border-top 0.2s, color 0.2s, background-color 0.2s;
 
   &:hover {
-    height: 2vw;
+    height: 1.5vw;
     margin-top: -0.25vw;
-    border-right: 0.15vw solid var(--article-colour);
-    border-top: 0.15vw solid var(--article-colour);
+    border-top: 0.25vw solid var(--article-colour);
   }
 
   &:active {
-    height: 1.75vw;
+    height: 1.25vw;
     margin-top: 0;
-    border-top: 0.4vw solid var(--article-colour);
+    border-top: 0.1vw solid var(--article-colour);
     color: var(--article-colour);
     background-color: var(--primary-text);
   }
@@ -123,40 +118,8 @@
   cursor: unset;
 }
 
-#commentViewBar {
-  width: 100%;
-  height: 1.62vw;
-  margin: 0;
-  overflow: hidden;
-  display: flex;
-  border-bottom: 1px solid var(--light-gray);
-  border-top: 1px solid var(--light-gray);
-  animation-name: commentBarsFadeIn;
-  animation-timing-function: linear;
-  animation-duration: 1.875s;
-  margin-bottom: 4px;
-}
 
-#commentViewBar > button {
-  width: 50%;
-  height: 1.75vw;
-  border: none;
-  outline: none;
-  margin-right: 2px;
-  font-size: 1.3vw;
-  color: var(--light-gray);
-  background-color: var(--dark-gray);
-  cursor: pointer;
-  transform: skewX(10deg);
-
-  @media only screen and (max-width: 425px) {
-    height: 6vw;
-    font-size: 5vw;
-  }
-}
-
-#commentStylingBar,
-#commentViewBar {
+#commentStylingBar {
   @media only screen and (max-width: 425px) {
     height: 6vw;
   }
@@ -164,25 +127,37 @@
 
 #postComment {
   width: fit-content;
+  height: 1.25vw !important;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-left: auto;
   color: var(--primary-text) !important;
-  background-color: var(--dark-gray) !important;
-  border-right: none !important;
-  border-bottom: 0.15vw solid var(--light-gray) !important;
-  border-top: 0.15vw solid var(--light-gray) !important;
+  border: none !important;
+  background-color: transparent !important;
+  background-image: linear-gradient(
+    45deg,
+    transparent 20%,
+    transparent 24%,
+    var(--secondary-colour) 24%,
+    var(--secondary-colour) 28%,
+    transparent 28%,
+    transparent 32%,
+    var(--secondary-colour) 32%
+  );
+  padding-left: 4.5vw;
+  padding-right: 1vw;
+  filter: drop-shadow(0vw 0 0 var(--article-colour));
+  transition: padding 0.2s, color 0.2s, filter 0.2s !important;
 
   &:hover {
-    border-left: 0.15vw solid var(--article-colour);
-    border-top: 0.15vw solid var(--article-colour) !important;
+    padding-right: 1.5vw;
+    padding-left: 5vw;
+    margin-top: 0 !important;
+    filter: drop-shadow(-0.2vw 0 0 var(--article-colour));
   }
 
   &:active {
-    height: 1.75vw !important;
-    margin-top: 0vw !important;
-    border-top: 0.4vw solid var(--article-colour);
     color: var(--article-colour) !important;
   }
 
@@ -191,30 +166,23 @@
   }
 }
 
-#commentViewBar > .selected {
-  color: var(--secondary-colour);
-  background-color: var(--light-gray);
-}
-
 #animTextDropdown {
   display: flex;
   flex-direction: column;
   min-width: 30%;
-  min-height: 1.75vw;
+  min-height: 1.25vw;
   font-family: "Russo One";
   font-weight: 100;
-  font-size: 1.3vw;
+  font-size: 1.1vw;
   color: var(--dark-gray);
-  border-right: 0.15vw solid var(--dark-gray);
   background-color: var(--light-gray);
   margin-top: 0;
   cursor: pointer;
   transition: margin 0.2s, height 0.2s, border 0.2s, color 0.2s;
 
   &:hover {
-    height: 2vw;
+    height: 1.5vw;
     margin-top: -0.25vw;
-    border-right: 0.15vw solid var(--article-colour);
     border-top: 0.15vw solid var(--article-colour);
     color: var(--article-colour);
   }

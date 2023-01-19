@@ -109,6 +109,7 @@ export default function CommentArea({
               decorate={decorate}
               id={styles.commentAreaView}
               className={noAnim && styles.noAnim}
+              placeholder="Leave a Comment!"
               renderLeaf={({ attributes, leaf, children }) => {
                 if (leaf.bold) {
                   return <b {...attributes}>{children}</b>
@@ -133,29 +134,6 @@ export default function CommentArea({
             <button onClick={() => { addMarkdownToSelection(commentRef, '> ', '', setCommentContent) }}>
               <b>{'>'}</b>
             </button>
-            <div id={styles.animTextDropdown}>
-              <p>Anim Text</p>
-              <div>
-                <button onClick={() => { addMarkdownToSelection(commentRef, '{Fire}[', ']', setCommentContent) }}>
-                  <FireText text='Anim Text' />
-                </button>
-                <button onClick={() => { addMarkdownToSelection(commentRef, '{Ice}[', ']', setCommentContent) }}>
-                  <IceText text='Anim Text' />
-                </button>
-                <button onClick={() => { addMarkdownToSelection(commentRef, '{Thunder}[', ']', setCommentContent) }}>
-                  <ThunderText text='Anim Text' />
-                </button>
-                <button onClick={() => { addMarkdownToSelection(commentRef, '{Earth}[', ']', setCommentContent) }}>
-                  <EarthText text='Anim Text' />
-                </button>
-                <button onClick={() => { addMarkdownToSelection(commentRef, '{Regex}[', ']', setCommentContent) }}>
-                  <RegexText text='Anim Text' />
-                </button>
-                <button onClick={() => { addMarkdownToSelection(commentRef, '{MetalHead}[', ']', setCommentContent) }}>
-                  <MetalHeadText text='Anim Text' />
-                </button>
-              </div>
-            </div>
 
             <button id={styles.postComment} onClick={() => {
               const content = styleText(commentContent);
