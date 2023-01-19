@@ -62,7 +62,7 @@ export default function CommentArea({
               <b>B</b>
             </button>
             <button onClick={() => { addMarkdownToSelection(commentRef, '_', '_', setCommentContent) }}>
-              <i>i</i>
+              <i>I</i>
             </button>
             <button onClick={() => { addMarkdownToSelection(commentRef, '> ', '', setCommentContent) }}>
               <b>{'>'}</b>

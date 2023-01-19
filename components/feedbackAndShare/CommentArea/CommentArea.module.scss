@@ -1,13 +1,11 @@
 #commentArea,
 #commentAreaView {
-  width: calc(99% - 10px);
+  width: calc(100% - 0.6vw);
   height: 5.4vw !important;
   padding: 5px;
   background: none;
   border: none;
   outline: none;
-  margin-top: 2px;
-  margin-bottom: 2px;
   color: var(--primary-text);
   font-size: 0.9vw;
   margin-top: 0;
@@ -25,6 +23,7 @@
 }
 
 #commentAreaView::-webkit-scrollbar {
+  width: 0.5vw;
   background: var(--light-gray);
 }
 
@@ -85,24 +84,33 @@
 }
 
 #commentStylingBar > button {
-  min-width: 1.75vw;
+  min-width: 2vw;
   height: 1.75vw;
   border: none;
   outline: none;
   border-right: 0.15vw solid var(--dark-gray);
+  font-family: "Russo One";
+  font-weight: 100;
   font-size: 1.3vw;
   color: var(--dark-gray);
   background-color: var(--light-gray);
   margin-top: 0;
   cursor: pointer;
-  transition: margin 0.2s, height 0.2s, border 0.2s, color 0.2s;
+  transition: margin 0.2s, height 0.2s, border 0.2s, color 0.2s, background-color 0.2s;
 
   &:hover {
     height: 2vw;
     margin-top: -0.25vw;
     border-right: 0.15vw solid var(--article-colour);
     border-top: 0.15vw solid var(--article-colour);
+  }
+
+  &:active {
+    height: 1.75vw;
+    margin-top: 0;
+    border-top: 0.40vw solid var(--article-colour);
     color: var(--article-colour);
+    background-color: var(--primary-text);
   }
 
   @media only screen and (max-width: 425px) {
@@ -170,7 +178,12 @@
   &:hover {
     border-left: 0.15vw solid var(--article-colour);
     border-top: 0.15vw solid var(--article-colour) !important;
-    border-bottom: 0.15vw solid var(--article-colour) !important;
+  }
+
+  &:active {
+    height: 1.75vw !important;
+    margin-top: 0vw !important;
+    border-top: 0.40vw solid var(--article-colour);
     color: var(--article-colour) !important;
   }
 
@@ -189,6 +202,8 @@
   flex-direction: column;
   min-width: 30%;
   min-height: 1.75vw;
+  font-family: "Russo One";
+  font-weight: 100;
   font-size: 1.3vw;
   color: var(--dark-gray);
   border-right: 0.15vw solid var(--dark-gray);
@@ -253,12 +268,17 @@
   border-bottom: 0.15vw solid var(--dark-gray);
   outline: none;
   background-color: var(--light-gray);
-  transition: border 0.2s, color 0.2s;
+  transition: border 0.2s, color 0.2s, height 0.2s, background-color 0.2s;
 
   &:hover {
     border-bottom: 0.15vw solid var(--article-colour);
     border-top: 0.15vw solid var(--article-colour);
-    color: var(--article-colour);
+    height: 3vw;
+  }
+
+  &:active {
+    height: 2vw;
+    background-color: var(--primary-text);
   }
 
   @media only screen and (max-width: 425px) {
