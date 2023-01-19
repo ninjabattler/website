@@ -8,7 +8,7 @@ $gradientColour: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: right;
   align-items: flex-start;
-  filter: drop-shadow(-6px 3px 0.2vw black);
+  filter: drop-shadow(-0.3vw 0.15vw 0.2vw black);
 
   @media only screen and (max-width: 425px) {
     margin-bottom: 18vw;
@@ -169,25 +169,25 @@ $gradientColour: rgba(0, 0, 0, 0.5);
 
 @keyframes glow {
   0% {
-    filter: blur(6px) brightness(2);
+    filter: blur(0.3vw) brightness(2);
   }
   50% {
-    filter: blur(4px) brightness(1.5);
+    filter: blur(0.2vw) brightness(1.5);
   }
   100% {
-    filter: blur(6px) brightness(2);
+    filter: blur(0.3vw) brightness(2);
   }
 }
 
 @keyframes glow2 {
   0% {
-    filter: blur(6px) brightness(3);
+    filter: blur(0.3vw) brightness(2);
   }
   50% {
-    filter: blur(2px) brightness(1.5);
+    filter: blur(0.1vw) brightness(1.25);
   }
   100% {
-    filter: blur(6px) brightness(3);
+    filter: blur(0.3vw) brightness(2);
   }
 }
 

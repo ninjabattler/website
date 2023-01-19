@@ -48,12 +48,12 @@ body {
 
 body::-webkit-scrollbar {
   background: var(--light-gray);
-  outline: 4px solid var(--dark-gray);
+  outline: none;
 }
 
 body::-webkit-scrollbar-track {
   background: var(--light-gray);
-  border: 2px solid var(--dark-gray);
+  border-left: 0.2vw solid var(--dark-gray);
 }
 
 body::-webkit-scrollbar-thumb {

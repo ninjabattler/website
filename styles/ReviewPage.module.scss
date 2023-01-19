@@ -118,7 +118,7 @@
   animation-duration: 1.875s;
 }
 
-.commentPanel > div::-webkit-scrollbar {
+.commentPanel > .comments::-webkit-scrollbar {
   background: var(--light-gray);
   outline: 4px solid var(--secondary-colour);
 
@@ -128,11 +128,11 @@
   }
 }
 
-.commentPanel > div::-webkit-scrollbar-track {
+.commentPanel > .comments::-webkit-scrollbar-track {
   background: var(--light-gray);
 }
 
-.commentPanel > div::-webkit-scrollbar-thumb {
+.commentPanel > .comments::-webkit-scrollbar-thumb {
   background: var(--secondary-colour);
   border: 2px solid var(--light-gray);
 

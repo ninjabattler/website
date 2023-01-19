@@ -139,13 +139,13 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
             }
           </article>
 
-          {edit &&
+          {!edit &&
             <aside className={styles.creationPanel}>
               <MainSettings articleData={article} jsonLocation={jsonLocation} updateArticleData={updateArticleData} />
             </aside>
           }
 
-          {!edit &&
+          {edit &&
             <aside className={styles.commentPanel} style={windowServer.innerWidth < 426 ? { marginLeft: showPanel ? "-100%" : "0%", display: showCommentPanel ? 'initial' : 'none' } : { display: showCommentPanel ? 'initial' : 'none' }}>
               <LikePanel
                 postId={articleData.id}

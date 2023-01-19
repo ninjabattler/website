@@ -48,46 +48,14 @@ export default function CommentArea({
           </p>
         </>) :
         (<>
-          <div id={styles.commentViewBar} className={noAnim && styles.noAnim}>
-            <button className={!viewComment && styles.selected} onClick={() => { setViewComment(false) }}>
-              <b>
-                Edit
-              </b>
-            </button>
-            <button className={viewComment && styles.selected} onClick={() => {
-              if (commentRef.current) {
-                setCommentContent(commentRef.current.innerText);
-              };
-              setViewComment(true)
-            }}>
-              <b>
-                View
-              </b>
-            </button>
+          <div contentEditable ref={commentRef} id={styles.commentAreaView} className={noAnim && styles.noAnim}>
+            {/* @ts-ignore - JsxParser has an error with how it exports, works perfectly fine though */}
+            <JsxParser
+              components={{ FireText, EarthText, IceText, ThunderText, RegexText, MetalHeadText } as {}}
+              jsx={styleText(commentContent)}
+            />
           </div>
-
-          {
-            viewComment &&
-            (<div id={styles.commentAreaView} className={noAnim && styles.noAnim}>
-              {/* @ts-ignore - JsxParser has an error with how it exports, works perfectly fine though */}
-              <JsxParser
-                components={{ FireText, EarthText, IceText, ThunderText, RegexText, MetalHeadText } as {}}
-                jsx={styleText(commentContent)}
-              />
-            </div>)
-          }
-          {
-            !viewComment &&
-            (<div
-              id={styles.commentArea}
-              className={noAnim && styles.noAnim}
-              placeholder='Leave a comment'
-              contentEditable
-              ref={commentRef}
-              dangerouslySetInnerHTML={{ __html: commentContent }}
-            >
-            </div>)
-          }
+          
 
           <div id={styles.commentStylingBar} className={noAnim && styles.noAnim}>
             <button onClick={() => { addMarkdownToSelection(commentRef, '**', '**', setCommentContent) }}>
@@ -123,7 +91,6 @@ export default function CommentArea({
               </div>
             </div>
 
-            <button id={styles.styleFiller}></button>
             <button id={styles.postComment} onClick={() => {
               const content = styleText(commentContent);
 
@@ -132,7 +99,7 @@ export default function CommentArea({
                 setComments(newComments)
               })
             }}>
-              <b>Post</b>
+              <b>Comment</b>
             </button>
           </div>
         </>)}
