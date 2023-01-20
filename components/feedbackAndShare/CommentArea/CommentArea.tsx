@@ -1,17 +1,24 @@
 import React, { ReactElement, RefObject, useMemo, useCallback } from 'react';
 import styles from "./CommentArea.module.scss";
-import JsxParser from 'react-jsx-parser';
-import FireText from '../../animatedText/FireText/FireText';
-import ThunderText from '../../animatedText/ThunderText/ThunderText';
-import IceText from '../../animatedText/IceText/IceText';
-import EarthText from '../../animatedText/EarthText/EarthText';
-import RegexText from '../../animatedText/RegexText/RegexText';
-import MetalHeadText from '../../animatedText/MetalHeadText/MetalHeadText';
+// import JsxParser from 'react-jsx-parser';
+// import FireText from '../../animatedText/FireText/FireText';
+// import ThunderText from '../../animatedText/ThunderText/ThunderText';
+// import IceText from '../../animatedText/IceText/IceText';
+// import EarthText from '../../animatedText/EarthText/EarthText';
+// import RegexText from '../../animatedText/RegexText/RegexText';
+// import MetalHeadText from '../../animatedText/MetalHeadText/MetalHeadText';
 import { addMarkdownToSelection, comment, styleText } from '../../../helpers/articlePageHelpers';
 import { PostIdType, UserIdType } from '../../../types';
 import { Editable, ReactEditor, Slate, withReact } from 'slate-react'
-import { createEditor, Text } from 'slate'
+import { createEditor, Text, Editor } from 'slate'
 import Prism from 'prismjs';
+import { 
+  FormatListBulleted,
+  FormatListNumbered,
+  FormatBold,
+  FormatItalic,
+  FormatQuote
+} from '@material-ui/icons';
 
 // eslint-disable-next-line
 ;Prism.languages.markdown=Prism.languages.extend("markup",{}),Prism.languages.insertBefore("markdown","prolog",{blockquote:{pattern:/^>(?:[\t ]*>)*/m,alias:"punctuation"},code:[{pattern:/^(?: {4}|\t).+/m,alias:"keyword"},{pattern:/``.+?``|`[^`\n]+`/,alias:"keyword"}],title:[{pattern:/\w+.*(?:\r?\n|\r)(?:==+|--+)/,alias:"important",inside:{punctuation:/==+$|--+$/}},{pattern:/(^\s*)#+.+/m,lookbehind:!0,alias:"important",inside:{punctuation:/^#+|#+$/}}],hr:{pattern:/(^\s*)([*-])([\t ]*\2){2,}(?=\s*$)/m,lookbehind:!0,alias:"punctuation"},list:{pattern:/(^\s*)(?:[*+-]|\d+\.)(?=[\t ].)/m,lookbehind:!0,alias:"punctuation"},"url-reference":{pattern:/!?\[[^\]]+\]:[\t ]+(?:\S+|<(?:\\.|[^>\\])+>)(?:[\t ]+(?:"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\((?:\\.|[^)\\])*\)))?/,inside:{variable:{pattern:/^(!?\[)[^\]]+/,lookbehind:!0},string:/(?:"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\((?:\\.|[^)\\])*\))$/,punctuation:/^[\[\]!:]|[<>]/},alias:"url"},bold:{pattern:/(^|[^\\])(\*\*|__)(?:(?:\r?\n|\r)(?!\r?\n|\r)|.)+?\2/,lookbehind:!0,inside:{punctuation:/^\*\*|^__|\*\*$|__$/}},italic:{pattern:/(^|[^\\])([*_])(?:(?:\r?\n|\r)(?!\r?\n|\r)|.)+?\2/,lookbehind:!0,inside:{punctuation:/^[*_]|[*_]$/}},url:{pattern:/!?\[[^\]]+\](?:\([^\s)]+(?:[\t ]+"(?:\\.|[^"\\])*")?\)| ?\[[^\]\n]*\])/,inside:{variable:{pattern:/(!?\[)[^\]]+(?=\]$)/,lookbehind:!0},string:{pattern:/"(?:\\.|[^"\\])*"(?=\)$)/}}}}),Prism.languages.markdown.bold.inside.url=Prism.util.clone(Prism.languages.markdown.url),Prism.languages.markdown.italic.inside.url=Prism.util.clone(Prism.languages.markdown.url),Prism.languages.markdown.bold.inside.italic=Prism.util.clone(Prism.languages.markdown.italic),Prism.languages.markdown.italic.inside.bold=Prism.util.clone(Prism.languages.markdown.bold); // prettier-ignore
@@ -46,6 +53,11 @@ export default function CommentArea({
   noAnim }: CommentAreaProps): ReactElement {
 
   const editor: ReactEditor = useMemo(() => withReact(createEditor()), []);
+
+// 
+// 
+// 
+
   const decorate = useCallback(([node, path]) => {
     const ranges = []
 
@@ -81,10 +93,16 @@ export default function CommentArea({
       start = end
     }
 
-    console.log(ranges)
-
     return ranges
   }, [])
+  
+  const addMarkdown = (editor: ReactEditor, markStart: string, markEnd: string) => {
+    Editor.insertText(editor, `${markStart}${Editor.string(editor, editor.selection)}${markEnd}`)
+  }
+
+// 
+// 
+// 
 
   return (
     <>
@@ -117,6 +135,8 @@ export default function CommentArea({
                   return <i {...attributes}>{children}</i>
                 } else if (leaf.blockquote) {
                   return <span className={styles.blockQuote} {...attributes}>{children}</span>
+                } else if (leaf.list) {
+                  return <span className={styles.listItem} {...attributes}>{children}</span>
                 } else {
                   return <span {...attributes}>{children}</span>
                 }
@@ -125,14 +145,20 @@ export default function CommentArea({
           </Slate>
 
           <div id={styles.commentStylingBar} className={noAnim && styles.noAnim}>
-            <button onClick={() => { addMarkdownToSelection(commentRef, '**', '**', setCommentContent) }}>
-              <b>B</b>
+            <button onClick={() => { addMarkdown(editor, '**', '**') }}>
+              <FormatBold />
             </button>
-            <button onClick={() => { addMarkdownToSelection(commentRef, '_', '_', setCommentContent) }}>
-              <i>I</i>
+            <button onClick={() => { addMarkdown(editor, '_', '_') }}>
+              <FormatItalic />
             </button>
-            <button onClick={() => { addMarkdownToSelection(commentRef, '> ', '', setCommentContent) }}>
-              <b>{'>'}</b>
+            <button onClick={() => { addMarkdown(editor, '>', '') }}>
+              <FormatQuote />
+            </button>
+            <button onClick={() => { addMarkdown(editor, '- ', '') }}>
+              <FormatListBulleted />
+            </button>
+            <button onClick={() => { addMarkdown(editor, '1. ', '') }}>
+              <FormatListNumbered />
             </button>
 
             <button id={styles.postComment} onClick={() => {
