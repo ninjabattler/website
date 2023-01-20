@@ -9,12 +9,12 @@
   mask: linear-gradient(
     45deg,
     black 3%,
-    rgba(0, 0, 0, 0.5) 3%,
-    rgba(0, 0, 0, 0.5) 5%,
+    rgba(0, 0, 0, 0.25) 3%,
+    rgba(0, 0, 0, 0.25) 5%,
     black 5%,
     black 95%,
-    rgba(0, 0, 0, 0.5) 95%,
-    rgba(0, 0, 0, 0.5) 97%,
+    rgba(0, 0, 0, 0.25) 95%,
+    rgba(0, 0, 0, 0.25) 97%,
     black 97%
   );
   animation-name: panelFadeIn;
@@ -39,7 +39,7 @@
   padding-left: 1.3vw;
   padding-right: 1.3vw;
   filter: drop-shadow(0 0 0vw black);
-  transition: filter 0.25s;
+  transition: transform 0.2s;
 
   @media only screen and (max-width: 425px) {
     font-size: 6vw;
@@ -48,7 +48,11 @@
   }
 
   &:hover {
-    filter: drop-shadow(0 0 0.1vw black);
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.9);
   }
 }
 

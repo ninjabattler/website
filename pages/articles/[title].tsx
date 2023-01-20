@@ -55,7 +55,7 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
       window.removeEventListener('scroll', scrollListener);
       setTimeout(() => {
         setNoAnim(true)
-      }, 2000)
+      }, 4000)
     }
   }
 

@@ -58,13 +58,7 @@
   position: sticky;
   width: 30%;
   height: 70vh;
-  background-image: linear-gradient(
-    45deg,
-    var(--dark-gray) 3%,
-    rgba(0, 0, 0, 0.5) 3%,
-    rgba(0, 0, 0, 0.5) 5%,
-    var(--dark-gray) 5%
-  );
+  background-color: var(--dark-gray);
   margin-left: auto;
   margin-right: auto;
   top: 11.5vw;
@@ -107,9 +101,8 @@
 
 .commentPanel > div {
   overflow-y: scroll;
-  height: 70%;
-  margin-top: 5px;
-  width: 99%;
+  height: calc(100% - 7.35vw);
+  width: calc(100%);
 }
 
 .comments {
@@ -119,13 +112,8 @@
 }
 
 .commentPanel > .comments::-webkit-scrollbar {
+  width: 0.5vw;
   background: var(--light-gray);
-  outline: 4px solid var(--secondary-colour);
-
-  @media only screen and (max-width: 425px) {
-    outline: 1px solid var(--secondary-colour);
-    width: 8px;
-  }
 }
 
 .commentPanel > .comments::-webkit-scrollbar-track {
@@ -133,13 +121,8 @@
 }
 
 .commentPanel > .comments::-webkit-scrollbar-thumb {
-  background: var(--secondary-colour);
-  border: 2px solid var(--light-gray);
-
-  @media only screen and (max-width: 425px) {
-    background: var(--secondary-colour);
-    border: 1px solid var(--light-gray);
-  }
+  background: var(--dark-gray);
+  border: 0.1vw solid var(--light-gray);
 }
 
 .mobile {

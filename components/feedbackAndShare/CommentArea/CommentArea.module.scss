@@ -1,5 +1,5 @@
 #commentAreaView {
-  width: calc(100% - 0.6vw);
+  width: calc(100% - 10px);
   height: 5.4vw !important;
   padding: 5px;
   background: none;
@@ -13,7 +13,8 @@
   flex-direction: column;
   animation-name: commentAreaFadeIn;
   animation-timing-function: linear;
-  animation-duration: 1.875s;
+  animation-duration: 3s;
+  overflow-x: hidden;
 
   @media only screen and (max-width: 425px) {
     height: 20vw !important;
@@ -36,9 +37,11 @@
 }
 
 #commentAreaView > div {
-  // margin: 0.1vw;
   margin-left: 0.3vw;
   line-height: 1.4em;
+  animation-name: commentAreaContentFadeIn;
+  animation-timing-function: linear;
+  animation-duration: 3.5s;
 }
 
 #commentAreaView > div > span > .blockQuote {
@@ -77,14 +80,13 @@
   overflow: visible;
   display: flex;
   background-color: var(--light-gray);
-  border-right: 4% solid var(--light-gray);
   animation-name: commentBarsFadeIn;
   animation-timing-function: linear;
   animation-duration: 1.875s;
 }
 
 #commentStylingBar > button {
-  min-width: 1.75vw;
+  width: 1.75vw;
   height: 1.25vw;
   display: flex;
   align-items: center;
@@ -99,6 +101,9 @@
   margin-top: 0;
   cursor: pointer;
   transition: margin-top 0.2s, height 0.2s, border-top 0.2s, color 0.2s, background-color 0.2s;
+  animation-name: styleButtonFadeIn;
+  animation-timing-function: linear;
+  animation-duration: 2.475s;
 
   &:hover {
     height: 1.5vw;
@@ -137,7 +142,7 @@
 }
 
 #postComment {
-  width: fit-content;
+  width: fit-content !important;
   height: 1.25vw !important;
   display: flex;
   align-items: center;
@@ -161,6 +166,7 @@
   padding-right: 1vw;
   filter: drop-shadow(0vw 0 0 var(--article-colour));
   transition: padding 0.2s, color 0.2s, filter 0.2s !important;
+  animation-name: postButtonFadeIn !important;
 
   &:hover {
     padding-right: 1.5vw;
@@ -178,94 +184,6 @@
   }
 }
 
-#animTextDropdown {
-  display: flex;
-  flex-direction: column;
-  min-width: 30%;
-  min-height: 1.25vw;
-  font-family: "Russo One";
-  font-weight: 100;
-  font-size: 1.1vw;
-  color: var(--dark-gray);
-  background-color: var(--light-gray);
-  margin-top: 0;
-  cursor: pointer;
-  transition: margin 0.2s, height 0.2s, border 0.2s, color 0.2s;
-
-  &:hover {
-    height: 1.5vw;
-    margin-top: -0.25vw;
-    border-top: 0.15vw solid var(--article-colour);
-    color: var(--article-colour);
-  }
-
-  @media only screen and (max-width: 425px) {
-    font-size: 5vw;
-  }
-}
-
-#animTextDropdown > p {
-  margin: auto;
-  text-align: center;
-
-  @media only screen and (max-width: 425px) {
-    text-align: right;
-    margin-left: 3vw;
-  }
-}
-
-#animTextDropdown > div {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  width: 30%;
-  height: fit-content;
-  z-index: 10;
-  margin-top: 1.85vw;
-  height: 0;
-  overflow-y: hidden;
-  transition: height 0.5s, margin 0.2s;
-  // z-index: 0;
-
-  @media only screen and (max-width: 425px) {
-    width: 39%;
-  }
-}
-
-#animTextDropdown:hover > div {
-  height: 20vw;
-  margin-top: 2.1vw;
-}
-
-#animTextDropdown > div > button {
-  display: block;
-  cursor: pointer;
-  width: 100%;
-  height: 2vw;
-  font-size: 0.8em;
-  border: none;
-  border-bottom: 0.15vw solid var(--dark-gray);
-  outline: none;
-  background-color: var(--light-gray);
-  transition: border 0.2s, color 0.2s, height 0.2s, background-color 0.2s;
-
-  &:hover {
-    border-bottom: 0.15vw solid var(--article-colour);
-    border-top: 0.15vw solid var(--article-colour);
-    height: 3vw;
-  }
-
-  &:active {
-    height: 2vw;
-    background-color: var(--primary-text);
-  }
-
-  @media only screen and (max-width: 425px) {
-    height: 6vw;
-    filter: drop-shadow(1px 1px 3px black);
-  }
-}
-
 .noAnim {
   animation: none !important;
 }
@@ -273,18 +191,18 @@
 @keyframes commentBarsFadeIn {
   0% {
     height: 0px;
-    margin-bottom: 30px;
+    margin-bottom: 1.25vw;
     border-bottom: 0px solid var(--light-gray);
     border-top: 0px solid var(--light-gray);
   }
   80% {
     height: 0px;
-    margin-bottom: 30px;
+    margin-bottom: 1.25vw;
     border-bottom: 0px solid var(--light-gray);
     border-top: 0px solid var(--light-gray);
   }
   100% {
-    height: 30px;
+    height: 1.25vw;
     margin-bottom: 0px;
     border-bottom: 1px solid var(--light-gray);
     border-top: 1px solid var(--light-gray);
@@ -293,13 +211,51 @@
 
 @keyframes commentAreaFadeIn {
   0% {
+    width: 0%;
     opacity: 0%;
+  }
+  50% {
+    width: 0%;
+    opacity: 0%;
+  }
+  52% {
+    opacity: 100%;
+  }
+  100% {
+    width: calc(100% - 10px);
+  }
+}
+
+@keyframes styleButtonFadeIn {
+  0% {
+    opacity: 0%;
+    transform: scale(0);
   }
   80% {
     opacity: 0%;
+    transform: scale(0);
   }
   100% {
     opacity: 100%;
+    transform: scale(1);
+  }
+}
+
+@keyframes postButtonFadeIn {
+  0% {
+    opacity: 0%;
+    padding-left: 3.5vw;
+    padding-right: 0vw;
+  }
+  80% {
+    opacity: 0%;
+    padding-left: 3.5vw;
+    padding-right: 0vw;
+  }
+  100% {
+    opacity: 100%;
+    padding-left: 4.5vw;
+    padding-right: 1vw;
   }
 }
 
@@ -312,5 +268,18 @@
   }
   100% {
     width: 60%;
+  }
+}
+
+
+@keyframes commentAreaContentFadeIn {
+  0% {
+    opacity: 0%;
+  }
+  80% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
   }
 }
