@@ -47,15 +47,22 @@ export const addMarkdownToSelection = (commentRef: any, openingTag: string, clos
 
 export const styleText = (text: string): string => {
   const boldPattern: RegExp = new RegExp('(\\*{2}|_{2})([a-zA-Z0-9^\s]*)(\\*{2}|_{2})', 'g');
-  const italicPattern: RegExp = new RegExp('(\\*|_)([a-zA-Z0-9^\s]*)(\\*|_)', 'g');
-  const blockQuotePattern: RegExp = new RegExp('^>(.*)$', 'gm');
-  const animatedTextPattern: RegExp = new RegExp('\\{(.*)\\}\\[(.*)\\]', 'g');
+  const italicPattern: RegExp = new RegExp('(\\*|_)([a-zA-Z0-9^\s\"#\＄%&\'\(\)\*\+,-\./:;<=>\?@\[\\\]\^_`{\|}~]*)(\\*|_)', 'g');
+  const listPattern: RegExp = new RegExp('^-(.*)$', 'gm');
+  const numberedListPattern: RegExp = new RegExp('^([0-9]*\\.)(.*)$', 'gm');
+  // const animatedTextPattern: RegExp = new RegExp('\\{(.*)\\}\\[(.*)\\]', 'g');
+  const blockQuotePattern: RegExp = new RegExp('(^>)(.*)$', 'gm');
 
   let styledText: string = text.replace(/<\/?[a-zA-Z0-9]*>/g, '');
   styledText = styledText.replace(boldPattern, '<b>$2</b>');
   styledText = styledText.replace(italicPattern, '<i>$2</i>');
-  styledText = styledText.replace(blockQuotePattern, '</p><blockquote>$1</blockquote><p>');
-  styledText = styledText.replace(animatedTextPattern, '<$1Text text="$2"/>');
+  styledText = styledText.replace(blockQuotePattern, '<p blockquote>$2</p>');
+  styledText = styledText.replace(listPattern, '<li><b>•</b>$1</li>');
+  styledText = styledText.replace(numberedListPattern, '<li><b>$1</b>$2</li>');
+  // styledText = styledText.replace(animatedTextPattern, '<$1Text text="$2"/>');
+  styledText = styledText.replace(/\n/g, '<br />');
 
-  return `<p>${styledText}</p>`
+  console.log(styledText)
+
+  return `${styledText}`
 }

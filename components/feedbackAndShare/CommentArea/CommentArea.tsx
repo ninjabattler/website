@@ -106,73 +106,76 @@ export default function CommentArea({
 
   return (
     <>
-      {commenting === true ?
-        (<>
+      {
+        commenting && 
           <p id={styles.commentLoading}>
             <img src={'/Ninja placeholder.png'} />
-          </p>
-        </>) :
-        (<>
-          <Slate editor={editor} value={[
-            {
-              type: 'paragraph',
-              children: [
-                {
-                  text: ''
-                }
-              ]
+          </p> 
+      }
+
+      <Slate 
+        editor={editor}
+        value={[
+          {
+            type: 'paragraph',
+            children: [
+              {
+                text: ''
+              }
+            ]
+          }
+        ]}
+      >
+        <Editable 
+          decorate={decorate}
+          id={styles.commentAreaView}
+          className={noAnim && styles.noAnim}
+          placeholder="Leave a Comment!"
+          renderLeaf={({ attributes, leaf, children }) => {
+            if (leaf.bold) {
+              return <b {...attributes}>{children}</b>
+            } else if (leaf.italic) {
+              return <i {...attributes}>{children}</i>
+            } else if (leaf.blockquote) {
+              return <span className={styles.blockQuote} {...attributes}>{children}</span>
+            } else if (leaf.list) {
+              return <span className={styles.listItem} {...attributes}>{children}</span>
+            } else {
+              return <span {...attributes}>{children}</span>
             }
-          ]}>
-            <Editable 
-              decorate={decorate}
-              id={styles.commentAreaView}
-              className={noAnim && styles.noAnim}
-              placeholder="Leave a Comment!"
-              renderLeaf={({ attributes, leaf, children }) => {
-                if (leaf.bold) {
-                  return <b {...attributes}>{children}</b>
-                } else if (leaf.italic) {
-                  return <i {...attributes}>{children}</i>
-                } else if (leaf.blockquote) {
-                  return <span className={styles.blockQuote} {...attributes}>{children}</span>
-                } else if (leaf.list) {
-                  return <span className={styles.listItem} {...attributes}>{children}</span>
-                } else {
-                  return <span {...attributes}>{children}</span>
-                }
-              }}
-            />
-          </Slate>
+          }}
+        />
+      </Slate>
 
-          <div id={styles.commentStylingBar} className={noAnim && styles.noAnim}>
-            <button onClick={() => { addMarkdown(editor, '**', '**') }}>
-              <FormatBold />
-            </button>
-            <button onClick={() => { addMarkdown(editor, '_', '_') }}>
-              <FormatItalic />
-            </button>
-            <button onClick={() => { addMarkdown(editor, '>', '') }}>
-              <FormatQuote />
-            </button>
-            <button onClick={() => { addMarkdown(editor, '- ', '') }}>
-              <FormatListBulleted />
-            </button>
-            <button onClick={() => { addMarkdown(editor, '1. ', '') }}>
-              <FormatListNumbered />
-            </button>
+      <div id={styles.commentStylingBar} className={noAnim && styles.noAnim}>
+        <button onClick={() => { addMarkdown(editor, '**', '**') }}>
+          <FormatBold />
+        </button>
+        <button onClick={() => { addMarkdown(editor, '_', '_') }}>
+          <FormatItalic />
+        </button>
+        <button onClick={() => { addMarkdown(editor, '>', '') }}>
+          <FormatQuote />
+        </button>
+        <button onClick={() => { addMarkdown(editor, '- ', '') }}>
+          <FormatListBulleted />
+        </button>
+        <button onClick={() => { addMarkdown(editor, '1. ', '') }}>
+          <FormatListNumbered />
+        </button>
 
-            <button id={styles.postComment} onClick={() => {
-              const content = styleText(commentContent);
+        <button id={styles.postComment} onClick={() => {
+          const commentArea: HTMLElement = document.getElementById(styles.commentAreaView)
+          const content: string = commentArea.innerText;
 
-              comment({ content: content, id: postId }, userId, comments, setCommenting, (newComments) => {
-                setCommentContent('')
-                setComments(newComments)
-              })
-            }}>
-              <b>Comment</b>
-            </button>
-          </div>
-        </>)}
+          comment({ content: content, id: postId }, userId, comments, setCommenting, (newComments) => {
+            setCommentContent('')
+            setComments(newComments)
+          })
+        }}>
+          <b>Comment</b>
+        </button>
+      </div>
     </>
   )
 }

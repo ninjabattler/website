@@ -8,6 +8,7 @@ import RegexText from '../animatedText/RegexText/RegexText';
 import MetalHeadText from '../animatedText/MetalHeadText/MetalHeadText';
 import JsxParser from 'react-jsx-parser';
 import { ColourType } from '../../types';
+import { styleText } from '../../helpers/articlePageHelpers';
 
 const avatars = {
   avatar1: '/userAvatars/Mask 1.png',
@@ -28,15 +29,11 @@ export type CommentProps = {
 
 const Comment: ComponentType<CommentProps> = ({ username, content, style, pageColour, avatar, date }) => (
   <article className={styles.comment} style={style}>
-    <img className={styles.avatar} src={avatars[`avatar${avatar}`]} style={{ filter: `drop-shadow(1px 1px 0px ${pageColour || 'transparent'})` }} alt='profile pic' />
+    <img className={styles.avatar} src={avatars[`avatar${avatar}`]} style={{ borderColor: pageColour || 'var(--dark-gray)' }} alt='profile pic' />
     <div>
-      <i>Ninja #{username}</i>
+      <b>Ninja #{username}</b>
       {/* @ts-ignore - JsxParser has an error with how it exports, works perfectly fine though */}
-      <JsxParser
-        components={{ FireText, EarthText, IceText, ThunderText, RegexText, MetalHeadText } as {}}
-
-        jsx={`<p>${content}</p>`}
-      />
+      <p dangerouslySetInnerHTML={{ __html: styleText(content) }}></p>
     </div>
   </article>
 )

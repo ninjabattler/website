@@ -30,7 +30,7 @@ export const getServerSideProps: GetServerSideProps = articlePageServerSideProps
 
 export default function ArticlePage({ articleData, disliked, liked, randomQuoteIndex, url, userId, edit, jsonLocation }: InferGetServerSidePropsType<typeof articlePageServerSideProps> & AppData) {
   const [commenting, setCommenting] = useState<boolean>(false);
-  const [comments, setComments] = useState<PostCommentType[]>(articleData.comments);
+  const [comments, setComments] = useState<PostCommentType[]>([]);
   const [likes, setLikes] = useState<number>(Number(articleData.likes));
   const [dislikes, setDislikes] = useState<number>(Number(articleData.dislikes));
   const [isLiked, setIsLiked] = useState<boolean>(liked);
@@ -47,6 +47,7 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
   useEffect(() => {
     setWindow(window)
     window.addEventListener('scroll', scrollListener)
+    setComments(articleData.comments)
   }, [])
 
   const scrollListener = () => {

@@ -46,7 +46,7 @@ const selectSingleArticle = async (db: Pool, title: TitleType): Promise<ArticleD
     WHERE lower(posts.title) = $1
     GROUP BY posts.id;
     `, [title]);
-      console.log(article.rows[0])
+      // console.log(article.rows[0])
     return article.rows;
   }
   catch (err) {
