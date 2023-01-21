@@ -46,8 +46,8 @@ export const addMarkdownToSelection = (commentRef: any, openingTag: string, clos
 }
 
 export const styleText = (text: string): string => {
-  const boldPattern: RegExp = new RegExp('(\\*{2}|_{2})([a-zA-Z0-9^\s]*)(\\*{2}|_{2})', 'g');
-  const italicPattern: RegExp = new RegExp('(\\*|_)([a-zA-Z0-9^\s\"#\＄%&\'\(\)\*\+,-\./:;<=>\?@\[\\\]\^_`{\|}~]*)(\\*|_)', 'g');
+  const boldPattern: RegExp = new RegExp('(\\*{2}|_{2})(.*)(\\*{2}|_{2})', 'g');
+  const italicPattern: RegExp = new RegExp('(\\*|_)(.*)(\\*|_)', 'g');
   const listPattern: RegExp = new RegExp('^-(.*)$', 'gm');
   const numberedListPattern: RegExp = new RegExp('^([0-9]*\\.)(.*)$', 'gm');
   // const animatedTextPattern: RegExp = new RegExp('\\{(.*)\\}\\[(.*)\\]', 'g');

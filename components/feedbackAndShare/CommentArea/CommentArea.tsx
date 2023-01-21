@@ -1,13 +1,6 @@
-import React, { ReactElement, RefObject, useMemo, useCallback } from 'react';
+import React, { ReactElement, RefObject, useMemo, useCallback, useState } from 'react';
 import styles from "./CommentArea.module.scss";
-// import JsxParser from 'react-jsx-parser';
-// import FireText from '../../animatedText/FireText/FireText';
-// import ThunderText from '../../animatedText/ThunderText/ThunderText';
-// import IceText from '../../animatedText/IceText/IceText';
-// import EarthText from '../../animatedText/EarthText/EarthText';
-// import RegexText from '../../animatedText/RegexText/RegexText';
-// import MetalHeadText from '../../animatedText/MetalHeadText/MetalHeadText';
-import { addMarkdownToSelection, comment, styleText } from '../../../helpers/articlePageHelpers';
+import { comment } from '../../../helpers/articlePageHelpers';
 import { PostIdType, UserIdType } from '../../../types';
 import { Editable, ReactEditor, Slate, withReact } from 'slate-react'
 import { createEditor, Text, Editor } from 'slate'
@@ -21,7 +14,7 @@ import {
 } from '@material-ui/icons';
 
 // eslint-disable-next-line
-;Prism.languages.markdown=Prism.languages.extend("markup",{}),Prism.languages.insertBefore("markdown","prolog",{blockquote:{pattern:/^>(?:[\t ]*>)*/m,alias:"punctuation"},code:[{pattern:/^(?: {4}|\t).+/m,alias:"keyword"},{pattern:/``.+?``|`[^`\n]+`/,alias:"keyword"}],title:[{pattern:/\w+.*(?:\r?\n|\r)(?:==+|--+)/,alias:"important",inside:{punctuation:/==+$|--+$/}},{pattern:/(^\s*)#+.+/m,lookbehind:!0,alias:"important",inside:{punctuation:/^#+|#+$/}}],hr:{pattern:/(^\s*)([*-])([\t ]*\2){2,}(?=\s*$)/m,lookbehind:!0,alias:"punctuation"},list:{pattern:/(^\s*)(?:[*+-]|\d+\.)(?=[\t ].)/m,lookbehind:!0,alias:"punctuation"},"url-reference":{pattern:/!?\[[^\]]+\]:[\t ]+(?:\S+|<(?:\\.|[^>\\])+>)(?:[\t ]+(?:"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\((?:\\.|[^)\\])*\)))?/,inside:{variable:{pattern:/^(!?\[)[^\]]+/,lookbehind:!0},string:/(?:"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\((?:\\.|[^)\\])*\))$/,punctuation:/^[\[\]!:]|[<>]/},alias:"url"},bold:{pattern:/(^|[^\\])(\*\*|__)(?:(?:\r?\n|\r)(?!\r?\n|\r)|.)+?\2/,lookbehind:!0,inside:{punctuation:/^\*\*|^__|\*\*$|__$/}},italic:{pattern:/(^|[^\\])([*_])(?:(?:\r?\n|\r)(?!\r?\n|\r)|.)+?\2/,lookbehind:!0,inside:{punctuation:/^[*_]|[*_]$/}},url:{pattern:/!?\[[^\]]+\](?:\([^\s)]+(?:[\t ]+"(?:\\.|[^"\\])*")?\)| ?\[[^\]\n]*\])/,inside:{variable:{pattern:/(!?\[)[^\]]+(?=\]$)/,lookbehind:!0},string:{pattern:/"(?:\\.|[^"\\])*"(?=\)$)/}}}}),Prism.languages.markdown.bold.inside.url=Prism.util.clone(Prism.languages.markdown.url),Prism.languages.markdown.italic.inside.url=Prism.util.clone(Prism.languages.markdown.url),Prism.languages.markdown.bold.inside.italic=Prism.util.clone(Prism.languages.markdown.italic),Prism.languages.markdown.italic.inside.bold=Prism.util.clone(Prism.languages.markdown.bold); // prettier-ignore
+;Prism.languages.markdown=Prism.languages.extend("markup",{}),Prism.languages.insertBefore("markdown","prolog",{blockquote:{pattern:/^>(.*)$/gm,alias:"punctuation"},code:[{pattern:/^(?: {4}|\t).+/m,alias:"keyword"},{pattern:/``.+?``|`[^`\n]+`/,alias:"keyword"}],title:[{pattern:/\w+.*(?:\r?\n|\r)(?:==+|--+)/,alias:"important",inside:{punctuation:/==+$|--+$/}},{pattern:/(^\s*)#+.+/m,lookbehind:!0,alias:"important",inside:{punctuation:/^#+|#+$/}}],hr:{pattern:/(^\s*)([*-])([\t ]*\2){2,}(?=\s*$)/m,lookbehind:!0,alias:"punctuation"},list:{pattern:/(^\s*)(?:[*+-]|\d+\.)(?=[\t ].)/m,lookbehind:!0,alias:"punctuation"},"url-reference":{pattern:/!?\[[^\]]+\]:[\t ]+(?:\S+|<(?:\\.|[^>\\])+>)(?:[\t ]+(?:"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\((?:\\.|[^)\\])*\)))?/,inside:{variable:{pattern:/^(!?\[)[^\]]+/,lookbehind:!0},string:/(?:"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\((?:\\.|[^)\\])*\))$/,punctuation:/^[\[\]!:]|[<>]/},alias:"url"},bold:{pattern:/(^|[^\\])(\*\*|__)(?:(?:\r?\n|\r)(?!\r?\n|\r)|.)+?\2/,lookbehind:!0,inside:{punctuation:/^\*\*|^__|\*\*$|__$/}},italic:{pattern:/(^|[^\\])([*_])(?:(?:\r?\n|\r)(?!\r?\n|\r)|.)+?\2/,lookbehind:!0,inside:{punctuation:/^[*_]|[*_]$/}},url:{pattern:/!?\[[^\]]+\](?:\([^\s)]+(?:[\t ]+"(?:\\.|[^"\\])*")?\)| ?\[[^\]\n]*\])/,inside:{variable:{pattern:/(!?\[)[^\]]+(?=\]$)/,lookbehind:!0},string:{pattern:/"(?:\\.|[^"\\])*"(?=\)$)/}}}}),Prism.languages.markdown.bold.inside.url=Prism.util.clone(Prism.languages.markdown.url),Prism.languages.markdown.italic.inside.url=Prism.util.clone(Prism.languages.markdown.url),Prism.languages.markdown.bold.inside.italic=Prism.util.clone(Prism.languages.markdown.italic),Prism.languages.markdown.italic.inside.bold=Prism.util.clone(Prism.languages.markdown.bold); // prettier-ignore
 
 interface CommentAreaProps {
   commentRef: RefObject<any>;
@@ -52,11 +45,8 @@ export default function CommentArea({
   commentContent,
   noAnim }: CommentAreaProps): ReactElement {
 
+  const [noComment, setNoComment] = useState<boolean>(true);
   const editor: ReactEditor = useMemo(() => withReact(createEditor()), []);
-
-// 
-// 
-// 
 
   const decorate = useCallback(([node, path]) => {
     const ranges = []
@@ -100,71 +90,82 @@ export default function CommentArea({
     Editor.insertText(editor, `${markStart}${Editor.string(editor, editor.selection)}${markEnd}`)
   }
 
-// 
-// 
-// 
-
   return (
-    <>
+    <section>
       {
         commenting && 
-          <p id={styles.commentLoading}>
+          <div id={styles.commentLoading}>
             <img src={'/Ninja placeholder.png'} />
-          </p> 
+          </div> 
       }
 
-      <Slate 
-        editor={editor}
-        value={[
-          {
-            type: 'paragraph',
-            children: [
+      {
+        !commenting && 
+          <Slate 
+            editor={editor}
+            value={[
               {
-                text: ''
+                children: [
+                  {
+                    text: ''
+                  }
+                ]
               }
-            ]
-          }
-        ]}
-      >
-        <Editable 
-          decorate={decorate}
-          id={styles.commentAreaView}
-          className={noAnim && styles.noAnim}
-          placeholder="Leave a Comment!"
-          renderLeaf={({ attributes, leaf, children }) => {
-            if (leaf.bold) {
-              return <b {...attributes}>{children}</b>
-            } else if (leaf.italic) {
-              return <i {...attributes}>{children}</i>
-            } else if (leaf.blockquote) {
-              return <span className={styles.blockQuote} {...attributes}>{children}</span>
-            } else if (leaf.list) {
-              return <span className={styles.listItem} {...attributes}>{children}</span>
-            } else {
-              return <span {...attributes}>{children}</span>
-            }
-          }}
-        />
-      </Slate>
+            ]}
+            onChange={(e: any) => { 
+              const comment: boolean = e[0].children[0].text === '';
+
+              if (!noComment) {
+                if (comment) {
+                  setNoComment(true);
+                }
+              } else if (noComment) {
+                if (!comment) {
+                  setNoComment(false);
+                }
+              }
+            }}
+          >
+            <Editable 
+              decorate={decorate}
+              id={styles.commentAreaView}
+              className={noAnim && styles.noAnim}
+              placeholder="Leave a Comment!"
+              renderLeaf={({ attributes, leaf, children }) => {
+                if (leaf.bold) {
+                  return <b {...attributes}>{children}</b>
+                } else if (leaf.italic) {
+                  return <i {...attributes}>{children}</i>
+                } else if (leaf.blockquote) {
+                  return <blockquote {...attributes}>{children}</blockquote>
+                } else if (leaf.list) {
+                  return <span className={styles.listItem} {...attributes}>{children}</span>
+                } else {
+                  return <span {...attributes}>{children}</span>
+                }
+              }}
+            />
+          </Slate>
+      }
 
       <div id={styles.commentStylingBar} className={noAnim && styles.noAnim}>
-        <button onClick={() => { addMarkdown(editor, '**', '**') }}>
+        <button disabled={commenting || noComment} onClick={() => { addMarkdown(editor, '**', '**') }}>
           <FormatBold />
         </button>
-        <button onClick={() => { addMarkdown(editor, '_', '_') }}>
+        <button disabled={commenting || noComment} onClick={() => { addMarkdown(editor, '_', '_') }}>
           <FormatItalic />
         </button>
-        <button onClick={() => { addMarkdown(editor, '>', '') }}>
+        <button disabled={commenting || noComment} onClick={() => { addMarkdown(editor, '>', '') }}>
           <FormatQuote />
         </button>
-        <button onClick={() => { addMarkdown(editor, '- ', '') }}>
+        <button disabled={commenting || noComment} onClick={() => { addMarkdown(editor, '- ', '') }}>
           <FormatListBulleted />
         </button>
-        <button onClick={() => { addMarkdown(editor, '1. ', '') }}>
+        <button disabled={commenting || noComment} onClick={() => { addMarkdown(editor, '1. ', '') }}>
           <FormatListNumbered />
         </button>
 
-        <button id={styles.postComment} onClick={() => {
+        <button disabled={commenting || noComment} id={styles.postComment} onClick={() => {
           const commentArea: HTMLElement = document.getElementById(styles.commentAreaView)
           const content: string = commentArea.innerText;
 
@@ -176,6 +177,6 @@ export default function CommentArea({
           <b>Comment</b>
         </button>
       </div>
-    </>
+    </section>
   )
 }

@@ -41,40 +41,45 @@
   line-height: 1.4em;
 }
 
-#commentAreaView > div:first-child {
+#commentAreaView:not(.noAnim) > div:first-child {
   animation-name: commentAreaContentFadeIn;
   animation-timing-function: linear;
   animation-duration: 3.5s;
 }
 
-#commentAreaView > div > span > .blockQuote {
-  width: 1vw;
-  margin-left: 0.4vw;
-  margin-right: 0.8vw;
-  border-left: 0.2vw solid var(--light-gray);
-  opacity: 0.7;
+#commentAreaView > div > span:has(> span) {
+  display: none !important;
+}
 
-  span {
-    width: calc(100% - 1.2vw);
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.35);
-  }
+#commentAreaView > div > span > blockQuote {
+  width: calc(100% - 1.8vw);
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0.35);
+  border-left: 0.2vw solid var(--light-gray);
+  margin: 0.4vw;
+  margin-left: 0.6vw;
+  padding-left: 0.6vw;
+  opacity: 0.7;
+  z-index: -1;
 }
 
 #commentAreaView > div > span > .listItem {
-  margin-left: 0.4vw;
+  margin-left: 0.8vw;
 }
 
 #commentLoading {
   width: 100%;
-  height: 7.02vw;
+  height: 6vw;
+  background-color: var(--dark-gray);
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 10;
 }
 
 #commentLoading > img {
-  width: 60%;
+  height: 100%;
   filter: invert(0.5);
   opacity: 0.2;
   animation-name: commentLoading;
@@ -127,6 +132,11 @@
     border-top: 0.1vw solid var(--article-colour);
     color: var(--article-colour);
     background-color: var(--primary-text);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: unset;
   }
 
   @media only screen and (max-width: 425px) {
@@ -244,7 +254,7 @@
     transform: scale(0);
   }
   100% {
-    opacity: 100%;
+    opacity: 50%;
     transform: scale(1);
   }
 }
@@ -261,7 +271,7 @@
     padding-right: 0vw;
   }
   100% {
-    opacity: 100%;
+    opacity: 50%;
     padding-left: 4.5vw;
     padding-right: 1vw;
   }
@@ -269,13 +279,13 @@
 
 @keyframes commentLoading {
   0% {
-    width: 60%;
+    height: 80%;
   }
   50% {
-    width: 75%;
+    height: 100%;
   }
   100% {
-    width: 60%;
+    height: 80%;
   }
 }
 
