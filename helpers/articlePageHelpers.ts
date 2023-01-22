@@ -50,7 +50,6 @@ export const styleText = (text: string): string => {
   const italicPattern: RegExp = new RegExp('(\\*|_)(.*)(\\*|_)', 'g');
   const listPattern: RegExp = new RegExp('^-(.*)$', 'gm');
   const numberedListPattern: RegExp = new RegExp('^([0-9]*\\.)(.*)$', 'gm');
-  // const animatedTextPattern: RegExp = new RegExp('\\{(.*)\\}\\[(.*)\\]', 'g');
   const blockQuotePattern: RegExp = new RegExp('(^>)(.*)$', 'gm');
 
   let styledText: string = text.replace(/<\/?[a-zA-Z0-9]*>/g, '');
@@ -59,10 +58,7 @@ export const styleText = (text: string): string => {
   styledText = styledText.replace(blockQuotePattern, '<p blockquote>$2</p>');
   styledText = styledText.replace(listPattern, '<li><b>•</b>$1</li>');
   styledText = styledText.replace(numberedListPattern, '<li><b>$1</b>$2</li>');
-  // styledText = styledText.replace(animatedTextPattern, '<$1Text text="$2"/>');
   styledText = styledText.replace(/\n/g, '<br />');
-
-  console.log(styledText)
 
   return `${styledText}`
 }

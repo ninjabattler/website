@@ -131,7 +131,7 @@ export default function CommentArea({
               id={styles.commentAreaView}
               className={noAnim && styles.noAnim}
               placeholder="Leave a Comment!"
-              renderLeaf={({ attributes, leaf, children }) => {
+              renderLeaf={({ attributes, leaf, children }: any) => {
                 if (leaf.bold) {
                   return <b {...attributes}>{children}</b>
                 } else if (leaf.italic) {

@@ -51,7 +51,7 @@
   margin-left: auto;
   margin-right: auto;
   top: 4vw;
-  filter: drop-shadow(6px 6px 0.3vw black);
+  filter: drop-shadow(0.4vw 0.4vw 0.3vw black);
 }
 
 .commentPanel {
@@ -63,20 +63,19 @@
   margin-right: auto;
   top: 11.5vw;
   margin-top: 7.1vw;
-  filter: drop-shadow(6px 6px 0.3vw black);
+  filter: drop-shadow(0.4vw 0.4vw 0.3vw black);
   animation-name: commentPanelFadeIn;
   animation-timing-function: linear;
   animation-duration: 1.25s;
+
   @media only screen and (max-width: 425px) {
     display: initial;
     position: fixed;
     width: 95vw;
-    height: 70vh;
     margin-top: 27vw;
     left: 0;
     top: 0;
     z-index: 101;
-    filter: drop-shadow(3px 3px 0.3vw black);
     transition: margin-left 0.5s;
   }
 }
@@ -102,6 +101,10 @@
   overflow-y: scroll;
   height: calc(100% - 7.35vw);
   width: calc(100%);
+
+  @media only screen and (max-width: 425px) {
+    height: calc(70vh - 32vw);
+  }
 }
 
 .comments {
@@ -113,6 +116,10 @@
 .commentPanel > .comments::-webkit-scrollbar {
   width: 0.5vw;
   background: var(--light-gray);
+
+  @media only screen and (max-width: 425px) {
+    width: 1.5vw;
+  }
 }
 
 .commentPanel > .comments::-webkit-scrollbar-track {

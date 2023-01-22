@@ -19,15 +19,10 @@ code {
 }
 
 :root {
-  --light-gray: #404040;
-  --dark-gray: #181818;
-  --primary-text: #505050;
-  --secondary-colour: #202020;
-
-  @media only screen and (max-device-width: 425px) {
-    --light-gray: #434343;
-    --dark-gray: #191919;
-  }
+  --light-gray: #505050;
+  --dark-gray: #202020;
+  --primary-text: #707070;
+  --secondary-colour: #303030;
 }
 
 .App {
