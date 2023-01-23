@@ -10,6 +10,7 @@ $gradientColour: rgba(27, 27, 27, 0.5);
   @media only screen and (max-width: 425px) {
     font-size: 3vw;
     margin-bottom: -30vw;
+    filter: drop-shadow(0 0 1vw black);
   }
 }
 
@@ -27,7 +28,7 @@ $gradientColour: rgba(27, 27, 27, 0.5);
   animation-duration: 4s;
 
   @media only screen and (max-width: 425px) {
-    width: 44vw;
+    width: 55vw;
     padding: 0;
     height: unset;
     position: absolute;
@@ -51,17 +52,19 @@ $gradientColour: rgba(27, 27, 27, 0.5);
   width: 100vw;
   height: 50vw;
   filter: drop-shadow(0 0 0.3vw transparent);
-  // z-index: 1;
 
   @media only screen and (max-width: 425px) {
     width: 100vw;
-    height: 177vw;
-    // z-index: 1;
+    height: 120vw;
   }
 }
 
 #part1 {
   margin-bottom: 5vw;
+
+  @media only screen and (max-width: 425px) {
+    margin-bottom: 65vw;
+  }
 }
 
 #part1 > .gradient1 {
@@ -71,8 +74,8 @@ $gradientColour: rgba(27, 27, 27, 0.5);
   background-image: linear-gradient(
     0deg,
     transparent 27%,
-    var(--primary-text) 27%,
-    var(--primary-text) 31%,
+    var(--light-gray) 27%,
+    var(--light-gray) 31%,
     var(--dark-gray) 31%,
     var(--dark-gray) 37%,
     transparent 37%
@@ -81,6 +84,10 @@ $gradientColour: rgba(27, 27, 27, 0.5);
   animation-timing-function: linear;
   animation-duration: 1s;
   z-index: -1;
+
+  @media only screen and (max-width: 425px) {
+    margin-top: -12vw;
+  }
 }
 
 #part1 > .gradient2 {
@@ -93,6 +100,13 @@ $gradientColour: rgba(27, 27, 27, 0.5);
   animation-timing-function: linear;
   animation-duration: 1.5s;
   overflow: hidden;
+
+  @media only screen and (max-width: 425px) {
+    width: 52%;
+    height: 37%;
+    margin-left: 47vw;
+    margin-top: 9vw;
+  }
 }
 
 #part1 > .gradient1,
@@ -117,13 +131,7 @@ $gradientColour: rgba(27, 27, 27, 0.5);
 
   @media only screen and (max-width: 425px) {
     position: absolute;
-    width: 100vw;
-    mask: linear-gradient(-45deg, black 0%, black 64%, transparent 64%);
-    margin-right: 0vw;
-    margin-top: 74vw;
-    right: 0;
-    z-index: 10;
-    cursor: pointer;
+    margin-top: 0vw;
   }
 }
 
@@ -155,9 +163,7 @@ $gradientColour: rgba(27, 27, 27, 0.5);
 
   @media only screen and (max-width: 425px) {
     position: absolute;
-    left: 1vw;
-    margin-top: 135vw;
-    color: var(--primary-text);
+    margin-top: 29vw;
   }
 }
 
@@ -175,9 +181,7 @@ $gradientColour: rgba(27, 27, 27, 0.5);
 
   @media only screen and (max-width: 425px) {
     position: absolute;
-    left: 1vw;
-    margin-top: 135vw;
-    color: var(--primary-text);
+    margin-top: 34vw;
   }
 }
 
@@ -201,7 +205,7 @@ $gradientColour: rgba(27, 27, 27, 0.5);
   @media only screen and (max-width: 425px) {
     font-size: 1.5em;
     padding-left: 3vw;
-    margin-top: 54.5vw;
+    margin-top: 64.5vw;
     animation-name: none;
   }
 }
@@ -216,7 +220,7 @@ $gradientColour: rgba(27, 27, 27, 0.5);
     color: var(--dark-gray);
     font-size: 0.9em;
     padding-left: 4vw;
-    margin-top: 2.4vw;
+    margin-top: 1.3vw;
     animation-name: none;
   }
 }
@@ -234,9 +238,10 @@ $gradientColour: rgba(27, 27, 27, 0.5);
   background-color: var(--dark-gray);
 
   @media only screen and (max-width: 425px) {
-    width: 70vw;
-    left: 1vw;
-    bottom: 3vw;
+    width: 98vw;
+    right: 0;
+    font-size: 1.2em;
+    margin-top: 35vw;
     animation-name: none;
   }
 }
@@ -249,7 +254,8 @@ $gradientColour: rgba(27, 27, 27, 0.5);
   margin-top: -0.5vw;
 
   @media only screen and (max-width: 425px) {
-    width: 70vw;
+    width: 55vw;
+    margin-top: -1.5vw;
   }
 }
 
@@ -260,10 +266,11 @@ $gradientColour: rgba(27, 27, 27, 0.5);
   position: absolute;
   width: 98vw;
   margin-top: 35vw;
-  filter: drop-shadow(0 -0.15vw 0.3vw black);
 
   @media only screen and (max-width: 425px) {
-    padding: 2vw;
+    padding: 4vw;
+    width: 92vw;
+    margin-top: 55vw;
     font-size: 1.3em;
   }
 }
@@ -291,11 +298,21 @@ $gradientColour: rgba(27, 27, 27, 0.5);
   cursor: default;
 
   @media only screen and (max-width: 425px) {
-    width: 90vw;
-    font-size: 3.5em;
-    margin-top: 58vw;
-    margin-left: 3vw;
+    width: 58vw;
+    padding-left: 42vw;
+    font-size: 2.5em;
     filter: none;
+    background-image: linear-gradient(
+      -45deg,
+      var(--light-gray) 65vw,
+      $gradientColour 65vw,
+      $gradientColour 67vw,
+      var(--light-gray) 67vw,
+      var(--light-gray) 69vw,
+      $gradientColour 69vw,
+      $gradientColour 71vw,
+      var(--light-gray) 71vw
+    );
   }
 }
 
@@ -324,11 +341,12 @@ $gradientColour: rgba(27, 27, 27, 0.5);
   cursor: default;
 
   @media only screen and (max-width: 425px) {
-    color: var(--dark-gray);
-    text-shadow: 0px 0px 2px var(--primary-text);
-    font-size: 1.5em;
-    margin-left: 3vw;
-    margin-top: 75vw;
+    width: 55vw;
+    padding-left: 45vw;
+    font-size: 1.4em;
+    background-image: none;
+    background-color: var(--dark-gray);
+    margin-top: 16vw;
   }
 }
 
@@ -348,27 +366,23 @@ $gradientColour: rgba(27, 27, 27, 0.5);
   filter: blur(0.3vw);
 
   @media only screen and (max-width: 425px) {
-    flex-direction: column;
-    height: 150vw;
-    width: 100vw;
-    left: 0;
     transform: scale(1);
     filter: blur(2px);
-    margin-top: 0vw;
+    margin-top: 23vw;
     justify-content: flex-start;
     align-items: flex-start;
     flex-wrap: nowrap;
+    overflow: hidden;
   }
 }
 
 #part2 > .imageCollection > img {
   width: 32%;
   height: 32%;
-  // margin: 0.5vw;
 
   @media only screen and (max-width: 425px) {
-    width: 90%;
-    margin: 3vw;
+    width: 34%;
+    height: auto;
   }
 }
 
@@ -389,9 +403,9 @@ $gradientColour: rgba(27, 27, 27, 0.5);
   filter: drop-shadow(1px 1px 0px var(--dark-gray)) drop-shadow(1px 1px 2px black);
 
   @media only screen and (max-width: 425px) {
-    width: 60vw;
+    width: 50vw;
     margin-right: 0vw;
-    margin-top: 20vw;
+    margin-top: -5vw;
   }
 }
 
@@ -405,11 +419,13 @@ $gradientColour: rgba(27, 27, 27, 0.5);
   justify-content: center;
 
   @media only screen and (max-width: 425px) {
-    font-size: 1.5em;
-    width: 38%;
+    font-size: 2.5em;
+    width: 100%;
     height: 100%;
     margin-left: 0;
+    margin-top: -15vw;
     justify-content: flex-end;
+    overflow: hidden;
   }
 }
 
@@ -437,8 +453,9 @@ $gradientColour: rgba(27, 27, 27, 0.5);
   );
 
   @media only screen and (max-width: 425px) {
-    margin-left: 39.7vw;
-    margin-top: 86vw;
+    width: 65vw;
+    padding-left: 35vw;
+    margin-top: 10vw;
   }
 }
 
@@ -467,8 +484,11 @@ $gradientColour: rgba(27, 27, 27, 0.5);
   cursor: default;
 
   @media only screen and (max-width: 425px) {
-    margin-left: 39.7vw;
-    margin-top: 103vw;
+    background-image: none;
+    background-color: var(--dark-gray);
+    width: 96vw;
+    padding-left: 4vw;
+    margin-top: 20.9vw;
   }
 }
 
