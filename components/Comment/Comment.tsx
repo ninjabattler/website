@@ -2,6 +2,7 @@ import React, { ComponentType, CSSProperties } from 'react';
 import styles from './Comment.module.scss';
 import { ColourType } from '../../types';
 import { styleText } from '../../helpers/articlePageHelpers';
+import moment from 'moment';
 
 const avatars = {
   avatar1: '/userAvatars/Mask 1.png',
@@ -25,6 +26,7 @@ const Comment: ComponentType<CommentProps> = ({ username, content, style, pageCo
     <img className={styles.avatar} src={avatars[`avatar${avatar}`]} style={{ borderColor: pageColour || 'var(--dark-gray)' }} alt='profile pic' />
     <div>
       <b>Ninja #{username}</b>
+      <i>{moment(date).fromNow(true)}</i>
       {/* @ts-ignore - JsxParser has an error with how it exports, works perfectly fine though */}
       <p dangerouslySetInnerHTML={{ __html: styleText(content) }}></p>
     </div>

@@ -8,10 +8,10 @@ import RegexText from '../animatedText/RegexText/RegexText';
 import MetalHeadText from '../animatedText/MetalHeadText/MetalHeadText';
 import JsxParser from 'react-jsx-parser';
 import Comment from '../Comment/Comment';
-import { CommentTwoTone } from '@material-ui/icons'
 import CommentArea from '../feedbackAndShare/CommentArea/CommentArea';
 import { ArticleJson, IpType, PostIdType, TitleType, UserIdType } from '../../types';
 import { parseJsonPost } from '../../helpers/parseJsonPost';
+import moment from 'moment';
 
 type PostProps = {
   title: TitleType;
@@ -24,39 +24,8 @@ type PostProps = {
 }
 
 export default function Post({ title, date, comments, content, id, userId }: PostProps): ReactElement {
-
-  const today: Date = new Date();
-
-  const secondsSincePost: number = ((today.getTime() / 1000) - (new Date(date.replace(' ', 'T')).getTime() / 1000));
-  let minutesSincePost: number;
-  let hoursSincePost: number;
-  let daysSincePost: number;
-  let weeksSincePost: number;
-  let monthsSincePost: number;
-  let yearsSincePost: number;
-
-  if (secondsSincePost > 60) {
-    minutesSincePost = secondsSincePost / 60;
-  }
-  if (minutesSincePost > 60) {
-    hoursSincePost = minutesSincePost / 60;
-  }
-  if (hoursSincePost > 24) {
-    daysSincePost = hoursSincePost / 24;
-  }
-  if (daysSincePost > 7) {
-    weeksSincePost = daysSincePost / 7;
-  }
-  if (weeksSincePost > 4) {
-    monthsSincePost = weeksSincePost / 4;
-  }
-  if (monthsSincePost > 12) {
-    yearsSincePost = monthsSincePost / 12;
-  }
-
   const [closed, setClosed] = useState<number>(0);
   const [showContent, setShowContent] = useState<boolean>(false);
-  const [showComments, setShowComments] = useState<boolean>(false);
   const [commentList, setCommentList] = useState<Array<any>>(comments || []);
   const [commenting, setCommenting] = useState<boolean>(false);
   const [viewComment, setViewComment] = useState<boolean>(false);
@@ -67,95 +36,62 @@ export default function Post({ title, date, comments, content, id, userId }: Pos
     <article
       key={title}
       className={`${closed === 0 ? styles.post : closed === 1 ? styles.expanded : `${styles.post} ${styles.closed}`}`}
-      style={{ backgroundImage: '/Ninja placeholder.png', height: closed === 1 && showComments && '85vh' }}
+      style={{ backgroundImage: '/Ninja placeholder.png' }}
       onClick={() => {
         setClosed(closed === 0 || closed === 2 ? 1 : 2)
-        setShowComments(false)
         setTimeout(() => {
           setShowContent(!showContent)
         }, 700)
       }}>
+      <style>
+        {`
+            :root {
+              --article-colour: #aaaa44;
+            }
+          `}
+      </style>
+
       {!showContent && <img src={'/Ninja placeholder.png'} />}
-
       <h1>{title}</h1>
+      {!showContent && <h2>{moment(date).fromNow(true)}</h2>}
 
-      {/* Date */}
       {
-        !showContent &&
-          (<>{
-            yearsSincePost ?
-              (<h2>{Math.round(yearsSincePost)} Years</h2>)
-              :
-              monthsSincePost ?
-                (<h2>{Math.round(monthsSincePost)} Months</h2>)
-                :
-                weeksSincePost ?
-                  (<h2>{Math.round(weeksSincePost)} Weeks</h2>)
-                  :
-                  daysSincePost ?
-                    (<h2>{Math.round(daysSincePost)} Days</h2>)
-                    :
-                    hoursSincePost ?
-                      (<h2>{Math.round(hoursSincePost)} Hours</h2>)
-                      :
-                      minutesSincePost ?
-                        (<h2>{Math.round(minutesSincePost)} Minutes</h2>)
-                        :
-                        secondsSincePost ?
-                          (<h2>{Math.round(secondsSincePost)} Seconds</h2>)
-                          :
-                          (<h2></h2>)
-
-          }</>)
-      }
-      {
-        showContent ?
-          (<div className={`${styles.postContent} ${showComments ? styles.shrunk : ''}`} onClick={(e) => {
+        showContent &&
+        (
+          <div className={`${styles.postContent} ${styles.shrunk}`} onClick={(e) => {
             e.stopPropagation()
           }}>
+            <aside className={styles.commentPanel}>
 
-            {showComments ?
-              (
-                <aside className={styles.commentPanel}>
+              <CommentArea
+                commentRef={commentRef}
+                comments={commentList}
+                setComments={setCommentList}
+                postId={id}
+                userId={userId}
+                commenting={commenting}
+                setCommentContent={setCommentContent}
+                setViewComment={setViewComment}
+                viewComment={viewComment}
+                setCommenting={setCommenting}
+                commentContent={commentContent}
+                noAnim={true}
+              />
 
-                  <CommentArea
-                    commentRef={commentRef}
-                    comments={commentList}
-                    setComments={setCommentList}
-                    postId={id}
-                    userId={userId}
-                    commenting={commenting}
-                    setCommentContent={setCommentContent}
-                    setViewComment={setViewComment}
-                    viewComment={viewComment}
-                    setCommenting={setCommenting}
-                    commentContent={commentContent}
-                    noAnim={true}
-                  />
-
-                  <div className={styles.comments}>
-                    {commentList.map((com) => {
-                      if (com.username) {
-                        return (<Comment
-                          key={com.id}
-                          pageColour={com.user_id === userId ? '#aaaa44' : 'transparent'}
-                          username={com.username.slice(0, 10)}
-                          date={com.formatteddate}
-                          content={com.content}
-                          avatar={com.avatar} />)
-                      }
-                    })}
-                  </div>
-                </aside>)
-              :
-              (
-                <button className={styles.commentPanelButton} onClick={() => {
-                  setShowComments(true)
-                }}>
-                  <CommentTwoTone style={{ transform: 'scale(2)' }} />
-                </button>
-              )
-            }
+              <div className={styles.comments}>
+                {commentList.map((com) => {
+                  if (com.username) {
+                    return (<Comment
+                      key={com.id}
+                      pageColour={com.user_id === userId ? '#aaaa44' : 'transparent'}
+                      username={com.username.slice(0, 10)}
+                      date={com.date}
+                      content={com.content}
+                      avatar={com.avatar} />)
+                  }
+                })}
+              </div>
+            </aside>
 
             {/* Content */}
             {/* @ts-ignore - JsxParser has an error with how it exports, works perfectly fine though */}
@@ -164,9 +100,8 @@ export default function Post({ title, date, comments, content, id, userId }: Pos
               jsx={parseJsonPost(content)}
             />
 
-          </div>)
-          :
-          (<></>)
+          </div>
+        )
       }
     </article>)
 }

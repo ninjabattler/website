@@ -259,6 +259,10 @@
 
 .noAnim {
   animation: none !important;
+
+  button {
+    animation: none !important;
+  }
 }
 
 @keyframes commentBarsFadeIn {

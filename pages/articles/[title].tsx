@@ -193,7 +193,7 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
                     return (<Comment
                       pageColour={com.user_id === userId ? articleData.colour : 'transparent'}
                       username={com.username.slice(0, 10)}
-                      date={com.formatteddate}
+                      date={com.date}
                       content={com.content}
                       avatar={com.avatar} />)
                   }
