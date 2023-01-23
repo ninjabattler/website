@@ -24,7 +24,7 @@
     height: 36.154vw;
     margin-left: 3vw;
     margin-top: 15px;
-    filter: drop-shadow(5px 2.5px 0px black);
+    filter: drop-shadow(1vw 1vw 1vw black);
   }
 }
 
@@ -67,10 +67,11 @@
 
   @media only screen and (max-device-width: 425px) {
     width: 100vw;
-    height: 45vh;
+    height: 90vh;
     margin-left: 0;
+    margin-bottom: 6vw;
     overflow: unset;
-    filter: drop-shadow(5px 2.5px 0px black);
+    filter: drop-shadow(0 1vw 1vw black);
     animation-name: openPostMobile;
   }
 }
@@ -138,10 +139,10 @@
   @media only screen and (max-device-width: 425px) {
     background-color: var(--primary-text);
     color: var(--dark-gray);
-    font-size: 1.4em;
+    font-size: 1.2em;
     font-weight: 100;
     width: 100%;
-    height: 45%;
+    height: 40%;
     margin: 0%;
     margin-top: 8%;
   }
@@ -188,9 +189,9 @@
   margin-left: 0.5%;
 
   @media only screen and (max-device-width: 425px) {
-    font-size: 2em;
-    margin: 4px;
-    margin-top: -2px;
+    font-size: 1.75em;
+    margin: 1vw;
+    margin-top: 0.2vw;
   }
 }
 
@@ -208,27 +209,28 @@
 
   @media only screen and (max-device-width: 425px) {
     display: inline;
-    width: 97%;
-    height: 46%;
+    width: 100%;
+    height: 56%;
     position: absolute;
-    margin-top: 43vh !important;
-    margin-right: 5px;
+    margin-top: 40vh !important;
     filter: none;
     z-index: 10;
     font-size: 5vw;
   }
 }
 
-.commentPanel > div {
+.comments {
   overflow-y: scroll;
   height: calc(88.5% - 6.65vw);
 
   &::-webkit-scrollbar {
     width: 0.5vw;
+    height: 0.5vw;
     background: var(--light-gray);
 
     @media only screen and (max-width: 425px) {
       width: 1.5vw;
+      height: 1.5vw;
     }
   }
 
@@ -239,6 +241,11 @@
   &::-webkit-scrollbar-thumb {
     background: var(--dark-gray);
     border: 0.1vw solid var(--light-gray);
+  }
+
+  @media only screen and (max-device-width: 425px) {
+    height: calc(100% - 32vw);
+    margin: 0 !important;
   }
 }
 
@@ -254,9 +261,9 @@
   width: 100%;
 
   @media only screen and (max-device-width: 425px) {
-    font-size: 2em;
-    margin: 4px;
-    margin-top: 30vw;
+    font-size: 1.75em;
+    margin: 1vw;
+    margin-top: 31vw;
   }
 }
 
@@ -304,13 +311,6 @@
 
 #commentLoading > img {
   width: 100%;
-}
-
-.comments {
-  @media only screen and (max-device-width: 425px) {
-    height: 58% !important;
-    margin-top: 2vw !important;
-  }
 }
 
 @media only screen and (max-device-width: 425px) {
@@ -450,7 +450,7 @@
   }
   52% {
     width: 94vw;
-    height: 20vh;
+    height: 36.154vw;
     transform: rotateY(90deg);
     background-image: linear-gradient(
       0deg,
@@ -461,21 +461,21 @@
     );
   }
   100% {
-    width: 94vw;
-    height: 45vh;
+    width: 100vw;
+    height: 90vh;
     transform: rotateY(0deg);
   }
 }
 
 @keyframes closePostMobile {
   0% {
-    width: 94vw;
-    height: 45vh;
+    width: 100vw;
+    height: 90vh;
     transform: rotateY(0deg);
   }
   48% {
-    width: 94vw;
-    height: 20vh;
+    width: 100vw;
+    height: 36.154vw;
     transform: rotateY(90deg);
     background-image: linear-gradient(
       0deg,

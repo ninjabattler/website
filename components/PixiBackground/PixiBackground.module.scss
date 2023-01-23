@@ -24,11 +24,16 @@
   }
 
   @media (max-device-width: 425px) {
+    filter: blur(1vmin);
+    margin-top: -31vw;
+
     #grain {
       display: none;
     }
 
-    filter: blur(1vmin);
-    margin-top: -31vw;
+    #pixiBackground {
+      margin-top: 10vw;
+      transform: scale(2.25);
+    }
   }
 }

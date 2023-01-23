@@ -9,7 +9,6 @@ export default function Footer(): ReactElement {
       </div>
       <section id={styles.copyrightSection}>
         <img src={'/Ninja placeholder.png'} />
-        <p>© Ninjabattler 2020</p>
       </section>
     </footer>
   )
