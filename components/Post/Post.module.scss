@@ -1,17 +1,17 @@
 .post,
 .closed {
   display: flex;
-  filter: drop-shadow(10px 5px 0px black);
-  margin-left: 30px;
-  margin-top: 30px;
+  filter: drop-shadow(0.5vw 0.5vw 0.3vw black);
+  margin-left: 2vw;
+  margin-top: 2vw;
   width: 50vw;
   height: 20vw;
   background-image: linear-gradient(
     -21deg,
-    var(--primary-text) 0%,
-    var(--primary-text) 50%,
-    var(--secondary-colour) 50%,
-    var(--secondary-colour) 100%
+    var(--light-gray) 0%,
+    var(--light-gray) 50%,
+    var(--dark-gray) 50%,
+    var(--dark-gray) 100%
   );
   font-size: 2.4vw;
   cursor: pointer;
@@ -47,19 +47,19 @@
 
 .expanded {
   display: flex;
-  filter: drop-shadow(10px 5px 0px black);
+  filter: drop-shadow(0.5vw 0.5vw 0.3vw black);
   width: 95vw;
   height: 85vh;
   background-image: linear-gradient(
     0deg,
     var(--primary-text) 0%,
     var(--primary-text) 0%,
-    var(--secondary-colour) 0%,
-    var(--secondary-colour) 100%
+    var(--dark-gray) 0%,
+    var(--dark-gray) 100%
   );
   font-size: 3.4vw;
   margin-left: 2.5vw;
-  margin-top: 30px;
+  margin-top: 2vw;
   overflow: hidden;
   animation-name: openPost;
   animation-duration: 1.4s;
@@ -76,11 +76,11 @@
 }
 
 .post:hover {
-  filter: drop-shadow(20px 15px 0px black);
-  margin-left: 25px;
-  margin-top: 25px;
-  margin-bottom: 5px;
-  margin-right: 5px;
+  filter: drop-shadow(0.8333vw 0.8333vw 0.3vw black);
+  margin-left: 1.666vw;
+  margin-top: 1.666vw;
+  margin-bottom: 0.333vw;
+  margin-right: 0.333vw;
 
   @media only screen and (max-device-width: 425px) {
     filter: drop-shadow(5px 2.5px 0px black);
@@ -97,7 +97,8 @@
   width: 37vw;
   height: auto;
   filter: invert(0.5);
-  opacity: 0.2;
+  mix-blend-mode: color-burn;
+  opacity: 0.3;
 
   @media only screen and (max-device-width: 425px) {
     width: 65.2vw;
@@ -107,17 +108,36 @@
 
 .postContent {
   background-color: var(--primary-text);
-  color: var(--secondary-colour);
+  color: var(--dark-gray);
   font-size: 0.55em;
   width: 100%;
   height: 90%;
   margin: 0.5%;
+  margin-right: 0;
   margin-top: 4%;
   overflow-y: scroll;
 
+  &::-webkit-scrollbar {
+    width: 0.5vw;
+    background: var(--primary-text);
+
+    @media only screen and (max-width: 425px) {
+      width: 1.5vw;
+    }
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--primary-text);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--dark-gray);
+    border: 0.1vw solid var(--primary-text);
+  }
+
   @media only screen and (max-device-width: 425px) {
     background-color: var(--primary-text);
-    color: var(--secondary-colour);
+    color: var(--dark-gray);
     font-size: 1.4em;
     font-weight: 100;
     height: 80%;
@@ -127,28 +147,12 @@
 }
 
 .shrunk {
-  width: 67.6%;
+  width: 69.5%;
 
   @media only screen and (max-device-width: 425px) {
     width: 100%;
     height: 45% !important;
   }
-}
-
-.postContent::-webkit-scrollbar {
-  background: var(--primary-text);
-  outline: 4px solid var(--secondary-colour);
-
-  @media only screen and (max-device-width: 425px) {
-    outline: 2px solid var(--secondary-colour);
-    width: 5px;
-  }
-}
-.postContent::-webkit-scrollbar-track {
-  background: var(--primary-text);
-}
-.postContent::-webkit-scrollbar-thumb {
-  background: var(--secondary-colour);
 }
 
 .postContent > div {
@@ -162,7 +166,7 @@
 }
 
 .postContent > div > img {
-  max-width: 70% !important;
+  max-width: 85% !important;
 
   @media only screen and (max-device-width: 425px) {
     max-width: 80% !important;
@@ -189,6 +193,7 @@
   color: var(--primary-text);
   margin: 4px;
   margin-top: -6px;
+  margin-left: 0.5%;
 
   @media only screen and (max-device-width: 425px) {
     font-size: 2em;
@@ -201,13 +206,13 @@
   position: absolute;
   width: 30%;
   height: 100%;
-  background-color: var(--secondary-colour);
+  background-color: var(--dark-gray);
   margin-left: auto;
   margin-right: auto;
+  margin-top: 4%;
   top: 0;
   right: 0;
   font-size: 1.645vw;
-  filter: drop-shadow(8px 8px 0px black);
 
   @media only screen and (max-device-width: 425px) {
     display: inline;
@@ -224,30 +229,24 @@
 
 .commentPanel > div {
   overflow-y: scroll;
-  height: 71.5%;
-  margin-top: 1%;
-}
+  height: calc(88.5% - 6.65vw);
 
-.commentPanel > div::-webkit-scrollbar {
-  background: var(--primary-text);
-  outline: 4px solid var(--secondary-colour);
+  &::-webkit-scrollbar {
+    width: 0.5vw;
+    background: var(--light-gray);
 
-  @media only screen and (max-device-width: 425px) {
-    outline: 2px solid var(--secondary-colour);
-    width: 5px;
+    @media only screen and (max-width: 425px) {
+      width: 1.5vw;
+    }
   }
-}
 
-.commentPanel > div::-webkit-scrollbar-track {
-  background: var(--primary-text);
-}
+  &::-webkit-scrollbar-track {
+    background: var(--light-gray);
+  }
 
-.commentPanel > div::-webkit-scrollbar-thumb {
-  background: var(--secondary-colour);
-  border: 2px solid var(--primary-text);
-
-  @media only screen and (max-device-width: 425px) {
-    border: 1px solid var(--primary-text);
+  &::-webkit-scrollbar-thumb {
+    background: var(--dark-gray);
+    border: 0.1vw solid var(--light-gray);
   }
 }
 
@@ -256,7 +255,7 @@
   font-size: 1em;
   font-family: "Russo One";
   font-weight: 100;
-  color: var(--secondary-colour);
+  color: var(--dark-gray);
   text-align: right;
   margin: 4px;
   margin-top: 17vw;
@@ -281,9 +280,9 @@
 .commentPanelButton {
   width: 3vw;
   height: 3vw;
-  background-color: var(--secondary-colour);
+  background-color: var(--dark-gray);
   color: var(--primary-text);
-  border: 8px solid var(--secondary-colour);
+  border: 8px solid var(--dark-gray);
   margin: 1vw;
   margin-right: calc(1vw + 16px);
   font-size: 0.7em;
@@ -339,7 +338,7 @@
     opacity: 0;
   }
   100% {
-    margin-left: 30px;
+    margin-left: 2vw;
     opacity: 100;
   }
 }
@@ -351,10 +350,10 @@
     transform: rotateY(0deg);
     background-image: linear-gradient(
       -21deg,
-      var(--primary-text) 0%,
-      var(--primary-text) 50%,
-      var(--secondary-colour) 50%,
-      var(--secondary-colour) 100%
+      var(--light-gray) 0%,
+      var(--light-gray) 50%,
+      var(--dark-gray) 50%,
+      var(--dark-gray) 100%
     );
   }
   50% {
@@ -363,10 +362,10 @@
     transform: rotateY(90deg);
     background-image: linear-gradient(
       -21deg,
-      var(--primary-text) 0%,
-      var(--primary-text) 50%,
-      var(--secondary-colour) 50%,
-      var(--secondary-colour) 100%
+      var(--light-gray) 0%,
+      var(--light-gray) 50%,
+      var(--dark-gray) 50%,
+      var(--dark-gray) 100%
     );
   }
   52% {
@@ -375,10 +374,10 @@
     transform: rotateY(90deg);
     background-image: linear-gradient(
       0deg,
-      var(--primary-text) 0%,
-      var(--primary-text) 0%,
-      var(--secondary-colour) 0%,
-      var(--secondary-colour) 100%
+      var(--light-gray) 0%,
+      var(--light-gray) 0%,
+      var(--dark-gray) 0%,
+      var(--dark-gray) 100%
     );
   }
   100% {
@@ -400,10 +399,10 @@
     transform: rotateY(90deg);
     background-image: linear-gradient(
       0deg,
-      var(--primary-text) 0%,
-      var(--primary-text) 0%,
-      var(--secondary-colour) 0%,
-      var(--secondary-colour) 100%
+      var(--light-gray) 0%,
+      var(--light-gray) 0%,
+      var(--dark-gray) 0%,
+      var(--dark-gray) 100%
     );
   }
   50% {
@@ -412,10 +411,10 @@
     transform: rotateY(90deg);
     background-image: linear-gradient(
       -21deg,
-      var(--primary-text) 0%,
-      var(--primary-text) 50%,
-      var(--secondary-colour) 50%,
-      var(--secondary-colour) 100%
+      var(--light-gray) 0%,
+      var(--light-gray) 50%,
+      var(--dark-gray) 50%,
+      var(--dark-gray) 100%
     );
   }
   100% {
@@ -424,10 +423,10 @@
     transform: rotateY(0deg);
     background-image: linear-gradient(
       -21deg,
-      var(--primary-text) 0%,
-      var(--primary-text) 50%,
-      var(--secondary-colour) 50%,
-      var(--secondary-colour) 100%
+      var(--light-gray) 0%,
+      var(--light-gray) 50%,
+      var(--dark-gray) 50%,
+      var(--dark-gray) 100%
     );
   }
 }
@@ -439,10 +438,10 @@
     transform: rotateY(0deg);
     background-image: linear-gradient(
       -21deg,
-      var(--primary-text) 0%,
-      var(--primary-text) 50%,
-      var(--secondary-colour) 50%,
-      var(--secondary-colour) 100%
+      var(--light-gray) 0%,
+      var(--light-gray) 50%,
+      var(--dark-gray) 50%,
+      var(--dark-gray) 100%
     );
   }
   50% {
@@ -451,10 +450,10 @@
     transform: rotateY(90deg);
     background-image: linear-gradient(
       -21deg,
-      var(--primary-text) 0%,
-      var(--primary-text) 50%,
-      var(--secondary-colour) 50%,
-      var(--secondary-colour) 100%
+      var(--light-gray) 0%,
+      var(--light-gray) 50%,
+      var(--dark-gray) 50%,
+      var(--dark-gray) 100%
     );
   }
   52% {
@@ -463,10 +462,10 @@
     transform: rotateY(90deg);
     background-image: linear-gradient(
       0deg,
-      var(--primary-text) 0%,
-      var(--primary-text) 0%,
-      var(--secondary-colour) 0%,
-      var(--secondary-colour) 100%
+      var(--light-gray) 0%,
+      var(--light-gray) 0%,
+      var(--dark-gray) 0%,
+      var(--dark-gray) 100%
     );
   }
   100% {
@@ -488,10 +487,10 @@
     transform: rotateY(90deg);
     background-image: linear-gradient(
       0deg,
-      var(--primary-text) 0%,
-      var(--primary-text) 0%,
-      var(--secondary-colour) 0%,
-      var(--secondary-colour) 100%
+      var(--light-gray) 0%,
+      var(--light-gray) 0%,
+      var(--dark-gray) 0%,
+      var(--dark-gray) 100%
     );
   }
   50% {
@@ -500,10 +499,10 @@
     transform: rotateY(90deg);
     background-image: linear-gradient(
       -21deg,
-      var(--primary-text) 0%,
-      var(--primary-text) 50%,
-      var(--secondary-colour) 50%,
-      var(--secondary-colour) 100%
+      var(--light-gray) 0%,
+      var(--light-gray) 50%,
+      var(--dark-gray) 50%,
+      var(--dark-gray) 100%
     );
   }
   100% {
@@ -512,10 +511,10 @@
     transform: rotateY(0deg);
     background-image: linear-gradient(
       -21deg,
-      var(--primary-text) 0%,
-      var(--primary-text) 50%,
-      var(--secondary-colour) 50%,
-      var(--secondary-colour) 100%
+      var(--light-gray) 0%,
+      var(--light-gray) 50%,
+      var(--dark-gray) 50%,
+      var(--dark-gray) 100%
     );
   }
 }

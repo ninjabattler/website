@@ -1,12 +1,5 @@
 import React, { ComponentType, CSSProperties } from 'react';
 import styles from './Comment.module.scss';
-import FireText from '../animatedText/FireText/FireText';
-import ThunderText from '../animatedText/ThunderText/ThunderText';
-import IceText from '../animatedText/IceText/IceText';
-import EarthText from '../animatedText/EarthText/EarthText';
-import RegexText from '../animatedText/RegexText/RegexText';
-import MetalHeadText from '../animatedText/MetalHeadText/MetalHeadText';
-import JsxParser from 'react-jsx-parser';
 import { ColourType } from '../../types';
 import { styleText } from '../../helpers/articlePageHelpers';
 
