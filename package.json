@@ -7,11 +7,13 @@
     "edit": "EDIT=true next dev -p 4000",
     "build": "next build",
     "start": "next start -p 4000",
+    "analyze": "ANALYZE=true npm run build",
     "lint": "next lint"
   },
   "dependencies": {
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
+    "@next/bundle-analyzer": "^13.1.5",
     "@types/pg": "^8.6.5",
     "axios": "^0.24.0",
     "dotenv": "^16.0.1",

@@ -6,12 +6,14 @@ import ThunderText from '../animatedText/ThunderText/ThunderText';
 import EarthText from '../animatedText/EarthText/EarthText';
 import RegexText from '../animatedText/RegexText/RegexText';
 import MetalHeadText from '../animatedText/MetalHeadText/MetalHeadText';
-import JsxParser from 'react-jsx-parser';
+import TerrariaText from '../animatedText/TerrariaText/TerrariaText';
 import Comment from '../Comment/Comment';
-import CommentArea from '../feedbackAndShare/CommentArea/CommentArea';
-import { ArticleJson, IpType, PostIdType, TitleType, UserIdType } from '../../types';
+// import CommentArea from '../feedbackAndShare/CommentArea/CommentArea';
+import { ArticleJson, HtmlItem, IpType, ParagraphItem, PictureItem, PostIdType, TitleType, UserIdType } from '../../types';
 import { parseJsonPost } from '../../helpers/parseJsonPost';
 import moment from 'moment';
+import dynamic from 'next/dynamic';
+const CommentArea = dynamic(() => import('../feedbackAndShare/CommentArea/CommentArea'), { loading: () => <></> });
 
 type PostProps = {
   title: TitleType;
@@ -93,13 +95,60 @@ export default function Post({ title, date, comments, content, id, userId }: Pos
               </div>
             </aside>
 
-            {/* Content */}
-            {/* @ts-ignore - JsxParser has an error with how it exports, works perfectly fine though */}
-            <JsxParser
-              components={{ FireText, IceText, ThunderText, EarthText, MetalHeadText, RegexText } as {}}
-              jsx={parseJsonPost(content)}
-            />
+            <div>
+              {content.map((item) => {
+                switch (item.type) {
+                  case 'Paragraph':
+                    const paragraphItem: ParagraphItem = item as ParagraphItem;
+                    return <p>
+                      {paragraphItem.content.map((item2) => {
+                        if (typeof item2 === 'string') {
+                          return item2
+                        } else {
+                          switch (item2.type) {
+                            case 'FireText':
+                              return <FireText text={item2.content} />
 
+                            case 'EarthText':
+                              return <EarthText text={item2.content} />
+
+                            case 'ThunderText':
+                              return <ThunderText text={item2.content} />
+
+                            case 'IceText':
+                              return <IceText text={item2.content} />
+
+                            case 'MetalHeadText':
+                              return <MetalHeadText text={item2.content} />
+
+                            case 'RegexText':
+                              return <RegexText text={item2.content} />
+
+                            case 'TerrariaText':
+                              return <TerrariaText
+                                text={item2.content}
+                                colour={item2.colour}
+                                dog={item2.dog}
+                                draedon={item2.draedon}
+                                moonlord={item2.moonlord}
+                                scal={item2.scal}
+                                yharim={item2.yharim}
+                              />
+                          }
+                        }
+                      })}
+                    </p>
+                  case 'Picture':
+                    const pictureItem: PictureItem = item as PictureItem;
+                    return <img src={pictureItem.imageSrc} />;
+                  case 'Html':
+                    const htmlItem: HtmlItem = item as HtmlItem;
+                    return <span dangerouslySetInnerHTML={{ __html: htmlItem.content }}></span>;
+                  default:
+                    return <></>;
+                }
+              })}
+            </div>
           </div>
         )
       }

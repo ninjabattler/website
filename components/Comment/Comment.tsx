@@ -27,7 +27,6 @@ const Comment: ComponentType<CommentProps> = ({ username, content, style, pageCo
     <div>
       <b>Ninja #{username}</b>
       <i>{moment(date).fromNow(true)}</i>
-      {/* @ts-ignore - JsxParser has an error with how it exports, works perfectly fine though */}
       <p dangerouslySetInnerHTML={{ __html: styleText(content) }}></p>
     </div>
   </article>

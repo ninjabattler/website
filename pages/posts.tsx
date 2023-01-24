@@ -5,7 +5,8 @@ import styles from '../styles/PostsPage.module.scss'
 import { postsServerSideProps } from '../ssr/posts';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { AppData } from '../types';
-import PixiBackground from '../components/PixiBackground/PixiBackground';
+import dynamic from 'next/dynamic';
+const PixiBackground = dynamic(() => import('../components/PixiBackground/PixiBackground'), { loading: () => <></> });
 
 export const getServerSideProps: GetServerSideProps = postsServerSideProps;
 

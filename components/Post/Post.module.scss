@@ -168,9 +168,12 @@
 
 .postContent > div > p,
 .postContent > div > span,
-.postContent > div > h1 {
+.postContent > div > span:has(> h1) {
   width: 95% !important;
-  margin-bottom: 0.5vw;
+
+  h1 {
+    margin-bottom: 0.5vw;
+  }
 
   @media only screen and (max-device-width: 425px) {
     margin-bottom: 0;

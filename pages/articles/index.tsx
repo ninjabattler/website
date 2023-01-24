@@ -8,7 +8,8 @@ import { articlesServerSideProps } from '../../ssr/articles/index';
 import { formatSqlDate } from '../../helpers/dateHelpers';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { AppData } from '../../types';
-import PixiBackground from '../../components/PixiBackground/PixiBackground';
+import dynamic from 'next/dynamic';
+const PixiBackground = dynamic(() => import('../../components/PixiBackground/PixiBackground'), { loading: () => <></> });
 
 export const getStaticProps: GetStaticProps = articlesServerSideProps;
 
