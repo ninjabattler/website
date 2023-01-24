@@ -98,8 +98,8 @@
   width: 37vw;
   height: auto;
   filter: invert(0.5);
-  mix-blend-mode: color-burn;
-  opacity: 0.3;
+  mix-blend-mode: lighten;
+  opacity: 0.2;
 
   @media only screen and (max-device-width: 425px) {
     width: 65.2vw;

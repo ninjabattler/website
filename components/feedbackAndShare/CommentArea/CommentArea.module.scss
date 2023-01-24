@@ -53,10 +53,6 @@
   animation-duration: 3.5s;
 }
 
-#commentAreaView > div > span:has(> span) {
-  display: none !important;
-}
-
 #commentAreaView > div > span > blockQuote {
   width: calc(100% - 1.8vw);
   display: inline-block;

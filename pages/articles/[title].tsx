@@ -47,7 +47,13 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
   useEffect(() => {
     setWindow(window)
     window.addEventListener('scroll', scrollListener)
-    setComments(articleData.comments)
+    setComments(articleData.comments.sort((a, b) => {
+      if (a.id > b.id) {
+        return 1
+      } else {
+        return -1
+      }
+    }))
   }, [])
 
   const scrollListener = () => {

@@ -16,7 +16,7 @@ const selectSingleArticle = async (db: Pool, title: TitleType): Promise<ArticleD
           'date', comments.date,
           'avatar', users.avatar,
           'username', users.username,
-          'user_id', users.id
+          'user_id', comments.user_id
         )
       )
       FILTER

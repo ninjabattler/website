@@ -11,7 +11,7 @@ const selectAllPostsData = async (db: Pool): Promise<PostData[]> => {
         'date', comments.date,
         'avatar', users.avatar,
         'username', users.username,
-        'user_id', users.id
+        'user_id', comments.user_id
       )
       ORDER BY comments.date DESC
     ) as comments
