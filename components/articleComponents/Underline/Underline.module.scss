@@ -1,12 +1,11 @@
 .underline {
   border-left: 0.33vw solid transparent;
   border-right: 0.33vw solid transparent;
-  border-bottom: 0.33vw solid rgba(35, 35, 35, 1);
+  border-bottom: 0.33vw solid rgba(45, 45, 45, 1);
   margin-top: 0px;
   width: 85%;
   margin-left: auto;
   margin-right: auto;
-  // filter: drop-shadow(0 0 0.15vw black);
 
   @media only screen and (max-width: 480px) {
     border-left-width: 60px;
@@ -14,6 +13,5 @@
     border-bottom-width: 2px;
     margin-top: -10px;
     margin-bottom: -10px;
-    // filter: drop-shadow(2px 2px 0px black);
   }
 }

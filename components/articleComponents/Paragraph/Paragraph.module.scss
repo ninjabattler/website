@@ -14,12 +14,12 @@
   }
 }
 
-.paragraph > div > p {
+.paragraph > p {
   font-weight: 100;
   line-height: 1.2em;
 }
 
-.paragraph > div > p > a, .paragraph > div > p > sup > a {
+.paragraph > p > span > a, .paragraph > p > span > sup > a {
   color: var(--article-colour) !important;
 
   &:hover {
@@ -27,18 +27,18 @@
   }
 }
 
-.paragraph > div > p > em {
+.paragraph > p > span > em {
   color: var(--primary-text);
   filter: brightness(1.2);
 }
 
-.paragraph > div > p > strong {
+.paragraph > p > span > strong {
   color: var(--primary-text);
   opacity: 0.7;
   filter: drop-shadow(1px 1px 0px black) drop-shadow(-1px -1px 0px black) drop-shadow(1px -1px 0px black)
     drop-shadow(-1px 1px 0px black);
 }
 
-.paragraph > div > p > sup {
+.paragraph > p > span > sup {
   font-size: 0.6em;
 }

@@ -4,8 +4,8 @@ import styles from "./Picture.module.scss";
 
 type PictureProps = {
   imageSrc: string;
-  width: string;
-  float: 'left' | 'right';
+  width?: string;
+  float?: 'left' | 'right';
   pageColour?: ColourType
 }
 

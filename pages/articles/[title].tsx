@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styles from '../../styles/ReviewPage.module.scss';
-import JsxParser from 'react-jsx-parser';
 import Head from 'next/dist/shared/lib/head';
 import VideoHeader from '../../components/VideoHeader/VideoHeader';
 import InfoBar from '../../components/articleComponents/InfoBar/InfoBar';
@@ -11,7 +10,6 @@ import Quote from '../../components/articleComponents/Quote/Quote';
 import Paragraph from '../../components/articleComponents/Paragraph/Paragraph';
 import TitleCard from '../../components/articleComponents/TitleCard/TitleCard';
 import Comment from '../../components/Comment/Comment';
-import CodeBlock from '../../components/articleComponents/CodeBlock/CodeBlock';
 import { CommentTwoTone } from '@material-ui/icons';
 import VideoBackground from '../../components/VideoBackground/VideoBackground';
 import SubtitleCard from '../../components/articleComponents/SubtitleCard/SubtitleCard';
@@ -19,12 +17,13 @@ import Dialogue from '../../components/articleComponents/Dialogue/Dialogue';
 import { articlePageServerSideProps } from '../../ssr/articles/title';
 import LikePanel from '../../components/feedbackAndShare/LikePanel/LikePanel';
 import ShareBar from '../../components/feedbackAndShare/ShareBar/ShareBar';
-import CommentArea from '../../components/feedbackAndShare/CommentArea/CommentArea';
 import noCommentMessages from '../../constants/noCommentMessages.json';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import { AppData, ArticleData, PostCommentType, WindowServerType } from '../../types';
-import { parseJsonArticle } from '../../helpers/parseJsonArticle';
-import MainSettings from '../../components/articleCreationComponents/MainSettings/MainSettings';
+import { AppData, ArticleData, ArticleList, CodeBlockItem, DialogueItem, ParagraphItem, PictureItem, PostCommentType, QuoteItem, SubtitleCardItem, TitleCardItem, WindowServerType } from '../../types';
+import dynamic from 'next/dynamic';
+const CodeBlock = dynamic(() => import('../../components/articleComponents/CodeBlock/CodeBlock'), { loading: () => <></> });
+const CommentArea = dynamic(() => import('../../components/feedbackAndShare/CommentArea/CommentArea'), { loading: () => <></> });
+const MainSettings = dynamic(() => import('../../components/articleCreationComponents/MainSettings/MainSettings'), { loading: () => <></> });
 
 export const getServerSideProps: GetServerSideProps = articlePageServerSideProps;
 
@@ -116,12 +115,90 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
           <article className={styles.articleContainer} style={windowServer.innerWidth < 426 ? { boxShadow: `2px 2px 0px ${article.colour}` } : { boxShadow: `5px 5px 0px ${article.colour}` }}>
             {article.narration && (<iframe id={styles.adAurisIframe} src={`${article.narration}?color=${article.colour.split('#')[1]}`} style={{ border: 'none', height: '100px', width: '80%' }} ></iframe>)}
 
-            {/* @ts-ignore - JsxParser has an error with how it exports, works perfectly fine though */}
-            <JsxParser
-              components={{ Picture, ListItem, Underline, Quote, Paragraph, TitleCard, CodeBlock, SubtitleCard, Dialogue } as {}}
-
-              jsx={parseJsonArticle(article.content)}
-            />
+            <div>
+              {(() => {
+                return article.content.map((contentItem, i) => {
+                  switch (contentItem.type) {
+                    case 'Paragraph':
+                      const paragraphItem = contentItem as ParagraphItem
+                      return <Paragraph
+                        key={i}
+                        content={paragraphItem.content}
+                      />
+                    case 'TitleCard':
+                      const titleCardItem = contentItem as TitleCardItem
+                      return <TitleCard
+                        key={i}
+                        title={titleCardItem.title}
+                        imageSrc={titleCardItem.imageSrc}
+                        pageColour={titleCardItem.pageColour || 'var(--article-colour)'}
+                      />
+                    case 'Picture':
+                      const pictureItem = contentItem as PictureItem
+                      return <Picture
+                        key={i}
+                        imageSrc={pictureItem.imageSrc}
+                        pageColour={pictureItem.pageColour || 'var(--article-colour)'}
+                      />
+                    case 'Quote':
+                      const quoteItem = contentItem as QuoteItem
+                      return <Quote
+                        key={i}
+                        quote={quoteItem.quote}
+                        source={quoteItem.source}
+                      />
+                    case 'Underline':
+                      return <Underline key={i} />
+                    case 'List':
+                      const list = contentItem as ArticleList
+                      return <ul>
+                        {
+                          list.items.map((li) => {
+                            return <ListItem
+                              key={i}
+                              content={li.content}
+                              imgSrc={li.imageSrc}
+                              pageColour={li.pageColour}
+                            />
+                          })
+                        }
+                      </ul>
+                    case 'CodeBlock':
+                      const codeBlockItem = contentItem as CodeBlockItem
+                      return <CodeBlock
+                        key={i}
+                        code={codeBlockItem.code}
+                        language={codeBlockItem.language}
+                        highlight={codeBlockItem.highlight}
+                        title={codeBlockItem.title}
+                      />
+                    case 'Dialogue':
+                      const dialogueItem = contentItem as DialogueItem
+                      return <Dialogue
+                        key={i}
+                        text={dialogueItem.content}
+                        imageSrc={dialogueItem.imageSrc}
+                        pageColour={dialogueItem.pageColour || 'var(--article-colour)'}
+                        speaker={dialogueItem.speaker}
+                      />
+                    case 'SubtitleCard':
+                      const subtitleCardItem = contentItem as SubtitleCardItem
+                      return <SubtitleCard
+                        key={i}
+                        title={subtitleCardItem.title}
+                        smaller={subtitleCardItem.smaller}
+                        extraSmaller={subtitleCardItem.extraSmaller}
+                        higher={subtitleCardItem.higher}
+                        imageSrc={subtitleCardItem.imageSrc}
+                        lower={subtitleCardItem.lower}
+                        pageColour={subtitleCardItem.pageColour || 'var(--article-colour)'}
+                      />
+                    default:
+                      return <></>
+                  }
+                });
+              })()}
+            </div>
 
             {article.footnotes[0] &&
               <>

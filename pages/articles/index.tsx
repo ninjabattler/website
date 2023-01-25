@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from '../../styles/ArticlesPage.module.scss'
-import Paragraph from '../../components/articleComponents/Paragraph/Paragraph';
 import Carousel from '../../components/Carousel/Carousel';
 import Head from 'next/dist/shared/lib/head';
 import Link from 'next/link';
@@ -62,7 +61,7 @@ export default function ArticlesPage({ articles, setLinkClicked }: InferGetStati
 
                     <div>
                       <aside>
-                        <Paragraph text={item.description || 'Opps, looks like I forgot a description...'} />
+                        <p>{item.description || 'Opps, looks like I forgot a description...'}</p>
                       </aside>
                     </div>
                   </article>

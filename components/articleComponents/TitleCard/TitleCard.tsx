@@ -6,8 +6,8 @@ type TitleCardProps = {
   imageSrc: string;
   title: string;
   pageColour: ColourType;
-  inverse: boolean;
-  lower: boolean
+  inverse?: boolean;
+  lower?: boolean
 }
 
 const TitleCard: ComponentType<TitleCardProps> = ({ imageSrc, title, pageColour, inverse, lower }) => (

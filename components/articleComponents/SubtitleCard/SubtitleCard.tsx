@@ -4,7 +4,7 @@ import styles from "./SubtitleCard.module.scss";
 
 type SubtitleCardProps = {
   imageSrc: string;
-  inverse: boolean;
+  inverse?: boolean;
   pageColour: ColourType;
   lower: boolean;
   higher: boolean;

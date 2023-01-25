@@ -1,14 +1,14 @@
 import React, { ReactElement, useState } from 'react';
 import styles from './Carousel.module.scss';
-import JsxParser from 'react-jsx-parser';
 import Paragraph from '../articleComponents/Paragraph/Paragraph';
 import Image from 'next/image';
 import Link from 'next/link';
 import { formatSqlDate } from '../../helpers/dateHelpers';
 import { parseJsonArticle } from '../../helpers/parseJsonArticle';
+import { ArticleData, ParagraphItem } from '../../types';
 
 type CarouselProps = {
-  items: Array<any>;
+  items: ArticleData[];
   setLinkClicked: Function;
 }
 
@@ -58,12 +58,16 @@ const Carousel = ({ items, setLinkClicked }: CarouselProps): ReactElement => {
                     <h3>{item.category}/{item.genre}</h3>
                   </section>
 
-                  {/* @ts-ignore - JsxParser has an error with how it exports, works perfectly fine though */}
-                  <JsxParser
-                    components={{ Paragraph } as {}}
-
-                    jsx={item.content ? parseJsonArticle(item.content.slice(0, 2)) : ''}
-                  />
+                  <div>
+                    {item.content.map((contentItem) => {
+                      if (contentItem.type === 'Paragraph') {
+                        contentItem = contentItem as ParagraphItem
+                        return <Paragraph content={contentItem.content} />
+                      } else {
+                        return <></>
+                      }
+                    })}
+                  </div>
                 </aside>
               </a>
             </Link>)
