@@ -18,7 +18,7 @@ const Dialogue: ComponentType<DialogueProps> = ({ speaker, text, imageSrc, pageC
       <p>{text}</p>
     </div>
     {/* <div className={styles.background1}></div> */}
-    <img src={imageSrc} />
+    <img src={imageSrc} alt='speaker' />
   </div>
 );
 

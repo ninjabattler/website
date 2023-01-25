@@ -51,7 +51,7 @@ export default function Post({ title, date, comments, content, id, userId }: Pos
           `}
       </style>
 
-      {!showContent && <img src={'/Ninja placeholder.png'} />}
+      {!showContent && <img src={'/Ninja placeholder.png'} alt='logo' />}
       <h1>{title}</h1>
       {!showContent && <h2>{moment(date).fromNow(true)}</h2>}
 
@@ -138,7 +138,7 @@ export default function Post({ title, date, comments, content, id, userId }: Pos
                     </p>
                   case 'Picture':
                     const pictureItem: PictureItem = item as PictureItem;
-                    return <img src={pictureItem.imageSrc} />;
+                    return <img src={pictureItem.imageSrc} alt='img' />;
                   case 'Html':
                     const htmlItem: HtmlItem = item as HtmlItem;
                     return <span dangerouslySetInnerHTML={{ __html: htmlItem.content }}></span>;

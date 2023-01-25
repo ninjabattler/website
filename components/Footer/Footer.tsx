@@ -8,7 +8,7 @@ export default function Footer(): ReactElement {
 
       </div>
       <section id={styles.copyrightSection}>
-        <img src={'/Ninja placeholder.png'} />
+        <img src={'/Ninja placeholder.png'} alt='logo' />
       </section>
     </footer>
   )

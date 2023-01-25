@@ -35,8 +35,8 @@ export default function Home({ title, thumbnail, setLinkClicked }: InferGetStati
         <meta name="google-site-verification" content="Cq6r13JSr-HUsKYp5H2wxCqR7tIK4SQGxMxodWHx1i4" />
       </Head>
       <main id={styles.homePage}>
-        <img id={styles.homePageRobot} src="/websiterobot3.webp" />
-        <img id={styles.homePageRobotFade} src="/websiterobot3.webp" />
+        <img id={styles.homePageRobot} src="/websiterobot3.webp" alt='ninjabattler' />
+        <img id={styles.homePageRobotFade} src="/websiterobot3.webp" alt='ninjabattler' />
 
         {/* Introduction */}
         <section id={styles.part1}>
@@ -48,6 +48,7 @@ export default function Home({ title, thumbnail, setLinkClicked }: InferGetStati
               <img
                 onClick={(e) => { e.preventDefault(); setLinkClicked(`/articles/${title.toLowerCase().replace(/ /g, '_')}`) }}
                 src={thumbnail}
+                alt='article thumbnail'
               />
               <h2>Newest Article: </h2>
               <h3>{title}</h3>
@@ -63,14 +64,14 @@ export default function Home({ title, thumbnail, setLinkClicked }: InferGetStati
 
         {/* Video Games */}
         <section id={styles.part2}>
-          <img src="/videogames.webp" />
+          <img src="/videogames.webp" alt='video games header' />
           <h2>Video Games</h2>
           <h4>Never said I was original</h4>
 
           <div className={styles.imageCollection}>
-            <img src="https://files.ninjabattler.ca/image/Deamon.png" />
-            <img src="https://files.ninjabattler.ca/image/calscourgefight.png" />
-            <img src="https://files.ninjabattler.ca/image/cnightsgil.png" />
+            <img src="https://files.ninjabattler.ca/image/Deamon.png" alt='video game' />
+            <img src="https://files.ninjabattler.ca/image/calscourgefight.png" alt='video game' />
+            <img src="https://files.ninjabattler.ca/image/cnightsgil.png" alt='video game' />
           </div>
 
           <div className={styles.gradient2}>
@@ -82,7 +83,7 @@ export default function Home({ title, thumbnail, setLinkClicked }: InferGetStati
 
         {/* Coding */}
         <section id={styles.part3}>
-          <img src="/coding.webp" />
+          <img src="/coding.webp" alt='coding header' />
           <h2>Coding</h2>
           <h4>Words that do stuff</h4>
           <div className={styles.gradient2}>

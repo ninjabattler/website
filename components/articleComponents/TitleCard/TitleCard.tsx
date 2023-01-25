@@ -22,9 +22,11 @@ const TitleCard: ComponentType<TitleCardProps> = ({ imageSrc, title, pageColour,
         <img
           className={styles.backgroundGlow}
           src={imageSrc.replace('http://', 'https://')}
+          alt='header image'
         />
         <img
           src={imageSrc.replace('http://', 'https://')}
+          alt='header image'
         />
       </div>)
       :

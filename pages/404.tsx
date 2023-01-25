@@ -24,7 +24,7 @@ export default function FourOhFour() {
           <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
         </Head>
         <h1>404</h1>
-        <img src='/errorRobot.png' />
+        <img src='/errorRobot.png' alt='error icon' />
         <p>Could&apos;ve sworn this page existed...</p>
       </div>
     </>

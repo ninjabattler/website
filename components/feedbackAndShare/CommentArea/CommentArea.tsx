@@ -95,7 +95,7 @@ export default function CommentArea({
       {
         commenting && 
           <div id={styles.commentLoading}>
-            <img src={'/Ninja placeholder.png'} />
+            <img src={'/Ninja placeholder.png'} alt='logo' />
           </div> 
       }
 

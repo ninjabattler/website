@@ -24,10 +24,12 @@ const SubtitleCard: ComponentType<SubtitleCardProps> = ({ imageSrc, inverse, pag
         <img
           className={`${smaller && styles.smaller} ${extraSmaller && styles.extraSmaller} ${styles.backgroundGlow}`}
           src={imageSrc.replace('http://', 'https://')}
+          alt='header image'
         />
         <img
           className={`${smaller && styles.smaller} ${extraSmaller && styles.extraSmaller}`}
           src={imageSrc.replace('http://', 'https://')}
+          alt='header image'
         />
       </div>)
       :

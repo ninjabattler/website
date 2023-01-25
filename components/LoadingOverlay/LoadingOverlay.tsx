@@ -10,7 +10,7 @@ type LoadingOverlayProps = {
 const LoadingOverlay: ComponentType<LoadingOverlayProps> = ({ shrink, quoteIndex }) => (
   <div id={styles.loadingOverlay} className={shrink && styles.shrink}>
     <div id={styles.backgroundFilter}/>
-    <img src='/Ninja placeholder.png' />
+    <img src='/Ninja placeholder.png' alt='logo' />
 
     <h1>Loading...</h1>
 

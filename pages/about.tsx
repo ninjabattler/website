@@ -33,7 +33,7 @@ export default function About(props) {
             form of social media out there, I think this is much more fun. This site was built using
           </p>
           <h1>
-            <img src="/next.png" />
+            <img src="/next.png" alt='nextjs logo'/>
           </h1>
           <p>
             I&apos;ve put links to my github and linkedin in the navbar of this site if for some reason you would want that. Other than that
