@@ -1,6 +1,7 @@
 import React, { ComponentType, useEffect, useState } from 'react';
 import styles from './CodeBlock.module.scss';
-import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
+// import SyntaxHighlighter from 'react-syntax-highlighter';
+import hljs from 'highlight.js'
 import { FileCopy, Check } from '@material-ui/icons';
 import vscDarkPlus from './vscDarkPlus.json';
 
@@ -43,14 +44,14 @@ const CodeBlock: ComponentType<CodeBlockProps> = ({ code, language, highlight, t
       <h3>
         <button
           onClick={() => { navigator.clipboard.writeText(code); setCopied(true) }}
-          onMouseLeave={() => { if (copied) {setCopied(false)} }}
+          onMouseLeave={() => { if (copied) { setCopied(false) } }}
         >
-          {copied ? <Check/> : <FileCopy/>}
+          {copied ? <Check /> : <FileCopy />}
         </button>
         {title && title}
       </h3>
-      
-      <SyntaxHighlighter
+
+      {/* <SyntaxHighlighter
         language={language}
         style={vscDarkPlus}
         showLineNumbers
@@ -65,7 +66,10 @@ const CodeBlock: ComponentType<CodeBlockProps> = ({ code, language, highlight, t
         }}
       >
         {code}
-      </SyntaxHighlighter>
+      </SyntaxHighlighter> */}
+      <pre>
+        <code dangerouslySetInnerHTML={{ __html: hljs.highlight(code, { language: language }).value }}></code>
+      </pre>
     </div>
   )
 }

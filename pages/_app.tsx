@@ -6,6 +6,7 @@ import '../styles/globals.scss';
 import { NextRouter, useRouter } from 'next/router';
 import { AppProps } from 'next/app';
 import quotes from '../constants/loadingOverlayQuotes.json';
+import 'highlight.js/styles/vs2015.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [linkClicked, setLinkClicked] = useState<string | null>(null);
