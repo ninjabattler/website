@@ -88,6 +88,11 @@ $gradientColour: rgba(0, 0, 0, 0.5);
   font-family: "Russo One";
   font-weight: 100;
 
+  &::selection {
+    color: var(--light-gray);
+    background-color: var(--article-colour);
+  }
+
   @media only screen and (max-width: 425px) {
     height: auto;
     width: 100vw;
@@ -109,6 +114,11 @@ $gradientColour: rgba(0, 0, 0, 0.5);
 }
 .imageContainer > img {
   max-height: 12.5vw;
+
+  &::selection {
+    color: var(--dark-gray);
+    background-color: var(--article-colour);
+  }
 
   @media only screen and (max-width: 425px) {
     max-height: 27.5vw;

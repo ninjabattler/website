@@ -14,6 +14,11 @@
   --shadowColour: var(--article-colour);
   display: flex;
   justify-content: center;
+
+  &::selection {
+    color: var(--dark-gray);
+    background-color: var(--article-colour);
+  }
 }
 
 .floatingLeft > img,
@@ -23,11 +28,9 @@
 
 .floatingLeft {
   filter: drop-shadow(0.2vw -0.2vw 0px var(--dark-gray)) drop-shadow(0.2vw -0.2vw 0px var(--shadowColour));
-  padding-left: 20px;
 
   @media only screen and (max-device-width: 425px) {
     filter: drop-shadow(2px -2px 0px var(--dark-gray)) drop-shadow(2px -2px 0px var(--shadowColour));
-    padding-left: 20px;
   }
 }
 
@@ -43,11 +46,9 @@
 
 .floatingRight {
   filter: drop-shadow(-0.2vw -0.2vw 0px var(--dark-gray)) drop-shadow(-0.2vw -0.2vw 0px var(--shadowColour));
-  padding-left: 20px;
 
   @media only screen and (max-device-width: 425px) {
     filter: drop-shadow(-2px -2px 0px var(--dark-gray)) drop-shadow(-2px -2px 0px var(--shadowColour));
-    padding-left: 20px;
   }
 }
 

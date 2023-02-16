@@ -17,9 +17,17 @@
 .paragraph > p {
   font-weight: 100;
   line-height: 1.2em;
+
+  * {
+    &::selection {
+      color: var(--dark-gray);
+      background-color: var(--article-colour);
+    }
+  }
 }
 
-.paragraph > p > span > a, .paragraph > p > span > sup > a {
+.paragraph > p > span > a,
+.paragraph > p > span > sup > a {
   color: var(--article-colour) !important;
 
   &:hover {

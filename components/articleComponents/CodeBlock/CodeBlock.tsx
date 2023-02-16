@@ -1,9 +1,7 @@
 import React, { ComponentType, useEffect, useState } from 'react';
 import styles from './CodeBlock.module.scss';
-// import SyntaxHighlighter from 'react-syntax-highlighter';
 import hljs from 'highlight.js'
 import { FileCopy, Check } from '@material-ui/icons';
-import vscDarkPlus from './vscDarkPlus.json';
 
 type CodeBlockProps = {
   code: string;
@@ -50,23 +48,6 @@ const CodeBlock: ComponentType<CodeBlockProps> = ({ code, language, highlight, t
         </button>
         {title && title}
       </h3>
-
-      {/* <SyntaxHighlighter
-        language={language}
-        style={vscDarkPlus}
-        showLineNumbers
-        wrapLines
-        wrapLongLines
-        lineProps={(lineNumber: number) => {
-          if (!highlightLines.includes(lineNumber) && highlight) {
-            return {style: { opacity: 0.5, filter: 'blur(0.04vw) grayscale(0.5)'}}
-          } else {
-            return {}
-          }
-        }}
-      >
-        {code}
-      </SyntaxHighlighter> */}
       <pre>
         <code dangerouslySetInnerHTML={{ __html: hljs.highlight(code, { language: language }).value }}></code>
       </pre>

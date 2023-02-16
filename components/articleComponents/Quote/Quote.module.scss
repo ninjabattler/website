@@ -13,6 +13,13 @@ $gradientColour: rgba(45, 45, 45, 1);
   align-items: center;
   justify-content: flex-start;
 
+  * {
+    &::selection {
+      color: var(--dark-gray);
+      background-color: var(--article-colour);
+    }
+  }
+
   @media only screen and (max-width: 425px) {
     width: 95%;
     font-size: 0.5em;
@@ -55,6 +62,11 @@ $gradientColour: rgba(45, 45, 45, 1);
   font-weight: 100;
   color: var(--light-gray);
 
+  &::selection {
+    color: var(--dark-gray);
+    background-color: var(--article-colour);
+  }
+
   @media only screen and (max-width: 425px) {
     font-size: 0.85em;
     padding-left: 10vw;
@@ -69,6 +81,12 @@ $gradientColour: rgba(45, 45, 45, 1);
   margin: 0.5vw;
   font-weight: 100;
   transform: skewX(-20deg);
+  cursor: default;
+
+  &::selection {
+    color: $gradientColour;
+    background-color: transparent;
+  }
 
   @media only screen and (max-width: 425px) {
     margin: 1vw;

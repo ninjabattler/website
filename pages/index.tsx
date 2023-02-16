@@ -72,6 +72,8 @@ export default function Home({ title, thumbnail, setLinkClicked }: InferGetStati
             <img src="https://files.ninjabattler.ca/image/Deamon.png" alt='video game' />
             <img src="https://files.ninjabattler.ca/image/calscourgefight.png" alt='video game' />
             <img src="https://files.ninjabattler.ca/image/cnightsgil.png" alt='video game' />
+            <img src="https://files.ninjabattler.ca/image/calpostmoonlord/devourer2fight2.webp" alt='video game' />
+            <img src="https://files.ninjabattler.ca/image/metalheads1.png" alt='video game' />
           </div>
 
           <div className={styles.gradient2}>

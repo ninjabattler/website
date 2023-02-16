@@ -52,6 +52,7 @@ $gradientColour: rgba(27, 27, 27, 0.5);
   width: 100vw;
   height: 50vw;
   filter: drop-shadow(0 0 0.3vw transparent);
+  perspective: 10cm;
 
   @media only screen and (max-width: 425px) {
     width: 100vw;
@@ -120,7 +121,7 @@ $gradientColour: rgba(27, 27, 27, 0.5);
   position: absolute;
   width: 100%;
   filter: drop-shadow(0 0 0vw black);
-  margin-top: 3vw;
+  margin-bottom: -3vw;
   right: 0;
   z-index: 10;
   cursor: pointer;
@@ -138,7 +139,7 @@ $gradientColour: rgba(27, 27, 27, 0.5);
 #part1 > .gradient2 > h2 {
   position: absolute;
   right: 0;
-  margin-top: 28.3vw;
+  margin-top: 25.3vw;
   width: 100%;
   margin-right: -0.5vw;
   padding-left: 0.5vw;
@@ -169,7 +170,7 @@ $gradientColour: rgba(27, 27, 27, 0.5);
 
 #part1 > .gradient2 > h3 {
   position: absolute;
-  margin-top: 31vw;
+  margin-top: 28vw;
   width: 100%;
   margin-right: -0.5vw;
   padding-left: 0.5vw;
@@ -252,10 +253,11 @@ $gradientColour: rgba(27, 27, 27, 0.5);
   width: 40vw;
   z-index: 1;
   margin-top: -0.5vw;
+  filter: drop-shadow(0 0 0.3vw black);
 
   @media only screen and (max-width: 425px) {
     width: 55vw;
-    margin-top: -1.5vw;
+    margin-top: 3.5vw;
   }
 }
 
@@ -266,6 +268,7 @@ $gradientColour: rgba(27, 27, 27, 0.5);
   position: absolute;
   width: 98vw;
   margin-top: 35vw;
+  filter: drop-shadow(0 0 0.3vw black);
 
   @media only screen and (max-width: 425px) {
     padding: 4vw;
@@ -276,43 +279,37 @@ $gradientColour: rgba(27, 27, 27, 0.5);
 }
 
 #part2 > h2 {
-  width: 68vw;
+  width: 100%;
   position: absolute;
   font-size: 3.5em;
   font-family: "Russo One";
   font-weight: 100;
   color: var(--dark-gray);
-  padding-left: 32vw;
-  margin-top: 6.75vw;
+  padding-left: 42vw;
+  margin-top: 13.6vw;
   background-image: linear-gradient(
     -45deg,
-    var(--light-gray) 10vw,
-    $gradientColour 10vw,
-    $gradientColour 12vw,
-    var(--light-gray) 12vw,
-    var(--light-gray) 14vw,
-    $gradientColour 14vw,
-    $gradientColour 16vw,
-    var(--light-gray) 16vw
+    var(--light-gray) 32.25vw,
+    $gradientColour 32.25vw,
+    $gradientColour 34.25vw,
+    var(--light-gray) 34.25vw,
+    var(--light-gray) 36.25vw,
+    $gradientColour 36.25vw,
+    $gradientColour 38.4vw,
+    var(--light-gray) 38.4vw
   );
   cursor: default;
+  transform: rotateY(10deg) rotateX(10deg) translateZ(-0.47cm);
 
   @media only screen and (max-width: 425px) {
-    width: 58vw;
-    padding-left: 42vw;
+    padding-left: 47vw;
+    width: 53vw;
+    text-overflow: none;
     font-size: 2.5em;
+    margin-top: 13vw;
     filter: none;
-    background-image: linear-gradient(
-      -45deg,
-      var(--light-gray) 65vw,
-      $gradientColour 65vw,
-      $gradientColour 67vw,
-      var(--light-gray) 67vw,
-      var(--light-gray) 69vw,
-      $gradientColour 69vw,
-      $gradientColour 71vw,
-      var(--light-gray) 71vw
-    );
+    background-position: -16vw 0;
+    transform: none;
   }
 }
 
@@ -325,8 +322,8 @@ $gradientColour: rgba(27, 27, 27, 0.5);
   color: var(--primary-text);
   padding-top: 0.5vw;
   padding-bottom: 0.5vw;
-  padding-left: 34vw;
-  margin-top: 13.5vw;
+  padding-left: 44vw;
+  margin-top: 20.4vw;
   background-image: linear-gradient(
     -45deg,
     var(--dark-gray) 36.75vw,
@@ -339,56 +336,59 @@ $gradientColour: rgba(27, 27, 27, 0.5);
     var(--dark-gray) 42.75vw
   );
   cursor: default;
+  transform: rotateY(10deg) rotateX(10deg);
 
   @media only screen and (max-width: 425px) {
-    width: 55vw;
-    padding-left: 45vw;
-    font-size: 1.4em;
+    font-size: 1.3em;
     background-image: none;
     background-color: var(--dark-gray);
-    margin-top: 16vw;
+    margin-top: 22vw;
+    padding-left: 48vw;
+    width: 52vw;
+    transform: none;
   }
 }
 
 #part2 > .imageCollection {
   position: absolute;
-  width: 100%;
+  width: 200%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* margin: 5vw; */
-  margin-top: 4vw;
+  margin-left: 25vw;
+  margin-top: 9.5vw;
   z-index: -1;
   right: 0;
-  transform: scale(1.4);
   flex-wrap: wrap;
-  filter: blur(0.3vw);
+  filter: blur(0.1vw);
+  transform: rotateY(10deg) rotateX(10deg) translateX(90vw);
 
   @media only screen and (max-width: 425px) {
-    transform: scale(1);
+    width: 100vw;
+    margin-top: 25vw;
     filter: blur(2px);
-    margin-top: 23vw;
     justify-content: flex-start;
     align-items: flex-start;
     flex-wrap: nowrap;
     overflow: hidden;
+    transform: none;
   }
 }
 
 #part2 > .imageCollection > img {
-  width: 32%;
-  height: 32%;
+  width: 20%;
 
   @media only screen and (max-width: 425px) {
-    width: 34%;
-    height: auto;
+    width: 33%;
   }
 }
 
 /* Part 3 */
 
 #part3 {
+  margin-top: 10vw;
+
   @media only screen and (max-width: 425px) {
     height: 127vw;
   }
@@ -400,12 +400,12 @@ $gradientColour: rgba(27, 27, 27, 0.5);
   right: 0;
   margin-right: 2vw;
   z-index: 1;
-  filter: drop-shadow(1px 1px 0px var(--dark-gray)) drop-shadow(1px 1px 2px black);
+  filter: drop-shadow(0 0 0.3vw black);
 
   @media only screen and (max-width: 425px) {
     width: 50vw;
     margin-right: 0vw;
-    margin-top: -5vw;
+    margin-top: -3vw;
   }
 }
 
@@ -413,7 +413,7 @@ $gradientColour: rgba(27, 27, 27, 0.5);
   width: 60%;
   height: fit-content;
   margin-left: 1.5vw;
-  margin-top: 22.5vw;
+  margin-top: 25vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -430,37 +430,42 @@ $gradientColour: rgba(27, 27, 27, 0.5);
 }
 
 #part3 > h2 {
-  width: 43vw;
+  width: 100%;
   height: fit-content;
   position: absolute;
-  font-size: 3em;
+  font-size: 3.5em;
   font-family: "Russo One";
   font-weight: 100;
   color: var(--dark-gray);
-  padding-left: 57vw;
+  padding-left: 100vw;
+  margin-left: -50vw;
   margin-top: 11.2vw;
   cursor: default;
   background-image: linear-gradient(
     45deg,
-    var(--light-gray) 10vw,
-    $gradientColour 10vw,
-    $gradientColour 12vw,
-    var(--light-gray) 12vw,
-    var(--light-gray) 14vw,
-    $gradientColour 14vw,
-    $gradientColour 16vw,
-    var(--light-gray) 16vw
+    var(--light-gray) 40vw,
+    $gradientColour 40vw,
+    $gradientColour 42vw,
+    var(--light-gray) 42vw,
+    var(--light-gray) 44vw,
+    $gradientColour 44vw,
+    $gradientColour 46vw,
+    var(--light-gray) 46vw
   );
+  transform: rotateY(-10deg) rotateX(10deg);
 
   @media only screen and (max-width: 425px) {
     width: 65vw;
     padding-left: 35vw;
     margin-top: 10vw;
+    margin-left: 0;
+    transform: none;
+    background-position: -30vw 0;
   }
 }
 
 #part3 > h4 {
-  width: 58vw;
+  width: 100%;
   position: absolute;
   font-size: 1.5em;
   font-family: "Russo One";
@@ -468,20 +473,22 @@ $gradientColour: rgba(27, 27, 27, 0.5);
   color: var(--primary-text);
   padding-top: 0.5vw;
   padding-bottom: 0.5vw;
-  padding-left: 42vw;
-  margin-top: 17vw;
+  padding-left: 90vw;
+  margin-left: -50vw;
+  margin-top: 17.85vw;
   background-image: linear-gradient(
     45deg,
-    var(--dark-gray) 12.75vw,
-    $gradientColour 12.75vw,
-    $gradientColour 14.75vw,
-    var(--dark-gray) 14.75vw,
-    var(--dark-gray) 16.75vw,
-    $gradientColour 16.75vw,
-    $gradientColour 18.75vw,
-    var(--dark-gray) 18.75vw
+    var(--dark-gray) 42.6vw,
+    $gradientColour 42.6vw,
+    $gradientColour 44.6vw,
+    var(--dark-gray) 44.6vw,
+    var(--dark-gray) 46.6vw,
+    $gradientColour 46.6vw,
+    $gradientColour 48.6vw,
+    var(--dark-gray) 48.6vw
   );
   cursor: default;
+  transform: rotateY(-10deg) rotateX(10deg);
 
   @media only screen and (max-width: 425px) {
     background-image: none;
@@ -489,6 +496,8 @@ $gradientColour: rgba(27, 27, 27, 0.5);
     width: 96vw;
     padding-left: 4vw;
     margin-top: 20.9vw;
+    margin-left: 0;
+    transform: none;
   }
 }
 

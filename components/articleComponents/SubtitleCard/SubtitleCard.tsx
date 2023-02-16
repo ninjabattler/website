@@ -18,6 +18,7 @@ const SubtitleCard: ComponentType<SubtitleCardProps> = ({ imageSrc, inverse, pag
     <div className={`${styles.background2} ${styles.background2Glow}`} style={{ borderColor: pageColour, borderLeftColor: "transparent" }}></div>
     <div className={styles.background2} style={{ borderColor: pageColour, borderLeftColor: "transparent" }}></div>
     <div className={styles.background1}></div>
+    <div className={styles.background3}></div>
 
     {imageSrc ?
       (<div className={`${styles.imageContainer} ${lower && styles.lower} ${higher && styles.higher}`} >

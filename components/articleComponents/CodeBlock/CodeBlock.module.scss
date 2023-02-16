@@ -1,4 +1,5 @@
 .codeBlock {
+  width: 100%;
   background-color: rgba(26, 26, 26, 1);
   font-size: 0.55em;
   tab-size: 2;
@@ -37,12 +38,13 @@
 
   pre {
     background-color: transparent !important;
-    width: 100%;
+    width: calc(100% - 2vw);
     font-size: 1em !important;
     margin-left: 1vw;
+    overflow-x: scroll;
 
     code {
-      color: #9CD7f8;
+      color: #9cd7f8;
       font-size: 1em !important;
 
       span {
@@ -50,6 +52,24 @@
         margin: 0;
         line-height: 1.3em !important;
       }
+    }
+
+    &::-webkit-scrollbar {
+      width: 0.5vw;
+      background: var(--dark-gray);
+
+      @media only screen and (max-width: 425px) {
+        width: 1.5vw;
+      }
+    }
+
+    &::-webkit-scrollbar-track {
+      background: var(--secondary-colour);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--light-gray);
+      border: 0.1vw solid var(--secondary-colour);
     }
   }
 
