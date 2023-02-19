@@ -27,6 +27,7 @@ const NavBar: ComponentType<NavBarProps> = ({ setLinkClicked, pageColour }) => (
         />
       </a>
     </Link>
+    
     <div className={`${styles.navOptions} ${styles.navOptionsOverlay}`}></div>
     <div className={styles.navOptions}>
       <div className={styles.option}>
