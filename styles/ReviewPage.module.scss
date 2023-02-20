@@ -1,5 +1,9 @@
 #reviewPage {
   font-size: 1.6vw;
+
+  .mainContent {
+    backdrop-filter: blur(1vw);
+  }
 }
 
 #reviewPage > div > .articleContainer {

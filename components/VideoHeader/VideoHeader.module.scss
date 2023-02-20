@@ -3,7 +3,7 @@ $mobileBorderThickness: 12.5vw;
 $gradientColor: rgba(0, 0, 0, 0.5);
 
 .videoHeader {
-  height: 83.25vh;
+  height: 85vh;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -67,7 +67,7 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   );
 
   &.sketch {
-    background-image: url("/sketch.png");
+    background-image: url("/sketch.webp");
     background-size: 10%;
     mix-blend-mode: soft-light;
     opacity: 0.65;
@@ -152,13 +152,21 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  background-color: black;
+  // background-color: black;
   overflow: hidden;
 }
 
 .videoHeader > #videoContainer > video {
   width: 100%;
+  position: fixed;
+  margin-top: -14.75vh;
   background-color: black;
+  z-index: -2;
+}
+
+.infoContainer {
+  position: absolute;
+  margin-top: 73vh;
 }
 
 @keyframes glow {

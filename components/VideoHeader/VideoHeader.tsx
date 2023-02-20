@@ -1,14 +1,16 @@
 import React, { ComponentType } from 'react';
 import { ColourType, TitleType } from '../../types';
+import InfoBar, { InfoBarProps } from '../articleComponents/InfoBar/InfoBar';
 import styles from './VideoHeader.module.scss';
 
 type VideoHeaderProps = {
   video: string;
   pageColour: ColourType;
   title: TitleType;
+  infoBarProps: InfoBarProps;
 }
 
-const VideoHeader: ComponentType<VideoHeaderProps> = ({ video, pageColour, title }) => (
+const VideoHeader: ComponentType<VideoHeaderProps> = ({ video, pageColour, title, infoBarProps }) => (
   <div className={styles.videoHeader}>
     <div id={styles.videoContainer}>
       {!video.startsWith('htt') && (<div id={styles.videoOverlay} style={{ backgroundColor: pageColour }}></div>)}
@@ -28,6 +30,10 @@ const VideoHeader: ComponentType<VideoHeaderProps> = ({ video, pageColour, title
     <h1>
       {title}
     </h1>
+
+    <div className={styles.infoContainer}>
+      <InfoBar category={infoBarProps.category} date={infoBarProps.date} genre={infoBarProps.genre} />
+    </div>
   </div>
 )
 

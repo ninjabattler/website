@@ -2,7 +2,7 @@ import React, { ComponentType } from 'react';
 import styles from "./InfoBar.module.scss";
 import { formatSqlDate } from '../../../helpers/dateHelpers';
 
-type InfoBarProps = {
+export type InfoBarProps = {
   date: string;
   category: string;
   genre: string;

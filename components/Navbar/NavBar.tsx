@@ -10,8 +10,9 @@ type NavBarProps = {
 
 const NavBar: ComponentType<NavBarProps> = ({ setLinkClicked, pageColour }) => (
   <div className={styles.navBar}>
-    <p onClick={() => { setLinkClicked("/") }} id={styles.shadow}></p>
-    <div className={styles.spaceBackground}></div>
+    {/* <p onClick={() => { setLinkClicked("/") }} id={styles.shadow}></p> */}
+    <div className={styles.sketch} />
+
     <Link href="/">
       <a onClick={(e) => { e.preventDefault(); setLinkClicked("/") }}>
         <img
@@ -27,8 +28,7 @@ const NavBar: ComponentType<NavBarProps> = ({ setLinkClicked, pageColour }) => (
         />
       </a>
     </Link>
-    
-    <div className={`${styles.navOptions} ${styles.navOptionsOverlay}`}></div>
+
     <div className={styles.navOptions}>
       <div className={styles.option}>
         <div>

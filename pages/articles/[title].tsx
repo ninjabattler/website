@@ -104,14 +104,24 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
         </style>
       </Head>
 
-      <VideoBackground video={article.video_header || ""} pageColour={article.colour} />
+      {/* <VideoBackground video={article.video_header || ""} pageColour={article.colour} /> */}
 
       <main id={styles.reviewPage}>
         {!showPanel && (<div id={styles.mobileCover}></div>)}
-        <VideoHeader video={article.video_header || ""} title={article.title} pageColour={article.colour} />
-        <InfoBar date={article.formatteddate} category={article.category} genre={article.genre} />
+        <VideoHeader
+          video={article.video_header || ""}
+          title={article.title}
+          pageColour={article.colour}
+          infoBarProps={
+            {
+              date: article.formatteddate,
+              category: article.category,
+              genre: article.genre
+            }
+          }
+        />
 
-        <div>
+        <div className={styles.mainContent}>
           <article className={styles.articleContainer} style={windowServer.innerWidth < 426 ? { boxShadow: `2px 2px 0px ${article.colour}` } : { boxShadow: `5px 5px 0px ${article.colour}` }}>
             {article.narration && (<iframe id={styles.adAurisIframe} src={`${article.narration}?color=${article.colour.split('#')[1]}`} style={{ border: 'none', height: '100px', width: '80%' }} ></iframe>)}
 
