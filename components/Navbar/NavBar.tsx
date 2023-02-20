@@ -10,7 +10,6 @@ type NavBarProps = {
 
 const NavBar: ComponentType<NavBarProps> = ({ setLinkClicked, pageColour }) => (
   <div className={styles.navBar}>
-    {/* <p onClick={() => { setLinkClicked("/") }} id={styles.shadow}></p> */}
     <div className={styles.sketch} />
 
     <Link href="/">
@@ -30,25 +29,13 @@ const NavBar: ComponentType<NavBarProps> = ({ setLinkClicked, pageColour }) => (
     </Link>
 
     <div className={styles.navOptions}>
-      <div className={styles.option}>
-        <div>
-          <Link href="/posts" ><a onClick={(e) => { e.preventDefault(); setLinkClicked("/posts") }}>Posts</a></Link>
-        </div>
-      </div><div className={styles.option}>
-        <div>
-          <Link href="/articles" ><a onClick={(e) => { e.preventDefault(); setLinkClicked("/articles") }}>Articles</a></Link>
-        </div>
-      </div>
-      <div className={styles.option}>
-        <div>
-          <span><a href='https://github.com/ninjabattler' target='_blank' rel="noreferrer">Github</a></span>
-        </div>
-      </div>
-      <div className={styles.option}>
-        <div>
-          <Link href="/about" ><a onClick={(e) => { e.preventDefault(); setLinkClicked("/about") }}>About</a></Link>
-        </div>
-      </div>
+      <Link href="/posts" ><a className={styles.option} onClick={(e) => { e.preventDefault(); setLinkClicked("/posts") }}>Posts</a></Link>
+
+      <Link href="/articles" ><a className={styles.option} onClick={(e) => { e.preventDefault(); setLinkClicked("/articles") }}>Articles</a></Link>
+
+      <a className={`${styles.option} ${styles.reverse}`} href='https://github.com/ninjabattler' target='_blank' rel="noreferrer">Github</a>
+
+      <Link href="/about" ><a className={`${styles.option} ${styles.reverse}`} onClick={(e) => { e.preventDefault(); setLinkClicked("/about") }}>About</a></Link>
     </div>
   </div>
 )

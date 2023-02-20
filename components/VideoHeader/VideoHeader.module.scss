@@ -25,7 +25,7 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   position: absolute;
   margin-top: 48vh;
   transform: rotateY(5deg) rotateZ(2deg) translateX(5.5vw) translateY(-2vh);
-  animation: barSlideIn 0.75s linear;
+  animation: barSlideIn2 1s cubic-bezier(0.075, 0.82, 0.165, 1);
   mask: linear-gradient(
     -45deg,
     black 15%,
@@ -78,7 +78,7 @@ $gradientColor: rgba(0, 0, 0, 0.5);
 }
 
 .bar1 {
-  animation: barSlideIn 0.75s linear;
+  animation: barSlideIn 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 
   @media only screen and (max-width: 425px) {
     width: 85vw;
@@ -102,7 +102,7 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   margin-top: 47vh;
   width: 81.6%;
   mask: linear-gradient(45deg, black 91.5%, transparent 91.5%);
-  animation: barSlideIn2 1.5s linear;
+  animation: barSlideInC 2s cubic-bezier(0.075, 0.82, 0.165, 1);
 
   @media only screen and (max-width: 425px) {
     width: 87vw;
@@ -112,20 +112,20 @@ $gradientColor: rgba(0, 0, 0, 0.5);
 }
 
 .barGlow {
-  animation: barSlideIn2 1.5s linear, glow 3s infinite;
+  animation: barSlideInC 2s cubic-bezier(0.075, 0.82, 0.165, 1), glow 3s infinite;
 }
 
 .videoHeader > h1 {
   position: absolute;
   width: 80vw;
   margin-top: 49vh;
-  margin-left: 1vw;
+  margin-left: 2.5vw;
   color: var(--dark-gray);
   font-size: 3.1vw;
   font-family: "Russo One";
   font-weight: 100;
-  transform: rotateY(5deg) rotateZ(2deg) translateX(7vw) translateY(-2vh);
-  animation: barSlideIn 0.75s linear;
+  transform: rotateY(5deg) rotateZ(2deg) translateX(5.5vw) translateY(-2vh);
+  animation: barSlideIn 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 
   &::selection {
     color: var(--light-gray);
@@ -171,7 +171,7 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   position: absolute;
   margin-top: 73vh;
   transform: rotateY(5deg) rotateZ(2deg) translateX(6vw) translateY(-1.4vh);
-  animation: infoBarSlideIn 0.75s linear;
+  animation: infoBarSlideIn 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 @keyframes glow {
@@ -191,10 +191,18 @@ $gradientColor: rgba(0, 0, 0, 0.5);
     transform: rotateY(20deg) rotateZ(2deg) translateX(-100vw) translateY(-2vh);
   }
   100% {
-    transform: rotateY(5deg) rotateZ(2deg) translateX(7vw) translateY(-2vh);
+    transform: rotateY(5deg) rotateZ(2deg) translateX(5.5vw) translateY(-2vh);
   }
 }
 
+@keyframes barSlideIn2 {
+  0% {
+    transform: rotateY(20deg) rotateZ(2deg) translateX(-101.5vw) translateY(-25vh);
+  }
+  100% {
+    transform: rotateY(5deg) rotateZ(2deg) translateX(5.5vw) translateY(-2vh);
+  }
+}
 
 @keyframes infoBarSlideIn {
   0% {
@@ -205,7 +213,7 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   }
 }
 
-@keyframes barSlideIn2 {
+@keyframes barSlideInC {
   0% {
     background-color: var(--light-gray);
     transform: rotateY(20deg) rotateZ(2deg) translateX(-101.5vw) translateY(-3vh);
@@ -214,7 +222,7 @@ $gradientColor: rgba(0, 0, 0, 0.5);
     background-color: var(--light-gray);
     transform: rotateY(5deg) rotateZ(2deg) translateX(calc(5.5vw - 1.5%)) translateY(-3vh);
   }
-  67% {
+  55% {
     background-color: var(--light-gray);
     transform: rotateY(5deg) rotateZ(2deg) translateX(calc(5.5vw - 1.5%)) translateY(-3vh);
   }

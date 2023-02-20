@@ -10,152 +10,113 @@
   background-image: url("/spacebanner.png");
   background-blend-mode: color-dodge;
 
+  .sketch {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-image: url("/sketch.webp");
+    background-size: 15%;
+    mix-blend-mode: color-burn;
+    opacity: 0.65;
+    z-index: -2;
+    filter: invert(1);
+    mask: linear-gradient(45deg, black 0%, transparent 30%, transparent 70%, black 100%);
+
+    @media (max-device-width: 425px) {
+      height: 30vw;
+    }
+  }
+
+  a {
+    display: flex;
+    justify-content: center;
+
+    img {
+      height: 19.75vh;
+      margin-top: -4vh;
+
+      &#glow {
+        margin-left: auto;
+        margin-right: auto;
+        filter: blur(6px) brightness(2);
+        mix-blend-mode: lighten;
+        position: absolute;
+        opacity: 0.6;
+        animation-name: glow;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+      }
+
+      @media (max-device-width: 425px) {
+        height: 31vw;
+      }
+    }
+  }
+
+  .navOptions {
+    width: 95.2vw;
+    border-top: 2vw solid var(--light-gray);
+    border-right: 2vw solid transparent;
+    border-left: 2vw solid transparent;
+    margin-top: -0.4vw;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    filter: drop-shadow(0 -0.3vw 0.3vw rgba(0, 0, 0, 0.35));
+
+    .option {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--light-gray);
+      width: 10.5vw;
+      margin-top: -1.95vw;
+      z-index: 99;
+      font-size: 1em;
+      text-align: center;
+      transition: filter 0.3s, color 0.3s;
+      background-image: linear-gradient(
+        45deg,
+        transparent 15%,
+        var(--dark-gray) 15%,
+        var(--dark-gray) 85%,
+        transparent 85%
+      );
+
+      &.reverse {
+        background-image: linear-gradient(
+          -45deg,
+          transparent 15%,
+          var(--dark-gray) 15%,
+          var(--dark-gray) 85%,
+          transparent 85%
+        );
+      }
+
+      &:hover {
+        filter: drop-shadow(0.3vw 0px 0px var(--article-colour)) drop-shadow(-0.3vw 0px 0px var(--article-colour));
+        color: var(--article-colour);
+
+        @media (max-device-width: 425px) {
+          filter: none;
+          color: var(--light-gray);
+        }
+      }
+    }
+
+    @media (max-device-width: 425px) {
+      margin-left: 0;
+      margin-top: -1.8vw;
+      width: 86vw;
+      border-width: 7vw;
+    }
+  }
+
   @media (max-device-width: 425px) {
     height: 31vw;
     font-size: 1.8vw;
     top: -30vw;
-  }
-}
-
-.sketch {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  background-image: url("/sketch.webp");
-  background-size: 15%;
-  mix-blend-mode: color-burn;
-  opacity: 0.65;
-  z-index: -2;
-  filter: invert(1);
-  mask: linear-gradient(45deg, black 0%, transparent 30%, transparent 70%, black 100%);
-
-  @media (max-device-width: 425px) {
-    height: 30vw;
-  }
-}
-
-.navBar > a {
-  display: flex;
-  justify-content: center;
-}
-
-.navBar > a > img {
-  height: 19.75vh;
-  margin-top: -4vh;
-}
-
-.navBar > a > #glow {
-  height: 19.75vh;
-  margin-top: -4vh;
-  margin-left: auto;
-  margin-right: auto;
-  filter: blur(6px) brightness(2);
-  mix-blend-mode: lighten;
-  position: absolute;
-  opacity: 0.6;
-  animation-name: glow;
-  animation-duration: 3s;
-  animation-iteration-count: infinite;
-}
-
-.navBar > a > img,
-.navBar > a > #glow {
-  @media (max-device-width: 425px) {
-    height: 31vw;
-  }
-}
-
-.navOptions {
-  width: 95.2vw;
-  border-top: 2vw solid var(--light-gray);
-  border-right: 2vw solid transparent;
-  border-left: 2vw solid transparent;
-  margin-top: -0.4vw;
-  position: absolute;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  filter: drop-shadow(0 -0.3vw 0.3vw rgba(0, 0, 0, 0.35));
-
-  @media (max-device-width: 425px) {
-    margin-left: 0;
-    margin-top: -1.8vw;
-    width: 86vw;
-    border-width: 7vw;
-  }
-}
-
-.navOptions > .option > div {
-  @media (max-device-width: 425px) {
-    margin-top: 1vw;
-    margin-left: -0.7vw;
-  }
-}
-
-.option {
-  display: flex;
-  border-top: 2vw solid var(--dark-gray);
-  border-left: 2vw solid transparent;
-  border-right: 2vw solid transparent;
-  width: 10.5vw;
-  margin-top: -1.95vw;
-  z-index: 99;
-  transition: filter 0.3s;
-  font-size: 1em;
-}
-
-.option > div {
-  color: var(--light-gray);
-  width: 10.5vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: -2vw;
-  position: absolute;
-  text-align: center;
-}
-
-.option:hover {
-  filter: drop-shadow(0px 0.15vw 0px var(--article-colour)) drop-shadow(0px 0.15vw 0.15vw black);
-
-  @media (max-device-width: 425px) {
-    filter: none;
-  }
-}
-
-.socialLinks {
-  flex-direction: column;
-  background-color: var(--dark-gray) !important;
-  width: 100%;
-  padding: 30px;
-  margin-left: -16% !important;
-}
-
-.navOptions > .option {
-  @media (max-device-width: 425px) {
-    border-width: 5vw;
-    width: 9vw;
-    font-size: 1.6em;
-    margin-top: -5vw;
-  }
-}
-
-.navOptions > .option > div > span > a,
-.navOptions > .option > div > a {
-  color: var(--light-gray);
-}
-
-#shadow {
-  background-image: linear-gradient(rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 0.25) 94%, var(--dark-gray) 94%);
-  filter: blur(0);
-  width: 100%;
-  height: 100%;
-  margin-top: -1vh;
-  position: absolute;
-  z-index: -1;
-  mix-blend-mode: normal;
-  @media (max-device-width: 425px) {
-    background-image: linear-gradient(rgba(0, 0, 0, 0) 80%, rgb(7, 7, 7) 88%, var(--dark-gray) 88%);
   }
 }
 
