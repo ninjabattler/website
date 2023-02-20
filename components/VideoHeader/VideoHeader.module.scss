@@ -11,6 +11,7 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   width: 100%;
   font-size: 30px;
   perspective: 10cm;
+  filter: drop-shadow(0.3vw 0.3vw 0.3vw black);
 
   @media only screen and (max-width: 425px) {
     margin-bottom: 28vw;
@@ -19,13 +20,12 @@ $gradientColor: rgba(0, 0, 0, 0.5);
 
 .bar2 {
   border-top: $borderThickness solid var(--dark-gray);
-  opacity: 0.9;
   width: 80%;
   border-right: $borderThickness solid transparent;
   position: absolute;
   margin-top: 48vh;
-  filter: drop-shadow(0.3vw 0.3vw 0.3vw black);
-  transform:  rotateY(5deg) rotateZ(2deg) translateX(5.5vw) translateY(-2vh);
+  transform: rotateY(5deg) rotateZ(2deg) translateX(5.5vw) translateY(-2vh);
+  animation: barSlideIn 0.75s linear;
   mask: linear-gradient(
     -45deg,
     black 15%,
@@ -41,7 +41,6 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   @media only screen and (max-width: 425px) {
     width: 87.5vw;
     border-width: $mobileBorderThickness;
-    filter: drop-shadow(0px 2px 0px black);
     margin-top: 69vw;
   }
 }
@@ -54,7 +53,7 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   margin-top: 45vh;
   background-color: var(--light-gray);
   background-blend-mode: darken;
-  transform:  rotateY(5deg) rotateZ(2deg) translateX(5.5vw) translateY(-2vh);
+  transform: rotateY(5deg) rotateZ(2deg) translateX(5.5vw) translateY(-2vh);
   mask: linear-gradient(
     45deg,
     black 80%,
@@ -79,6 +78,8 @@ $gradientColor: rgba(0, 0, 0, 0.5);
 }
 
 .bar1 {
+  animation: barSlideIn 0.75s linear;
+
   @media only screen and (max-width: 425px) {
     width: 85vw;
     border-width: $mobileBorderThickness;
@@ -100,21 +101,18 @@ $gradientColor: rgba(0, 0, 0, 0.5);
 .barC {
   margin-top: 47vh;
   width: 81.6%;
-  filter: drop-shadow(0.3vw 0.3vw 0.3vw black);
   mask: linear-gradient(45deg, black 91.5%, transparent 91.5%);
+  animation: barSlideIn2 1.5s linear;
 
   @media only screen and (max-width: 425px) {
     width: 87vw;
     border-width: $mobileBorderThickness;
     margin-top: 64vw;
-    filter: drop-shadow(2px 2px 0px black);
   }
 }
 
 .barGlow {
-  animation-name: glow;
-  animation-duration: 3s;
-  animation-iteration-count: infinite;
+  animation: barSlideIn2 1.5s linear, glow 3s infinite;
 }
 
 .videoHeader > h1 {
@@ -126,7 +124,8 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   font-size: 3.1vw;
   font-family: "Russo One";
   font-weight: 100;
-  transform:  rotateY(5deg) rotateZ(2deg) translateX(7vw) translateY(-2vh);
+  transform: rotateY(5deg) rotateZ(2deg) translateX(7vw) translateY(-2vh);
+  animation: barSlideIn 0.75s linear;
 
   &::selection {
     color: var(--light-gray);
@@ -171,7 +170,8 @@ $gradientColor: rgba(0, 0, 0, 0.5);
 .infoContainer {
   position: absolute;
   margin-top: 73vh;
-  transform:  rotateY(5deg) rotateZ(2deg) translateX(6vw) translateY(-1.4vh);
+  transform: rotateY(5deg) rotateZ(2deg) translateX(6vw) translateY(-1.4vh);
+  animation: infoBarSlideIn 0.75s linear;
 }
 
 @keyframes glow {
@@ -183,5 +183,43 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   }
   100% {
     filter: blur(6px) brightness(1.5);
+  }
+}
+
+@keyframes barSlideIn {
+  0% {
+    transform: rotateY(20deg) rotateZ(2deg) translateX(-100vw) translateY(-2vh);
+  }
+  100% {
+    transform: rotateY(5deg) rotateZ(2deg) translateX(7vw) translateY(-2vh);
+  }
+}
+
+
+@keyframes infoBarSlideIn {
+  0% {
+    transform: rotateY(20deg) rotateZ(2deg) translateX(-101vw) translateY(-1.4vh);
+  }
+  100% {
+    transform: rotateY(5deg) rotateZ(2deg) translateX(6vw) translateY(-1.4vh);
+  }
+}
+
+@keyframes barSlideIn2 {
+  0% {
+    background-color: var(--light-gray);
+    transform: rotateY(20deg) rotateZ(2deg) translateX(-101.5vw) translateY(-3vh);
+  }
+  50% {
+    background-color: var(--light-gray);
+    transform: rotateY(5deg) rotateZ(2deg) translateX(calc(5.5vw - 1.5%)) translateY(-3vh);
+  }
+  67% {
+    background-color: var(--light-gray);
+    transform: rotateY(5deg) rotateZ(2deg) translateX(calc(5.5vw - 1.5%)) translateY(-3vh);
+  }
+  100% {
+    background-color: var(--article-colour);
+    transform: rotateY(5deg) rotateZ(2deg) translateX(5.5vw) translateY(-2vh);
   }
 }

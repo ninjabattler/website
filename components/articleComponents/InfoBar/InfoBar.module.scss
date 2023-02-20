@@ -21,7 +21,6 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   border-top: $borderThickness solid var(--dark-gray);
   border-right: $borderThickness solid transparent;
   width: 76.5vw;
-  filter: drop-shadow(0.3vw 0.3vw 0.3vw black);
   mask: linear-gradient(
     -45deg,
     black 11.9%,
@@ -37,7 +36,6 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   @media only screen and (max-width: 425px) {
     width: 83vw;
     border-width: $mobileBorderThickness;
-    filter: drop-shadow(0px 2px 0px black);
     mask: none;
   }
 }
