@@ -20,12 +20,16 @@ const VideoHeader: ComponentType<VideoHeaderProps> = ({ video, pageColour, title
         <source src={video ? video.replace('http://', 'https://') : "/defaultVideo.mp4"} type="video/mp4"></source>
       </video>
     </div>
+
     <div className={styles.videoHeader}>
-      <div className={styles.bar2}></div>
-      <div className={styles.barC} style={{ backgroundColor: pageColour, borderRightColor: "transparent" }}></div>
-      <div className={`${styles.barC} ${styles.barGlow}`} style={{ backgroundColor: pageColour, borderRightColor: "transparent" }}></div>
-      <div className={styles.bar1}></div>
-      <div className={`${styles.bar1} ${styles.sketch}`}></div>
+      <div className={styles.bar2} />
+      <div className={`${styles.bar2} ${styles.sketch}`} />
+
+      <div className={styles.barC} style={{ backgroundColor: pageColour, borderRightColor: "transparent" }} />
+      <div className={`${styles.barC} ${styles.barGlow}`} style={{ backgroundColor: pageColour, borderRightColor: "transparent" }} />
+
+      <div className={styles.bar1} />
+      <div className={`${styles.bar1} ${styles.sketch}`} />
 
       <h1>
         {title}

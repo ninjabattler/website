@@ -10,7 +10,8 @@ export type InfoBarProps = {
 
 const InfoBar: ComponentType<InfoBarProps> = ({ date, category, genre }) => (
   <div className={styles.infoBar}>
-    <div className={styles.infoUnderline}></div>
+    <div className={styles.infoUnderline} />
+    <div className={`${styles.infoUnderline} ${styles.sketch}`} />
     <span>
       <div>{formatSqlDate(date)}</div>
       <div>/</div>

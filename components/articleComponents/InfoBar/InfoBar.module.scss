@@ -18,20 +18,32 @@ $gradientColor: rgba(0, 0, 0, 0.5);
 }
 
 .infoUnderline {
-  border-top: $borderThickness solid var(--dark-gray);
-  border-right: $borderThickness solid transparent;
-  width: 76.5vw;
+  height: $borderThickness;
+  width: 80vw;
+  background-color: var(--dark-gray);
   mask: linear-gradient(
     -45deg,
-    black 11.9%,
-    $gradientColor 11.9%,
-    $gradientColor 14.15%,
-    black 14.15%,
-    black 16.6%,
-    $gradientColor 16.6%,
-    $gradientColor 18.9%,
-    black 18.9%
+    transparent 4%,
+    black 4%,
+    black 12.7%,
+    $gradientColor 12.7%,
+    $gradientColor 14.95%,
+    black 14.95%,
+    black 17.4%,
+    $gradientColor 17.4%,
+    $gradientColor 19.7%,
+    black 19.7%
   );
+
+  &.sketch {
+    background-image: url("/sketch.webp");
+    background-size: 10%;
+    mix-blend-mode: overlay;
+    opacity: 0.25;
+    filter: invert(1);
+    mask: linear-gradient(-45deg, transparent 4%, black 4%, transparent 10%);
+    position: absolute;
+  }
 
   @media only screen and (max-width: 425px) {
     width: 83vw;
