@@ -71,11 +71,11 @@
   border-right: 2vw solid transparent;
   border-left: 2vw solid transparent;
   margin-top: -0.4vw;
-  // margin-left: 1.75vw;
   position: absolute;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  filter: drop-shadow(0 -0.3vw 0.3vw rgba(0, 0, 0, 0.35));
 
   @media (max-device-width: 425px) {
     margin-left: 0;
@@ -90,13 +90,6 @@
     margin-top: 1vw;
     margin-left: -0.7vw;
   }
-}
-
-.navOptionsOverlay {
-  mask: linear-gradient(0deg, transparent 75%, black 100%);
-  z-index: 1;
-  mix-blend-mode: darken;
-  border-top: 60px solid rgb(37, 37, 37);
 }
 
 .option {
