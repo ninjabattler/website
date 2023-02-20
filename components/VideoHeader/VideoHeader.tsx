@@ -20,9 +20,10 @@ const VideoHeader: ComponentType<VideoHeaderProps> = ({ video, pageColour, title
     </div>
 
     <div className={styles.bar2}></div>
-    <div className={styles.barC} style={{ borderBottomColor: pageColour, borderRightColor: "transparent" }}></div>
-    <div className={`${styles.barC} ${styles.barGlow}`} style={{ borderBottomColor: pageColour, borderRightColor: "transparent" }}></div>
+    <div className={styles.barC} style={{ backgroundColor: pageColour, borderRightColor: "transparent" }}></div>
+    <div className={`${styles.barC} ${styles.barGlow}`} style={{ backgroundColor: pageColour, borderRightColor: "transparent" }}></div>
     <div className={styles.bar1}></div>
+    <div className={`${styles.bar1} ${styles.sketch}`}></div>
 
     <h1>
       {title}

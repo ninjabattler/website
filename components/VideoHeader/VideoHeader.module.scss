@@ -3,7 +3,7 @@ $mobileBorderThickness: 12.5vw;
 $gradientColor: rgba(0, 0, 0, 0.5);
 
 .videoHeader {
-  height: fit-content;
+  height: 83.25vh;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -22,7 +22,7 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   width: 80%;
   border-right: $borderThickness solid transparent;
   position: absolute;
-  margin-top: 48vw;
+  margin-top: 48vh;
   filter: drop-shadow(0.3vw 0.3vw 0.3vw black);
   mask: linear-gradient(
     -45deg,
@@ -46,11 +46,12 @@ $gradientColor: rgba(0, 0, 0, 0.5);
 
 .bar1,
 .barC {
-  border-bottom: $borderThickness solid var(--light-gray);
-  width: 75%;
-  border-right: $borderThickness solid transparent;
+  width: 80%;
+  height: $borderThickness;
   position: absolute;
-  margin-top: 45vw;
+  margin-top: 45vh;
+  background-color: var(--light-gray);
+  background-blend-mode: darken;
   mask: linear-gradient(
     45deg,
     black 80%,
@@ -60,15 +61,25 @@ $gradientColor: rgba(0, 0, 0, 0.5);
     black 84%,
     $gradientColor 84%,
     $gradientColor 86%,
-    black 86%
+    black 86%,
+    black 92%,
+    transparent 92%
   );
+
+  &.sketch {
+    background-image: url("/sketch.png");
+    background-size: 10%;
+    mix-blend-mode: soft-light;
+    opacity: 0.65;
+    mask: linear-gradient(45deg, black 0%, transparent 30%);
+  }
 }
 
 .bar1 {
   @media only screen and (max-width: 425px) {
     width: 85vw;
     border-width: $mobileBorderThickness;
-    margin-top: 62vw;
+    margin-top: 62vh;
     mask: linear-gradient(
       45deg,
       black 80%,
@@ -84,10 +95,10 @@ $gradientColor: rgba(0, 0, 0, 0.5);
 }
 
 .barC {
-  margin-top: 46vw;
-  width: 75.6%;
+  margin-top: 47vh;
+  width: 82%;
   filter: drop-shadow(0.3vw 0.3vw 0.3vw black);
-  mask: none;
+  mask: linear-gradient(45deg, black 91.5%, transparent 91.5%);
 
   @media only screen and (max-width: 425px) {
     width: 87vw;
@@ -106,12 +117,17 @@ $gradientColor: rgba(0, 0, 0, 0.5);
 .videoHeader > h1 {
   position: absolute;
   width: 80vw;
-  margin-top: 47.5vw;
+  margin-top: 49vh;
   margin-left: 1vw;
   color: var(--dark-gray);
   font-size: 3.1vw;
   font-family: "Russo One";
   font-weight: 100;
+
+  &::selection {
+    color: var(--light-gray);
+    background-color: var(--article-colour);
+  }
 
   @media only screen and (max-width: 425px) {
     font-size: 5.2vw;
@@ -132,11 +148,12 @@ $gradientColor: rgba(0, 0, 0, 0.5);
 
 .videoHeader > #videoContainer {
   width: 100%;
-  height: fit-content;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   background-color: black;
+  overflow: hidden;
 }
 
 .videoHeader > #videoContainer > video {
