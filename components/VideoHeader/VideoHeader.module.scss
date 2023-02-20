@@ -58,7 +58,7 @@ $gradientColor: rgba(0, 0, 0, 0.5);
 
 .bar1,
 .barC {
-  width: 80%;
+  width: 85%;
   height: $borderThickness;
   position: absolute;
   margin-top: 45vh;
@@ -111,7 +111,7 @@ $gradientColor: rgba(0, 0, 0, 0.5);
 
 .barC {
   margin-top: 47vh;
-  width: 81.6%;
+  width: 86.6%;
   mask: linear-gradient(45deg, black 91.5%, transparent 91.5%);
   animation: barSlideInC 2s cubic-bezier(0.075, 0.82, 0.165, 1);
 
@@ -135,6 +135,7 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   font-size: 3.1vw;
   font-family: "Russo One";
   font-weight: 100;
+  text-rendering: geometricPrecision;
   transform: rotateY(5deg) rotateZ(2deg) translateX(5.5vw) translateY(-2vh);
   animation: barSlideIn 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 
