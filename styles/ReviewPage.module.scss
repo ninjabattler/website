@@ -3,6 +3,39 @@
 
   .mainContent {
     backdrop-filter: blur(1vw);
+    padding-top: 10vh;
+    margin-top: -5vh;
+    mask: linear-gradient(177.5deg, transparent 9vh, black 14vh);
+
+    .containerBlend {
+      height: 11vh;
+      width: calc(64.95% + 1vw);
+      margin-top: -1.6vh;
+      position: absolute;
+      filter: drop-shadow(0.3vw 0 0 var(--article-colour)) drop-shadow(0.3vw 0.65vw 0.3vw black);
+
+      .background {
+        width: calc(100% - 1vw);
+        height: 100%;
+        border-left: 1vw solid var(--light-gray);
+        background-color: var(--dark-gray);
+        mask: linear-gradient(177deg, transparent 10vh, black 10vh);
+        margin-top: -2.4vh;
+
+        .sketchBackground {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          z-index: -1;
+          background-image: url("/sketch.webp");
+          background-size: 12.5%;
+          background-position: 0% 8px;
+          mix-blend-mode: multiply;
+          opacity: 0.35;
+          mask: linear-gradient(90deg, black 0%, transparent 10%, transparent 90%, black 100%);
+        }
+      }
+    }
   }
 }
 
@@ -11,16 +44,18 @@
   flex-direction: column;
   background-color: var(--dark-gray);
   width: 65%;
-  filter: drop-shadow(8px 5px 0.3vw black);
+  filter: drop-shadow(0.3vw 0.65vw 0.3vw black);
   border-left: 1vw solid var(--light-gray);
+  border-bottom: 0.3vw solid var(--article-colour);
   overflow-x: hidden;
+  margin-top: 6vh;
 
   .sketchBackground {
     position: absolute;
     width: 100%;
     height: 100%;
     z-index: -1;
-    background-image: url('/sketch.webp');
+    background-image: url("/sketch.webp");
     background-size: 12.5%;
     mix-blend-mode: multiply;
     opacity: 0.35;

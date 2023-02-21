@@ -122,6 +122,14 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
         />
 
         <div className={styles.mainContent}>
+          {/* Blend */}
+          <div className={styles.containerBlend}>
+            <div className={styles.background}>
+              <div className={styles.sketchBackground} />
+            </div>
+          </div>
+
+          {/* Main Content */}
           <article className={styles.articleContainer} style={windowServer.innerWidth < 426 ? { boxShadow: `2px 2px 0px ${article.colour}` } : { boxShadow: `5px 5px 0px ${article.colour}` }}>
             <div className={styles.sketchBackground} />
 
