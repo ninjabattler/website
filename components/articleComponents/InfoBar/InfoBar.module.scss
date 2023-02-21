@@ -53,6 +53,7 @@ $gradientColor: rgba(0, 0, 0, 0.5);
 }
 
 .infoBar > span {
+  width: 100vw;
   position: absolute;
   margin-bottom: 0.4%;
   color: var(--light-gray);
@@ -61,6 +62,13 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   text-align: left;
   font-size: 1.7vw;
 
+  span {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    text-align: left;
+  }
+
   @media only screen and (max-width: 425px) {
     margin-bottom: 1%;
     font-size: 3vw;
@@ -68,9 +76,9 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   }
 }
 
-.infoBar > span > div {
-  margin-left: 20px;
-  margin-right: 20px;
+.infoBar > span > span > div {
+  margin-left: 1vw;
+  margin-right: 1vw;
 
   @media only screen and (max-width: 425px) {
     margin-left: 10px;
