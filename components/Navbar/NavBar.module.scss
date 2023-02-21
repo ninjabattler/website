@@ -9,6 +9,7 @@
   font-size: 1.4vw;
   background-image: url("/spacebanner.png");
   background-blend-mode: color-dodge;
+  background-attachment: fixed;
 
   .sketch {
     width: 100%;
@@ -21,6 +22,7 @@
     z-index: -2;
     filter: invert(1);
     mask: linear-gradient(45deg, black 0%, transparent 30%, transparent 70%, black 100%);
+    animation: sketchMovement 20s infinite linear;
 
     @media (max-device-width: 425px) {
       height: 30vw;
@@ -129,5 +131,14 @@
   }
   100% {
     filter: blur(0.3vw) brightness(2);
+  }
+}
+
+@keyframes sketchMovement {
+  0% {
+    background-position: 0px 0px;
+  }
+  100% {
+    background-position: 236px 235px;
   }
 }
