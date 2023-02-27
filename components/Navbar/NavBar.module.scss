@@ -1,15 +1,17 @@
 .navBar {
   width: 100vw;
   height: 15vh;
-  background-color: var(--dark-gray);
+  background-color: rgb(10, 10, 10);
   filter: drop-shadow(0.3vw 0.3vw 0.3vw black);
   z-index: 100;
   position: sticky;
   top: -15vh;
   font-size: 1.4vw;
-  background-image: url("/spacebanner.png");
-  background-blend-mode: color-dodge;
+  background-image: url("/spacebanner.webp");
+  background-blend-mode: lighten;
   background-attachment: fixed;
+  background-size: cover;
+  background-position: 0% -400%;
 
   .sketch {
     width: 100%;
@@ -18,7 +20,7 @@
     background-image: url("/sketch.webp");
     background-size: 15%;
     mix-blend-mode: color-burn;
-    opacity: 0.65;
+    // opacity: 0.65;
     z-index: -2;
     filter: invert(1);
     mask: linear-gradient(45deg, black 0%, transparent 30%, transparent 70%, black 100%);
@@ -97,8 +99,8 @@
       }
 
       &:hover {
-        filter: drop-shadow(0.3vw 0px 0px var(--article-colour)) drop-shadow(-0.3vw 0px 0px var(--article-colour));
-        color: var(--article-colour);
+        filter: drop-shadow(0.3vw 0px 0px var(--article-colour, black)) drop-shadow(-0.3vw 0px 0px var(--article-colour, black));
+        color: var(--article-colour, var(--light-gray));
 
         @media (max-device-width: 425px) {
           filter: none;
