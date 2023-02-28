@@ -11,6 +11,7 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   width: 100%;
   font-size: 30px;
   perspective: 10cm;
+  margin-bottom: 45vh;
   filter: drop-shadow(0.3vw 0.3vw 0.3vw black);
 
   @media only screen and (max-width: 425px) {

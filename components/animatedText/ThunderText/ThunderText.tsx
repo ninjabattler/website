@@ -7,6 +7,7 @@ type ThunderTextProps = {
 
 const ThunderText: ComponentType<ThunderTextProps> = ({ text }) => (
   <span className={styles.thunderText}>
+    <span>{text}</span>
     {text}
   </span>
 )

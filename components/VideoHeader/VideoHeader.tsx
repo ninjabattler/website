@@ -4,6 +4,7 @@ import InfoBar, { InfoBarProps } from '../articleComponents/InfoBar/InfoBar';
 import styles from './VideoHeader.module.scss';
 import Typewriter from 'typewriter-effect/dist/core';
 import { TypewriterClass } from 'typewriter-effect';
+import gsap from 'gsap';
 
 type VideoHeaderProps = {
   video: string;
@@ -23,6 +24,28 @@ const VideoHeader: ComponentType<VideoHeaderProps> = ({ video, pageColour, title
       .pauseFor(1400)
       .typeString(title)
       .start()
+
+    gsap.to([`.${styles.bar1}`, `.${styles.bar2}`, `.${styles.barC}`, `.${styles.infoContainer}`, `#title`], {
+      marginLeft: `-100vw`,
+      ease: "none",
+      scrollTrigger: {
+        trigger: document.body,
+        start: window.innerHeight / 7.5,
+        end: `+=${window.innerHeight * 0.75}`,
+        scrub: 0.75,
+      }
+    })
+
+    gsap.to(`.${styles.videoHeader}`, {
+      yPercent: 100,
+      ease: "none",
+      scrollTrigger: {
+        trigger: document.body,
+        start: window.innerHeight / 7.5,
+        end: `+=${window.innerHeight}`,
+        scrub: true,
+      }
+    })
   }, [])
 
   return (
