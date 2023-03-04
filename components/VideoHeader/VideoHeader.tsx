@@ -26,7 +26,7 @@ const VideoHeader: ComponentType<VideoHeaderProps> = ({ video, pageColour, title
       .start()
 
     gsap.to([`.${styles.bar1}`, `.${styles.bar2}`, `.${styles.barC}`, `.${styles.infoContainer}`, `#title`], {
-      marginLeft: `-100vw`,
+      marginLeft: `-110vw`,
       ease: "none",
       scrollTrigger: {
         trigger: document.body,

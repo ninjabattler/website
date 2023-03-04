@@ -57,7 +57,7 @@
   width: calc(100% - 1.8vw);
   display: inline-block;
   background-color: rgba(0, 0, 0, 0.35);
-  border-left: 0.2vw solid var(--light-gray);
+  border-left: 0.2vw solid var(--article-colour);
   margin: 0.4vw;
   margin-left: 0.6vw;
   padding-left: 0.6vw;
@@ -67,7 +67,7 @@
   @media only screen and (max-width: 425px) {
     margin-left: 3vw;
     padding-left: 2vw;
-    border-left: 0.7vw solid var(--light-gray);
+    border-left: 0.7vw solid var(--article-colour);
   }
 }
 
@@ -206,11 +206,11 @@
     45deg,
     transparent 20%,
     transparent 24%,
-    var(--secondary-colour) 24%,
-    var(--secondary-colour) 28%,
+    #303033 24%,
+    #303033 28%,
     transparent 28%,
     transparent 32%,
-    var(--secondary-colour) 32%
+    #303033 32%
   );
   padding-left: 4.5vw;
   padding-right: 1vw;
@@ -244,11 +244,11 @@
     45deg,
     transparent 13%,
     transparent 17%,
-    var(--secondary-colour) 17%,
-    var(--secondary-colour) 21%,
+    var(--secondary-text) 17%,
+    var(--secondary-text) 21%,
     transparent 21%,
     transparent 25%,
-    var(--secondary-colour) 25%
+    var(--secondary-text) 25%
   );
   }
 }

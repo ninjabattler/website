@@ -41,7 +41,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <NavBar setLinkClicked={setLinkClicked} />
+      <NavBar setLinkClicked={setLinkClicked} isArticlePage={/\/articles\/.+/g.test(router.pathname)} />
       {linkClicked && <LoadingOverlay quoteIndex={quoteIndex} />}
       {linkClicked === '' && <LoadingOverlay shrink quoteIndex={quoteIndex} />}
       <Component {...pageProps} setLinkClicked={setLinkClicked} />

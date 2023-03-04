@@ -6,10 +6,12 @@ import { ColourType } from '../../types';
 type NavBarProps = {
   setLinkClicked: Function;
   pageColour?: ColourType;
+  isArticlePage: Boolean;
 }
 
-const NavBar: ComponentType<NavBarProps> = ({ setLinkClicked, pageColour }) => (
-  <div className={styles.navBar}>
+const NavBar: ComponentType<NavBarProps> = ({ setLinkClicked, pageColour, isArticlePage }) => (
+  <div className={`${styles.navBar} ${isArticlePage ? styles.articlePage : ""}`}>
+    <div className={styles.spaceOverlay} />
     <div className={styles.sketch} />
 
     <Link href="/">

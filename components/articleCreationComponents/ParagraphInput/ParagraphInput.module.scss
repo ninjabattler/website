@@ -55,13 +55,13 @@
 .arrowContainer > button {
   color: var(--dark-gray);
   background-color: var(--primary-text);
-  border: 1px solid var(--secondary-colour);
-  outline: 1px solid var(--secondary-colour);
+  border: 1px solid var(--dark-gray);
+  outline: 1px solid var(--dark-gray);
   margin-bottom: 0.5vw;
 }
 
 .arrowContainer > button:hover {
-  border: 1px solid var(--secondary-colour);
+  border: 1px solid var(--dark-gray);
   outline: 1px solid var(--light-gray);
   cursor: pointer;
 }

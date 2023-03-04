@@ -57,13 +57,13 @@
 .carouselOptions > input {
   -webkit-appearance: none;
   background-color: var(--primary-text);
-  border: 0.3vw solid var(--secondary-colour);
+  border: 0.3vw solid var(--dark-gray);
   padding: 1.1vw;
   border-radius: 100%;
   cursor: pointer;
 
   @media only screen and (max-device-width: 425px) {
-    border: 2px solid var(--secondary-colour);
+    border: 2px solid var(--dark-gray);
     padding: 10px;
   }
 }

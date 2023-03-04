@@ -13,6 +13,31 @@
   background-size: cover;
   background-position: 0% -400%;
 
+  &.articlePage {
+    background-image: url("/spacebannerBW.webp");
+    background-color: var(--article-colour);
+    background-blend-mode: multiply;
+
+    .spaceOverlay {
+      display: block;
+    }
+  }
+
+  .spaceOverlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-image: url("/spacebannerBWOverlay.webp");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: 0% -400%;
+    z-index: -3;
+    mix-blend-mode: soft-light;
+    opacity: 1;
+    display: none;
+    backdrop-filter: brightness(2);
+  } 
+
   .sketch {
     width: 100%;
     height: 100%;
@@ -20,9 +45,9 @@
     background-image: url("/sketch.webp");
     background-size: 15%;
     mix-blend-mode: color-burn;
-    // opacity: 0.65;
+    opacity: 0.5;
     z-index: -2;
-    filter: invert(1);
+    filter: invert(1) contrast(1.5);
     mask: linear-gradient(45deg, black 0%, transparent 30%, transparent 70%, black 100%);
     animation: sketchMovement 20s infinite linear;
 

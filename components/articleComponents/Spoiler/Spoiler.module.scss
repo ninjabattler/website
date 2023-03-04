@@ -1,8 +1,8 @@
 $revealColour: rgba(18, 18, 18, 0.4);
 
 .spoiler {
-  background-image: linear-gradient(0deg, var(--dark-gray) 3%, var(--secondary-colour) 3%, var(--secondary-colour) 97%, var(--dark-gray) 97%);
-  color: var(--secondary-colour);
+  background-image: linear-gradient(0deg, var(--dark-gray) 3%, var(--secondary-text) 3%, var(--secondary-text) 97%, var(--dark-gray) 97%);
+  color: var(--secondary-text);
   border-radius: 1vmin;
   cursor: pointer;
   transition: color 1s, background-image 1s;
