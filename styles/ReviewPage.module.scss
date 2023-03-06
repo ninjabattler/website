@@ -30,8 +30,9 @@
           background-image: url("/sketch.webp");
           background-size: 12.5%;
           background-position: 0% 8px;
-          mix-blend-mode: multiply;
-          opacity: 0.35;
+          mix-blend-mode: lighten;
+          opacity: 0.1;
+          filter: brightness(0.75);
           mask: linear-gradient(90deg, black 0%, transparent 10%, transparent 90%, black 100%);
         }
       }
@@ -57,8 +58,9 @@
     z-index: -1;
     background-image: url("/sketch.webp");
     background-size: 12.5%;
-    mix-blend-mode: multiply;
-    opacity: 0.35;
+    mix-blend-mode: lighten;
+    opacity: 0.1;
+    filter: brightness(0.75);
     mask: linear-gradient(90deg, black 0%, transparent 10%, transparent 90%, black 100%);
   }
 

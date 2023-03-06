@@ -34,6 +34,10 @@ $gradientColor: rgba(0, 0, 0, 0.5);
     $gradientColor 19.7%,
     black 19.7%
   );
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  border-image: url('/border.webp') 40;
+  border-image-outset: 1px;
 
   &.sketch {
     background-image: url("/sketch.webp");
@@ -80,6 +84,9 @@ $gradientColor: rgba(0, 0, 0, 0.5);
 .infoBar > span > span > div {
   margin-left: 1vw;
   margin-right: 1vw;
+  -webkit-text-stroke: 0.05vw black;
+  font-family: "Russo One";
+  font-weight: 100;
 
   @media only screen and (max-width: 425px) {
     margin-left: 10px;

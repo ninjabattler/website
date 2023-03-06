@@ -40,6 +40,7 @@ $gradientColor: rgba(0, 0, 0, 0.5);
     $gradientColor 21%,
     black 21%
   );
+  border: 1px solid black;
 
   &.sketch {
     background-image: url("/sketch.webp");
@@ -79,12 +80,16 @@ $gradientColor: rgba(0, 0, 0, 0.5);
     black 92%,
     transparent 92%
   );
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  border-image: url('/border.webp') 40;
+  border-image-outset: 1px;
 
   &.sketch {
     background-image: url("/sketch.webp");
     background-size: 10%;
     mix-blend-mode: soft-light;
-    opacity: 0.65;
+    opacity: 0.45;
     mask: linear-gradient(45deg, black 0%, transparent 30%);
   }
 }
@@ -139,6 +144,7 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   text-rendering: geometricPrecision;
   transform: rotateY(5deg) rotateZ(2deg) translateX(5.5vw) translateY(-2vh);
   animation: barSlideIn 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  // -webkit-text-stroke: 0.8px black;
 
   span::selection {
     color: var(--light-gray);
