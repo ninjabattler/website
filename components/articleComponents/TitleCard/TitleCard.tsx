@@ -6,17 +6,19 @@ type TitleCardProps = {
   imageSrc: string;
   title: string;
   pageColour: ColourType;
-  inverse?: boolean;
   lower?: boolean
 }
 
-const TitleCard: ComponentType<TitleCardProps> = ({ imageSrc, title, pageColour, inverse, lower }) => (
-  <div className={`${styles.bossCard} ${inverse ? styles.inverse : ''}`} id={title}>
+const TitleCard: ComponentType<TitleCardProps> = ({ imageSrc, title, pageColour, lower }) => (
+  <div className={styles.bossCard} id={title}>
+
+    <div className={styles.background4} style={{ backgroundColor: pageColour }} />
+
     <div className={styles.background3} />
     <div className={`${styles.background3} ${styles.sketch}`} />
 
-    <div className={`${styles.background2} ${styles.background2Glow}`} style={{ borderColor: pageColour, borderRightColor: "transparent" }} />
-    <div className={styles.background2} style={{ borderColor: pageColour, borderRightColor: "transparent" }} />
+    <div className={`${styles.background2} ${styles.glow}`} style={{ backgroundColor: pageColour }} />
+    <div className={styles.background2} style={{ backgroundColor: pageColour }} />
 
     <div className={styles.background1} />
     <div className={`${styles.background1} ${styles.sketch}`} />

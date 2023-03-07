@@ -130,7 +130,7 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
           </div>
 
           {/* Main Content */}
-          <article className={styles.articleContainer} style={windowServer.innerWidth < 426 ? { boxShadow: `2px 2px 0px ${article.colour}` } : { boxShadow: `5px 5px 0px ${article.colour}` }}>
+          <article className={styles.articleContainer}>
             <div id='articleSketch' className={styles.sketchBackground} />
 
             {article.narration && (<iframe id={styles.adAurisIframe} src={`${article.narration}?color=${article.colour.split('#')[1]}`} style={{ border: 'none', height: '100px', width: '80%' }} ></iframe>)}

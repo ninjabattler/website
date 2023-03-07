@@ -9,15 +9,15 @@
 
     .containerBlend {
       height: 11vh;
-      width: calc(64.95% + 1vw);
+      width: calc(65% + 1vw);
       margin-top: -1.6vh;
       position: absolute;
-      filter: drop-shadow(0.3vw 0 0 var(--article-colour)) drop-shadow(0.3vw 0.65vw 0.3vw black);
+      filter: drop-shadow(0.3vw 0 0 var(--article-colour)) drop-shadow(-0.3vw 0.1vw 0 var(--article-colour)) drop-shadow(0.3vw 0.65vw 0.3vw black);
 
       .background {
         width: calc(100% - 1vw);
         height: 100%;
-        border-left: 1vw solid var(--light-gray);
+        margin-left: 1vw;
         background-color: var(--dark-gray);
         mask: linear-gradient(177deg, transparent 10vh, black 10vh);
         margin-top: -2.4vh;
@@ -30,9 +30,9 @@
           background-image: url("/sketch.webp");
           background-size: 12.5%;
           background-position: 0% 8px;
-          mix-blend-mode: lighten;
-          opacity: 0.1;
-          filter: brightness(0.75);
+          mix-blend-mode: darken;
+          opacity: 0.3;
+          filter: contrast(2) brightness(2);
           mask: linear-gradient(90deg, black 0%, transparent 10%, transparent 90%, black 100%);
         }
       }
@@ -45,8 +45,8 @@
   flex-direction: column;
   background-color: var(--dark-gray);
   width: 65%;
-  filter: drop-shadow(0.3vw 0.65vw 0.3vw black);
-  border-left: 1vw solid var(--light-gray);
+  filter: drop-shadow(0.3vw 0 0 var(--article-colour)) drop-shadow(-0.3vw 0 0 var(--article-colour)) drop-shadow(0 0.65vw 0.3vw black);
+  margin-left: 1vw;
   border-bottom: 0.3vw solid var(--article-colour);
   overflow-x: hidden;
   margin-top: 6vh;
@@ -58,9 +58,9 @@
     z-index: -1;
     background-image: url("/sketch.webp");
     background-size: 12.5%;
-    mix-blend-mode: lighten;
-    opacity: 0.1;
-    filter: brightness(0.75);
+    mix-blend-mode: darken;
+    opacity: 0.3;
+    filter: contrast(2) brightness(2);
     mask: linear-gradient(90deg, black 0%, transparent 10%, transparent 90%, black 100%);
   }
 
