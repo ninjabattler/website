@@ -1,4 +1,4 @@
-$borderThickness: 0.33vw;
+$borderThickness: 0.45vw;
 $mobileBorderThickness: 0.6vw;
 $gradientColour: rgba(45, 45, 45, 1);
 
@@ -7,11 +7,12 @@ $gradientColour: rgba(45, 45, 45, 1);
   width: 85%;
   margin-left: auto;
   margin-right: auto;
-  font-size: 0.6em;
+  font-size: 0.65em;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  perspective: 10cm;
 
   * {
     &::selection {
@@ -31,11 +32,17 @@ $gradientColour: rgba(45, 45, 45, 1);
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: -1.15vw;
+  margin-bottom: -1.2vw;
   border-left: $borderThickness solid transparent;
   border-right: $borderThickness solid transparent;
-  border-bottom: $borderThickness solid $gradientColour;
+  border-bottom: $borderThickness solid var(--light-gray);
   text-align: center;
+  perspective: 10cm;
+  filter: brightness(0.7);
+
+  p {
+    filter: brightness(1.4);
+  }
 
   @media only screen and (max-width: 425px) {
     margin-bottom: -10px;
@@ -46,21 +53,23 @@ $gradientColour: rgba(45, 45, 45, 1);
 .quote > h3 {
   padding-left: 5vw;
   padding-right: 5vw;
-  padding-top: 0.4vw;
+  padding-top: 0.2vw;
+  margin-bottom: 0;
   background-image: linear-gradient(
     45deg,
-    transparent calc(12% - 0.3vw),
-    $gradientColour calc(12% - 0.3vw),
-    $gradientColour 12%,
+    transparent calc(12% - 0.4vw),
+    var(--light-gray) calc(12% - 0.4vw),
+    var(--light-gray) 12%,
     transparent 12%,
     transparent 87%,
-    $gradientColour 87%,
-    $gradientColour calc(87% + 0.3vw),
-    transparent calc(87% + 0.3vw)
+    var(--light-gray) 87%,
+    var(--light-gray) calc(87% + 0.4vw),
+    transparent calc(87% + 0.4vw)
   );
   font-family: "Russo One";
   font-weight: 100;
-  color: var(--light-gray);
+  color: var(--primary-text);
+  filter: brightness(0.7);
 
   &::selection {
     color: var(--dark-gray);
@@ -75,16 +84,27 @@ $gradientColour: rgba(45, 45, 45, 1);
 }
 
 .quote > div > h2 {
-  color: $gradientColour;
-  font-size: 3em;
+  color: var(--light-gray);
+  font-size: 5em;
+  width: 2vw;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
   height: 1vw;
   margin: 0.5vw;
+  font-family: "Russo One";
   font-weight: 100;
-  transform: skewX(-20deg);
+  transform: rotateZ(10deg) rotateZ(-5deg) skewX(20deg);
   cursor: default;
+  filter: brightness(0.7);
+
+  &.reverse {
+    transform: rotateZ(-10deg) rotateZ(5deg) skewX(-20deg);
+  }
 
   &::selection {
-    color: $gradientColour;
+    color: var(--light-gray);
     background-color: transparent;
   }
 

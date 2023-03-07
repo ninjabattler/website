@@ -11,7 +11,7 @@ const Quote: ComponentType<QuoteProps> = ({ quote, source }) => (
     <div>
       <h2>&quot;</h2>
       <p><i>{quote}</i></p>
-      <h2>&quot;</h2>
+      <h2 className={styles.reverse}>&quot;</h2>
     </div>
     <h3>{source}</h3>
   </div>
