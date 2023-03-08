@@ -1,6 +1,6 @@
 $borderWidth: 10.8vw;
 $mobileBorderWidth: 20vw;
-$gradientColour: rgba(0, 0, 0, 0.5);
+$gradientColour: rgba(0, 0, 0, 0.3725);
 
 .bossCard {
   margin-bottom: 11.5vw;
@@ -9,7 +9,12 @@ $gradientColour: rgba(0, 0, 0, 0.5);
   justify-content: left;
   align-items: flex-start;
   perspective: 10cm;
-  filter: drop-shadow(0px 0vw 0.3vw rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0px 0vw 0.3vw rgba(0, 0, 0, 0.75));
+  z-index: 10;
+
+  &.coverBelow {
+    margin-bottom: 8vw;
+  }
 
   @media only screen and (max-width: 425px) {
     margin-top: 16vw;
@@ -20,38 +25,45 @@ $gradientColour: rgba(0, 0, 0, 0.5);
 .background1 {
   position: absolute;
   height: $borderWidth;
-  background-color: var(--light-gray);
   width: 98%;
-  transform: rotateY(5deg) rotateZ(2deg) translateX(3vw) translateY(-2vh);
-  mask: linear-gradient(
-    -45deg,
-    transparent 16%,
-    black 16%,
-    black 27%,
-    $gradientColour 27%,
-    $gradientColour 30%,
-    black 30%,
-    black 33%,
-    $gradientColour 33%,
-    $gradientColour 36%,
-    black 36%
-  );
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
-  border-image: url("/border.webp") 40;
-  border-image-outset: 1px;
+  transform: rotateY(5deg) rotateZ(2deg) translateX(3vw) translateY(-5vh);
+  filter: drop-shadow(0.9vw -0.3vw 0.3vw rgba(0, 0, 0, 0.35));
 
-  &.sketch {
-    background-image: url("/sketch.webp");
-    background-size: 15%;
-    mix-blend-mode: darken;
-    opacity: 0.25;
-    filter: contrast(2) brightness(2);
-    mask: linear-gradient(-45deg, transparent 16%, black 16%, transparent 25%);
-  }
+  p {
+    position: absolute;
+    height: $borderWidth;
+    background-color: var(--light-gray);
+    width: 100%;
+    mask: linear-gradient(
+      -45deg,
+      transparent 16%,
+      black 16%,
+      black 27%,
+      $gradientColour 27%,
+      $gradientColour 30%,
+      black 30%,
+      black 33%,
+      $gradientColour 33%,
+      $gradientColour 36%,
+      black 36%
+    );
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    border-image: url("/border.webp") 40;
+    border-image-outset: 1px;
 
-  @media only screen and (max-width: 425px) {
-    border-width: $mobileBorderWidth;
+    &.sketch {
+      background-image: url("/sketch.webp");
+      background-size: 15%;
+      mix-blend-mode: darken;
+      opacity: 0.25;
+      filter: contrast(2) brightness(2);
+      mask: linear-gradient(-45deg, transparent 80%, black 100%, transparent 100%);
+    }
+
+    @media only screen and (max-width: 425px) {
+      border-width: $mobileBorderWidth;
+    }
   }
 }
 
@@ -86,11 +98,11 @@ $gradientColour: rgba(0, 0, 0, 0.5);
   position: absolute;
   height: $borderWidth;
   background-color: var(--light-gray);
-  width: 92%;
+  width: 95.4%;
   margin-top: -2vw;
   right: 0;
   z-index: -1;
-  transform: rotateY(5deg) rotateZ(2deg) translateX(5vw) translateY(-2vh);
+  transform: rotateY(5deg) rotateZ(2deg) translateX(6vw) translateY(-2vh);
   mask: linear-gradient(
     -45deg,
     black 30.8%,
@@ -132,7 +144,7 @@ $gradientColour: rgba(0, 0, 0, 0.5);
   width: 100%;
   margin-top: -1.5vw;
   z-index: -1;
-  transform: rotateY(5deg) rotateZ(2deg) translateX(5.5vw) translateY(-2vh);
+  transform: rotateY(5deg) rotateZ(2deg) translateX(4.6vw) translateY(-2vh);
   mask: linear-gradient(-45deg, black 86.5%, transparent 86.5%);
   filter: brightness(0.8);
 

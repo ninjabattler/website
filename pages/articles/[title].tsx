@@ -152,6 +152,7 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
                         title={titleCardItem.title}
                         imageSrc={titleCardItem.imageSrc}
                         pageColour={titleCardItem.pageColour || 'var(--article-colour)'}
+                        coverBelow={article.content[i + 1].type === 'Picture'}
                       />
                     case 'Picture':
                       const pictureItem = contentItem as PictureItem

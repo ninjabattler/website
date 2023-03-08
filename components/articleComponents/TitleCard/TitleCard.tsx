@@ -6,30 +6,27 @@ type TitleCardProps = {
   imageSrc: string;
   title: string;
   pageColour: ColourType;
-  lower?: boolean
+  lower?: boolean;
+  coverBelow?: boolean;
 }
 
-const TitleCard: ComponentType<TitleCardProps> = ({ imageSrc, title, pageColour, lower }) => (
-  <div className={styles.bossCard} id={title}>
+const TitleCard: ComponentType<TitleCardProps> = ({ imageSrc, title, pageColour, lower, coverBelow }) => (
+  <div className={`${styles.bossCard} ${coverBelow && styles.coverBelow}`} id={title}>
 
     <div className={styles.background4} style={{ backgroundColor: pageColour }} />
 
     <div className={styles.background3} />
     <div className={`${styles.background3} ${styles.sketch}`} />
 
-    <div className={`${styles.background2} ${styles.glow}`} style={{ backgroundColor: pageColour }} />
     <div className={styles.background2} style={{ backgroundColor: pageColour }} />
 
-    <div className={styles.background1} />
-    <div className={`${styles.background1} ${styles.sketch}`} />
+    <div className={styles.background1}>
+      <p />
+      <p className={styles.sketch} />
+    </div>
 
     {imageSrc ?
       (<div className={`${styles.imageContainer} ${lower && styles.lower}`}>
-        <img
-          className={styles.backgroundGlow}
-          src={imageSrc.replace('http://', 'https://')}
-          alt='header image'
-        />
         <img
           src={imageSrc.replace('http://', 'https://')}
           alt='header image'

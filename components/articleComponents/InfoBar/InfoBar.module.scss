@@ -84,7 +84,7 @@ $gradientColor: rgba(0, 0, 0, 0.5);
 .infoBar > span > span > div {
   margin-left: 1vw;
   margin-right: 1vw;
-  -webkit-text-stroke: 0.05vw black;
+  -webkit-text-stroke: 0.05vw var(--secondary-text);
   font-family: "Russo One";
   font-weight: 100;
 
