@@ -3,20 +3,22 @@ $mobileBorderThickness: 0.6vw;
 $gradientColour: rgba(45, 45, 45, 1);
 
 .quote {
-  color: var(--primary-text);
-  width: 85%;
+  color: var(--secondary-text);
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
-  font-size: 0.65em;
+  margin-top: -0.8vw;
+  font-size: 0.7em;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   perspective: 10cm;
+  overflow: hidden;
+  filter: drop-shadow(0vw 0.2vw 0 var(--article-colour)) drop-shadow(0px 0vw 0.3vw rgba(0, 0, 0, 0.75));
 
   * {
     &::selection {
-      color: var(--dark-gray);
+      color: var(--light-gray);
       background-color: var(--article-colour);
     }
   }
@@ -28,20 +30,60 @@ $gradientColour: rgba(45, 45, 45, 1);
 }
 
 .quote > div {
-  width: 100%;
+  width: 106%;
+  padding-left: 1vw;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-start;
   margin-bottom: -1.2vw;
-  border-left: $borderThickness solid transparent;
-  border-right: $borderThickness solid transparent;
-  border-bottom: $borderThickness solid var(--light-gray);
-  text-align: center;
+  height: fit-content;
+  background-color: var(--light-gray);
+  mask: linear-gradient(-45deg, transparent calc(0% + 5vw), black calc(0% + 5vw));
   perspective: 10cm;
-  filter: brightness(0.7);
+  transform: rotateY(7deg) rotateZ(-1deg) translateX(5vw);
+  text-rendering: geometricPrecision;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  border-image: url("/border.webp") 40;
+  border-image-outset: 1px;
+
+  .sketch {
+    margin-left: -1vw;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-image: url("/sketch.webp");
+    background-size: 10%;
+    mix-blend-mode: darken;
+    opacity: 0.35;
+    filter: contrast(2) brightness(2);
+    mask: linear-gradient(45deg, transparent 75%, black 100%, transparent 100%);
+  }
 
   p {
-    filter: brightness(1.4);
+    // transform: rotateY(-7deg) rotateZ(0.75deg) skewX(10deg) translateX(-8vw);
+    width: 80%;
+    padding-right: 1vw;
+    max-height: 2.7vw;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      width: 0.5vw;
+      background: var(--dark-gray);
+
+      @media only screen and (max-width: 425px) {
+        width: 1.5vw;
+      }
+    }
+
+    &::-webkit-scrollbar-track {
+      background: var(--dark-gray);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--light-gray);
+      border: 0.1vw solid var(--dark-gray);
+    }
   }
 
   @media only screen and (max-width: 425px) {
@@ -50,26 +92,61 @@ $gradientColour: rgba(45, 45, 45, 1);
   }
 }
 
-.quote > h3 {
-  padding-left: 5vw;
-  padding-right: 5vw;
-  padding-top: 0.2vw;
-  margin-bottom: 0;
-  background-image: linear-gradient(
-    45deg,
-    transparent calc(12% - 0.4vw),
-    var(--light-gray) calc(12% - 0.4vw),
-    var(--light-gray) 12%,
-    transparent 12%,
-    transparent 87%,
-    var(--light-gray) 87%,
-    var(--light-gray) calc(87% + 0.4vw),
-    transparent calc(87% + 0.4vw)
-  );
+.quote > div > h2,
+.quote > h3 > h2 {
+  color: var(--light-gray);
+  font-size: 3.5em;
+  width: 2vw;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 2vw;
+  margin: 0vw;
+  margin-right: 1vw;
   font-family: "Russo One";
   font-weight: 100;
-  color: var(--primary-text);
+  transform: rotateZ(10deg) rotateZ(-5deg) skewX(20deg);
+  cursor: default;
   filter: brightness(0.7);
+
+  &::selection {
+    color: var(--light-gray);
+    background-color: transparent;
+  }
+
+  @media only screen and (max-width: 425px) {
+    margin: 1vw;
+  }
+}
+
+.quote > h3 {
+  padding-right: 4vw;
+  padding-left: 3.5vw;
+  padding-top: 3.5vw;
+  margin-top: -3vw;
+  margin-bottom: 1vw;
+  margin-left: auto;
+  margin-right: -3vw;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  background-color: var(--secondary-text);
+  mask: linear-gradient(45deg, transparent 10%, var(--dark-gray) 10%);
+  font-family: "Russo One";
+  font-size: 0.95em;
+  font-weight: 100;
+  color: var(--light-gray);
+  transform: rotateY(7deg) rotateZ(-1deg) translateX(2.5vw);
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  border-image: url("/border.webp") 40;
+  border-image-outset: 1px;
+  z-index: -1;
+
+  h2 {
+    transform: rotateZ(-10deg) rotateZ(5deg) skewX(-20deg) translateY(-0.5vw);
+  }
 
   &::selection {
     color: var(--dark-gray);
@@ -80,36 +157,5 @@ $gradientColour: rgba(45, 45, 45, 1);
     font-size: 0.85em;
     padding-left: 10vw;
     padding-right: 10vw;
-  }
-}
-
-.quote > div > h2 {
-  color: var(--light-gray);
-  font-size: 5em;
-  width: 2vw;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  height: 1vw;
-  margin: 0.5vw;
-  font-family: "Russo One";
-  font-weight: 100;
-  transform: rotateZ(10deg) rotateZ(-5deg) skewX(20deg);
-  cursor: default;
-  filter: brightness(0.7);
-  -webkit-text-stroke: 0.8px var(--dark-gray);
-
-  &.reverse {
-    transform: rotateZ(-10deg) rotateZ(5deg) skewX(-20deg);
-  }
-
-  &::selection {
-    color: var(--light-gray);
-    background-color: transparent;
-  }
-
-  @media only screen and (max-width: 425px) {
-    margin: 1vw;
   }
 }
