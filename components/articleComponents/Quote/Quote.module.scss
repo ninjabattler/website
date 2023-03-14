@@ -66,6 +66,7 @@ $gradientColour: rgba(45, 45, 45, 1);
     padding-right: 1vw;
     max-height: 2.7vw;
     overflow-y: scroll;
+    z-index: 1;
 
     &::-webkit-scrollbar {
       width: 0.5vw;

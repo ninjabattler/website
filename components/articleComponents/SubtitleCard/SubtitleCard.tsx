@@ -15,18 +15,21 @@ type SubtitleCardProps = {
 
 const SubtitleCard: ComponentType<SubtitleCardProps> = ({ imageSrc, inverse, pageColour, lower, higher, smaller, extraSmaller, title }) => (
   <div className={`${styles.bossCard} ${inverse ? styles.inverse : ''}`}>
-    <div className={`${styles.background2} ${styles.background2Glow}`} style={{ borderColor: pageColour, borderLeftColor: "transparent" }}></div>
-    <div className={styles.background2} style={{ borderColor: pageColour, borderLeftColor: "transparent" }}></div>
-    <div className={styles.background1}></div>
-    <div className={styles.background3}></div>
+    <div className={styles.background2} style={{ backgroundColor: pageColour }}></div>
+
+    <div className={styles.background1}>
+      <div />
+      <div className={styles.sketch} />
+    </div>
+
+    <div className={styles.background3}>
+      <div className={styles.sketch} />
+    </div>
+
+    <div className={styles.background4} style={{ backgroundColor: pageColour }}></div>
 
     {imageSrc ?
       (<div className={`${styles.imageContainer} ${lower && styles.lower} ${higher && styles.higher}`} >
-        <img
-          className={`${smaller && styles.smaller} ${extraSmaller && styles.extraSmaller} ${styles.backgroundGlow}`}
-          src={imageSrc.replace('http://', 'https://')}
-          alt='header image'
-        />
         <img
           className={`${smaller && styles.smaller} ${extraSmaller && styles.extraSmaller}`}
           src={imageSrc.replace('http://', 'https://')}

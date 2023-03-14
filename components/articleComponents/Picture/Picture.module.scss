@@ -29,7 +29,7 @@
 }
 
 .floatingLeft {
-  filter: drop-shadow(0.2vw -0.2vw 0px var(--dark-gray)) drop-shadow(0.2vw -0.2vw 0px var(--shadowColour));
+  filter: drop-shadow(0.2vw -0.2vw 0px var(--dark-gray)) drop-shadow(0.2vw -0.2vw 0px var(--shadowColour)) drop-shadow(0px 0vw 0.3vw rgba(0, 0, 0, 0.75));
 
   @media only screen and (max-device-width: 425px) {
     filter: drop-shadow(2px -2px 0px var(--dark-gray)) drop-shadow(2px -2px 0px var(--shadowColour));
@@ -47,7 +47,7 @@
 }
 
 .floatingRight {
-  filter: drop-shadow(-0.2vw -0.2vw 0px var(--dark-gray)) drop-shadow(-0.2vw -0.2vw 0px var(--shadowColour));
+  filter: drop-shadow(-0.2vw -0.2vw 0px var(--dark-gray)) drop-shadow(-0.2vw -0.2vw 0px var(--shadowColour)) drop-shadow(0px 0vw 0.3vw rgba(0, 0, 0, 0.75));
 
   @media only screen and (max-device-width: 425px) {
     filter: drop-shadow(-2px -2px 0px var(--dark-gray)) drop-shadow(-2px -2px 0px var(--shadowColour));
