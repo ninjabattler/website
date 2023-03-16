@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import styles from '../../styles/ReviewPage.module.scss';
 import Head from 'next/dist/shared/lib/head';
 import VideoHeader from '../../components/VideoHeader/VideoHeader';
-import InfoBar from '../../components/articleComponents/InfoBar/InfoBar';
+// import InfoBar from '../../components/articleComponents/InfoBar/InfoBar';
 import Picture from '../../components/articleComponents/Picture/Picture';
 import ListItem from '../../components/articleComponents/ListItem/ListItem';
 import Underline from '../../components/articleComponents/Underline/Underline';
@@ -11,7 +11,7 @@ import Paragraph from '../../components/articleComponents/Paragraph/Paragraph';
 import TitleCard from '../../components/articleComponents/TitleCard/TitleCard';
 import Comment from '../../components/Comment/Comment';
 import { CommentTwoTone } from '@material-ui/icons';
-import VideoBackground from '../../components/VideoBackground/VideoBackground';
+// import VideoBackground from '../../components/VideoBackground/VideoBackground';
 import SubtitleCard from '../../components/articleComponents/SubtitleCard/SubtitleCard';
 import Dialogue from '../../components/articleComponents/Dialogue/Dialogue';
 import { articlePageServerSideProps } from '../../ssr/articles/title';
@@ -20,6 +20,7 @@ import ShareBar from '../../components/feedbackAndShare/ShareBar/ShareBar';
 import noCommentMessages from '../../constants/noCommentMessages.json';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { AppData, ArticleData, ArticleList, CodeBlockItem, DialogueItem, ParagraphItem, PictureItem, PostCommentType, QuoteItem, SubtitleCardItem, TitleCardItem, WindowServerType } from '../../types';
+import gsap from 'gsap';
 import dynamic from 'next/dynamic';
 const CodeBlock = dynamic(() => import('../../components/articleComponents/CodeBlock/CodeBlock'), { loading: () => <></> });
 const CommentArea = dynamic(() => import('../../components/feedbackAndShare/CommentArea/CommentArea'), { loading: () => <></> });
@@ -53,6 +54,20 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
         return -1
       }
     }))
+
+    gsap.to(`.${styles.mainContent}`, {
+      translateX: `0vw`,
+      rotateY: '0deg',
+      rotateZ: '0deg',
+      opacity: 1,
+      ease: "none",
+      scrollTrigger: {
+        trigger: document.body,
+        start: window.innerHeight * 0.5,
+        end: `+=${window.innerHeight}`,
+        scrub: 0.75,
+      }
+    })
   }, [])
 
   const scrollListener = () => {
@@ -105,33 +120,26 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
       </Head>
 
       {/* <VideoBackground video={article.video_header || ""} pageColour={article.colour} /> */}
+      <VideoHeader
+        video={article.video_header || ""}
+        title={article.title}
+        pageColour={article.colour}
+        infoBarProps={
+          {
+            date: article.formatteddate,
+            category: article.category,
+            genre: article.genre
+          }
+        }
+      />
 
       <main id={styles.reviewPage}>
         {!showPanel && (<div id={styles.mobileCover}></div>)}
-        <VideoHeader
-          video={article.video_header || ""}
-          title={article.title}
-          pageColour={article.colour}
-          infoBarProps={
-            {
-              date: article.formatteddate,
-              category: article.category,
-              genre: article.genre
-            }
-          }
-        />
 
-        <div className={styles.mainContent}>
-          {/* Blend */}
-          <div className={styles.containerBlend}>
-            <div className={styles.background}>
-              <div className={styles.sketchBackground} />
-            </div>
-          </div>
 
-          {/* Main Content */}
+        <div className={styles.mainContent} style={{ transform: 'translateX(-20vw) rotateY(0.2deg) rotateY(-0.1deg)', opacity: 0 }}>
           <article className={styles.articleContainer}>
-            <div id='articleSketch' className={styles.sketchBackground} />
+            <div className={styles.sketchBackground} />
 
             {article.narration && (<iframe id={styles.adAurisIframe} src={`${article.narration}?color=${article.colour.split('#')[1]}`} style={{ border: 'none', height: '100px', width: '80%' }} ></iframe>)}
 
