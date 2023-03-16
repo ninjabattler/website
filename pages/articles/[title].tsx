@@ -65,7 +65,7 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
         trigger: document.body,
         start: window.innerHeight * 0.5,
         end: `+=${window.innerHeight}`,
-        scrub: 0.75,
+        scrub: 0.25,
       }
     })
   }, [])

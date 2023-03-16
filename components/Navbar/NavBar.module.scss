@@ -32,8 +32,8 @@
     background-size: cover;
     background-position: 0% -400%;
     z-index: -3;
-    mix-blend-mode: soft-light;
-    opacity: 1;
+    mix-blend-mode: luminosity;
+    opacity: 0.2;
     display: none;
     backdrop-filter: brightness(2);
   }
