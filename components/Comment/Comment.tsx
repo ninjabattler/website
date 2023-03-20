@@ -23,7 +23,7 @@ export type CommentProps = {
 
 const Comment: ComponentType<CommentProps> = ({ username, content, style, pageColour, avatar, date }) => (
   <article className={styles.comment} style={style}>
-    <img className={styles.avatar} src={avatars[`avatar${avatar}`]} style={{ borderColor: pageColour || 'var(--dark-gray)' }} alt='profile pic' />
+    <img className={styles.avatar} src={avatars[`avatar${avatar}`]} style={{ borderColor: pageColour || 'var(--light-gray)' }} alt='profile pic' />
     <div>
       <b>Ninja #{username}</b>
       <i>{moment(date).fromNow(true)}</i>

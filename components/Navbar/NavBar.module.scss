@@ -32,7 +32,7 @@
     background-size: cover;
     background-position: 0% -400%;
     z-index: -3;
-    mix-blend-mode: luminosity;
+    mix-blend-mode: lighten;
     opacity: 0.2;
     display: none;
     backdrop-filter: brightness(2);
