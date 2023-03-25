@@ -25,25 +25,36 @@ const VideoHeader: ComponentType<VideoHeaderProps> = ({ video, pageColour, title
       .typeString(title)
       .start()
 
-    gsap.to([`.${styles.bar1}`, `.${styles.bar2}`, `.${styles.barC}`, `.${styles.infoContainer}`, `#title`], {
-      marginLeft: `-110vw`,
-      ease: "none",
+    gsap.to([`.${styles.bar1}`, `.${styles.barC}`, `#title`], {
+      marginLeft: `-125vw`,
+      ease: 'none',
       scrollTrigger: {
         trigger: document.body,
-        start: window.innerHeight / 7.5,
-        end: `+=${window.innerHeight * 0.75}`,
-        scrub: 0.75,
+        start: window.innerHeight / 5,
+        end: `=${window.innerHeight / 5}`,
+        scrub: 2.2
       }
     })
 
-    gsap.to(`.${styles.videoHeader}`, {
-      yPercent: 100,
-      ease: "none",
+    gsap.to([`.${styles.bar2}`], {
+      marginLeft: `-110vw`,
+      ease: 'none',
       scrollTrigger: {
         trigger: document.body,
-        start: window.innerHeight / 7.5,
-        end: `+=${window.innerHeight}`,
-        scrub: true,
+        start: window.innerHeight / 5,
+        end: `=${window.innerHeight / 5}`,
+        scrub: 2
+      }
+    })
+
+    gsap.to([`.${styles.infoContainer}`], {
+      marginLeft: `-117.5vw`,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: document.body,
+        start: window.innerHeight / 5,
+        end: `=${window.innerHeight / 5}`,
+        scrub: 2.1
       }
     })
   }, [])

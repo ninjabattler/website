@@ -56,16 +56,14 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
     }))
 
     gsap.to(`.${styles.mainContent}`, {
-      translateX: `0vw`,
-      rotateY: '0deg',
-      rotateZ: '0deg',
+      marginTop: '-110vh',
       opacity: 1,
       ease: "none",
       scrollTrigger: {
         trigger: document.body,
-        start: window.innerHeight * 0.5,
-        end: `+=${window.innerHeight}`,
-        scrub: 0.25,
+        start: window.innerHeight / 5,
+        end: `=${window.innerHeight / 5}`,
+        scrub: 2,
       }
     })
   }, [])
@@ -137,7 +135,7 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
         {!showPanel && (<div id={styles.mobileCover}></div>)}
 
 
-        <div className={styles.mainContent} style={{ transform: 'translateX(-20vw) rotateY(0.2deg) rotateY(-0.1deg)', opacity: 0 }}>
+        <div className={styles.mainContent} style={{ opacity: 0 }}>
           <article className={styles.articleContainer}>
             <div className={styles.sketchBackground} />
 
