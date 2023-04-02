@@ -5,7 +5,7 @@
   filter: drop-shadow(0vw 0.3vw 0.3vw black);
   z-index: 100;
   position: sticky;
-  top: -15vh;
+  top: -14.3vh;
   font-size: 1.4vw;
   background-image: url("/spacebanner.webp");
   background-blend-mode: lighten;
@@ -59,34 +59,43 @@
   a {
     display: flex;
     justify-content: center;
+    filter: drop-shadow(0 0 0.2vw rgba(0, 0, 0, 0.7));
 
     img {
-      height: 19.75vh;
-      margin-top: -4vh;
-
-      &#glow {
-        margin-left: auto;
-        margin-right: auto;
-        filter: blur(6px) brightness(2);
-        mix-blend-mode: lighten;
-        position: absolute;
-        opacity: 0.6;
-        animation-name: glow;
-        animation-duration: 3s;
-        animation-iteration-count: infinite;
-      }
+      height: 15vh;
+      margin-top: -1vh;
+      margin-bottom: 1vh;
 
       @media (max-device-width: 425px) {
         height: 31vw;
       }
     }
+
+    .logoOverlay {
+      height: 15vh;
+      width: 100vw;
+      margin-top: -1vh;
+      margin-bottom: 1vh;
+      background-image: url('/bannerBW.webp');
+      background-color: var(--article-colour);
+      background-blend-mode: multiply;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      mask: url('/bannerBW.webp');;
+      mask-repeat: no-repeat;
+      mask-size: contain;
+      mask-position: center;
+      filter: brightness(0.5);
+    }
   }
 
   .navOptions {
-    width: 95.2vw;
-    border-top: 2vw solid var(--light-gray);
-    border-right: 2vw solid transparent;
-    border-left: 2vw solid transparent;
+    width: calc(100vw - 7vh);
+    height: 3.5vh;
+    border-top: 3.5vh solid var(--light-gray);
+    border-right: 3.5vh solid transparent;
+    border-left: 3.5vh solid transparent;
     margin-top: -0.4vw;
     position: absolute;
     display: flex;
@@ -100,11 +109,12 @@
       align-items: center;
       color: var(--light-gray);
       width: 10.5vw;
-      margin-top: -1.95vw;
+      height: 100%;
+      margin-top: -3.45vh;
       z-index: 99;
-      font-size: 1em;
+      font-size: 0.9em;
       text-align: center;
-      transition: filter 0.3s, color 0.3s;
+      transition: filter 0.3s, color 0.3s, width 0.3s, margin 0.3s, font-size 0.3s;
       background-image: linear-gradient(
         45deg,
         transparent calc(16% - 2px),
@@ -114,7 +124,6 @@
         black calc(84% + 1px),
         transparent calc(84% + 2px)
       );
-      -webkit-text-stroke: 0.5px black;
 
       &.reverse {
         background-image: linear-gradient(
@@ -127,9 +136,23 @@
       }
 
       &:hover {
-        filter: drop-shadow(0.3vw 0px 0px var(--article-colour, black))
-          drop-shadow(-0.3vw 0px 0px var(--article-colour, black));
+        filter: drop-shadow(0.3vw 0px 0px var(--article-colour, #DDDD44))
+          drop-shadow(-0.3vw 0px 0px var(--article-colour, #DDDD44));
         color: var(--article-colour, var(--light-gray));
+
+        @media (max-device-width: 425px) {
+          filter: none;
+          color: var(--light-gray);
+        }
+      }
+
+      &:active {
+        width: 12vw;
+        margin-left: -0.75vw;
+        margin-right: -0.75vw;
+        font-size: 1em;
+        filter: drop-shadow(0.3vw 0px 0px var(--article-colour, #DDDD44))
+          drop-shadow(-0.3vw 0px 0px var(--article-colour, #DDDD44)) brightness(1.2);
 
         @media (max-device-width: 425px) {
           filter: none;

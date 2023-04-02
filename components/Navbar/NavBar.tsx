@@ -16,17 +16,23 @@ const NavBar: ComponentType<NavBarProps> = ({ setLinkClicked, pageColour, isArti
 
     <Link href="/">
       <a onClick={(e) => { e.preventDefault(); setLinkClicked("/") }}>
-        <img
-          id={styles.glow}
-          style={{ filter: `drop-shadow(5px 5px 0px ${pageColour})` }}
-          src='/Banner.png'
-          alt='logo'
-        />
-        <img
-          style={{ filter: `drop-shadow(5px 5px 0px ${pageColour})` }}
-          src='/Banner.png'
-          alt='logo'
-        />
+
+        {
+          isArticlePage ?
+            (
+              <div
+                className={styles.logoOverlay}
+              />
+            )
+            :
+            (
+              <img
+                // style={{ filter: `drop-shadow(5px 5px 0px ${pageColour})` }}
+                src={isArticlePage ? '/bannerBW.webp' : '/banner.webp'}
+                alt='logo'
+              />
+            )
+        }
       </a>
     </Link>
 
