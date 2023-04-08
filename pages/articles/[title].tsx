@@ -55,17 +55,17 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
       }
     }))
 
-    gsap.to(`.${styles.mainContent}`, {
-      marginTop: '-110vh',
-      opacity: 1,
-      ease: "none",
-      scrollTrigger: {
-        trigger: document.body,
-        start: window.innerHeight / 5,
-        end: `=${window.innerHeight / 5}`,
-        scrub: 2,
-      }
-    })
+    // gsap.to(`.${styles.mainContent}`, {
+    //   marginTop: '-110vh',
+    //   opacity: 1,
+    //   ease: "none",
+    //   scrollTrigger: {
+    //     trigger: document.body,
+    //     start: window.innerHeight / 5,
+    //     end: `=${window.innerHeight / 5}`,
+    //     scrub: 2,
+    //   }
+    // })
   }, [])
 
   const scrollListener = () => {
@@ -135,7 +135,7 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
         {!showPanel && (<div id={styles.mobileCover}></div>)}
 
 
-        <div className={styles.mainContent} style={{ opacity: 0 }}>
+        <div className={styles.mainContent} >
           <article className={styles.articleContainer}>
             <div className={styles.sketchBackground} />
 

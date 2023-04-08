@@ -1,7 +1,7 @@
 .underline {
   border-left: 0.33vw solid transparent;
   border-right: 0.33vw solid transparent;
-  border-bottom: 0.33vw solid rgba(45, 45, 45, 1);
+  border-bottom: 0.33vw solid var(--light-gray);
   margin-top: 0px;
   width: 85%;
   margin-left: auto;

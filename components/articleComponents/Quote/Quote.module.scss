@@ -7,14 +7,14 @@ $gradientColour: rgba(45, 45, 45, 1);
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  margin-top: -0.8vw;
+  margin-top: -0.15vw;
   font-size: 0.7em;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   perspective: 10cm;
   overflow: hidden;
-  filter: drop-shadow(0vw 0.2vw 0 var(--article-colour)) drop-shadow(0px 0vw 0.3vw rgba(0, 0, 0, 0.75));
+  filter: drop-shadow(0px 0vw 0.3vw rgba(0, 0, 0, 0.75));
 
   * {
     &::selection {
@@ -30,22 +30,15 @@ $gradientColour: rgba(45, 45, 45, 1);
 }
 
 .quote > div {
-  width: 106%;
+  width: calc(100% + 2.5vw);
   padding-left: 1vw;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   margin-bottom: -1.2vw;
   height: fit-content;
-  background-color: var(--light-gray);
-  mask: linear-gradient(-45deg, transparent calc(0% + 5vw), black calc(0% + 5vw));
-  perspective: 10cm;
-  transform: rotateY(7deg) rotateZ(-1deg) translateX(5vw);
-  text-rendering: geometricPrecision;
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
-  border-image: url("/border.webp") 40;
-  border-image-outset: 1px;
+  background-image: linear-gradient(-45deg, transparent calc(0% + 5vw), var(--light-gray) calc(0% + 5vw));
+  filter: drop-shadow(0vw 0.2vw 0 var(--article-colour)) drop-shadow(0.2vw 0vw 0 var(--article-colour)) drop-shadow(0px 0vw 0.3vw rgba(0, 0, 0, 0.75));
 
   .sketch {
     margin-left: -1vw;
@@ -53,15 +46,14 @@ $gradientColour: rgba(45, 45, 45, 1);
     height: 100%;
     position: absolute;
     background-image: url("/sketch.webp");
-    background-size: 10%;
+    background-size: 12%;
     mix-blend-mode: darken;
     opacity: 0.35;
     filter: contrast(2) brightness(2);
-    mask: linear-gradient(45deg, transparent 75%, black 100%, transparent 100%);
+    mask: linear-gradient(-45deg, transparent calc(0% + 5vw), black calc(0% + 5vw), transparent 30%);
   }
 
   p {
-    // transform: rotateY(-7deg) rotateZ(0.75deg) skewX(10deg) translateX(-8vw);
     width: 80%;
     padding-right: 1vw;
     max-height: 2.7vw;
@@ -107,7 +99,7 @@ $gradientColour: rgba(45, 45, 45, 1);
   margin-right: 1vw;
   font-family: "Russo One";
   font-weight: 100;
-  transform: rotateZ(10deg) rotateZ(-5deg) skewX(20deg);
+  transform: rotateZ(10deg) rotateZ(-5deg) skewX(20deg) translateX(-0.1em) translateY(0.15em) scale(1.75);
   cursor: default;
   filter: brightness(0.7);
 
@@ -124,8 +116,8 @@ $gradientColour: rgba(45, 45, 45, 1);
 .quote > h3 {
   padding-right: 4vw;
   padding-left: 3.5vw;
-  padding-top: 3.5vw;
-  margin-top: -3vw;
+  padding-top: 3.7vw;
+  margin-top: -2.2vw;
   margin-bottom: 1vw;
   margin-left: auto;
   margin-right: -3vw;
@@ -138,15 +130,10 @@ $gradientColour: rgba(45, 45, 45, 1);
   font-size: 0.95em;
   font-weight: 100;
   color: var(--light-gray);
-  transform: rotateY(7deg) rotateZ(-1deg) translateX(2.5vw);
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
-  border-image: url("/border.webp") 40;
-  border-image-outset: 1px;
   z-index: -1;
 
   h2 {
-    transform: rotateZ(-10deg) rotateZ(5deg) skewX(-20deg) translateY(-0.5vw);
+    transform: rotateZ(-10deg) rotateZ(5deg) skewX(-20deg) translateX(0.3em) translateY(-0.35em) scale(1.75);
   }
 
   &::selection {
