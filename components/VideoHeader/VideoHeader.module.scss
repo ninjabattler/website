@@ -1,5 +1,6 @@
 $borderThickness: 7vw;
 $mobileBorderThickness: 12.5vw;
+$mobileBarHeightOffset: 25vh;
 $gradientColor: rgba(0, 0, 0, 0.5);
 
 .videoHeader {
@@ -15,7 +16,7 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   filter: drop-shadow(0.3vw 0.3vw 0.3vw black);
 
   @media only screen and (max-width: 425px) {
-    margin-bottom: 28vw;
+    height: 100vh;
   }
 }
 
@@ -49,12 +50,28 @@ $gradientColor: rgba(0, 0, 0, 0.5);
     opacity: 0.25;
     filter: invert(1);
     mask: linear-gradient(-45deg, transparent 7.5%, black 7.5%, transparent 15%);
+
+    @media only screen and (max-width: 425px) {
+      background-size: 20%;
+      opacity: 0.35;
+      mask: linear-gradient(-45deg, transparent 14.2%, black 14.2%, transparent 20%);
+    }
   }
 
   @media only screen and (max-width: 425px) {
-    width: 87.5vw;
-    border-width: $mobileBorderThickness;
-    margin-top: 69vw;
+    width: 100%;
+    margin-top: calc($mobileBarHeightOffset + 1.25em);
+    margin-left: -0.55em;
+    height: 1.8em;
+    mask: linear-gradient(
+      -45deg,
+      transparent 14%,
+      black 14%,
+      black 20%,
+      $gradientColor 20%,
+      $gradientColor 22%,
+      black 22%
+    );
   }
 }
 
@@ -82,7 +99,7 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   );
   border-top: 2px solid black;
   border-bottom: 2px solid black;
-  border-image: url('/border.webp') 40;
+  border-image: url("/border.webp") 40;
   border-image-outset: 1px;
 
   &.sketch {
@@ -91,6 +108,11 @@ $gradientColor: rgba(0, 0, 0, 0.5);
     mix-blend-mode: soft-light;
     opacity: 0.45;
     mask: linear-gradient(45deg, black 0%, transparent 30%);
+
+    @media only screen and (max-width: 425px) {
+      background-size: 20%;
+      opacity: 0.8;
+    }
   }
 }
 
@@ -98,19 +120,18 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   animation: barSlideIn 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 
   @media only screen and (max-width: 425px) {
-    width: 85vw;
-    border-width: $mobileBorderThickness;
-    margin-top: 62vh;
+    width: 98%;
+    margin-top: $mobileBarHeightOffset;
+    margin-left: -0.55em;
+    height: 1.8em;
     mask: linear-gradient(
       45deg,
       black 80%,
       $gradientColor 80%,
       $gradientColor 82%,
       black 82%,
-      black 84%,
-      $gradientColor 84%,
-      $gradientColor 86%,
-      black 86%
+      black 86%,
+      transparent 86%
     );
   }
 }
@@ -122,9 +143,11 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   animation: barSlideInC 2s cubic-bezier(0.075, 0.82, 0.165, 1);
 
   @media only screen and (max-width: 425px) {
-    width: 87vw;
-    border-width: $mobileBorderThickness;
-    margin-top: 64vw;
+    width: calc(98% + 0.5em);
+    margin-top: calc($mobileBarHeightOffset + 0.5em);
+    margin-left: -0.5em;
+    height: 1.8em;
+    mask: linear-gradient(45deg, black 86%, transparent 86%);
   }
 }
 
@@ -152,10 +175,10 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   }
 
   @media only screen and (max-width: 425px) {
-    font-size: 5.2vw;
-    font-weight: 200;
-    text-align: left;
-    margin-top: 65vw;
+    width: 90%;
+    margin-top: calc($mobileBarHeightOffset + 0.7em);
+    margin-left: -0.7em;
+    font-size: 0.59em;
   }
 }
 
@@ -178,12 +201,22 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   overflow: hidden;
   position: fixed;
   margin-top: -14.75vh;
+
+  @media only screen and (max-width: 425px) {
+    margin-top: -5.5em;
+    height: 100vh;
+  }
 }
 
 #videoContainer > video {
   width: 100%;
   background-color: black;
   z-index: -2;
+
+  @media only screen and (max-width: 425px) {
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
 .infoContainer {
@@ -191,6 +224,11 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   margin-top: 73vh;
   transform: rotateY(5deg) rotateZ(2deg) translateX(6vw) translateY(-1.4vh);
   animation: infoBarSlideIn 1.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  @media only screen and (max-width: 425px) {
+    margin-top: calc($mobileBarHeightOffset + 5.5em);
+    width: 100%;
+  }
 }
 
 @keyframes glow {

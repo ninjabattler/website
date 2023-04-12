@@ -12,8 +12,7 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   font-size: 30px;
 
   @media only screen and (max-width: 425px) {
-    margin-bottom: 1.5vw;
-    margin-top: -11vw;
+    margin-left: -0.6em;
   }
 }
 
@@ -47,12 +46,25 @@ $gradientColor: rgba(0, 0, 0, 0.5);
     filter: invert(1);
     mask: linear-gradient(-45deg, transparent 4%, black 4%, transparent 10%);
     position: absolute;
+
+    @media only screen and (max-width: 425px) {
+      background-size: 20%;
+      mask: linear-gradient(-45deg, transparent 7.2%, black 7.2%, transparent 15%);
+    }
   }
 
   @media only screen and (max-width: 425px) {
-    width: 83vw;
-    border-width: $mobileBorderThickness;
-    mask: none;
+    width: 83%;
+    height: 0.7em;
+    border-width: 1px;mask: linear-gradient(
+      -45deg,
+      transparent 7%,
+      black 7%,
+      black 14.5%,
+      $gradientColor 14.5%,
+      $gradientColor 16.8%,
+      black 16.8%
+    );
   }
 }
 
@@ -72,12 +84,17 @@ $gradientColor: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: flex-start;
     text-align: left;
+
+    // Removes the typewriter cursor
+    &:not(:first-child) {
+      display: none;
+    }
   }
 
   @media only screen and (max-width: 425px) {
     margin-bottom: 1%;
-    font-size: 3vw;
-    width: 75vw;
+    font-size: 0.4em;
+    width: 100%;
   }
 }
 
@@ -89,7 +106,6 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   font-weight: 100;
 
   @media only screen and (max-width: 425px) {
-    margin-left: 10px;
-    margin-right: 10px;
+    -webkit-text-stroke: none;
   }
 }

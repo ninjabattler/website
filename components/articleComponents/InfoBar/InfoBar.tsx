@@ -33,7 +33,7 @@ const InfoBar: ComponentType<InfoBarProps> = ({ date, category, genre }) => {
     <div className={styles.infoBar}>
       <div className={styles.infoUnderline} />
       <div className={`${styles.infoUnderline} ${styles.sketch}`} />
-      <span id="info"></span>
+      <span id="info" className={styles.info}></span>
     </div>
   )
 }
