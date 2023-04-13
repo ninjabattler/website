@@ -13,7 +13,8 @@
       width: calc(65% + 1vw);
       margin-top: -1.6vh;
       position: absolute;
-      filter: drop-shadow(0.3vw 0 0 var(--article-colour)) drop-shadow(-0.3vw 0.1vw 0 var(--article-colour)) drop-shadow(0.3vw 0.65vw 0.3vw black);
+      filter: drop-shadow(0.3vw 0 0 var(--article-colour)) drop-shadow(-0.3vw 0.1vw 0 var(--article-colour))
+        drop-shadow(0.3vw 0.65vw 0.3vw black);
 
       .background {
         width: calc(100% - 1vw);
@@ -38,6 +39,12 @@
         }
       }
     }
+
+    @media only screen and (max-width: 425px) {
+      font-size: 10pt;
+      padding-top: 15vh;
+      margin-top: -65vh;
+    }
   }
 }
 
@@ -46,7 +53,8 @@
   flex-direction: column;
   background-color: var(--dark-gray);
   width: 65%;
-  filter: drop-shadow(0.3vw 0 0 var(--article-colour)) drop-shadow(-0.3vw 0 0 var(--article-colour)) drop-shadow(0 0.65vw 0.3vw black);
+  filter: drop-shadow(0.3vw 0 0 var(--article-colour)) drop-shadow(-0.3vw 0 0 var(--article-colour))
+    drop-shadow(0 0.65vw 0.3vw black);
   margin-left: 1vw;
   border-bottom: 0.3vw solid var(--article-colour);
   overflow-x: hidden;
@@ -63,15 +71,20 @@
     opacity: 0.3;
     filter: contrast(2) brightness(2);
     mask: linear-gradient(90deg, black 0%, transparent 10%, transparent 90%, black 100%);
+
+    @media only screen and (max-width: 425px) {
+      background-size: 30%;
+    }
   }
 
   @media only screen and (max-width: 425px) {
-    width: calc(100vw - 4px);
-    margin-right: auto;
-    font-size: 20px;
+    width: 93vw;
+    margin-left: 3.5vw;
+    font-size: 1em;
     overflow-x: hidden;
     border-left: none;
-    filter: drop-shadow(2px 2px 0.3vw black);
+    filter: drop-shadow(1vw 0 0 var(--article-colour)) drop-shadow(-1vw 0 0 var(--article-colour))
+      drop-shadow(0 0.65vw 1vw black);
   }
 }
 
@@ -222,9 +235,7 @@
   margin: auto;
 
   @media only screen and (max-width: 425px) {
-    width: 100vw !important;
-    transform: scale(0.7);
-    margin-left: -7.5vw;
+    width: 80vw !important;
   }
 }
 
