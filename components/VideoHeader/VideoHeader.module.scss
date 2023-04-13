@@ -175,10 +175,10 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   }
 
   @media only screen and (max-width: 425px) {
-    width: 90%;
+    max-width: 74%;
     margin-top: calc($mobileBarHeightOffset + 0.7em);
     margin-left: -0.7em;
-    font-size: 0.59em;
+    font-size: 0.54em;
   }
 }
 
