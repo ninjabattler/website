@@ -19,10 +19,10 @@ const Picture: ComponentType<PictureProps> = ({ imageSrc, width, float, pageColo
       className={`${styles.picture} ${floatLeft && styles.floatingLeft} ${floatRight && styles.floatingRight}`}
       style={{
         display: 'inline-flex', '--shadowColour': pageColour,
-        width: width || '100%',
+        width: width ? `calc(${width} - 1.3vw)` : '100%',
         float: float,
-        marginLeft: floatLeft && '-12.5%',
-        marginRight: (floatRight && '-12.5%') || (floatLeft && '10px'),
+        marginLeft: (floatLeft && 'calc(-12.5% - 0.5vw)') || (floatRight && 'calc(0.6em + 0.5vw)'),
+        marginRight: (floatRight && 'calc(-12.5% - 0.5vw)') || (floatLeft && 'calc(0.6em + 0.5vw)'),
       } as any}
     >
       <img

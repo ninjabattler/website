@@ -24,39 +24,6 @@ const VideoHeader: ComponentType<VideoHeaderProps> = ({ video, pageColour, title
       .pauseFor(1400)
       .typeString(title)
       .start()
-
-    gsap.to([`.${styles.bar1}`, `.${styles.barC}`, `#title`], {
-      marginLeft: `-125vw`,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: document.body,
-        start: window.innerHeight / 5,
-        end: `=${window.innerHeight / 5}`,
-        scrub: 2.2
-      }
-    })
-
-    gsap.to([`.${styles.bar2}`], {
-      marginLeft: `-110vw`,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: document.body,
-        start: window.innerHeight / 5,
-        end: `=${window.innerHeight / 5}`,
-        scrub: 2
-      }
-    })
-
-    gsap.to([`.${styles.infoContainer}`], {
-      marginLeft: `-117.5vw`,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: document.body,
-        start: window.innerHeight / 5,
-        end: `=${window.innerHeight / 5}`,
-        scrub: 2.1
-      }
-    })
   }, [])
 
   return (
@@ -74,8 +41,8 @@ const VideoHeader: ComponentType<VideoHeaderProps> = ({ video, pageColour, title
         <div className={styles.bar2} />
         <div className={`${styles.bar2} ${styles.sketch}`} />
 
-        <div className={styles.barC} style={{ backgroundColor: pageColour, borderRightColor: "transparent" }} />
-        <div className={`${styles.barC} ${styles.barGlow}`} style={{ backgroundColor: pageColour, borderRightColor: "transparent" }} />
+        <div className={styles.barC} />
+        <div className={`${styles.barC} ${styles.barGlow}`} />
 
         <div className={styles.bar1} />
         <div className={`${styles.bar1} ${styles.sketch}`} />

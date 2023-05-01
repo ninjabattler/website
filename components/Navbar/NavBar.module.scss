@@ -9,7 +9,6 @@
   font-size: 1.4vw;
   background-image: url("/spacebanner.webp");
   background-blend-mode: lighten;
-  background-attachment: fixed;
   background-size: cover;
   background-position: 0% -400%;
 
@@ -28,14 +27,18 @@
     height: 100%;
     position: absolute;
     background-image: url("/spacebannerBWOverlay.webp");
-    background-attachment: fixed;
+    background-color: var(--article-colour2);
+    background-blend-mode: multiply;
     background-size: cover;
     background-position: 0% -400%;
+    mask: url("/spacebannerBWOverlay.webp");
+    mask-mode: alpha;
+    mask-size: cover;
+    mask-position: 0% -400%;
     z-index: -3;
     mix-blend-mode: lighten;
-    opacity: 0.2;
+    opacity: 0.5;
     display: none;
-    backdrop-filter: brightness(5);
   }
 
   .sketch {
@@ -125,6 +128,7 @@
       font-size: 0.9em;
       text-align: center;
       transition: filter 0.3s, color 0.3s, width 0.3s, margin 0.3s, font-size 0.3s;
+      filter: drop-shadow(0 0 0 black);
       background-image: linear-gradient(
         45deg,
         transparent calc(16% - 2px),
@@ -146,18 +150,21 @@
       }
 
       &:hover {
-        filter: drop-shadow(0.3vw 0px 0px var(--article-colour, #dddd44))
-          drop-shadow(-0.3vw 0px 0px var(--article-colour, #dddd44));
-        color: var(--article-colour, var(--light-gray));
-      }
-
-      &:active {
         width: 12vw;
         margin-left: -0.75vw;
         margin-right: -0.75vw;
-        font-size: 1em;
         filter: drop-shadow(0.3vw 0px 0px var(--article-colour, #dddd44))
-          drop-shadow(-0.3vw 0px 0px var(--article-colour, #dddd44)) brightness(1.2);
+          drop-shadow(-0.3vw 0px 0px var(--article-colour, #dddd44));
+      }
+
+      &:active {
+        width: 9vw;
+        margin-left: +0.75vw;
+        margin-right: +0.75vw;
+        // font-size: 1em;
+        color: var(--article-colour, #dddd44);
+        filter: drop-shadow(0.6vw 0px 0px var(--article-colour, #dddd44))
+          drop-shadow(-0.6vw 0px 0px var(--article-colour, #dddd44)) brightness(1.4);
       }
 
       @media (max-device-width: 425px) {

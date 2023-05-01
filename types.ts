@@ -122,6 +122,7 @@ export interface ArticleData {
   date: SqlDateType;
   review: boolean;
   colour: ColourType;
+  colour2?: ColourType;
   content: ArticleJson;
   category: CategoryType;
   genre: GenreType;

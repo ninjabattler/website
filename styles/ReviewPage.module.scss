@@ -4,9 +4,10 @@
 
   .mainContent {
     backdrop-filter: blur(1vw);
-    padding-top: 20vh;
+    padding-top: 15vh;
+    margin-bottom: 15vh;
     margin-top: -50vh;
-    mask: linear-gradient(177.5deg, transparent 3vh, black 12vh);
+    mask: linear-gradient(180deg, transparent 0%, black 12vh);
 
     .containerBlend {
       height: 11vh;
@@ -49,23 +50,22 @@
   }
 }
 
-#reviewPage > div > .articleContainer {
+#reviewPage > .mainContent > .articleContainer {
   display: flex;
   flex-direction: column;
   background-color: var(--dark-gray);
   width: 65%;
-  filter: drop-shadow(0.3vw 0 0 var(--article-colour)) drop-shadow(-0.3vw 0 0 var(--article-colour))
-    drop-shadow(0 0.65vw 0.3vw black);
   margin-left: 1vw;
-  border-bottom: 0.3vw solid var(--article-colour);
   overflow-x: hidden;
+  // filter: drop-shadow(0 0.65vw 0.3vw black);
   margin-top: 0vh;
+  z-index: -1;
 
   .sketchBackground {
     position: absolute;
-    width: 100%;
+    width: 65%;
     height: 100%;
-    z-index: -5;
+    z-index: -1;
     background-image: url("/sketch.webp");
     background-size: 12.5%;
     mix-blend-mode: darken;
@@ -76,6 +76,26 @@
     @media only screen and (max-width: 425px) {
       background-size: 30%;
     }
+  }
+
+  &::before {
+    position: absolute;
+    width: calc(65% + 0.6vw);
+    height: 100%;
+    margin-left: -0.3vw;
+    z-index: -2;
+    background-image: linear-gradient(0deg, var(--article-colour2) 15%, var(--article-colour) 60%);
+    background-size: 100vw 100vh;
+    background-attachment: fixed;
+    mask: linear-gradient(
+      90deg,
+      black calc(0% + 0.3vw),
+      transparent calc(0% + 0.3vw),
+      transparent calc(100% - 0.3vw),
+      black calc(100% - 0.3vw)
+    );
+    content: "";
+    filter: drop-shadow(0 0.65vw 0.3vw black);
   }
 
   @media only screen and (max-width: 425px) {

@@ -54,18 +54,6 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
         return -1
       }
     }))
-
-    // gsap.to(`.${styles.mainContent}`, {
-    //   marginTop: '-110vh',
-    //   opacity: 1,
-    //   ease: "none",
-    //   scrollTrigger: {
-    //     trigger: document.body,
-    //     start: window.innerHeight / 5,
-    //     end: `=${window.innerHeight / 5}`,
-    //     scrub: 2,
-    //   }
-    // })
   }, [])
 
   const scrollListener = () => {
@@ -112,6 +100,7 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
           {`
             :root {
               --article-colour: ${article.colour};
+              --article-colour2: ${article.colour2 || article.colour};
             }
           `}
         </style>
@@ -133,7 +122,6 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
 
       <main id={styles.reviewPage}>
         {!showPanel && (<div id={styles.mobileCover}></div>)}
-
 
         <div className={styles.mainContent} >
           <article className={styles.articleContainer}>

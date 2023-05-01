@@ -15,7 +15,7 @@ type SubtitleCardProps = {
 
 const SubtitleCard: ComponentType<SubtitleCardProps> = ({ imageSrc, inverse, pageColour, lower, higher, smaller, extraSmaller, title }) => (
   <div className={`${styles.bossCard} ${inverse ? styles.inverse : ''}`}>
-    <div className={styles.background2} style={{ backgroundColor: pageColour }}></div>
+    <div className={styles.background2} style={{ '--subtitleColour1': pageColour } as any}></div>
 
     <div className={styles.background1}>
       <div />
@@ -26,7 +26,7 @@ const SubtitleCard: ComponentType<SubtitleCardProps> = ({ imageSrc, inverse, pag
       <div className={styles.sketch} />
     </div>
 
-    <div className={styles.background4} style={{ backgroundColor: pageColour }}></div>
+    <div className={styles.background4} style={{ '--subtitleColour1': pageColour } as any}></div>
 
     {imageSrc ?
       (<div className={`${styles.imageContainer} ${lower && styles.lower} ${higher && styles.higher}`} >

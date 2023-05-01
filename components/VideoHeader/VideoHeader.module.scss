@@ -27,7 +27,7 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   position: absolute;
   margin-top: 48vh;
   transform: rotateY(5deg) rotateZ(2deg) translateX(5.5vw) translateY(-2vh);
-  animation: barSlideIn2 1.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+  animation: barSlideIn2 1.2s cubic-bezier(0.075, 0.82, 0.165, 1.05);
   mask: linear-gradient(
     -45deg,
     transparent 7.5%,
@@ -97,10 +97,6 @@ $gradientColor: rgba(0, 0, 0, 0.5);
     black 92%,
     transparent 92%
   );
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
-  border-image: url("/border.webp") 40;
-  border-image-outset: 1px;
 
   &.sketch {
     background-image: url("/sketch.webp");
@@ -117,7 +113,11 @@ $gradientColor: rgba(0, 0, 0, 0.5);
 }
 
 .bar1 {
-  animation: barSlideIn 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  animation: barSlideIn 1s cubic-bezier(0.075, 0.82, 0.165, 1.05);
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  border-image: url("/border.webp") 40;
+  border-image-outset: 1px;
 
   @media only screen and (max-width: 425px) {
     width: 98%;
@@ -140,7 +140,9 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   margin-top: 47vh;
   width: 86.6%;
   mask: linear-gradient(45deg, black 91.5%, transparent 91.5%);
-  animation: barSlideInC 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+  animation: barSlideInC 2s cubic-bezier(0.075, 0.82, 0.165, 1.05);
+  background-color: transparent;
+  background-image: linear-gradient(45deg, var(--article-colour) 65%, var(--article-colour2) 100%);
 
   @media only screen and (max-width: 425px) {
     width: calc(98% + 0.5em);
@@ -152,22 +154,22 @@ $gradientColor: rgba(0, 0, 0, 0.5);
 }
 
 .barGlow {
-  animation: barSlideInC 2s cubic-bezier(0.075, 0.82, 0.165, 1), glow 3s infinite;
+  animation: barSlideInC 2s cubic-bezier(0.075, 0.82, 0.165, 1.05), glow 3s linear 2s infinite;
 }
 
 .videoHeader > h1 {
   position: absolute;
-  width: 80vw;
+  width: 68vw;
+  max-width: 68vw;
   margin-top: 49vh;
-  margin-left: 2.5vw;
+  margin-left: 0.5vw;
   color: var(--secondary-text);
   font-size: 3.1vw;
   font-family: "Russo One";
   font-weight: 100;
   text-rendering: geometricPrecision;
   transform: rotateY(5deg) rotateZ(2deg) translateX(5.5vw) translateY(-2vh);
-  animation: barSlideIn 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-  // -webkit-text-stroke: 0.8px black;
+  animation: barSlideIn 1s cubic-bezier(0.075, 0.82, 0.165, 1.05);
 
   span::selection {
     color: var(--light-gray);
@@ -175,6 +177,7 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   }
 
   @media only screen and (max-width: 425px) {
+    width: 74%;
     max-width: 74%;
     margin-top: calc($mobileBarHeightOffset + 0.7em);
     margin-left: -0.7em;
@@ -223,7 +226,7 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   position: absolute;
   margin-top: 73vh;
   transform: rotateY(5deg) rotateZ(2deg) translateX(6vw) translateY(-1.4vh);
-  animation: infoBarSlideIn 1.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+  animation: infoBarSlideIn 1.4s cubic-bezier(0.075, 0.82, 0.165, 1.05);
 
   @media only screen and (max-width: 425px) {
     margin-top: calc($mobileBarHeightOffset + 5.5em);
