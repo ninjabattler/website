@@ -1,3 +1,4 @@
+@use "/styles/_mixins" as mixins;
 $borderWidth: 10.8vw;
 $mobileBorderWidth: 20vw;
 $gradientColour: rgba(0, 0, 0, 0.3725);
@@ -18,6 +19,12 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
     @media only screen and (max-width: 425px) {
       margin-bottom: 1.8em;
     }
+  }
+
+  .barMask {
+    position: absolute;
+    z-index: 10;
+
   }
 
   @media only screen and (max-width: 425px) {
@@ -94,13 +101,15 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
 }
 
 .background2 {
+  @include mixins.articlePageGradientShadow;
   position: absolute;
   height: $borderWidth;
-  background-image: linear-gradient(135deg, var(--article-colour, black) 50%, var(--article-colour2, black) 100%);
   width: 100%;
-  margin-top: 20px;
-  transform: rotateY(5deg) rotateZ(2deg) translateX(3vw) translateY(-5vh);
-  mask: linear-gradient(-45deg, transparent 16%, black 16%);
+  margin-top: 0;
+  mask: url('/titleBar.svg');
+  mask-size: 110%;
+  mask-repeat: no-repeat;
+  mask-position: 130% 0%;
 
   &.glow {
     mix-blend-mode: lighten;
@@ -182,15 +191,16 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
 }
 
 .background4 {
+  @include mixins.articlePageGradientShadow;
   position: absolute;
-  height: calc($borderWidth + 3vh);
-  background-image: linear-gradient(135deg, var(--article-colour, black) 50%, var(--article-colour2, black) 100%);
+  height: calc($borderWidth + 2.1vh);
   width: 110%;
-  margin-top: -1.25vw;
+  margin-top: -3.2vw;
   z-index: -1;
-  transform: rotateY(5deg) rotateZ(2deg) translateX(3.8vw) translateY(-5vh);
-  mask: linear-gradient(-45deg, black 86.5%, transparent 86.5%);
-  filter: brightness(0.8);
+  mask: url('/titleBar2.svg');
+  mask-size: 100%;
+  mask-repeat: no-repeat;
+  mask-position: 0% 0%;
 
   @media only screen and (max-width: 425px) {
     height: 4em;

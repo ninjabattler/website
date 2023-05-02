@@ -17,6 +17,7 @@ const save = async (
   category: string,
   genre: string,
   colour: string,
+  colour2: string,
   description: string,
   thumbnail: string,
   videoHeader: string,
@@ -30,6 +31,7 @@ const save = async (
     category,
     genre,
     colour,
+    colour2,
     description,
     formatteddate: '00, 00, 0000',
     thumbnail,
@@ -56,6 +58,7 @@ const MainSettings: ComponentType<MainSettingsProps> = ({ articleData, jsonLocat
   const [category, setCategory] = useState<string>(articleData.category);
   const [genre, setGenre] = useState<string>(articleData.genre);
   const [colour, setColour] = useState<string>(articleData.colour);
+  const [colour2, setColour2] = useState<string>(articleData.colour2);
   const [description, setDescription] = useState<string>(articleData.description);
   const [thumbnail, setThumbnail] = useState<string>(articleData.thumbnail);
   const [videoHeader, setVideoHeader] = useState<string>(articleData.video_header);
@@ -267,7 +270,7 @@ const MainSettings: ComponentType<MainSettingsProps> = ({ articleData, jsonLocat
       <button
         id={styles.saveButton}
         onClick={async () => {
-          const data = await save(title, category, genre, colour, description, thumbnail, videoHeader, narration, content, articleData.footnotes, jsonLocation);
+          const data = await save(title, category, genre, colour, colour2, description, thumbnail, videoHeader, narration, content, articleData.footnotes, jsonLocation);
 
           updateArticleData(data);
         }}
@@ -318,6 +321,11 @@ const MainSettings: ComponentType<MainSettingsProps> = ({ articleData, jsonLocat
     <div className={styles.inputContainer}>
       <span>Colour: </span>
       <input value={colour} onChange={(e) => { setColour(e.target.value) }}></input>
+    </div>
+
+    <div className={styles.inputContainer}>
+      <span>Colour2: </span>
+      <input value={colour2} onChange={(e) => { setColour2(e.target.value) }}></input>
     </div>
 
     <div id={styles.description} className={styles.inputContainer}>

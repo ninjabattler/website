@@ -13,12 +13,12 @@ type TitleCardProps = {
 const TitleCard: ComponentType<TitleCardProps> = ({ imageSrc, title, pageColour, lower, coverBelow }) => (
   <div className={`${styles.bossCard} ${coverBelow && styles.coverBelow}`} id={title}>
 
-    <div className={styles.background4} style={{ backgroundColor: pageColour }} />
+    <div className={styles.background4} />
 
     <div className={styles.background3} />
     <div className={`${styles.background3} ${styles.sketch}`} />
 
-    <div className={styles.background2} style={{ backgroundColor: pageColour }} />
+    <div className={styles.background2} />
 
     <div className={styles.background1}>
       <p />

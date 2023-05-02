@@ -106,7 +106,6 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
         </style>
       </Head>
 
-      {/* <VideoBackground video={article.video_header || ""} pageColour={article.colour} /> */}
       <VideoHeader
         video={article.video_header || ""}
         title={article.title}
