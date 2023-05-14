@@ -21,7 +21,7 @@ const VideoHeader: ComponentType<VideoHeaderProps> = ({ video, pageColour, title
     });
 
     typewriter
-      .pauseFor(1400)
+      .pauseFor(2200)
       .typeString(title)
       .start()
   }, [])

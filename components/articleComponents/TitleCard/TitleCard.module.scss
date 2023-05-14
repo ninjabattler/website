@@ -65,11 +65,11 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
 
     &.sketch {
       background-image: url("/sketch.webp");
-      background-size: 15%;
-      mix-blend-mode: darken;
+      background-size: 13%;
+      mix-blend-mode: color-burn;
       opacity: 0.25;
-      filter: contrast(2) brightness(2);
-      mask: linear-gradient(-45deg, transparent 80%, black 100%, transparent 100%);
+      filter: invert(1);
+      mask: linear-gradient(-45deg, transparent 70%, black 100%, transparent 100%);
 
       @media only screen and (max-width: 425px) {
         background-size: 30%;
@@ -162,9 +162,9 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
   &.sketch {
     background-image: url("/sketch.webp");
     background-size: 13%;
-    mix-blend-mode: darken;
-    filter: contrast(2) brightness(2);
+    mix-blend-mode: color-burn;
     opacity: 0.25;
+    filter: invert(1);
     mask: linear-gradient(-45deg, transparent 75%, black 90%, transparent 90%);
 
     @media only screen and (max-width: 425px) {
@@ -212,6 +212,7 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
 .bossCard > h2 {
   position: absolute;
   color: var(--secondary-text);
+  filter: drop-shadow(0.2vw 0.2vw 0vw rgba(0, 0, 0, 0.25));
   margin-top: 7.3vw;
   margin-left: 0.5vw;
   font-size: 3vw;

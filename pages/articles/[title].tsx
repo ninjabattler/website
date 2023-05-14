@@ -122,7 +122,15 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
       <main id={styles.reviewPage}>
         {!showPanel && (<div id={styles.mobileCover}></div>)}
 
-        <div className={styles.mainContent} >
+        <div className={styles.mainContent}>
+          {/* Blend */}
+          <div className={styles.containerBlend}>
+            <div className={styles.background}>
+              <div className={styles.sketchBackground} />
+            </div>
+          </div>
+
+          {/* Main Content */}
           <article className={styles.articleContainer}>
             <div className={styles.sketchBackground} />
 
