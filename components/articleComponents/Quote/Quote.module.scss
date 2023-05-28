@@ -16,7 +16,6 @@ $gradientColour: rgba(45, 45, 45, 1);
   justify-content: space-between;
   perspective: 10cm;
   overflow: hidden;
-  filter: drop-shadow(0px 0.3vw 0.15vw rgba(0, 0, 0, 0.5));
 
   * {
     &::selection {
@@ -59,22 +58,29 @@ $gradientColour: rgba(45, 45, 45, 1);
     position: absolute;
     background-image: url("/sketch.webp");
     background-size: 12%;
-    mix-blend-mode: darken;
+    mix-blend-mode: color-burn;
     opacity: 0.25;
-    filter: contrast(2) brightness(2);
-    mask: linear-gradient(-45deg, transparent calc(0% + 3vw), black calc(0% + 3vw), transparent 30%);
+    filter: invert(1);
+    mask: linear-gradient(-45deg, transparent 90%, black 100%);
   }
 
   p {
     width: 80%;
-    padding-right: 1vw;
+    padding-left: 1vw;
+    height: 2.7vw;
     max-height: 2.7vw;
+    display: flex;
+    align-items: auto;
+    justify-content: flex-end;
+    margin-top: 0.6vw;
     overflow-y: scroll;
+    direction: rtl;
+    text-align: left;
     z-index: 1;
 
     &::-webkit-scrollbar {
       width: 0.5vw;
-      background: var(--dark-gray);
+      background: #35363c;
 
       @media only screen and (max-width: 425px) {
         width: 1.5vw;
@@ -82,12 +88,12 @@ $gradientColour: rgba(45, 45, 45, 1);
     }
 
     &::-webkit-scrollbar-track {
-      background: var(--dark-gray);
+      background: #35363c;
     }
 
     &::-webkit-scrollbar-thumb {
       background: var(--light-gray);
-      border: 0.1vw solid var(--dark-gray);
+      border: 0.1vw solid #35363c;
     }
   }
 
@@ -136,16 +142,17 @@ $gradientColour: rgba(45, 45, 45, 1);
   width: fit-content;
   display: flex;
   align-items: center;
-  background-color: var(--dark-gray);
+  background-color: #2a2b30;
   mask: linear-gradient(45deg, transparent 10%, var(--dark-gray) 10%);
   font-family: "Russo One";
   font-size: 0.95em;
   font-weight: 100;
-  color: var(--light-gray);
+  color: var(--primary-text);
   z-index: -2;
 
   h2 {
     transform: rotateZ(-10deg) rotateZ(5deg) skewX(-20deg) translateX(0.3em) translateY(-0.35em) scale(1.75);
+    color: #2a2b30;
   }
 
   &::selection {

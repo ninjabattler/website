@@ -10,7 +10,6 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
   justify-content: left;
   align-items: flex-start;
   perspective: 10cm;
-  filter: drop-shadow(0px 0vw 0.3vw rgba(0, 0, 0, 0.75));
   z-index: 10;
 
   &.coverBelow {
@@ -38,7 +37,6 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
   height: $borderWidth;
   width: 98%;
   transform: rotateY(5deg) rotateZ(2deg) translateX(3vw) translateY(-8vh);
-  filter: drop-shadow(0.9vw -0.3vw 0.3vw rgba(0, 0, 0, 0.35));
 
   p {
     position: absolute;
@@ -58,10 +56,8 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
       $gradientColour 36%,
       black 36%
     );
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
-    border-image: url("/border.webp") 40;
-    border-image-outset: 1px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
 
     &.sketch {
       background-image: url("/sketch.webp");
@@ -154,10 +150,8 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
     transparent 90%
   );
   filter: brightness(0.8);
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
-  border-image: url("/border.webp") 50;
-  border-image-outset: 1px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
 
   &.sketch {
     background-image: url("/sketch.webp");
@@ -195,7 +189,7 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
   position: absolute;
   height: calc($borderWidth + 2.1vh);
   width: 110%;
-  margin-top: -3.2vw;
+  margin-top: -3.1vw;
   z-index: -1;
   mask: url('/titleBar2.svg');
   mask-size: 100%;
@@ -212,7 +206,6 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
 .bossCard > h2 {
   position: absolute;
   color: var(--secondary-text);
-  filter: drop-shadow(0.2vw 0.2vw 0vw rgba(0, 0, 0, 0.25));
   margin-top: 7.3vw;
   margin-left: 0.5vw;
   font-size: 3vw;
