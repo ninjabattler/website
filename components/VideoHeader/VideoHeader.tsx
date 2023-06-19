@@ -52,7 +52,7 @@ const VideoHeader: ComponentType<VideoHeaderProps> = ({ video, pageColour, title
         </h1>
 
         <div className={styles.infoContainer}>
-          <InfoBar category={infoBarProps.category} date={infoBarProps.date} genre={infoBarProps.genre} />
+          <InfoBar tags={infoBarProps.tags} date={infoBarProps.date} />
         </div>
       </div>
     </>

@@ -20,5 +20,5 @@ export const formatSqlDate = (date): string => {
   const day: string = splitDate[1];
   const year: string = splitDate[2];
 
-  return `${months[month]}, ${day}, ${year}`;
+  return `${months[month] || "January"}, ${day}, ${year}`;
 }

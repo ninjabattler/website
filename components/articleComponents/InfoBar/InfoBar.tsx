@@ -3,14 +3,14 @@ import styles from "./InfoBar.module.scss";
 import { formatSqlDate } from '../../../helpers/dateHelpers';
 import Typewriter from 'typewriter-effect/dist/core';
 import { TypewriterClass } from 'typewriter-effect';
+import Tag from './Tag/Tag';
 
 export type InfoBarProps = {
   date: string;
-  category: string;
-  genre: string;
+  tags: string[]
 }
 
-const InfoBar: ComponentType<InfoBarProps> = ({ date, category, genre }) => {
+const InfoBar: ComponentType<InfoBarProps> = ({ date, tags }) => {
   useEffect(() => {
     const typewriter: TypewriterClass = new Typewriter('#info', {
       cursor: '',
@@ -21,10 +21,6 @@ const InfoBar: ComponentType<InfoBarProps> = ({ date, category, genre }) => {
       .pauseFor(1800)
       .typeString(`
         <div>${formatSqlDate(date)}</div>
-        <div>/</div>
-        <div>${category}</div>
-        <div>/</div>
-        <div>${genre}</div>
       `)
       .start()
   }, [])
@@ -33,7 +29,14 @@ const InfoBar: ComponentType<InfoBarProps> = ({ date, category, genre }) => {
     <div className={styles.infoBar}>
       <div className={styles.infoUnderline} />
       <div className={`${styles.infoUnderline} ${styles.sketch}`} />
-      <span id="info" className={styles.info}></span>
+      <span className={styles.info}>
+        <p id="info" ></p>
+        {
+          tags.map((tag) => {
+            return <Tag tag={tag} />
+          })
+        }
+      </span>
     </div>
   )
 }

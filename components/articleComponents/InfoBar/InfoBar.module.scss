@@ -5,11 +5,11 @@ $gradientColor: rgba(0, 0, 0, 0.5);
 .infoBar {
   height: $borderThickness;
   width: 100%;
-  margin-bottom: 35px;
+  margin-bottom: 1em;
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
-  font-size: 30px;
+  font-size: 1em;
 
   @media only screen and (max-width: 425px) {
     margin-left: -0.6em;
@@ -68,27 +68,31 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   }
 }
 
-.infoBar > span {
+.infoBar > .info {
   width: 100vw;
+  height: fit-content;
   position: absolute;
-  margin-bottom: 0.4%;
-  margin-left: 0.5vw;
+  margin-bottom: 0.25em;
+  margin-left: 0.75em;
   color: var(--light-gray);
   display: flex;
   justify-content: flex-start;
+  align-items: center;
   text-align: left;
   font-size: 1.7vw;
 
-  span {
-    width: 100%;
+  p {
+    width: fit-content;
+    margin: 0;
+    margin-right: 0.6em;
     display: flex;
     justify-content: flex-start;
     text-align: left;
 
     // Removes the typewriter cursor
-    &:not(:first-child) {
-      display: none;
-    }
+    // &:not(:first-child) {
+    //   display: none;
+    // }
   }
 
   @media only screen and (max-width: 425px) {
@@ -98,7 +102,7 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   }
 }
 
-.infoBar > span > span > div {
+.infoBar > .info > span > div {
   margin-left: 1vw;
   margin-right: 1vw;
   -webkit-text-stroke: 0.05vw var(--secondary-text);

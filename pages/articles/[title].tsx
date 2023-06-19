@@ -113,8 +113,7 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
         infoBarProps={
           {
             date: article.formatteddate,
-            category: article.category,
-            genre: article.genre
+            tags: [article.category, article.genre]
           }
         }
       />
