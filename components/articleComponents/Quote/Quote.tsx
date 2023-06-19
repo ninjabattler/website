@@ -8,12 +8,13 @@ type QuoteProps = {
 
 const Quote: ComponentType<QuoteProps> = ({ quote, source }) => (
   <div className={styles.quote}>
-    <div>
+    <div className={styles.quoteContainer}>
       <div className={styles.sketch} />
       <h2>&quot;</h2>
       <p><span dir='ltr'>{quote}</span></p>
     </div>
-    <h3>{source}<h2>&quot;</h2></h3>
+    
+    <h3 className={styles.source}>{source}<h2>&quot;</h2></h3>
   </div>
 )
 

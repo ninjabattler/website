@@ -6,16 +6,10 @@ $gradientColour: rgba(45, 45, 45, 1);
 .quote {
   color: var(--secondary-text);
   width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: -0.18vw;
-  margin-bottom: -1.4vw;
+  height: fit-content;
   font-size: 0.7em;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   perspective: 10cm;
-  overflow: hidden;
+  top: 0;
 
   * {
     &::selection {
@@ -30,10 +24,11 @@ $gradientColour: rgba(45, 45, 45, 1);
   }
 }
 
-.quote > div {
+.quote > .quoteContainer {
   width: calc(100% + 2.5vw);
   padding-left: 1vw;
   display: flex;
+  position: absolute;
   justify-content: flex-start;
   align-items: flex-start;
   margin-bottom: -1.2vw;
@@ -43,10 +38,10 @@ $gradientColour: rgba(45, 45, 45, 1);
   &::before {
     @include mixins.articlePageGradientShadow;
     position: absolute;
-    width: calc(100% + 1vw);
+    width: 100%;
     height: calc(3.6em + 0.2vw);
     margin-left: -1vw;
-    mask: linear-gradient(-45deg, transparent calc(0% + 3.7vw), black calc(0% + 3.7vw));
+    mask: linear-gradient(-45deg, transparent calc(0% + 5.4vw), black calc(0% + 5.4vw));
     content: "";
     z-index: -1;
   }
@@ -103,8 +98,8 @@ $gradientColour: rgba(45, 45, 45, 1);
   }
 }
 
-.quote > div > h2,
-.quote > h3 > h2 {
+.quote > .quoteContainer > h2,
+.quote > .source > h2 {
   color: var(--light-gray);
   font-size: 3.5em;
   width: 2vw;
@@ -131,24 +126,23 @@ $gradientColour: rgba(45, 45, 45, 1);
   }
 }
 
-.quote > h3 {
-  padding-right: 4vw;
-  padding-left: 3.5vw;
-  padding-top: 4.1vw;
-  margin-top: -2.6vw;
-  margin-bottom: 1vw;
+.quote > .source {
+  padding-left: 3em;
+  padding-top: 4em;
+  margin: 0;
   margin-left: auto;
-  margin-right: -3vw;
+  min-width: 7.5vw;
   width: fit-content;
   display: flex;
   align-items: center;
   background-color: #2a2b30;
-  mask: linear-gradient(45deg, transparent 10%, var(--dark-gray) 10%);
+  mask: linear-gradient(45deg, transparent 13%, var(--dark-gray) 13%);
   font-family: "Russo One";
   font-size: 0.95em;
   font-weight: 100;
   color: var(--primary-text);
   z-index: -2;
+  position: relative;
 
   h2 {
     transform: rotateZ(-10deg) rotateZ(5deg) skewX(-20deg) translateX(0.3em) translateY(-0.35em) scale(1.75);

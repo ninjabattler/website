@@ -18,7 +18,8 @@ const Picture: ComponentType<PictureProps> = ({ imageSrc, width, float, pageColo
     <div
       className={`${styles.picture} ${floatLeft && styles.floatingLeft} ${floatRight && styles.floatingRight}`}
       style={{
-        display: 'inline-flex', '--shadowColour': pageColour,
+        display: 'inline-flex',
+        '--shadowColour': pageColour,
         width: width ? `calc(${width} - 1.3vw)` : '100%',
         float: float,
         marginLeft: (floatLeft && 'calc(-12.5% - 0.5vw)') || (floatRight && 'calc(0.6em + 0.5vw)'),
