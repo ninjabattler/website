@@ -4,7 +4,7 @@ $mobileBarHeightOffset: 25vh;
 $gradientColor: rgba(0, 0, 0, 0.5);
 
 .videoHeader {
-  height: 85vh;
+  height: 100vh;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -24,7 +24,7 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   height: $borderThickness;
   background-color: var(--dark-gray);
   position: absolute;
-  margin-top: 48vh;
+  margin-top: 55vh;
   transform: rotateY(5deg) rotateZ(2deg) translateX(5.5vw) translateY(-2vh);
   animation: barSlideIn2 2s cubic-bezier(0.075, 0.82, 0.165, 1.05);
   border-top: 1px solid black;
@@ -79,7 +79,7 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   width: 85%;
   height: $borderThickness;
   position: absolute;
-  margin-top: 45vh;
+  margin-top: 52vh;
   background-color: var(--light-gray);
   background-blend-mode: darken;
   transform: rotateY(5deg) rotateZ(2deg) translateX(5.5vw) translateY(-2vh);
@@ -134,7 +134,7 @@ $gradientColor: rgba(0, 0, 0, 0.5);
 }
 
 .barC {
-  margin-top: 47vh;
+  margin-top: 54vh;
   width: 86.6%;
   mask: linear-gradient(45deg, black 91.5%, transparent 91.5%);
   animation: barSlideInC 2.8s cubic-bezier(0.075, 0.82, 0.165, 1.05);
@@ -158,7 +158,7 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   position: absolute;
   width: 68vw;
   max-width: 68vw;
-  margin-top: 49vh;
+  margin-top: 56vh;
   margin-left: 0.5vw;
   color: var(--secondary-text);
   font-size: 3.1vw;
@@ -200,7 +200,6 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   // background-color: black;
   overflow: hidden;
   position: fixed;
-  margin-top: -14.75vh;
 
   @media only screen and (max-width: 425px) {
     margin-top: -5.5em;
@@ -209,7 +208,8 @@ $gradientColor: rgba(0, 0, 0, 0.5);
 }
 
 #videoContainer > video {
-  // width: 100%;
+  width: 100%;
+  height: 100%;
   background-color: black;
   z-index: -2;
   object-fit: cover;
@@ -222,7 +222,7 @@ $gradientColor: rgba(0, 0, 0, 0.5);
 
 .infoContainer {
   position: absolute;
-  margin-top: 73vh;
+  margin-top: 80vh;
   transform: rotateY(5deg) rotateZ(2deg) translateX(6vw) translateY(-1.4vh);
   animation: infoBarSlideIn 2.2s cubic-bezier(0.075, 0.82, 0.165, 1.05);
 
