@@ -11,7 +11,8 @@
     margin-top: -50vh;
     mask: linear-gradient(180deg, transparent 0%, black 11vh);
 
-    .containerBlend {
+    .containerBlend,
+    .containerBlend2 {
       height: 11vh;
       width: calc(65% + 0.4vw);
       margin-top: -8.5vh;

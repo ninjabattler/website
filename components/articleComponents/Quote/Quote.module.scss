@@ -9,6 +9,7 @@ $gradientColour: rgba(45, 45, 45, 1);
   height: fit-content;
   font-size: 0.7em;
   perspective: 10cm;
+  margin-top: -0.21vw;
   top: 0;
 
   * {
@@ -127,7 +128,8 @@ $gradientColour: rgba(45, 45, 45, 1);
 }
 
 .quote > .source {
-  padding-left: 3em;
+  padding-left: 6.5%;
+  padding-right: 1em;
   padding-top: 4em;
   margin: 0;
   margin-left: auto;

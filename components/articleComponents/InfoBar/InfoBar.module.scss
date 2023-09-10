@@ -33,10 +33,7 @@ $gradientColor: rgba(0, 0, 0, 0.5);
     $gradientColor 19.7%,
     black 19.7%
   );
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
-  border-image: url('/border.webp') 40;
-  border-image-outset: 1px;
+  border-bottom: 1px solid black;
 
   &.sketch {
     background-image: url("/sketch.webp");

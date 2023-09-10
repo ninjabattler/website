@@ -27,6 +27,7 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   margin-top: 48vh;
   transform: rotateY(5deg) rotateZ(2deg) translateX(5.5vw) translateY(-2vh);
   animation: barSlideIn2 2s cubic-bezier(0.075, 0.82, 0.165, 1.05);
+  border-top: 1px solid black;
   mask: linear-gradient(
     -45deg,
     transparent 7.5%,
@@ -40,7 +41,6 @@ $gradientColor: rgba(0, 0, 0, 0.5);
     $gradientColor 21%,
     black 21%
   );
-  border: 1px solid black;
 
   &.sketch {
     background-image: url("/sketch.webp");
@@ -114,10 +114,7 @@ $gradientColor: rgba(0, 0, 0, 0.5);
 
 .bar1 {
   animation: barSlideIn 1.8s cubic-bezier(0.075, 0.82, 0.165, 1.05);
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
-  border-image: url("/border.webp") 40;
-  border-image-outset: 1px;
+  border-top: 1px solid var(--dark-gray);
 
   @media only screen and (max-width: 425px) {
     width: 98%;
@@ -212,9 +209,10 @@ $gradientColor: rgba(0, 0, 0, 0.5);
 }
 
 #videoContainer > video {
-  width: 100%;
+  // width: 100%;
   background-color: black;
   z-index: -2;
+  object-fit: cover;
 
   @media only screen and (max-width: 425px) {
     height: 100%;

@@ -7,8 +7,6 @@ export default function Footer(): ReactElement {
     <footer className={styles.footer}>
       <div className={styles.sketch} />
 
-      <div className={styles.topBar} />
-
       <section id={styles.linksSection}>
         <img src={'/Ninja placeholder.png'} alt='logo' />
         <div>
