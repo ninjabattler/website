@@ -43,7 +43,7 @@ export default function Home({ title, thumbnail, setLinkClicked }: InferGetStati
           <div id={styles.scrollToOne} />
 
           <div className={styles.gradient1} />
-          <Link href={`/articles/${title.toLowerCase().replace(/ /g, '_')}`}>
+          <Link legacyBehavior href={`/articles/${title.toLowerCase().replace(/ /g, '_')}`}>
             <a className={styles.gradient2}>
               <img
                 onClick={(e) => { e.preventDefault(); setLinkClicked(`/articles/${title.toLowerCase().replace(/ /g, '_')}`) }}

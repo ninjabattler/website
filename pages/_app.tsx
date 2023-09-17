@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [quoteIndex, setQuoteIndex] = useState<number>(Math.floor(Math.random() * quotes.length));
   const router: NextRouter = useRouter();
   gsap.registerPlugin(ScrollTrigger)
-  
+
   useEffect(() => {
     router.events.on('routeChangeComplete', () => {
       setLinkClicked('')
@@ -24,7 +24,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   useEffect(() => {
     if (linkClicked) {
-      
+
       setQuoteIndex(Math.floor(Math.random() * quotes.length));
       setTimeout(() => {
         router.push(linkClicked);
@@ -41,11 +41,17 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <NavBar setLinkClicked={setLinkClicked} isArticlePage={/\/articles\/.+/g.test(router.pathname)} />
+      {!router.pathname.startsWith('/studio') &&
+        <NavBar setLinkClicked={setLinkClicked} isArticlePage={/\/articles\/.+/g.test(router.pathname)} />
+      }
       {linkClicked && <LoadingOverlay quoteIndex={quoteIndex} />}
       {linkClicked === '' && <LoadingOverlay shrink quoteIndex={quoteIndex} />}
+
       <Component {...pageProps} setLinkClicked={setLinkClicked} />
-      <Footer />
+
+      {!router.pathname.startsWith('/studio') &&
+        <Footer />
+      }
     </>
   )
 }

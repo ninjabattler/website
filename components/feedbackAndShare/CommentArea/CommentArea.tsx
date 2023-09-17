@@ -5,13 +5,13 @@ import { PostIdType, UserIdType } from '../../../types';
 import { Editable, ReactEditor, Slate, withReact } from 'slate-react'
 import { createEditor, Text, Editor } from 'slate'
 import Prism from 'prismjs';
-import { 
-  FormatListBulleted,
-  FormatListNumbered,
-  FormatBold,
-  FormatItalic,
-  FormatQuote
-} from '@material-ui/icons';
+// import { 
+//   FormatListBulleted,
+//   FormatListNumbered,
+//   FormatBold,
+//   FormatItalic,
+//   FormatQuote
+// } from '@material-ui/icons';
 
 // eslint-disable-next-line
 ;Prism.languages.markdown=Prism.languages.extend("markup",{}),Prism.languages.insertBefore("markdown","prolog",{blockquote:{pattern:/^>(.*)$/gm,alias:"punctuation"},code:[{pattern:/^(?: {4}|\t).+/m,alias:"keyword"},{pattern:/``.+?``|`[^`\n]+`/,alias:"keyword"}],title:[{pattern:/\w+.*(?:\r?\n|\r)(?:==+|--+)/,alias:"important",inside:{punctuation:/==+$|--+$/}},{pattern:/(^\s*)#+.+/m,lookbehind:!0,alias:"important",inside:{punctuation:/^#+|#+$/}}],hr:{pattern:/(^\s*)([*-])([\t ]*\2){2,}(?=\s*$)/m,lookbehind:!0,alias:"punctuation"},list:{pattern:/(^\s*)(?:[*+-]|\d+\.)(?=[\t ].)/m,lookbehind:!0,alias:"punctuation"},"url-reference":{pattern:/!?\[[^\]]+\]:[\t ]+(?:\S+|<(?:\\.|[^>\\])+>)(?:[\t ]+(?:"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\((?:\\.|[^)\\])*\)))?/,inside:{variable:{pattern:/^(!?\[)[^\]]+/,lookbehind:!0},string:/(?:"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\((?:\\.|[^)\\])*\))$/,punctuation:/^[\[\]!:]|[<>]/},alias:"url"},bold:{pattern:/(^|[^\\])(\*\*|__)(?:(?:\r?\n|\r)(?!\r?\n|\r)|.)+?\2/,lookbehind:!0,inside:{punctuation:/^\*\*|^__|\*\*$|__$/}},italic:{pattern:/(^|[^\\])([*_])(?:(?:\r?\n|\r)(?!\r?\n|\r)|.)+?\2/,lookbehind:!0,inside:{punctuation:/^[*_]|[*_]$/}},url:{pattern:/!?\[[^\]]+\](?:\([^\s)]+(?:[\t ]+"(?:\\.|[^"\\])*")?\)| ?\[[^\]\n]*\])/,inside:{variable:{pattern:/(!?\[)[^\]]+(?=\]$)/,lookbehind:!0},string:{pattern:/"(?:\\.|[^"\\])*"(?=\)$)/}}}}),Prism.languages.markdown.bold.inside.url=Prism.util.clone(Prism.languages.markdown.url),Prism.languages.markdown.italic.inside.url=Prism.util.clone(Prism.languages.markdown.url),Prism.languages.markdown.bold.inside.italic=Prism.util.clone(Prism.languages.markdown.italic),Prism.languages.markdown.italic.inside.bold=Prism.util.clone(Prism.languages.markdown.bold); // prettier-ignore
@@ -150,19 +150,19 @@ export default function CommentArea({
 
       <div id={styles.commentStylingBar} className={noAnim && styles.noAnim}>
         <button disabled={commenting || noComment} onClick={() => { addMarkdown(editor, '**', '**') }}>
-          <FormatBold />
+          {/* <FormatBold /> */}
         </button>
         <button disabled={commenting || noComment} onClick={() => { addMarkdown(editor, '_', '_') }}>
-          <FormatItalic />
+          {/* <FormatItalic /> */}
         </button>
         <button disabled={commenting || noComment} onClick={() => { addMarkdown(editor, '>', '') }}>
-          <FormatQuote />
+          {/* <FormatQuote /> */}
         </button>
         <button disabled={commenting || noComment} onClick={() => { addMarkdown(editor, '- ', '') }}>
-          <FormatListBulleted />
+          {/* <FormatListBulleted /> */}
         </button>
         <button disabled={commenting || noComment} onClick={() => { addMarkdown(editor, '1. ', '') }}>
-          <FormatListNumbered />
+          {/* <FormatListNumbered /> */}
         </button>
 
         <button disabled={commenting || noComment} id={styles.postComment} onClick={() => {

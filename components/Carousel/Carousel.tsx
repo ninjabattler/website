@@ -44,7 +44,7 @@ const Carousel = ({ items, setLinkClicked }: CarouselProps): ReactElement => {
         {items.map((item) => {
           i++
           return (
-            <Link key={item.title} href={`/articles/${item.title.toLowerCase().replace(/ /g, '_')}`} >
+            <Link legacyBehavior key={item.title} href={`/articles/${item.title.toLowerCase().replace(/ /g, '_')}`} >
               <a onClick={(e) => { e.preventDefault(); setLinkClicked(`/articles/${item.title.toLowerCase().replace(/ /g, '_')}`) }} className={`${styles.carouselItem} ${i < 2 ? styles[currentOption] : ''}`}>
 
                 <div className={styles.imageContainer}>

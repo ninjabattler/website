@@ -10,7 +10,7 @@ import Quote from '../../components/articleComponents/Quote/Quote';
 import Paragraph from '../../components/articleComponents/Paragraph/Paragraph';
 import TitleCard from '../../components/articleComponents/TitleCard/TitleCard';
 import Comment from '../../components/Comment/Comment';
-import { CommentTwoTone } from '@material-ui/icons';
+// import { CommentTwoTone } from '@material-ui/icons';
 // import VideoBackground from '../../components/VideoBackground/VideoBackground';
 import SubtitleCard from '../../components/articleComponents/SubtitleCard/SubtitleCard';
 import Dialogue from '../../components/articleComponents/Dialogue/Dialogue';
@@ -312,7 +312,9 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
           id={styles.mobileCommentButton}
           style={{ display: showCommentPanel ? 'initial' : 'none' }}
           onClick={() => { setShowPanel(!showPanel) }}
-        ><CommentTwoTone /></button>
+        >
+          {/* <CommentTwoTone /> */}
+        </button>
       </main>
     </>)
 }

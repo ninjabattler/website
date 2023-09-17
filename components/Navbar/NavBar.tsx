@@ -2,7 +2,7 @@ import React, { ComponentType, useCallback, useState } from 'react';
 import styles from "./NavBar.module.scss";
 import Link from 'next/link'
 import { ColourType } from '../../types';
-import { ClearAllSharp } from '@material-ui/icons';
+import { TiersIcon } from '@sanity/icons';
 
 type NavBarProps = {
   setLinkClicked: Function;
@@ -29,24 +29,24 @@ const NavBar: ComponentType<NavBarProps> = ({ setLinkClicked, pageColour, isArti
 
       <div className={styles.navOptions}>
         <button onClick={openMenu}>
-          <ClearAllSharp />
+          <TiersIcon />
         </button>
       </div>
 
       <div className={styles.links}>
         <img src='/banner.webp' />
         
-        <Link href={`/posts`} >
+        <Link legacyBehavior href={`/posts`} >
           <a onClick={(e) => { e.preventDefault(); setLinkClicked(`/posts`) }}>
             Posts
           </a>
         </Link>
-        <Link href={`/articles`} >
+        <Link legacyBehavior href={`/articles`} >
           <a onClick={(e) => { e.preventDefault(); setLinkClicked(`/articles`) }}>
             Articles
           </a>
         </Link>
-        <Link href={`/about`} >
+        <Link legacyBehavior href={`/about`} >
           <a onClick={(e) => { e.preventDefault(); setLinkClicked(`/about`) }}>
             About
           </a>

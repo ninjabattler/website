@@ -1,7 +1,7 @@
 import React, { ComponentType, useEffect, useState } from 'react';
 import styles from './CodeBlock.module.scss';
 import hljs from 'highlight.js'
-import { FileCopy, Check } from '@material-ui/icons';
+// import { FileCopy, Check } from '@material-ui/icons';
 
 type CodeBlockProps = {
   code: string;
@@ -44,7 +44,7 @@ const CodeBlock: ComponentType<CodeBlockProps> = ({ code, language, highlight, t
           onClick={() => { navigator.clipboard.writeText(code); setCopied(true) }}
           onMouseLeave={() => { if (copied) { setCopied(false) } }}
         >
-          {copied ? <Check /> : <FileCopy />}
+          {/* {copied ? <Check /> : <FileCopy />} */}
         </button>
         {title && title}
       </h3>

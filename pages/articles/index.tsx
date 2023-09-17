@@ -42,7 +42,7 @@ export default function ArticlesPage({ articles, setLinkClicked }: InferGetStati
             const link: string = `/articles/${item.title.toLowerCase().replace(/ /g, '_')}`;
 
             return (
-              <Link key={item.title} href={link} >
+              <Link legacyBehavior key={item.title} href={link} >
                 <a
                   onClick={(e) => { e.preventDefault(); setLinkClicked(link) }}
                   className={styles.articleCard}
