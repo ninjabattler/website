@@ -2,37 +2,36 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
 
 .navBar {
   width: 100vw;
-  height: 1.75em;
+  height: 2em;
   background-color: rgb(10, 10, 10);
-  filter: drop-shadow(0vw 0.3vw 0.3vw rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0vw 0vw 0.3vw rgba(0, 0, 0, 0.5));
   z-index: 100;
-  position: sticky;
+  position: fixed;
   top: 0;
   font-size: 1.4vw;
-  background-image: url("/spacebanner.webp");
+  background-color: transparent;
   background-size: cover;
-  background-position: 0% -300%;
+  background-position: 0% 0%;
   border-bottom: 1px solid black;
-  animation: spaceMovement 10s infinite linear;
+  transition:
+    height 0.3s ease 0.3s,
+    backdrop-filter 0.3s ease 0.3s;
 
-  .spaceOverlay {
+  .space {
     width: 100%;
     height: 100%;
     position: absolute;
-    background-image: url("/spacebannerBWOverlay.webp");
-    background-color: var(--article-colour2);
-    background-blend-mode: multiply;
+    background-image: url("/spacebanner.webp");
     background-size: cover;
-    background-position: 0% -300%;
-    mask: url("/spacebannerBWOverlay.webp");
-    mask-mode: alpha;
-    mask-size: cover;
-    mask-position: 0% -300%;
+    mask: linear-gradient(
+      -67.25deg,
+      black calc(5% + 3em),
+      transparent calc(20% + 3em),
+      transparent calc(80% - 3em),
+      black calc(95% - 3em)
+    );
     z-index: -3;
-    mix-blend-mode: lighten;
-    opacity: 0.5;
-    display: none;
-    animation: spaceMovement 10s infinite linear;
+    opacity: 1;
   }
 
   .sketch {
@@ -42,11 +41,18 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
     background-image: url("/sketch.webp");
     background-size: 7.5%;
     mix-blend-mode: overlay;
-    opacity: 1;
+    opacity: 0.25;
     z-index: -2;
     filter: invert(1);
-    mask: linear-gradient(-45deg, transparent 70%, black 85%);
+    mask: linear-gradient(
+      -67.25deg,
+      black calc(5% + 3em),
+      transparent calc(20% + 3em),
+      transparent calc(80% - 3em),
+      black calc(95% - 3em)
+    );
     animation: sketchMovement 20s infinite linear;
+    transition: background-size 0.3s ease 0.3s;
 
     @media (max-device-width: 425px) {
       height: 6.4em;
@@ -99,7 +105,7 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
 
   .navOptions {
     width: 100%;
-    height: 100%;
+    height: 2em;
     background-image: linear-gradient(
       -45deg,
       transparent 81%,
@@ -113,11 +119,16 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
       $gradientColour 85%,
       var(--light-gray) 85%
     );
+    background-color: var(--dark-gray);
+    border-bottom: 1px solid black;
     position: absolute;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     filter: drop-shadow(0vw -1px 0vw black);
+    transition:
+      background-color 0.3s,
+      border 0.3s;
 
     button {
       height: 100%;
@@ -152,6 +163,147 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
     }
   }
 
+  .links {
+    width: 35%;
+    height: 0%;
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: height 0.6s;
+    perspective: 10cm;
+    margin-top: 2em;
+
+    a {
+      width: 60%;
+      color: var(--dark-gray);
+      background-image: linear-gradient(
+        -45deg,
+        transparent 12%,
+        var(--light-gray) 12%,
+        var(--light-gray) 17%,
+        $gradientColour 17%,
+        $gradientColour 20%,
+        var(--light-gray) 20%
+      );
+      font-family: "Russo One";
+      font-size: 1.75em;
+      justify-content: flex-start;
+      padding-left: 0.5em;
+      margin-top: 10%;
+      margin-left: 0%;
+      transform: rotateY(135deg);
+      transform-origin: top left;
+      transition:
+        width 0.3s,
+        margin-left 0.3s,
+        transform 0.3s;
+
+      &:hover {
+        width: 75%;
+      }
+    }
+  }
+
+  .profileBar {
+    width: 100%;
+    height: 0;
+    border-color: transparent;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background-color: var(--dark-gray);
+    transition:
+      height 0.3s,
+      border-color 0.3s;
+
+    img {
+      width: 3em;
+      height: 3em;
+      background-color: var(--light-gray);
+      border-right: 1px solid black;
+    }
+
+    span {
+      min-width: 30%;
+      height: 100%;
+      padding-left: 0.5em;
+      color: var(--dark-gray);
+      font-family: "Russo One";
+      font-size: 1.5em;
+      display: flex;
+      align-items: center;
+      background-image: linear-gradient(
+        -45deg,
+        transparent 12%,
+        var(--light-gray) 12%,
+        var(--light-gray) 17%,
+        $gradientColour 17%,
+        $gradientColour 20%,
+        var(--light-gray) 20%
+      );
+    }
+  }
+
+  &.fullscreen {
+    height: 100vh;
+    background-color: transparent;
+    backdrop-filter: blur(1em);
+    transition:
+      height 0.3s,
+      backdrop-filter 0.3s;
+
+    .sketch {
+      background-size: 12.5%;
+      transition: background-size 0.6s;
+    }
+
+    .navOptions {
+      border: none;
+    }
+
+    .links {
+      height: calc(100% - 5em);
+
+      a {
+        margin-left: 0%;
+        transform: rotateY(10deg);
+
+        &:nth-child(2) {
+          transition:
+            width 0.3s,
+            transform 0.3s ease-out 0.3s,
+            margin-left 0.3s ease-out 0.3s;
+        }
+
+        &:nth-child(3) {
+          transition:
+            width 0.3s,
+            transform 0.3s ease-out 0.45s,
+            margin-left 0.3s ease-out 0.45s;
+        }
+
+        &:nth-child(4) {
+          transition:
+            width 0.3s,
+            transform 0.3s ease-out 0.6s,
+            margin-left 0.3s ease-out 0.6s;
+        }
+      }
+    }
+
+    .profileBar {
+      height: 3em;
+      border-color: black;
+      transition:
+        height 0.3s ease 0.3s,
+        border-color 0.3s ease 0.3s;
+    }
+  }
+
   @media (max-device-width: 425px) {
     height: 6.4em;
     font-size: 10pt;
@@ -168,14 +320,5 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
   }
   100% {
     background-position: 236px 235px;
-  }
-}
-
-@keyframes spaceMovement {
-  0% {
-    background-position: 0vw -300%;
-  }
-  100% {
-    background-position: 100vw -300%;
   }
 }
