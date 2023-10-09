@@ -22,6 +22,7 @@ import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { AppData, ArticleData, ArticleList, CodeBlockItem, DialogueItem, ParagraphItem, PictureItem, PostCommentType, QuoteItem, SubtitleCardItem, TitleCardItem, WindowServerType } from '../../types';
 import gsap from 'gsap';
 import dynamic from 'next/dynamic';
+import { PortableText } from '@portabletext/react';
 const CodeBlock = dynamic(() => import('../../components/articleComponents/CodeBlock/CodeBlock'), { loading: () => <></> });
 const CommentArea = dynamic(() => import('../../components/feedbackAndShare/CommentArea/CommentArea'), { loading: () => <></> });
 const MainSettings = dynamic(() => import('../../components/articleCreationComponents/MainSettings/MainSettings'), { loading: () => <></> });
@@ -44,16 +45,18 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
   const [article, setArticle] = useState<ArticleData>(articleData);
   const commentRef = useRef();
 
+  console.log(article)
+
   useEffect(() => {
     setWindow(window)
     window.addEventListener('scroll', scrollListener)
-    setComments(articleData.comments.sort((a, b) => {
-      if (a.id > b.id) {
-        return 1
-      } else {
-        return -1
-      }
-    }))
+    // setComments(articleData.comments.sort((a, b) => {
+    //   if (a.id > b.id) {
+    //     return 1
+    //   } else {
+    //     return -1
+    //   }
+    // }))
   }, [])
 
   const scrollListener = () => {
@@ -73,10 +76,10 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
   return (
     <>
       <Head>
-        <title>Ninjabattler - {article.title}</title>
+        <title>{article.title} - Ninjabattler</title>
         <meta name='description' content={article.description} />
         <meta property='og:locale' content='en_CA' />
-        <meta name='theme-color' content={`${article.colour}`} />
+        <meta name='theme-color' content={`${article.colors.primary.hex}`} />
         <link rel="icon" href="/favicon.ico" />
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -99,20 +102,21 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
         <style>
           {`
             :root {
-              --article-colour: ${article.colour};
-              --article-colour2: ${article.colour2 || article.colour};
+              --article-colour: ${article.colors.primary.hex};
+              --article-colour2: ${article.colors.secondary.hex || article.colors.primary.hex};
             }
           `}
         </style>
       </Head>
 
       <VideoHeader
-        video={article.video_header || ""}
+        video={article.videoHeader || ""}
         title={article.title}
-        pageColour={article.colour}
+        pageColour={article.colors.primary.hex}
         infoBarProps={
           {
-            date: article.formatteddate,
+            // date: article.formatteddate,
+            date: '2020-10-20',
             tags: [article.category, article.genre]
           }
         }
@@ -133,10 +137,53 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
           <article className={styles.articleContainer}>
             <div className={styles.sketchBackground} />
 
-            {article.narration && (<iframe id={styles.adAurisIframe} src={`${article.narration}?color=${article.colour.split('#')[1]}`} style={{ border: 'none', height: '100px', width: '80%' }} ></iframe>)}
+            {article.narration && (<iframe id={styles.adAurisIframe} src={`${article.narration}?color=${article.colors.primary.hex.split('#')[1]}`} style={{ border: 'none', height: '100px', width: '80%' }} ></iframe>)}
 
             <div>
-              {(() => {
+              <PortableText
+                value={article.content}
+                components={{
+                  types: {
+                    block: ({ value }) => {
+                      return (
+                        <Paragraph 
+                          content={value}
+                        />
+                      )
+                    },
+                    image: ({ value }) => {
+                      return (
+                        <Picture
+                          imageSrc={value.url}
+                        />
+                      )
+                    },
+                    quote: ({ value }) => {
+                      return (
+                        <Quote
+                          quote={value.quote}
+                          source={value.source}
+                        />
+                      )
+                    },
+                    titleCard: ({ value }) => {
+                      return (
+                        <TitleCard
+                          title={value.title}
+                          imageSrc={value.banner ? value.banner.url : ''}
+                        />
+                      )
+                    },
+                    underline: ({ value }) => {
+                      return (
+                        <Underline />
+                      )
+                    }
+                  }
+                }}
+              />
+
+              {/* {(() => {
                 return article.content.map((contentItem, i) => {
                   switch (contentItem.type) {
                     case 'Paragraph':
@@ -218,10 +265,10 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
                       return <></>
                   }
                 });
-              })()}
+              })()} */}
             </div>
 
-            {article.footnotes[0] &&
+            {/* {article.footnotes[0] &&
               <>
                 <h1 id={styles.footnotesHeader}>References</h1>
                 <ol id={styles.footnotes}>
@@ -241,7 +288,7 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
                   })}
                 </ol>
               </>
-            }
+            } */}
           </article>
 
           {edit &&

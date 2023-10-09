@@ -1,7 +1,7 @@
 import { SchemaTypeDefinition } from "sanity";
 import { DocumentTextIcon } from "@sanity/icons";
 
-const Article: SchemaTypeDefinition = {
+const article: SchemaTypeDefinition = {
   name: "article",
   type: "document",
   title: "Articles",
@@ -14,16 +14,60 @@ const Article: SchemaTypeDefinition = {
       title: "Title",
     },
     {
+      name: "slug",
+      type: "string",
+      title: "Slug",
+    },
+    {
+      name: "videoHeader",
+      type: "string",
+      title: "Video Header",
+    },
+    {
+      name: "thumbnail",
+      type: "image",
+      title: "Thumbnail",
+    },
+    {
+      name: "colors",
+      type: "object",
+      title: "Colors",
+      fields: [
+        {
+          name: "primary",
+          type: "color",
+          title: "Primary",
+        },
+        {
+          name: "secondary",
+          type: "color",
+          title: "Secondary",
+        }
+      ]
+    },
+    {
       name: "content",
       type: "array",
       title: "Content",
       of: [
         {
           type: 'block'
+        },
+        {
+          type: 'titleCard'
+        },
+        {
+          type: 'image'
+        },
+        {
+          type: 'quote'
+        },
+        {
+          type: 'underline'
         }
       ]
     }
   ]
 };
 
-export default Article;
+export default article;

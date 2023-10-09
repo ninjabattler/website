@@ -1,12 +1,10 @@
-import requestIp from 'request-ip';
 import db from '../../db/db';
 import selectSingleArticle from '../../db/selects/selectSingleArticle';
-import selectUserId from '../../db/selects/selectUserId';
-import selectUsersLike from '../../db/selects/selectUsersLike';
-import insertNewUser from '../../db/inserts/insertNewUser';
 import noCommentMessages from '../../constants/noCommentMessages.json';
 import { ArticleData, ArticleJson, IpType, UrlType, UserData, UserIdType } from '../../types';
 import { GetServerSidePropsContext } from 'next';
+import { groq } from 'next-sanity';
+import { client } from '../../sanity/lib/client';
 
 export type ArticleServerSideData = {
   props: {
@@ -23,60 +21,82 @@ export type ArticleServerSideData = {
 }
 
 export const articlePageServerSideProps = async ({ req, query, params }: GetServerSidePropsContext): Promise<ArticleServerSideData> => {
-  if (!process.env.EDIT) {
-    const ip: IpType = requestIp.getClientIp(req)
+  const randomQuoteIndex: number = Math.floor(Math.random() * noCommentMessages.length);
+  const title: string = query.title as string;
+  const articleTitle: string = title.replace(/(_|-)/g, ' ');
+  const articleData: ArticleData[] = await selectSingleArticle(db, articleTitle);
 
-    let userId: UserData[] = await selectUserId(db, ip)
-
-    if (!userId[0]) {
-      userId = await insertNewUser(db, ip)
-    }
-
-    const randomQuoteIndex: number = Math.floor(Math.random() * noCommentMessages.length);
-    const title: string = query.title as string;
-    const userLike: boolean = await selectUsersLike(db, userId[0].id)
-    const articleTitle: string = title.replace(/_/g, ' ');
-    const articleData: ArticleData[] = await selectSingleArticle(db, articleTitle);
-
-    let liked: boolean = false;
-    let disliked: boolean = false;
-
-    if (userLike[0]) {
-      if (userLike[0].liked) {
-        liked = true;
-      } else {
-        disliked = true;
+  const articleQuery =
+    await groq`*[_type == "article" && slug == "${title}"] | order(date.start asc){
+    title,
+    videoHeader,
+    thumbnail {
+      "url": asset->url,
+      "blur": asset->metadata.lqip,
+      "width": asset->metadata.dimensions.width,
+      "height": asset->metadata.dimensions.height,
+    },
+    colors,
+    content[]{
+      _type == "block" => {
+        _type,
+        style,
+        _key,
+        markDefs,
+        children
+      },
+      _type == "titleCard" => {
+        _type,
+        title,
+        banner {
+          "url": asset->url,
+          "blur": asset->metadata.lqip,
+          "width": asset->metadata.dimensions.width,
+          "height": asset->metadata.dimensions.height,
+        }
+      },
+      _type == "image" => {
+        _type,
+        "url": asset->url,
+        "blur": asset->metadata.lqip,
+        "width": asset->metadata.dimensions.width,
+        "height": asset->metadata.dimensions.height,
+      },
+      _type == "quote" => {
+        _type,
+        quote,
+        source
+      },
+      _type == "underline" => {
+        _type
       }
     }
+  }[0]`;
 
-    if (!articleData[0]) {
-      return {
-        props: { edit: false },
-        notFound: true,
-      }
-    }
+  const article = await client.fetch(articleQuery);
 
+  console.log(JSON.stringify(article, null, 2))
+  // console.log(articleData[0])
+
+  let liked: boolean = false;
+  let disliked: boolean = false;
+
+  if (!articleData[0]) {
     return {
-      props: {
-        articleData: { ...articleData[0] },
-        userId: userId[0].id,
-        liked,
-        disliked,
-        url: `https://ninjabattler.ca/articles/${params.title}`,
-        randomQuoteIndex,
-        edit: false
-      }
+      props: { edit: false },
+      notFound: true,
     }
-  } else {
-    const articleData: ArticleData = require(`../../articles/${params.title}.json`);
+  }
 
-    return {
-      props: {
-        articleData: articleData,
-        url: `https://ninjabattler.ca/articles/${params.title}`,
-        edit: true,
-        jsonLocation: `${params.title}.json`
-      }
+  return {
+    props: {
+      articleData: {...article, likes: 0, dislikes: 0},
+      userId: -1,
+      liked,
+      disliked,
+      url: `https://ninjabattler.ca/articles/${params.title}`,
+      randomQuoteIndex,
+      edit: false
     }
   }
 };

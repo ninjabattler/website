@@ -25,12 +25,10 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
     background-size: cover;
     mask: linear-gradient(
       -67.25deg,
-      black calc(5% + 3em),
-      transparent calc(20% + 3em),
       transparent calc(80% - 3em),
-      black calc(95% - 3em)
+      black calc(90% - 3em)
     );
-    z-index: -3;
+    z-index: -2;
     opacity: 1;
   }
 
@@ -42,12 +40,10 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
     background-size: 7.5%;
     mix-blend-mode: overlay;
     opacity: 0.25;
-    z-index: -2;
+    z-index: -3;
     filter: invert(1);
     mask: linear-gradient(
       -67.25deg,
-      black calc(5% + 3em),
-      transparent calc(20% + 3em),
       transparent calc(80% - 3em),
       black calc(95% - 3em)
     );

@@ -34,7 +34,7 @@ const NavBar: ComponentType<NavBarProps> = ({ setLinkClicked, pageColour, isArti
       </div>
 
       <div className={styles.links}>
-        <img src='/banner.webp' />
+        <img src='/newBanner.png' />
         
         <Link legacyBehavior href={`/posts`} >
           <a onClick={(e) => { e.preventDefault(); setLinkClicked(`/posts`) }}>
