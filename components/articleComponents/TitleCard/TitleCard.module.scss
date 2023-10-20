@@ -1,14 +1,14 @@
 @use "/styles/_mixins" as mixins;
-$borderWidth: 10.8vw;
+$borderWidth: 3em;
 $mobileBorderWidth: 20vw;
 $gradientColour: rgba(0, 0, 0, 0.3725);
 
 .bossCard {
-  margin-bottom: 11.5vw;
-  margin-top: 8.5vw;
+  height: 14em;
+  margin-top: 5em;
   display: flex;
-  justify-content: left;
-  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-end;
   perspective: 10cm;
   z-index: 10;
 
@@ -35,8 +35,10 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
 .background1 {
   position: absolute;
   height: $borderWidth;
-  width: 98%;
-  transform: rotateY(5deg) rotateZ(2deg) translateX(3vw) translateY(-8vh);
+  width: 107%;
+  margin-bottom: 1em;
+  transform: rotateY(-5deg) rotateZ(-1deg) translateX(-3.75em) translateY(-2.5em);
+  transform-origin: left center;
 
   p {
     position: absolute;
@@ -47,14 +49,14 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
       -45deg,
       transparent 16%,
       black 16%,
-      black 27%,
-      $gradientColour 27%,
-      $gradientColour 30%,
-      black 30%,
-      black 33%,
-      $gradientColour 33%,
-      $gradientColour 36%,
-      black 36%
+      black 21%,
+      $gradientColour 21%,
+      $gradientColour 23%,
+      black 23%,
+      black 26%,
+      $gradientColour 26%,
+      $gradientColour 28%,
+      black 28%
     );
     border-top: 1px solid black;
     border-bottom: 1px solid black;
@@ -99,13 +101,12 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
 .background2 {
   @include mixins.articlePageGradientShadow;
   position: absolute;
-  height: $borderWidth;
+  height: $borderWidth * 2;
   width: 100%;
-  margin-top: 0;
+  margin-bottom: -0.5em;
   mask: url('/titleBar.svg');
-  mask-size: 110%;
+  mask-size: 100% $borderWidth * 3;
   mask-repeat: no-repeat;
-  mask-position: 130% 0%;
 
   &.glow {
     mix-blend-mode: lighten;
@@ -129,37 +130,36 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
 
 .background3 {
   position: absolute;
-  height: calc($borderWidth + 3vh);
-  background-color: var(--light-gray);
-  width: 95.4%;
-  margin-top: -2vw;
+  height: $borderWidth;
+  background-color: var(--dark-gray);
+  width: 50%;
   right: 0;
-  z-index: -1;
-  transform: rotateY(5deg) rotateZ(2deg) translateX(6vw) translateY(-5vh);
+  margin-bottom: 1em;
+  transform: rotateY(-5deg) rotateZ(-1deg) translateX(-120%) translateY(-2.5em);
+  transform-origin: left center;
   mask: linear-gradient(
-    -45deg,
-    black 32.1%,
-    $gradientColour 32.1%,
-    $gradientColour 35.1%,
-    black 35.1%,
-    black 38.1%,
-    $gradientColour 38.1%,
-    $gradientColour 41.1%,
-    black 41.1%,
+    45deg,
+    black 67%,
+    $gradientColour 67%,
+    $gradientColour 71%,
+    black 71%,
+    black 76%,
+    $gradientColour 76%,
+    $gradientColour 80%,
+    black 80%,
     black 90%,
     transparent 90%
   );
-  filter: brightness(0.8);
   border-top: 1px solid black;
   border-bottom: 1px solid black;
 
   &.sketch {
     background-image: url("/sketch.webp");
-    background-size: 13%;
-    mix-blend-mode: color-burn;
-    opacity: 0.25;
+    background-size: 20%;
+    mix-blend-mode: darken;
+    opacity: 0.3;
     filter: invert(1);
-    mask: linear-gradient(-45deg, transparent 75%, black 90%, transparent 90%);
+    mask: linear-gradient(45deg, transparent 75%, black 90%, transparent 90%);
 
     @media only screen and (max-width: 425px) {
       background-size: 30%;
@@ -187,12 +187,11 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
 .background4 {
   @include mixins.articlePageGradientShadow;
   position: absolute;
-  height: calc($borderWidth + 2.1vh);
-  width: 110%;
-  margin-top: -3.1vw;
-  z-index: -1;
+  height: $borderWidth;
+  width: 41%;
+  margin-bottom: 3.25em;
   mask: url('/titleBar2.svg');
-  mask-size: 100%;
+  mask-size: 100% $borderWidth * 2;
   mask-repeat: no-repeat;
   mask-position: 0% 0%;
 
@@ -206,12 +205,13 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
 .bossCard > h2 {
   position: absolute;
   color: var(--secondary-text);
-  margin-top: 7.3vw;
+  margin-bottom: 1.25em;
   margin-left: 0.5vw;
-  font-size: 3vw;
+  font-size: 1.5em;
   font-family: "Russo One";
   font-weight: 100;
-  transform: rotateY(5deg) rotateZ(2deg) translateX(2vw) translateY(-4.9vh);
+  transform: rotateY(-5deg) rotateZ(-1deg) translateX(-0em) translateY(-0.75em);
+  transform-origin: left center;
 
   &::selection {
     color: var(--light-gray);
@@ -225,20 +225,21 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
     margin-top: 1.4em;
   }
 }
+
 .imageContainer {
   position: absolute;
   display: flex;
-  height: 18vw;
-  margin-top: -11vw;
+  height: 10em;
   flex-direction: column-reverse;
-  transform: rotateY(5deg) rotateZ(2deg) translateX(1.5vw) translateY(-3.6vh);
-  filter: drop-shadow(0 0 0.3vw black);
+  transform: rotateY(-5deg) rotateZ(-1deg) translateX(0.5em) translateY(-5.5em) scaleX(1.2);
+  transform-origin: left center;
 
   @media only screen and (max-width: 425px) {
     height: 5em;
     margin-top: -4em;
   }
 }
+
 .imageContainer > img {
   max-height: 12.5vw;
 
@@ -260,13 +261,6 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
   }
 }
 
-.inverse > .background1,
-.inverse > .background2,
-.inverse > h2 {
-  border-top-color: #141414;
-  color: var(--light-gray);
-}
-
 .backgroundGlow {
   mix-blend-mode: lighten;
   position: absolute;
@@ -275,6 +269,18 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
   animation-duration: 3s;
   animation-iteration-count: infinite;
   z-index: -1;
+}
+
+.space {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url('/spacebanner.webp');
+  background-size: 100vw;
+  background-attachment: fixed;
+  background-position: center;
+  mask: url('/titleCardTear.png');
+  mask-size: cover;
 }
 
 @keyframes glow {

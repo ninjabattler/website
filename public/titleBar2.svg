@@ -1,4 +1,4 @@
-<svg width="1500" height="340" xmlns="http://www.w3.org/2000/svg" transform='rotate(2 0 -2)'>
-  <rect width="1301" height="255" x="249"/>
-  <polygon points="250 255, 250 0, 10 255"></polygon>
+<svg width="1500" height="250" xmlns="http://www.w3.org/2000/svg">
+  <!-- <rect width="1301" height="200" x="0"/> -->
+  <polygon points="0 10,1315 0,1575 110, 0 95"></polygon>
 </svg>
