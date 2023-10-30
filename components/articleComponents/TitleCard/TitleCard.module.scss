@@ -13,10 +13,8 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
   z-index: 10;
 
   &.coverBelow {
-    margin-bottom: 8.55vw;
-
-    @media only screen and (max-width: 425px) {
-      margin-bottom: 1.8em;
+    .space {
+      mask-size: 110%;
     }
   }
 
@@ -278,9 +276,11 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
   background-image: url('/spacebanner.webp');
   background-size: 100vw;
   background-attachment: fixed;
-  background-position: center;
+  background-position: -16vw, 0;
   mask: url('/titleCardTear.png');
   mask-size: cover;
+  mask-position: center top;
+  margin-bottom: -1em;
 }
 
 @keyframes glow {

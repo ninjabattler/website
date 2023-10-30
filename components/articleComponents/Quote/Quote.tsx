@@ -13,8 +13,17 @@ const Quote: ComponentType<QuoteProps> = ({ quote, source }) => (
       <h2>&quot;</h2>
       <p><span dir='ltr'>{quote}</span></p>
     </div>
-    
-    <h3 className={styles.source}>{source}<h2>&quot;</h2></h3>
+    <div className={`${styles.quoteContainer} ${styles.glow}`} />
+
+    <div className={styles.source}>
+      {source}<h2>&quot;</h2>
+    </div>
+
+    <div className={`${styles.source} ${styles.glow}`} >
+      {source}<h2>&quot;</h2>
+    </div>
+
+    <div className={styles.space} />
   </div>
 )
 

@@ -166,11 +166,15 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
                         />
                       )
                     },
-                    titleCard: ({ value }) => {
+                    titleCard: ({ value, index }) => {
+                      const type = article.content[index + 1]._type;
+                      const coverBelow = type === 'image' || type === 'quote';
+                      
                       return (
                         <TitleCard
                           title={value.title}
                           imageSrc={value.banner ? value.banner.url : ''}
+                          coverBelow={coverBelow}
                         />
                       )
                     },
