@@ -281,6 +281,12 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
   mask-size: cover;
   mask-position: center top;
   margin-bottom: -1em;
+  filter: grayscale(1);
+  
+  &.gradient {
+    @include mixins.articlePageGradientShadow;
+    mix-blend-mode: overlay;
+  }
 }
 
 @keyframes glow {

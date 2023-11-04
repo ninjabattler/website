@@ -33,6 +33,12 @@ $gradientColour: rgba(45, 45, 45, 1);
     mask-size: cover;
     mask-position: center bottom;
     z-index: -4;
+    filter: grayscale(1);
+    
+    &.gradient {
+      @include mixins.articlePageGradientShadow;
+      mix-blend-mode: overlay;
+    }
   }
 
   @media only screen and (max-width: 425px) {
@@ -150,9 +156,9 @@ $gradientColour: rgba(45, 45, 45, 1);
   min-width: 7.5vw;
   padding-left: 1em;
   padding-right: 3em;
-  padding-top: 4em;
+  padding-top: 3.9em;
   margin: 0;
-  margin-top: 0.5em;
+  margin-top: 0.6em;
   left: 0;
   display: flex;
   align-items: center;
@@ -171,7 +177,7 @@ $gradientColour: rgba(45, 45, 45, 1);
 
   &.glow {
     @include mixins.articlePageGradientShadow;
-    margin-top: 0.8em;
+    margin-top: 0.9em;
     padding-left: 1.1em;
     border: none;
     z-index: -3;

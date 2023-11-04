@@ -24,4 +24,26 @@ export default defineConfig({
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({defaultApiVersion: apiVersion}),
   ],
+  document: {
+    productionUrl: async (prev, context) => {
+      // context includes the client and other details
+      const { getClient, dataset, document } = context;
+      const client = getClient({ apiVersion: "2023-05-31" });
+
+      if (document._type === "article") {
+        const slug = await client.fetch(
+          `*[_type == 'article' && _id == $projectId][0].slug`,
+          { projectId: document._id },
+        );
+
+        const params = new URLSearchParams();
+        params.set("preview", "true");
+        params.set("dataset", dataset);
+
+        return `/api/preview?url=${process.env.NEXT_PUBLIC_HOST}/articles/${slug}`;
+      }
+
+      return prev;
+    },
+  },
 })

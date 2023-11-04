@@ -24,6 +24,7 @@ const Quote: ComponentType<QuoteProps> = ({ quote, source }) => (
     </div>
 
     <div className={styles.space} />
+    <div className={`${styles.space} ${styles.gradient}`} />
   </div>
 )
 

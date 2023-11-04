@@ -13,6 +13,7 @@ type TitleCardProps = {
 const TitleCard: ComponentType<TitleCardProps> = ({ imageSrc, title, pageColour, lower, coverBelow }) => (
   <div className={`${styles.bossCard} ${coverBelow && styles.coverBelow}`} id={title}>
     <div className={styles.space} />
+    <div className={`${styles.space} ${styles.gradient}`} />
 
     <div className={styles.background4} />
 

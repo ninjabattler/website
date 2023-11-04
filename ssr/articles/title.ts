@@ -5,6 +5,7 @@ import { ArticleData, ArticleJson, IpType, UrlType, UserData, UserIdType } from 
 import { GetServerSidePropsContext } from 'next';
 import { groq } from 'next-sanity';
 import { client } from '../../sanity/lib/client';
+import { getCachedClient } from "../../sanity/lib/getClient";
 
 export type ArticleServerSideData = {
   props: {
@@ -20,11 +21,15 @@ export type ArticleServerSideData = {
   notFound?: boolean
 }
 
-export const articlePageServerSideProps = async ({ req, query, params }: GetServerSidePropsContext): Promise<ArticleServerSideData> => {
+export const articlePageServerSideProps = async ({ req, query, params, draftMode }: GetServerSidePropsContext): Promise<ArticleServerSideData> => {
   const randomQuoteIndex: number = Math.floor(Math.random() * noCommentMessages.length);
   const title: string = query.title as string;
   const articleTitle: string = title.replace(/(_|-)/g, ' ');
-  const articleData: ArticleData[] = await selectSingleArticle(db, articleTitle);
+  // const articleData: ArticleData[] = await selectSingleArticle(db, articleTitle);
+  
+  const preview = draftMode
+    ? { token: process.env.SANITY_API_READ_TOKEN }
+    : undefined;
 
   const articleQuery =
     await groq`*[_type == "article" && slug == "${title}"] | order(date.start asc){
@@ -73,15 +78,12 @@ export const articlePageServerSideProps = async ({ req, query, params }: GetServ
     }
   }[0]`;
 
-  const article = await client.fetch(articleQuery);
-
-  console.log(JSON.stringify(article, null, 2))
-  // console.log(articleData[0])
+  const article = await getCachedClient(preview)(articleQuery);
 
   let liked: boolean = false;
   let disliked: boolean = false;
 
-  if (!articleData[0]) {
+  if (!article) {
     return {
       props: { edit: false },
       notFound: true,

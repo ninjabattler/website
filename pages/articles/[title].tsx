@@ -45,8 +45,6 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
   const [article, setArticle] = useState<ArticleData>(articleData);
   const commentRef = useRef();
 
-  console.log(article)
-
   useEffect(() => {
     setWindow(window)
     window.addEventListener('scroll', scrollListener)

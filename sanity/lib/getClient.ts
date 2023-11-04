@@ -29,5 +29,5 @@ export function getClient(preview?: { token?: string }): SanityClient {
 export const getCachedClient = (preview?: { token?: string }) => {
   const client = getClient(preview);
 
-  return cache(client.fetch.bind(client));
+  return client.fetch.bind(client);
 };
