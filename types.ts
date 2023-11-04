@@ -1,3 +1,5 @@
+import { TypedObject } from "sanity";
+
 export type UserIdType = number;
 export type PostIdType = number;
 export type ColourType = string;
@@ -118,12 +120,18 @@ export interface ArticleData {
   id: PostIdType;
   title: TitleType;
   thumbnail: UrlType;
-  video_header: UrlType;
+  videoHeader: UrlType;
   date: SqlDateType;
   review: boolean;
-  colour: ColourType;
-  colour2?: ColourType;
-  content: ArticleJson;
+  colors: {
+    primary: {
+      hex: ColourType
+    },
+    secondary: {
+      hex: ColourType
+    }
+  };
+  content: TypedObject[];
   category: CategoryType;
   genre: GenreType;
   narration: UrlType;

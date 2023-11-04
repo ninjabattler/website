@@ -5,7 +5,7 @@ import styles from "./TitleCard.module.scss";
 type TitleCardProps = {
   imageSrc: string;
   title: string;
-  pageColour: ColourType;
+  pageColour?: ColourType;
   lower?: boolean;
   coverBelow?: boolean;
 }

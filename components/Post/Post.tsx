@@ -11,13 +11,14 @@ import Comment from '../Comment/Comment';
 import { ArticleJson, HtmlItem, IpType, ParagraphItem, PictureItem, PostIdType, TitleType, UserIdType } from '../../types';
 import moment from 'moment';
 import dynamic from 'next/dynamic';
+import { TypedObject } from 'sanity';
 const CommentArea = dynamic(() => import('../feedbackAndShare/CommentArea/CommentArea'), { loading: () => <></> });
 
 type PostProps = {
   title: TitleType;
   date: string;
   comments: Array<any>;
-  content: ArticleJson;
+  content: ArticleJson | TypedObject[];
   id: PostIdType;
   userId: UserIdType;
   ip: IpType;

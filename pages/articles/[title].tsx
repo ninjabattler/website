@@ -25,7 +25,6 @@ import dynamic from 'next/dynamic';
 import { PortableText } from '@portabletext/react';
 const CodeBlock = dynamic(() => import('../../components/articleComponents/CodeBlock/CodeBlock'), { loading: () => <></> });
 const CommentArea = dynamic(() => import('../../components/feedbackAndShare/CommentArea/CommentArea'), { loading: () => <></> });
-const MainSettings = dynamic(() => import('../../components/articleCreationComponents/MainSettings/MainSettings'), { loading: () => <></> });
 
 export const getServerSideProps: GetServerSideProps = articlePageServerSideProps;
 
@@ -293,18 +292,12 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
             } */}
           </article>
 
-          {edit &&
-            <aside className={styles.creationPanel}>
-              <MainSettings articleData={article} jsonLocation={jsonLocation} updateArticleData={updateArticleData} />
-            </aside>
-          }
-
           {!edit &&
             <aside className={styles.commentPanel} style={windowServer.innerWidth < 426 ? { marginLeft: showPanel ? "-100%" : "0%", display: showCommentPanel ? 'initial' : 'none' } : { display: showCommentPanel ? 'initial' : 'none' }}>
               <LikePanel
                 postId={articleData.id}
                 userId={userId}
-                pageColour={articleData.colour}
+                pageColour={articleData.colors.primary.hex}
                 likes={likes}
                 isLiked={isLiked}
                 setLikes={setLikes}
@@ -319,7 +312,7 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
                 title={articleData.title}
                 windowServer={windowServer}
                 articleLink={url}
-                pageColour={articleData.colour}
+                pageColour={articleData.colors.primary.hex}
               />
 
               <CommentArea
@@ -341,10 +334,11 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
                 {comments.length <= 0 && (
                   <p id={styles.noCommentMessage} dangerouslySetInnerHTML={{ __html: noCommentMessages[randomQuoteIndex] }}></p>
                 )}
-                {comments.map((com) => {
+                {comments.map((com, i) => {
                   if (com.username) {
                     return (<Comment
-                      pageColour={com.user_id === userId ? articleData.colour : 'transparent'}
+                      key={i}
+                      pageColour={com.user_id === userId ? articleData.colors.primary.hex : 'transparent'}
                       username={com.username.slice(0, 10)}
                       date={com.date}
                       content={com.content}

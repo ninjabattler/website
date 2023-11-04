@@ -59,10 +59,12 @@ const Carousel = ({ items, setLinkClicked }: CarouselProps): ReactElement => {
                   </section>
 
                   <div>
-                    {item.content.map((contentItem) => {
+                    {item.content.map((contentItem, i) => {
                       if (contentItem.type === 'Paragraph') {
+                        // @ts-ignore
                         contentItem = contentItem as ParagraphItem
-                        return <Paragraph content={contentItem.content} />
+                        // @ts-ignore
+                        return <Paragraph key={i} content={contentItem.content} />
                       } else {
                         return <></>
                       }

@@ -46,6 +46,7 @@ export default function ArticlesPage({ articles, setLinkClicked }: InferGetStati
                 <a
                   onClick={(e) => { e.preventDefault(); setLinkClicked(link) }}
                   className={styles.articleCard}
+                  // @ts-ignore
                   style={{ "--shadow-colour": item.colour } as React.CSSProperties}
                 >
                   <article className={styles.articleCardItem}>

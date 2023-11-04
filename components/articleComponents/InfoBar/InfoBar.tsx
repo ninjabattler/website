@@ -32,8 +32,8 @@ const InfoBar: ComponentType<InfoBarProps> = ({ date, tags }) => {
       <span className={styles.info}>
         <p id="info" ></p>
         {
-          tags.map((tag) => {
-            return <Tag tag={tag} />
+          tags.map((tag, i) => {
+            return <Tag key={i} tag={tag} />
           })
         }
       </span>
