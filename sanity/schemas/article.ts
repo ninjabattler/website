@@ -64,6 +64,18 @@ const article: SchemaTypeDefinition = {
         },
         {
           type: 'underline'
+        },
+        {
+          type: 'dialogue'
+        },
+        {
+          type: 'subtitleCard'
+        },
+        {
+          type: 'listItem'
+        },
+        {
+          type: 'codeBlock'
         }
       ]
     }

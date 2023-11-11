@@ -74,6 +74,38 @@ export const articlePageServerSideProps = async ({ req, query, params, draftMode
       },
       _type == "underline" => {
         _type
+      },
+      _type == "dialogue" => {
+        _type,
+        speaker,
+        dialogue,
+        portrait
+      },
+      _type == "subtitleCard" => {
+        _type,
+        title,
+        banner {
+          "url": asset->url,
+          "blur": asset->metadata.lqip,
+          "width": asset->metadata.dimensions.width,
+          "height": asset->metadata.dimensions.height,
+        }
+      },
+      _type == "listItem" => {
+        _type,
+        text,
+        icon {
+          "url": asset->url,
+          "blur": asset->metadata.lqip,
+          "width": asset->metadata.dimensions.width,
+          "height": asset->metadata.dimensions.height,
+        }
+      },
+      _type == "codeBlock" => {
+        _type,
+        code,
+        language,
+        title
       }
     }
   }[0]`;
@@ -89,6 +121,8 @@ export const articlePageServerSideProps = async ({ req, query, params, draftMode
       notFound: true,
     }
   }
+
+  console.log(JSON.stringify(article.content, null, 2))
 
   return {
     props: {

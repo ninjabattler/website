@@ -7,14 +7,14 @@ import { NextRouter, useRouter } from 'next/router';
 import { AppProps } from 'next/app';
 import quotes from '../constants/loadingOverlayQuotes.json';
 import 'highlight.js/styles/vs2015.css'
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+// import gsap from 'gsap';
+// import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [linkClicked, setLinkClicked] = useState<string | null>(null);
   const [quoteIndex, setQuoteIndex] = useState<number>(Math.floor(Math.random() * quotes.length));
   const router: NextRouter = useRouter();
-  gsap.registerPlugin(ScrollTrigger)
+  // gsap.registerPlugin(ScrollTrigger)
 
   useEffect(() => {
     router.events.on('routeChangeComplete', () => {

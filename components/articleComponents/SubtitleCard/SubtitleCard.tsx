@@ -1,21 +1,19 @@
 import React, { ComponentType } from 'react';
-import { ColourType } from '../../../types';
 import styles from "./SubtitleCard.module.scss";
 
 type SubtitleCardProps = {
   imageSrc: string;
   inverse?: boolean;
-  pageColour: ColourType;
-  lower: boolean;
-  higher: boolean;
-  smaller: boolean;
-  extraSmaller: boolean;
+  lower?: boolean;
+  higher?: boolean;
+  smaller?: boolean;
+  extraSmaller?: boolean;
   title: string;
 }
 
-const SubtitleCard: ComponentType<SubtitleCardProps> = ({ imageSrc, inverse, pageColour, lower, higher, smaller, extraSmaller, title }) => (
+const SubtitleCard: ComponentType<SubtitleCardProps> = ({ imageSrc, inverse, lower, higher, smaller, extraSmaller, title }) => (
   <div className={`${styles.bossCard} ${inverse ? styles.inverse : ''}`}>
-    <div className={styles.background2} style={{ '--subtitleColour1': pageColour } as any}></div>
+    <div className={styles.background2}/>
 
     <div className={styles.background1}>
       <div />
@@ -26,7 +24,7 @@ const SubtitleCard: ComponentType<SubtitleCardProps> = ({ imageSrc, inverse, pag
       <div className={styles.sketch} />
     </div>
 
-    <div className={styles.background4} style={{ '--subtitleColour1': pageColour } as any}></div>
+    <div className={styles.background4}/>
 
     {imageSrc ?
       (<div className={`${styles.imageContainer} ${lower && styles.lower} ${higher && styles.higher}`} >

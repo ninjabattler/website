@@ -143,7 +143,7 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
                   types: {
                     block: ({ value }) => {
                       return (
-                        <Paragraph 
+                        <Paragraph
                           content={value}
                         />
                       )
@@ -166,7 +166,7 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
                     titleCard: ({ value, index }) => {
                       const type = article.content[index + 1]._type;
                       const coverBelow = type === 'image' || type === 'quote';
-                      
+
                       return (
                         <TitleCard
                           title={value.title}
@@ -178,6 +178,40 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
                     underline: ({ value }) => {
                       return (
                         <Underline />
+                      )
+                    },
+                    dialogue: ({ value }) => {
+                      return (
+                        <Dialogue
+                          speaker={value.speaker}
+                          text={value.dialogue}
+                          imageSrc={value.imageSrc}
+                        />
+                      )
+                    },
+                    subtitleCard: ({ value, index }) => {
+                      return (
+                        <SubtitleCard
+                          title={value.title}
+                          imageSrc={value.banner ? value.banner.url : ''}
+                        />
+                      )
+                    },
+                    listItem: ({ value, index }) => {
+                      return (
+                        <ListItem
+                          content={value.text}
+                          imgSrc={value.icon ? value.icon.url : ''}
+                        />
+                      )
+                    },
+                    codeBlock: ({ value, index }) => {
+                      return (
+                        <CodeBlock
+                          code={value.code}
+                          language={value.language}
+                          title={value.title}
+                        />
                       )
                     }
                   }

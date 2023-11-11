@@ -1,15 +1,13 @@
 import React, { ComponentType } from 'react';
-import { ColourType } from '../../../types';
 import styles from "./Dialogue.module.scss";
 
 type DialogueProps = {
   speaker: string;
   text: string;
   imageSrc: string;
-  pageColour: ColourType;
 }
 
-const Dialogue: ComponentType<DialogueProps> = ({ speaker, text, imageSrc, pageColour }) => (
+const Dialogue: ComponentType<DialogueProps> = ({ speaker, text, imageSrc }) => (
   <div className={styles.dialogue}>
     <div className={styles.dialogueText}>
       <h3>

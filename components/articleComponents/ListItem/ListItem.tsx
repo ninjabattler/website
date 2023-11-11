@@ -4,7 +4,7 @@ import styles from "./ListItem.module.scss";
 
 type ListItemProps = {
   imgSrc: string;
-  pageColour: ColourType;
+  pageColour?: ColourType;
   content: string;
 }
 
