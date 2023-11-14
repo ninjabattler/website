@@ -175,7 +175,7 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
                         />
                       )
                     },
-                    underline: ({ value }) => {
+                    underline: () => {
                       return (
                         <Underline />
                       )
@@ -185,11 +185,11 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
                         <Dialogue
                           speaker={value.speaker}
                           text={value.dialogue}
-                          imageSrc={value.imageSrc}
+                          imageSrc={value.portrait.url}
                         />
                       )
                     },
-                    subtitleCard: ({ value, index }) => {
+                    subtitleCard: ({ value }) => {
                       return (
                         <SubtitleCard
                           title={value.title}
@@ -197,7 +197,7 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
                         />
                       )
                     },
-                    listItem: ({ value, index }) => {
+                    listItem: ({ value }) => {
                       return (
                         <ListItem
                           content={value.text}
@@ -205,7 +205,7 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
                         />
                       )
                     },
-                    codeBlock: ({ value, index }) => {
+                    codeBlock: ({ value }) => {
                       return (
                         <CodeBlock
                           code={value.code}
@@ -217,90 +217,6 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
                   }
                 }}
               />
-
-              {/* {(() => {
-                return article.content.map((contentItem, i) => {
-                  switch (contentItem.type) {
-                    case 'Paragraph':
-                      const paragraphItem = contentItem as ParagraphItem
-                      return <Paragraph
-                        key={i}
-                        content={paragraphItem.content}
-                      />
-                    case 'TitleCard':
-                      const titleCardItem = contentItem as TitleCardItem
-                      return <TitleCard
-                        key={i}
-                        title={titleCardItem.title}
-                        imageSrc={titleCardItem.imageSrc}
-                        pageColour={titleCardItem.pageColour || 'var(--article-colour)'}
-                        coverBelow={article.content[i + 1].type === 'Picture'}
-                      />
-                    case 'Picture':
-                      const pictureItem = contentItem as PictureItem
-                      return <Picture
-                        key={i}
-                        imageSrc={pictureItem.imageSrc}
-                        pageColour={pictureItem.pageColour || 'var(--article-colour)'}
-                      />
-                    case 'Quote':
-                      const quoteItem = contentItem as QuoteItem
-                      return <Quote
-                        key={i}
-                        quote={quoteItem.quote}
-                        source={quoteItem.source}
-                      />
-                    case 'Underline':
-                      return <Underline key={i} />
-                    case 'List':
-                      const list = contentItem as ArticleList
-                      return <ul>
-                        {
-                          list.items.map((li) => {
-                            return <ListItem
-                              key={i}
-                              content={li.content}
-                              imgSrc={li.imageSrc}
-                              pageColour={li.pageColour}
-                            />
-                          })
-                        }
-                      </ul>
-                    case 'CodeBlock':
-                      const codeBlockItem = contentItem as CodeBlockItem
-                      return <CodeBlock
-                        key={i}
-                        code={codeBlockItem.code}
-                        language={codeBlockItem.language}
-                        highlight={codeBlockItem.highlight}
-                        title={codeBlockItem.title}
-                      />
-                    case 'Dialogue':
-                      const dialogueItem = contentItem as DialogueItem
-                      return <Dialogue
-                        key={i}
-                        text={dialogueItem.content}
-                        imageSrc={dialogueItem.imageSrc}
-                        pageColour={dialogueItem.pageColour || 'var(--article-colour)'}
-                        speaker={dialogueItem.speaker}
-                      />
-                    case 'SubtitleCard':
-                      const subtitleCardItem = contentItem as SubtitleCardItem
-                      return <SubtitleCard
-                        key={i}
-                        title={subtitleCardItem.title}
-                        smaller={subtitleCardItem.smaller}
-                        extraSmaller={subtitleCardItem.extraSmaller}
-                        higher={subtitleCardItem.higher}
-                        imageSrc={subtitleCardItem.imageSrc}
-                        lower={subtitleCardItem.lower}
-                        pageColour={subtitleCardItem.pageColour || 'var(--article-colour)'}
-                      />
-                    default:
-                      return <></>
-                  }
-                });
-              })()} */}
             </div>
 
             {/* {article.footnotes[0] &&

@@ -79,7 +79,12 @@ export const articlePageServerSideProps = async ({ req, query, params, draftMode
         _type,
         speaker,
         dialogue,
-        portrait
+        portrait {
+          "url": asset->url,
+          "blur": asset->metadata.lqip,
+          "width": asset->metadata.dimensions.width,
+          "height": asset->metadata.dimensions.height,
+        }
       },
       _type == "subtitleCard" => {
         _type,

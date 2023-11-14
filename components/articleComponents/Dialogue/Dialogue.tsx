@@ -9,14 +9,18 @@ type DialogueProps = {
 
 const Dialogue: ComponentType<DialogueProps> = ({ speaker, text, imageSrc }) => (
   <div className={styles.dialogue}>
+    <div className={styles.space} />
+    <div className={`${styles.space} ${styles.gradient}`} />
+
+    <img src={imageSrc} alt='speaker'/>
+    
     <div className={styles.dialogueText}>
+      <p><span>{text}</span></p>
       <h3>
         {speaker}
       </h3>
-      <p><span>{text}</span></p>
     </div>
     <div className={styles.sketch}></div>
-    <img src={imageSrc} alt='speaker' />
   </div>
 );
 
