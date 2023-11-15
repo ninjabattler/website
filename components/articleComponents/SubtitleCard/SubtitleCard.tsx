@@ -13,6 +13,9 @@ type SubtitleCardProps = {
 
 const SubtitleCard: ComponentType<SubtitleCardProps> = ({ imageSrc, inverse, lower, higher, smaller, extraSmaller, title }) => (
   <div className={`${styles.bossCard} ${inverse ? styles.inverse : ''}`}>
+    <div className={styles.space} />
+    <div className={`${styles.space} ${styles.gradient}`} />
+
     <div className={styles.background2}/>
 
     <div className={styles.background1}>
