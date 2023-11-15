@@ -12,7 +12,7 @@ export const codeBlock = defineType({
   fields: [
     {
       name: "code",
-      type: "string",
+      type: "text",
       title: "Code",
       description: "The code..."
     },

@@ -10,32 +10,8 @@ type CodeBlockProps = {
   title?: string;
 }
 
-// const getHighlightLines = (highlights: string): number[] => {
-//   const highlightLines = [];
-//   const highlightRanges: string[] = highlights.split(',');
-
-//   highlightRanges.forEach((range: string) => {
-//     const splitRange: string[] = range.split('-');
-//     const start: number = Number(splitRange[0]);
-//     const end: number = Number(splitRange[1]);
-
-//     for (let i = start; i <= end; i++) {
-//       highlightLines.push(i);
-//     }
-//   })
-
-//   return highlightLines;
-// }
-
 const CodeBlock: ComponentType<CodeBlockProps> = ({ code, language, highlight, title }) => {
-  // const [highlightLines, setHighlightLines] = useState<number[]>([]);
   const [copied, setCopied] = useState<boolean>(false);
-
-  // useEffect(() => {
-  //   if (highlight) {
-  //     setHighlightLines(getHighlightLines(highlight));
-  //   }
-  // }, [])
 
   return (
     <div className={styles.codeBlock}>
