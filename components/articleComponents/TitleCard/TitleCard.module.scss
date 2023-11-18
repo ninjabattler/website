@@ -106,18 +106,6 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
   mask-size: 100% $borderWidth * 3;
   mask-repeat: no-repeat;
 
-  &.glow {
-    mix-blend-mode: lighten;
-    position: absolute;
-    opacity: 1;
-    animation-name: glow2;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-    z-index: -1;
-    background-blend-mode: lighten;
-    filter: blur(20px);
-  }
-
   @media only screen and (max-width: 425px) {
     height: 4em;
     margin-top: 0;

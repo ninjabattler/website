@@ -53,14 +53,12 @@ $gradientColour: rgba(0, 0, 0, 0.5);
 }
 
 .background2 {
-  --subtitleColour1: var(--article-colour);
-  --subtitleColour2: var(--article-colour2);
+  @include mixins.articlePageGradientShadow;
   position: absolute;
   height: $borderThickness;
-  background-image: linear-gradient(45deg, var(--subtitleColour2) 0%, var(--subtitleColour1) 45%);
-  width: calc(70% + 0.25em);
+  width: calc(70% + 0.35em);
   margin-top: 8em;
-  transform: rotateY(2deg) rotateZ(-0.5deg) translateY(0.25em);
+  transform: rotateY(2deg) rotateZ(-0.5deg) translateY(0.35em);
   transform-origin: right center;
   right: 0;
   mask: linear-gradient(45deg, transparent 17%, black 17%);
@@ -115,11 +113,9 @@ $gradientColour: rgba(0, 0, 0, 0.5);
 }
 
 .background4 {
-  --subtitleColour1: var(--article-colour);
-  --subtitleColour2: var(--article-colour2);
+  @include mixins.articlePageGradientShadow;
   position: absolute;
   height: $borderThickness;
-  background-image: linear-gradient(45deg, var(--subtitleColour2) 0%, var(--subtitleColour1) 45%);
   width: calc(50% - 0.2em);
   z-index: -2;
   transform: rotateY(2deg) rotateZ(-0.5deg) translateY(-0.55em);

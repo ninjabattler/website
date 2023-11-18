@@ -1,3 +1,4 @@
+@use "/styles/_mixins" as mixins;
 $borderThickness: 7vw;
 $mobileBorderThickness: 12.5vw;
 $mobileBarHeightOffset: 25vh;
@@ -189,6 +190,7 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   bottom: 0;
   background-color: white;
   mix-blend-mode: multiply;
+  @include mixins.articlePageGradientShadow;
 }
 
 #videoContainer {
