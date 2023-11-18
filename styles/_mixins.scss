@@ -25,3 +25,30 @@
     }
   }
 }
+
+@mixin noScrollBar {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@mixin russoFont {
+  font-family: "Russo One";
+  font-weight: 100;
+}
+
+@mixin buttonInteractionScaling {
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+}
+
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

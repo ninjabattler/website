@@ -127,8 +127,6 @@ export const articlePageServerSideProps = async ({ req, query, params, draftMode
     }
   }
 
-  console.log(JSON.stringify(article.content, null, 2))
-
   return {
     props: {
       articleData: {...article, likes: 0, dislikes: 0},

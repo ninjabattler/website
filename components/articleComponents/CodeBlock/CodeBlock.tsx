@@ -1,35 +1,66 @@
-import React, { ComponentType, useEffect, useState } from 'react';
+import React, { FC, useState, useCallback, useEffect, useRef } from 'react';
 import styles from './CodeBlock.module.scss';
 import hljs from 'highlight.js'
-// import { FileCopy, Check } from '@material-ui/icons';
+import { RiFile2Fill, RiCheckboxFill } from 'react-icons/ri';
 
 type CodeBlockProps = {
   code: string;
   language: string;
-  highlight?: string;
   title?: string;
 }
 
-const CodeBlock: ComponentType<CodeBlockProps> = ({ code, language, highlight, title }) => {
-  const [copied, setCopied] = useState<boolean>(false);
+/**
+ * Component used to display a block of code, with a set language and an optional title
+ * @param code The main content of the Code Block
+ * @param language The language of the code
+ * @param title An optional title to display on the Code Block
+ * @author ninjabattler
+ */
+const CodeBlock: FC<CodeBlockProps> = ({ code, language, title='' }) => {
+  const [isCopiedToClipboard, setIsCopiedToClipboard] = useState<boolean>(false);
+  const codeRef = useRef<HTMLDivElement>();
+
+  const copyCodeToClipboard = useCallback(() => {
+    navigator.clipboard.writeText(code);
+    setIsCopiedToClipboard(true);
+  }, [isCopiedToClipboard]);
+
+  const unsetIsCopiedToClipboard = useCallback(() => {
+    if (isCopiedToClipboard) {
+      setIsCopiedToClipboard(false);
+    };
+  }, [isCopiedToClipboard]);
+
+  useEffect(() => {
+    if (codeRef.current) {
+      const highlightedCode = hljs.highlight(code, { language: language }).value;
+
+      codeRef.current.innerHTML = highlightedCode;
+    };
+  }, [codeRef]);
 
   return (
-    <div className={styles.codeBlock}>
-      <h3>
+    <section className={styles.codeBlock}>
+      <header>
         <button
-          onClick={() => { navigator.clipboard.writeText(code); setCopied(true) }}
-          onMouseLeave={() => { if (copied) { setCopied(false) } }}
+          onClick={copyCodeToClipboard}
+          onMouseLeave={unsetIsCopiedToClipboard}
+          title='Copy'
         >
-          {/* {copied ? <Check /> : <FileCopy />} */}
+          {isCopiedToClipboard
+            ? <RiCheckboxFill />
+            : <RiFile2Fill />
+          }
         </button>
-        {title && title}
-      </h3>
+        
+        <span>{title}</span>
+      </header>
+
       <pre>
-        <code dangerouslySetInnerHTML={{ __html: hljs.highlight(code, { language: language }).value }}></code>
+        <code ref={codeRef}/>
       </pre>
-    </div>
-  )
-}
+    </section>
+  );
+};
 
-
-export default CodeBlock
+export default CodeBlock;

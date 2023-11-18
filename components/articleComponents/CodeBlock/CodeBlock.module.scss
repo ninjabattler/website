@@ -1,76 +1,64 @@
 @use "/styles/_mixins" as mixins;
+@use "/styles/_variables" as variables;
 
 .codeBlock {
   width: 100%;
-  font-size: 0.55em;
-  tab-size: 2;
   margin-top: 0.1em;
   margin-bottom: 0.6em;
+  font-size: 0.55em;
+  tab-size: 2;
   perspective: 0cm;
 
   &::before {
     @include mixins.articlePageGradientShadow;
     width: 100%;
     height: calc(100% + 0.4em);
-    margin-top: -0.2em;
-    content: "";
     position: absolute;
+    margin-top: -0.2em;
     z-index: -1;
+    content: "";
   }
 
-  h3 {
-    background-color: var(--dark-gray);
-    color: var(--primary-text);
+  header {
+    @include mixins.russoFont;
+    height: 1.3em;
+    background-color: variables.$darkGray;
+    color: variables.$primaryText;
     display: flex;
     align-items: center;
     font-size: 1.7em;
-    font-family: "Russo One";
-    font-weight: 100;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
     margin-bottom: 0;
-    border-bottom: 0.1px solid black;
+    border-bottom: variables.$borderThinBlack;
 
     button {
-      background-color: var(--primary-text);
-      border: none;
-      color: var(--dark-gray);
-      margin: 0.2em;
-      margin-right: 0.8em;
-      border-radius: 3px;
-      transition: filter 0.25s;
+      @include mixins.buttonInteractionScaling;
+      @include mixins.flexCenter;
+      height: 70%;
+      margin-right: 0.2em;
+      border-radius: 0.1em;
+      color: variables.$primaryText;
+      transition: transform 0.2s;
+      cursor: pointer;
 
-      &:hover {
-        filter: drop-shadow(0 0 0.15em black);
-        cursor: pointer;
+      svg {
+        width: 100%;
+        height: 100%;
       }
     }
   }
 
   pre {
-    background-color: rgba(26, 26, 26, 1) !important;
+    @include mixins.noScrollBar;
     width: 100%;
+    margin: 0;
     padding-top: 1em;
     padding-bottom: 1em;
     padding-left: 2em;
     padding-right: 2em;
-    margin: 0;
-    font-size: 1em !important;
+    font-size: 1em;
+    line-height: 1.3em;
+    color: variables.$codeTextColour;
+    background-color: variables.$codeBackgroundColour;
     overflow-x: scroll;
-
-    code {
-      color: #9cd7f8;
-      font-size: 1em !important;
-
-      span {
-        font-size: 1em !important;
-        margin: 0;
-        line-height: 1.3em !important;
-      }
-    }
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
   }
 }
