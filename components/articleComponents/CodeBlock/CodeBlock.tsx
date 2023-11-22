@@ -10,11 +10,11 @@ type CodeBlockProps = {
 }
 
 /**
- * Component used to display a block of code, with a set language and an optional title
+ * Component used to display a block of code, with a set language and an optional 
+ * @author Ninjabattler
  * @param code The main content of the Code Block
  * @param language The language of the code
  * @param title An optional title to display on the Code Block
- * @author ninjabattler
  */
 const CodeBlock: FC<CodeBlockProps> = ({ code, language, title='' }) => {
   const [isCopiedToClipboard, setIsCopiedToClipboard] = useState<boolean>(false);

@@ -1,15 +1,25 @@
+@use "/styles/_variables" as variables;
+
 @mixin articlePageGradientShadow {
-  background-image: linear-gradient(90deg, var(--article-colour) 10%, var(--article-colour2) 40%, var(--article-colour2) 60%, var(--article-colour) 90%);
+  background-image: linear-gradient(
+    90deg,
+    var(--article-colour) 10%,
+    var(--article-colour2) 40%,
+    var(--article-colour2) 60%,
+    var(--article-colour) 90%
+  );
   background-size: 200vw 100vh;
   background-attachment: fixed;
-  animation: gradientDisplace 5s linear infinite, gradientGlow 3s linear infinite;
+  animation:
+    gradientDisplace 5s linear infinite,
+    gradientGlow 3s linear infinite;
 
   @keyframes gradientDisplace {
     0% {
       background-position: 0vw 0vh;
     }
     100% {
-      background-position: 200vw 100vh; 
+      background-position: 200vw 100vh;
     }
   }
 
@@ -26,9 +36,58 @@
   }
 }
 
+@mixin articlePageSpaceCutout {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  background-image: url("/spacebanner.webp");
+  background-size: 100vw;
+  background-attachment: fixed;
+  background-position: -16vw, 0;
+  mask: url("/titleCardTear.png");
+  mask-size: 100%;
+  filter: grayscale(1);
+  z-index: -2;
+
+  &.gradient {
+    @include articlePageGradientShadow;
+    mix-blend-mode: overlay;
+  }
+}
+
 @mixin noScrollBar {
   &::-webkit-scrollbar {
     display: none;
+  }
+}
+
+@mixin darkScollBar {
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+    background: variables.$darkGray;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: variables.$darkGray;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: variables.$lightGray;
+  }
+}
+
+@mixin lightScollBar {
+  &::-webkit-scrollbar {
+    width: 0.7em;
+    background: variables.$lightGray;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: variables.$lightGray;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: variables.$darkGray;
   }
 }
 
@@ -51,4 +110,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@mixin gridPatternDark {
+  background-image: url("/sketch.webp");
+  background-size: 5em;
+  mix-blend-mode: darken;
+  opacity: 0.3;
+  filter: invert(1);
+}
+
+@mixin gridPatternLight {
+  background-image: url("/sketch.webp");
+  background-size: 5em;
+  mix-blend-mode: color-burn;
+  opacity: 0.3;
+  filter: invert(1);
 }

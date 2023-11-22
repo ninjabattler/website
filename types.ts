@@ -155,3 +155,11 @@ export interface UserData {
   username: string;
   avatar: number;
 }
+
+export interface SanityImage {
+  url: string;
+  blur: string;
+  width: number;
+  height: number;
+  alt: string;
+}

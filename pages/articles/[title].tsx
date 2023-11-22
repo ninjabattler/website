@@ -185,7 +185,8 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
                         <Dialogue
                           speaker={value.speaker}
                           text={value.dialogue}
-                          imageSrc={value.portrait.url}
+                          image={value.portrait}
+                          invert={value.invert}
                         />
                       )
                     },

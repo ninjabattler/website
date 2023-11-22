@@ -79,6 +79,7 @@ export const articlePageServerSideProps = async ({ req, query, params, draftMode
         _type,
         speaker,
         dialogue,
+        invert,
         portrait {
           "url": asset->url,
           "blur": asset->metadata.lqip,

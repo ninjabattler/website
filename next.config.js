@@ -5,6 +5,6 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 module.exports = withBundleAnalyzer({
   reactStrictMode: true,
   images: {
-    domains: ['files.ninjabattler.ca', 'ninjabattler.ca', 'storage.googleapis.com'],
+    domains: ['files.ninjabattler.ca', 'ninjabattler.ca', 'storage.googleapis.com', 'cdn.sanity.io'],
   }
 })
