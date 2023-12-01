@@ -1,8 +1,8 @@
-import React, { ComponentType } from 'react';
+import React, { FC } from 'react';
 import styles from "./Underline.module.scss";
 
-const Underline: ComponentType<{}> = () => (
-  <div className={styles.underline}></div>
+const Underline: FC<{}> = () => (
+  <div className={styles.underline}/>
 )
 
 export default Underline

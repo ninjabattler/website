@@ -1,27 +1,31 @@
-import React, { ComponentType } from 'react';
-import { ColourType } from '../../../types';
+import React, { FC } from 'react';
+import { SanityImage } from '../../../types';
 import styles from "./ListItem.module.scss";
+import Image from 'next/image';
 
 type ListItemProps = {
-  imgSrc: string;
-  pageColour?: ColourType;
+  image: SanityImage;
   content: string;
 }
 
-const ListItem: ComponentType<ListItemProps> = ({ imgSrc, pageColour, content }) => (
+/**
+ * An <li> tag with an optional image for a custom bullet point
+ * @author Ninjabattler
+ * @param content The main content of the List Item
+ * @param image An optional image for the custom bullet point
+ */
+const ListItem: FC<ListItemProps> = ({ image, content }) => (
   <li className={styles.listItem}>
-    {/* If given an image source, show that, otherwise show the shuriken svgs */}
-    {imgSrc ?
-      (<img
-        src={imgSrc.replace('http://', 'https://')}
-        alt=''
-      />)
-      :
-      (<img
-        src={'/shuriken.svg'}
-        alt=''
-      />)}
-    <p dangerouslySetInnerHTML={{ __html: content }}></p>
+    <Image
+      src={image.url ? image.url : '/shuriken.svg'}
+      width={image.width ? image.width : 1920}
+      height={image.height ? image.height : 1080}
+      loading='lazy'
+      placeholder="blur"
+      blurDataURL={image.blur ? image.blur : ''}
+      alt={image.alt ? image.alt : ''}
+    />
+    <span>{content}</span>
   </li>
 )
 

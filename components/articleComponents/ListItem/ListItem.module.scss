@@ -1,15 +1,17 @@
+@use "/styles/_variables" as variables;
+
 .listItem {
+  width: 60%;
   display: flex;
   align-items: center;
-  color: var(--primary-text);
-  width: 60%;
   margin-left: calc(20% - 4em);
   font-size: 1em;
-}
+  color: variables.$primaryText;
 
-.listItem > img {
-  width: 2em;
-  height: 2em;
-  margin-right: 0.5em;
-  object-fit: contain;
+  img {
+    width: 2em;
+    height: 2em;
+    margin-right: 0.5em;
+    object-fit: contain;
+  }
 }

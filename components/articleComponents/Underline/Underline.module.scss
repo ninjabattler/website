@@ -1,17 +1,8 @@
 .underline {
-  border-left: 0.33vw solid transparent;
-  border-right: 0.33vw solid transparent;
-  border-bottom: 0.33vw solid var(--light-gray);
-  margin-top: 0px;
+  border-left: 0.25em solid transparent;
+  border-right: 0.25em solid transparent;
+  border-bottom: 0.25em solid var(--light-gray);
   width: 85%;
   margin-left: auto;
   margin-right: auto;
-
-  @media only screen and (max-width: 480px) {
-    border-left-width: 60px;
-    border-right-width: 60px;
-    border-bottom-width: 2px;
-    margin-top: -10px;
-    margin-bottom: -10px;
-  }
 }
