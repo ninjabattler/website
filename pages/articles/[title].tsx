@@ -170,7 +170,7 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
                       return (
                         <TitleCard
                           title={value.title}
-                          imageSrc={value.banner ? value.banner.url : ''}
+                          image={value.banner}
                           coverBelow={coverBelow}
                         />
                       )
