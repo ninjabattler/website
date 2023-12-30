@@ -181,7 +181,6 @@
   margin-right: auto;
   top: 11.5vw;
   margin-top: 7.1vw;
-  filter: drop-shadow(0.4vw 0.4vw 0.3vw black);
   animation-name: commentPanelFadeIn;
   animation-timing-function: linear;
   animation-duration: 1.25s;
@@ -219,6 +218,8 @@
   overflow-y: scroll;
   height: calc(100% - 7.35vw);
   width: calc(100%);
+  border-left: 0.1em solid var(--light-gray);
+  border-right: 0.1em solid var(--light-gray);
 
   @media only screen and (max-width: 425px) {
     height: calc(70vh - 32vw);

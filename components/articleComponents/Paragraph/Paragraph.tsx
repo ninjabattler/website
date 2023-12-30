@@ -18,7 +18,24 @@ type ParagraphProps = {
 
 const Paragraph: ComponentType<ParagraphProps> = ({ content }) => (
   <div className={styles.paragraph}>
-    <PortableText value={content} />
+    <PortableText
+      value={content}
+      components={{
+        types: {
+          picture: ({ value }) => {
+            return (
+              <Picture
+                picture={value.image}
+                width={value.scale}
+                float={value.float}
+                source={value.source}
+                sourceLink={value.sourceLink}
+              />
+            )
+          }
+        }
+      }}
+    />
   </div>
 )
 

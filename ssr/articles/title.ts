@@ -25,7 +25,6 @@ export const articlePageServerSideProps = async ({ req, query, params, draftMode
   const randomQuoteIndex: number = Math.floor(Math.random() * noCommentMessages.length);
   const title: string = query.title as string;
   const articleTitle: string = title.replace(/(_|-)/g, ' ');
-  // const articleData: ArticleData[] = await selectSingleArticle(db, articleTitle);
   
   const preview = draftMode
     ? { token: process.env.SANITY_API_READ_TOKEN }
@@ -48,7 +47,25 @@ export const articlePageServerSideProps = async ({ req, query, params, draftMode
         style,
         _key,
         markDefs,
-        children
+        children[]{
+          _type,
+          _type != "picture" => {
+            marks,
+            text,
+          },
+          _type == "picture" => {
+            scale,
+            float,
+            source,
+            sourceLink,
+            image {
+              "url": asset->url,
+              "blur": asset->metadata.lqip,
+              "width": asset->metadata.dimensions.width,
+              "height": asset->metadata.dimensions.height,
+            }
+          }
+        }
       },
       _type == "titleCard" => {
         _type,
@@ -112,6 +129,19 @@ export const articlePageServerSideProps = async ({ req, query, params, draftMode
         code,
         language,
         title
+      },
+      _type == "picture" => {
+        _type,
+        scale,
+        float,
+        source,
+        sourceLink,
+        image {
+          "url": asset->url,
+          "blur": asset->metadata.lqip,
+          "width": asset->metadata.dimensions.width,
+          "height": asset->metadata.dimensions.height,
+        }
       }
     }
   }[0]`;

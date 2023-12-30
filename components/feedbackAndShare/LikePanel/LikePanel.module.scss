@@ -6,17 +6,8 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  mask: linear-gradient(
-    45deg,
-    black 3%,
-    rgba(0, 0, 0, 0.25) 3%,
-    rgba(0, 0, 0, 0.25) 5%,
-    black 5%,
-    black 95%,
-    rgba(0, 0, 0, 0.25) 95%,
-    rgba(0, 0, 0, 0.25) 97%,
-    black 97%
-  );
+  border-left: 0.1em solid var(--light-gray);
+  border-right: 0.1em solid var(--light-gray);
   animation-name: panelFadeIn;
   animation-duration: 0.625s;
   animation-timing-function: linear;

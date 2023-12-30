@@ -148,10 +148,14 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
                         />
                       )
                     },
-                    image: ({ value }) => {
+                    picture: ({ value }) => {
                       return (
                         <Picture
-                          imageSrc={value.url}
+                          picture={value.image}
+                          width={value.scale}
+                          float={value.float}
+                          source={value.source}
+                          sourceLink={value.sourceLink}
                         />
                       )
                     },
@@ -165,7 +169,7 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
                     },
                     titleCard: ({ value, index }) => {
                       const type = article.content[index + 1]._type;
-                      const coverBelow = type === 'image' || type === 'quote';
+                      const coverBelow = type === 'picture' || type === 'quote';
 
                       return (
                         <TitleCard
@@ -202,7 +206,7 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
                       return (
                         <ListItem
                           content={value.text}
-                          imgSrc={value.icon ? value.icon.url : ''}
+                          image={value.icon ? value.icon.url : ''}
                         />
                       )
                     },

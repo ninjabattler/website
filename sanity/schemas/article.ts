@@ -51,13 +51,20 @@ const article: SchemaTypeDefinition = {
       title: "Content",
       of: [
         {
-          type: 'block'
+          type: 'block',
+          of: [
+            {
+              name: 'picture',
+              type: 'picture',
+              title: 'Inline Picture'
+            }
+          ]
         },
         {
           type: 'titleCard'
         },
         {
-          type: 'image'
+          type: 'picture'
         },
         {
           type: 'quote'
