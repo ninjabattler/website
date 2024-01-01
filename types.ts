@@ -16,6 +16,7 @@ export type IpType = string | null;
 export type ArticleJsonItemType = string;
 export type ArticleJsonItemContent = string;
 export type ArticleJson = (ParagraphItem | TitleCardItem | PictureItem | QuoteItem | ArticleList | CodeBlockItem | DialogueItem | SubtitleCardItem | HtmlItem | SpoilerItem)[];
+export type PictureFloat = 'Left' | 'Right';
 
 export interface Footnote {
   title: TitleType;

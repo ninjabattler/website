@@ -1,30 +1,34 @@
-import React, { ComponentType } from 'react';
+import React, { FC } from 'react';
 import styles from "./Picture.module.scss";
 import Image from 'next/image';
-import { SanityImage } from '../../../types';
+import { PictureFloat, SanityImage } from '../../../types';
+import { PICTURE_MAX_WIDTH, PICTURE_FLOAT } from '../../../helpers/constants.json';
 
 type PictureProps = {
   picture: SanityImage;
   width?: number;
-  float?: 'Left' | 'Right';
+  float?: PictureFloat;
   source?: string;
   sourceLink?: string;
 }
 
-const Picture: ComponentType<PictureProps> = ({ picture, width, float, source, sourceLink }) => {
-  const floatLeft = width < 100 && float === 'Left';
-  const floatRight = width < 100 && float === 'Right';
+/**
+ * A Picture that can be scaled and positioned left or right and given an optional source + link
+ * @author Ninjabattler
+ * @param picture The picture
+ * @param width An optional scale to give to the image
+ * @param float Which direction to float when scaled down
+ * @param source An optional source to give to the image
+ * @param sourceLink A link for the source
+ */
+const Picture: FC<PictureProps> = ({ picture, width, float, source, sourceLink }) => {
+  const floatLeft = width < PICTURE_MAX_WIDTH && float === PICTURE_FLOAT.LEFT;
+  const floatRight = width < PICTURE_MAX_WIDTH && float === PICTURE_FLOAT.RIGHT;
 
   return (
     <figure
       className={`${styles.picture} ${floatLeft && styles.floatingLeft} ${floatRight && styles.floatingRight}`}
-      style={{
-        display: 'inline-flex',
-        width: width && width < 100 ? `calc(${width}%)` : '100%',
-        float: width < 100 ? float : null,
-        marginLeft: (floatLeft && 'calc(-12.5%)') || (floatRight && 'calc(0.6em + 0.5vw)'),
-        marginRight: (floatRight && 'calc(-12.5%)') || (floatLeft && 'calc(0.6em + 0.5vw)'),
-      } as any}
+      style={{ width: width ? `${width}%` : '100%' }}
     >
       <Image
         className={styles.banner}
@@ -36,11 +40,11 @@ const Picture: ComponentType<PictureProps> = ({ picture, width, float, source, s
         blurDataURL={picture.blur}
         alt={picture.alt}
       />
-      
+
       {
         source &&
         <figcaption>
-          <a href={sourceLink} target='_blank' rel='noreferrer'>
+          <a href={sourceLink} title={source} target='_blank' rel='noreferrer'>
             {source}
           </a>
         </figcaption>
