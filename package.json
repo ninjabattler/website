@@ -36,6 +36,7 @@
     "react-icons": "^4.12.0",
     "request-ip": "^3.3.0",
     "sanity": "^3.16.7",
+    "sanity-plugin-media": "^2.2.4",
     "slate": "^0.88.1",
     "slate-react": "^0.88.2",
     "styled-components": "5.2",

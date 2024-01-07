@@ -10,6 +10,7 @@ import { deskTool } from "sanity/desk";
 import { apiVersion, dataset, projectId } from "./sanity/env";
 import { schema } from "./sanity/schema";
 import { colorInput } from "@sanity/color-input";
+import { media } from "sanity-plugin-media";
 
 export default defineConfig({
   basePath: "/studio",
@@ -20,6 +21,7 @@ export default defineConfig({
   plugins: [
     deskTool(),
     colorInput(),
+    media(),
     // Vision is a tool that lets you query your content with GROQ in the studio
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),
