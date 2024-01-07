@@ -159,17 +159,21 @@ export default function ArticlePage({ articleData, disliked, liked, randomQuoteI
                         />
                       )
                     },
-                    quote: ({ value }) => {
+                    quote: ({ value, index }) => {
+                      const typeAbove = article.content[index - 1]._type;
+                      const mergeAbove = typeAbove === 'titleCard';
+
                       return (
                         <Quote
                           quote={value.quote}
                           source={value.source}
+                          mergeAbove={mergeAbove}
                         />
                       )
                     },
                     titleCard: ({ value, index }) => {
-                      const type = article.content[index + 1]._type;
-                      const coverBelow = type === 'picture' || type === 'quote';
+                      const typeBelow = article.content[index + 1]._type;
+                      const coverBelow = typeBelow === 'picture' || typeBelow === 'quote';
 
                       return (
                         <TitleCard

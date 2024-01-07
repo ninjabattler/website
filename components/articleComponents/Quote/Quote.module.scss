@@ -1,201 +1,167 @@
 @use "/styles/_mixins" as mixins;
-$borderThickness: 0.4vw;
-$mobileBorderThickness: 0.6vw;
-$gradientColour: rgba(45, 45, 45, 1);
+@use "/styles/_variables" as variables;
 
 .quote {
-  color: var(--secondary-text);
   width: 100%;
-  height: 7em;
-  margin-top: -0.2em;
-  margin-bottom: 3em;
-  font-size: 0.7em;
-  perspective: 10cm;
+  height: 6.5em;
+  padding-top: 3.5em;
   top: 0;
+  font-size: 0.6em;
+  color: variables.$secondaryText;
+  perspective: 10cm;
+
+  &.mergeAbove {
+    padding-top: 1em;
+  }
 
   * {
     &::selection {
-      color: var(--light-gray);
+      color: variables.$lightGray;
+      background-color: var(--article-colour);
+    }
+  }
+
+  .quotationMark {
+    @include mixins.russoFont;
+    height: 0.65em;
+    margin-right: 0.3em;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    font-size: 3.5em;
+    text-align: center;
+    color: variables.$lightGray;
+    transform: rotateZ(10deg) rotateZ(-5deg) skewX(20deg) scale(1.5);
+    filter: brightness(0.6);
+    cursor: default;
+
+    &::before {
+      content: '"';
+    }
+
+    &::selection {
+      color: variables.$lightGray;
+      background-color: transparent;
+    }
+  }
+
+  .quoteContainer {
+    width: 85%;
+    height: 3em;
+    padding-left: 1em;
+    left: 0;
+    border-top: variables.$borderThinBlack;
+    border-bottom: variables.$borderThinBlack;
+    position: absolute;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: variables.$lightGray;
+    transform: rotateY(-5deg) rotateZ(1.75deg) translateY(-3em);
+    transform-origin: left center;
+    mask: linear-gradient(
+      -45deg,
+      transparent 16%,
+      black 16%,
+      black 21%,
+      variables.$gradientFade 21%,
+      variables.$gradientFade 23.7%,
+      black 23.7%,
+      black 27.3%,
+      variables.$gradientFade 27.3%,
+      variables.$gradientFade 30%,
+      black 30%
+    );
+
+    &.glow {
+      @include mixins.articlePageGradientShadow;
+      margin-top: 0.5em;
+      padding-right: 0.3em;
+      border: none;
+      z-index: -2;
+      mask: linear-gradient(-45deg, transparent 16%, black 16%);
+    }
+
+    &::before {
+      @include mixins.gridPatternDark;
+      font-size: 1.5em;
+      width: 100%;
+      height: 100%;
+      margin-left: -1em;
+      position: absolute;
+      mask: linear-gradient(-45deg, transparent 85%, black 100%);
+      content: "";
+    }
+
+    p {
+      @include mixins.darkScollBar;
+      width: 62.5%;
+      height: 1.25em;
+      margin-top: 0.875em;
+      display: flex;
+      align-items: auto;
+      justify-content: flex-start;
+      overflow-y: scroll;
+      z-index: 1;
+      direction: rtl;
+
+      span {
+        direction: ltr;
+        width: fit-content;
+        margin-right: auto;
+        padding-left: 0.5em;
+      }
+    }
+  }
+
+  .source {
+    @include mixins.russoFont;
+    width: fit-content;
+    height: fit-content;
+    padding-left: 1em;
+    padding-right: 3em;
+    padding-top: 3em;
+    margin: 0;
+    margin-top: 0.5em;
+    left: 0;
+    display: flex;
+    align-items: center;
+    background-color: variables.$darkGray;
+    mask: linear-gradient(-45deg, transparent 2em, variables.$darkGray 2em);
+    font-size: 0.9em;
+    color: variables.$primaryText;
+    z-index: -2;
+    border-top: variables.$borderThinBlack;
+    border-bottom: variables.$borderThinBlack;
+    position: absolute;
+    transform: rotateY(-5deg) rotateZ(1.75deg) translateY(-3.5em);
+    transform-origin: left center;
+
+    &.glow {
+      @include mixins.articlePageGradientShadow;
+      margin-top: 1em;
+      padding-left: 1.25em;
+      border: none;
+      z-index: -3;
+    }
+
+    .quotationMark {
+      transform: rotateZ(0deg) skewX(-20deg) translateX(0.3em) translateY(-0.1em) scale(1.5);
+      color: variables.$darkGray;
+    }
+
+    &::selection {
+      color: variables.$darkGray;
       background-color: var(--article-colour);
     }
   }
 
   .space {
-    position: absolute;
-    width: 100%;
-    height: 130%;
+    @include mixins.articlePageSpaceCutout;
+    height: 100%;
     top: 0;
-    background-image: url("/spacebanner.webp");
-    background-size: 100vw;
-    background-attachment: fixed;
-    background-position: -16vw, 0;
-    mask: url("/titleCardTear.png");
-    mask-size: cover;
     mask-position: center bottom;
+    mask-size: cover;
     z-index: -4;
-    filter: grayscale(1);
-    
-    &.gradient {
-      @include mixins.articlePageGradientShadow;
-      mix-blend-mode: overlay;
-    }
-  }
-
-  @media only screen and (max-width: 425px) {
-    width: 95%;
-    font-size: 0.5em;
-  }
-}
-
-.quote > .quoteContainer {
-  width: 92.5%;
-  padding-left: 1vw;
-  margin-top: 0.5em;
-  display: flex;
-  position: absolute;
-  justify-content: flex-start;
-  align-items: flex-start;
-  height: 3.6em;
-  background-color: var(--light-gray);
-  mask: linear-gradient(-45deg, transparent calc(0% + 5.5vw), black calc(0% + 5.5vw));
-  transform: rotateY(-4deg) rotateZ(0.5deg);
-  transform-origin: left center;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-
-  &.glow {
-    @include mixins.articlePageGradientShadow;
-    margin-top: 0.8em;
-    margin-left: 0.1em;
-    border: none;
-    z-index: -2;
-  }
-
-  .sketch {
-    margin-left: -1vw;
-    width: 100%;
-    height: 3.6em;
-    position: absolute;
-    background-image: url("/sketch.webp");
-    background-size: 12%;
-    mix-blend-mode: color-burn;
-    opacity: 0.25;
-    filter: invert(1);
-    mask: linear-gradient(-45deg, transparent 90%, black 100%);
-  }
-
-  p {
-    width: 80%;
-    padding-left: 1vw;
-    height: 2.7vw;
-    max-height: 2.7vw;
-    display: flex;
-    align-items: auto;
-    justify-content: flex-end;
-    margin-top: 0.6vw;
-    overflow-y: scroll;
-    direction: rtl;
-    text-align: left;
-    z-index: 1;
-
-    &::-webkit-scrollbar {
-      width: 0.5vw;
-      background: transparent;
-
-      @media only screen and (max-width: 425px) {
-        width: 1.5vw;
-      }
-    }
-
-    &::-webkit-scrollbar-track {
-      background: transparent;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background: var(--dark-gray);
-    }
-  }
-
-  @media only screen and (max-width: 425px) {
-    margin-bottom: -10px;
-    border-width: $mobileBorderThickness;
-  }
-}
-
-.quote > .quoteContainer > h2,
-.quote > .source > h2 {
-  color: var(--light-gray);
-  font-size: 3.5em;
-  width: 2vw;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  height: 2vw;
-  margin: 0vw;
-  margin-right: 1vw;
-  font-family: "Russo One";
-  font-weight: 100;
-  transform: rotateZ(10deg) rotateZ(-5deg) skewX(20deg) translateX(-0.1em) translateY(0.15em) scale(1.75);
-  cursor: default;
-  filter: brightness(0.7);
-
-  &::selection {
-    color: var(--light-gray);
-    background-color: transparent;
-  }
-
-  @media only screen and (max-width: 425px) {
-    margin: 1vw;
-  }
-}
-
-.quote > .source {
-  width: fit-content;
-  height: fit-content;
-  min-width: 7.5vw;
-  padding-left: 1em;
-  padding-right: 3em;
-  padding-top: 3.9em;
-  margin: 0;
-  margin-top: 0.6em;
-  left: 0;
-  display: flex;
-  align-items: center;
-  background-color: var(--dark-gray);
-  mask: linear-gradient(-45deg, transparent 2em, var(--dark-gray) 2em);
-  font-family: "Russo One";
-  font-size: 0.95em;
-  font-weight: 100;
-  color: var(--primary-text);
-  z-index: -2;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  position: absolute;
-  transform: rotateY(-4deg) rotateZ(0.5deg);
-  transform-origin: left center;
-
-  &.glow {
-    @include mixins.articlePageGradientShadow;
-    margin-top: 0.9em;
-    padding-left: 1.1em;
-    border: none;
-    z-index: -3;
-  }
-
-  h2 {
-    transform: rotateZ(0deg) skewX(-20deg) translateX(0.3em) translateY(-0.2em) scale(1.5);
-    color: var(--dark-gray);
-  }
-
-  &::selection {
-    color: var(--dark-gray);
-    background-color: var(--article-colour);
-  }
-
-  @media only screen and (max-width: 425px) {
-    font-size: 0.85em;
-    padding-left: 10vw;
-    padding-right: 10vw;
   }
 }
