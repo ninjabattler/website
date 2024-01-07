@@ -11,14 +11,14 @@ const months = {
   "10": "October",
   "11": "November",
   "12": "December",
-}
+};
 
 //Date format ex: 07, 23, 2022
 export const formatSqlDate = (date): string => {
-  const splitDate: string[] = date.split(', ');
+  const splitDate: string[] = date.split(", ");
   const month: string = splitDate[0];
   const day: string = splitDate[1];
   const year: string = splitDate[2];
 
   return `${months[month] || "January"}, ${day}, ${year}`;
-}
+};

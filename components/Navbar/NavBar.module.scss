@@ -53,7 +53,13 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
     @media (max-device-width: 425px) {
       height: 6.4em;
       background-size: 35%;
-      mask: linear-gradient(45deg, black 0%, transparent 20%, transparent 80%, black 100%);
+      mask: linear-gradient(
+        45deg,
+        black 0%,
+        transparent 20%,
+        transparent 80%,
+        black 100%
+      );
     }
   }
 

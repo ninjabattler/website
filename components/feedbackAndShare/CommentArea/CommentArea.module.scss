@@ -133,7 +133,12 @@
   background-color: var(--light-gray);
   margin-top: 0;
   cursor: pointer;
-  transition: margin-top 0.2s, height 0.2s, border-top 0.2s, color 0.2s, background-color 0.2s;
+  transition:
+    margin-top 0.2s,
+    height 0.2s,
+    border-top 0.2s,
+    color 0.2s,
+    background-color 0.2s;
   animation-name: styleButtonFadeIn;
   animation-timing-function: linear;
   animation-duration: 2.475s;
@@ -167,7 +172,7 @@
       margin-top: -1.5vw;
       border-top: 1vw solid var(--article-colour);
     }
-  
+
     &:active:not(:disabled) {
       height: 6vw;
       margin-top: 0;
@@ -185,7 +190,6 @@
 #commentStylingBar > #styleFiller {
   cursor: unset;
 }
-
 
 #commentStylingBar {
   @media only screen and (max-width: 425px) {
@@ -218,7 +222,11 @@
   padding-right: 1vw;
   filter: drop-shadow(0vw 0 0 var(--article-colour));
   opacity: 1;
-  transition: padding 0.2s, color 0.2s, filter 0.2s, opacity 0.2s !important;
+  transition:
+    padding 0.2s,
+    color 0.2s,
+    filter 0.2s,
+    opacity 0.2s !important;
   animation-name: postButtonFadeIn !important;
 
   &:hover:not(:disabled) {
@@ -243,15 +251,15 @@
     padding-left: 15vw !important;
     font-size: 4vw !important;
     background-image: linear-gradient(
-    45deg,
-    transparent 13%,
-    transparent 17%,
-    var(--secondary-text) 17%,
-    var(--secondary-text) 21%,
-    transparent 21%,
-    transparent 25%,
-    var(--secondary-text) 25%
-  );
+      45deg,
+      transparent 13%,
+      transparent 17%,
+      var(--secondary-text) 17%,
+      var(--secondary-text) 21%,
+      transparent 21%,
+      transparent 25%,
+      var(--secondary-text) 25%
+    );
   }
 }
 
@@ -336,7 +344,6 @@
     height: 80%;
   }
 }
-
 
 @keyframes commentAreaContentFadeIn {
   0% {

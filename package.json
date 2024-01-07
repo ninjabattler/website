@@ -4,11 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 4000",
-    "edit": "EDIT=true next dev -p 4000",
     "build": "next build",
     "start": "next start -p 4000",
     "analyze": "ANALYZE=true npm run build",
-    "lint": "next lint"
+    "lint": "next lint",
+    "check": "prettier . --check",
+    "format": "prettier . --write"
   },
   "dependencies": {
     "@next/bundle-analyzer": "^13.1.5",
@@ -17,8 +18,9 @@
     "@sanity/image-url": "^1.0.2",
     "@sanity/vision": "^3.16.7",
     "@types/pg": "^8.6.5",
-    "axios": "^0.24.0",
+    "axios": "^1.6.5",
     "dotenv": "^16.0.1",
+    "eslint-plugin-prettier": "^5.1.2",
     "express": "^4.18.2",
     "gsap": "^3.11.4",
     "highlight.js": "^11.7.0",
@@ -32,7 +34,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^4.12.0",
-    "request-ip": "^2.1.3",
+    "request-ip": "^3.3.0",
     "sanity": "^3.16.7",
     "slate": "^0.88.1",
     "slate-react": "^0.88.2",
@@ -41,8 +43,9 @@
   },
   "devDependencies": {
     "@types/node": "^18.7.3",
-    "eslint": "7.32.0",
-    "eslint-config-next": "12.0.1",
+    "eslint": "8.43.0",
+    "eslint-config-next": "^12.0.1",
+    "prettier": "^3.1.1",
     "sass": "^1.54.4",
     "typescript": "^4.7.4"
   }

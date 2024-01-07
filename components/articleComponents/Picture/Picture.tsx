@@ -1,8 +1,11 @@
-import React, { FC } from 'react';
+import React, { FC } from "react";
 import styles from "./Picture.module.scss";
-import Image from 'next/image';
-import { PictureFloat, SanityImage } from '../../../types';
-import { PICTURE_MAX_WIDTH, PICTURE_FLOAT } from '../../../helpers/constants.json';
+import Image from "next/image";
+import { PictureFloat, SanityImage } from "../../../types";
+import {
+  PICTURE_MAX_WIDTH,
+  PICTURE_FLOAT,
+} from "../../../helpers/constants.json";
 
 type PictureProps = {
   picture: SanityImage;
@@ -10,7 +13,7 @@ type PictureProps = {
   float?: PictureFloat;
   source?: string;
   sourceLink?: string;
-}
+};
 
 /**
  * A Picture that can be scaled and positioned left or right and given an optional source + link
@@ -21,36 +24,43 @@ type PictureProps = {
  * @param source An optional source to give to the image
  * @param sourceLink A link for the source
  */
-const Picture: FC<PictureProps> = ({ picture, width, float, source, sourceLink }) => {
+const Picture: FC<PictureProps> = ({
+  picture,
+  width,
+  float,
+  source,
+  sourceLink,
+}) => {
   const floatLeft = width < PICTURE_MAX_WIDTH && float === PICTURE_FLOAT.LEFT;
   const floatRight = width < PICTURE_MAX_WIDTH && float === PICTURE_FLOAT.RIGHT;
 
   return (
     <figure
-      className={`${styles.picture} ${floatLeft && styles.floatingLeft} ${floatRight && styles.floatingRight}`}
-      style={{ width: width ? `${width}%` : '100%' }}
+      className={`${styles.picture} ${floatLeft && styles.floatingLeft} ${
+        floatRight && styles.floatingRight
+      }`}
+      style={{ width: width ? `${width}%` : "100%" }}
     >
       <Image
         className={styles.banner}
         src={picture.url}
         width={picture.width}
         height={picture.height}
-        loading='lazy'
+        loading="lazy"
         placeholder="blur"
         blurDataURL={picture.blur}
         alt={picture.alt}
       />
 
-      {
-        source &&
+      {source && (
         <figcaption>
-          <a href={sourceLink} title={source} target='_blank' rel='noreferrer'>
+          <a href={sourceLink} title={source} target="_blank" rel="noreferrer">
             {source}
           </a>
         </figcaption>
-      }
+      )}
     </figure>
-  )
-}
+  );
+};
 
-export default Picture
+export default Picture;

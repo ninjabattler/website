@@ -14,19 +14,19 @@ export const picture = defineType({
       name: "image",
       type: "image",
       title: "Image",
-      description: ""
+      description: "",
     },
     {
       name: "source",
       type: "string",
       title: "Source",
-      description: "The name of the image's source"
+      description: "The name of the image's source",
     },
     {
       name: "sourceLink",
       type: "string",
       title: "Source Link",
-      description: "A link to the image's source"
+      description: "A link to the image's source",
     },
     {
       name: "scale",
@@ -34,21 +34,18 @@ export const picture = defineType({
       title: "Scale",
       description: "An optional percent scale to give to the image",
       initialValue: 100,
-      validation: Rule => Rule.min(0).max(100)
+      validation: (Rule) => Rule.min(0).max(100),
     },
     {
       name: "float",
       type: "string",
       title: "Float",
       description: "How the image should float when it's shrunk",
-      initialValue: 'Left',
+      initialValue: "Left",
       options: {
-        list: [
-          'Left',
-          'Right'
-        ],
-        layout: 'radio'
-      }
+        list: ["Left", "Right"],
+        layout: "radio",
+      },
     },
-  ]
+  ],
 });

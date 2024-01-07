@@ -42,8 +42,8 @@ const article: SchemaTypeDefinition = {
           name: "secondary",
           type: "color",
           title: "Secondary",
-        }
-      ]
+        },
+      ],
     },
     {
       name: "content",
@@ -51,42 +51,42 @@ const article: SchemaTypeDefinition = {
       title: "Content",
       of: [
         {
-          type: 'block',
+          type: "block",
           of: [
             {
-              name: 'picture',
-              type: 'picture',
-              title: 'Inline Picture'
-            }
-          ]
+              name: "picture",
+              type: "picture",
+              title: "Inline Picture",
+            },
+          ],
         },
         {
-          type: 'titleCard'
+          type: "titleCard",
         },
         {
-          type: 'picture'
+          type: "picture",
         },
         {
-          type: 'quote'
+          type: "quote",
         },
         {
-          type: 'underline'
+          type: "underline",
         },
         {
-          type: 'dialogue'
+          type: "dialogue",
         },
         {
-          type: 'subtitleCard'
+          type: "subtitleCard",
         },
         {
-          type: 'listItem'
+          type: "listItem",
         },
         {
-          type: 'codeBlock'
-        }
-      ]
-    }
-  ]
+          type: "codeBlock",
+        },
+      ],
+    },
+  ],
 };
 
 export default article;

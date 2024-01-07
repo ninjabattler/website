@@ -16,12 +16,10 @@ const selectNewestArticle = async (db: Pool): Promise<ArticleData | null> => {
     } else {
       return null;
     }
-
-  }
-  catch(err) {
+  } catch (err) {
     console.log(err);
     return err;
   }
-}
+};
 
 export default selectNewestArticle;

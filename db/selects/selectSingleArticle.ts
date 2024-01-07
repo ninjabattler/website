@@ -1,9 +1,13 @@
 import { Pool, QueryResult } from "pg";
 import { ArticleData, TitleType } from "../../types";
 
-const selectSingleArticle = async (db: Pool, title: TitleType): Promise<ArticleData[]> => {
+const selectSingleArticle = async (
+  db: Pool,
+  title: TitleType,
+): Promise<ArticleData[]> => {
   try {
-    const article: QueryResult<ArticleData> = await db.query(`
+    const article: QueryResult<ArticleData> = await db.query(
+      `
     SELECT posts.*, TO_CHAR(posts.date, 'MM, DD, YYYY') as formattedDate, TO_CHAR(posts.date, 'YYYY-MM-DD HH24:MI:SS.MSZ') as date,
     (SELECT COUNT(*) FROM likes WHERE liked = true AND likes.post_id = posts.id) as likes,
     (SELECT COUNT(*) FROM likes WHERE liked = false AND likes.post_id = posts.id) as dislikes,
@@ -45,14 +49,15 @@ const selectSingleArticle = async (db: Pool, title: TitleType): Promise<ArticleD
     FULL OUTER JOIN footnotes ON footnotes.post_id = posts.id
     WHERE lower(posts.title) = $1
     GROUP BY posts.id;
-    `, [title]);
-      // console.log(article.rows[0])
+    `,
+      [title],
+    );
+    // console.log(article.rows[0])
     return article.rows;
-  }
-  catch (err) {
+  } catch (err) {
     console.log(err);
     return err;
   }
-}
+};
 
 export default selectSingleArticle;

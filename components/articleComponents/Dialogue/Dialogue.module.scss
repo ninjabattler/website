@@ -56,7 +56,13 @@
       height: 4.3em;
       position: absolute;
       z-index: -1;
-      mask: linear-gradient(0deg, black 0%, transparent 15%, transparent 85%, black 100%);
+      mask: linear-gradient(
+        0deg,
+        black 0%,
+        transparent 15%,
+        transparent 85%,
+        black 100%
+      );
       content: "";
     }
 
@@ -79,7 +85,11 @@
     padding-right: 4em;
     font-size: 1em;
     color: variables.$darkGray;
-    background-image: linear-gradient(-45deg, transparent calc(0% + 2em), variables.$lightGray calc(0% + 2em));
+    background-image: linear-gradient(
+      -45deg,
+      transparent calc(0% + 2em),
+      variables.$lightGray calc(0% + 2em)
+    );
 
     &::before {
       @include mixins.articlePageGradientShadow;
@@ -88,7 +98,11 @@
       position: absolute;
       left: 0;
       z-index: -1;
-      mask: linear-gradient(-45deg, transparent calc(0% + 2em), black calc(0% + 2em));
+      mask: linear-gradient(
+        -45deg,
+        transparent calc(0% + 2em),
+        black calc(0% + 2em)
+      );
       content: "";
     }
   }
@@ -111,12 +125,20 @@
       padding-left: 4em;
       padding-right: 1em;
       text-align: right;
-      background-image: linear-gradient(45deg, transparent calc(0% + 2em), variables.$lightGray calc(0% + 2em));
+      background-image: linear-gradient(
+        45deg,
+        transparent calc(0% + 2em),
+        variables.$lightGray calc(0% + 2em)
+      );
 
       &::before {
         left: unset;
         right: 0;
-        mask: linear-gradient(45deg, transparent calc(0% + 2em), black calc(0% + 2em));
+        mask: linear-gradient(
+          45deg,
+          transparent calc(0% + 2em),
+          black calc(0% + 2em)
+        );
       }
     }
   }

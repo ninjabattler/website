@@ -181,17 +181,17 @@ $gradientColour: rgba(0, 0, 0, 0.5);
   position: absolute;
   width: 100%;
   height: 100%;
-  background-image: url('/spacebanner.webp');
+  background-image: url("/spacebanner.webp");
   background-size: 100vw;
   background-attachment: fixed;
   background-position: -16vw, 0;
-  mask: url('/titleCardTear.png');
+  mask: url("/titleCardTear.png");
   mask-size: 100% 100%;
   mask-position: center top;
   margin-bottom: -2em;
   filter: grayscale(1);
   z-index: -3;
-  
+
   &.gradient {
     @include mixins.articlePageGradientShadow;
     mix-blend-mode: overlay;

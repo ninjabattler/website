@@ -1,6 +1,6 @@
-import React, { ComponentType } from 'react';
-import { ColourType } from '../../../types';
-import styles from './TerrariaText.module.scss';
+import React, { ComponentType } from "react";
+import { ColourType } from "../../../types";
+import styles from "./TerrariaText.module.scss";
 
 type TerrariaTextProps = {
   text: string;
@@ -10,15 +10,25 @@ type TerrariaTextProps = {
   moonlord?: boolean;
   dog?: boolean;
   scal?: boolean;
-}
+};
 
-const TerrariaText: ComponentType<TerrariaTextProps> = ({ text, colour, draedon, yharim, moonlord, dog, scal }) => (
+const TerrariaText: ComponentType<TerrariaTextProps> = ({
+  text,
+  colour,
+  draedon,
+  yharim,
+  moonlord,
+  dog,
+  scal,
+}) => (
   <span
-    className={`${styles.terrariaText} ${draedon && styles.draedon} ${moonlord && styles.moonlord} ${yharim && styles.yharim} ${dog && styles.dog} ${scal && styles.scal}`}
+    className={`${styles.terrariaText} ${draedon && styles.draedon} ${
+      moonlord && styles.moonlord
+    } ${yharim && styles.yharim} ${dog && styles.dog} ${scal && styles.scal}`}
     style={colour && { color: colour }}
   >
     <b>{text}</b>
   </span>
-)
+);
 
-export default TerrariaText
+export default TerrariaText;

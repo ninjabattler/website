@@ -24,11 +24,10 @@ const selectAllPostsData = async (db: Pool): Promise<PostData[]> => {
     `);
 
     return posts.rows;
-  }
-  catch(err) {
+  } catch (err) {
     console.log(err);
     return err;
   }
-}
+};
 
 export default selectAllPostsData;

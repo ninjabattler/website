@@ -24,14 +24,20 @@
       width: 100%;
       height: 100%;
       position: absolute;
-      mask: linear-gradient(-45deg, transparent 70%, black 100%, transparent 100%);
+      mask: linear-gradient(
+        -45deg,
+        transparent 70%,
+        black 100%,
+        transparent 100%
+      );
       content: "";
     }
 
     &.light {
       width: 107%;
       background-color: variables.$lightGray;
-      transform: rotateY(-5deg) rotateZ(-1deg) translateX(-3.75em) translateY(-2.5em);
+      transform: rotateY(-5deg) rotateZ(-1deg) translateX(-3.75em)
+        translateY(-2.5em);
       transform-origin: left center;
       mask: linear-gradient(
         -45deg,
@@ -53,7 +59,8 @@
       right: 0;
       margin-bottom: 1em;
       background-color: variables.$darkGray;
-      transform: rotateY(-5deg) rotateZ(-1deg) translateX(-120%) translateY(-3em);
+      transform: rotateY(-5deg) rotateZ(-1deg) translateX(-120%)
+        translateY(-3em);
       transform-origin: left center;
       mask: linear-gradient(
         45deg,
@@ -68,10 +75,15 @@
         black 90%,
         transparent 90%
       );
-  
+
       &::before {
         @include mixins.gridPatternDark;
-        mask: linear-gradient(45deg, transparent 75%, black 90%, transparent 90%);
+        mask: linear-gradient(
+          45deg,
+          transparent 75%,
+          black 90%,
+          transparent 90%
+        );
       }
     }
   }
@@ -87,7 +99,7 @@
       mask: url("/titleBar.svg");
       mask-size: 100% variables.$titleCardThickness * 3;
     }
-  
+
     &.top {
       width: 42%;
       height: variables.$titleCardThickness;
@@ -105,7 +117,8 @@
     font-size: 1.5em;
     color: var(--secondary-text);
     cursor: default;
-    transform: rotateY(-5deg) rotateZ(-1deg) translateX(-0em) translateY(-0.75em);
+    transform: rotateY(-5deg) rotateZ(-1deg) translateX(-0em)
+      translateY(-0.75em);
     transform-origin: left center;
 
     &::selection {

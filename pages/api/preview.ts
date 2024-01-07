@@ -4,15 +4,15 @@ export default async function handler(req, res) {
     // let url = "/articles";
 
     // if (search.includes("url=")) {
-      // url = `http://${search.split("url=")[1]}`;
+    // url = `http://${search.split("url=")[1]}`;
     // }
 
-    console.log(url)
+    console.log(url);
 
-    res.setDraftMode({ enable: true })
-    res.redirect(`http://${url}`)
+    res.setDraftMode({ enable: true });
+    res.redirect(`http://${url}`);
   } catch (err) {
-    console.log(err)
-    return res.status(500).send('Error with preview or something')
+    console.log(err);
+    return res.status(500).send("Error with preview or something");
   }
 }

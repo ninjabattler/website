@@ -146,7 +146,8 @@
     }
 
     .quotationMark {
-      transform: rotateZ(0deg) skewX(-20deg) translateX(0.3em) translateY(-0.1em) scale(1.5);
+      transform: rotateZ(0deg) skewX(-20deg) translateX(0.3em)
+        translateY(-0.1em) scale(1.5);
       color: variables.$darkGray;
     }
 

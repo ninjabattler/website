@@ -1,24 +1,29 @@
-import React, { ComponentType } from 'react';
+import React, { ComponentType } from "react";
 import styles from "./LoadingOverlay.module.scss";
-import quotes from '../../constants/loadingOverlayQuotes.json';
+import quotes from "../../constants/loadingOverlayQuotes.json";
 
 type LoadingOverlayProps = {
   shrink?: boolean;
   quoteIndex: number;
-}
+};
 
-const LoadingOverlay: ComponentType<LoadingOverlayProps> = ({ shrink, quoteIndex }) => (
+const LoadingOverlay: ComponentType<LoadingOverlayProps> = ({
+  shrink,
+  quoteIndex,
+}) => (
   <div id={styles.loadingOverlay} className={shrink && styles.shrink}>
-    <div id={styles.backgroundFilter}/>
-    <img src='/Ninja placeholder.png' alt='logo' />
+    <div id={styles.backgroundFilter} />
+    <img src="/Ninja placeholder.png" alt="logo" />
 
     <h1>Loading...</h1>
 
     <section id={styles.quoteSection}>
-      <p>&quot; <i>{quotes[quoteIndex].quote}</i> &quot;</p>
+      <p>
+        &quot; <i>{quotes[quoteIndex].quote}</i> &quot;
+      </p>
       <span>{quotes[quoteIndex].source}</span>
     </section>
   </div>
-)
+);
 
-export default LoadingOverlay
+export default LoadingOverlay;

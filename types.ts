@@ -10,13 +10,27 @@ export type GenreType = string;
 export type CategoryType = string;
 export type ContentType = string;
 export type CommentIdType = number;
-export type WindowServerType = (Window & typeof globalThis) | { innerWidth?: number; location?: string; };
-export type PostCommentType = CommentData & UserData & { formatteddate?: string };
+export type WindowServerType =
+  | (Window & typeof globalThis)
+  | { innerWidth?: number; location?: string };
+export type PostCommentType = CommentData &
+  UserData & { formatteddate?: string };
 export type IpType = string | null;
 export type ArticleJsonItemType = string;
 export type ArticleJsonItemContent = string;
-export type ArticleJson = (ParagraphItem | TitleCardItem | PictureItem | QuoteItem | ArticleList | CodeBlockItem | DialogueItem | SubtitleCardItem | HtmlItem | SpoilerItem)[];
-export type PictureFloat = 'Left' | 'Right';
+export type ArticleJson = (
+  | ParagraphItem
+  | TitleCardItem
+  | PictureItem
+  | QuoteItem
+  | ArticleList
+  | CodeBlockItem
+  | DialogueItem
+  | SubtitleCardItem
+  | HtmlItem
+  | SpoilerItem
+)[];
+export type PictureFloat = "Left" | "Right";
 
 export interface Footnote {
   title: TitleType;
@@ -33,8 +47,15 @@ export interface ArticleJsonItem {
 }
 
 export interface AnimTextItem {
-  type: 'FireText' | 'ThunderText' | 'IceText' | 'EarthText' | 'MetalHeadText' | 'RegexText' | 'TerrariaText';
-  content: ArticleJsonItemContent
+  type:
+    | "FireText"
+    | "ThunderText"
+    | "IceText"
+    | "EarthText"
+    | "MetalHeadText"
+    | "RegexText"
+    | "TerrariaText";
+  content: ArticleJsonItemContent;
   colour?: ColourType;
   draedon?: boolean;
   yharim?: boolean;
@@ -87,11 +108,11 @@ export interface QuoteItem extends ArticleJsonItem {
 }
 
 export interface PictureItem extends ArticleJsonItem {
-  type: 'Picture';
+  type: "Picture";
   imageSrc: UrlType;
   pageColour?: ColourType;
   width?: string;
-  float?: 'left' | 'right';
+  float?: "left" | "right";
 }
 
 export interface TitleCardItem extends ArticleJsonItem {
@@ -101,7 +122,12 @@ export interface TitleCardItem extends ArticleJsonItem {
 }
 
 export interface ParagraphItem extends ArticleJsonItem {
-  content: (ArticleJsonItemContent | AnimTextItem | PictureItem | SpoilerItem)[];
+  content: (
+    | ArticleJsonItemContent
+    | AnimTextItem
+    | PictureItem
+    | SpoilerItem
+  )[];
 }
 
 export interface AppData {
@@ -126,11 +152,11 @@ export interface ArticleData {
   review: boolean;
   colors: {
     primary: {
-      hex: ColourType
-    },
+      hex: ColourType;
+    };
     secondary: {
-      hex: ColourType
-    }
+      hex: ColourType;
+    };
   };
   content: TypedObject[];
   category: CategoryType;

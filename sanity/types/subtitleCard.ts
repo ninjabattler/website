@@ -8,13 +8,14 @@ export const subtitleCard = defineType({
   title: "Subtitle Card",
   name: "subtitleCard",
   type: "object",
-  description: "A smaller banner that optionally includes an image to display above the title, used mainly to denote a new sub section in an article",
+  description:
+    "A smaller banner that optionally includes an image to display above the title, used mainly to denote a new sub section in an article",
   fields: [
     {
       name: "title",
       type: "string",
       title: "Title",
-      description: "The title displayed on the subtitle card"
+      description: "The title displayed on the subtitle card",
     },
     {
       name: "banner",
@@ -26,9 +27,10 @@ export const subtitleCard = defineType({
           name: "lowerImage",
           type: "boolean",
           title: "Lower Image",
-          description: "Will lower the image to appear behind the title but not below the card itself"
-        }
-      ]
+          description:
+            "Will lower the image to appear behind the title but not below the card itself",
+        },
+      ],
     },
-  ]
+  ],
 });

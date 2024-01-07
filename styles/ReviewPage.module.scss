@@ -99,7 +99,13 @@
     mix-blend-mode: darken;
     opacity: 0.3;
     filter: invert(1);
-    mask: linear-gradient(90deg, black 0%, transparent 10%, transparent 90%, black 100%);
+    mask: linear-gradient(
+      90deg,
+      black 0%,
+      transparent 10%,
+      transparent 90%,
+      black 100%
+    );
 
     @media only screen and (max-width: 425px) {
       background-size: 30%;
@@ -130,7 +136,8 @@
     font-size: 1em;
     overflow-x: hidden;
     border-left: none;
-    filter: drop-shadow(1vw 0 0 var(--article-colour)) drop-shadow(-1vw 0 0 var(--article-colour))
+    filter: drop-shadow(1vw 0 0 var(--article-colour))
+      drop-shadow(-1vw 0 0 var(--article-colour))
       drop-shadow(0 0.65vw 1vw black);
   }
 }

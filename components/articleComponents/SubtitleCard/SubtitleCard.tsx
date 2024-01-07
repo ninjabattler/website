@@ -1,4 +1,4 @@
-import React, { ComponentType } from 'react';
+import React, { ComponentType } from "react";
 import styles from "./SubtitleCard.module.scss";
 
 type SubtitleCardProps = {
@@ -9,14 +9,22 @@ type SubtitleCardProps = {
   smaller?: boolean;
   extraSmaller?: boolean;
   title: string;
-}
+};
 
-const SubtitleCard: ComponentType<SubtitleCardProps> = ({ imageSrc, inverse, lower, higher, smaller, extraSmaller, title }) => (
-  <div className={`${styles.bossCard} ${inverse ? styles.inverse : ''}`}>
+const SubtitleCard: ComponentType<SubtitleCardProps> = ({
+  imageSrc,
+  inverse,
+  lower,
+  higher,
+  smaller,
+  extraSmaller,
+  title,
+}) => (
+  <div className={`${styles.bossCard} ${inverse ? styles.inverse : ""}`}>
     <div className={styles.space} />
     <div className={`${styles.space} ${styles.gradient}`} />
 
-    <div className={styles.background2}/>
+    <div className={styles.background2} />
 
     <div className={styles.background1}>
       <div />
@@ -27,22 +35,26 @@ const SubtitleCard: ComponentType<SubtitleCardProps> = ({ imageSrc, inverse, low
       <div className={styles.sketch} />
     </div>
 
-    <div className={styles.background4}/>
+    <div className={styles.background4} />
 
-    {imageSrc ?
-      (<div className={`${styles.imageContainer} ${lower && styles.lower} ${higher && styles.higher}`} >
+    {imageSrc ? (
+      <div
+        className={`${styles.imageContainer} ${lower && styles.lower} ${
+          higher && styles.higher
+        }`}
+      >
         <img
-          className={`${smaller && styles.smaller} ${extraSmaller && styles.extraSmaller}`}
-          src={imageSrc.replace('http://', 'https://')}
-          alt='header image'
+          className={`${smaller && styles.smaller} ${
+            extraSmaller && styles.extraSmaller
+          }`}
+          src={imageSrc.replace("http://", "https://")}
+          alt="header image"
         />
-      </div>)
-      :
-      (null)
-    }
+      </div>
+    ) : null}
 
     <h2 id={title}>{title}</h2>
   </div>
-)
+);
 
-export default SubtitleCard
+export default SubtitleCard;

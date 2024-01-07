@@ -49,12 +49,22 @@ $gradientColor: rgba(0, 0, 0, 0.5);
     mix-blend-mode: overlay;
     opacity: 0.25;
     filter: invert(1);
-    mask: linear-gradient(-45deg, transparent 7.5%, black 7.5%, transparent 15%);
+    mask: linear-gradient(
+      -45deg,
+      transparent 7.5%,
+      black 7.5%,
+      transparent 15%
+    );
 
     @media only screen and (max-width: 425px) {
       background-size: 20%;
       opacity: 0.35;
-      mask: linear-gradient(-45deg, transparent 14.2%, black 14.2%, transparent 20%);
+      mask: linear-gradient(
+        -45deg,
+        transparent 14.2%,
+        black 14.2%,
+        transparent 20%
+      );
     }
   }
 
@@ -140,7 +150,11 @@ $gradientColor: rgba(0, 0, 0, 0.5);
   mask: linear-gradient(45deg, black 91.5%, transparent 91.5%);
   animation: barSlideInC 2.8s cubic-bezier(0.075, 0.82, 0.165, 1.05);
   background-color: transparent;
-  background-image: linear-gradient(45deg, var(--article-colour) 65%, var(--article-colour2) 100%);
+  background-image: linear-gradient(
+    45deg,
+    var(--article-colour) 65%,
+    var(--article-colour2) 100%
+  );
 
   @media only screen and (max-width: 425px) {
     width: calc(98% + 0.5em);
@@ -152,7 +166,9 @@ $gradientColor: rgba(0, 0, 0, 0.5);
 }
 
 .barGlow {
-  animation: barSlideInC 2.8s cubic-bezier(0.075, 0.82, 0.165, 1.05), glow 3s linear 2.8s infinite;
+  animation:
+    barSlideInC 2.8s cubic-bezier(0.075, 0.82, 0.165, 1.05),
+    glow 3s linear 2.8s infinite;
 }
 
 .videoHeader > h1 {
@@ -260,13 +276,16 @@ $gradientColor: rgba(0, 0, 0, 0.5);
 
 @keyframes barSlideIn2 {
   0% {
-    transform: rotateY(20deg) rotateZ(2deg) translateX(-101.5vw) translateY(-2vh);
+    transform: rotateY(20deg) rotateZ(2deg) translateX(-101.5vw)
+      translateY(-2vh);
   }
   10% {
-    transform: rotateY(20deg) rotateZ(2deg) translateX(-101.5vw) translateY(-2vh);
+    transform: rotateY(20deg) rotateZ(2deg) translateX(-101.5vw)
+      translateY(-2vh);
   }
   30% {
-    transform: rotateY(20deg) rotateZ(2deg) translateX(-101.5vw) translateY(-2vh);
+    transform: rotateY(20deg) rotateZ(2deg) translateX(-101.5vw)
+      translateY(-2vh);
   }
   100% {
     transform: rotateY(5deg) rotateZ(2deg) translateX(5.5vw) translateY(-2vh);
@@ -275,13 +294,16 @@ $gradientColor: rgba(0, 0, 0, 0.5);
 
 @keyframes infoBarSlideIn {
   0% {
-    transform: rotateY(20deg) rotateZ(2deg) translateX(-101vw) translateY(-1.4vh);
+    transform: rotateY(20deg) rotateZ(2deg) translateX(-101vw)
+      translateY(-1.4vh);
   }
   10% {
-    transform: rotateY(20deg) rotateZ(2deg) translateX(-101vw) translateY(-1.4vh);
+    transform: rotateY(20deg) rotateZ(2deg) translateX(-101vw)
+      translateY(-1.4vh);
   }
   50% {
-    transform: rotateY(20deg) rotateZ(2deg) translateX(-101vw) translateY(-1.4vh);
+    transform: rotateY(20deg) rotateZ(2deg) translateX(-101vw)
+      translateY(-1.4vh);
   }
   100% {
     transform: rotateY(5deg) rotateZ(2deg) translateX(6vw) translateY(-1.4vh);
@@ -291,19 +313,23 @@ $gradientColor: rgba(0, 0, 0, 0.5);
 @keyframes barSlideInC {
   0% {
     background-color: var(--light-gray);
-    transform: rotateY(20deg) rotateZ(2deg) translateX(-101.5vw) translateY(-3vh);
+    transform: rotateY(20deg) rotateZ(2deg) translateX(-101.5vw)
+      translateY(-3vh);
   }
   10% {
     background-color: var(--light-gray);
-    transform: rotateY(20deg) rotateZ(2deg) translateX(-101.5vw) translateY(-3vh);
+    transform: rotateY(20deg) rotateZ(2deg) translateX(-101.5vw)
+      translateY(-3vh);
   }
   60% {
     background-color: var(--light-gray);
-    transform: rotateY(5deg) rotateZ(2deg) translateX(calc(5.5vw - 1.5%)) translateY(-3vh);
+    transform: rotateY(5deg) rotateZ(2deg) translateX(calc(5.5vw - 1.5%))
+      translateY(-3vh);
   }
   65% {
     background-color: var(--light-gray);
-    transform: rotateY(5deg) rotateZ(2deg) translateX(calc(5.5vw - 1.5%)) translateY(-3vh);
+    transform: rotateY(5deg) rotateZ(2deg) translateX(calc(5.5vw - 1.5%))
+      translateY(-3vh);
   }
   100% {
     background-color: transparent;

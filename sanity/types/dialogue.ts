@@ -8,7 +8,8 @@ export const dialogue = defineType({
   title: "Dialogue",
   name: "dialogue",
   type: "object",
-  description: "A text box with a name/title and image, similar to text boxes in rpg's, used for longer quotes/disclaimers",
+  description:
+    "A text box with a name/title and image, similar to text boxes in rpg's, used for longer quotes/disclaimers",
   fields: [
     {
       name: "dialogue",
@@ -34,6 +35,6 @@ export const dialogue = defineType({
       title: "Invert",
       initialValue: false,
       description: "Swaps the portrait/speaker to the right",
-    }
-  ]
+    },
+  ],
 });

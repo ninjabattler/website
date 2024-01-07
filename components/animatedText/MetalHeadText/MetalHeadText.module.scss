@@ -10,7 +10,9 @@
   background-clip: text;
   font-size: 1em;
   font-family: "Black Ops One";
-  filter: drop-shadow(1px 1px 0px var(--dark-gray)) drop-shadow(1px 1px 0px rgb(97, 107, 91))
-    drop-shadow(-1px 1px 0px rgb(97, 107, 91)) drop-shadow(-1px -1px 0px rgb(97, 107, 91))
+  filter: drop-shadow(1px 1px 0px var(--dark-gray))
+    drop-shadow(1px 1px 0px rgb(97, 107, 91))
+    drop-shadow(-1px 1px 0px rgb(97, 107, 91))
+    drop-shadow(-1px -1px 0px rgb(97, 107, 91))
     drop-shadow(1px -1px 0px rgb(97, 107, 91));
 }

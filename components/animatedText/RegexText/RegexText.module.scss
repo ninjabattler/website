@@ -13,12 +13,24 @@ $regexGlow2: #285528;
 
 @keyframes regexGlow {
   0% {
-    text-shadow: -0.15vw -0.15vw -0.16vw $regexGlow1, 0.15vw -0.15vw -0.32vw $regexGlow2, 0.15vw 0.15vw -0.16vw $regexGlow1, 0.15vw -0.15vw -0.32vw $regexGlow2;
+    text-shadow:
+      -0.15vw -0.15vw -0.16vw $regexGlow1,
+      0.15vw -0.15vw -0.32vw $regexGlow2,
+      0.15vw 0.15vw -0.16vw $regexGlow1,
+      0.15vw -0.15vw -0.32vw $regexGlow2;
   }
   50% {
-    text-shadow: 0.2vw 0.15vw 0.4vw $regexGlow1, -0.2vw 0.15vw 0.2vw $regexGlow2, -0.2vw -0.15vw 0.4vw $regexGlow1, -0.2vw 0.15vw 0.2vw $regexGlow2;
+    text-shadow:
+      0.2vw 0.15vw 0.4vw $regexGlow1,
+      -0.2vw 0.15vw 0.2vw $regexGlow2,
+      -0.2vw -0.15vw 0.4vw $regexGlow1,
+      -0.2vw 0.15vw 0.2vw $regexGlow2;
   }
   100% {
-    text-shadow: -0.15vw -0.15vw -0.16vw $regexGlow1, 0.15vw -0.15vw -0.32vw $regexGlow2, 0.15vw 0.15vw -0.16vw $regexGlow1, 0.15vw -0.15vw -0.32vw $regexGlow2;
+    text-shadow:
+      -0.15vw -0.15vw -0.16vw $regexGlow1,
+      0.15vw -0.15vw -0.32vw $regexGlow2,
+      0.15vw 0.15vw -0.16vw $regexGlow1,
+      0.15vw -0.15vw -0.32vw $regexGlow2;
   }
 }

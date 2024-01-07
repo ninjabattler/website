@@ -1,10 +1,17 @@
-import db from '../../db/db';
-import selectSingleArticle from '../../db/selects/selectSingleArticle';
-import noCommentMessages from '../../constants/noCommentMessages.json';
-import { ArticleData, ArticleJson, IpType, UrlType, UserData, UserIdType } from '../../types';
-import { GetServerSidePropsContext } from 'next';
-import { groq } from 'next-sanity';
-import { client } from '../../sanity/lib/client';
+import db from "../../db/db";
+import selectSingleArticle from "../../db/selects/selectSingleArticle";
+import noCommentMessages from "../../constants/noCommentMessages.json";
+import {
+  ArticleData,
+  ArticleJson,
+  IpType,
+  UrlType,
+  UserData,
+  UserIdType,
+} from "../../types";
+import { GetServerSidePropsContext } from "next";
+import { groq } from "next-sanity";
+import { client } from "../../sanity/lib/client";
 import { getCachedClient } from "../../sanity/lib/getClient";
 
 export type ArticleServerSideData = {
@@ -18,14 +25,21 @@ export type ArticleServerSideData = {
     edit: boolean;
     jsonLocation?: string;
   };
-  notFound?: boolean
-}
+  notFound?: boolean;
+};
 
-export const articlePageServerSideProps = async ({ req, query, params, draftMode }: GetServerSidePropsContext): Promise<ArticleServerSideData> => {
-  const randomQuoteIndex: number = Math.floor(Math.random() * noCommentMessages.length);
+export const articlePageServerSideProps = async ({
+  req,
+  query,
+  params,
+  draftMode,
+}: GetServerSidePropsContext): Promise<ArticleServerSideData> => {
+  const randomQuoteIndex: number = Math.floor(
+    Math.random() * noCommentMessages.length,
+  );
   const title: string = query.title as string;
-  const articleTitle: string = title.replace(/(_|-)/g, ' ');
-  
+  const articleTitle: string = title.replace(/(_|-)/g, " ");
+
   const preview = draftMode
     ? { token: process.env.SANITY_API_READ_TOKEN }
     : undefined;
@@ -155,18 +169,18 @@ export const articlePageServerSideProps = async ({ req, query, params, draftMode
     return {
       props: { edit: false },
       notFound: true,
-    }
+    };
   }
 
   return {
     props: {
-      articleData: {...article, likes: 0, dislikes: 0},
+      articleData: { ...article, likes: 0, dislikes: 0 },
       userId: -1,
       liked,
       disliked,
       url: `https://ninjabattler.ca/articles/${params.title}`,
       randomQuoteIndex,
-      edit: false
-    }
-  }
+      edit: false,
+    },
+  };
 };

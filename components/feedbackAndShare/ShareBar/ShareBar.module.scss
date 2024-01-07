@@ -38,7 +38,9 @@
   align-items: center;
 
   svg {
-    transition: color 0.2s, transform 0.2s;
+    transition:
+      color 0.2s,
+      transform 0.2s;
   }
 
   &:hover {

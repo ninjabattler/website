@@ -19,11 +19,10 @@ const selectAllArticles = async (db: Pool): Promise<ArticleData[]> => {
     `);
 
     return posts.rows;
-  }
-  catch(err) {
+  } catch (err) {
     console.log(err);
     return err;
   }
-}
+};
 
 export default selectAllArticles;

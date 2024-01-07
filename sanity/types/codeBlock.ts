@@ -14,19 +14,19 @@ export const codeBlock = defineType({
       name: "code",
       type: "text",
       title: "Code",
-      description: "The code..."
+      description: "The code...",
     },
     {
       name: "language",
       type: "string",
       title: "Language",
-      description: "The language used to display the code's format"
+      description: "The language used to display the code's format",
     },
     {
       name: "title",
       type: "string",
       title: "Title",
-      description: "An optional title to display on the code block"
-    }
-  ]
+      description: "An optional title to display on the code block",
+    },
+  ],
 });

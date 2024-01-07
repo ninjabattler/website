@@ -17,7 +17,9 @@
   cursor: pointer;
   overflow: hidden;
   animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
-  transition: filter 0.3s, margin 0.3s;
+  transition:
+    filter 0.3s,
+    margin 0.3s;
 
   @media only screen and (max-device-width: 425px) {
     width: 94vw;
