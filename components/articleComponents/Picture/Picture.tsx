@@ -28,8 +28,12 @@ const Picture: FC<PictureProps> = ({
   source,
   sourceLink,
 }) => {
-  const floatLeft = width < CONSTANTS.PICTURE_MAX_WIDTH && float === CONSTANTS.PICTURE_FLOAT.LEFT;
-  const floatRight = width < CONSTANTS.PICTURE_MAX_WIDTH && float === CONSTANTS.PICTURE_FLOAT.RIGHT;
+  const floatLeft =
+    width < CONSTANTS.PICTURE_MAX_WIDTH &&
+    float === CONSTANTS.PICTURE_FLOAT.LEFT;
+  const floatRight =
+    width < CONSTANTS.PICTURE_MAX_WIDTH &&
+    float === CONSTANTS.PICTURE_FLOAT.RIGHT;
 
   return (
     <figure
