@@ -2,10 +2,7 @@ import React, { FC } from "react";
 import styles from "./Picture.module.scss";
 import Image from "next/image";
 import { PictureFloat, SanityImage } from "../../../types";
-import {
-  PICTURE_MAX_WIDTH,
-  PICTURE_FLOAT,
-} from "../../../helpers/constants.json";
+import CONSTANTS from "../../../helpers/constants.json";
 
 type PictureProps = {
   picture: SanityImage;
@@ -31,8 +28,8 @@ const Picture: FC<PictureProps> = ({
   source,
   sourceLink,
 }) => {
-  const floatLeft = width < PICTURE_MAX_WIDTH && float === PICTURE_FLOAT.LEFT;
-  const floatRight = width < PICTURE_MAX_WIDTH && float === PICTURE_FLOAT.RIGHT;
+  const floatLeft = width < CONSTANTS.PICTURE_MAX_WIDTH && float === CONSTANTS.PICTURE_FLOAT.LEFT;
+  const floatRight = width < CONSTANTS.PICTURE_MAX_WIDTH && float === CONSTANTS.PICTURE_FLOAT.RIGHT;
 
   return (
     <figure

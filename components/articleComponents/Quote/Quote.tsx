@@ -7,6 +7,13 @@ type QuoteProps = {
   mergeAbove?: boolean;
 };
 
+/**
+ * A quotation with a source that merges with the above component if it is a picture or title card
+ * @author Ninjabattler
+ * @param quote The quote to display
+ * @param source The source of the quote
+ * @param mergeAbove An optional value that makes the quote merge better with the component above it
+ */
 const Quote: ComponentType<QuoteProps> = ({ quote, source, mergeAbove }) => (
   <div className={`${styles.quote} ${mergeAbove ? styles.mergeAbove : ""}`}>
     <div className={styles.quoteContainer}>

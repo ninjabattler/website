@@ -48,7 +48,8 @@
   .quoteContainer {
     width: 85%;
     height: 3em;
-    padding-left: 1em;
+    margin-left: -1em;
+    padding-left: 2em;
     left: 0;
     border-top: variables.$borderThinBlack;
     border-bottom: variables.$borderThinBlack;
@@ -83,7 +84,7 @@
     }
 
     &::before {
-      @include mixins.gridPatternDark;
+      @include mixins.gridPatternLight;
       font-size: 1.5em;
       width: 100%;
       height: 100%;
@@ -118,12 +119,11 @@
     @include mixins.russoFont;
     width: fit-content;
     height: fit-content;
-    padding-left: 1em;
+    margin-top: 0.5em;
+    padding-left: 2em;
     padding-right: 3em;
     padding-top: 3em;
-    margin: 0;
-    margin-top: 0.5em;
-    left: 0;
+    left: -1em;
     display: flex;
     align-items: center;
     background-color: variables.$darkGray;
@@ -140,7 +140,7 @@
     &.glow {
       @include mixins.articlePageGradientShadow;
       margin-top: 1em;
-      padding-left: 1.25em;
+      padding-left: 2.25em;
       border: none;
       z-index: -3;
     }

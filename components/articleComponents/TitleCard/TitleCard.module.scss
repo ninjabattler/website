@@ -20,7 +20,7 @@
     border-bottom: variables.$borderThinBlack;
 
     &::before {
-      @include mixins.gridPatternDark;
+      @include mixins.gridPatternLight;
       width: 100%;
       height: 100%;
       position: absolute;
