@@ -242,7 +242,7 @@ export default function ArticlePage({
                       return (
                         <SubtitleCard
                           title={value.title}
-                          imageSrc={value.banner ? value.banner.url : ""}
+                          image={value.banner}
                         />
                       );
                     },

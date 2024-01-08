@@ -1,4 +1,4 @@
-import React, { ComponentType } from "react";
+import React, { FC } from "react";
 import styles from "./Quote.module.scss";
 
 type QuoteProps = {
@@ -14,7 +14,7 @@ type QuoteProps = {
  * @param source The source of the quote
  * @param mergeAbove An optional value that makes the quote merge better with the component above it
  */
-const Quote: ComponentType<QuoteProps> = ({ quote, source, mergeAbove }) => (
+const Quote: FC<QuoteProps> = ({ quote, source, mergeAbove }) => (
   <div className={`${styles.quote} ${mergeAbove ? styles.mergeAbove : ""}`}>
     <div className={styles.quoteContainer}>
       <span className={styles.quotationMark} />

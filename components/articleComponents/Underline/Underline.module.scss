@@ -1,7 +1,9 @@
+@use "/styles/_variables" as variables;
+
 .underline {
   border-left: 0.25em solid transparent;
   border-right: 0.25em solid transparent;
-  border-bottom: 0.25em solid var(--light-gray);
+  border-bottom: 0.25em solid variables.$lightGray;
   width: 85%;
   margin-left: auto;
   margin-right: auto;
