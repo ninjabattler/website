@@ -17,7 +17,6 @@ type QuoteProps = {
 const Quote: FC<QuoteProps> = ({ quote, source, mergeAbove }) => (
   <div className={`${styles.quote} ${mergeAbove ? styles.mergeAbove : ""}`}>
     <div className={styles.quoteContainer}>
-      <span className={styles.quotationMark} />
       <p>
         <span>{quote}</span>
       </p>

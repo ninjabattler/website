@@ -23,8 +23,8 @@
   }
 
   .space {
-    @include mixins.articlePageSpaceCutout;
-    mask-position: center top;
+    @include mixins.articlePageSpaceCutout(-1deg);
+    mask-size: 200%;
   }
 
   img {

@@ -140,7 +140,7 @@
   }
 
   .space {
-    @include mixins.articlePageSpaceCutout;
+    @include mixins.articlePageSpaceCutout(-1deg, -15%);
     height: 100%;
     mask-position: center top;
     mask-size: 100% 100%;
@@ -148,7 +148,7 @@
 
   &.coverBelow {
     .space {
-      mask-size: 110%;
+      mask-size: 100%;
     }
   }
 }

@@ -36,7 +36,7 @@
   }
 }
 
-@mixin articlePageSpaceCutout {
+@mixin articlePageSpaceCutout($maskRotation: 1deg, $maskOffset: 0%) {
   position: absolute;
   width: 100%;
   height: 50%;
@@ -44,8 +44,15 @@
   background-size: 100vw;
   background-attachment: fixed;
   background-position: -16vw, 0;
-  mask: url("/titleCardTear.png");
+  mask: linear-gradient(
+    $maskRotation,
+    transparent calc(9% + $maskOffset),
+    black calc(10% + $maskOffset),
+    black calc(90% + $maskOffset),
+    transparent calc(91% + $maskOffset)
+  );
   mask-size: 100%;
+  mask-repeat: no-repeat;
   filter: grayscale(1);
   z-index: -2;
 
