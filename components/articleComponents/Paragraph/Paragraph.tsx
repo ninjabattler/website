@@ -33,6 +33,13 @@ const Paragraph: ComponentType<ParagraphProps> = ({ content }) => (
               />
             );
           },
+          spoiler: ({ value }) => {
+            return (
+              <Spoiler 
+                text={value.content}
+              />
+            );
+          },
         },
       }}
     />

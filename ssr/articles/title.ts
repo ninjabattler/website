@@ -66,6 +66,7 @@ export const articlePageServerSideProps = async ({
           _type != "picture" => {
             marks,
             text,
+            content,
           },
           _type == "picture" => {
             scale,

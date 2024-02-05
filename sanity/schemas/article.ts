@@ -58,6 +58,10 @@ const article: SchemaTypeDefinition = {
               type: "picture",
               title: "Inline Picture",
             },
+            {
+              name: "spoiler",
+              type: "spoiler",
+            },
           ],
         },
         {

@@ -8,6 +8,7 @@ import { listItem } from "./types/listItem";
 import { codeBlock } from "./types/codeBlock";
 import { subtitleCard } from "./types/subtitleCard";
 import { picture } from "./types/picture";
+import { spoiler } from "./types/spoiler";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -20,5 +21,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     listItem,
     codeBlock,
     picture,
+    spoiler
   ],
 };
