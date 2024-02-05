@@ -5,7 +5,6 @@ type SpoilerProps = {
   text: string;
 };
 
-
 /**
  * A line of text that's hidden until a user clicks on it
  * @author Ninjabattler

@@ -1,45 +1,46 @@
+@use "/styles/_variables" as variables;
+
 .paragraph {
-  color: var(--primary-text);
+  color: variables.$primaryText;
   width: 80%;
   margin-left: 10%;
   margin-bottom: 0.3em;
   margin-top: 0.3em;
   font-size: 0.9em;
-}
 
-.paragraph > p {
-  font-weight: 100;
-  line-height: 1.2em;
+  p {
+    font-weight: 100;
+    line-height: 1.2em;
 
-  * {
-    &::selection {
-      color: var(--dark-gray);
-      background-color: var(--article-colour);
+    * {
+      &::selection {
+        color: variables.$darkGray;
+        background-color: var(--article-colour);
+      }
+    }
+
+    a,
+    sup {
+      color: var(--article-colour) !important;
+
+      &:hover {
+        text-decoration: underline dashed;
+      }
+    }
+
+    em {
+      color: variables.$primaryText;
+      filter: brightness(1.2);
+    }
+
+    strong {
+      color: variables.$primaryText;
+      opacity: 1;
+      filter: brightness(0.8);
+    }
+
+    sup {
+      font-size: 0.6em;
     }
   }
-}
-
-.paragraph > p > span > a,
-.paragraph > p > span > sup > a {
-  color: var(--article-colour) !important;
-
-  &:hover {
-    text-decoration: underline dashed;
-  }
-}
-
-.paragraph > p > span > em {
-  color: var(--primary-text);
-  filter: brightness(1.2);
-}
-
-.paragraph > p > span > strong {
-  color: var(--primary-text);
-  opacity: 0.7;
-  filter: drop-shadow(1px 1px 0px black) drop-shadow(-1px -1px 0px black)
-    drop-shadow(1px -1px 0px black) drop-shadow(-1px 1px 0px black);
-}
-
-.paragraph > p > span > sup {
-  font-size: 0.6em;
 }

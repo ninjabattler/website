@@ -8,8 +8,7 @@ export const spoiler = defineType({
   title: "Spoiler",
   name: "spoiler",
   type: "object",
-  description:
-    "A line of text that is hidden until the user clicks on it",
+  description: "A line of text that is hidden until the user clicks on it",
   fields: [
     {
       title: "Content",
