@@ -1,0 +1,66 @@
+@use "/styles/_mixins" as mixins;
+@use "/styles/_variables" as variables;
+
+#commentPanel {
+  width: 30%;
+  height: 70vh;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2em;
+  top: 8em;
+  position: sticky;
+  background-color: variables.$darkGray;
+  animation-name: commentPanelFadeIn;
+  animation-timing-function: linear;
+  animation-duration: 1.25s;
+
+  #noCommentMessage {
+    margin: 0;
+    padding: 0.5em;
+    padding-top: 0;
+    font-size: 0.75em;
+    color: variables.$lightGray;
+    opacity: 0.8;
+    cursor: default;
+  }
+
+  .comments {
+    @include mixins.lightScrollBar;
+    width: calc(100%);
+    height: calc(100% - 4.5em);
+    border-left: 0.1em solid variables.$lightGray;
+    border-right: 0.1em solid variables.$lightGray;
+    overflow-y: scroll;
+    animation-name: commentsFadeIn;
+    animation-timing-function: linear;
+    animation-duration: 1.875s;
+
+    &::-webkit-scrollbar {
+      width: 0.2em;
+    }
+  }
+}
+
+@keyframes commentPanelFadeIn {
+  0% {
+    height: 0vh;
+  }
+  66% {
+    height: 0vh;
+  }
+  100% {
+    height: 70vh;
+  }
+}
+
+@keyframes commentsFadeIn {
+  0% {
+    height: 0%;
+  }
+  66% {
+    height: 0%;
+  }
+  100% {
+    height: 70%;
+  }
+}

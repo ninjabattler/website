@@ -68,7 +68,7 @@
   }
 }
 
-@mixin darkScollBar {
+@mixin darkScrollBar {
   &::-webkit-scrollbar {
     width: 0.5rem;
     background: variables.$darkGray;
@@ -83,7 +83,7 @@
   }
 }
 
-@mixin lightScollBar {
+@mixin lightScrollBar {
   &::-webkit-scrollbar {
     width: 0.7em;
     background: variables.$lightGray;

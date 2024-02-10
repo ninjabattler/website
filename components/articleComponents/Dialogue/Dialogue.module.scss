@@ -68,7 +68,7 @@
     }
 
     p {
-      @include mixins.darkScollBar;
+      @include mixins.darkScrollBar;
       width: calc(100% - 0.6em);
       height: 100%;
       margin: 0;
