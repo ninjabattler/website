@@ -3,13 +3,14 @@
 
 #commentPanel {
   width: 30%;
-  height: 70vh;
+  height: calc(100vh - 5.25em);
   margin-left: auto;
   margin-right: auto;
   margin-top: 2em;
-  top: 8em;
+  top: 3.5em;
   position: sticky;
-  background-color: variables.$darkGray;
+  display: flex;
+  flex-direction: column;
   animation-name: commentPanelFadeIn;
   animation-timing-function: linear;
   animation-duration: 1.25s;
@@ -27,10 +28,12 @@
   .comments {
     @include mixins.lightScrollBar;
     width: calc(100%);
-    height: calc(100% - 4.5em);
+    height: auto;
     border-left: 0.1em solid variables.$lightGray;
     border-right: 0.1em solid variables.$lightGray;
+    background-color: variables.$darkGray;
     overflow-y: scroll;
+    flex-grow: 1;
     animation-name: commentsFadeIn;
     animation-timing-function: linear;
     animation-duration: 1.875s;

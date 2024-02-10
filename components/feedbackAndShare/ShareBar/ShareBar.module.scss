@@ -1,10 +1,9 @@
 #shareBar {
-  position: absolute;
   height: 2.7vw;
   background-color: var(--dark-gray);
   margin-left: auto;
   margin-right: auto;
-  margin-top: -3.55vw;
+  margin-bottom: 0.5em;
   width: 100%;
   display: flex;
   overflow: hidden;
@@ -19,6 +18,7 @@
     margin-top: -12.5vw;
   }
 }
+
 #shareBar > div {
   width: 100%;
   color: var(--light-gray);

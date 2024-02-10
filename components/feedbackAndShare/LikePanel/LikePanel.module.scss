@@ -1,10 +1,9 @@
 .likePanel {
-  position: absolute;
   height: 2.7vw;
   background-color: var(--dark-gray);
-  margin-top: -7.1vw;
   width: 100%;
   display: flex;
+  margin-bottom: 0.5em;
   justify-content: space-between;
   border-left: 0.1em solid var(--light-gray);
   border-right: 0.1em solid var(--light-gray);

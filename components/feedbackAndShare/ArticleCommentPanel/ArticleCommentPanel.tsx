@@ -22,6 +22,12 @@ export type ArticleCommentPanelProps = {
 /**
  * A side panel used for displaying and creating comments
  * @author Ninjabattler
+ * @param articleData The article data fetched from Sanity
+ * @param liked Whether or not the current user has liked the article
+ * @param disliked Whether or not the current user has disliked the article
+ * @param userId The id of the current user
+ * @param url The url of the article
+ * @param randomQuoteIndex A random number for the no comment message
  */
 const ArticleCommentPanel: FC<ArticleCommentPanelProps> = ({
   articleData,
@@ -62,7 +68,7 @@ const ArticleCommentPanel: FC<ArticleCommentPanelProps> = ({
   return (
     <aside
       id={styles.commentPanel}
-      style={{ display: showCommentPanel ? "initial" : "none" }}
+      style={{ display: showCommentPanel ? "flex" : "none" }}
     >
       <LikePanel
         postId={articleData.id}
@@ -102,12 +108,9 @@ const ArticleCommentPanel: FC<ArticleCommentPanelProps> = ({
 
       <div className={styles.comments}>
         {comments.length <= 0 && (
-          <p
-            id={styles.noCommentMessage}
-            dangerouslySetInnerHTML={{
-              __html: noCommentMessages[randomQuoteIndex],
-            }}
-          ></p>
+          <p id={styles.noCommentMessage}>
+            {noCommentMessages[randomQuoteIndex]}
+          </p>
         )}
         {comments.map((com, i) => {
           if (com.username) {

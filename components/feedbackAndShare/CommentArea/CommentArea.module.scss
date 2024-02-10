@@ -2,7 +2,7 @@
   width: calc(100% - 10px);
   height: 5.4vw !important;
   padding: 0.3vw;
-  background: none;
+  background-color: var(--dark-gray);
   border: none;
   border-left: 0.1em solid var(--light-gray);
   border-right: 0.1em solid var(--light-gray);
@@ -110,6 +110,7 @@
   width: 100%;
   height: 1.25vw;
   margin: 0;
+  margin-bottom: 0.5em;
   overflow: visible;
   display: flex;
   background-color: var(--light-gray);

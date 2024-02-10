@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 import styles from "./LikePanel.module.scss";
-// import { ThumbUpSharp, ThumbDownSharp } from '@material-ui/icons';
+import { ThumbUpSharp, ThumbDownSharp } from "@mui/icons-material";
 import { like } from "../../../helpers/articlePageHelpers";
 import { ColourType, PostIdType, UserIdType } from "../../../types";
 
@@ -72,7 +72,7 @@ export default function LikePanel({
         style={{ color: isLiked === true ? pageColour : "var(--light-gray)" }}
       >
         <span className={styles.likeOption}>
-          {/* <ThumbUpSharp className={styles.shareIcon} /> */}
+          <ThumbUpSharp className={styles.shareIcon} />
           {likes}
         </span>
       </button>
@@ -91,7 +91,7 @@ export default function LikePanel({
         }}
       >
         <span className={styles.likeOption}>
-          {/* <ThumbDownSharp className={styles.shareIcon} /> */}
+          <ThumbDownSharp className={styles.shareIcon} />
           {dislikes}
         </span>
       </button>

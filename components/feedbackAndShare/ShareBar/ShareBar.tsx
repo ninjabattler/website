@@ -1,6 +1,6 @@
 import React, { ReactElement, useState } from "react";
 import styles from "./ShareBar.module.scss";
-// import { Reddit, Twitter, LinkedIn, LinkSharp } from '@material-ui/icons';
+import { Reddit, Twitter, LinkedIn, LinkSharp } from "@mui/icons-material";
 import {
   ColourType,
   TitleType,
@@ -32,7 +32,10 @@ export default function ShareBar({
     <aside id={styles.shareBar}>
       <div>
         <a onClick={copyLink} rel="noreferrer">
-          {/* <LinkSharp className={styles.shareIcon} style={{ fill: linkCopied && pageColour }} /> */}
+          <LinkSharp
+            className={styles.shareIcon}
+            style={{ fill: linkCopied && pageColour }}
+          />
         </a>
       </div>
       <div>
@@ -41,7 +44,7 @@ export default function ShareBar({
           data-show-count="false"
           rel="noreferrer"
         >
-          {/* <Twitter className={styles.shareIcon} /> */}
+          <Twitter className={styles.shareIcon} />
         </a>
       </div>
       <div>
@@ -54,7 +57,7 @@ export default function ShareBar({
           target="_blank"
           rel="noreferrer"
         >
-          {/* <LinkedIn className={styles.shareIcon} /> */}
+          <LinkedIn className={styles.shareIcon} />
         </a>
       </div>
       <div>
@@ -63,7 +66,7 @@ export default function ShareBar({
           target="_blank"
           rel="noreferrer"
         >
-          {/* <Reddit className={styles.shareIcon} /> */}
+          <Reddit className={styles.shareIcon} />
         </a>
       </div>
     </aside>
