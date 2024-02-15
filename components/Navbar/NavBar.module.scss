@@ -4,7 +4,7 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
   width: 100vw;
   height: 2em;
   background-color: rgb(10, 10, 10);
-  filter: drop-shadow(0vw 0vw 0.3vw rgba(0, 0, 0, 0.5));
+  // filter: drop-shadow(0vw 0vw 0.3vw rgba(0, 0, 0, 0.5));
   z-index: 100;
   position: fixed;
   top: 0;
@@ -12,7 +12,7 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
   background-color: transparent;
   background-size: cover;
   background-position: 0% 0%;
-  border-bottom: 1px solid black;
+  // border-bottom: 1px solid black;
   transition:
     height 0.3s ease 0.3s,
     backdrop-filter 0.3s ease 0.3s;
@@ -25,8 +25,8 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
     background-size: cover;
     mask: linear-gradient(
       -67.25deg,
-      transparent calc(80% - 3em),
-      black calc(90% - 3em)
+      transparent calc(90% - 0em),
+      black calc(92% - 0em)
     );
     z-index: -2;
     opacity: 1;
@@ -44,23 +44,11 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
     filter: invert(1);
     mask: linear-gradient(
       -67.25deg,
-      transparent calc(80% - 3em),
-      black calc(95% - 3em)
+      transparent calc(90% - 0.5em),
+      black calc(95% - 0.5em)
     );
     animation: sketchMovement 20s infinite linear;
     transition: background-size 0.3s ease 0.3s;
-
-    @media (max-device-width: 425px) {
-      height: 6.4em;
-      background-size: 35%;
-      mask: linear-gradient(
-        45deg,
-        black 0%,
-        transparent 20%,
-        transparent 80%,
-        black 100%
-      );
-    }
   }
 
   a {
@@ -72,12 +60,6 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
       height: 15vh;
       margin-top: -1vh;
       margin-bottom: 1vh;
-
-      @media (max-device-width: 425px) {
-        height: 6.4em;
-        margin-top: -0.1em;
-        margin-bottom: 0.1em;
-      }
     }
 
     .logoOverlay {
@@ -96,12 +78,6 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
       mask-size: contain;
       mask-position: center;
       filter: brightness(0.5);
-
-      @media (max-device-width: 425px) {
-        height: 6.4em;
-        margin-top: -0.1em;
-        margin-bottom: 0.1em;
-      }
     }
   }
 
@@ -110,19 +86,15 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
     height: 2em;
     background-image: linear-gradient(
       -45deg,
-      transparent 81%,
-      var(--light-gray) 81%,
-      var(--light-gray) 82%,
-      $gradientColour 82%,
-      $gradientColour 83%,
-      var(--light-gray) 83%,
-      var(--light-gray) 84%,
-      $gradientColour 84%,
-      $gradientColour 85%,
-      var(--light-gray) 85%
+      transparent 91%,
+      var(--light-gray) 91%,
+      var(--light-gray) 92%,
+      transparent 92%,
+      transparent 93%,
+      var(--light-gray) 93%,
     );
-    background-color: var(--dark-gray);
-    border-bottom: 1px solid black;
+    // background-color: var(--dark-gray);
+    // border-bottom: 1px solid black;
     position: absolute;
     display: flex;
     flex-direction: row;
@@ -154,14 +126,6 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
       &:active {
         transform: scale(0.9);
       }
-    }
-
-    @media (max-device-width: 425px) {
-      margin-left: 0;
-      width: 100vw;
-      border: none;
-      height: 1.35em;
-      background-color: var(--light-gray);
     }
   }
 
@@ -306,14 +270,6 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
     }
   }
 
-  @media (max-device-width: 425px) {
-    height: 6.4em;
-    font-size: 10pt;
-    top: -6.3em;
-    background-position: 50% -45em;
-    background-size: 200%;
-    filter: drop-shadow(0vw 0.3em 0.3em black);
-  }
 }
 
 @keyframes sketchMovement {
