@@ -39,10 +39,10 @@ const ArticleCommentPanel: FC<ArticleCommentPanelProps> = ({
 }) => {
   const [commenting, setCommenting] = useState<boolean>(false);
   const [comments, setComments] = useState<PostCommentType[]>([]);
-  const [likes, setLikes] = useState<number>(Number(articleData.likes));
-  const [dislikes, setDislikes] = useState<number>(articleData.dislikes);
-  const [isLiked, setIsLiked] = useState<boolean>(liked);
-  const [isDisliked, setIsDisliked] = useState<boolean>(disliked);
+  // const [likes, setLikes] = useState<number>(Number(articleData.likes));
+  // const [dislikes, setDislikes] = useState<number>(articleData.dislikes);
+  // const [isLiked, setIsLiked] = useState<boolean>(liked);
+  // const [isDisliked, setIsDisliked] = useState<boolean>(disliked);
   const [windowServer, setWindow] = useState<WindowServerType>({});
   const [viewComment, setViewComment] = useState<boolean>(false);
   const [showCommentPanel, setShowCommentPanel] = useState<boolean>(false);
@@ -73,15 +73,10 @@ const ArticleCommentPanel: FC<ArticleCommentPanelProps> = ({
       <LikePanel
         postId={articleData.id}
         userId={userId}
-        pageColour={articleData.colors.primary.hex}
-        likes={likes}
-        isLiked={isLiked}
-        setLikes={setLikes}
-        setIsLiked={setIsLiked}
-        dislikes={dislikes}
-        isDisliked={isDisliked}
-        setDislikes={setDislikes}
-        setIsDisliked={setIsDisliked}
+        currentLikes={articleData.likes}
+        isCurrentlyLiked={liked}
+        currentDislikes={articleData.dislikes}
+        isCurrentlyDisliked={disliked}
       />
 
       <ShareBar

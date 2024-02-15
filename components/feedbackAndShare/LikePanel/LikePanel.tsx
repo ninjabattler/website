@@ -1,99 +1,96 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useCallback, useState } from "react";
 import styles from "./LikePanel.module.scss";
 import { ThumbUpSharp, ThumbDownSharp } from "@mui/icons-material";
 import { like } from "../../../helpers/articlePageHelpers";
-import { ColourType, PostIdType, UserIdType } from "../../../types";
+import { PostIdType, UserIdType } from "../../../types";
 
 interface LikePanelProps {
   postId: PostIdType;
   userId: UserIdType;
-  likes: number;
-  isLiked: boolean;
-  setIsLiked: Function;
-  setLikes: Function;
-  dislikes: number;
-  isDisliked: boolean;
-  setIsDisliked: Function;
-  setDislikes: Function;
-  pageColour: ColourType;
+  currentLikes: number;
+  isCurrentlyLiked: boolean;
+  currentDislikes: number;
+  isCurrentlyDisliked: boolean;
 }
 
+/**
+ * A panel shown on posts, used to like/dislike them and show the current amount of likes/dislikes
+ * @author Ninjabattler
+ * @param postId The id of the current post
+ * @param userId The id of the current user
+ * @param currentLikes The current amount of likes
+ * @param isCurrentlyLiked Whether the current user has liked this post
+ * @param currentDislikes The current amount of dislikes
+ * @param isCurrentlyDisliked Whether the current user has disliked this post
+ */
 export default function LikePanel({
   postId,
   userId,
-  likes,
-  isLiked,
-  setIsLiked,
-  setLikes,
-  dislikes,
-  isDisliked,
-  setIsDisliked,
-  setDislikes,
-  pageColour,
+  currentLikes,
+  isCurrentlyLiked,
+  currentDislikes,
+  isCurrentlyDisliked,
 }: LikePanelProps): ReactElement {
-  const likePercent: number = (likes / (likes + dislikes)) * 100;
+  const [likes, setLikes] = useState<number>(Number(currentLikes));
+  const [dislikes, setDislikes] = useState<number>(currentDislikes);
+  const [isLiked, setIsLiked] = useState<boolean>(isCurrentlyLiked);
+  const [isDisliked, setIsDisliked] = useState<boolean>(isCurrentlyDisliked);
+  const likePercent: number =
+    likes === 0 && dislikes === 0 ? 0 : (likes / (likes + dislikes)) * 100;
 
-  const clickLike = (): void => {
+  const clickLike = useCallback((): void => {
     like(true, postId, userId, () => {
       setIsLiked(!isLiked);
-      if (isLiked === false) {
-        setLikes(likes + 1);
-      } else {
-        setLikes(likes - 1);
-      }
+      setLikes(likes + (isLiked ? -1 : 1));
+
       if (isDisliked) {
         setIsDisliked(!isDisliked);
         setDislikes(dislikes - 1);
       }
     });
-  };
+  }, [likes, dislikes, isLiked, isDisliked]);
 
-  const clickDislike = (): void => {
+  const clickDislike = useCallback((): void => {
     like(false, postId, userId, () => {
       setIsDisliked(!isDisliked);
-      if (isDisliked === false) {
-        setDislikes(dislikes + 1);
-      } else {
-        setDislikes(dislikes - 1);
-      }
+      setDislikes(dislikes + (isDisliked ? -1 : 1));
+
       if (isLiked) {
         setIsLiked(!isLiked);
         setLikes(likes - 1);
       }
-      console.log(isLiked, isDisliked);
     });
-  };
+  }, [likes, dislikes, isLiked, isDisliked]);
 
   return (
-    <aside className={styles.likePanel}>
+    <aside id={styles.likePanel}>
       <button
-        className={styles.like}
+        className={`${styles.like} ${isLiked ? styles.selected : ""}`}
         onClick={clickLike}
-        style={{ color: isLiked === true ? pageColour : "var(--light-gray)" }}
       >
-        <span className={styles.likeOption}>
-          <ThumbUpSharp className={styles.shareIcon} />
-          {likes}
-        </span>
+        <ThumbUpSharp className={styles.shareIcon} />
+        <ThumbUpSharp className={`${styles.shareIcon} ${styles.glow}`} />
+        <span className={styles.amount}>{likes}</span>
       </button>
 
-      <div
-        id={styles.likeBar}
-        style={{
-          backgroundImage: `linear-gradient(90deg, ${pageColour} ${likePercent}%, transparent ${likePercent}%)`,
-        }}
-      ></div>
+      <div id={styles.likeBar}>
+        <div
+          className={styles.bar}
+          style={{
+            mask: `linear-gradient(-45deg, transparent ${
+              100 - likePercent
+            }%, black ${100 - likePercent}%)`,
+          }}
+        />
+      </div>
+
       <button
-        className={styles.dislike}
+        className={`${styles.dislike} ${isDisliked ? styles.selected : ""}`}
         onClick={clickDislike}
-        style={{
-          color: isDisliked === true ? pageColour : "var(--light-gray)",
-        }}
       >
-        <span className={styles.likeOption}>
-          <ThumbDownSharp className={styles.shareIcon} />
-          {dislikes}
-        </span>
+        <span className={styles.amount}>{dislikes}</span>
+        <ThumbDownSharp className={styles.shareIcon} />
+        <ThumbDownSharp className={`${styles.shareIcon} ${styles.glow}`} />
       </button>
     </aside>
   );

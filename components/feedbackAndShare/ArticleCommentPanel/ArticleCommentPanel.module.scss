@@ -14,6 +14,7 @@
   animation-name: commentPanelFadeIn;
   animation-timing-function: linear;
   animation-duration: 1.25s;
+  filter: drop-shadow(0 0 0.1em rgba(0, 0, 0, 0.5));
 
   #noCommentMessage {
     margin: 0;
