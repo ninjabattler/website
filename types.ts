@@ -157,6 +157,12 @@ export interface ArticleData {
     secondary: {
       hex: ColourType;
     };
+    space: {
+      hex: ColourType;
+    };
+    stars: {
+      hex: ColourType;
+    };
   };
   content: TypedObject[];
   category: CategoryType;

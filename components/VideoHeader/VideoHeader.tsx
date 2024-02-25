@@ -1,80 +1,52 @@
-import React, { ComponentType, useEffect } from "react";
-import { ColourType, TitleType } from "../../types";
+import React, { FC } from "react";
+import { TitleType } from "../../types";
 import InfoBar, { InfoBarProps } from "../articleComponents/InfoBar/InfoBar";
 import styles from "./VideoHeader.module.scss";
-import Typewriter from "typewriter-effect/dist/core";
-import { TypewriterClass } from "typewriter-effect";
-import gsap from "gsap";
 
 type VideoHeaderProps = {
-  video: string;
-  pageColour: ColourType;
+  video: string | null;
   title: TitleType;
   infoBarProps: InfoBarProps;
 };
 
-const VideoHeader: ComponentType<VideoHeaderProps> = ({
-  video,
-  pageColour,
-  title,
-  infoBarProps,
-}) => {
-  useEffect(() => {
-    const typewriter: TypewriterClass = new Typewriter("#title", {
-      cursor: "",
-      delay: 20,
-    });
-
-    typewriter.pauseFor(2200).typeString(title).start();
-  }, []);
-
+/**
+ * The title of an article, displayed on a title bar with a fixed video behind it
+ * @author Ninjabattler
+ * @param vido The video
+ * @param title The title
+ * @param infoBarProps Props, including a date and tags for the ino bar component
+ */
+const VideoHeader: FC<VideoHeaderProps> = ({ video, title, infoBarProps }) => {
   return (
     <>
+      {/* Video */}
       <div id={styles.videoContainer}>
-        {!video.startsWith("htt") && (
-          <div
-            id={styles.videoOverlay}
-            style={{ backgroundColor: pageColour }}
-          ></div>
-        )}
+        {!video.startsWith("htt") && <div id={styles.videoOverlay} />}
+
         <video loop muted autoPlay>
-          <source
-            src={
-              video ? video.replace("http://", "https://") : "/defaultVideo.mp4"
-            }
-            type="video/webm"
-          ></source>
-          <source
-            src={
-              video ? video.replace("http://", "https://") : "/defaultVideo.mp4"
-            }
-            type="video/ogg"
-          ></source>
-          <source
-            src={
-              video ? video.replace("http://", "https://") : "/defaultVideo.mp4"
-            }
-            type="video/mp4"
-          ></source>
+          <source src={video || "/defaultVideo.mp4"} type="video/webm" />
+          <source src={video || "/defaultVideo.mp4"} type="video/ogg" />
+          <source src={video || "/defaultVideo.mp4"} type="video/mp4" />
         </video>
       </div>
 
-      <div className={styles.videoHeader}>
-        <div className={styles.bar2} />
-        <div className={`${styles.bar2} ${styles.sketch}`} />
+      {/* Title */}
+      <header className={styles.videoHeader}>
+        <div className={styles.spaceContainer}>
+          <div className={styles.space} />
+          <div className={`${styles.space} ${styles.gradient}`} />
+        </div>
 
-        <div className={styles.barC} />
-        <div className={`${styles.barC} ${styles.barGlow}`} />
+        <div className={`${styles.bar} ${styles.dark}`} />
+        <div className={styles.glow} />
+        <div className={`${styles.bar} ${styles.light}`} />
 
-        <div className={styles.bar1} />
-        <div className={`${styles.bar1} ${styles.sketch}`} />
-
-        <h1 id="title">{title}</h1>
+        <h1 id={styles.title}>{title}</h1>
 
         <div className={styles.infoContainer}>
           <InfoBar tags={infoBarProps.tags} date={infoBarProps.date} />
         </div>
-      </div>
+      </header>
     </>
   );
 };

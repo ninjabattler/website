@@ -43,6 +43,16 @@ const article: SchemaTypeDefinition = {
           type: "color",
           title: "Secondary",
         },
+        {
+          name: "space",
+          type: "color",
+          title: "Space",
+        },
+        {
+          name: "stars",
+          type: "color",
+          title: "Stars",
+        },
       ],
     },
     {

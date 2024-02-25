@@ -5,7 +5,6 @@ import VideoHeader from "../../components/VideoHeader/VideoHeader";
 import { articlePageServerSideProps } from "../../ssr/articles/title";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { AppData, ArticleData } from "../../types";
-import dynamic from "next/dynamic";
 import ArticleContent from "../../components/articleComponents/ArticleContent/ArticleContent";
 import ArticleCommentPanel from "../../components/feedbackAndShare/ArticleCommentPanel/ArticleCommentPanel";
 
@@ -59,7 +58,19 @@ export default function ArticlePage({
             :root {
               --article-colour: ${article.colors.primary.hex};
               --article-colour2: ${
-                article.colors.secondary.hex || article.colors.primary.hex
+                article.colors.secondary
+                  ? article.colors.secondary.hex
+                  : article.colors.primary.hex
+              };
+              --article-colour-space: ${
+                article.colors.space
+                  ? article.colors.space.hex
+                  : article.colors.primary.hex
+              };
+              --article-colour-stars: ${
+                article.colors.stars
+                  ? article.colors.stars.hex
+                  : article.colors.primary.hex
               };
             }
           `}
@@ -69,7 +80,6 @@ export default function ArticlePage({
       <VideoHeader
         video={article.videoHeader || ""}
         title={article.title}
-        pageColour={article.colors.primary.hex}
         infoBarProps={{
           // date: article.formatteddate,
           date: "2020-10-20",
