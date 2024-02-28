@@ -22,3 +22,13 @@ export const formatSqlDate = (date): string => {
 
   return `${months[month] || "January"}, ${day}, ${year}`;
 };
+
+//Date format ex: 2022-07-23
+export const formatSanityDate = (date): string => {
+  const splitDate: string[] = date.split("-");
+  const year: string = splitDate[0];
+  const month: string = splitDate[1];
+  const day: string = splitDate[2];
+
+  return `${months[month] || "January"}, ${day}, ${year}`;
+};

@@ -9,10 +9,12 @@ import { codeBlock } from "./types/codeBlock";
 import { subtitleCard } from "./types/subtitleCard";
 import { picture } from "./types/picture";
 import { spoiler } from "./types/spoiler";
+import tag from "./schemas/tag";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     article,
+    tag,
     titleCard,
     quote,
     underline,

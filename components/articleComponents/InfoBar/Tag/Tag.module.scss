@@ -1,18 +1,48 @@
+@use "/styles/_mixins" as mixins;
+@use "/styles/_variables" as variables;
+
 .tag {
-  display: block;
   width: fit-content;
   height: fit-content;
-  margin-left: -0.6em;
-  margin-right: -0.6em;
-  padding-left: 1.2em;
-  padding-right: 1.2em;
-  color: var(--dark-gray);
-  background-color: #4a4c55;
+  margin-top: 0;
+  margin-left: 0.2em;
+  margin-right: 0.2em;
+  padding-left: 0.25em;
+  padding-right: 0.25em;
+  border-top: variables.$borderThinBlack;
+  border-bottom: variables.$borderThinBlack;
+  display: block;
+  font-size: 0.75em;
+  color: variables.$darkGray;
+  background-color: variables.$lightGray;
+  transition: margin 0.2s border-color 0.2s;
+  cursor: pointer;
   mask: linear-gradient(
     -45deg,
-    transparent calc(0% + 1em),
-    black calc(0% + 1em),
-    black calc(100% - 1em),
-    transparent calc(100% - 1em)
+    transparent calc(0% + 0.2em),
+    black calc(0% + 0.2em),
+    black calc(100% - 0.2em),
+    transparent calc(100% - 0.2em)
   );
+
+  &::before {
+    @include mixins.articlePageGradientShadow();
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin-left: -0.25em;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.2s;
+    content: "";
+  }
+
+  &:hover {
+    margin-top: -0.25em;
+    border-color: transparent;
+
+    &::before {
+      opacity: 1;
+    }
+  }
 }

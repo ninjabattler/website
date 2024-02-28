@@ -14,9 +14,25 @@ const article: SchemaTypeDefinition = {
       title: "Title",
     },
     {
+      name: "date",
+      type: "date",
+      title: "Date",
+    },
+    {
       name: "slug",
       type: "string",
       title: "Slug",
+    },
+    {
+      name: "tags",
+      type: "array",
+      title: "Tags",
+      of: [
+        {
+          type: "reference",
+          to: [{ type: "tags" }],
+        },
+      ],
     },
     {
       name: "videoHeader",

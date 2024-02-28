@@ -86,12 +86,12 @@ $borderThickness: 7.5em;
       transform: rotateY(5deg) rotateZ(2deg) translateY(-0.5em);
       mask: linear-gradient(
         45deg,
-        black calc(100% - 13.5em),
-        variables.$gradientFade calc(100% - 13.5em),
-        variables.$gradientFade calc(100% - 12em),
-        black calc(100% - 12em),
-        black calc(100% - 10.5em),
-        variables.$gradientFade calc(100% - 10.5em),
+        black calc(100% - 14.25em),
+        variables.$gradientFade calc(100% - 14.25em),
+        variables.$gradientFade calc(100% - 12.5em),
+        black calc(100% - 12.5em),
+        black calc(100% - 10.75em),
+        variables.$gradientFade calc(100% - 10.75em),
         variables.$gradientFade calc(100% - 9em),
         black calc(100% - 9em),
         black calc(100% - 5.5em),
@@ -107,14 +107,14 @@ $borderThickness: 7.5em;
         -45deg,
         transparent 7.5%,
         black 7.5%,
-        black 15%,
-        variables.$gradientFade 15%,
-        variables.$gradientFade 17%,
-        black 17%,
-        black 19%,
-        variables.$gradientFade 19%,
-        variables.$gradientFade 21%,
-        black 21%
+        black calc(7.5% + 5em),
+        variables.$gradientFade calc(7.5% + 5em),
+        variables.$gradientFade calc(7.5% + 6.75em),
+        black calc(7.5% + 6.75em),
+        black calc(7.5% + 8.5em),
+        variables.$gradientFade calc(7.5% + 8.5em),
+        variables.$gradientFade calc(7.5% + 10.25em),
+        black calc(7.5% + 10.25em)
       );
 
       &::before {
@@ -168,6 +168,7 @@ $borderThickness: 7.5em;
   }
 
   .infoContainer {
+    width: 83.5%;
     position: absolute;
     transform-origin: left center;
     transform: rotateY(5deg) rotateZ(2deg) translateY(6.5em);

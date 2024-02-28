@@ -81,9 +81,10 @@ export default function ArticlePage({
         video={article.videoHeader || ""}
         title={article.title}
         infoBarProps={{
-          // date: article.formatteddate,
-          date: "2020-10-20",
-          tags: [article.category, article.genre],
+          date: article.date,
+          tags: article.tags.map((tagObj) => {
+            return tagObj.tag;
+          }),
         }}
       />
 

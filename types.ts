@@ -149,6 +149,11 @@ export interface ArticleData {
   thumbnail: UrlType;
   videoHeader: UrlType;
   date: SqlDateType;
+  tags: [
+    {
+      tag: string;
+    },
+  ];
   review: boolean;
   colors: {
     primary: {

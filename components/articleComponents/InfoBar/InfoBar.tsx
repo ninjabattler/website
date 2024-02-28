@@ -1,8 +1,7 @@
-import React, { ComponentType, useEffect } from "react";
+import React, { FC } from "react";
 import styles from "./InfoBar.module.scss";
-import { formatSqlDate } from "../../../helpers/dateHelpers";
-import Typewriter from "typewriter-effect/dist/core";
-import { TypewriterClass } from "typewriter-effect";
+import { CalendarMonthSharp } from "@mui/icons-material";
+import { formatSanityDate } from "../../../helpers/dateHelpers";
 import Tag from "./Tag/Tag";
 
 export type InfoBarProps = {
@@ -10,33 +9,23 @@ export type InfoBarProps = {
   tags: string[];
 };
 
-const InfoBar: ComponentType<InfoBarProps> = ({ date, tags }) => {
-  useEffect(() => {
-    const typewriter: TypewriterClass = new Typewriter("#info", {
-      cursor: "",
-      delay: 20,
-    });
-
-    typewriter
-      .pauseFor(1800)
-      .typeString(
-        `
-        <div>${formatSqlDate(date)}</div>
-      `,
-      )
-      .start();
-  }, []);
-
+/**
+ * A bar displaying the tags and date posted of an article
+ * @author Ninjabattler
+ * @param date The date the article was posted
+ * @param tags A list of tags
+ */
+const InfoBar: FC<InfoBarProps> = ({ date, tags }) => {
   return (
     <div className={styles.infoBar}>
-      <div className={styles.infoUnderline} />
-      <div className={`${styles.infoUnderline} ${styles.sketch}`} />
-      <span className={styles.info}>
-        <p id="info"></p>
+      <CalendarMonthSharp />
+      <span className={styles.formattedDate}>{formatSanityDate(date)}</span>
+
+      <div className={styles.tags}>
         {tags.map((tag, i) => {
           return <Tag key={i} tag={tag} />;
         })}
-      </span>
+      </div>
     </div>
   );
 };
