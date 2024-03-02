@@ -1,12 +1,10 @@
 import React, { ComponentType, useCallback, useState } from "react";
 import styles from "./NavBar.module.scss";
 import Link from "next/link";
-import { ColourType } from "../../types";
-import { TiersIcon } from "@sanity/icons";
+import { Menu } from "@mui/icons-material";
 
 type NavBarProps = {
   setLinkClicked: Function;
-  pageColour?: ColourType;
   isArticlePage: Boolean;
 };
 
@@ -17,7 +15,6 @@ type NavBarProps = {
  */
 const NavBar: ComponentType<NavBarProps> = ({
   setLinkClicked,
-  pageColour,
   isArticlePage,
 }) => {
   const [open, setOpen] = useState<boolean>(false);
@@ -37,7 +34,7 @@ const NavBar: ComponentType<NavBarProps> = ({
 
       <div className={styles.navOptions}>
         <button onClick={openMenu}>
-          <TiersIcon />
+          <Menu />
         </button>
       </div>
 
