@@ -83,7 +83,6 @@ const ArticleCommentPanel: FC<ArticleCommentPanelProps> = ({
         title={articleData.title}
         windowServer={windowServer}
         articleLink={url}
-        pageColour={articleData.colors.primary.hex}
       />
 
       <CommentArea

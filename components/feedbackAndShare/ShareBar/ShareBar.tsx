@@ -1,74 +1,83 @@
-import React, { ReactElement, useState } from "react";
+import React, { FC, useCallback } from "react";
 import styles from "./ShareBar.module.scss";
-import { Reddit, Twitter, LinkedIn, LinkSharp } from "@mui/icons-material";
 import {
-  ColourType,
-  TitleType,
-  UrlType,
-  WindowServerType,
-} from "../../../types";
+  Reddit,
+  X,
+  LinkedIn,
+  LinkSharp,
+  Facebook,
+  Print,
+} from "@mui/icons-material";
+import { TitleType, UrlType, WindowServerType } from "../../../types";
 
 interface ShareBarProps {
   title: TitleType;
   windowServer: WindowServerType;
   articleLink: UrlType;
-  pageColour: ColourType;
 }
 
-export default function ShareBar({
-  title,
-  windowServer,
-  articleLink,
-  pageColour,
-}: ShareBarProps): ReactElement {
-  const [linkCopied, setLinkCopied] = useState<boolean>(false);
-
-  const copyLink = (): void => {
+/**
+ * A panel shown on posts, used to like/dislike them and show the current amount of likes/dislikes
+ * @author Ninjabattler
+ * @param title The title of the article
+ * @param windowServer A window object that is set to null on the server side
+ * @param articleLink A link to the article
+ */
+const ShareBar: FC<ShareBarProps> = ({ title, windowServer, articleLink }) => {
+  const copyLink = useCallback((): void => {
     window.navigator.clipboard.writeText(articleLink);
-    setLinkCopied(true);
-  };
+  }, []);
+
+  const printPage = useCallback((): void => {
+    window.print();
+  }, []);
 
   return (
     <aside id={styles.shareBar}>
-      <div>
-        <a onClick={copyLink} rel="noreferrer">
-          <LinkSharp
-            className={styles.shareIcon}
-            style={{ fill: linkCopied && pageColour }}
-          />
-        </a>
-      </div>
-      <div>
-        <a
-          href="https://twitter.com/share?ref_src=twsrc%5Etfw"
-          data-show-count="false"
-          rel="noreferrer"
-        >
-          <Twitter className={styles.shareIcon} />
-        </a>
-      </div>
-      <div>
-        <a
-          href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
-            windowServer.location as string,
-          )
-            .replace(/'/g, "%27")
-            .replace(/"/g, "%22")}`}
-          target="_blank"
-          rel="noreferrer"
-        >
-          <LinkedIn className={styles.shareIcon} />
-        </a>
-      </div>
-      <div>
-        <a
-          href={`http://www.reddit.com/submit?url=${windowServer.location}&title=Ninjabattler-${title}`}
-          target="_blank"
-          rel="noreferrer"
-        >
-          <Reddit className={styles.shareIcon} />
-        </a>
-      </div>
+      <a onClick={copyLink} rel="noreferrer" title="Copy Link">
+        <LinkSharp />
+      </a>
+      <a onClick={printPage} rel="noreferrer" title="Print the Page">
+        <Print />
+      </a>
+      <a
+        href="https://X.com/share?ref_src=twsrc%5Etfw"
+        target="_blank"
+        rel="noreferrer"
+        title="Share to X"
+      >
+        <X />
+      </a>
+      <a
+        href={`http://www.facebook.com/sharer.php?u=${windowServer.location}&t=${title} - Ninjabattler`}
+        target="_blank"
+        rel="noreferrer"
+        title="Share to Facebook"
+      >
+        <Facebook />
+      </a>
+      <a
+        href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+          windowServer.location as string,
+        )
+          .replace(/'/g, "%27")
+          .replace(/"/g, "%22")}`}
+        target="_blank"
+        rel="noreferrer"
+        title="Share to LinkedIn"
+      >
+        <LinkedIn />
+      </a>
+      <a
+        href={`http://www.reddit.com/submit?url=${windowServer.location}&title=${title} - Ninjabattler`}
+        target="_blank"
+        rel="noreferrer"
+        title="Share to Reddit"
+      >
+        <Reddit />
+      </a>
     </aside>
   );
-}
+};
+
+export default ShareBar;

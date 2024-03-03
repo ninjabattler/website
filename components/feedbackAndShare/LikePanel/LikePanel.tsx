@@ -1,4 +1,4 @@
-import React, { ReactElement, useCallback, useState } from "react";
+import React, { FC, useCallback, useState } from "react";
 import styles from "./LikePanel.module.scss";
 import { ThumbUpSharp, ThumbDownSharp } from "@mui/icons-material";
 import { like } from "../../../helpers/articlePageHelpers";
@@ -23,14 +23,14 @@ interface LikePanelProps {
  * @param currentDislikes The current amount of dislikes
  * @param isCurrentlyDisliked Whether the current user has disliked this post
  */
-export default function LikePanel({
+const LikePanel: FC<LikePanelProps> = ({
   postId,
   userId,
   currentLikes,
   isCurrentlyLiked,
   currentDislikes,
   isCurrentlyDisliked,
-}: LikePanelProps): ReactElement {
+}) => {
   const [likes, setLikes] = useState<number>(Number(currentLikes));
   const [dislikes, setDislikes] = useState<number>(currentDislikes);
   const [isLiked, setIsLiked] = useState<boolean>(isCurrentlyLiked);
@@ -94,4 +94,6 @@ export default function LikePanel({
       </button>
     </aside>
   );
-}
+};
+
+export default LikePanel;
