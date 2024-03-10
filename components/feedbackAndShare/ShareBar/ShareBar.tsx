@@ -41,7 +41,7 @@ const ShareBar: FC<ShareBarProps> = ({ title, windowServer, articleLink }) => {
         <Print />
       </a>
       <a
-        href="https://X.com/share?ref_src=twsrc%5Etfw"
+        href={`https://twitter.com/share?ref_src=twsrc%5Etfw&u=${windowServer.location}`}
         target="_blank"
         rel="noreferrer"
         title="Share to X"

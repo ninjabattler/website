@@ -1,14 +1,14 @@
 #commentAreaView {
-  width: calc(100% - 10px);
+  width: calc(100% - 0.6em);
   height: 5.4vw !important;
-  padding: 0.3vw;
+  padding: 0.2em;
   background-color: var(--dark-gray);
   border: none;
   border-left: 0.1em solid var(--light-gray);
   border-right: 0.1em solid var(--light-gray);
   outline: none;
   color: var(--primary-text);
-  font-size: 1vw;
+  font-size: 1em;
   margin-top: 0;
   resize: none;
   display: flex;
@@ -17,22 +17,11 @@
   animation-timing-function: linear;
   animation-duration: 2s;
   overflow-x: hidden;
-
-  @media only screen and (max-width: 425px) {
-    width: 89vw;
-    height: 20vw !important;
-    font-size: 4vw;
-    padding: 3vw;
-  }
 }
 
 #commentAreaView::-webkit-scrollbar {
   width: 0.5vw;
   background: var(--light-gray);
-
-  @media only screen and (max-width: 425px) {
-    width: 1.5vw;
-  }
 }
 
 #commentAreaView::-webkit-scrollbar-track {
@@ -65,20 +54,10 @@
   padding-left: 0.6vw;
   opacity: 0.7;
   z-index: -1;
-
-  @media only screen and (max-width: 425px) {
-    margin-left: 3vw;
-    padding-left: 2vw;
-    border-left: 0.7vw solid var(--article-colour);
-  }
 }
 
 #commentAreaView > div > span > .listItem {
   margin-left: 0.8vw;
-
-  @media only screen and (max-width: 425px) {
-    margin-left: 3vw;
-  }
 }
 
 #commentLoading {
@@ -90,10 +69,6 @@
   justify-content: center;
   align-items: center;
   z-index: 10;
-
-  @media only screen and (max-width: 425px) {
-    height: 26vw;
-  }
 }
 
 #commentLoading > img {
@@ -107,10 +82,12 @@
 }
 
 #commentStylingBar {
-  width: 100%;
+  width: calc(100% - 0.2em);
   height: 1.25vw;
   margin: 0;
   margin-bottom: 0.5em;
+  border-left: 0.1em solid var(--light-gray);
+  border-right: 0.1em solid var(--light-gray);
   overflow: visible;
   display: flex;
   background-color: var(--light-gray);
@@ -163,26 +140,6 @@
     cursor: unset;
   }
 
-  @media only screen and (max-width: 425px) {
-    height: 6vw;
-    min-width: 8vw;
-    font-size: 5vw;
-
-    &:hover:not(:disabled) {
-      height: 7.5vw;
-      margin-top: -1.5vw;
-      border-top: 1vw solid var(--article-colour);
-    }
-
-    &:active:not(:disabled) {
-      height: 6vw;
-      margin-top: 0;
-      border-top: 0.5vw solid var(--article-colour);
-      color: var(--article-colour);
-      background-color: var(--primary-text);
-    }
-  }
-
   svg {
     font-size: 1em;
   }
@@ -190,12 +147,6 @@
 
 #commentStylingBar > #styleFiller {
   cursor: unset;
-}
-
-#commentStylingBar {
-  @media only screen and (max-width: 425px) {
-    height: 6vw;
-  }
 }
 
 #postComment {
@@ -245,22 +196,6 @@
     color: var(--dark-gray) !important;
     opacity: 0.5;
     cursor: unset;
-  }
-
-  @media only screen and (max-width: 425px) {
-    height: 6vw !important;
-    padding-left: 15vw !important;
-    font-size: 4vw !important;
-    background-image: linear-gradient(
-      45deg,
-      transparent 13%,
-      transparent 17%,
-      var(--secondary-text) 17%,
-      var(--secondary-text) 21%,
-      transparent 21%,
-      transparent 25%,
-      var(--secondary-text) 25%
-    );
   }
 }
 

@@ -2,8 +2,8 @@
 @use "/styles/_variables" as variables;
 
 #shareBar {
-  width: 100%;
-  height: 1.5em;
+  width: calc(100% - 0.2em);
+  min-height: 1.5em;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 0.5em;
@@ -30,22 +30,12 @@
         transform 0.2s,
         filter 0.2s;
 
-      path {
-        stroke-width: 0px;
-        transition: stroke-width 0.2s;
-      }
-
       &:hover {
+        color: var(--article-colour);
         transform: scale(1.1);
-
-        path {
-          stroke: var(--article-colour) !important;
-          stroke-width: 1px;
-        }
       }
 
       &:active {
-        color: var(--article-colour);
         filter: drop-shadow(0 0 0.1em var(--article-colour2)) brightness(1.5);
         transform: scale(0.9);
       }
@@ -54,8 +44,8 @@
 
   &::before {
     @include mixins.gridPatternDark;
-    width: 100%;
-    height: inherit;
+    width: calc(100% - 0.2em);
+    height: 1.5em;
     position: absolute;
     mask: linear-gradient(
       90deg,

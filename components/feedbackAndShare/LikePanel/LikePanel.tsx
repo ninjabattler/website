@@ -68,8 +68,8 @@ const LikePanel: FC<LikePanelProps> = ({
         className={`${styles.like} ${isLiked ? styles.selected : ""}`}
         onClick={clickLike}
       >
-        <ThumbUpSharp className={styles.shareIcon} />
-        <ThumbUpSharp className={`${styles.shareIcon} ${styles.glow}`} />
+        <ThumbUpSharp className={styles.likeIcon} />
+        <ThumbUpSharp className={`${styles.likeIcon} ${styles.glow}`} />
         <span className={styles.amount}>{likes}</span>
       </button>
 
@@ -89,8 +89,8 @@ const LikePanel: FC<LikePanelProps> = ({
         onClick={clickDislike}
       >
         <span className={styles.amount}>{dislikes}</span>
-        <ThumbDownSharp className={styles.shareIcon} />
-        <ThumbDownSharp className={`${styles.shareIcon} ${styles.glow}`} />
+        <ThumbDownSharp className={styles.likeIcon} />
+        <ThumbDownSharp className={`${styles.likeIcon} ${styles.glow}`} />
       </button>
     </aside>
   );

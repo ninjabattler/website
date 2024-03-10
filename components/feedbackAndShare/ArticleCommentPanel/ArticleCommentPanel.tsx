@@ -39,10 +39,6 @@ const ArticleCommentPanel: FC<ArticleCommentPanelProps> = ({
 }) => {
   const [commenting, setCommenting] = useState<boolean>(false);
   const [comments, setComments] = useState<PostCommentType[]>([]);
-  // const [likes, setLikes] = useState<number>(Number(articleData.likes));
-  // const [dislikes, setDislikes] = useState<number>(articleData.dislikes);
-  // const [isLiked, setIsLiked] = useState<boolean>(liked);
-  // const [isDisliked, setIsDisliked] = useState<boolean>(disliked);
   const [windowServer, setWindow] = useState<WindowServerType>({});
   const [viewComment, setViewComment] = useState<boolean>(false);
   const [showCommentPanel, setShowCommentPanel] = useState<boolean>(false);
@@ -111,12 +107,7 @@ const ArticleCommentPanel: FC<ArticleCommentPanelProps> = ({
             return (
               <Comment
                 key={i}
-                pageColour={
-                  com.user_id === userId
-                    ? articleData.colors.primary.hex
-                    : "transparent"
-                }
-                username={com.username.slice(0, 10)}
+                username={com.username}
                 date={com.date}
                 content={com.content}
                 avatar={com.avatar}
