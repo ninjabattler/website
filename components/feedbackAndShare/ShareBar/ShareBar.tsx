@@ -28,17 +28,10 @@ const ShareBar: FC<ShareBarProps> = ({ title, windowServer, articleLink }) => {
     window.navigator.clipboard.writeText(articleLink);
   }, []);
 
-  const printPage = useCallback((): void => {
-    window.print();
-  }, []);
-
   return (
     <aside id={styles.shareBar}>
       <a onClick={copyLink} rel="noreferrer" title="Copy Link">
         <LinkSharp />
-      </a>
-      <a onClick={printPage} rel="noreferrer" title="Print the Page">
-        <Print />
       </a>
       <a
         href={`https://twitter.com/share?ref_src=twsrc%5Etfw&u=${windowServer.location}`}

@@ -102,6 +102,12 @@
     );
   }
 
+  @media print {
+    width: 100%;
+    border: none;
+    background-color: var(--dark-gray);
+  }
+
   // &::before {
   //   @include mixins.articlePageGradientShadow;
   //   position: absolute;
