@@ -3,7 +3,7 @@
 
 .titleCard {
   height: 12em;
-  margin-top: 4em;
+  margin-top: 3em;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -43,14 +43,14 @@
         -45deg,
         transparent 16%,
         black 16%,
-        black 21%,
-        variables.$gradientFade 21%,
-        variables.$gradientFade 23%,
-        black 23%,
-        black 26%,
-        variables.$gradientFade 26%,
-        variables.$gradientFade 28%,
-        black 28%
+        black calc(16% + 1.25em),
+        variables.$gradientFade calc(16% + 1.25em),
+        variables.$gradientFade calc(16% + 2em),
+        black calc(16% + 2em),
+        black calc(16% + 2.75em),
+        variables.$gradientFade calc(16% + 2.75em),
+        variables.$gradientFade calc(16% + 3.5em),
+        black calc(16% + 3.5em)
       );
     }
 
@@ -95,15 +95,15 @@
     &.bottom {
       width: 100%;
       height: variables.$titleCardThickness * 2;
-      margin-bottom: -0.25em;
+      margin-bottom: -0.2em;
       mask: url("/titleBar.svg");
       mask-size: 100% variables.$titleCardThickness * 3;
     }
 
     &.top {
-      width: 42%;
+      width: 41.5%;
       height: variables.$titleCardThickness;
-      margin-bottom: 3.5em;
+      margin-bottom: 3.55em;
       mask: url("/titleBar2.svg");
       mask-size: 100% variables.$titleCardThickness * 2;
       mask-position: 0% 0%;
@@ -139,11 +139,20 @@
     }
   }
 
-  .space {
-    @include mixins.articlePageSpaceCutout(-1deg, -15%);
+  .spaceContainer {
+    width: 100%;
     height: 100%;
-    mask-position: center top;
-    mask-size: 100% 100%;
+    filter: drop-shadow(0 0 0.1em var(--article-colour-space))
+      drop-shadow(0 0 0.25em var(--article-colour-space)) brightness(1.5);
+
+    .space {
+      @include mixins.articlePageSpaceCutout();
+      width: 100%;
+      height: 100%;
+      mask: url("/titleCardTear.png");
+      mask-position: center top;
+      mask-size: 100% 100%;
+    }
   }
 
   &.coverBelow {

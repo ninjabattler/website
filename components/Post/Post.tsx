@@ -111,9 +111,6 @@ export default function Post({
                   return (
                     <Comment
                       key={com.id}
-                      pageColour={
-                        com.user_id === userId ? "#aaaa44" : "transparent"
-                      }
                       username={com.username.slice(0, 10)}
                       date={com.date}
                       content={com.content}

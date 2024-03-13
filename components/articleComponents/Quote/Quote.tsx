@@ -33,8 +33,10 @@ const Quote: FC<QuoteProps> = ({ quote, source, mergeAbove }) => (
       <span className={styles.quotationMark} />
     </div>
 
-    <div className={styles.space} />
-    <div className={`${styles.space} ${styles.gradient}`} />
+    <div className={styles.spaceContainer}>
+      <div className={styles.space} />
+      <div className={`${styles.space} ${styles.gradient}`} />
+    </div>
   </div>
 );
 

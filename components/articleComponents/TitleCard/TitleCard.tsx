@@ -21,8 +21,10 @@ const TitleCard: FC<TitleCardProps> = ({ image, title, coverBelow }) => (
     className={`${styles.titleCard} ${coverBelow && styles.coverBelow}`}
     id={title}
   >
-    <div className={styles.space} />
-    <div className={`${styles.space} ${styles.gradient}`} />
+    <div className={styles.spaceContainer}>
+      <div className={styles.space} />
+      <div className={`${styles.space} ${styles.gradient}`} />
+    </div>
 
     <div className={`${styles.glow} ${styles.top}`} />
     <div className={`${styles.glow} ${styles.bottom}`} />
