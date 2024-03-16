@@ -20,8 +20,10 @@ type DialogueProps = {
  */
 const Dialogue: FC<DialogueProps> = ({ text, speaker, image, invert }) => (
   <div className={`${styles.dialogue} ${invert ? styles.invert : ""}`}>
-    <div className={styles.space} />
-    <div className={`${styles.space} ${styles.gradient}`} />
+    <div className={styles.spaceContainer}>
+      <div className={styles.space} />
+      <div className={`${styles.space} ${styles.gradient}`} />
+    </div>
 
     <Image
       src={image.url}
