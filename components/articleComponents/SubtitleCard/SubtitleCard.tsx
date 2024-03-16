@@ -16,8 +16,10 @@ type SubtitleCardProps = {
  */
 const SubtitleCard: FC<SubtitleCardProps> = ({ image, title }) => (
   <div className={styles.subtitleCard}>
-    <div className={styles.space} />
-    <div className={`${styles.space} ${styles.gradient}`} />
+    <div className={styles.spaceContainer}>
+      <div className={styles.space} />
+      <div className={`${styles.space} ${styles.gradient}`} />
+    </div>
 
     <div className={`${styles.glow} ${styles.top}`} />
     <div className={`${styles.glow} ${styles.bottom}`} />

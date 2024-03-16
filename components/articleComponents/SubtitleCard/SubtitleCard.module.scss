@@ -3,12 +3,13 @@
 
 .subtitleCard {
   height: 10em;
-  margin-bottom: 3em;
-  margin-top: 2em;
+  margin-bottom: 4em;
+  margin-top: 0.5em;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   perspective: 10cm;
+  filter: drop-shadow(0 0 0.1em rgba(0, 0, 0, 0.5));
 
   .bar {
     height: variables.$titleCardThickness;
@@ -73,16 +74,16 @@
     transform-origin: right center;
 
     &.top {
-      width: calc(50% - 0.2em);
+      width: calc(50% - 0.65em);
       z-index: -2;
       transform: rotateY(2deg) rotateZ(-0.5deg) translateY(-0.55em);
       mask: linear-gradient(-45deg, black 86.5%, transparent 86.5%);
     }
 
     &.bottom {
-      width: calc(70% + 0.35em);
+      width: calc(70% + 0.05em);
       margin-top: 8em;
-      transform: rotateY(2deg) rotateZ(-0.5deg) translateY(0.35em);
+      transform: rotateY(2deg) rotateZ(-0.5deg) translateY(0.25em);
       mask: linear-gradient(45deg, transparent 17%, black 17%);
     }
   }
@@ -120,12 +121,22 @@
     }
   }
 
-  .space {
-    @include mixins.articlePageSpaceCutout;
-    height: 100%;
-    mask-size: 100% 100%;
-    mask-position: center top;
-    margin-bottom: -2em;
+  .spaceContainer {
+    width: 100%;
+    height: calc(100% + 3em);
+    margin-bottom: -4em;
+    position: absolute;
     z-index: -3;
+    filter: drop-shadow(0 0 0.1em var(--article-colour-space))
+      drop-shadow(0 0 0.25em var(--article-colour-space)) brightness(1.5);
+
+    .space {
+      @include mixins.articlePageSpaceCutout();
+      width: 100%;
+      height: 100%;
+      mask: url("/subtitleCardTear.png");
+      mask-position: center top;
+      mask-size: 100% 100%;
+    }
   }
 }
