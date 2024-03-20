@@ -57,8 +57,7 @@ const ArticleContent: FC<ArticleContentProps> = ({ content }) => {
             },
             titleCard: ({ value, index }) => {
               const typeBelow = content[index + 1]._type;
-              const coverBelow =
-                typeBelow === "picture" || typeBelow === "quote";
+              const coverBelow = typeBelow === "quote";
 
               return (
                 <TitleCard

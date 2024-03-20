@@ -47,7 +47,6 @@
     left: 0;
     z-index: 0;
     object-fit: contain;
-    image-rendering: pixelated;
   }
 
   .textBox {
@@ -97,7 +96,7 @@
     height: 1.2em;
     position: absolute;
     margin-bottom: -1.2em;
-    padding-left: 1em;
+    padding-left: 0.5em;
     padding-right: 4em;
     font-size: 1em;
     color: variables.$darkGray;
