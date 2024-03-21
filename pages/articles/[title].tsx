@@ -24,7 +24,7 @@ export default function ArticlePage({
   return (
     <>
       <Head>
-        <title>{article.title} - Ninjabattler</title>
+        <title>{`${articleData.title} - Ninjabattler`}</title>
         <meta name="description" content={article.description} />
         <meta property="og:locale" content="en_CA" />
         <meta name="theme-color" content={`${article.colors.primary.hex}`} />

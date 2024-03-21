@@ -14,9 +14,9 @@
 
   button {
     @include mixins.russoFont;
-    min-width: 20%;
-    padding-left: 0.05em;
-    padding-right: 0.05em;
+    min-width: fit-content;
+    padding-left: 0.4em;
+    padding-right: 0.4em;
     border: none;
     outline: none;
     display: flex;
@@ -30,10 +30,6 @@
 
     * {
       margin: 0.2em;
-    }
-
-    .amount {
-      font-size: 0.5em;
     }
 
     .likeIcon {
@@ -131,10 +127,12 @@
 
   #likeBar {
     width: 100%;
-    height: 20%;
-    margin-top: auto;
-    margin-bottom: auto;
-    background-color: variables.$lightGray;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    perspective: 0;
+    color: variables.$primaryText;
     mask: linear-gradient(
       -45deg,
       transparent 0%,
@@ -179,10 +177,31 @@
       transparent 100%
     );
 
+    .amount {
+      @include mixins.flexCenter();
+      @include mixins.russoFont();
+      height: 40%;
+      padding: 0.2em;
+      font-size: 0.65em;
+
+      &.likes {
+        justify-content: flex-start;
+      }
+
+      &.dislikes {
+        justify-content: flex-end;
+      }
+    }
+
     .bar {
-      @include mixins.articlePageGradientShadow;
       width: 100%;
-      height: 100%;
+      height: 20%;
+      position: absolute;
+      background-color: variables.$lightGray;
+
+      &.fill {
+        @include mixins.articlePageGradientShadow;
+      }
     }
   }
 

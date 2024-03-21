@@ -70,25 +70,28 @@ const LikePanel: FC<LikePanelProps> = ({
       >
         <ThumbUpSharp className={styles.likeIcon} />
         <ThumbUpSharp className={`${styles.likeIcon} ${styles.glow}`} />
-        <span className={styles.amount}>{likes}</span>
       </button>
 
       <div id={styles.likeBar}>
+        <span className={`${styles.amount} ${styles.likes}`}>{likes}</span>
+        <div className={styles.bar} />
         <div
-          className={styles.bar}
+          className={`${styles.bar} ${styles.fill}`}
           style={{
             mask: `linear-gradient(-45deg, transparent ${
               100 - likePercent
             }%, black ${100 - likePercent}%)`,
           }}
         />
+        <span className={`${styles.amount} ${styles.dislikes}`}>
+          {dislikes}
+        </span>
       </div>
 
       <button
         className={`${styles.dislike} ${isDisliked ? styles.selected : ""}`}
         onClick={clickDislike}
       >
-        <span className={styles.amount}>{dislikes}</span>
         <ThumbDownSharp className={styles.likeIcon} />
         <ThumbDownSharp className={`${styles.likeIcon} ${styles.glow}`} />
       </button>
