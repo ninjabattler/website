@@ -6,9 +6,9 @@
 
   .mainContent {
     backdrop-filter: blur(1vw);
-    padding-top: 20vh;
-    margin-bottom: 15vh;
     margin-top: -50vh;
+    margin-bottom: 15vh;
+    padding-top: 20vh;
     filter: drop-shadow(0 0 0.1em rgba(0, 0, 0, 0.5));
     mask: linear-gradient(180deg, transparent 0%, black 11vh);
 

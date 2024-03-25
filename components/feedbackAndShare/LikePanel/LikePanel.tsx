@@ -73,7 +73,7 @@ const LikePanel: FC<LikePanelProps> = ({
       </button>
 
       <div id={styles.likeBar}>
-        <span className={`${styles.amount} ${styles.likes}`}>{likes}</span>
+        <span className={styles.amount}>{likes}</span>
         <div className={styles.bar} />
         <div
           className={`${styles.bar} ${styles.fill}`}
@@ -83,9 +83,7 @@ const LikePanel: FC<LikePanelProps> = ({
             }%, black ${100 - likePercent}%)`,
           }}
         />
-        <span className={`${styles.amount} ${styles.dislikes}`}>
-          {dislikes}
-        </span>
+        <span className={styles.amount}>{dislikes}</span>
       </div>
 
       <button

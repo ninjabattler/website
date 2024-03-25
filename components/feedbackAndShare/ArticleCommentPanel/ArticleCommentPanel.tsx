@@ -97,11 +97,6 @@ const ArticleCommentPanel: FC<ArticleCommentPanelProps> = ({
       />
 
       <div className={styles.comments}>
-        {comments.length <= 0 && (
-          <p id={styles.noCommentMessage}>
-            {noCommentMessages[randomQuoteIndex]}
-          </p>
-        )}
         {comments.map((com, i) => {
           if (com.username) {
             return (

@@ -31,7 +31,7 @@
     border-left: 0.1em solid variables.$lightGray;
     border-right: 0.1em solid variables.$lightGray;
     background-color: variables.$darkGray;
-    overflow-y: scroll;
+    overflow-y: auto;
     flex-grow: 1;
 
     &::-webkit-scrollbar {

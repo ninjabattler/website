@@ -27,6 +27,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   background-color: var(--light-gray);
+  // font-size: 29px;
 
   @media print {
     background-color: var(--dark-gray);

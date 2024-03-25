@@ -1,20 +1,45 @@
-import React, { ReactElement } from "react";
+import React, { FC } from "react";
 import styles from "./Footer.module.scss";
-// import { Twitter, GitHub, Instagram } from '@material-ui/icons';
+import { Twitter, GitHub, Instagram, Email } from "@mui/icons-material";
 
-export default function Footer(): ReactElement {
-  return (
-    <footer className={styles.footer}>
-      <div className={styles.sketch} />
+/**
+ * The footer of the website, with links to my socials and contacts
+ * @author Ninjabattler
+ */
+const Footer: FC = () => (
+  <footer className={styles.footer}>
+    <div>
+      <a
+        href="https://twitter.com/ninjabattler"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <Twitter />
+      </a>
+      <a
+        href="https://www.instagram.com/ninjabattler/"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <Instagram />
+      </a>
+    </div>
 
-      <section id={styles.linksSection}>
-        <img src={"/Ninja placeholder.png"} alt="logo" />
-        <div>
-          {/* <a href='https://twitter.com/ninjabattler' target='_blank' rel='noreferrer'><Twitter /> Twitter</a>
-          <a href='https://www.instagram.com/ninjabattler/' target='_blank' rel='noreferrer'><Instagram /> Instagram</a>
-          <a href='https://github.com/ninjabattler' target='_blank' rel='noreferrer'><GitHub /> Github</a> */}
-        </div>
-      </section>
-    </footer>
-  );
-}
+    <img src="/Ninja placeholder.png" alt="logo" />
+
+    <div>
+      <a
+        href="https://github.com/ninjabattler"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <GitHub />
+      </a>
+      <a href="mailto:ninjabattler@ninjabattler.ca">
+        <Email />
+      </a>
+    </div>
+  </footer>
+);
+
+export default Footer;
