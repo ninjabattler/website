@@ -126,19 +126,22 @@ const CommentArea: FC<CommentAreaProps> = ({
     }
   }, []);
 
-  const onSlateChange = useCallback((e: any) => {
-    const comment: boolean = e[0].children[0].text === "";
+  const onSlateChange = useCallback(
+    (e: any) => {
+      const comment: boolean = e[0].children[0].text === "";
 
-    if (!noComment) {
-      if (comment) {
-        setNoComment(true);
+      if (!noComment) {
+        if (comment) {
+          setNoComment(true);
+        }
+      } else if (noComment) {
+        if (!comment) {
+          setNoComment(false);
+        }
       }
-    } else if (noComment) {
-      if (!comment) {
-        setNoComment(false);
-      }
-    }
-  }, []);
+    },
+    [noComment],
+  );
 
   return (
     <section className={styles.commentArea}>
