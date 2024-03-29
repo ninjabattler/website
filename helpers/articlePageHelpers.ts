@@ -18,7 +18,7 @@ export const like = async (
   cb();
 };
 
-export const comment = async (
+export const sendComment = async (
   params: { id: PostIdType; content: string },
   userId: UserIdType,
   comments: CommentProps[],
@@ -82,4 +82,14 @@ export const styleText = (text: string): string => {
   styledText = styledText.replace(/\n/g, "<br />");
 
   return `${styledText}`;
+};
+
+export const getTokenLength = (token) => {
+  if (typeof token === "string") {
+    return token.length;
+  } else if (typeof token.content === "string") {
+    return token.content.length;
+  } else {
+    return token.content.reduce((l, t) => l + getTokenLength(t), 0);
+  }
 };

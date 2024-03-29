@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useMemo } from "react";
 import styles from "./Picture.module.scss";
 import Image from "next/image";
 import { PictureFloat, SanityImage } from "../../../types";
@@ -28,12 +28,18 @@ const Picture: FC<PictureProps> = ({
   source,
   sourceLink,
 }) => {
-  const floatLeft =
-    width < CONSTANTS.PICTURE_MAX_WIDTH &&
-    float === CONSTANTS.PICTURE_FLOAT.LEFT;
-  const floatRight =
-    width < CONSTANTS.PICTURE_MAX_WIDTH &&
-    float === CONSTANTS.PICTURE_FLOAT.RIGHT;
+  const floatLeft = useMemo(
+    () =>
+      width < CONSTANTS.PICTURE_MAX_WIDTH &&
+      float === CONSTANTS.PICTURE_FLOAT.LEFT,
+    [],
+  );
+  const floatRight = useMemo(
+    () =>
+      width < CONSTANTS.PICTURE_MAX_WIDTH &&
+      float === CONSTANTS.PICTURE_FLOAT.RIGHT,
+    [],
+  );
 
   return (
     <figure

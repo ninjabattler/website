@@ -21,7 +21,7 @@ const Spoiler: FC<SpoilerProps> = ({ text }) => {
 
   return (
     <span
-      title="Spoiler"
+      title={revealed ? "" : "Spoiler"}
       onClick={reveal}
       className={`${styles.spoiler} ${revealed ? styles.revealed : ""}`}
     >

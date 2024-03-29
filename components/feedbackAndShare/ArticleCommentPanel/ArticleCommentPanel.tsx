@@ -37,14 +37,9 @@ const ArticleCommentPanel: FC<ArticleCommentPanelProps> = ({
   url,
   randomQuoteIndex,
 }) => {
-  const [commenting, setCommenting] = useState<boolean>(false);
   const [comments, setComments] = useState<PostCommentType[]>([]);
   const [windowServer, setWindow] = useState<WindowServerType>({});
-  const [viewComment, setViewComment] = useState<boolean>(false);
   const [showCommentPanel, setShowCommentPanel] = useState<boolean>(false);
-  const [noAnim, setNoAnim] = useState<boolean>(false);
-  const [commentContent, setCommentContent] = useState<string>("");
-  const commentRef = useRef();
 
   useEffect(() => {
     setWindow(window);
@@ -55,9 +50,6 @@ const ArticleCommentPanel: FC<ArticleCommentPanelProps> = ({
     if (window.scrollY >= window.innerHeight + 300) {
       setShowCommentPanel(true);
       window.removeEventListener("scroll", scrollListener);
-      setTimeout(() => {
-        setNoAnim(true);
-      }, 4000);
     }
   };
 
@@ -82,18 +74,10 @@ const ArticleCommentPanel: FC<ArticleCommentPanelProps> = ({
       />
 
       <CommentArea
-        commentRef={commentRef}
         comments={comments}
         setComments={setComments}
         postId={articleData.id}
         userId={userId}
-        commenting={commenting}
-        setCommentContent={setCommentContent}
-        setViewComment={setViewComment}
-        viewComment={viewComment}
-        setCommenting={setCommenting}
-        commentContent={commentContent}
-        noAnim={noAnim}
       />
 
       <div className={styles.comments}>

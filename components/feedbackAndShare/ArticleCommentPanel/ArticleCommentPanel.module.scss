@@ -40,7 +40,7 @@
 
     &::before {
       @include mixins.gridPatternDark;
-      width: calc(100% - 0.4em);
+      width: calc(100% - 0.2em);
       height: 100%;
       position: absolute;
       mask: linear-gradient(
