@@ -91,18 +91,10 @@ export default function Post({
         >
           <aside className={styles.commentPanel}>
             <CommentArea
-              commentRef={commentRef}
               comments={commentList}
               setComments={setCommentList}
               postId={id}
               userId={userId}
-              commenting={commenting}
-              setCommentContent={setCommentContent}
-              setViewComment={setViewComment}
-              viewComment={viewComment}
-              setCommenting={setCommenting}
-              commentContent={commentContent}
-              noAnim={true}
             />
 
             <div className={styles.comments}>
