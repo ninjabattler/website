@@ -164,8 +164,9 @@ const CommentArea: FC<CommentAreaProps> = ({
       )}
 
       <div className={styles.commentStylingBar}>
-        {COMMENT_STYLING_OPTIONS.map((option) => (
+        {COMMENT_STYLING_OPTIONS.map((option, i) => (
           <button
+            key={i}
             title={isDisabled ? "" : option.title}
             disabled={isDisabled}
             onClick={() => {
