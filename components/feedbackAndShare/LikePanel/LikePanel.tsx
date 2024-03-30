@@ -72,8 +72,11 @@ const LikePanel: FC<LikePanelProps> = ({
         <ThumbUpSharp className={`${styles.likeIcon} ${styles.glow}`} />
       </button>
 
+      <span className={styles.amounts}>
+        {likes} / {dislikes}
+      </span>
+
       <div id={styles.likeBar}>
-        <span className={styles.amount}>{likes}</span>
         <div className={styles.bar} />
         <div
           className={`${styles.bar} ${styles.fill}`}
@@ -83,7 +86,6 @@ const LikePanel: FC<LikePanelProps> = ({
             }%, black ${100 - likePercent}%)`,
           }}
         />
-        <span className={styles.amount}>{dislikes}</span>
       </div>
 
       <button

@@ -126,7 +126,7 @@
 
 @mixin gridPatternDark {
   background-image: url("/sketch.webp");
-  background-size: 5em;
+  background-size: 8rem;
   mix-blend-mode: darken;
   opacity: 0.15;
   filter: invert(1);
@@ -134,7 +134,7 @@
 
 @mixin gridPatternLight {
   background-image: url("/sketch.webp");
-  background-size: 5em;
+  background-size: 8rem;
   mix-blend-mode: color-burn;
   opacity: 0.15;
   filter: invert(1);

@@ -27,34 +27,12 @@
         margin-top: -2.4vh;
         border-right: 0.1em solid var(--light-gray);
 
-        // &::before {
-        //   @include mixins.articlePageGradientShadow;
-        //   position: absolute;
-        //   width: 100%;
-        //   height: 100%;
-        //   z-index: -2;
-        //   mask: linear-gradient(
-        //     90deg,
-        //     black calc(0% + 0.2vw),
-        //     transparent calc(0% + 0.2vw),
-        //     transparent calc(100% - 0.2vw),
-        //     black calc(100% - 0.2vw)
-        //   );
-        //   content: "";
-        //   filter: drop-shadow(0 0.65vw 0.3vw black);
-        // }
-
         .sketchBackground {
+          @include mixins.gridPatternDark;
           position: absolute;
           width: 100%;
           height: 100%;
           z-index: -1;
-          background-image: url("/sketch.webp");
-          background-size: 13%;
-          background-position: bottom left;
-          mix-blend-mode: darken;
-          opacity: 0.3;
-          filter: invert(1);
           mask: linear-gradient(
             90deg,
             transparent calc(0% + 0.2vw),
@@ -83,16 +61,11 @@
   z-index: -1;
 
   .sketchBackground {
+    @include mixins.gridPatternDark;
     position: absolute;
     width: 65%;
     height: 100%;
     z-index: -1;
-    background-image: url("/sketch.webp");
-    background-size: 13%;
-    background-position: top left;
-    mix-blend-mode: darken;
-    opacity: 0.3;
-    filter: invert(1);
     mask: linear-gradient(
       90deg,
       black 0%,

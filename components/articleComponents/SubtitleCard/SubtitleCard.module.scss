@@ -127,8 +127,8 @@
     margin-bottom: -4em;
     position: absolute;
     z-index: -3;
-    filter: drop-shadow(0 0 0.1em var(--article-colour-space))
-      drop-shadow(0 0 0.25em var(--article-colour-space)) brightness(1.5);
+    filter: drop-shadow(0 0 0.05rem var(--article-colour-space))
+      drop-shadow(0 0 0.05rem var(--article-colour-space)) brightness(1.5);
 
     .space {
       @include mixins.articlePageSpaceCutout();
