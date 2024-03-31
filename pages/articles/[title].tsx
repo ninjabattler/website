@@ -1,88 +1,50 @@
-import React, { useState } from "react";
+import React, { FC } from "react";
 import styles from "../../styles/ReviewPage.module.scss";
-import Head from "next/dist/shared/lib/head";
 import VideoHeader from "../../components/VideoHeader/VideoHeader";
 import { articlePageServerSideProps } from "../../ssr/articles/title";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import { AppData, ArticleData } from "../../types";
+import { AppData } from "../../types";
 import ArticleContent from "../../components/articleComponents/ArticleContent/ArticleContent";
 import ArticleCommentPanel from "../../components/feedbackAndShare/ArticleCommentPanel/ArticleCommentPanel";
+import ReviewPageHead from "../../components/PageMetadata/ReviewPageHead";
 
 export const getServerSideProps: GetServerSideProps =
   articlePageServerSideProps;
 
-export default function ArticlePage({
-  articleData,
-  disliked,
-  liked,
-  randomQuoteIndex,
-  url,
-  userId,
-}: InferGetServerSidePropsType<typeof articlePageServerSideProps> & AppData) {
-  const [article, setArticle] = useState<ArticleData>(articleData);
-
+const ArticlePage: FC<
+  InferGetServerSidePropsType<typeof articlePageServerSideProps> & AppData
+> = ({ articleData, disliked, liked, randomQuoteIndex, url, userId }) => {
   return (
     <>
-      <Head>
-        <title>{`${articleData.title} - Ninjabattler`}</title>
-        <meta name="description" content={article.description} />
-        <meta property="og:locale" content="en_CA" />
-        <meta name="theme-color" content={`${article.colors.primary.hex}`} />
-        <link rel="icon" href="/favicon.ico" />
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        {/* <!-- Google / Search Engine Tags --> */}
-        <meta
-          itemProp="name"
-          content={`Ninjabattler - ${article.title}`}
-        ></meta>
-        <meta itemProp="description" content={article.description}></meta>
-        <meta itemProp="image" content={article.thumbnail}></meta>
-        {/* <!-- Facebook Meta Tags --> */}
-        <meta property="og:url" content={url}></meta>
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={`Ninjabattler - ${article.title}`} />
-        <meta property="og:description" content={article.description} />
-        <meta property="og:image" content={article.thumbnail} />
-        {/* <!-- Twitter Meta Tags --> */}
-        <meta name="twitter:card" content="summary_large_image"></meta>
-        <meta
-          name="twitter:title"
-          content={`Ninjabattler - ${article.title}`}
-        ></meta>
-        <meta name="twitter:description" content={article.description}></meta>
-        <meta name="twitter:image" content={article.thumbnail}></meta>
-        {/* <!-- Meta Tags Generated via http://heymeta.com -->*/}
-        <style>
-          {`
-            :root {
-              --article-colour: ${article.colors.primary.hex};
-              --article-colour2: ${
-                article.colors.secondary
-                  ? article.colors.secondary.hex
-                  : article.colors.primary.hex
-              };
-              --article-colour-space: ${
-                article.colors.space
-                  ? article.colors.space.hex
-                  : article.colors.primary.hex
-              };
-              --article-colour-stars: ${
-                article.colors.stars
-                  ? article.colors.stars.hex
-                  : article.colors.primary.hex
-              };
-            }
-          `}
-        </style>
-      </Head>
+      <ReviewPageHead
+        title={articleData.title}
+        description={articleData.description}
+        thumbnail={articleData.thumbnail}
+        url={url}
+        primaryColour={articleData.colors.primary.hex}
+        secondaryColour={
+          articleData.colors.secondary
+            ? articleData.colors.secondary.hex
+            : articleData.colors.primary.hex
+        }
+        spaceColour={
+          articleData.colors.space
+            ? articleData.colors.space.hex
+            : articleData.colors.primary.hex
+        }
+        starsColour={
+          articleData.colors.stars
+            ? articleData.colors.stars.hex
+            : articleData.colors.primary.hex
+        }
+      />
 
       <VideoHeader
-        video={article.videoHeader || ""}
-        title={article.title}
+        video={articleData.videoHeader || ""}
+        title={articleData.title}
         infoBarProps={{
-          date: article.date,
-          tags: article.tags.map((tagObj) => {
+          date: articleData.date,
+          tags: articleData.tags.map((tagObj) => {
             return tagObj.tag;
           }),
         }}
@@ -90,36 +52,26 @@ export default function ArticlePage({
 
       <main id={styles.reviewPage}>
         <div className={styles.mainContent}>
-          {/* Blend */}
-          <div className={styles.containerBlend}>
-            <div className={styles.background}>
-              <div className={styles.sketchBackground} />
-            </div>
-          </div>
-
-          {/* Main Content */}
           <article className={styles.articleContainer}>
-            <div className={styles.sketchBackground} />
-
-            {article.narration && (
+            {articleData.narration && (
               <iframe
                 id={styles.adAurisIframe}
-                src={`${article.narration}?color=${
-                  article.colors.primary.hex.split("#")[1]
+                src={`${articleData.narration}?color=${
+                  articleData.colors.primary.hex.split("#")[1]
                 }`}
                 style={{ border: "none", height: "100px", width: "80%" }}
               ></iframe>
             )}
 
-            <ArticleContent content={article.content} />
+            <ArticleContent content={articleData.content} />
 
-            {article.footnotes && article.footnotes[0] && (
+            {articleData.footnotes && articleData.footnotes[0] && (
               <>
                 <h1 id={styles.footnotesHeader}>References</h1>
                 <ol id={styles.footnotes}>
-                  {article.footnotes.map((footnote, i) => {
+                  {articleData.footnotes.map((footnote, i) => {
                     return (
-                      <li key="i">
+                      <li key={i}>
                         <a
                           href={footnote.source}
                           target="_blank"
@@ -145,14 +97,9 @@ export default function ArticlePage({
             userId={userId}
           />
         </div>
-
-        {/* Blend */}
-        <div className={styles.containerBlendBottom}>
-          <div className={styles.background}>
-            <div className={styles.sketchBackground} />
-          </div>
-        </div>
       </main>
     </>
   );
-}
+};
+
+export default ArticlePage;

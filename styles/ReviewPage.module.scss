@@ -1,163 +1,98 @@
 @use "/styles/_mixins" as mixins;
+@use "/styles/_variables" as variables;
 
 #reviewPage {
   font-size: 1.6vw;
   perspective: 10cm;
 
   .mainContent {
-    backdrop-filter: blur(1vw);
-    margin-top: -50vh;
     margin-bottom: 0;
-    padding-top: 20vh;
+    padding-top: 10em;
+    padding-bottom: calc(100vh - 3em);
+    display: flex;
     filter: drop-shadow(0 0 0.1em rgba(0, 0, 0, 0.5));
-    mask: linear-gradient(180deg, transparent 0%, black 11vh);
+    backdrop-filter: blur(0.75em);
+    mask: linear-gradient(180deg, transparent 0%, black calc(0% + 7.5em));
 
-    .containerBlend {
-      height: 11vh;
-      width: calc(65%);
-      margin-top: -8.5vh;
-      position: absolute;
+    #adAurisIframe {
+      margin: auto;
+    }
 
-      .background {
-        width: calc(100%);
-        height: 100%;
-        background-color: var(--dark-gray);
-        mask: linear-gradient(177deg, transparent 10vh, black 10vh);
-        margin-top: -2.4vh;
-        border-right: 0.1em solid var(--light-gray);
+    .articleContainer {
+      width: 65%;
+      margin-top: -3em;
+      padding-top: 2.5em;
+      padding-bottom: 2.5em;
+      border-right: 0.1em solid variables.$lightGray;
+      display: flex;
+      flex-direction: column;
+      background-color: variables.$darkGray;
+      overflow: hidden;
+      z-index: -1;
+      mask: linear-gradient(
+        177deg,
+        transparent calc(0% + 2.5em),
+        black calc(0% + 2.5em),
+        black calc(100% - 2.5em),
+        transparent calc(100% - 2.5em)
+      );
+      perspective: 0cm;
 
-        .sketchBackground {
-          @include mixins.gridPatternDark;
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          z-index: -1;
-          mask: linear-gradient(
-            90deg,
-            transparent calc(0% + 0.2vw),
-            black calc(0% + 0.2vw),
-            transparent 10%,
-            transparent 90%,
-            black calc(100% - 0.2vw),
-            transparent calc(100% - 0.2vw)
-          );
+      ul {
+        width: 100%;
+      }
+
+      #footnotesHeader {
+        @include mixins.russoFont();
+        width: calc(100% - 4em);
+        margin: 0;
+        margin-top: 1em;
+        padding-left: 1em;
+        padding-right: 1em;
+        border-top: variables.$borderThinBlack;
+        border-bottom: variables.$borderThinBlack;
+        color: variables.$darkGray;
+        background-color: variables.$lightGray;
+        mask: linear-gradient(-45deg, transparent 22%, black 22%);
+      }
+
+      #footnotes {
+        width: 80%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        font-size: 0.8em;
+        background-color: variables.$darkGray;
+
+        li {
+          margin: 0.25em;
+          color: variables.$primaryText;
+
+          a {
+            color: variables.$primaryText;
+
+            &:hover {
+              text-decoration: underline dashed;
+            }
+          }
         }
       }
-    }
-  }
 
-  .containerBlendBottom {
-    height: 3.5em;
-    width: 100%;
-    padding-bottom: 100vh;
-    perspective: 0;
-    backdrop-filter: blur(1vw);
-
-    .background {
-      width: 65%;
-      height: 100%;
-      background-color: var(--dark-gray);
-      mask: linear-gradient(177deg, black 3em, transparent 3em);
-      border-right: 0.1em solid var(--light-gray);
-
-      .sketchBackground {
+      &::before {
         @include mixins.gridPatternDark;
-        position: absolute;
-        width: 65%;
+        width: 100%;
         height: 100%;
+        margin-top: -2.5em;
+        position: absolute;
         z-index: -1;
         mask: linear-gradient(
           90deg,
-          transparent calc(0% + 0.2vw),
-          black calc(0% + 0.2vw),
+          black 0%,
           transparent 10%,
           transparent 90%,
-          black calc(100% - 0.2vw),
-          transparent calc(100% - 0.2vw)
+          black 100%
         );
-      }
-    }
-  }
-}
-
-#reviewPage > .mainContent > .articleContainer {
-  display: flex;
-  flex-direction: column;
-  background-color: var(--dark-gray);
-  width: 65%;
-  // margin-left: 1vw;
-  overflow-x: hidden;
-  // filter: drop-shadow(0 0.65vw 0.3vw black);
-  border-right: 0.1em solid var(--light-gray);
-  margin-top: 0vh;
-  z-index: -1;
-
-  .sketchBackground {
-    @include mixins.gridPatternDark;
-    position: absolute;
-    width: 65%;
-    height: 100%;
-    z-index: -1;
-    mask: linear-gradient(
-      90deg,
-      black 0%,
-      transparent 10%,
-      transparent 90%,
-      black 100%
-    );
-  }
-}
-
-.articleContainer > ul {
-  width: 100%;
-}
-
-#reviewPage > div {
-  display: flex;
-}
-
-#adAurisIframe {
-  margin: auto;
-}
-
-#footnotesHeader {
-  color: var(--dark-gray);
-  width: calc(100% - 4vw);
-  font-family: "Russo One";
-  font-weight: 100;
-  margin: 0;
-  margin-top: 1em;
-  padding-left: 2vw;
-  padding-right: 2vw;
-  background-image: linear-gradient(
-    -45deg,
-    transparent 20%,
-    transparent 22%,
-    var(--light-gray) 22%,
-    var(--light-gray) 24%,
-    transparent 24%,
-    transparent 26%,
-    var(--light-gray) 26%
-  );
-}
-
-#footnotes {
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  background-color: var(--dark-gray);
-  margin: auto;
-  font-size: 0.8em;
-
-  li {
-    margin: 0.5vw;
-    color: var(--primary-text);
-
-    a {
-      color: var(--primary-text);
-
-      &:hover {
-        text-decoration: underline;
+        content: "";
       }
     }
   }
