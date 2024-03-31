@@ -20,7 +20,7 @@
     .avatar {
       width: 2em;
       height: 2em;
-      border: 0.1em solid variables.$lightGray;
+      border: variables.$borderThinLightGray;
       border-radius: 100%;
       background-color: variables.$darkGray;
       z-index: 1;
@@ -78,7 +78,7 @@
     margin-left: 2.75em;
     padding-top: 1em;
     padding-left: 1.25em;
-    border-left: 2px solid variables.$lightGray;
+    border-left: variables.$borderThinLightGray;
     font-size: 0.6em;
     line-height: 1.2em;
     overflow: hidden;

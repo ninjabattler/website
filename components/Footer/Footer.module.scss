@@ -4,7 +4,7 @@
 .footer {
   width: 100%;
   height: 2.5em;
-  border-top: 0.075em solid variables.$lightGray;
+  border-top: variables.$borderThinLightGray;
   bottom: 0;
   display: flex;
   justify-content: center;

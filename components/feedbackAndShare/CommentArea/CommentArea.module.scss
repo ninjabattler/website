@@ -2,11 +2,11 @@
 @use "/styles/_variables" as variables;
 
 .commentArea {
-  width: calc(100% - 0.2em);
+  width: calc(100% - 0.3rem);
   height: fit-content;
   margin-bottom: 0.5em;
-  border-left: 0.1em solid variables.$lightGray;
-  border-right: 0.1em solid variables.$lightGray;
+  border-left: variables.$borderThinLightGray;
+  border-right: variables.$borderThinLightGray;
   font-size: 1em;
 
   .commentAreaView {

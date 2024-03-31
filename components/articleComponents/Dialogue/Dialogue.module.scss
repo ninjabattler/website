@@ -8,7 +8,7 @@
   flex-direction: row;
   align-items: flex-end;
   margin-bottom: 1.5em;
-  font-size: 1em;
+  font-size: 1.3em;
   color: variables.$lightGray;
   perspective: 0cm;
 
@@ -56,9 +56,9 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    border-top: 0.1em solid variables.$lightGray;
-    border-bottom: 0.1em solid variables.$lightGray;
-    font-size: 0.9em;
+    border-top: variables.$borderThinLightGray;
+    border-bottom: variables.$borderThinLightGray;
+    font-size: 0.8em;
     color: variables.$primaryText;
     background-color: variables.$dialogueBoxBackgroundColour;
     perspective: 0cm;
