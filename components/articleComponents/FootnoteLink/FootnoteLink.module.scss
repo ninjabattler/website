@@ -1,0 +1,13 @@
+.footnoteLink {
+  font-size: 0.65em;
+  line-height: 0.65em;
+  color: var(--article-colour);
+
+  a {
+    font-size: 1em;
+
+    &:hover {
+      text-decoration: underline dashed;
+    }
+  }
+}

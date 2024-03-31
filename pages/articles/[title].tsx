@@ -113,27 +113,27 @@ export default function ArticlePage({
 
             <ArticleContent content={article.content} />
 
-            {/* {article.footnotes[0] &&
+            {article.footnotes && article.footnotes[0] && (
               <>
                 <h1 id={styles.footnotesHeader}>References</h1>
                 <ol id={styles.footnotes}>
-                  {article.footnotes?.map((footnote, i) => {
+                  {article.footnotes.map((footnote, i) => {
                     return (
-                      <li key='i'>
+                      <li key="i">
                         <a
-                          href={footnote.link}
+                          href={footnote.source}
                           target="_blank"
                           rel="noreferrer"
                           id={`f-${i + 1}`}
-                        >{
-                            footnote.title}
+                        >
+                          {footnote.title}
                         </a>
                       </li>
-                    )
+                    );
                   })}
                 </ol>
               </>
-            } */}
+            )}
           </article>
 
           <ArticleCommentPanel
@@ -144,6 +144,13 @@ export default function ArticlePage({
             url={url}
             userId={userId}
           />
+        </div>
+
+        {/* Blend */}
+        <div className={styles.containerBlendBottom}>
+          <div className={styles.background}>
+            <div className={styles.sketchBackground} />
+          </div>
         </div>
       </main>
     </>

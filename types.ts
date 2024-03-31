@@ -34,7 +34,7 @@ export type PictureFloat = "Left" | "Right";
 
 export interface Footnote {
   title: TitleType;
-  link: UrlType;
+  source: UrlType;
 }
 
 export interface SpoilerItem extends ArticleJsonItem {

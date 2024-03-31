@@ -59,6 +59,10 @@ export const articlePageServerSideProps = async ({
     tags[] -> {
       tag
     },
+    footnotes[]{
+        title,
+        source
+    },
     content[]{
       _type == "block" => {
         _type,
@@ -83,6 +87,9 @@ export const articlePageServerSideProps = async ({
               "width": asset->metadata.dimensions.width,
               "height": asset->metadata.dimensions.height,
             }
+          },
+          _type == "footnoteLink" => {
+            noteIndex
           }
         }
       },

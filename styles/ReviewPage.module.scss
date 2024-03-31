@@ -7,13 +7,12 @@
   .mainContent {
     backdrop-filter: blur(1vw);
     margin-top: -50vh;
-    margin-bottom: 15vh;
+    margin-bottom: 0;
     padding-top: 20vh;
     filter: drop-shadow(0 0 0.1em rgba(0, 0, 0, 0.5));
     mask: linear-gradient(180deg, transparent 0%, black 11vh);
 
-    .containerBlend,
-    .containerBlend2 {
+    .containerBlend {
       height: 11vh;
       width: calc(65%);
       margin-top: -8.5vh;
@@ -46,6 +45,39 @@
       }
     }
   }
+
+  .containerBlendBottom {
+    height: 3.5em;
+    width: 100%;
+    padding-bottom: 100vh;
+    perspective: 0;
+    backdrop-filter: blur(1vw);
+
+    .background {
+      width: 65%;
+      height: 100%;
+      background-color: var(--dark-gray);
+      mask: linear-gradient(177deg, black 3em, transparent 3em);
+      border-right: 0.1em solid var(--light-gray);
+
+      .sketchBackground {
+        @include mixins.gridPatternDark;
+        position: absolute;
+        width: 65%;
+        height: 100%;
+        z-index: -1;
+        mask: linear-gradient(
+          90deg,
+          transparent calc(0% + 0.2vw),
+          black calc(0% + 0.2vw),
+          transparent 10%,
+          transparent 90%,
+          black calc(100% - 0.2vw),
+          transparent calc(100% - 0.2vw)
+        );
+      }
+    }
+  }
 }
 
 #reviewPage > .mainContent > .articleContainer {
@@ -74,30 +106,6 @@
       black 100%
     );
   }
-
-  @media print {
-    width: 100%;
-    border: none;
-    background-color: var(--dark-gray);
-  }
-
-  // &::before {
-  //   @include mixins.articlePageGradientShadow;
-  //   position: absolute;
-  //   width: calc(65% + 0.4vw);
-  //   height: 100%;
-  //   margin-left: -0.2vw;
-  //   z-index: -2;
-  //   mask: linear-gradient(
-  //     90deg,
-  //     black calc(0% + 0.2vw),
-  //     transparent calc(0% + 0.2vw),
-  //     transparent calc(100% - 0.2vw),
-  //     black calc(100% - 0.2vw)
-  //   );
-  //   content: "";
-  //   filter: drop-shadow(0 0.65vw 0.3vw black);
-  // }
 }
 
 .articleContainer > ul {
@@ -118,6 +126,7 @@
   font-family: "Russo One";
   font-weight: 100;
   margin: 0;
+  margin-top: 1em;
   padding-left: 2vw;
   padding-right: 2vw;
   background-image: linear-gradient(

@@ -3,11 +3,17 @@ import styles from "./Paragraph.module.scss";
 import Picture from "../Picture/Picture";
 import Spoiler from "../Spoiler/Spoiler";
 import { PortableText } from "@portabletext/react";
+import FootnoteLink from "../FootnoteLink/FootnoteLink";
 
 type ParagraphProps = {
   content: Array<any>;
 };
 
+/**
+ * A paragraph that is rendered using sanity's portable text
+ * @author Ninjabattler
+ * @param text The text
+ */
 const Paragraph: FC<ParagraphProps> = ({ content }) => (
   <div className={styles.paragraph}>
     <PortableText
@@ -27,6 +33,9 @@ const Paragraph: FC<ParagraphProps> = ({ content }) => (
           },
           spoiler: ({ value }) => {
             return <Spoiler text={value.content} />;
+          },
+          footnoteLink: ({ value }) => {
+            return <FootnoteLink note={value.noteIndex} />;
           },
         },
       }}

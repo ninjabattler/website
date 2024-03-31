@@ -1,5 +1,6 @@
 import { type SchemaTypeDefinition } from "sanity";
 import article from "./schemas/article";
+import tag from "./schemas/tag";
 import { titleCard } from "./types/titleCard";
 import { quote } from "./types/quote";
 import { underline } from "./types/underline";
@@ -9,7 +10,7 @@ import { codeBlock } from "./types/codeBlock";
 import { subtitleCard } from "./types/subtitleCard";
 import { picture } from "./types/picture";
 import { spoiler } from "./types/spoiler";
-import tag from "./schemas/tag";
+import { footnoteLink } from "./types/footnoteLink";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -24,5 +25,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     codeBlock,
     picture,
     spoiler,
+    footnoteLink,
   ],
 };

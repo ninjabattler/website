@@ -19,8 +19,7 @@
       }
     }
 
-    a,
-    sup {
+    a {
       color: var(--article-colour);
 
       &:hover {
@@ -37,10 +36,6 @@
       color: variables.$primaryText;
       opacity: 1;
       filter: brightness(0.8);
-    }
-
-    sup {
-      font-size: 0.6em;
     }
   }
 }

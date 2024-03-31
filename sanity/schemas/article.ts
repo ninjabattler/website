@@ -35,6 +35,30 @@ const article: SchemaTypeDefinition = {
       ],
     },
     {
+      name: "footnotes",
+      type: "array",
+      title: "Footnotes",
+      of: [
+        {
+          name: "footnote",
+          type: "object",
+          title: "Footnote",
+          fields: [
+            {
+              name: "title",
+              type: "string",
+              title: "Title",
+            },
+            {
+              name: "source",
+              type: "string",
+              title: "Source",
+            },
+          ],
+        },
+      ],
+    },
+    {
       name: "videoHeader",
       type: "string",
       title: "Video Header",
@@ -87,6 +111,11 @@ const article: SchemaTypeDefinition = {
             {
               name: "spoiler",
               type: "spoiler",
+            },
+            {
+              name: "footnoteLink",
+              type: "footnoteLink",
+              title: "Footnote Link",
             },
           ],
         },
