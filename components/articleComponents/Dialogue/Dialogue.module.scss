@@ -16,9 +16,9 @@
   &::before {
     @include mixins.articlePageGradientShadow;
     width: 100%;
-    height: variables.$gradientShadowOffset;
+    height: variables.$gradientShadowOffset2;
     position: absolute;
-    margin-bottom: -(variables.$gradientShadowOffset);
+    margin-bottom: -(variables.$gradientShadowOffset2);
     z-index: -1;
     content: "";
   }
@@ -109,8 +109,8 @@
 
     &::before {
       @include mixins.articlePageGradientShadow;
-      width: calc(100% + variables.$gradientShadowOffset);
-      height: calc(100% + variables.$gradientShadowOffset);
+      width: calc(100% + variables.$gradientShadowOffset2);
+      height: calc(100% + variables.$gradientShadowOffset2);
       position: absolute;
       left: 0;
       z-index: -1;
