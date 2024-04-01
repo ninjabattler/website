@@ -9,7 +9,7 @@
   &::before {
     @include mixins.articlePageGradientShadow;
     width: 100%;
-    height: calc(100% + 0.1em);
+    height: calc(100% + variables.$gradientShadowOffset);
     position: absolute;
     content: "";
   }
@@ -27,9 +27,9 @@
     float: left;
 
     &::before {
-      width: calc(100% + 0.1em);
-      margin-top: -0.1em;
-      margin-right: -0.2em;
+      width: calc(100% + variables.$gradientShadowOffset);
+      margin-top: -(variables.$gradientShadowOffset);
+      margin-right: -(variables.$gradientShadowOffset);
     }
   }
 
@@ -39,7 +39,7 @@
     float: right;
 
     &::before {
-      margin-left: -0.1em;
+      margin-left: -(variables.$gradientShadowOffset);
       margin-right: 0;
     }
   }

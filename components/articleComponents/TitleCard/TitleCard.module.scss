@@ -94,21 +94,20 @@
     mask-repeat: no-repeat;
 
     &.bottom {
-      width: 100%;
-      height: variables.$titleCardThickness * 2;
-      margin-bottom: -0.2em;
-      mask: url("/titleBar.svg");
-      mask-size: 100% variables.$titleCardThickness * 3;
+      width: calc(107% + variables.$gradientShadowOffset);
+      height: calc(variables.$titleCardThickness + 2px);
+      transform: rotateY(-5deg) rotateZ(-1deg) translateX(-3.75em)
+        translateY(calc(-2.5em + variables.$gradientShadowOffset));
+      transform-origin: left center;
+      mask: linear-gradient(-45deg, transparent 16%, black 16%);
     }
 
     &.top {
-      width: calc(65% + 0.5em);
-      height: variables.$titleCardThickness;
-      margin-bottom: 3.35em;
-      transform: rotateY(-5deg) rotateZ(-0.5deg);
+      width: calc(65% + variables.$gradientShadowOffset);
+      height: calc(variables.$titleCardThickness + 2px);
+      margin-bottom: calc(1em - variables.$gradientShadowOffset);
+      transform: rotateY(-5deg) rotateZ(-0.5deg) translateY(-2.5em);
       transform-origin: left center;
-      mask-size: 100% variables.$titleCardThickness * 2;
-      mask-position: 0% 0%;
       mask: linear-gradient(45deg, black 90%, transparent 90%);
     }
   }

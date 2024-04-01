@@ -9,6 +9,7 @@
   top: 0;
   font-size: 0.8em;
   color: variables.$secondaryText;
+  filter: drop-shadow(0 0 0.1em rgba(0, 0, 0, 0.5));
   perspective: 10cm;
 
   &.mergeAbove {
@@ -77,8 +78,9 @@
 
     &.glow {
       @include mixins.articlePageGradientShadow;
-      margin-top: 0.45em;
-      padding-right: 0.25em;
+      height: calc(3em + 2px);
+      margin-top: variables.$gradientShadowOffset;
+      padding-right: variables.$gradientShadowOffset;
       border: none;
       z-index: -2;
       mask: linear-gradient(-45deg, transparent 16%, black 16%);
@@ -140,8 +142,9 @@
 
     &.glow {
       @include mixins.articlePageGradientShadow;
-      margin-top: 0.9em;
-      padding-left: 2.2em;
+      margin-top: calc(0.5em + variables.$gradientShadowOffset);
+      padding-left: calc(2em + variables.$gradientShadowOffset);
+      padding-top: calc(3em + 2px);
       border: none;
       z-index: -3;
     }

@@ -14,6 +14,8 @@
 
   .bar {
     height: variables.$titleCardThickness;
+    border-top: variables.$borderThinBlack;
+    border-bottom: variables.$borderThinBlack;
     position: absolute;
     padding-right: 1em;
     right: -1em;
@@ -30,8 +32,6 @@
 
     &.light {
       width: 70%;
-      border-top: 1px solid black;
-      border-bottom: 1px solid black;
       background-color: variables.$lightGray;
       z-index: 2;
       transform: rotateY(2deg) rotateZ(-0.5deg);
@@ -69,22 +69,25 @@
 
   .glow {
     @include mixins.articlePageGradientShadow;
-    height: variables.$titleCardThickness;
-    right: 0;
+    height: calc(variables.$titleCardThickness + 2px);
+    right: -1em;
+    padding-right: 1em;
     position: absolute;
     transform-origin: right center;
 
     &.top {
-      width: calc(50% - 0.65em);
+      width: calc(50% + variables.$gradientShadowOffset * 3);
       z-index: -2;
-      transform: rotateY(2deg) rotateZ(-0.5deg) translateY(-0.55em);
-      mask: linear-gradient(-45deg, black 86.5%, transparent 86.5%);
+      transform: rotateY(2deg) rotateZ(-0.5deg)
+        translateY(calc(-0.75em + variables.$gradientShadowOffset));
+      mask: linear-gradient(-45deg, black 83%, transparent 83%);
     }
 
     &.bottom {
-      width: calc(70% + 0.05em);
+      width: calc(70% + variables.$gradientShadowOffset);
       margin-top: 8em;
-      transform: rotateY(2deg) rotateZ(-0.5deg) translateY(0.25em);
+      transform: rotateY(2deg) rotateZ(-0.5deg)
+        translateY(variables.$gradientShadowOffset);
       mask: linear-gradient(45deg, transparent 17%, black 17%);
     }
   }

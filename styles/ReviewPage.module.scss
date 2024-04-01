@@ -20,7 +20,7 @@
 
     .articleContainer {
       width: 65%;
-      margin-top: -3em;
+      margin-top: -3.5em;
       padding-top: 2.5em;
       padding-bottom: 2.5em;
       border-right: variables.$borderThinLightGray;
@@ -31,10 +31,10 @@
       z-index: -1;
       mask: linear-gradient(
         177deg,
-        transparent calc(0% + 2.5em),
-        black calc(0% + 2.5em),
-        black calc(100% - 2.5em),
-        transparent calc(100% - 2.5em)
+        transparent calc(0% + 3em),
+        black calc(0% + 3em),
+        black calc(100% - 3em),
+        transparent calc(100% - 3em)
       );
       perspective: 0cm;
 

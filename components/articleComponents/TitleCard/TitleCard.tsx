@@ -27,9 +27,8 @@ const TitleCard: FC<TitleCardProps> = ({ image, title, coverBelow }) => (
     </div>
 
     <div className={`${styles.glow} ${styles.top}`} />
-    <div className={`${styles.glow} ${styles.bottom}`} />
-
     <div className={`${styles.bar} ${styles.dark}`} />
+
     {image && (
       <Image
         className={styles.banner}
@@ -42,6 +41,8 @@ const TitleCard: FC<TitleCardProps> = ({ image, title, coverBelow }) => (
         alt={image.alt}
       />
     )}
+
+    <div className={`${styles.glow} ${styles.bottom}`} />
     <div className={`${styles.bar} ${styles.light}`} />
 
     <h2>{title}</h2>
