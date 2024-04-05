@@ -4,6 +4,7 @@
 .quote {
   width: 100%;
   height: 6.5em;
+  margin-top: -2px;
   margin-bottom: 3.5em;
   padding-top: 3.5em;
   top: 0;
@@ -11,10 +12,6 @@
   color: variables.$secondaryText;
   filter: drop-shadow(0 0 0.1em rgba(0, 0, 0, 0.5));
   perspective: 10cm;
-
-  &.mergeAbove {
-    padding-top: 1em;
-  }
 
   * {
     &::selection {
@@ -60,7 +57,7 @@
     justify-content: flex-start;
     align-items: flex-start;
     background-color: variables.$lightGray;
-    transform: rotateY(-5deg) rotateZ(1.75deg) translateY(-3em);
+    transform: rotateY(-5deg) rotateZ(1.25deg) translateY(-3em);
     transform-origin: left center;
     mask: linear-gradient(
       -45deg,
@@ -137,7 +134,7 @@
     border-top: variables.$borderThinBlack;
     border-bottom: variables.$borderThinBlack;
     position: absolute;
-    transform: rotateY(-5deg) rotateZ(1.75deg) translateY(-3.5em);
+    transform: rotateY(-5deg) rotateZ(1.25deg) translateY(-3.5em);
     transform-origin: left center;
 
     &.glow {
@@ -152,7 +149,7 @@
     .quotationMark {
       transform: rotateZ(0deg) skewX(-20deg) translateX(0.3em)
         translateY(-0.1em) scale(1.5);
-      color: variables.$darkGray;
+      color: variables.$secondaryText;
     }
 
     &::selection {
@@ -178,6 +175,19 @@
       mask: url("/titleCardTear.png");
       mask-position: center bottom;
       mask-size: 100%;
+    }
+  }
+
+  &.mergeAbove {
+    margin-top: 0;
+    padding-top: 1em;
+
+    .quoteContainer {
+      transform: rotateY(-5deg) rotateZ(1.75deg) translateY(-3em);
+    }
+
+    .source {
+      transform: rotateY(-5deg) rotateZ(1.75deg) translateY(-3.5em);
     }
   }
 }

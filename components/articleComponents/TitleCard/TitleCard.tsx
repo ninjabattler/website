@@ -18,7 +18,9 @@ type TitleCardProps = {
  */
 const TitleCard: FC<TitleCardProps> = ({ image, title, coverBelow }) => (
   <header
-    className={`${styles.titleCard} ${coverBelow && styles.coverBelow}`}
+    className={`${styles.titleCard} ${coverBelow && styles.coverBelow} ${
+      image ? styles.withBanner : ""
+    }`}
     id={title}
   >
     <div className={styles.spaceContainer}>

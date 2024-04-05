@@ -3,7 +3,8 @@
 
 .titleCard {
   height: 12em;
-  margin-top: 4.5em;
+  margin-top: 1.5em;
+  margin-bottom: 3em;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -143,7 +144,7 @@
 
   .spaceContainer {
     width: 100%;
-    height: 100%;
+    height: 125%;
     filter: drop-shadow(0 0 0.05rem var(--article-colour-space))
       drop-shadow(0 0 0.05rem var(--article-colour-space)) brightness(1.5);
 
@@ -151,15 +152,27 @@
       @include mixins.articlePageSpaceCutout();
       width: 100%;
       height: 100%;
+      margin-top: 2em;
       mask: url("/titleCardTear.png");
       mask-position: center top;
       mask-size: 100% 100%;
     }
   }
 
+  &.withBanner {
+    margin-top: 4.5em;
+  }
+
   &.coverBelow {
-    .space {
-      mask-size: 100%;
+    margin-bottom: 0;
+
+    .spaceContainer {
+      height: 100%;
+
+      .space {
+        margin-top: 0;
+        mask-size: 100%;
+      }
     }
   }
 }
