@@ -15,7 +15,10 @@
     mask: linear-gradient(180deg, transparent 0%, black calc(0% + 7.5em));
 
     #adAurisIframe {
+      width: 80%;
+      height: 100px;
       margin: auto;
+      border: none;
     }
 
     .articleContainer {

@@ -59,7 +59,6 @@ const ArticlePage: FC<
                 src={`${articleData.narration}?color=${
                   articleData.colors.primary.hex.split("#")[1]
                 }`}
-                style={{ border: "none", height: "100px", width: "80%" }}
               ></iframe>
             )}
 

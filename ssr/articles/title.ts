@@ -48,6 +48,7 @@ export const articlePageServerSideProps = async ({
     await groq`*[_type == "article" && slug == "${title}"] | order(date.start asc){
     title,
     date,
+    narration,
     videoHeader,
     thumbnail {
       "url": asset->url,

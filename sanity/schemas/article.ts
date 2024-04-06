@@ -24,6 +24,11 @@ const article: SchemaTypeDefinition = {
       title: "Slug",
     },
     {
+      name: "narration",
+      type: "string",
+      title: "Narration",
+    },
+    {
       name: "tags",
       type: "array",
       title: "Tags",
