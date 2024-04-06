@@ -97,17 +97,26 @@
     p {
       @include mixins.darkScrollBar;
       width: 67.5%;
-      height: 1.25em;
+      height: 1.75em;
       margin-top: 0.875em;
       display: flex;
       align-items: auto;
       justify-content: flex-start;
-      overflow-y: scroll;
+      overflow-y: hidden;
+      overflow-x: scroll;
+      white-space: nowrap;
       z-index: 1;
-      direction: rtl;
+
+      &::-webkit-scrollbar {
+        height: 0.25em;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        border-top: 1px solid variables.$darkGray;
+        border-bottom: 1px solid variables.$darkGray;
+      }
 
       span {
-        direction: ltr;
         width: fit-content;
         margin-right: auto;
         padding-left: 0.5em;
