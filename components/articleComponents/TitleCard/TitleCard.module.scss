@@ -9,7 +9,7 @@
   flex-direction: column;
   justify-content: flex-end;
   font-size: 1.3em;
-  perspective: 10cm;
+  perspective: 11.5em;
   z-index: 10;
   filter: drop-shadow(0 0 0.1em rgba(0, 0, 0, 0.5));
 
@@ -174,9 +174,5 @@
         mask-size: 100%;
       }
     }
-  }
-
-  @media only screen and (min-aspect-ratio: 20/9) {
-    perspective: 15cm;
   }
 }

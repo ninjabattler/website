@@ -11,7 +11,7 @@
   font-size: 0.8em;
   color: variables.$secondaryText;
   filter: drop-shadow(0 0 0.1em rgba(0, 0, 0, 0.5));
-  perspective: 10cm;
+  perspective: 20em;
 
   * {
     &::selection {
@@ -198,9 +198,5 @@
     .source {
       transform: rotateY(-5deg) rotateZ(1.75deg) translateY(-3.5em);
     }
-  }
-
-  @media only screen and (min-aspect-ratio: 20/9) {
-    perspective: 15cm;
   }
 }
