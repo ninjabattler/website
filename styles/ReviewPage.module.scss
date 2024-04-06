@@ -94,6 +94,16 @@
         );
         content: "";
       }
+
+      @media only screen and (min-aspect-ratio: 20/9) {
+        border-left: variables.$borderThinLightGray;
+      }
+    }
+
+    @media only screen and (min-aspect-ratio: 20/9) {
+      width: 75%;
+      padding-left: 12.5%;
+      padding-right: 12.5%;
     }
   }
 }

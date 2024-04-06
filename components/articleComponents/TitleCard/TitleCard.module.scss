@@ -104,7 +104,7 @@
     }
 
     &.top {
-      width: calc(65% + variables.$gradientShadowOffset);
+      width: calc(65% + variables.$gradientShadowOffset * 3);
       height: calc(variables.$titleCardThickness + 2px);
       margin-bottom: calc(1em - variables.$gradientShadowOffset);
       transform: rotateY(-5deg) rotateZ(-0.5deg) translateY(-2.5em);
@@ -174,5 +174,9 @@
         mask-size: 100%;
       }
     }
+  }
+
+  @media only screen and (min-aspect-ratio: 20/9) {
+    perspective: 15cm;
   }
 }

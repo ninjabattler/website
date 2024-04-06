@@ -27,10 +27,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   background-color: var(--light-gray);
-  font-size: 16px;
+  @media only screen and (max-device-width: 3440px) {
+    font-size: 21px;
+  }
 
-  @media print {
-    background-color: var(--dark-gray);
+  @media only screen and (max-device-width: 2560px) {
+    font-size: 17px;
+  }
+
+  @media only screen and (max-device-width: 1920px) {
+    font-size: 16px;
   }
 }
 

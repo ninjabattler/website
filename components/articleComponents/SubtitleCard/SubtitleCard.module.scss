@@ -143,4 +143,8 @@
       mask-size: 100%;
     }
   }
+
+  @media only screen and (min-aspect-ratio: 20/9) {
+    perspective: 15cm;
+  }
 }

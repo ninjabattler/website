@@ -199,4 +199,8 @@
       transform: rotateY(-5deg) rotateZ(1.75deg) translateY(-3.5em);
     }
   }
+
+  @media only screen and (min-aspect-ratio: 20/9) {
+    perspective: 15cm;
+  }
 }
