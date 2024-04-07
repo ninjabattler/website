@@ -6,10 +6,10 @@ import { postsServerSideProps } from "../ssr/posts";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { AppData } from "../types";
 import dynamic from "next/dynamic";
-const PixiBackground = dynamic(
-  () => import("../components/PixiBackground/PixiBackground"),
-  { loading: () => <></> },
-);
+// const PixiBackground = dynamic(
+//   () => import("../components/PixiBackground/PixiBackground"),
+//   { loading: () => <></> },
+// );
 
 export const getServerSideProps: GetServerSideProps = postsServerSideProps;
 
@@ -20,7 +20,7 @@ export default function PostsPage({
 }: InferGetServerSidePropsType<typeof postsServerSideProps> & AppData) {
   return (
     <>
-      <PixiBackground />
+      {/* <PixiBackground /> */}
       <Head>
         <title>Ninjabattler - Posts</title>
         <meta

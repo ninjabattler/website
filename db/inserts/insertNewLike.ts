@@ -12,6 +12,7 @@ const insertNewLike = async (
       `
       INSERT INTO likes(liked, post_id, user_id) VALUES($1, $2, $3)
     `,
+      // @ts-ignore
       [liked === "true", Number(post_id), Number(user_id)],
     );
 

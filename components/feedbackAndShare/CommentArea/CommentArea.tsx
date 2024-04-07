@@ -154,7 +154,7 @@ const CommentArea: FC<CommentAreaProps> = ({
       {!commenting && (
         <Slate
           editor={editor}
-          value={DEFAULT_SLATE_VALUE}
+          initialValue={DEFAULT_SLATE_VALUE}
           onChange={onSlateChange}
         >
           <Editable

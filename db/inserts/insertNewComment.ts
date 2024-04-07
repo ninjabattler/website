@@ -8,10 +8,12 @@ const insertNewComment = async (
   user_id: UserIdType,
 ): Promise<CommentData> => {
   try {
+    // @ts-ignore
     const newComment: QueryResult<CommentData> = await db.query(
       `
       INSERT INTO comments(content, post_id, user_id) VALUES($1, $2, $3) RETURNING ${"*"};
     `,
+      // @ts-ignore
       [content, Number(post_id), Number(user_id)],
     );
 

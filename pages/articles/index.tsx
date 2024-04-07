@@ -8,10 +8,10 @@ import { formatSqlDate } from "../../helpers/dateHelpers";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { AppData } from "../../types";
 import dynamic from "next/dynamic";
-const PixiBackground = dynamic(
-  () => import("../../components/PixiBackground/PixiBackground"),
-  { loading: () => <></> },
-);
+// const PixiBackground = dynamic(
+//   () => import("../../components/PixiBackground/PixiBackground"),
+//   { loading: () => <></> },
+// );
 
 export const getStaticProps: GetStaticProps = articlesServerSideProps;
 
@@ -21,7 +21,7 @@ export default function ArticlesPage({
 }: InferGetStaticPropsType<typeof articlesServerSideProps> & AppData) {
   return (
     <>
-      <PixiBackground />
+      {/* <PixiBackground /> */}
       <Head>
         <title>Ninjabattler - Articles</title>
         <meta

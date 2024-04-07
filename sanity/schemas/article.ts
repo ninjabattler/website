@@ -7,6 +7,13 @@ const article: SchemaTypeDefinition = {
   title: "Articles",
   icon: DocumentTextIcon,
   description: "desc",
+  preview: {
+    select: {
+      title: "title",
+      subtitle: "slug",
+      media: "thumbnail",
+    },
+  },
   fields: [
     {
       name: "title",

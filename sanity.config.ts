@@ -15,6 +15,7 @@ import { media } from "sanity-plugin-media";
 export default defineConfig({
   basePath: "/studio",
   projectId,
+  name: "Ninjabattler",
   dataset,
   // Add and edit the content schema in the './sanity/schema' folder
   schema,
