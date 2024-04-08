@@ -1,4 +1,5 @@
 import { defineType } from "sanity";
+import { BlockquoteIcon } from "@sanity/icons";
 
 /**
  * Sanity type for the **Quote** component used in articles
@@ -8,6 +9,7 @@ export const quote = defineType({
   title: "Quote",
   name: "quote",
   type: "object",
+  icon: BlockquoteIcon,
   description:
     "A small banner, mainly used below images, to quote something or someone related to the article",
   fields: [

@@ -1,4 +1,5 @@
 import { defineType } from "sanity";
+import { LogoJsIcon } from "@sanity/icons";
 
 /**
  * Sanity type for the **Code Block** component used in articles
@@ -8,6 +9,7 @@ export const codeBlock = defineType({
   title: "Code Block",
   name: "codeBlock",
   type: "object",
+  icon: LogoJsIcon,
   description: "A block used to display and style a bunch of code",
   fields: [
     {

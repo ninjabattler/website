@@ -1,4 +1,5 @@
 import { defineType } from "sanity";
+import { CommentIcon } from "@sanity/icons";
 
 /**
  * Sanity type for the **Dialogue** component used in articles
@@ -8,6 +9,7 @@ export const dialogue = defineType({
   title: "Dialogue",
   name: "dialogue",
   type: "object",
+  icon: CommentIcon,
   description:
     "A text box with a name/title and image, similar to text boxes in rpg's, used for longer quotes/disclaimers",
   fields: [

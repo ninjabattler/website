@@ -1,4 +1,5 @@
 import { defineType } from "sanity";
+import { UlistIcon } from "@sanity/icons";
 
 /**
  * Sanity type for the **List Item** component used in articles
@@ -8,6 +9,7 @@ export const listItem = defineType({
   title: "List Item",
   name: "listItem",
   type: "object",
+  icon: UlistIcon,
   description:
     "A item for use in unordered lists with an option to add a custom image",
   fields: [

@@ -1,4 +1,5 @@
 import { defineType } from "sanity";
+import { ImageIcon } from "@sanity/icons";
 
 /**
  * Sanity type for the **Picture** component used in articles
@@ -8,6 +9,7 @@ export const picture = defineType({
   title: "Picture",
   name: "picture",
   type: "object",
+  icon: ImageIcon,
   description: "A picture that can be positioned and scaled for an article",
   fields: [
     {
