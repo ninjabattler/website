@@ -21,7 +21,7 @@ const ListItem: FC<ListItemProps> = ({ image, content }) => (
       width={image.width ? image.width : 1920}
       height={image.height ? image.height : 1080}
       loading="lazy"
-      placeholder="blur"
+      placeholder={image.blur ? "blur" : "empty"}
       blurDataURL={image.blur ? image.blur : ""}
       alt={image.alt ? image.alt : ""}
     />

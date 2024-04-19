@@ -61,9 +61,9 @@ const ArticleCommentPanel: FC<ArticleCommentPanelProps> = ({
       <LikePanel
         postId={articleData.id}
         userId={userId}
-        currentLikes={articleData.likes}
+        initialLikes={articleData.likes}
         isCurrentlyLiked={liked}
-        currentDislikes={articleData.dislikes}
+        initialDislikes={articleData.dislikes}
         isCurrentlyDisliked={disliked}
       />
 
