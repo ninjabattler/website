@@ -1,7 +1,8 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import { TitleType } from "../../types";
 import InfoBar, { InfoBarProps } from "../articleComponents/InfoBar/InfoBar";
 import styles from "./VideoHeader.module.scss";
+import Typewriter from "typewriter-effect/dist/core";
 
 type VideoHeaderProps = {
   video: string | null;
@@ -17,6 +18,16 @@ type VideoHeaderProps = {
  * @param infoBarProps Props, including a date and tags for the ino bar component
  */
 const VideoHeader: FC<VideoHeaderProps> = ({ video, title, infoBarProps }) => {
+  useEffect(() => {
+    const typewriter = new Typewriter("#title", {
+      delay: 10,
+      cursor: "",
+      skipAddStyles: true,
+    });
+
+    typewriter.pauseFor(1500).typeString(title).start();
+  }, []);
+
   return (
     <>
       {/* Video */}
@@ -41,7 +52,7 @@ const VideoHeader: FC<VideoHeaderProps> = ({ video, title, infoBarProps }) => {
         <div className={styles.glow} />
         <div className={`${styles.bar} ${styles.light}`} />
 
-        <h1 id={styles.title}>{title}</h1>
+        <h1 id="title"></h1>
 
         <div className={styles.infoContainer}>
           <InfoBar tags={infoBarProps.tags} date={infoBarProps.date} />
