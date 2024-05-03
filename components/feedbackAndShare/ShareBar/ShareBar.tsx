@@ -33,6 +33,7 @@ const ShareBar: FC<ShareBarProps> = ({ title, windowServer, articleLink }) => {
       <a onClick={copyLink} rel="noreferrer" title="Copy Link">
         <LinkSharp />
       </a>
+
       <a
         href={`https://twitter.com/share?ref_src=twsrc%5Etfw&u=${windowServer.location}`}
         target="_blank"
@@ -41,6 +42,7 @@ const ShareBar: FC<ShareBarProps> = ({ title, windowServer, articleLink }) => {
       >
         <X />
       </a>
+
       <a
         href={`http://www.facebook.com/sharer.php?u=${windowServer.location}&t=${title} - Ninjabattler`}
         target="_blank"
@@ -49,6 +51,7 @@ const ShareBar: FC<ShareBarProps> = ({ title, windowServer, articleLink }) => {
       >
         <Facebook />
       </a>
+
       <a
         href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
           windowServer.location as string,
@@ -61,6 +64,7 @@ const ShareBar: FC<ShareBarProps> = ({ title, windowServer, articleLink }) => {
       >
         <LinkedIn />
       </a>
+
       <a
         href={`http://www.reddit.com/submit?url=${windowServer.location}&title=${title} - Ninjabattler`}
         target="_blank"

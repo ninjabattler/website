@@ -3,11 +3,14 @@
 
 .commentArea {
   width: calc(100% - 0.3rem);
-  height: fit-content;
+  height: calc(4.8rem + 2.4em);
+  margin-left: auto;
   margin-bottom: 0.5em;
   border-left: variables.$borderThinLightGray;
   border-right: variables.$borderThinLightGray;
   font-size: 1em;
+  overflow: hidden;
+  animation: slideIn 1.25s 1 ease-in-out;
 
   .commentAreaView {
     @include mixins.lightScrollBar();
@@ -23,6 +26,7 @@
     background-color: variables.$darkGray;
     overflow-x: hidden;
     resize: none;
+    animation: commentAreaFadeIn 1.75s 1 ease-in-out;
 
     &::-webkit-scrollbar {
       width: 0.4em;
@@ -87,6 +91,7 @@
       color: variables.$darkGray;
       background-color: variables.$lightGray;
       cursor: pointer;
+      animation: iconScale 1.75s 1 ease-in-out;
       transition:
         color 0.2s,
         background-color 0.2s;
@@ -142,5 +147,47 @@
         cursor: unset;
       }
     }
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    width: 0;
+    border-width: 0;
+  }
+  50% {
+    width: 0;
+    border-width: 0;
+  }
+  100% {
+    width: calc(100% - 0.3rem);
+    border-width: 0.15rem;
+  }
+}
+
+@keyframes iconScale {
+  0% {
+    transform: scale(0);
+  }
+  75% {
+    transform: scale(0);
+  }
+  90% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes commentAreaFadeIn {
+  0% {
+    color: transparent;
+  }
+  75% {
+    color: transparent;
+  }
+  100% {
+    color: variables.$lightGray;
   }
 }

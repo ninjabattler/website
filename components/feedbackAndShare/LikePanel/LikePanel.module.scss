@@ -4,6 +4,7 @@
 #likePanel {
   width: calc(100% - 0.3rem);
   min-height: 1.25em;
+  margin-left: auto;
   margin-bottom: 0.5em;
   border-left: variables.$borderThinLightGray;
   border-right: variables.$borderThinLightGray;
@@ -12,6 +13,7 @@
   background-color: variables.$darkGray;
   overflow: hidden;
   perspective: 0;
+  animation: slideIn 0.75s 1 ease-in-out;
 
   button {
     @include mixins.russoFont;
@@ -27,7 +29,10 @@
     color: variables.$primaryText;
     background: none;
     z-index: 1;
+    transform: scale(1);
     cursor: pointer;
+    animation: amountsSlideIn 1.25s 1 ease-in-out;
+    transition: transform 0.3s;
 
     * {
       margin: 0.2em;
@@ -76,7 +81,7 @@
 
     &:hover {
       .likeIcon {
-        animation: likeHover 2s infinite linear;
+        animation: likeHover 1.25s infinite linear;
         color: var(--article-colour);
         filter: brightness(1.2);
 
@@ -93,35 +98,7 @@
     }
 
     &:active {
-      .likeIcon {
-        color: var(--article-colour);
-        animation: likeActive 2s infinite linear;
-
-        path {
-          stroke: var(--article-colour) !important;
-          stroke-width: 1px;
-        }
-
-        &.glow {
-          color: transparent;
-
-          path {
-            animation: likeActiveGlow 0.75s infinite linear;
-          }
-        }
-      }
-
-      &.dislike {
-        .likeIcon {
-          animation: dislikeActive 2s infinite linear;
-
-          &.glow {
-            path {
-              animation: dislikeActiveGlow 0.75s infinite linear;
-            }
-          }
-        }
-      }
+      transform: scale(0.9);
     }
 
     &.selected {
@@ -142,6 +119,7 @@
     font-size: 0.5em;
     color: variables.$primaryText;
     overflow: hidden;
+    animation: amountsSlideIn 1.25s 1 ease-in-out;
 
     div {
       height: 2em;
@@ -167,6 +145,7 @@
     justify-content: center;
     perspective: 0;
     color: variables.$primaryText;
+    animation: barSlideIn 1.25s 1 ease-in-out;
     mask: linear-gradient(
       90deg,
       transparent 0%,
@@ -287,73 +266,6 @@
   }
 }
 
-@keyframes likeActive {
-  0% {
-    transform: translateY(-20%) scale(1.1);
-    filter: brightness(1.2) drop-shadow(0 0 0.1em var(--article-colour2));
-  }
-  25% {
-    transform: translateY(-30%) scale(1.25);
-    filter: brightness(1.75) drop-shadow(0 0 0.15em var(--article-colour2));
-  }
-  50% {
-    transform: translateY(-20%) scale(1.1);
-    filter: brightness(1.2) drop-shadow(0 0 0.1em var(--article-colour2));
-  }
-  75% {
-    transform: translateY(-30%) scale(1.25);
-    filter: brightness(1.75) drop-shadow(0 0 0.15em var(--article-colour2));
-  }
-  100% {
-    transform: translateY(-20%) scale(1.1);
-    filter: brightness(1.2) drop-shadow(0 0 0.1em var(--article-colour2));
-  }
-}
-
-@keyframes likeActiveGlow {
-  0% {
-    stroke-opacity: 1;
-    stroke-width: 1px;
-    transform: translateY(0%);
-    filter: brightness(1) blur(0);
-  }
-  50% {
-    stroke-opacity: 1;
-    stroke-width: 1px;
-    transform: translateY(-25%);
-    filter: brightness(1.5) blur(0);
-  }
-  100% {
-    stroke-opacity: 0;
-    stroke-width: 0px;
-    transform: translateY(-50%);
-    filter: brightness(2) blur(0.035em);
-  }
-}
-
-@keyframes dislikeActive {
-  0% {
-    transform: translateY(20%) scale(1.1);
-    filter: brightness(1.2);
-  }
-  25% {
-    transform: translateY(30%) scale(1.25);
-    filter: brightness(1.75);
-  }
-  50% {
-    transform: translateY(20%) scale(1.1);
-    filter: brightness(1.2);
-  }
-  75% {
-    transform: translateY(30%) scale(1.25);
-    filter: brightness(1.75);
-  }
-  100% {
-    transform: translateY(20%) scale(1.1);
-    filter: brightness(1.2);
-  }
-}
-
 @keyframes dislikeHoverGlow {
   0% {
     stroke-opacity: 1;
@@ -375,23 +287,37 @@
   }
 }
 
-@keyframes dislikeActiveGlow {
+@keyframes slideIn {
   0% {
-    stroke-opacity: 1;
-    stroke-width: 1px;
-    transform: translateY(0%);
-    filter: brightness(1) blur(0);
-  }
-  50% {
-    stroke-opacity: 1;
-    stroke-width: 1px;
-    transform: translateY(-25%);
-    filter: brightness(1.5) blur(0);
+    width: 0;
+    border-width: 0;
   }
   100% {
-    stroke-opacity: 0;
-    stroke-width: 0px;
-    transform: translateY(-50%);
-    filter: brightness(2) blur(0.035em);
+    width: calc(100% - 0.3rem);
+    border-width: 0.15rem;
+  }
+}
+
+@keyframes amountsSlideIn {
+  0% {
+    margin-top: -3em;
+  }
+  75% {
+    margin-top: -3em;
+  }
+  100% {
+    margin-top: -0.1em;
+  }
+}
+
+@keyframes barSlideIn {
+  0% {
+    width: 0;
+  }
+  75% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
   }
 }

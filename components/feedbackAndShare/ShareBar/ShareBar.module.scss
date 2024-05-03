@@ -5,7 +5,6 @@
   width: calc(100% - 0.3rem);
   min-height: 1.25em;
   margin-left: auto;
-  margin-right: auto;
   margin-bottom: 0.5em;
   border-left: variables.$borderThinLightGray;
   border-right: variables.$borderThinLightGray;
@@ -13,7 +12,8 @@
   justify-content: space-evenly;
   align-items: center;
   background-color: variables.$darkGray;
-  overflow: hidden;
+  perspective: 0;
+  animation: slideIn 1s 1 ease-in-out;
 
   a {
     @include mixins.flexCenter();
@@ -21,6 +21,7 @@
     text-align: center;
     z-index: 1;
     cursor: pointer;
+    animation: iconScale 1.5s 1 ease-in-out;
 
     svg {
       font-size: 1em;
@@ -55,5 +56,35 @@
       black 100%
     );
     content: "";
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    width: 0;
+    border-width: 0;
+  }
+  25% {
+    width: 0;
+    border-width: 0;
+  }
+  100% {
+    width: calc(100% - 0.3rem);
+    border-width: 0.15rem;
+  }
+}
+
+@keyframes iconScale {
+  0% {
+    transform: scale(0);
+  }
+  75% {
+    transform: scale(0);
+  }
+  90% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
   }
 }
