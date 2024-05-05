@@ -87,7 +87,7 @@ const ArticleContent: FC<ArticleContentProps> = ({ content }) => {
               return (
                 <ListItem
                   content={value.text}
-                  image={value.icon ? value.icon.url : ""}
+                  image={value.icon ? value.icon : ""}
                 />
               );
             },
