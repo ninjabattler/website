@@ -115,9 +115,14 @@
 
   h2 {
     @include mixins.russoFont;
-    margin-bottom: 1.25em;
-    margin-left: 0.5vw;
+    width: 66%;
+    height: variables.$titleCardThickness / 1.5;
+    margin-bottom: 0.95em;
+    margin-left: 0.2em;
+    display: flex;
+    align-items: center;
     font-size: 1.5em;
+    line-height: 1em;
     color: var(--secondary-text);
     cursor: default;
     transform: rotateY(-5deg) rotateZ(-1deg) translateX(-0em)
