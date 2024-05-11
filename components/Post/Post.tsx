@@ -21,6 +21,7 @@ import {
 import moment from "moment";
 import dynamic from "next/dynamic";
 import { TypedObject } from "sanity";
+import ArticleContent from "../articleComponents/ArticleContent/ArticleContent";
 const CommentArea = dynamic(
   () => import("../feedbackAndShare/CommentArea/CommentArea"),
   { loading: () => <></> },
@@ -114,68 +115,7 @@ export default function Post({
             </div>
           </aside>
 
-          <div>
-            {content.map((item) => {
-              switch (item.type) {
-                case "Paragraph":
-                  const paragraphItem: ParagraphItem = item as ParagraphItem;
-                  return (
-                    <p>
-                      {paragraphItem.content.map((item2) => {
-                        if (typeof item2 === "string") {
-                          return item2;
-                        } else {
-                          switch (item2.type) {
-                            case "FireText":
-                              return <FireText text={item2.content} />;
-
-                            case "EarthText":
-                              return <EarthText text={item2.content} />;
-
-                            case "ThunderText":
-                              return <ThunderText text={item2.content} />;
-
-                            case "IceText":
-                              return <IceText text={item2.content} />;
-
-                            case "MetalHeadText":
-                              return <MetalHeadText text={item2.content} />;
-
-                            case "RegexText":
-                              return <RegexText text={item2.content} />;
-
-                            case "TerrariaText":
-                              return (
-                                <TerrariaText
-                                  text={item2.content}
-                                  colour={item2.colour}
-                                  dog={item2.dog}
-                                  draedon={item2.draedon}
-                                  moonlord={item2.moonlord}
-                                  scal={item2.scal}
-                                  yharim={item2.yharim}
-                                />
-                              );
-                          }
-                        }
-                      })}
-                    </p>
-                  );
-                case "Picture":
-                  const pictureItem: PictureItem = item as PictureItem;
-                  return <img src={pictureItem.imageSrc} alt="img" />;
-                case "Html":
-                  const htmlItem: HtmlItem = item as HtmlItem;
-                  return (
-                    <span
-                      dangerouslySetInnerHTML={{ __html: htmlItem.content }}
-                    ></span>
-                  );
-                default:
-                  return <></>;
-              }
-            })}
-          </div>
+          <ArticleContent content={content} />
         </div>
       )}
     </article>

@@ -11,10 +11,12 @@ import { subtitleCard } from "./types/subtitleCard";
 import { picture } from "./types/picture";
 import { spoiler } from "./types/spoiler";
 import { footnoteLink } from "./types/footnoteLink";
+import post from "./schemas/post";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     article,
+    post,
     tag,
     titleCard,
     quote,

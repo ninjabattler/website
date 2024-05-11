@@ -45,6 +45,7 @@ export default function PostsPage({
       </Head>
       <div id={styles.postsPage}>
         {posts.map((post) => {
+          console.log(post);
           return (
             <Post
               title={post.title}
