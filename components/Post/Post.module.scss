@@ -1,25 +1,59 @@
+@use "/styles/_mixins" as mixins;
+@use "/styles/_variables" as variables;
+
 .post,
 .closed {
+  width: 20em;
+  height: 8em;
+  margin-left: 1em;
+  margin-top: 1em;
   display: flex;
-  filter: drop-shadow(0.5em 0.5em 0 black);
-  margin-left: 2vw;
-  margin-top: 2vw;
-  width: 50vw;
-  height: 20vw;
+  font-size: 3em;
   background-image: linear-gradient(
-    -21deg,
-    var(--light-gray) 0%,
-    var(--light-gray) 50%,
-    var(--dark-gray) 50%,
-    var(--dark-gray) 100%
+    -21.75deg,
+    variables.$lightGray 0%,
+    variables.$lightGray 50%,
+    variables.$darkGray 50%,
+    variables.$darkGray 100%
   );
-  font-size: 2.4vw;
   cursor: pointer;
   overflow: hidden;
   animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
   transition:
     filter 0.3s,
     margin 0.3s;
+}
+
+.post,
+.expanded {
+  img {
+    display: block;
+    width: 30em;
+    height: auto;
+    filter: invert(0.5);
+    mix-blend-mode: lighten;
+    opacity: 0.2;
+  }
+
+  .title {
+    @include mixins.russoFont;
+    position: absolute;
+    font-size: 1em;
+    color: variables.$primaryText;
+    margin: 4px;
+    margin-top: -6px;
+    margin-left: 0.5%;
+  }
+
+  h2 {
+    @include mixins.russoFont;
+    font-size: 1em;
+    color: variables.$darkGray;
+    text-align: right;
+    margin: 4px;
+    margin-top: 17vw;
+    width: 100%;
+  }
 }
 
 .post {
@@ -35,193 +69,112 @@
 .expanded {
   display: flex;
   filter: drop-shadow(0.5vw 0.5vw 0.3vw black);
-  width: 95vw;
-  height: 85vh;
-  background-image: linear-gradient(
-    0deg,
-    var(--primary-text) 0%,
-    var(--primary-text) 0%,
-    var(--dark-gray) 0%,
-    var(--dark-gray) 100%
-  );
-  font-size: 3.4vw;
-  margin-left: 2.5vw;
-  margin-top: 2vw;
+  width: 95%;
+  height: 90vh;
+  background-image: none;
+  font-size: 3rem;
+  margin-left: 2.5%;
+  margin-top: 5vh;
   overflow: hidden;
   animation-name: openPost;
   animation-duration: 1.4s;
   animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
-}
 
-.post:hover {
-  filter: drop-shadow(0.8333em 0.8333em 0 black);
-  margin-left: 1.666vw;
-  margin-top: 1.666vw;
-  margin-bottom: 0.333vw;
-  margin-right: 0.333vw;
-}
-
-.post > img,
-.expanded > img {
-  display: block;
-  width: 37vw;
-  height: auto;
-  filter: invert(0.5);
-  mix-blend-mode: lighten;
-  opacity: 0.2;
-}
-
-.postContent {
-  background-color: var(--primary-text);
-  color: var(--dark-gray);
-  font-size: 0.55em;
-  width: 69.5%;
-  height: 90%;
-  margin: 0.5%;
-  margin-right: 0;
-  margin-top: 4%;
-  overflow-y: scroll;
-
-  &::-webkit-scrollbar {
-    width: 0.5vw;
-    background: var(--primary-text);
+  .title {
+    width: calc(70% - 1.5em);
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    border-left: variables.$borderThinLightGray;
+    border-right: variables.$borderThinLightGray;
+    background-color: variables.$darkGray;
   }
 
-  &::-webkit-scrollbar-track {
-    background: var(--primary-text);
+  .postContent {
+    @include mixins.lightScrollBar;
+    display: flex;
+    justify-content: center;
+    border-left: variables.$borderThinLightGray;
+    border-right: variables.$borderThinLightGray;
+    background-color: variables.$darkGray;
+    color: variables.$primaryText;
+    font-size: 0.55em;
+    width: calc(70% - 1.5em);
+    height: calc(90vh - 4.8rem - 2em);
+    margin: 0.5%;
+    margin-right: 0;
+    margin-top: auto;
+    overflow-y: scroll;
+
+    main {
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      z-index: 2;
+
+      p,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        margin: 0;
+        margin-bottom: 0.5em;
+      }
+    }
+
+    &::-webkit-scrollbar {
+      width: 0.25em;
+    }
+
+    &::before {
+      @include mixins.gridPatternDark;
+      width: calc(70% - 1.8em);
+      height: calc(90vh - 4.8rem - 2em);
+      position: absolute;
+      z-index: 1;
+      mask: linear-gradient(
+        90deg,
+        black 0%,
+        transparent 10%,
+        transparent 90%,
+        black 100%
+      );
+      content: "";
+    }
   }
 
-  &::-webkit-scrollbar-thumb {
-    background: var(--dark-gray);
-    border: 0.1vw solid var(--primary-text);
-  }
-}
-
-.postContent > div {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-
-  @media only screen and (max-device-width: 425px) {
-    position: relative;
-  }
-}
-
-.postContent > div > img {
-  max-width: 85% !important;
-}
-
-.postContent > div > p,
-.postContent > div > span,
-.postContent > div > span:has(> h1) {
-  width: 95% !important;
-
-  h1 {
-    margin-bottom: 0.5vw;
-  }
-}
-
-.post > h1,
-.expanded > h1 {
-  position: absolute;
-  font-size: 1em;
-  font-family: "Russo One";
-  font-weight: 100;
-  color: var(--primary-text);
-  margin: 4px;
-  margin-top: -6px;
-  margin-left: 0.5%;
-}
-
-.commentPanel {
-  position: absolute;
-  width: 30%;
-  height: 100%;
-  background-color: var(--dark-gray);
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 4%;
-  top: 0;
-  right: 0;
-  font-size: 1.645vw;
-}
-
-.comments {
-  overflow-y: scroll;
-  height: calc(88.5% - 6.65vw);
-
-  &::-webkit-scrollbar {
-    width: 0.5vw;
-    height: 0.5vw;
-    background: var(--light-gray);
+  .commentPanel {
+    position: absolute;
+    width: 30%;
+    height: 90vh;
+    margin-left: auto;
+    margin-right: auto;
+    top: 0;
+    right: 0;
+    font-size: 1em;
   }
 
-  &::-webkit-scrollbar-track {
-    background: var(--light-gray);
+  .comments {
+    height: calc(90vh - 4.8rem - 2em);
+    overflow-y: scroll;
+    background-color: variables.$darkGray;
+
+    &::-webkit-scrollbar {
+      width: 0.5vw;
+      height: 0.5vw;
+      background: variables.$lightGray;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: variables.$lightGray;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: variables.$darkGray;
+      border: 0.1vw solid variables.$lightGray;
+    }
   }
-
-  &::-webkit-scrollbar-thumb {
-    background: var(--dark-gray);
-    border: 0.1vw solid var(--light-gray);
-  }
-}
-
-.post > h2,
-.expanded > h2 {
-  font-size: 1em;
-  font-family: "Russo One";
-  font-weight: 100;
-  color: var(--dark-gray);
-  text-align: right;
-  margin: 4px;
-  margin-top: 17vw;
-  width: 100%;
-}
-
-.feedBackBar {
-  position: absolute;
-  width: 95%;
-  height: 80%;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-}
-
-.commentPanelButton {
-  width: 3vw;
-  height: 3vw;
-  background-color: var(--dark-gray);
-  color: var(--primary-text);
-  border: 8px solid var(--dark-gray);
-  margin: 1vw;
-  margin-right: calc(1vw + 16px);
-  font-size: 0.7em;
-  font-weight: bolder;
-  cursor: pointer;
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  filter: drop-shadow(0 0 0vw black);
-  transition: filter 0.1s;
-
-  &:hover {
-    filter: drop-shadow(0 0 0.15vw black);
-  }
-}
-
-#commentLoading {
-  width: 70%;
-  height: 120px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#commentLoading > img {
-  width: 100%;
 }
 
 //
@@ -241,15 +194,15 @@
 
 @keyframes openPost {
   0% {
-    width: 50vw;
+    width: 10em;
     height: 20vw;
     transform: rotateY(0deg);
     background-image: linear-gradient(
       -21deg,
-      var(--light-gray) 0%,
-      var(--light-gray) 50%,
-      var(--dark-gray) 50%,
-      var(--dark-gray) 100%
+      variables.$lightGray 0%,
+      variables.$lightGray 50%,
+      variables.$darkGray 50%,
+      variables.$darkGray 100%
     );
   }
   50% {
@@ -258,10 +211,10 @@
     transform: rotateY(90deg);
     background-image: linear-gradient(
       -21deg,
-      var(--light-gray) 0%,
-      var(--light-gray) 50%,
-      var(--dark-gray) 50%,
-      var(--dark-gray) 100%
+      variables.$lightGray 0%,
+      variables.$lightGray 50%,
+      variables.$darkGray 50%,
+      variables.$darkGray 100%
     );
   }
   52% {
@@ -270,10 +223,10 @@
     transform: rotateY(90deg);
     background-image: linear-gradient(
       0deg,
-      var(--light-gray) 0%,
-      var(--light-gray) 0%,
-      var(--dark-gray) 0%,
-      var(--dark-gray) 100%
+      variables.$lightGray 0%,
+      variables.$lightGray 0%,
+      variables.$darkGray 0%,
+      variables.$darkGray 100%
     );
   }
   100% {
@@ -295,10 +248,10 @@
     transform: rotateY(90deg);
     background-image: linear-gradient(
       0deg,
-      var(--light-gray) 0%,
-      var(--light-gray) 0%,
-      var(--dark-gray) 0%,
-      var(--dark-gray) 100%
+      variables.$lightGray 0%,
+      variables.$lightGray 0%,
+      variables.$darkGray 0%,
+      variables.$darkGray 100%
     );
   }
   50% {
@@ -307,10 +260,10 @@
     transform: rotateY(90deg);
     background-image: linear-gradient(
       -21deg,
-      var(--light-gray) 0%,
-      var(--light-gray) 50%,
-      var(--dark-gray) 50%,
-      var(--dark-gray) 100%
+      variables.$lightGray 0%,
+      variables.$lightGray 50%,
+      variables.$darkGray 50%,
+      variables.$darkGray 100%
     );
   }
   100% {
@@ -319,10 +272,10 @@
     transform: rotateY(0deg);
     background-image: linear-gradient(
       -21deg,
-      var(--light-gray) 0%,
-      var(--light-gray) 50%,
-      var(--dark-gray) 50%,
-      var(--dark-gray) 100%
+      variables.$lightGray 0%,
+      variables.$lightGray 50%,
+      variables.$darkGray 50%,
+      variables.$darkGray 100%
     );
   }
 }
@@ -334,10 +287,10 @@
     transform: rotateY(0deg);
     background-image: linear-gradient(
       -21deg,
-      var(--light-gray) 0%,
-      var(--light-gray) 50%,
-      var(--dark-gray) 50%,
-      var(--dark-gray) 100%
+      variables.$lightGray 0%,
+      variables.$lightGray 50%,
+      variables.$darkGray 50%,
+      variables.$darkGray 100%
     );
   }
   50% {
@@ -346,10 +299,10 @@
     transform: rotateY(90deg);
     background-image: linear-gradient(
       -21deg,
-      var(--light-gray) 0%,
-      var(--light-gray) 50%,
-      var(--dark-gray) 50%,
-      var(--dark-gray) 100%
+      variables.$lightGray 0%,
+      variables.$lightGray 50%,
+      variables.$darkGray 50%,
+      variables.$darkGray 100%
     );
   }
   52% {
@@ -358,10 +311,10 @@
     transform: rotateY(90deg);
     background-image: linear-gradient(
       0deg,
-      var(--light-gray) 0%,
-      var(--light-gray) 0%,
-      var(--dark-gray) 0%,
-      var(--dark-gray) 100%
+      variables.$lightGray 0%,
+      variables.$lightGray 0%,
+      variables.$darkGray 0%,
+      variables.$darkGray 100%
     );
   }
   100% {
@@ -383,10 +336,10 @@
     transform: rotateY(90deg);
     background-image: linear-gradient(
       0deg,
-      var(--light-gray) 0%,
-      var(--light-gray) 0%,
-      var(--dark-gray) 0%,
-      var(--dark-gray) 100%
+      variables.$lightGray 0%,
+      variables.$lightGray 0%,
+      variables.$darkGray 0%,
+      variables.$darkGray 100%
     );
   }
   50% {
@@ -395,10 +348,10 @@
     transform: rotateY(90deg);
     background-image: linear-gradient(
       -21deg,
-      var(--light-gray) 0%,
-      var(--light-gray) 50%,
-      var(--dark-gray) 50%,
-      var(--dark-gray) 100%
+      variables.$lightGray 0%,
+      variables.$lightGray 50%,
+      variables.$darkGray 50%,
+      variables.$darkGray 100%
     );
   }
   100% {
@@ -407,10 +360,10 @@
     transform: rotateY(0deg);
     background-image: linear-gradient(
       -21deg,
-      var(--light-gray) 0%,
-      var(--light-gray) 50%,
-      var(--dark-gray) 50%,
-      var(--dark-gray) 100%
+      variables.$lightGray 0%,
+      variables.$lightGray 50%,
+      variables.$darkGray 50%,
+      variables.$darkGray 100%
     );
   }
 }

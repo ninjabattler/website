@@ -1,10 +1,7 @@
 #postsPage {
-  padding-top: 7vw;
-  min-height: 1000px;
+  min-height: 90vh;
+  padding-top: 10vh;
   display: flex;
   flex-direction: column;
-
-  @media only screen and (max-device-width: 425px) {
-    padding-top: 30px;
-  }
+  background-color: black;
 }

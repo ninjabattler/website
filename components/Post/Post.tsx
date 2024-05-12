@@ -1,12 +1,5 @@
 import React, { useState, useRef, MutableRefObject, ReactElement } from "react";
 import styles from "./Post.module.scss";
-import FireText from "../animatedText/FireText/FireText";
-import IceText from "../animatedText/IceText/IceText";
-import ThunderText from "../animatedText/ThunderText/ThunderText";
-import EarthText from "../animatedText/EarthText/EarthText";
-import RegexText from "../animatedText/RegexText/RegexText";
-import MetalHeadText from "../animatedText/MetalHeadText/MetalHeadText";
-import TerrariaText from "../animatedText/TerrariaText/TerrariaText";
 import Comment from "../Comment/Comment";
 import {
   ArticleJson,
@@ -21,7 +14,9 @@ import {
 import moment from "moment";
 import dynamic from "next/dynamic";
 import { TypedObject } from "sanity";
-import ArticleContent from "../articleComponents/ArticleContent/ArticleContent";
+import { PortableText } from "next-sanity";
+import Picture from "../articleComponents/Picture/Picture";
+import Spoiler from "../articleComponents/Spoiler/Spoiler";
 const CommentArea = dynamic(
   () => import("../feedbackAndShare/CommentArea/CommentArea"),
   { loading: () => <></> },
@@ -80,7 +75,7 @@ export default function Post({
       </style>
 
       {!showContent && <img src={"/Ninja placeholder.png"} alt="logo" />}
-      <h1>{title}</h1>
+      <h1 className={styles.title}>{title}</h1>
       {!showContent && <h2>{moment(date).fromNow(true)}</h2>}
 
       {showContent && (
@@ -115,7 +110,29 @@ export default function Post({
             </div>
           </aside>
 
-          <ArticleContent content={content} />
+          <main>
+            <PortableText
+              value={content}
+              components={{
+                types: {
+                  picture: ({ value }) => {
+                    return (
+                      <Picture
+                        picture={value.image}
+                        width={value.scale}
+                        float={value.float}
+                        source={value.source}
+                        sourceLink={value.sourceLink}
+                      />
+                    );
+                  },
+                  spoiler: ({ value }) => {
+                    return <Spoiler text={value.content} />;
+                  },
+                },
+              }}
+            />
+          </main>
         </div>
       )}
     </article>
