@@ -112,7 +112,7 @@ export default function Post({
 
           <main>
             <PortableText
-              value={content}
+              value={content as TypedObject[]}
               components={{
                 types: {
                   picture: ({ value }) => {

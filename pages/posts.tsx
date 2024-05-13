@@ -1,15 +1,12 @@
 import Head from "next/head";
 import React from "react";
-import Post from "../components/Post/Post";
+import PostCard from "../components/PostCard/PostCard";
 import styles from "../styles/PostsPage.module.scss";
 import { postsServerSideProps } from "../ssr/posts";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { AppData } from "../types";
-import dynamic from "next/dynamic";
-// const PixiBackground = dynamic(
-//   () => import("../components/PixiBackground/PixiBackground"),
-//   { loading: () => <></> },
-// );
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectCards } from "swiper/modules";
 
 export const getServerSideProps: GetServerSideProps = postsServerSideProps;
 
@@ -20,9 +17,8 @@ export default function PostsPage({
 }: InferGetServerSidePropsType<typeof postsServerSideProps> & AppData) {
   return (
     <>
-      {/* <PixiBackground /> */}
       <Head>
-        <title>Ninjabattler - Posts</title>
+        <title>Posts | Ninjabattler</title>
         <meta
           name="description"
           content="A mad man's ramblings and sometimes blender renders"
@@ -43,30 +39,42 @@ export default function PostsPage({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
       </Head>
+
       <div id={styles.postsPage}>
-        {posts.map((post) => {
-          console.log(post);
-          return (
-            <Post
-              title={post.title}
-              content={post.content}
-              date={post.date}
-              id={post.id}
-              key={post.id}
-              ip={ip}
-              userId={
-                typeof userId === "number"
-                  ? userId
-                  : typeof userId[0] === "number"
-                    ? userId[0]
-                    : typeof userId[0].id === "number"
-                      ? userId[0].id
-                      : 1
-              }
-              comments={post.comments}
-            />
-          );
-        })}
+        <Swiper
+          className={styles.swiper}
+          direction="vertical"
+          effect="cards"
+          modules={[EffectCards]}
+          cardsEffect={{
+            slideShadows: true,
+          }}
+          mousewheel={true}
+        >
+          {posts.map((post, i) => {
+            return (
+              <SwiperSlide key={i} className={styles.slide}>
+                <PostCard
+                  title={post.title}
+                  content={post.content}
+                  date={post.date}
+                  id={post.id}
+                  ip={ip}
+                  userId={
+                    typeof userId === "number"
+                      ? userId
+                      : typeof userId[0] === "number"
+                        ? userId[0]
+                        : typeof userId[0].id === "number"
+                          ? userId[0].id
+                          : 1
+                  }
+                  comments={post.comments}
+                />
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
       </div>
     </>
   );

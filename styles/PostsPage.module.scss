@@ -1,7 +1,12 @@
 #postsPage {
-  min-height: 90vh;
-  padding-top: 10vh;
+  height: calc(100vh - 5.1em);
   display: flex;
-  flex-direction: column;
+  overflow: hidden;
   background-color: black;
+
+  .swiper {
+    height: calc(100vh - 5.1em);
+    margin-left: 0;
+    margin-top: 12.5vh;
+  }
 }

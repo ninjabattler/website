@@ -28,7 +28,7 @@ const ReviewPageHead: FC<ReviewPageHeadProps> = ({
   starsColour,
 }) => (
   <Head>
-    <title>{`${title} - Ninjabattler`}</title>
+    <title>{`${title} | Ninjabattler`}</title>
     <meta name="description" content={description} />
     <meta property="og:locale" content="en_CA" />
     <meta name="theme-color" content={`${primaryColour}`} />
