@@ -60,6 +60,7 @@ export default function PostsPage({
                   date={post.date}
                   id={post.id}
                   ip={ip}
+                  index={i}
                   userId={
                     typeof userId === "number"
                       ? userId

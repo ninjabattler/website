@@ -8,6 +8,8 @@ import { NextRouter, useRouter } from "next/router";
 import { AppProps } from "next/app";
 import quotes from "../constants/loadingOverlayQuotes.json";
 import "highlight.js/styles/vs2015.css";
+import { Mousewheel } from "swiper/modules";
+import Swiper from "swiper";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [linkClicked, setLinkClicked] = useState<string | null>(null);
@@ -15,6 +17,8 @@ function MyApp({ Component, pageProps }: AppProps) {
     Math.floor(Math.random() * quotes.length),
   );
   const router: NextRouter = useRouter();
+
+  Swiper.use([Mousewheel]);
 
   useEffect(() => {
     router.events.on("routeChangeComplete", () => {

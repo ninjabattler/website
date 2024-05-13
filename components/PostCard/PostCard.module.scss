@@ -4,7 +4,7 @@
 .post {
   width: 20em;
   height: 8em;
-  margin-left: 1em;
+  margin-left: 0em;
   margin-top: 1em;
   display: flex;
   font-size: 3em;
@@ -15,9 +15,16 @@
     variables.$darkGray 50%,
     variables.$darkGray 100%
   );
+  opacity: 0;
   cursor: pointer;
   overflow: hidden;
   perspective: 0;
+
+  &.visible {
+    margin-left: 1em;
+    opacity: 1;
+    animation: slideIn 0.25s ease-out 1;
+  }
 
   img {
     position: absolute;
@@ -48,5 +55,16 @@
     margin: 0;
     margin-top: auto;
     width: 100%;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    margin-left: 0em;
+  }
+  100% {
+    opacity: 1;
+    margin-left: 1em;
   }
 }

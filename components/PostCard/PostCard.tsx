@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 import styles from "./PostCard.module.scss";
 import {
   ArticleJson,
@@ -18,11 +18,23 @@ type PostCardProps = {
   id: PostIdType;
   userId: UserIdType;
   ip: IpType;
+  index: number;
 };
 
-const PostCard: FC<PostCardProps> = ({ title, date }) => {
+const PostCard: FC<PostCardProps> = ({ title, date, index }) => {
+  const [visible, setVisible] = useState<boolean>(false);
+
+  useEffect(() => {
+    setTimeout(
+      () => {
+        setVisible(true);
+      },
+      500 + 100 * index,
+    );
+  }, []);
+
   return (
-    <div className={styles.post}>
+    <div className={`${styles.post} ${visible ? styles.visible : ""}`}>
       <h1 className={styles.title}>{title}</h1>
 
       <img src={"/Ninja placeholder.png"} alt="logo" />
