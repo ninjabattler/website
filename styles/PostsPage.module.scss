@@ -1,17 +1,14 @@
+@use "/styles/_variables" as variables;
+
 #postsPage {
   height: calc(100vh - 5.1em);
   display: flex;
   overflow: hidden;
-  background-color: black;
 
   .swiper {
     height: calc(100vh - 5.1em);
     margin-left: 0;
     margin-top: 12.5vh;
     overflow: visible;
-
-    .slide {
-      overflow: visible;
-    }
   }
 }

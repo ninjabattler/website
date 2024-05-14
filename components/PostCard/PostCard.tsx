@@ -29,7 +29,7 @@ const PostCard: FC<PostCardProps> = ({ title, date, index }) => {
       () => {
         setVisible(true);
       },
-      500 + 100 * index,
+      500 + 150 * index,
     );
   }, []);
 

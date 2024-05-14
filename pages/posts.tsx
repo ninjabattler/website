@@ -7,6 +7,7 @@ import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { AppData } from "../types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCards } from "swiper/modules";
+import PostsPageBackground from "../components/backgrounds/PostsPageBackground/PostsPageBackground";
 
 export const getServerSideProps: GetServerSideProps = postsServerSideProps;
 
@@ -40,14 +41,16 @@ export default function PostsPage({
         <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
       </Head>
 
-      <div id={styles.postsPage}>
+      <main id={styles.postsPage}>
+        <PostsPageBackground />
+
         <Swiper
           className={styles.swiper}
           direction="vertical"
           effect="cards"
           modules={[EffectCards]}
           cardsEffect={{
-            slideShadows: true,
+            slideShadows: false,
           }}
           mousewheel={true}
         >
@@ -76,7 +79,7 @@ export default function PostsPage({
             );
           })}
         </Swiper>
-      </div>
+      </main>
     </>
   );
 }
