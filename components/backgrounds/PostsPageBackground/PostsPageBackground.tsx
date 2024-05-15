@@ -7,8 +7,11 @@ import {
   Sprite,
   SpriteMaterial,
   TextureLoader,
-  CubeTextureLoader,
   SRGBColorSpace,
+  Points,
+  PointsMaterial,
+  BufferGeometry,
+  Float32BufferAttribute,
 } from "three";
 
 /**
@@ -34,26 +37,35 @@ const PostsPageBackground: FC<{}> = () => {
       camera.position.z = 5;
 
       // Set up the space skybox
-      const loader = new CubeTextureLoader();
-      loader.setPath("/threeJs/posts/");
-
       const spaceTexture = new TextureLoader().load("/threeJs/posts/space.png");
       spaceTexture.colorSpace = SRGBColorSpace;
-
-      //Ninjabattler
-      const map = new TextureLoader().load("/threeJs/posts/testNinja.png");
-      map.colorSpace = SRGBColorSpace;
-      const material = new SpriteMaterial({ map: map });
-      const ninjabattler = new Sprite(material);
-
-      ninjabattler.position.x = 3;
-      ninjabattler.position.y = 0.5;
-      ninjabattler.scale.x = 4;
-      ninjabattler.scale.y = 1.77777 * 4;
-
-      scene.add(ninjabattler);
-
       scene.background = spaceTexture;
+
+      // scene.background = 0x202040;
+
+      // Stars
+
+      const stars = new Array(0);
+
+      for (let i = 0; i < 250; i++) {
+        const x = (Math.random() - 0.5) * 400;
+        const y = (Math.random() - 0.5) * 200;
+        const z = -100;
+
+        stars.push(x, y, z);
+      }
+
+      const starsGeometry = new BufferGeometry();
+
+      starsGeometry.setAttribute(
+        "position",
+        new Float32BufferAttribute(stars, 3),
+      );
+
+      const starsMaterial = new PointsMaterial({ color: 0xdddd44 });
+      const starField = new Points(starsGeometry, starsMaterial);
+
+      scene.add(starField);
 
       const renderScene = () => {
         renderer.render(scene, camera);
