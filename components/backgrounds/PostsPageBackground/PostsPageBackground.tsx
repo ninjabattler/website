@@ -58,24 +58,22 @@ const PostsPageBackground: FC<{}> = () => {
       scene.background = spaceTexture;
 
       // Stars
+      const starMap = new TextureLoader().load("/threeJs/posts/star.png");
+      const starMaterial = new SpriteMaterial({ map: starMap });
+
       const stars = new Array(0);
       for (let i = 0; i < 250; i++) {
-        const x = (Math.random() - 0.5) * 600;
-        const y = (Math.random() - 0.5) * 300;
-        const z = -100 - Math.random() * 100;
+        const star = new Sprite(starMaterial);
+        const starScale = Math.random() * 4;
 
-        stars.push(x, y, z);
+        star.position.x = (Math.random() - 0.5) * 600;
+        star.position.y = (Math.random() - 0.5) * 300;
+        star.position.z = -100 - Math.random() * 100;
+        star.scale.x = starScale;
+        star.scale.y = starScale;
+
+        scene.add(star);
       }
-
-      const starsGeometry = new BufferGeometry();
-      starsGeometry.setAttribute(
-        "position",
-        new Float32BufferAttribute(stars, 3),
-      );
-      const starsMaterial = new PointsMaterial({ color: 0xffff99 });
-      const starField = new Points(starsGeometry, starsMaterial);
-
-      scene.add(starField);
 
       // Sun
       const sunMap = new TextureLoader().load("/threeJs/posts/sun.png");
