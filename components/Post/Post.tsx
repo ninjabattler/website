@@ -70,6 +70,7 @@ export default function Post({
         {`
             :root {
               --article-colour: #aaaa44;
+              --article-colour2: #aaaa44;
             }
           `}
       </style>

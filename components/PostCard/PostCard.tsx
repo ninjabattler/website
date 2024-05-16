@@ -9,6 +9,7 @@ import {
 } from "../../types";
 import moment from "moment";
 import { TypedObject } from "sanity";
+import { CommentSharp, ThumbsUpDownSharp } from "@mui/icons-material";
 
 type PostCardProps = {
   title: TitleType;
@@ -39,7 +40,17 @@ const PostCard: FC<PostCardProps> = ({ title, date, index }) => {
 
       <img src={"/Ninja placeholder.png"} alt="logo" />
 
-      <h2 className={styles.date}>{moment(date).fromNow(true)}</h2>
+      <h2 className={styles.date}>
+        <em>{moment(date).fromNow()}</em>
+      </h2>
+
+      <div className={styles.stats}>
+        <ThumbsUpDownSharp />
+        <div className={styles.likeDislikeBar}>
+          <div className={styles.bar} />
+        </div>
+        <CommentSharp />0
+      </div>
     </div>
   );
 };
