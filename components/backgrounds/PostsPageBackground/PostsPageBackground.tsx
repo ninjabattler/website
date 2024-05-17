@@ -6,15 +6,8 @@ import {
   WebGLRenderer,
   TextureLoader,
   SRGBColorSpace,
-  Points,
-  PointsMaterial,
-  BufferGeometry,
-  Float32BufferAttribute,
   SpriteMaterial,
   Sprite,
-  SphereGeometry,
-  MeshBasicMaterial,
-  Mesh,
 } from "three";
 import {
   BloomEffect,
@@ -64,7 +57,6 @@ const PostsPageBackground: FC<{}> = () => {
       const starMap = new TextureLoader().load("/threeJs/posts/star.png");
       const starMaterial = new SpriteMaterial({ map: starMap });
 
-      const stars = new Array(0);
       for (let i = 0; i < 250; i++) {
         const star = new Sprite(starMaterial);
         const starScale = Math.random() * 4;
@@ -118,13 +110,14 @@ const PostsPageBackground: FC<{}> = () => {
       const noise = new NoiseEffect({
         blendFunction: BlendFunction.COLOR_DODGE,
       });
-      noise.blendMode.opacity.value = 0.025;
+      noise.blendMode.opacity.value = 0.035;
 
       const scanlines = new ScanlineEffect({
         blendFunction: BlendFunction.MULTIPLY,
         density: 1.0,
       });
-      scanlines.blendMode.opacity.value = 0.2;
+      scanlines.blendMode.opacity.value = 0.1;
+      scanlines.scrollSpeed = 0.05;
 
       const composer = new EffectComposer(renderer);
       composer.addPass(new RenderPass(scene, camera));

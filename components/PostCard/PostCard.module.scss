@@ -1,7 +1,7 @@
 @use "/styles/_mixins" as mixins;
 @use "/styles/_variables" as variables;
 
-.post {
+.postCard {
   width: 20em;
   height: 8em;
   margin-left: 0em;
@@ -20,7 +20,13 @@
   opacity: 0;
   cursor: pointer;
   overflow: hidden;
+  transform-origin: left center;
+  transform: rotateY(1deg) scale(1);
+  filter: drop-shadow(0 0 0.1em rgba(0, 0, 0, 0.5));
   perspective: 0;
+  transition:
+    margin 0.2s,
+    transform 0.2s;
 
   &.visible {
     margin-left: 1em;
@@ -34,8 +40,8 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
-    filter: invert(0.5) brightness(0.2);
-    mix-blend-mode: darken;
+    mix-blend-mode: overlay;
+    filter: invert(0.5) brightness(2);
     opacity: 0.4;
   }
 
@@ -47,7 +53,7 @@
     margin-left: 0.5%;
   }
 
-  h2 {
+  .date {
     @include mixins.russoFont;
     font-size: 0.5em;
     color: variables.$primaryText;
@@ -84,6 +90,11 @@
         background-color: #dddd44;
       }
     }
+  }
+
+  &:hover {
+    margin-left: 2em;
+    transform: rotateY(0deg) scale(1.1);
   }
 
   &::before {

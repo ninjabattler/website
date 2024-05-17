@@ -35,7 +35,7 @@ const PostCard: FC<PostCardProps> = ({ title, date, index }) => {
   }, []);
 
   return (
-    <div className={`${styles.post} ${visible ? styles.visible : ""}`}>
+    <div className={`${styles.postCard} ${visible ? styles.visible : ""}`}>
       <h1 className={styles.title}>{title}</h1>
 
       <img src={"/Ninja placeholder.png"} alt="logo" />

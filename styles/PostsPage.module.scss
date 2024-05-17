@@ -6,9 +6,15 @@
   overflow: hidden;
 
   .swiper {
-    height: calc(50vh - 5.1em);
+    width: 50vw;
+    height: calc(60vh - 5.1em);
     margin-left: 0;
-    margin-top: 25vh;
+    margin-top: 27.5vh;
     overflow: visible;
+
+    .slide {
+      overflow: visible;
+      perspective: 11.5em;
+    }
   }
 }
