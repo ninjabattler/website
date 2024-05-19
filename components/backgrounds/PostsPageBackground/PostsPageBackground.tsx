@@ -8,7 +8,10 @@ import {
   SRGBColorSpace,
   SpriteMaterial,
   Sprite,
+  PointLight,
 } from "three";
+// @ts-ignore
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import {
   BloomEffect,
   ScanlineEffect,
@@ -30,6 +33,7 @@ const PostsPageBackground: FC<{}> = () => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
+      const gltfLoader = new GLTFLoader();
       const scene = new Scene();
       const camera = new PerspectiveCamera(
         75,
@@ -89,6 +93,34 @@ const PostsPageBackground: FC<{}> = () => {
 
       scene.add(sun);
       scene.add(sun2);
+
+      // Ring Planet
+      let ringPlanet: any = null;
+
+      gltfLoader.load(
+        "/threeJs/posts/ringPlanet.glb",
+        (gltf) => {
+          ringPlanet = gltf.scene;
+          ringPlanet.rotation.x = 25.5;
+          ringPlanet.rotation.y = 30.5;
+          ringPlanet.rotation.z = -22.5;
+          ringPlanet.position.x = 1;
+          ringPlanet.position.y = 5;
+          ringPlanet.position.z = -20;
+
+          scene.add(ringPlanet);
+        },
+        undefined,
+        (error) => {
+          console.error(error);
+        },
+      );
+
+      // Lighting
+      const sunLight = new PointLight(0xffffff, 100, 22, 0);
+      sunLight.position.x = 4;
+
+      scene.add(sunLight);
 
       // Post Processing Effects
       const sunRays = new GodRaysEffect(camera, sun2, {
