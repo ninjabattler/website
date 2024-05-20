@@ -9,6 +9,7 @@ import {
   SpriteMaterial,
   Sprite,
   PointLight,
+  MeshToonMaterial,
 } from "three";
 // @ts-ignore
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
@@ -95,29 +96,44 @@ const PostsPageBackground: FC<{}> = () => {
       scene.add(sun2);
 
       // Ring Planet
-      let ringPlanet: any = null;
-
-      gltfLoader.load(
+      const ringPlanetPieces: string[] = [
         "/threeJs/posts/ringPlanet.glb",
-        (gltf) => {
-          ringPlanet = gltf.scene;
-          ringPlanet.rotation.x = 25.5;
-          ringPlanet.rotation.y = 30.5;
-          ringPlanet.rotation.z = -22.5;
-          ringPlanet.position.x = 1;
-          ringPlanet.position.y = 5;
-          ringPlanet.position.z = -20;
+        // "/threeJs/posts/ringPlanetRings.glb"
+      ];
 
-          scene.add(ringPlanet);
-        },
-        undefined,
-        (error) => {
-          console.error(error);
-        },
-      );
+      ringPlanetPieces.forEach((piece) => {
+        gltfLoader.load(
+          piece,
+          (gltf) => {
+            const ringPlanet = gltf.scene;
+
+            ringPlanet.traverse((o: any) => {
+              if (o.isMesh) {
+                const newMaterial = new MeshToonMaterial({
+                  map: o.material.map,
+                });
+                o.material = newMaterial;
+              }
+            });
+
+            ringPlanet.rotation.x = 25.5;
+            ringPlanet.rotation.y = 30.5;
+            ringPlanet.rotation.z = -22.5;
+            ringPlanet.position.x = 1;
+            ringPlanet.position.y = 5;
+            ringPlanet.position.z = -10;
+
+            scene.add(ringPlanet);
+          },
+          undefined,
+          (error) => {
+            console.error(error);
+          },
+        );
+      });
 
       // Lighting
-      const sunLight = new PointLight(0xffffff, 100, 22, 0);
+      const sunLight = new PointLight(0xffffff, 20, 11.5, 0);
       sunLight.position.x = 4;
 
       scene.add(sunLight);
@@ -154,7 +170,7 @@ const PostsPageBackground: FC<{}> = () => {
       const composer = new EffectComposer(renderer);
       composer.addPass(new RenderPass(scene, camera));
       composer.addPass(new EffectPass(camera, sunRays));
-      composer.addPass(new EffectPass(camera, bloom));
+      // composer.addPass(new EffectPass(camera, bloom));
       composer.addPass(new EffectPass(camera, noise));
       composer.addPass(new EffectPass(camera, scanlines));
 
