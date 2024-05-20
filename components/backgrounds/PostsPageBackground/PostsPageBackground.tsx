@@ -96,18 +96,20 @@ const PostsPageBackground: FC<{}> = () => {
       scene.add(sun2);
 
       // Ring Planet
-      const ringPlanetPieces: string[] = [
+      const ringPlanetPieceUrls: string[] = [
         "/threeJs/posts/ringPlanet.glb",
-        // "/threeJs/posts/ringPlanetRings.glb"
+        "/threeJs/posts/ringPlanetRings.glb",
       ];
 
-      ringPlanetPieces.forEach((piece) => {
-        gltfLoader.load(
-          piece,
-          (gltf) => {
-            const ringPlanet = gltf.scene;
+      const ringPlanetPieces: any[] = [];
 
-            ringPlanet.traverse((o: any) => {
+      ringPlanetPieceUrls.forEach((url) => {
+        gltfLoader.load(
+          url,
+          (gltf) => {
+            const ringPlanetPiece = gltf.scene;
+
+            ringPlanetPiece.traverse((o: any) => {
               if (o.isMesh) {
                 const newMaterial = new MeshToonMaterial({
                   map: o.material.map,
@@ -116,14 +118,16 @@ const PostsPageBackground: FC<{}> = () => {
               }
             });
 
-            ringPlanet.rotation.x = 25.5;
-            ringPlanet.rotation.y = 30.5;
-            ringPlanet.rotation.z = -22.5;
-            ringPlanet.position.x = 1;
-            ringPlanet.position.y = 5;
-            ringPlanet.position.z = -10;
+            ringPlanetPiece.rotation.x = 1;
+            ringPlanetPiece.rotation.y = 2;
+            ringPlanetPiece.rotation.z = -0.1;
+            ringPlanetPiece.position.x = 1;
+            ringPlanetPiece.position.y = 5;
+            ringPlanetPiece.position.z = -10;
 
-            scene.add(ringPlanet);
+            ringPlanetPieces.push(ringPlanetPiece);
+
+            scene.add(ringPlanetPiece);
           },
           undefined,
           (error) => {
@@ -133,7 +137,7 @@ const PostsPageBackground: FC<{}> = () => {
       });
 
       // Lighting
-      const sunLight = new PointLight(0xffffff, 20, 11.5, 0);
+      const sunLight = new PointLight(0xffffbb, 50, 11.5, 0);
       sunLight.position.x = 4;
 
       scene.add(sunLight);
@@ -151,8 +155,8 @@ const PostsPageBackground: FC<{}> = () => {
       });
 
       const bloom = new BloomEffect({
-        intensity: 3,
-        radius: 0.2,
+        intensity: 1,
+        radius: 0.1,
       });
 
       const noise = new NoiseEffect({
@@ -170,7 +174,7 @@ const PostsPageBackground: FC<{}> = () => {
       const composer = new EffectComposer(renderer);
       composer.addPass(new RenderPass(scene, camera));
       composer.addPass(new EffectPass(camera, sunRays));
-      // composer.addPass(new EffectPass(camera, bloom));
+      composer.addPass(new EffectPass(camera, bloom));
       composer.addPass(new EffectPass(camera, noise));
       composer.addPass(new EffectPass(camera, scanlines));
 
@@ -188,6 +192,10 @@ const PostsPageBackground: FC<{}> = () => {
           sun.scale.y = 5;
           sunMaterial.opacity = 1;
         }
+
+        ringPlanetPieces.forEach((planet) => {
+          planet.rotation.y += 0.0015;
+        });
 
         renderer.render(scene, camera);
         composer.render();
