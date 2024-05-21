@@ -34,6 +34,7 @@ const PostsPageBackground: FC<{}> = () => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
+      // Scene and Renderer
       const gltfLoader = new GLTFLoader();
       const scene = new Scene();
       const camera = new PerspectiveCamera(
@@ -113,6 +114,8 @@ const PostsPageBackground: FC<{}> = () => {
               if (o.isMesh) {
                 const newMaterial = new MeshToonMaterial({
                   map: o.material.map,
+                  emissive: 0x080800,
+                  fog: false,
                 });
                 o.material = newMaterial;
               }
@@ -137,7 +140,7 @@ const PostsPageBackground: FC<{}> = () => {
       });
 
       // Lighting
-      const sunLight = new PointLight(0xffffbb, 50, 11.5, 0);
+      const sunLight = new PointLight(0xfffcbc, 50, 11.5, 0);
       sunLight.position.x = 4;
 
       scene.add(sunLight);
