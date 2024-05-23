@@ -4,11 +4,12 @@ import PostCard from "../components/PostCard/PostCard";
 import styles from "../styles/PostsPage.module.scss";
 import { postsServerSideProps } from "../ssr/posts";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import { AppData } from "../types";
+import { AppData, PostData } from "../types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCards } from "swiper/modules";
 import PostsPageBackground from "../components/backgrounds/PostsPageBackground/PostsPageBackground";
 import Post from "../components/Post/Post";
+import axios from "axios";
 
 export const getServerSideProps: GetServerSideProps = postsServerSideProps;
 
@@ -18,10 +19,28 @@ export default function PostsPage({
   userId,
 }: InferGetServerSidePropsType<typeof postsServerSideProps> & AppData) {
   const [postSelected, setPostSelected] = useState<boolean>(false);
+  const [selectedTitle, setSelectedTitle] = useState<string>("");
+  const [selectedDate, setSelectedDate] = useState<string>("");
+  const [selectedContent, setSelectedContent] = useState<any[] | null>(null);
   const [showPost, setShowPost] = useState<boolean>(false);
 
-  const onSlideClick = useCallback(() => {
+  const onSlideClick = useCallback((id, title, date) => {
     setPostSelected(true);
+    setSelectedTitle(title);
+    setSelectedDate(date);
+
+    axios({
+      method: "get",
+      url: `/api/posts/get`,
+      params: { id },
+      headers: { "Content-Type": "application/json" },
+    }).then((res) => {
+      if (res.data && res.data.content) {
+        setSelectedContent(res.data.content);
+      } else {
+        setSelectedContent([]);
+      }
+    });
 
     setTimeout(() => {
       setShowPost(true);
@@ -80,13 +99,15 @@ export default function PostsPage({
               <SwiperSlide
                 key={i}
                 className={styles.slide}
-                onClick={onSlideClick}
+                onClick={() => {
+                  onSlideClick(post._id, post.title, post.date);
+                }}
               >
                 <PostCard
                   title={post.title}
                   content={post.content}
                   date={post.date}
-                  id={post.id}
+                  id={post._id}
                   ip={ip}
                   index={i}
                   hidden={postSelected}
@@ -106,56 +127,14 @@ export default function PostsPage({
           })}
         </Swiper>
 
-        {showPost && (
+        {showPost && selectedContent !== null && (
           <Post
             comments={[]}
-            content={[
-              {
-                children: [
-                  {
-                    _type: "span",
-                    marks: [],
-                    text: "Looks like I won't have another article out this month, so here, have a snake girl medusa thing instead",
-                    content: null,
-                  },
-                ],
-                _type: "block",
-                style: "normal",
-                _key: "15d4a60f2eee",
-                markDefs: [],
-              },
-              {
-                sourceLink: null,
-                image: {
-                  url: "https://cdn.sanity.io/images/umau1bu6/production/42495d8623fd48d8fe7385ee1bf32367c13f1270-3840x2160.webp",
-                  blur: "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAALABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAMECP/EAB0QAAICAgMBAAAAAAAAAAAAAAECAAMRIQQSIrH/xAAVAQEBAAAAAAAAAAAAAAAAAAABAP/EABYRAQEBAAAAAAAAAAAAAAAAAAABEf/aAAwDAQACEQMRAD8A56oRrGDA+hLciu0qocBQV7a+SHAJ6ZzuV5Vrs4DMT5hDaxvgNEYDbOzEcq1//9k=",
-                  width: 3840,
-                  height: 2160,
-                },
-                _type: "picture",
-                scale: 100,
-                float: "Left",
-                source: null,
-              },
-              {
-                _key: "9519767f258e",
-                markDefs: [],
-                children: [
-                  {
-                    _type: "span",
-                    marks: [],
-                    text: "I'll hopefully have another article out soon, as well as some other stuff...",
-                    content: null,
-                  },
-                ],
-                _type: "block",
-                style: "normal",
-              },
-            ]}
-            date="2023-05-31"
-            id={1}
+            content={selectedContent || []}
+            date={selectedDate}
+            id=""
             ip="1"
-            title="Snakes in the Clouds"
+            title={selectedTitle}
             userId={1}
           />
         )}

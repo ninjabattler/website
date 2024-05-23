@@ -1,7 +1,7 @@
 import { TypedObject } from "sanity";
 
 export type UserIdType = number;
-export type PostIdType = number;
+export type PostIdType = string;
 export type ColourType = string;
 export type TitleType = string;
 export type UrlType = string;
@@ -184,6 +184,7 @@ export interface ArticleData {
 }
 
 export interface PostData extends ArticleData {
+  _id: PostIdType;
   // comments: CommentData[];
 }
 

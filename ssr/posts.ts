@@ -22,8 +22,9 @@ export const postsServerSideProps = async ({
   ];
 
   const postsQuery = await groq`*[_type == "post"] | order(date desc){
+    _id,
     title,
-    date,
+    date
   }`;
 
   const postsArray: PostData[] = await getCachedClient()(postsQuery);

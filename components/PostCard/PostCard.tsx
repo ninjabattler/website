@@ -10,6 +10,7 @@ import {
 import moment from "moment";
 import { TypedObject } from "sanity";
 import { CommentSharp, ThumbsUpDownSharp } from "@mui/icons-material";
+import Link from "next/link";
 
 type PostCardProps = {
   title: TitleType;
@@ -23,7 +24,7 @@ type PostCardProps = {
   hidden: boolean;
 };
 
-const PostCard: FC<PostCardProps> = ({ title, date, index, hidden }) => {
+const PostCard: FC<PostCardProps> = ({ id, title, date, index, hidden }) => {
   const [visible, setVisible] = useState<boolean>(false);
   const [selected, setSelected] = useState<boolean>(false);
 
@@ -36,14 +37,16 @@ const PostCard: FC<PostCardProps> = ({ title, date, index, hidden }) => {
       () => {
         setVisible(true);
       },
-      500 + 300 * index,
+      500 + 200 * index,
     );
   }, []);
 
   return (
-    <div
+    <Link
+      href={`/posts?p=${id}`}
       onClick={onClick}
       className={`${styles.postCard} ${(visible && !hidden) || selected ? styles.visible : ""} ${selected ? styles.selected : ""}`}
+      shallow
     >
       <h1 className={styles.title}>{title}</h1>
 
@@ -60,7 +63,7 @@ const PostCard: FC<PostCardProps> = ({ title, date, index, hidden }) => {
         </div>
         <CommentSharp />0
       </div>
-    </div>
+    </Link>
   );
 };
 

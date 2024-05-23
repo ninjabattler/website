@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   Swiper.use([Mousewheel]);
 
   useEffect(() => {
-    router.events.on("routeChangeComplete", () => {
+    router.events.on("routeChangeComplete", (e) => {
       setLinkClicked("");
     });
   }, []);
@@ -48,7 +48,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
       )}
       {linkClicked && <LoadingOverlay quoteIndex={quoteIndex} />}
-      {linkClicked === "" && <LoadingOverlay shrink quoteIndex={quoteIndex} />}
+      {/* {linkClicked === "" && <LoadingOverlay shrink quoteIndex={quoteIndex} />} */}
 
       <Component {...pageProps} setLinkClicked={setLinkClicked} />
 
