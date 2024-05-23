@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useCallback, useEffect, useState } from "react";
 import styles from "./PostCard.module.scss";
 import {
   ArticleJson,
@@ -20,22 +20,31 @@ type PostCardProps = {
   userId: UserIdType;
   ip: IpType;
   index: number;
+  hidden: boolean;
 };
 
-const PostCard: FC<PostCardProps> = ({ title, date, index }) => {
+const PostCard: FC<PostCardProps> = ({ title, date, index, hidden }) => {
   const [visible, setVisible] = useState<boolean>(false);
+  const [selected, setSelected] = useState<boolean>(false);
+
+  const onClick = useCallback(() => {
+    setSelected(true);
+  }, []);
 
   useEffect(() => {
     setTimeout(
       () => {
         setVisible(true);
       },
-      500 + 150 * index,
+      500 + 300 * index,
     );
   }, []);
 
   return (
-    <div className={`${styles.postCard} ${visible ? styles.visible : ""}`}>
+    <div
+      onClick={onClick}
+      className={`${styles.postCard} ${(visible && !hidden) || selected ? styles.visible : ""} ${selected ? styles.selected : ""}`}
+    >
       <h1 className={styles.title}>{title}</h1>
 
       <img src={"/Ninja placeholder.png"} alt="logo" />

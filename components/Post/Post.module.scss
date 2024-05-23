@@ -1,114 +1,111 @@
 @use "/styles/_mixins" as mixins;
 @use "/styles/_variables" as variables;
 
-.post,
-.closed {
-  width: 20em;
-  height: 8em;
-  margin-left: 1em;
-  margin-top: 1em;
-  display: flex;
-  font-size: 3em;
-  background-image: linear-gradient(
-    -21.75deg,
-    variables.$lightGray 0%,
-    variables.$lightGray 50%,
-    variables.$darkGray 50%,
-    variables.$darkGray 100%
-  );
-  cursor: pointer;
-  overflow: hidden;
-  animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
-  transition:
-    filter 0.3s,
-    margin 0.3s;
-}
-
-.post,
-.expanded {
-  img {
-    display: block;
-    width: 30em;
-    height: auto;
-    filter: invert(0.5);
-    mix-blend-mode: lighten;
-    opacity: 0.2;
-  }
-
-  .title {
-    @include mixins.russoFont;
-    position: absolute;
-    font-size: 1em;
-    color: variables.$primaryText;
-    margin: 4px;
-    margin-top: -6px;
-    margin-left: 0.5%;
-  }
-
-  h2 {
-    @include mixins.russoFont;
-    font-size: 1em;
-    color: variables.$darkGray;
-    text-align: right;
-    margin: 4px;
-    margin-top: 17vw;
-    width: 100%;
-  }
-}
-
 .post {
-  animation-name: slideIn;
-  animation-duration: 2s;
-}
-
-.closed {
-  animation-name: closePost;
-  animation-duration: 1.4s;
-}
-
-.expanded {
   display: flex;
-  filter: drop-shadow(0.5vw 0.5vw 0.3vw black);
-  width: 95%;
-  height: 90vh;
-  background-image: none;
+  position: absolute;
+  filter: drop-shadow(0 0 0.1em rgba(0, 0, 0, 0.5));
+  width: 85%;
+  height: calc(90vh - 5rem);
   font-size: 3rem;
-  margin-left: 2.5%;
+  margin-left: 7.5%;
   margin-top: 5vh;
   overflow: hidden;
+  z-index: 2;
   animation-name: openPost;
   animation-duration: 1.4s;
   animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
 
-  .title {
-    width: calc(70% - 1.5em);
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-    border-left: variables.$borderThinLightGray;
-    border-right: variables.$borderThinLightGray;
-    background-color: variables.$darkGray;
-  }
-
   .postContent {
-    @include mixins.lightScrollBar;
     display: flex;
-    justify-content: center;
-    border-left: variables.$borderThinLightGray;
-    border-right: variables.$borderThinLightGray;
-    background-color: variables.$darkGray;
+    flex-direction: column;
     color: variables.$primaryText;
     font-size: 0.55em;
-    width: calc(70% - 1.5em);
-    height: calc(90vh - 4.8rem - 2em);
+    width: calc(70% - 1.5rem);
+    height: 100%;
     margin: 0.5%;
     margin-right: 0;
     margin-top: auto;
-    overflow-y: scroll;
+
+    .title {
+      @include mixins.russoFont;
+      width: 80%;
+      height: 1.2em;
+      margin: 0;
+      margin-bottom: 1rem;
+      padding-left: 10%;
+      padding-right: 10%;
+      border-left: variables.$borderThinLightGray;
+      border-right: variables.$borderThinLightGray;
+      background-color: variables.$darkGray;
+
+      &::before {
+        @include mixins.gridPatternDark;
+        width: calc(70% - 1.5rem);
+        height: 1.2em;
+        margin-left: calc(-10% + 3rem);
+        position: absolute;
+        z-index: 1;
+        mask: linear-gradient(
+          90deg,
+          black 0%,
+          transparent 10%,
+          transparent 90%,
+          black 100%
+        );
+        content: "";
+      }
+    }
+
+    .date {
+      @include mixins.russoFont;
+      width: 80%;
+      height: 1.2em;
+      margin: 0;
+      margin-bottom: 1rem;
+      padding-left: 10%;
+      padding-right: 10%;
+      display: flex;
+      align-items: center;
+      font-size: 1em;
+      border-left: variables.$borderThinLightGray;
+      border-right: variables.$borderThinLightGray;
+      background-color: variables.$darkGray;
+
+      svg {
+        margin-right: 0.5em;
+      }
+
+      &::before {
+        @include mixins.gridPatternDark;
+        width: calc(70% - 1.5rem);
+        height: 1.19em;
+        margin-left: calc(-10% + 3rem);
+        position: absolute;
+        z-index: 1;
+        mask: linear-gradient(
+          90deg,
+          black 0%,
+          transparent 10%,
+          transparent 90%,
+          black 100%
+        );
+        content: "";
+      }
+    }
 
     main {
+      @include mixins.lightScrollBar;
       width: 80%;
+      height: 100%;
+      padding-left: 10%;
+      padding-right: 10%;
+      border-left: variables.$borderThinLightGray;
+      border-right: variables.$borderThinLightGray;
+      background-color: variables.$darkGray;
       display: flex;
       flex-direction: column;
+      overflow-y: scroll;
       z-index: 2;
 
       p,
@@ -119,28 +116,30 @@
       h5,
       h6 {
         margin: 0;
-        margin-bottom: 0.5em;
+        margin-top: 0.25em;
+        margin-bottom: 0.25em;
       }
-    }
 
-    &::-webkit-scrollbar {
-      width: 0.25em;
-    }
+      &::-webkit-scrollbar {
+        width: 0.25em;
+      }
 
-    &::before {
-      @include mixins.gridPatternDark;
-      width: calc(70% - 1.8em);
-      height: calc(90vh - 4.8rem - 2em);
-      position: absolute;
-      z-index: 1;
-      mask: linear-gradient(
-        90deg,
-        black 0%,
-        transparent 10%,
-        transparent 90%,
-        black 100%
-      );
-      content: "";
+      &::before {
+        @include mixins.gridPatternDark;
+        width: calc(70% - 1.8rem);
+        height: 100%;
+        margin-left: calc(-10% + 3rem);
+        position: absolute;
+        z-index: 1;
+        mask: linear-gradient(
+          90deg,
+          black 0%,
+          transparent 10%,
+          transparent 90%,
+          black 100%
+        );
+        content: "";
+      }
     }
   }
 
@@ -174,196 +173,5 @@
       background: variables.$darkGray;
       border: 0.1vw solid variables.$lightGray;
     }
-  }
-}
-
-//
-// Animation
-//
-
-@keyframes slideIn {
-  0% {
-    margin-left: 0px;
-    opacity: 0;
-  }
-  100% {
-    margin-left: 2vw;
-    opacity: 100;
-  }
-}
-
-@keyframes openPost {
-  0% {
-    width: 10em;
-    height: 20vw;
-    transform: rotateY(0deg);
-    background-image: linear-gradient(
-      -21deg,
-      variables.$lightGray 0%,
-      variables.$lightGray 50%,
-      variables.$darkGray 50%,
-      variables.$darkGray 100%
-    );
-  }
-  50% {
-    width: 50vw;
-    height: 20vw;
-    transform: rotateY(90deg);
-    background-image: linear-gradient(
-      -21deg,
-      variables.$lightGray 0%,
-      variables.$lightGray 50%,
-      variables.$darkGray 50%,
-      variables.$darkGray 100%
-    );
-  }
-  52% {
-    width: 50vw;
-    height: 20vh;
-    transform: rotateY(90deg);
-    background-image: linear-gradient(
-      0deg,
-      variables.$lightGray 0%,
-      variables.$lightGray 0%,
-      variables.$darkGray 0%,
-      variables.$darkGray 100%
-    );
-  }
-  100% {
-    width: 95vw;
-    height: 85vh;
-    transform: rotateY(0deg);
-  }
-}
-
-@keyframes closePost {
-  0% {
-    width: 95vw;
-    height: 85vh;
-    transform: rotateY(0deg);
-  }
-  48% {
-    width: 50vw;
-    height: 20vh;
-    transform: rotateY(90deg);
-    background-image: linear-gradient(
-      0deg,
-      variables.$lightGray 0%,
-      variables.$lightGray 0%,
-      variables.$darkGray 0%,
-      variables.$darkGray 100%
-    );
-  }
-  50% {
-    width: 50vw;
-    height: 20vw;
-    transform: rotateY(90deg);
-    background-image: linear-gradient(
-      -21deg,
-      variables.$lightGray 0%,
-      variables.$lightGray 50%,
-      variables.$darkGray 50%,
-      variables.$darkGray 100%
-    );
-  }
-  100% {
-    width: 50vw;
-    height: 20vw;
-    transform: rotateY(0deg);
-    background-image: linear-gradient(
-      -21deg,
-      variables.$lightGray 0%,
-      variables.$lightGray 50%,
-      variables.$darkGray 50%,
-      variables.$darkGray 100%
-    );
-  }
-}
-
-@keyframes openPostMobile {
-  0% {
-    width: 94vw;
-    height: 36.154vw;
-    transform: rotateY(0deg);
-    background-image: linear-gradient(
-      -21deg,
-      variables.$lightGray 0%,
-      variables.$lightGray 50%,
-      variables.$darkGray 50%,
-      variables.$darkGray 100%
-    );
-  }
-  50% {
-    width: 94vw;
-    height: 36.154vw;
-    transform: rotateY(90deg);
-    background-image: linear-gradient(
-      -21deg,
-      variables.$lightGray 0%,
-      variables.$lightGray 50%,
-      variables.$darkGray 50%,
-      variables.$darkGray 100%
-    );
-  }
-  52% {
-    width: 94vw;
-    height: 36.154vw;
-    transform: rotateY(90deg);
-    background-image: linear-gradient(
-      0deg,
-      variables.$lightGray 0%,
-      variables.$lightGray 0%,
-      variables.$darkGray 0%,
-      variables.$darkGray 100%
-    );
-  }
-  100% {
-    width: 100vw;
-    height: 90vh;
-    transform: rotateY(0deg);
-  }
-}
-
-@keyframes closePostMobile {
-  0% {
-    width: 100vw;
-    height: 90vh;
-    transform: rotateY(0deg);
-  }
-  48% {
-    width: 100vw;
-    height: 36.154vw;
-    transform: rotateY(90deg);
-    background-image: linear-gradient(
-      0deg,
-      variables.$lightGray 0%,
-      variables.$lightGray 0%,
-      variables.$darkGray 0%,
-      variables.$darkGray 100%
-    );
-  }
-  50% {
-    width: 94vw;
-    height: 36.154vw;
-    transform: rotateY(90deg);
-    background-image: linear-gradient(
-      -21deg,
-      variables.$lightGray 0%,
-      variables.$lightGray 50%,
-      variables.$darkGray 50%,
-      variables.$darkGray 100%
-    );
-  }
-  100% {
-    width: 94vw;
-    height: 36.154vw;
-    transform: rotateY(0deg);
-    background-image: linear-gradient(
-      -21deg,
-      variables.$lightGray 0%,
-      variables.$lightGray 50%,
-      variables.$darkGray 50%,
-      variables.$darkGray 100%
-    );
   }
 }
