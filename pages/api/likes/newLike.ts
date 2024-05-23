@@ -10,7 +10,7 @@ export default async function handler(
   res: NextApiResponse,
 ): Promise<void> {
   const userId: UserIdType = Number(req.query.userId);
-  const postId: PostIdType = Number(req.query.postId);
+  const postId: PostIdType = req.query.postId as string;
   const like: string = req.query.like as string;
 
   await selectUsersLike(db, userId).then(async (response) => {
