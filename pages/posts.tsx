@@ -50,7 +50,7 @@ export default function PostsPage({
   return (
     <>
       <Head>
-        <title>Posts | Ninjabattler</title>
+        <title>{selectedTitle || "Posts"} | Ninjabattler</title>
         <meta
           name="description"
           content="A mad man's ramblings and sometimes blender renders"
@@ -58,7 +58,10 @@ export default function PostsPage({
         <meta property="og:locale" content="en_CA" />
         <meta name="theme-color" content="#FFFF00" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Ninjabattler - Posts" />
+        <meta
+          property="og:title"
+          content={`${selectedTitle || "Posts"} | Ninjabattler`}
+        />
         <meta
           property="og:description"
           content="A mad man's ramblings and sometimes blender renders"

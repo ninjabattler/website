@@ -18,6 +18,8 @@ import { PortableText } from "next-sanity";
 import Picture from "../articleComponents/Picture/Picture";
 import Spoiler from "../articleComponents/Spoiler/Spoiler";
 import { CalendarMonthSharp } from "@mui/icons-material";
+import LikePanel from "../feedbackAndShare/LikePanel/LikePanel";
+import ShareBar from "../feedbackAndShare/ShareBar/ShareBar";
 const CommentArea = dynamic(
   () => import("../feedbackAndShare/CommentArea/CommentArea"),
   { loading: () => <></> },
@@ -47,6 +49,21 @@ export default function Post({
     <article key={title} className={styles.post}>
       <div className={styles.postContent}>
         <aside className={styles.commentPanel}>
+          <LikePanel
+            initialDislikes={0}
+            initialLikes={0}
+            isCurrentlyDisliked={false}
+            isCurrentlyLiked={false}
+            postId={id}
+            userId={1}
+          />
+
+          <ShareBar
+            articleLink={`/posts?p=${id}`}
+            title={title}
+            windowServer={window}
+          />
+
           <CommentArea
             comments={commentList}
             setComments={setCommentList}
@@ -71,10 +88,12 @@ export default function Post({
           </div>
         </aside>
 
-        <h1 className={styles.title}>{title}</h1>
+        <h1 className={styles.title}>
+          <span>{title}</span>
+        </h1>
         <h2 className={styles.date}>
           <CalendarMonthSharp />
-          {date}
+          <span>{date}</span>
         </h2>
 
         <main>
