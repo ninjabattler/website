@@ -9,12 +9,31 @@
   height: calc(90vh - 5rem);
   font-size: 3rem;
   margin-left: 7.5%;
-  margin-top: 5vh;
+  padding-top: 6vh;
   overflow: hidden;
   z-index: 2;
   animation-name: openPost;
   animation-duration: 1.4s;
   animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  .backButton {
+    @include mixins.flexCenter;
+    width: 1em;
+    height: 1em;
+    margin: 0;
+    margin-left: 0.5%;
+    margin-top: calc(-1em - 1rem);
+    padding-left: 0.1em;
+    padding-right: 0.1em;
+    border-left: variables.$borderThinLightGray;
+    border-right: variables.$borderThinLightGray;
+    position: fixed;
+    font-size: 0.5em;
+    color: variables.$lightGray;
+    background-color: variables.$darkGray;
+    cursor: pointer;
+    z-index: 100;
+  }
 
   .postContent {
     display: flex;
@@ -55,7 +74,8 @@
         @include mixins.gridPatternDark;
         width: calc(70% - 1.5rem);
         height: 1.19em;
-        margin-left: calc(-10% + 3rem);
+        margin-left: 0.5%;
+        left: 0;
         position: absolute;
         mask: linear-gradient(
           90deg,
@@ -96,7 +116,8 @@
         @include mixins.gridPatternDark;
         width: calc(70% - 1.5rem);
         height: 1.19em;
-        margin-left: calc(-10% + 3rem);
+        margin-left: 0.5%;
+        left: 0;
         position: absolute;
         mask: linear-gradient(
           90deg,
@@ -148,7 +169,8 @@
         @include mixins.gridPatternDark;
         width: calc(70% - 1.8rem);
         height: 100%;
-        margin-left: calc(-10% + 3rem);
+        margin-left: 0.5%;
+        left: 0;
         position: absolute;
         mask: linear-gradient(
           90deg,
@@ -165,9 +187,10 @@
   .commentPanel {
     position: absolute;
     width: 30%;
-    height: 90vh;
+    height: calc(90vh - 5rem);
     margin-left: auto;
     margin-right: auto;
+    margin-top: 6vh;
     top: 0;
     right: 0;
     font-size: 1em;

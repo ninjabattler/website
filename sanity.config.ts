@@ -49,6 +49,19 @@ export default defineConfig({
         return `/api/preview?url=${process.env.NEXT_PUBLIC_HOST}/articles/${slug}`;
       }
 
+      if (document._type === "post") {
+        // const slug = await client.fetch(
+        //   `*[_type == 'post' && _id == $projectId][0].slug`,
+        //   { projectId: document._id },
+        // );
+
+        const params = new URLSearchParams();
+        params.set("preview", "true");
+        params.set("dataset", dataset);
+
+        return `/api/preview?url=${process.env.NEXT_PUBLIC_HOST}/posts?p=${document._id.replace("drafts.", "")}`;
+      }
+
       return prev;
     },
   },

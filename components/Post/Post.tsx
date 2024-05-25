@@ -1,15 +1,19 @@
-import React, { useState, useRef, MutableRefObject, ReactElement } from "react";
+import React, {
+  useState,
+  useRef,
+  MutableRefObject,
+  ReactElement,
+  useEffect,
+} from "react";
 import styles from "./Post.module.scss";
 import Comment from "../Comment/Comment";
 import {
   ArticleJson,
-  HtmlItem,
   IpType,
-  ParagraphItem,
-  PictureItem,
   PostIdType,
   TitleType,
   UserIdType,
+  WindowServerType,
 } from "../../types";
 import moment from "moment";
 import dynamic from "next/dynamic";
@@ -17,9 +21,10 @@ import { TypedObject } from "sanity";
 import { PortableText } from "next-sanity";
 import Picture from "../articleComponents/Picture/Picture";
 import Spoiler from "../articleComponents/Spoiler/Spoiler";
-import { CalendarMonthSharp } from "@mui/icons-material";
+import { ArrowBackIosNewSharp, CalendarMonthSharp } from "@mui/icons-material";
 import LikePanel from "../feedbackAndShare/LikePanel/LikePanel";
 import ShareBar from "../feedbackAndShare/ShareBar/ShareBar";
+import Link from "next/link";
 const CommentArea = dynamic(
   () => import("../feedbackAndShare/CommentArea/CommentArea"),
   { loading: () => <></> },
@@ -33,6 +38,7 @@ type PostProps = {
   id: PostIdType;
   userId: UserIdType;
   ip: IpType;
+  goBack: () => void;
 };
 
 export default function Post({
@@ -42,11 +48,26 @@ export default function Post({
   content,
   id,
   userId,
+  goBack,
 }: PostProps): ReactElement {
   const [commentList, setCommentList] = useState<Array<any>>(comments || []);
+  const [windowServer, setWindow] = useState<WindowServerType>({});
+
+  useEffect(() => {
+    setWindow(window);
+  }, []);
 
   return (
     <article key={title} className={styles.post}>
+      <Link
+        href="/posts"
+        shallow
+        className={styles.backButton}
+        onClick={goBack}
+      >
+        <ArrowBackIosNewSharp />
+      </Link>
+
       <div className={styles.postContent}>
         <aside className={styles.commentPanel}>
           <LikePanel
@@ -61,7 +82,7 @@ export default function Post({
           <ShareBar
             articleLink={`/posts?p=${id}`}
             title={title}
-            windowServer={window}
+            windowServer={windowServer}
           />
 
           <CommentArea

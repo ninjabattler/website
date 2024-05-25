@@ -2,7 +2,7 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
 
 .navBar {
   width: 100vw;
-  height: 2em;
+  height: 0em;
   background-color: rgb(10, 10, 10);
   filter: drop-shadow(0 0 0.1em rgba(0, 0, 0, 0.5));
   z-index: 100;
@@ -27,7 +27,6 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
       transparent calc(90% - 0em),
       black calc(92% - 0em)
     );
-    z-index: -2;
     opacity: 1;
   }
 
@@ -81,7 +80,7 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
   }
 
   .navOptions {
-    width: 10%;
+    width: 5%;
     height: 3em;
     background-image: linear-gradient(
       -45deg,

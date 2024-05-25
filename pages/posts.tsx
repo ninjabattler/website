@@ -17,12 +17,23 @@ export default function PostsPage({
   ip,
   posts,
   userId,
+  selectedPost,
 }: InferGetServerSidePropsType<typeof postsServerSideProps> & AppData) {
-  const [postSelected, setPostSelected] = useState<boolean>(false);
-  const [selectedTitle, setSelectedTitle] = useState<string>("");
-  const [selectedDate, setSelectedDate] = useState<string>("");
-  const [selectedContent, setSelectedContent] = useState<any[] | null>(null);
-  const [showPost, setShowPost] = useState<boolean>(false);
+  const [postSelected, setPostSelected] = useState<boolean>(
+    selectedPost ? true : false,
+  );
+  const [selectedTitle, setSelectedTitle] = useState<string>(
+    selectedPost ? selectedPost.title : "",
+  );
+  const [selectedDate, setSelectedDate] = useState<string>(
+    selectedPost ? selectedPost.date : "",
+  );
+  const [selectedContent, setSelectedContent] = useState<any[] | null>(
+    selectedPost ? selectedPost.content : null,
+  );
+  const [showPost, setShowPost] = useState<boolean>(
+    selectedPost ? true : false,
+  );
 
   const onSlideClick = useCallback((id, title, date) => {
     setPostSelected(true);
@@ -45,6 +56,14 @@ export default function PostsPage({
     setTimeout(() => {
       setShowPost(true);
     }, 1000);
+  }, []);
+
+  const goBack = useCallback(() => {
+    setPostSelected(false);
+    setSelectedTitle("");
+    setSelectedDate("");
+    setSelectedContent([]);
+    setShowPost(false);
   }, []);
 
   return (
@@ -106,25 +125,27 @@ export default function PostsPage({
                   onSlideClick(post._id, post.title, post.date);
                 }}
               >
-                <PostCard
-                  title={post.title}
-                  content={post.content}
-                  date={post.date}
-                  id={post._id}
-                  ip={ip}
-                  index={i}
-                  hidden={postSelected}
-                  userId={
-                    typeof userId === "number"
-                      ? userId
-                      : typeof userId[0] === "number"
-                        ? userId[0]
-                        : typeof userId[0].id === "number"
-                          ? userId[0].id
-                          : 1
-                  }
-                  comments={post.comments}
-                />
+                {!showPost && (
+                  <PostCard
+                    title={post.title}
+                    content={post.content}
+                    date={post.date}
+                    id={post._id}
+                    ip={ip}
+                    index={i}
+                    hidden={postSelected}
+                    userId={
+                      typeof userId === "number"
+                        ? userId
+                        : typeof userId[0] === "number"
+                          ? userId[0]
+                          : typeof userId[0].id === "number"
+                            ? userId[0].id
+                            : 1
+                    }
+                    comments={post.comments}
+                  />
+                )}
               </SwiperSlide>
             );
           })}
@@ -139,6 +160,7 @@ export default function PostsPage({
             ip="1"
             title={selectedTitle}
             userId={1}
+            goBack={goBack}
           />
         )}
       </main>
