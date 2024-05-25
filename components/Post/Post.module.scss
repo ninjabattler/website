@@ -5,34 +5,51 @@
   display: flex;
   position: absolute;
   filter: drop-shadow(0 0 0.1em rgba(0, 0, 0, 0.5));
-  width: 85%;
+  width: 92.5%;
   height: calc(90vh - 5rem);
   font-size: 3rem;
-  margin-left: 7.5%;
-  padding-top: 6vh;
+  margin-top: 6vh;
   overflow: hidden;
+  opacity: 1;
   z-index: 2;
-  animation-name: openPost;
-  animation-duration: 1.4s;
-  animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition:
+    opacity 1s,
+    transform 1s,
+    filter 1s;
+  transform: scale(1);
+  filter: blur(0);
+
+  &.hide {
+    transition:
+      opacity 1s,
+      transform 1s,
+      filter 1s;
+    opacity: 0;
+    transform: scale(0.9);
+    filter: blur(0.1em);
+    z-index: 0;
+  }
 
   .backButton {
     @include mixins.flexCenter;
     width: 1em;
     height: 1em;
     margin: 0;
-    margin-left: 0.5%;
-    margin-top: calc(-1em - 1rem);
+    margin-left: calc(5% - 1em);
     padding-left: 0.1em;
     padding-right: 0.1em;
     border-left: variables.$borderThinLightGray;
     border-right: variables.$borderThinLightGray;
     position: fixed;
-    font-size: 0.5em;
+    font-size: 3rem;
     color: variables.$lightGray;
     background-color: variables.$darkGray;
     cursor: pointer;
     z-index: 100;
+
+    svg {
+      font-size: 0.75em;
+    }
   }
 
   .postContent {
@@ -42,10 +59,9 @@
     font-size: 0.55em;
     width: calc(70% - 1.5rem);
     height: 100%;
-    margin: 0.5%;
     margin-right: 0;
     margin-top: auto;
-    animation: slideUp 1s 1 ease-in-out;
+    // animation: slideUp 1s 1 ease-in-out;
 
     *::selection {
       color: variables.$darkGray;
@@ -54,9 +70,10 @@
 
     .title {
       @include mixins.russoFont;
-      width: 80%;
+      width: 70%;
       min-height: 1.2em;
       margin: 0;
+      margin-left: 10%;
       margin-bottom: 1rem;
       padding-left: 10%;
       padding-right: 10%;
@@ -72,9 +89,9 @@
 
       &::before {
         @include mixins.gridPatternDark;
-        width: calc(70% - 1.5rem);
+        width: calc(62% - 0.3rem);
         height: 1.19em;
-        margin-left: 0.5%;
+        margin-left: 7%;
         left: 0;
         position: absolute;
         mask: linear-gradient(
@@ -90,9 +107,10 @@
 
     .date {
       @include mixins.russoFont;
-      width: 80%;
+      width: 70%;
       min-height: 1.2em;
       margin: 0;
+      margin-left: 10%;
       margin-bottom: 1rem;
       padding-left: 10%;
       padding-right: 10%;
@@ -114,9 +132,9 @@
 
       &::before {
         @include mixins.gridPatternDark;
-        width: calc(70% - 1.5rem);
+        width: calc(62% - 0.3rem);
         height: 1.19em;
-        margin-left: 0.5%;
+        margin-left: 7%;
         left: 0;
         position: absolute;
         mask: linear-gradient(
@@ -132,8 +150,9 @@
 
     main {
       @include mixins.lightScrollBar;
-      width: 80%;
+      width: 70%;
       height: 100%;
+      margin-left: 10%;
       padding-left: 10%;
       padding-right: 10%;
       border-left: variables.$borderThinLightGray;
@@ -167,9 +186,9 @@
 
       &::before {
         @include mixins.gridPatternDark;
-        width: calc(70% - 1.8rem);
+        width: calc(62% - 0.3rem - 0.25em);
         height: 100%;
-        margin-left: 0.5%;
+        margin-left: 7%;
         left: 0;
         position: absolute;
         mask: linear-gradient(
@@ -190,7 +209,6 @@
     height: calc(90vh - 5rem);
     margin-left: auto;
     margin-right: auto;
-    margin-top: 6vh;
     top: 0;
     right: 0;
     font-size: 1em;
@@ -243,5 +261,23 @@
   }
   100% {
     height: 100%;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    filter: blur(0.1em);
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    filter: blur(0.05em);
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0em);
+    transform: scale(1);
   }
 }

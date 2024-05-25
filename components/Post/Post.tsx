@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useRef,
-  MutableRefObject,
-  ReactElement,
-  useEffect,
-} from "react";
+import React, { useState, ReactElement, useEffect } from "react";
 import styles from "./Post.module.scss";
 import Comment from "../Comment/Comment";
 import {
@@ -15,7 +9,6 @@ import {
   UserIdType,
   WindowServerType,
 } from "../../types";
-import moment from "moment";
 import dynamic from "next/dynamic";
 import { TypedObject } from "sanity";
 import { PortableText } from "next-sanity";
@@ -39,6 +32,7 @@ type PostProps = {
   userId: UserIdType;
   ip: IpType;
   goBack: () => void;
+  hide: boolean;
 };
 
 export default function Post({
@@ -49,6 +43,7 @@ export default function Post({
   id,
   userId,
   goBack,
+  hide,
 }: PostProps): ReactElement {
   const [commentList, setCommentList] = useState<Array<any>>(comments || []);
   const [windowServer, setWindow] = useState<WindowServerType>({});
@@ -58,7 +53,10 @@ export default function Post({
   }, []);
 
   return (
-    <article key={title} className={styles.post}>
+    <article
+      key={title}
+      className={`${styles.post} ${hide ? styles.hide : ""}`}
+    >
       <Link
         href="/posts"
         shallow

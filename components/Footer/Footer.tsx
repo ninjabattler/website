@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import styles from "./Footer.module.scss";
-import { Twitter, GitHub, Instagram, Email } from "@mui/icons-material";
+import { X, GitHub, Instagram, Email } from "@mui/icons-material";
 
 /**
  * The footer of the website, with links to my socials and contacts
@@ -14,7 +14,7 @@ const Footer: FC = () => (
         target="_blank"
         rel="noreferrer"
       >
-        <Twitter />
+        <X />
       </a>
       <a
         href="https://www.instagram.com/ninjabattler/"

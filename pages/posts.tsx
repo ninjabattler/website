@@ -59,11 +59,14 @@ export default function PostsPage({
   }, []);
 
   const goBack = useCallback(() => {
-    setPostSelected(false);
-    setSelectedTitle("");
-    setSelectedDate("");
-    setSelectedContent([]);
     setShowPost(false);
+
+    setTimeout(() => {
+      setSelectedTitle("");
+      setSelectedDate("");
+      setSelectedContent([]);
+      setPostSelected(false);
+    }, 1000);
   }, []);
 
   return (
@@ -151,18 +154,17 @@ export default function PostsPage({
           })}
         </Swiper>
 
-        {showPost && selectedContent !== null && (
-          <Post
-            comments={[]}
-            content={selectedContent || []}
-            date={selectedDate}
-            id=""
-            ip="1"
-            title={selectedTitle}
-            userId={1}
-            goBack={goBack}
-          />
-        )}
+        <Post
+          comments={[]}
+          content={selectedContent || []}
+          date={selectedDate}
+          id=""
+          ip="1"
+          hide={!showPost}
+          title={selectedTitle}
+          userId={1}
+          goBack={goBack}
+        />
       </main>
     </>
   );
