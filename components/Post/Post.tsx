@@ -107,13 +107,13 @@ export default function Post({
           </div>
         </aside>
 
-        <h1 className={styles.title}>
+        {/* <h1 className={styles.title}>
           <span>{title}</span>
         </h1>
         <h2 className={styles.date}>
           <CalendarMonthSharp />
           <span>{date}</span>
-        </h2>
+        </h2> */}
 
         <main>
           <PortableText

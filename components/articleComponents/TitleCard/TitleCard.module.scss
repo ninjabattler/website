@@ -123,7 +123,7 @@
     align-items: center;
     font-size: 1.5em;
     line-height: 1em;
-    color: var(--secondary-text);
+    color: variables.$secondaryText;
     cursor: default;
     transform: rotateY(-5deg) rotateZ(-1deg) translateX(-0em)
       translateY(-0.75em);

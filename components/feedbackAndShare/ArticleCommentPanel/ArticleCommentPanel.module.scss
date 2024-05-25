@@ -30,7 +30,7 @@
   .comments {
     @include mixins.lightScrollBar;
     width: calc(100% - 0.3rem);
-    height: inherit;
+    height: auto;
     margin-left: auto;
     border-left: variables.$borderThinLightGray;
     border-right: variables.$borderThinLightGray;

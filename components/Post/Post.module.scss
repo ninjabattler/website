@@ -5,10 +5,11 @@
   display: flex;
   position: absolute;
   filter: drop-shadow(0 0 0.1em rgba(0, 0, 0, 0.5));
-  width: 92.5%;
-  height: calc(90vh - 5rem);
+  width: 80%;
+  height: calc(85vh - 5rem);
   font-size: 3rem;
-  margin-top: 6vh;
+  margin-left: 7%;
+  margin-top: 7vh;
   overflow: hidden;
   opacity: 1;
   z-index: 2;
@@ -186,7 +187,7 @@
 
       &::before {
         @include mixins.gridPatternDark;
-        width: calc(62% - 0.3rem - 0.25em);
+        width: calc(62% - 0.45rem - 0.25em);
         height: 100%;
         margin-left: 7%;
         left: 0;

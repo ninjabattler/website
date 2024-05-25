@@ -36,28 +36,28 @@ const ReviewPageHead: FC<ReviewPageHeadProps> = ({
     <meta charSet="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     {/* <!-- Google / Search Engine Tags --> */}
-    <meta itemProp="name" content={`Ninjabattler - ${title}`}></meta>
+    <meta itemProp="name" content={`${title} | Ninjabattler`}></meta>
     <meta itemProp="description" content={description}></meta>
     <meta itemProp="image" content={thumbnail}></meta>
     {/* <!-- Facebook Meta Tags --> */}
     <meta property="og:url" content={url}></meta>
     <meta property="og:type" content="website" />
-    <meta property="og:title" content={`Ninjabattler - ${title}`} />
+    <meta property="og:title" content={`${title} | Ninjabattler`} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={thumbnail} />
     {/* <!-- Twitter Meta Tags --> */}
     <meta name="twitter:card" content="summary_large_image"></meta>
-    <meta name="twitter:title" content={`Ninjabattler - ${title}`}></meta>
+    <meta name="twitter:title" content={`${title} | Ninjabattler`}></meta>
     <meta name="twitter:description" content={description}></meta>
     <meta name="twitter:image" content={thumbnail}></meta>
     {/* <!-- Meta Tags Generated via http://heymeta.com -->*/}
     <style>
       {`
         :root {
-          --article-colour: ${primaryColour};
-          --article-colour2: ${secondaryColour};
-          --article-colour-space: ${spaceColour};
-          --article-colour-stars: ${starsColour};
+          --article-colour: ${primaryColour} !important;
+          --article-colour2: ${secondaryColour} !important;
+          --article-colour-space: ${spaceColour} !important;
+          --article-colour-stars: ${starsColour} !important;
         }
       `}
     </style>

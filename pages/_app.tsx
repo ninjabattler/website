@@ -41,12 +41,12 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      {!router.pathname.startsWith("/studio") && (
+      {/* {!router.pathname.startsWith("/studio") && (
         <NavBar
           setLinkClicked={setLinkClicked}
           isArticlePage={/\/articles\/.+/g.test(router.pathname)}
         />
-      )}
+      )} */}
       {linkClicked && <LoadingOverlay quoteIndex={quoteIndex} />}
       {/* {linkClicked === "" && <LoadingOverlay shrink quoteIndex={quoteIndex} />} */}
 

@@ -1,4 +1,3 @@
-import Head from "next/head";
 import React, { useCallback, useState } from "react";
 import PostCard from "../components/PostCard/PostCard";
 import styles from "../styles/PostsPage.module.scss";
@@ -10,6 +9,7 @@ import { EffectCards } from "swiper/modules";
 import PostsPageBackground from "../components/backgrounds/PostsPageBackground/PostsPageBackground";
 import Post from "../components/Post/Post";
 import axios from "axios";
+import PostsPageHead from "../components/PageMetadata/PostsPageHead";
 
 export const getServerSideProps: GetServerSideProps = postsServerSideProps;
 
@@ -71,40 +71,7 @@ export default function PostsPage({
 
   return (
     <>
-      <Head>
-        <title>{selectedTitle || "Posts"} | Ninjabattler</title>
-        <meta
-          name="description"
-          content="A mad man's ramblings and sometimes blender renders"
-        />
-        <meta property="og:locale" content="en_CA" />
-        <meta name="theme-color" content="#FFFF00" />
-        <meta property="og:type" content="website" />
-        <meta
-          property="og:title"
-          content={`${selectedTitle || "Posts"} | Ninjabattler`}
-        />
-        <meta
-          property="og:description"
-          content="A mad man's ramblings and sometimes blender renders"
-        />
-        <meta property="og:image" content="/Website Robot 2.png" />
-        <link rel="icon" href="/favicon.ico" />
-        <meta charSet="utf-8" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-
-        <style>
-          {`
-            :root {
-              --article-colour: #aaaa44;
-              --article-colour2: #0000ff;
-            }
-          `}
-        </style>
-      </Head>
+      <PostsPageHead title={selectedTitle} />
 
       <main id={styles.postsPage}>
         <PostsPageBackground />
