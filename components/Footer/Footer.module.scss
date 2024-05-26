@@ -13,7 +13,8 @@
   font-size: 2em;
   color: variables.$lightGray;
   background-color: variables.$darkGray;
-  z-index: 10;
+  z-index: 101;
+  filter: drop-shadow(0 0 0.1em rgba(0, 0, 0, 0.5));
 
   &::before {
     @include mixins.gridPatternDark;
