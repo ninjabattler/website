@@ -25,7 +25,7 @@ export const postsServerSideProps = async ({
   ];
 
   const preview = draftMode
-    ? { token: process.env.SANITY_API_READ_TOKEN }
+    ? { token: process.env.SANITY_API_READ_WRITE_TOKEN }
     : undefined;
 
   const postsQuery = await groq`*[_type == "post"] | order(date desc){

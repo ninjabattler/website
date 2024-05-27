@@ -16,6 +16,7 @@ import { Editable, ReactEditor, Slate, withReact } from "slate-react";
 import { createEditor, Text, Editor } from "slate";
 import Prism from "prismjs";
 import { SvgIcon } from "@mui/material";
+import { useSession } from "next-auth/react";
 import {
   COMMENT_STYLING_OPTIONS,
   DEFAULT_SLATE_VALUE,
@@ -49,6 +50,7 @@ const CommentArea: FC<CommentAreaProps> = ({
   const [noComment, setNoComment] = useState<boolean>(true);
   const [commenting, setCommenting] = useState<boolean>(false);
   const editor: ReactEditor = useMemo(() => withReact(createEditor()), []);
+  const { data, status } = useSession();
   const isDisabled = useMemo(
     () => commenting || noComment,
     [noComment, commenting],
@@ -156,6 +158,7 @@ const CommentArea: FC<CommentAreaProps> = ({
           editor={editor}
           initialValue={DEFAULT_SLATE_VALUE}
           onChange={onSlateChange}
+          key={status}
         >
           <Editable
             decorate={decorate}
@@ -181,9 +184,14 @@ const CommentArea: FC<CommentAreaProps> = ({
         ))}
 
         <button
-          disabled={isDisabled}
+          disabled={isDisabled || status !== "authenticated"}
           className={styles.postComment}
           onClick={comment}
+          title={
+            isDisabled || status !== "authenticated"
+              ? "Must be logged in to comment"
+              : ""
+          }
         >
           Comment
         </button>

@@ -1,7 +1,11 @@
-import React, { ComponentType, useCallback, useState } from "react";
+import React, { ComponentType, FormEvent, useCallback, useState } from "react";
 import styles from "./NavBar.module.scss";
 import Link from "next/link";
-import { Menu } from "@mui/icons-material";
+import { Menu, PersonSharp } from "@mui/icons-material";
+import { signUp } from "next-auth-sanity/client";
+import { signIn, signOut, useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import SignUpForm from "../SignUpForm/SignUpForm";
 
 type NavBarProps = {
   setLinkClicked: Function;
@@ -18,6 +22,23 @@ const NavBar: ComponentType<NavBarProps> = ({
   isArticlePage,
 }) => {
   const [open, setOpen] = useState<boolean>(false);
+  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [showUserOptions, setShowUserOptions] = useState<boolean>(false);
+  const [showSignupForm, setShowSignupForm] = useState<boolean>(false);
+  const { data, status } = useSession();
+  const router = useRouter();
+
+  const logOut = useCallback(async (e: FormEvent) => {
+    e.preventDefault();
+
+    await signOut({
+      redirect: false,
+    });
+
+    router.reload();
+  }, []);
 
   const openMenu = useCallback(() => {
     setOpen(!open);
@@ -29,18 +50,38 @@ const NavBar: ComponentType<NavBarProps> = ({
         open ? styles.fullscreen : ""
       }`}
     >
-      <div className={styles.sketch} />
-      <div className={styles.space} />
-
       <div className={styles.navOptions}>
         <button onClick={openMenu}>
           <Menu />
         </button>
       </div>
 
-      <div className={styles.links}>
-        <img src="/newBanner.png" />
+      <div
+        className={styles.account}
+        onClick={() => {
+          setShowUserOptions(!showUserOptions);
+        }}
+      >
+        <PersonSharp />
+        <span>{data ? data.user.name : "Nobody"}</span>
+      </div>
 
+      <div
+        className={`${styles.userOptions} ${showUserOptions ? styles.show : ""}`}
+      >
+        {status === "authenticated" && <button onClick={logOut}>Logout</button>}
+        {status === "unauthenticated" && (
+          <button
+            onClick={() => {
+              setShowSignupForm(true);
+            }}
+          >
+            Login
+          </button>
+        )}
+      </div>
+
+      <div className={styles.links}>
         <Link legacyBehavior href={`/posts`}>
           <a
             onClick={(e) => {
@@ -73,10 +114,7 @@ const NavBar: ComponentType<NavBarProps> = ({
         </Link>
       </div>
 
-      <div className={styles.profileBar}>
-        <img src="/userAvatars/Mask 4.png" alt="profile picture" />
-        <span>Unknown Ninja</span>
-      </div>
+      <SignUpForm show={showSignupForm} />
     </div>
   );
 };

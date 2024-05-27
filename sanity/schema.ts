@@ -12,6 +12,7 @@ import { picture } from "./types/picture";
 import { spoiler } from "./types/spoiler";
 import { footnoteLink } from "./types/footnoteLink";
 import post from "./schemas/post";
+import { user, account, verificationToken } from "next-auth-sanity/schemas";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -28,5 +29,9 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     picture,
     spoiler,
     footnoteLink,
+    // User Schemas
+    user,
+    account,
+    verificationToken,
   ],
 };

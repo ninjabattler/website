@@ -41,7 +41,7 @@ export const articlePageServerSideProps = async ({
   const articleTitle: string = title.replace(/(_|-)/g, " ");
 
   const preview = draftMode
-    ? { token: process.env.SANITY_API_READ_TOKEN }
+    ? { token: process.env.SANITY_API_READ_WRITE_TOKEN }
     : undefined;
 
   const articleQuery =

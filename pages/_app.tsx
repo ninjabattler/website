@@ -10,6 +10,7 @@ import quotes from "../constants/loadingOverlayQuotes.json";
 import "highlight.js/styles/vs2015.css";
 import { Mousewheel } from "swiper/modules";
 import Swiper from "swiper";
+import { SessionProvider } from "next-auth/react";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [linkClicked, setLinkClicked] = useState<string | null>(null);
@@ -40,7 +41,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, [linkClicked]);
 
   return (
-    <>
+    <SessionProvider session={pageProps.session}>
       {!router.pathname.startsWith("/studio") && (
         <NavBar
           setLinkClicked={setLinkClicked}
@@ -53,7 +54,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Component {...pageProps} setLinkClicked={setLinkClicked} />
 
       {!router.pathname.startsWith("/studio") && <Footer />}
-    </>
+    </SessionProvider>
   );
 }
 

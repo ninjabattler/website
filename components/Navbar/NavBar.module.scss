@@ -116,6 +116,82 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
     }
   }
 
+  .account {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    margin-left: 1em;
+    margin-top: -2.5em;
+    z-index: 10;
+    cursor: pointer;
+    transition: margin 0.6s;
+
+    svg {
+      width: 1em;
+      height: 1em;
+      border: variables.$borderThinLightGray;
+      border-radius: 100%;
+      font-size: 2em;
+      color: variables.$lightGray;
+      background-color: variables.$darkGray;
+      z-index: 2;
+    }
+
+    span {
+      @include mixins.russoFont;
+      height: calc(1em + 0.3rem);
+      margin-left: -1em;
+      padding-left: 1em;
+      padding-right: 6em;
+      border-top: variables.$borderThinBlack;
+      border-bottom: variables.$borderThinBlack;
+      display: flex;
+      align-items: center;
+      font-size: 1.5em;
+      color: variables.$secondaryText;
+      background-color: variables.$lightGray;
+      mask: linear-gradient(
+        -45deg,
+        transparent calc(0% + 3em),
+        black calc(0% + 3em)
+      );
+    }
+  }
+
+  .userOptions {
+    position: absolute;
+    margin-left: -20%;
+    margin-top: 5.5em;
+    z-index: 10;
+    transition: margin 0.6s;
+
+    &.show {
+      margin-left: 0;
+    }
+
+    button {
+      @include mixins.russoFont;
+      height: calc(1em + 0.3rem);
+      margin-bottom: 0.5em;
+      padding-left: 3em;
+      padding-right: 6em;
+      border-top: variables.$borderThinBlack;
+      border-bottom: variables.$borderThinBlack;
+      display: flex;
+      align-items: center;
+      font-size: 1em;
+      color: variables.$secondaryText;
+      background-color: variables.$lightGray;
+      cursor: pointer;
+      mask: linear-gradient(
+        -45deg,
+        transparent calc(0% + 3em),
+        black calc(0% + 3em)
+      );
+    }
+  }
+
   .links {
     width: 35%;
     height: 0%;
@@ -156,6 +232,14 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
         width: 75%;
       }
     }
+  }
+
+  .signup {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    top: 2em;
+    right: 2em;
   }
 
   .profileBar {
@@ -208,6 +292,10 @@ $gradientColour: rgba(0, 0, 0, 0.3725);
     transition:
       height 0.3s,
       backdrop-filter 0.3s;
+
+    .account {
+      margin-top: 2.5em;
+    }
 
     .sketch {
       background-size: 12.5%;
