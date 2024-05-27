@@ -95,7 +95,7 @@ export default function Post({
               return (
                 <Comment
                   key={com.id}
-                  username={com.user[0].name}
+                  username={com.user.name}
                   date={com._createdAt}
                   content={com.content}
                   avatar={1}
