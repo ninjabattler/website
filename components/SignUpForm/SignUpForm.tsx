@@ -144,7 +144,7 @@ const SignUpForm: FC<SignUpFormProps> = ({ signup, show }) => {
           </em>
         ) : (
           <em>
-            Don't have an account?{" "}
+            Don&apos;t have an account?{" "}
             <button
               onClick={() => {
                 setSignupForm(true);
