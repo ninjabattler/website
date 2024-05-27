@@ -9,6 +9,7 @@ import React, {
 import styles from "./Comment.module.scss";
 import { styleText } from "../../helpers/articlePageHelpers";
 import moment from "moment";
+import { PersonSharp } from "@mui/icons-material";
 
 const avatars = {
   avatar1: "/userAvatars/Mask 1.png",
@@ -59,11 +60,12 @@ const Comment: FC<CommentProps> = ({
   return (
     <div className={styles.comment} style={style}>
       <div className={styles.header}>
-        <img
+        {/* <img
           className={styles.avatar}
           src={avatars[`avatar${avatar}`]}
           alt="profile pic"
-        />
+        /> */}
+        <PersonSharp className={styles.avatar} />
         <div className={styles.userInfo}>
           <b>{username}</b>
           <i>{moment(date).fromNow()}</i>

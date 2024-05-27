@@ -1,31 +1,20 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { QueryResult } from "pg";
-import db from "../../../db/db";
-import insertNewComment from "../../../db/inserts/insertNewComment";
-import { CommentData, PostIdType, UserData, UserIdType } from "../../../types";
+import { client } from "../../../sanity/lib/client";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ): Promise<void> {
-  const userId: UserIdType = Number(req.query.userId);
-  const postId: PostIdType = req.query.postId as string;
+  const userId: string = req.body.userId as string;
+  const postId: string = req.body.postId as string;
+  const content: string = req.body.content as string;
 
-  await insertNewComment(db, req.query.content as string, postId, userId).then(
-    async (response: CommentData) => {
-      const user: QueryResult<UserData> = await db.query(
-        `
-      SELECT * FROM users WHERE id = $1
-      `,
-        [userId],
-      );
+  const newComment = await client.create({
+    _type: "comment",
+    userId: { _ref: userId },
+    postId: { _ref: postId },
+    content: content,
+  });
 
-      res.status(200).json({
-        content: req.query.content,
-        data: response.date,
-        avatar: user.rows[0].avatar,
-        username: user.rows[0].username,
-      });
-    },
-  );
+  res.status(200).send(newComment);
 }

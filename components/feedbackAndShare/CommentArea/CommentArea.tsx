@@ -21,6 +21,7 @@ import {
   COMMENT_STYLING_OPTIONS,
   DEFAULT_SLATE_VALUE,
 } from "../../../constants/constants";
+import axios from "axios";
 
 // Adds markdown as a language to Prism
 // eslint-disable-next-line
@@ -56,22 +57,27 @@ const CommentArea: FC<CommentAreaProps> = ({
     [noComment, commenting],
   );
 
-  const comment = useCallback(() => {
-    const commentArea: HTMLElement = document.getElementById(
-      styles.commentAreaView,
-    );
-    const content: string = commentArea.innerText;
+  const comment = useCallback(async () => {
+    setCommenting(true);
 
-    sendComment(
-      { content: content, id: postId },
-      userId,
-      comments,
-      setCommenting,
-      (newComments) => {
-        setComments(newComments);
-      },
-    );
-  }, []);
+    try {
+      const commentArea = document.getElementById("commentArea");
+      const commentContent = commentArea.innerText;
+
+      const newComment = await axios({
+        method: "post",
+        url: `/api/comments/newComment`,
+        // @ts-ignore
+        data: { content: commentContent, userId: data.user.id, postId },
+        headers: { "Content-Type": "application/json" },
+      });
+
+      setCommenting(false);
+    } catch (err) {
+      console.log(err);
+      setCommenting(false);
+    }
+  }, [data]);
 
   const decorate = useCallback(([node, path]) => {
     const ranges = [];
@@ -153,21 +159,20 @@ const CommentArea: FC<CommentAreaProps> = ({
         </div>
       )}
 
-      {!commenting && (
-        <Slate
-          editor={editor}
-          initialValue={DEFAULT_SLATE_VALUE}
-          onChange={onSlateChange}
-          key={status}
-        >
-          <Editable
-            decorate={decorate}
-            className={styles.commentAreaView}
-            placeholder="Leave a Comment!"
-            renderLeaf={slateRenderLeaf}
-          />
-        </Slate>
-      )}
+      <Slate
+        editor={editor}
+        initialValue={DEFAULT_SLATE_VALUE}
+        onChange={onSlateChange}
+        key={status}
+      >
+        <Editable
+          id="commentArea"
+          decorate={decorate}
+          className={styles.commentAreaView}
+          placeholder="Leave a Comment!"
+          renderLeaf={slateRenderLeaf}
+        />
+      </Slate>
 
       <div className={styles.commentStylingBar}>
         {COMMENT_STYLING_OPTIONS.map((option, i) => (

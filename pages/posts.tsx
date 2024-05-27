@@ -22,6 +22,9 @@ export default function PostsPage({
   const [postSelected, setPostSelected] = useState<boolean>(
     selectedPost ? true : false,
   );
+  const [selectedId, setSelectedId] = useState<string>(
+    selectedPost ? selectedPost._id : "",
+  );
   const [selectedTitle, setSelectedTitle] = useState<string>(
     selectedPost ? selectedPost.title : "",
   );
@@ -31,6 +34,9 @@ export default function PostsPage({
   const [selectedContent, setSelectedContent] = useState<any[] | null>(
     selectedPost ? selectedPost.content : null,
   );
+  const [selectedComments, setSelectedComments] = useState<any[]>(
+    selectedPost ? selectedPost.comments : [],
+  );
   const [showPost, setShowPost] = useState<boolean>(
     selectedPost ? true : false,
   );
@@ -39,6 +45,7 @@ export default function PostsPage({
     setPostSelected(true);
     setSelectedTitle(title);
     setSelectedDate(date);
+    setSelectedId(id);
 
     axios({
       method: "get",
@@ -122,10 +129,10 @@ export default function PostsPage({
         </Swiper>
 
         <Post
-          comments={[]}
+          comments={selectedComments}
           content={selectedContent || []}
           date={selectedDate}
-          id=""
+          id={selectedId}
           ip="1"
           hide={!showPost}
           title={selectedTitle}

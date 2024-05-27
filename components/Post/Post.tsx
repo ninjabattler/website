@@ -92,28 +92,18 @@ export default function Post({
 
           <div className={styles.comments}>
             {commentList.map((com) => {
-              if (com.username) {
-                return (
-                  <Comment
-                    key={com.id}
-                    username={com.username.slice(0, 10)}
-                    date={com.date}
-                    content={com.content}
-                    avatar={com.avatar}
-                  />
-                );
-              }
+              return (
+                <Comment
+                  key={com.id}
+                  username={com.user[0].name}
+                  date={com._createdAt}
+                  content={com.content}
+                  avatar={1}
+                />
+              );
             })}
           </div>
         </aside>
-
-        {/* <h1 className={styles.title}>
-          <span>{title}</span>
-        </h1>
-        <h2 className={styles.date}>
-          <CalendarMonthSharp />
-          <span>{date}</span>
-        </h2> */}
 
         <main>
           <PortableText

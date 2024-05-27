@@ -13,12 +13,16 @@ import { spoiler } from "./types/spoiler";
 import { footnoteLink } from "./types/footnoteLink";
 import post from "./schemas/post";
 import { user, account, verificationToken } from "next-auth-sanity/schemas";
+import comment from "./schemas/comment";
+import userDetails from "./schemas/userDetails";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     article,
     post,
     tag,
+    comment,
+    userDetails,
     titleCard,
     quote,
     underline,

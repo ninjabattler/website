@@ -60,15 +60,18 @@
     height: 4.8rem;
     background-color: variables.$darkGray;
     overflow: hidden;
+    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
+    opacity: 0.5;
     z-index: 10;
 
     img {
       height: 100%;
-      filter: invert(0.5);
-      opacity: 0.2;
+      mix-blend-mode: overlay;
+      filter: invert(0.5) brightness(2);
+      animation: commentLoading 1s linear infinite;
     }
   }
 
@@ -189,5 +192,17 @@
   }
   100% {
     color: variables.$lightGray;
+  }
+}
+
+@keyframes commentLoading {
+  0% {
+    transform: scale(0.9);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(0.9);
   }
 }

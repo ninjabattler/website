@@ -36,9 +36,11 @@ export const postsServerSideProps = async ({
   const postsArray: PostData[] = await getCachedClient()(postsQuery);
 
   let selectedPost = null;
+  let comments = [];
 
   if (query.p) {
     const postQuery = await groq`*[_type == "post" && _id == "${query.p}"] {
+      _id,
       title,
       date,
       content[]{
@@ -91,6 +93,13 @@ export const postsServerSideProps = async ({
             "height": asset->metadata.dimensions.height,
           }
         }
+      },
+      "comments": *[_type == "comment" && references(^._id)] {
+        _createdAt,
+        content,
+        "user": *[_type == "userDetails" && references(^.userId._ref)] {
+          name
+        }[0]
       }
     }[0]`;
 
