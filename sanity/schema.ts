@@ -15,6 +15,7 @@ import post from "./schemas/post";
 import { user, account, verificationToken } from "next-auth-sanity/schemas";
 import comment from "./schemas/comment";
 import userDetails from "./schemas/userDetails";
+import like from "./schemas/like";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -22,6 +23,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     post,
     tag,
     comment,
+    like,
     userDetails,
     titleCard,
     quote,

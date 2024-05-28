@@ -1,12 +1,6 @@
 import React, { FC, useCallback, useEffect, useState } from "react";
 import styles from "./PostCard.module.scss";
-import {
-  ArticleJson,
-  IpType,
-  PostIdType,
-  TitleType,
-  UserIdType,
-} from "../../types";
+import { ArticleJson, PostIdType, TitleType, UserIdType } from "../../types";
 import moment from "moment";
 import { TypedObject } from "sanity";
 import { CommentSharp, ThumbsUpDownSharp } from "@mui/icons-material";
@@ -19,7 +13,6 @@ type PostCardProps = {
   content: ArticleJson | TypedObject[];
   id: PostIdType;
   userId: UserIdType;
-  ip: IpType;
   index: number;
   hidden: boolean;
 };

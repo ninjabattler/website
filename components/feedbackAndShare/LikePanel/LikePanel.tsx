@@ -3,6 +3,8 @@ import styles from "./LikePanel.module.scss";
 import { ThumbUpSharp, ThumbDownSharp } from "@mui/icons-material";
 import { like } from "../../../helpers/articlePageHelpers";
 import { PostIdType, UserIdType } from "../../../types";
+import { useSession } from "next-auth/react";
+import axios from "axios";
 
 interface LikePanelProps {
   postId: PostIdType;
@@ -39,12 +41,52 @@ const LikePanel: FC<LikePanelProps> = ({
   const [newLikePercent, setNewLikePercent] = useState<number>(
     ((likes + 1) / (likes + 1 + dislikes)) * 100,
   );
-  // const [oldLikePercent, setOldLikePercent] = useState<number>((likes + 1) / ((likes + 1) + dislikes) * 100);
+  const { data, status } = useSession();
   const oldLikePercent: number =
     likes === 0 && dislikes === 0 ? 0 : (likes / (likes + dislikes)) * 100;
 
-  const clickLike = useCallback((): void => {
-    // like(true, postId, userId, () => {
+  const newLike = useCallback(
+    async (isLike: boolean) => {
+      try {
+        await axios({
+          method: "post",
+          url: `/api/likes/newLike`,
+          // @ts-ignore
+          data: { isLike, userId: data.user.id, postId },
+          headers: { "Content-Type": "application/json" },
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    [data],
+  );
+
+  const deleteLike = useCallback(async () => {
+    try {
+      await axios({
+        method: "post",
+        url: `/api/likes/delete`,
+        // @ts-ignore
+        data: { userId: data.user.id, postId },
+        headers: { "Content-Type": "application/json" },
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }, [data]);
+
+  const clickLike = async (): Promise<void> => {
+    if (isDisliked) {
+      await deleteLike();
+    }
+
+    if (!isLiked) {
+      await newLike(true);
+    } else {
+      await deleteLike();
+    }
+
     setIsLiked(!isLiked);
     setLikes(likes + (isLiked ? -1 : 1));
     setIsHovered(false);
@@ -53,20 +95,28 @@ const LikePanel: FC<LikePanelProps> = ({
       setIsDisliked(!isDisliked);
       setDislikes(dislikes - 1);
     }
-    // });
-  }, [likes, dislikes, isLiked, isDisliked]);
+  };
 
-  const clickDislike = useCallback((): void => {
-    like(false, postId, userId, () => {
-      setIsDisliked(!isDisliked);
-      setDislikes(dislikes + (isDisliked ? -1 : 1));
+  const clickDislike = async (): Promise<void> => {
+    if (isLiked) {
+      await deleteLike();
+    }
 
-      if (isLiked) {
-        setIsLiked(!isLiked);
-        setLikes(likes - 1);
-      }
-    });
-  }, [likes, dislikes, isLiked, isDisliked]);
+    if (!isDisliked) {
+      await newLike(false);
+    } else {
+      await deleteLike();
+    }
+
+    setIsDisliked(!isDisliked);
+    setDislikes(dislikes + (isDisliked ? -1 : 1));
+    setIsHovered(false);
+
+    if (isLiked) {
+      setIsLiked(!isLiked);
+      setLikes(likes - 1);
+    }
+  };
 
   const hoverLike = useCallback(() => {
     setIsHovered(true);
@@ -114,13 +164,13 @@ const LikePanel: FC<LikePanelProps> = ({
 
       <div className={styles.amounts}>
         <div className={isLiked ? styles.selected : ""}>
-          <span>{initialLikes}</span>
-          <span>{initialLikes + 1}</span>
+          <span>{initialLikes - (isCurrentlyLiked ? 1 : 0)}</span>
+          <span>{initialLikes + 1 - (isCurrentlyLiked ? 1 : 0)}</span>
         </div>
         \
         <div className={isDisliked ? styles.selected : ""}>
-          <span>{initialDislikes}</span>
-          <span>{initialDislikes + 1}</span>
+          <span>{initialDislikes - (isCurrentlyDisliked ? 1 : 0)}</span>
+          <span>{initialDislikes + 1 - (isCurrentlyDisliked ? 1 : 0)}</span>
         </div>
       </div>
 

@@ -1,14 +1,13 @@
-import requestIp from "request-ip";
 import { GetServerSidePropsContext } from "next";
 import { IpType, PostData, UserData, UserIdType } from "../types";
 import { getCachedClient } from "../sanity/lib/getClient";
 import { groq } from "next-sanity";
+import { getSession } from "next-auth/react";
 
 export type PostsServerSideData = {
   props: {
     posts: PostData[];
     userId: UserIdType | UserIdType[] | UserData[];
-    ip: IpType;
     selectedPost: any | null;
   };
 };
@@ -18,11 +17,13 @@ export const postsServerSideProps = async ({
   query,
   draftMode,
 }: GetServerSidePropsContext): Promise<PostsServerSideData> => {
-  const ip: IpType = requestIp.getClientIp(req);
+  const session = await getSession({ req });
+  let userId = null;
 
-  let userId: UserIdType[] | UserData[] = [
-    { id: 0, ip: "", avatar: 0, username: "" },
-  ];
+  if (session && session.user) {
+    // @ts-ignore
+    userId = session.user.id;
+  }
 
   const preview = draftMode
     ? { token: process.env.SANITY_API_READ_WRITE_TOKEN }
@@ -36,7 +37,6 @@ export const postsServerSideProps = async ({
   const postsArray: PostData[] = await getCachedClient()(postsQuery);
 
   let selectedPost = null;
-  let comments = [];
 
   if (query.p) {
     const postQuery = await groq`*[_type == "post" && _id == "${query.p}"] {
@@ -100,7 +100,11 @@ export const postsServerSideProps = async ({
         "user": *[_type == "userDetails" && references(^.userId._ref)] {
           name
         }[0]
-      }
+      },
+      "likes": count(*[_type == "like" && references(^._id) && isLike == true]),
+      "dislikes": count(*[_type == "like" && references(^._id) && isLike == false]),
+      "isLiked": count(*[_type == "like" && references(^._id) && references("${userId}") && isLike == true]) > 0,
+      "isDisliked": count(*[_type == "like" && references(^._id) && references("${userId}") && isLike == false]) > 0
     }[0]`;
 
     selectedPost = await getCachedClient(preview)(postQuery);
@@ -109,8 +113,7 @@ export const postsServerSideProps = async ({
   return {
     props: {
       posts: postsArray,
-      userId: userId[0].id,
-      ip: ip,
+      userId,
       selectedPost,
     },
   };

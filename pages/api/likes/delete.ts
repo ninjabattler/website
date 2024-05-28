@@ -1,5 +1,4 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { PostIdType, UserIdType } from "../../../types";
 import { client } from "../../../sanity/lib/client";
 
 export default async function handler(
@@ -8,14 +7,12 @@ export default async function handler(
 ): Promise<void> {
   const userId: string = req.body.userId;
   const postId: string = req.body.postId;
-  const isLike: boolean = req.body.isLike;
 
-  const newLike = await client.create({
-    _type: "like",
-    userId: { _ref: userId },
-    postId: { _ref: postId },
-    isLike,
+  console.log(userId, postId);
+
+  const deletedLike = await client.delete({
+    query: `*[_type == 'like' && references("${postId}") && references("${userId}")]`,
   });
 
-  res.status(200).send(newLike);
+  res.status(200).send(deletedLike);
 }

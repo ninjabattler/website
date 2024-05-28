@@ -25,25 +25,30 @@ const CommentArea = dynamic(
 
 type PostProps = {
   title: TitleType;
-  date: string;
-  comments: Array<any>;
-  content: ArticleJson | TypedObject[];
   id: PostIdType;
   userId: UserIdType;
-  ip: IpType;
-  goBack: () => void;
+  content: ArticleJson | TypedObject[];
+  comments: Array<any>;
+  likes: number;
+  dislikes: number;
+  isCurrentlyLiked: boolean;
+  isCurrentlyDisliked: boolean;
   hide: boolean;
+  goBack: () => void;
 };
 
 export default function Post({
   title,
-  date,
-  comments,
-  content,
   id,
   userId,
-  goBack,
+  content,
+  comments,
+  likes,
+  dislikes,
+  isCurrentlyLiked,
+  isCurrentlyDisliked,
   hide,
+  goBack,
 }: PostProps): ReactElement {
   const [commentList, setCommentList] = useState<Array<any>>(comments || []);
   const [windowServer, setWindow] = useState<WindowServerType>({});
@@ -69,10 +74,10 @@ export default function Post({
       <div className={styles.postContent}>
         <aside className={styles.commentPanel}>
           <LikePanel
-            initialDislikes={0}
-            initialLikes={0}
-            isCurrentlyDisliked={false}
-            isCurrentlyLiked={false}
+            initialDislikes={dislikes}
+            initialLikes={likes}
+            isCurrentlyDisliked={isCurrentlyDisliked}
+            isCurrentlyLiked={isCurrentlyLiked}
             postId={id}
             userId={1}
           />

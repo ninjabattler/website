@@ -14,7 +14,6 @@ import PostsPageHead from "../components/PageMetadata/PostsPageHead";
 export const getServerSideProps: GetServerSideProps = postsServerSideProps;
 
 export default function PostsPage({
-  ip,
   posts,
   userId,
   selectedPost,
@@ -37,6 +36,17 @@ export default function PostsPage({
   const [selectedComments, setSelectedComments] = useState<any[]>(
     selectedPost ? selectedPost.comments : [],
   );
+  const [selectedLikes, setSelectedLikes] = useState<number>(
+    selectedPost ? selectedPost.likes : "",
+  );
+  const [selectedDislikes, setSelectedDislikes] = useState<number>(
+    selectedPost ? selectedPost.dislikes : "",
+  );
+  const [selectedCurrentlyLiked, setSelectedCurrentlyLiked] = useState<boolean>(
+    selectedPost ? selectedPost.isLiked : false,
+  );
+  const [selectedCurrentlyDisliked, setSelectedCurrentlyDisliked] =
+    useState<boolean>(selectedPost ? selectedPost.isDisliked : false);
   const [showPost, setShowPost] = useState<boolean>(
     selectedPost ? true : false,
   );
@@ -108,7 +118,6 @@ export default function PostsPage({
                     content={post.content}
                     date={post.date}
                     id={post._id}
-                    ip={ip}
                     index={i}
                     hidden={postSelected}
                     userId={
@@ -131,9 +140,11 @@ export default function PostsPage({
         <Post
           comments={selectedComments}
           content={selectedContent || []}
-          date={selectedDate}
+          likes={selectedLikes}
+          dislikes={selectedDislikes}
+          isCurrentlyLiked={selectedCurrentlyLiked}
+          isCurrentlyDisliked={selectedCurrentlyDisliked}
           id={selectedId}
-          ip="1"
           hide={!showPost}
           title={selectedTitle}
           userId={1}

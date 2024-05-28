@@ -60,6 +60,13 @@ export default async function handler(
             "height": asset->metadata.dimensions.height,
           }
         }
+      },
+      "comments": *[_type == "comment" && references(^._id)] {
+        _createdAt,
+        content,
+        "user": *[_type == "userDetails" && references(^.userId._ref)] {
+          name
+        }[0]
       }
     }[0]`;
 
