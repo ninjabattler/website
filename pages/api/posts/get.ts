@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { getCachedClient } from "../../../sanity/lib/getClient";
 import { groq } from "next-sanity";
+import { getSession } from "next-auth/react";
 
 export default async function handler(
   req: NextApiRequest,
@@ -8,8 +9,18 @@ export default async function handler(
 ) {
   try {
     const id = req.query.id;
+    const session = await getSession({ req });
+    let userId = null;
+
+    if (session && session.user) {
+      // @ts-ignore
+      userId = session.user.id;
+    }
 
     const postQuery = await groq`*[_type == "post" && _id == "${id}"] {
+      _id,
+      title,
+      date,
       content[]{
         _type == "block" => {
           _type,
@@ -61,13 +72,18 @@ export default async function handler(
           }
         }
       },
-      "comments": *[_type == "comment" && references(^._id)] {
+      "comments": *[_type == "comment" && references(^._id)] | order(_createdAt desc) {
         _createdAt,
         content,
+        "byCurrentUser": references("${userId}"),
         "user": *[_type == "userDetails" && references(^.userId._ref)] {
           name
         }[0]
-      }
+      },
+      "likes": count(*[_type == "like" && references(^._id) && isLike == true]),
+      "dislikes": count(*[_type == "like" && references(^._id) && isLike == false]),
+      "isLiked": count(*[_type == "like" && references(^._id) && references("${userId}") && isLike == true]) > 0,
+      "isDisliked": count(*[_type == "like" && references(^._id) && references("${userId}") && isLike == false]) > 0
     }[0]`;
 
     const post = await getCachedClient()(postQuery);

@@ -9,15 +9,24 @@ import Link from "next/link";
 type PostCardProps = {
   title: TitleType;
   date: string;
-  comments: Array<any>;
-  content: ArticleJson | TypedObject[];
+  comments: number;
   id: PostIdType;
-  userId: UserIdType;
   index: number;
   hidden: boolean;
+  likes: number;
+  dislikes: number;
 };
 
-const PostCard: FC<PostCardProps> = ({ id, title, date, index, hidden }) => {
+const PostCard: FC<PostCardProps> = ({
+  id,
+  title,
+  date,
+  index,
+  hidden,
+  comments,
+  likes,
+  dislikes,
+}) => {
   const [visible, setVisible] = useState<boolean>(false);
   const [selected, setSelected] = useState<boolean>(false);
 
@@ -52,9 +61,13 @@ const PostCard: FC<PostCardProps> = ({ id, title, date, index, hidden }) => {
       <div className={styles.stats}>
         <ThumbsUpDownSharp />
         <div className={styles.likeDislikeBar}>
-          <div className={styles.bar} />
+          <div
+            className={styles.bar}
+            style={{ width: `${(likes / (likes + dislikes)) * 100}%` }}
+          />
         </div>
-        <CommentSharp />0
+        <CommentSharp />
+        {comments}
       </div>
     </Link>
   );

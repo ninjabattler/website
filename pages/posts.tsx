@@ -21,41 +21,15 @@ export default function PostsPage({
   const [postSelected, setPostSelected] = useState<boolean>(
     selectedPost ? true : false,
   );
-  const [selectedId, setSelectedId] = useState<string>(
-    selectedPost ? selectedPost._id : "",
+  const [selectedPostData, setSelectedPostData] = useState<any>(
+    selectedPost ? selectedPost : {},
   );
-  const [selectedTitle, setSelectedTitle] = useState<string>(
-    selectedPost ? selectedPost.title : "",
-  );
-  const [selectedDate, setSelectedDate] = useState<string>(
-    selectedPost ? selectedPost.date : "",
-  );
-  const [selectedContent, setSelectedContent] = useState<any[] | null>(
-    selectedPost ? selectedPost.content : null,
-  );
-  const [selectedComments, setSelectedComments] = useState<any[]>(
-    selectedPost ? selectedPost.comments : [],
-  );
-  const [selectedLikes, setSelectedLikes] = useState<number>(
-    selectedPost ? selectedPost.likes : "",
-  );
-  const [selectedDislikes, setSelectedDislikes] = useState<number>(
-    selectedPost ? selectedPost.dislikes : "",
-  );
-  const [selectedCurrentlyLiked, setSelectedCurrentlyLiked] = useState<boolean>(
-    selectedPost ? selectedPost.isLiked : false,
-  );
-  const [selectedCurrentlyDisliked, setSelectedCurrentlyDisliked] =
-    useState<boolean>(selectedPost ? selectedPost.isDisliked : false);
   const [showPost, setShowPost] = useState<boolean>(
     selectedPost ? true : false,
   );
 
   const onSlideClick = useCallback((id, title, date) => {
     setPostSelected(true);
-    setSelectedTitle(title);
-    setSelectedDate(date);
-    setSelectedId(id);
 
     axios({
       method: "get",
@@ -64,9 +38,10 @@ export default function PostsPage({
       headers: { "Content-Type": "application/json" },
     }).then((res) => {
       if (res.data && res.data.content) {
-        setSelectedContent(res.data.content);
+        console.log(res.data);
+        setSelectedPostData(res.data);
       } else {
-        setSelectedContent([]);
+        setSelectedPostData({});
       }
     });
 
@@ -79,16 +54,14 @@ export default function PostsPage({
     setShowPost(false);
 
     setTimeout(() => {
-      setSelectedTitle("");
-      setSelectedDate("");
-      setSelectedContent([]);
+      setSelectedPostData({});
       setPostSelected(false);
     }, 1000);
   }, []);
 
   return (
     <>
-      <PostsPageHead title={selectedTitle} />
+      <PostsPageHead title={selectedPostData.title} />
 
       <main id={styles.postsPage}>
         <PostsPageBackground />
@@ -120,15 +93,8 @@ export default function PostsPage({
                     id={post._id}
                     index={i}
                     hidden={postSelected}
-                    userId={
-                      typeof userId === "number"
-                        ? userId
-                        : typeof userId[0] === "number"
-                          ? userId[0]
-                          : typeof userId[0].id === "number"
-                            ? userId[0].id
-                            : 1
-                    }
+                    likes={post.likes}
+                    dislikes={post.dislikes}
                     comments={post.comments}
                   />
                 )}
@@ -138,15 +104,15 @@ export default function PostsPage({
         </Swiper>
 
         <Post
-          comments={selectedComments}
-          content={selectedContent || []}
-          likes={selectedLikes}
-          dislikes={selectedDislikes}
-          isCurrentlyLiked={selectedCurrentlyLiked}
-          isCurrentlyDisliked={selectedCurrentlyDisliked}
-          id={selectedId}
+          comments={selectedPostData.comments}
+          content={selectedPostData.content || []}
+          likes={selectedPostData.likes}
+          dislikes={selectedPostData.dislikes}
+          isCurrentlyLiked={selectedPostData.isLiked}
+          isCurrentlyDisliked={selectedPostData.isDisliked}
+          id={selectedPostData._id}
           hide={!showPost}
-          title={selectedTitle}
+          title={selectedPostData.title}
           userId={1}
           goBack={goBack}
         />

@@ -32,7 +32,10 @@ export const postsServerSideProps = async ({
   const postsQuery = await groq`*[_type == "post"] | order(date desc){
     _id,
     title,
-    date
+    date,
+    "comments":count( *[_type == "comment" && references(^._id)]),
+    "likes": count(*[_type == "like" && references(^._id) && isLike == true]),
+    "dislikes": count(*[_type == "like" && references(^._id) && isLike == false]),
   }`;
   const postsArray: PostData[] = await getCachedClient()(postsQuery);
 

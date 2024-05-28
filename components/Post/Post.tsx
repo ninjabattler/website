@@ -57,6 +57,10 @@ export default function Post({
     setWindow(window);
   }, []);
 
+  useEffect(() => {
+    setCommentList(comments || []);
+  }, [comments]);
+
   return (
     <article
       key={title}
@@ -96,10 +100,10 @@ export default function Post({
           />
 
           <div className={styles.comments}>
-            {commentList.map((com) => {
+            {commentList.map((com, i) => {
               return (
                 <Comment
-                  key={com.id}
+                  key={i}
                   username={com.user.name}
                   date={com._createdAt}
                   content={com.content}
