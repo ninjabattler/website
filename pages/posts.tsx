@@ -95,6 +95,7 @@ export default function PostsPage({
                     hidden={postSelected}
                     likes={post.likes}
                     dislikes={post.dislikes}
+                    // @ts-ignore
                     comments={post.comments}
                   />
                 )}

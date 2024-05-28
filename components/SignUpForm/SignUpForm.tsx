@@ -3,6 +3,7 @@ import styles from "./SignUpForm.module.scss";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 import { signUp } from "next-auth-sanity/client";
+import axios from "axios";
 
 type SignUpFormProps = {
   signup?: boolean;
@@ -21,35 +22,40 @@ const SignUpForm: FC<SignUpFormProps> = ({ signup, show }) => {
   const [retypePassword, setRetypePassword] = useState<string>("");
   const router = useRouter();
 
-  const newUser = useCallback(async (e: FormEvent) => {
-    e.preventDefault();
+  const newUser = useCallback(
+    async (e: FormEvent) => {
+      e.preventDefault();
 
-    try {
-      if (
-        name &&
-        email &&
-        password &&
-        retypePassword &&
-        password === retypePassword
-      ) {
-        await signUp({
-          email,
-          password,
-          name,
-        });
+      try {
+        if (name && email && password && retypePassword) {
+          const newUser = await signUp({
+            email,
+            password,
+            name,
+          });
 
-        await signIn("sanity-login", {
-          redirect: false,
-          email,
-          password,
-        });
+          await axios({
+            method: "post",
+            url: `/api/sanity/userDetails/create`,
+            // @ts-ignore
+            data: { userId: newUser.id, username: newUser.name },
+            headers: { "Content-Type": "application/json" },
+          });
 
-        router.reload();
+          await signIn("sanity-login", {
+            redirect: false,
+            email,
+            password,
+          });
+
+          router.reload();
+        }
+      } catch (err) {
+        console.log(err);
       }
-    } catch (err) {
-      console.log(err);
-    }
-  }, []);
+    },
+    [name, email, password, retypePassword],
+  );
 
   const logIn = useCallback(
     async (e: FormEvent) => {
