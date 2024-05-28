@@ -64,13 +64,25 @@ const CommentArea: FC<CommentAreaProps> = ({
       const commentArea = document.getElementById("commentArea");
       const commentContent = commentArea.innerText;
 
-      const newComment = await axios({
+      await axios({
         method: "post",
         url: `/api/comments/newComment`,
         // @ts-ignore
         data: { content: commentContent, userId: data.user.id, postId },
         headers: { "Content-Type": "application/json" },
       });
+
+      const newComment = [
+        {
+          id: "",
+          user: data.user,
+          _createdAt: new Date().toISOString(),
+          content: commentContent,
+          byCurrentUser: true,
+        },
+      ];
+
+      setComments(newComment.concat(comments));
 
       setCommenting(false);
     } catch (err) {

@@ -228,8 +228,8 @@
     animation: slideIn 2s 1 ease-in-out;
 
     &::-webkit-scrollbar {
-      width: 0.5vw;
-      height: 0.5vw;
+      width: 0.2em;
+      height: 0.2em;
       background: variables.$lightGray;
     }
 
@@ -240,6 +240,21 @@
     &::-webkit-scrollbar-thumb {
       background: variables.$darkGray;
       border: 0.1vw solid variables.$lightGray;
+    }
+
+    &::before {
+      @include mixins.gridPatternDark;
+      width: calc(100% - 0.4em);
+      height: 100%;
+      position: absolute;
+      mask: linear-gradient(
+        90deg,
+        black 0%,
+        transparent 15%,
+        transparent 85%,
+        black 100%
+      );
+      content: "";
     }
   }
 }

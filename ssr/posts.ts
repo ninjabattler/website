@@ -94,9 +94,10 @@ export const postsServerSideProps = async ({
           }
         }
       },
-      "comments": *[_type == "comment" && references(^._id)] {
+      "comments": *[_type == "comment" && references(^._id)] | order(_createdAt desc) {
         _createdAt,
         content,
+        "byCurrentUser": references("${userId}"),
         "user": *[_type == "userDetails" && references(^.userId._ref)] {
           name
         }[0]

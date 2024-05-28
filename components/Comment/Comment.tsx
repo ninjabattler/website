@@ -25,6 +25,7 @@ export type CommentProps = {
   style?: CSSProperties;
   avatar: number;
   date?: string;
+  byCurrentUser: boolean;
 };
 
 /**
@@ -40,7 +41,7 @@ const Comment: FC<CommentProps> = ({
   username,
   content,
   style,
-  avatar,
+  byCurrentUser = false,
   date,
 }) => {
   const [showMore, setShowMore] = useState<boolean>(false);
@@ -58,7 +59,10 @@ const Comment: FC<CommentProps> = ({
   }, [contentRef]);
 
   return (
-    <div className={styles.comment} style={style}>
+    <div
+      className={`${styles.comment} ${byCurrentUser ? styles.byCurrentUser : ""}`}
+      style={style}
+    >
       <div className={styles.header}>
         {/* <img
           className={styles.avatar}

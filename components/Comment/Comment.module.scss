@@ -2,6 +2,7 @@
 @use "/styles/_variables" as variables;
 
 .comment {
+  width: 100%;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
   margin-left: 0.35em;
@@ -118,5 +119,21 @@
     color: variables.$lightGray;
     z-index: 1;
     cursor: pointer;
+  }
+
+  &.byCurrentUser {
+    .header {
+      .avatar {
+        border-color: var(--article-colour);
+      }
+
+      .userInfo {
+        filter: drop-shadow(0.1em 0.1em 0 var(--article-colour));
+      }
+    }
+
+    .content {
+      border-color: var(--article-colour);
+    }
   }
 }

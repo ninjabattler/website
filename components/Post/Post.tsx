@@ -103,6 +103,7 @@ export default function Post({
                   username={com.user.name}
                   date={com._createdAt}
                   content={com.content}
+                  byCurrentUser={com.byCurrentUser}
                   avatar={1}
                 />
               );

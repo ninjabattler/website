@@ -90,6 +90,7 @@ const ArticleCommentPanel: FC<ArticleCommentPanelProps> = ({
                 date={com.date}
                 content={com.content}
                 avatar={com.avatar}
+                byCurrentUser={false}
               />
             );
           }
