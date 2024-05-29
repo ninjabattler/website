@@ -3,11 +3,14 @@ import { TitleType } from "../../types";
 import InfoBar, { InfoBarProps } from "../articleComponents/InfoBar/InfoBar";
 import styles from "./VideoHeader.module.scss";
 import Typewriter from "typewriter-effect/dist/core";
+import ReviewPageBackground from "../backgrounds/ReviewPageBackground/ReviewPageBackground";
 
 type VideoHeaderProps = {
   video: string | null;
   title: TitleType;
   infoBarProps: InfoBarProps;
+  spaceColour?: string;
+  starsColour?: string;
 };
 
 /**
@@ -17,7 +20,13 @@ type VideoHeaderProps = {
  * @param title The title
  * @param infoBarProps Props, including a date and tags for the ino bar component
  */
-const VideoHeader: FC<VideoHeaderProps> = ({ video, title, infoBarProps }) => {
+const VideoHeader: FC<VideoHeaderProps> = ({
+  video,
+  title,
+  infoBarProps,
+  spaceColour,
+  starsColour,
+}) => {
   useEffect(() => {
     const typewriter = new Typewriter("#title", {
       delay: 10,
@@ -32,13 +41,20 @@ const VideoHeader: FC<VideoHeaderProps> = ({ video, title, infoBarProps }) => {
     <>
       {/* Video */}
       <div id={styles.videoContainer}>
-        {!video.startsWith("htt") && <div id={styles.videoOverlay} />}
+        {/* {!video.startsWith("htt") && <div id={styles.videoOverlay} />} */}
 
-        <video loop muted autoPlay>
-          <source src={video || "/defaultVideo.mp4"} type="video/webm" />
-          <source src={video || "/defaultVideo.mp4"} type="video/ogg" />
-          <source src={video || "/defaultVideo.mp4"} type="video/mp4" />
-        </video>
+        {video ? (
+          <video loop muted autoPlay>
+            <source src={video} type="video/webm" />
+            <source src={video} type="video/ogg" />
+            <source src={video} type="video/mp4" />
+          </video>
+        ) : (
+          <ReviewPageBackground
+            spaceColour={spaceColour}
+            starsColour={starsColour}
+          />
+        )}
       </div>
 
       {/* Title */}
