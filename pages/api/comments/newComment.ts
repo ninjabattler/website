@@ -1,20 +1,51 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { client } from "../../../sanity/lib/client";
 
+/**
+ * Creates a new comment in santiy for a user on a post
+ * @author Ninjabattler
+ * @param userId The id of the user who commented
+ * @param postId The id of the post the user commented on
+ * @param content The content of the user's comment
+ */
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ): Promise<void> {
-  const userId: string = req.body.userId as string;
-  const postId: string = req.body.postId as string;
-  const content: string = req.body.content as string;
+  if (req.method === "POST") {
+    try {
+      const userId: string | undefined = req.body.userId;
+      const postId: string | undefined = req.body.postId;
+      const content: string | undefined = req.body.content;
 
-  const newComment = await client.create({
-    _type: "comment",
-    userId: { _ref: userId },
-    postId: { _ref: postId },
-    content: content,
-  });
+      // Check the inputs
+      if (userId === undefined) {
+        return res.status(400).send("Missing userId");
+      }
 
-  res.status(200).send(newComment);
+      if (postId === undefined) {
+        return res.status(400).send("Missing postId");
+      }
+
+      if (content === undefined) {
+        return res.status(400).send("Missing content");
+      }
+
+      // Create and send the new comment
+      const newComment = await client.create({
+        _type: "comment",
+        userId: { _ref: userId },
+        postId: { _ref: postId },
+        content: content,
+      });
+
+      return res.status(200).send(newComment);
+    } catch (err) {
+      console.error(err);
+
+      return res.status(500).send("Failed to create a new comment");
+    }
+  } else {
+    return res.status(405).send("");
+  }
 }

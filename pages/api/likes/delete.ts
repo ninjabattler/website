@@ -1,18 +1,42 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { client } from "../../../sanity/lib/client";
 
+/**
+ * Deletes a user's like/dislike on a post
+ * @author Ninjabattler
+ * @param userId The id of the user who commented
+ * @param postId The id of the post the user commented on
+ */
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ): Promise<void> {
-  const userId: string = req.body.userId;
-  const postId: string = req.body.postId;
+  if (req.method === "POST") {
+    try {
+      const userId: string | undefined = req.body.userId;
+      const postId: string | undefined = req.body.postId;
 
-  console.log(userId, postId);
+      // Check the inputs
+      if (userId === undefined) {
+        return res.status(400).send("Missing userId");
+      }
 
-  const deletedLike = await client.delete({
-    query: `*[_type == 'like' && references("${postId}") && references("${userId}")]`,
-  });
+      if (postId === undefined) {
+        return res.status(400).send("Missing postId");
+      }
 
-  res.status(200).send(deletedLike);
+      // Delete and send the user's like/dislike
+      const deletedLike = await client.delete({
+        query: `*[_type == 'like' && references("${postId}") && references("${userId}")]`,
+      });
+
+      res.status(200).send(deletedLike);
+    } catch (err) {
+      console.error(err);
+
+      return res.status(500).send("Failed to delete the user's like/dislike");
+    }
+  } else {
+    return res.status(405).send("");
+  }
 }

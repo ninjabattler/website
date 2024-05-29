@@ -1,19 +1,44 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { PostIdType, UserIdType } from "../../../../types";
 import { client } from "../../../../sanity/lib/client";
 
+/**
+ * Creates a new public userDetails document in santiy for a new user
+ * @author Ninjabattler
+ * @param userId The id of the user who commented
+ * @param username The public name of the new user
+ */
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ): Promise<void> {
-  const userId: string = req.body.userId;
-  const name: string = req.body.username;
+  if (req.method === "POST") {
+    try {
+      const userId: string | undefined = req.body.userId;
+      const username: string | undefined = req.body.username;
 
-  const newUserDetails = await client.create({
-    _type: "userDetails",
-    userId: { _ref: userId },
-    name,
-  });
+      // Check the inputs
+      if (userId === undefined) {
+        return res.status(400).send("Missing userId");
+      }
 
-  res.status(200).send(newUserDetails);
+      if (username === undefined) {
+        return res.status(400).send("Missing username");
+      }
+
+      // Create and send the new user's details
+      const newUserDetails = await client.create({
+        _type: "userDetails",
+        userId: { _ref: userId },
+        username,
+      });
+
+      res.status(200).send(newUserDetails);
+    } catch (err) {
+      console.error(err);
+
+      return res.status(500).send("Failed to create a new userDetails");
+    }
+  } else {
+    return res.status(405).send("");
+  }
 }

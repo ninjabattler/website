@@ -1,21 +1,51 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { PostIdType, UserIdType } from "../../../types";
 import { client } from "../../../sanity/lib/client";
 
+/**
+ * Creates a new like/dislike in santiy for a user on a post
+ * @author Ninjabattler
+ * @param userId The id of the user who commented
+ * @param postId The id of the post the user commented on
+ * @param isLike Whether the document is considered a like or not
+ */
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ): Promise<void> {
-  const userId: string = req.body.userId;
-  const postId: string = req.body.postId;
-  const isLike: boolean = req.body.isLike;
+  if (req.method === "POST") {
+    try {
+      const userId: string | undefined = req.body.userId;
+      const postId: string | undefined = req.body.postId;
+      const isLike: boolean | undefined = req.body.isLike;
 
-  const newLike = await client.create({
-    _type: "like",
-    userId: { _ref: userId },
-    postId: { _ref: postId },
-    isLike,
-  });
+      // Check the inputs
+      if (userId === undefined) {
+        return res.status(400).send("Missing userId");
+      }
 
-  res.status(200).send(newLike);
+      if (postId === undefined) {
+        return res.status(400).send("Missing postId");
+      }
+
+      if (isLike === undefined) {
+        return res.status(400).send("Missing isLike");
+      }
+
+      // Create and send the user's new like/dislike
+      const newLike = await client.create({
+        _type: "like",
+        userId: { _ref: userId },
+        postId: { _ref: postId },
+        isLike,
+      });
+
+      res.status(200).send(newLike);
+    } catch (err) {
+      console.error(err);
+
+      return res.status(500).send("Failed to create a new like");
+    }
+  } else {
+    return res.status(405).send("");
+  }
 }
