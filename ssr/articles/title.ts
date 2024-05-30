@@ -1,18 +1,8 @@
-import db from "../../db/db";
-import selectSingleArticle from "../../db/selects/selectSingleArticle";
 import noCommentMessages from "../../constants/noCommentMessages.json";
-import {
-  ArticleData,
-  ArticleJson,
-  IpType,
-  UrlType,
-  UserData,
-  UserIdType,
-} from "../../types";
+import { ArticleData, UrlType, UserIdType } from "../../types";
 import { GetServerSidePropsContext } from "next";
-import { groq } from "next-sanity";
-import { client } from "../../sanity/lib/client";
 import { getCachedClient } from "../../sanity/lib/getClient";
+import { getArticleQuery } from "../../sanity/lib/queries";
 
 export type ArticleServerSideData = {
   props: {
@@ -29,7 +19,6 @@ export type ArticleServerSideData = {
 };
 
 export const articlePageServerSideProps = async ({
-  req,
   query,
   params,
   draftMode,
@@ -38,142 +27,12 @@ export const articlePageServerSideProps = async ({
     Math.random() * noCommentMessages.length,
   );
   const title: string = query.title as string;
-  const articleTitle: string = title.replace(/(_|-)/g, " ");
 
   const preview = draftMode
     ? { token: process.env.SANITY_API_READ_WRITE_TOKEN }
     : undefined;
 
-  const articleQuery =
-    await groq`*[_type == "article" && slug == "${title}"] | order(date.start asc){
-    title,
-    date,
-    narration,
-    videoHeader,
-    thumbnail {
-      "url": asset->url,
-      "blur": asset->metadata.lqip,
-      "width": asset->metadata.dimensions.width,
-      "height": asset->metadata.dimensions.height,
-    },
-    colors,
-    tags[] -> {
-      tag
-    },
-    footnotes[]{
-        title,
-        source
-    },
-    content[]{
-      _type == "block" => {
-        _type,
-        style,
-        _key,
-        markDefs,
-        children[]{
-          _type,
-          _type != "picture" => {
-            marks,
-            text,
-            content,
-          },
-          _type == "picture" => {
-            scale,
-            float,
-            source,
-            sourceLink,
-            image {
-              "url": asset->url,
-              "blur": asset->metadata.lqip,
-              "width": asset->metadata.dimensions.width,
-              "height": asset->metadata.dimensions.height,
-            }
-          },
-          _type == "footnoteLink" => {
-            noteIndex
-          }
-        }
-      },
-      _type == "titleCard" => {
-        _type,
-        title,
-        banner {
-          "url": asset->url,
-          "blur": asset->metadata.lqip,
-          "width": asset->metadata.dimensions.width,
-          "height": asset->metadata.dimensions.height,
-        }
-      },
-      _type == "image" => {
-        _type,
-        "url": asset->url,
-        "blur": asset->metadata.lqip,
-        "width": asset->metadata.dimensions.width,
-        "height": asset->metadata.dimensions.height,
-      },
-      _type == "quote" => {
-        _type,
-        quote,
-        source
-      },
-      _type == "underline" => {
-        _type
-      },
-      _type == "dialogue" => {
-        _type,
-        speaker,
-        dialogue,
-        invert,
-        portrait {
-          "url": asset->url,
-          "blur": asset->metadata.lqip,
-          "width": asset->metadata.dimensions.width,
-          "height": asset->metadata.dimensions.height,
-        }
-      },
-      _type == "subtitleCard" => {
-        _type,
-        title,
-        banner {
-          "url": asset->url,
-          "blur": asset->metadata.lqip,
-          "width": asset->metadata.dimensions.width,
-          "height": asset->metadata.dimensions.height,
-        }
-      },
-      _type == "listItem" => {
-        _type,
-        text,
-        icon {
-          "url": asset->url,
-          "blur": asset->metadata.lqip,
-          "width": asset->metadata.dimensions.width,
-          "height": asset->metadata.dimensions.height,
-        }
-      },
-      _type == "codeBlock" => {
-        _type,
-        code,
-        language,
-        title
-      },
-      _type == "picture" => {
-        _type,
-        scale,
-        float,
-        source,
-        sourceLink,
-        image {
-          "url": asset->url,
-          "blur": asset->metadata.lqip,
-          "width": asset->metadata.dimensions.width,
-          "height": asset->metadata.dimensions.height,
-        }
-      }
-    }
-  }[0]`;
-
-  const article = await getCachedClient(preview)(articleQuery);
+  const article = await getCachedClient(preview)(getArticleQuery(title));
 
   let liked: boolean = false;
   let disliked: boolean = false;

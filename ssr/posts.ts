@@ -1,8 +1,9 @@
 import { GetServerSidePropsContext } from "next";
-import { IpType, PostData, UserData, UserIdType } from "../types";
+import { PostData, UserData, UserIdType } from "../types";
 import { getCachedClient } from "../sanity/lib/getClient";
 import { groq } from "next-sanity";
 import { getSession } from "next-auth/react";
+import { getAllPostsQuery, getPostQuery } from "../sanity/lib/queries";
 
 export type PostsServerSideData = {
   props: {
@@ -19,6 +20,7 @@ export const postsServerSideProps = async ({
 }: GetServerSidePropsContext): Promise<PostsServerSideData> => {
   const session = await getSession({ req });
   let userId = null;
+  let selectedPost = null;
 
   if (session && session.user) {
     // @ts-ignore
@@ -29,89 +31,12 @@ export const postsServerSideProps = async ({
     ? { token: process.env.SANITY_API_READ_WRITE_TOKEN }
     : undefined;
 
-  const postsQuery = await groq`*[_type == "post"] | order(date desc){
-    _id,
-    title,
-    date,
-    "comments":count( *[_type == "comment" && references(^._id)]),
-    "likes": count(*[_type == "like" && references(^._id) && isLike == true]),
-    "dislikes": count(*[_type == "like" && references(^._id) && isLike == false]),
-  }`;
-  const postsArray: PostData[] = await getCachedClient()(postsQuery);
+  const postsArray: PostData[] = await getCachedClient()(getAllPostsQuery());
 
-  let selectedPost = null;
-
-  if (query.p) {
-    const postQuery = await groq`*[_type == "post" && _id == "${query.p}"] {
-      _id,
-      title,
-      date,
-      content[]{
-        _type == "block" => {
-          _type,
-          style,
-          _key,
-          markDefs,
-          children[]{
-            _type,
-            _type != "picture" => {
-              marks,
-              text,
-              content,
-            },
-            _type == "picture" => {
-              scale,
-              float,
-              source,
-              sourceLink,
-              image {
-                "url": asset->url,
-                "blur": asset->metadata.lqip,
-                "width": asset->metadata.dimensions.width,
-                "height": asset->metadata.dimensions.height,
-              }
-            },
-            _type == "footnoteLink" => {
-              noteIndex
-            }
-          }
-        },
-        _type == "image" => {
-          _type,
-          "url": asset->url,
-          "blur": asset->metadata.lqip,
-          "width": asset->metadata.dimensions.width,
-          "height": asset->metadata.dimensions.height,
-        },
-        _type == "picture" => {
-          _type,
-          scale,
-          float,
-          source,
-          sourceLink,
-          image {
-            "url": asset->url,
-            "blur": asset->metadata.lqip,
-            "width": asset->metadata.dimensions.width,
-            "height": asset->metadata.dimensions.height,
-          }
-        }
-      },
-      "comments": *[_type == "comment" && references(^._id)] | order(_createdAt desc) {
-        _createdAt,
-        content,
-        "byCurrentUser": references("${userId}"),
-        "user": *[_type == "userDetails" && references(^.userId._ref)] {
-          name
-        }[0]
-      },
-      "likes": count(*[_type == "like" && references(^._id) && isLike == true]),
-      "dislikes": count(*[_type == "like" && references(^._id) && isLike == false]),
-      "isLiked": count(*[_type == "like" && references(^._id) && references("${userId}") && isLike == true]) > 0,
-      "isDisliked": count(*[_type == "like" && references(^._id) && references("${userId}") && isLike == false]) > 0
-    }[0]`;
-
-    selectedPost = await getCachedClient(preview)(postQuery);
+  if (query.p && typeof query.p === "string") {
+    selectedPost = await getCachedClient(preview)(
+      getPostQuery(query.p, userId),
+    );
   }
 
   return {

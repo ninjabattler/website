@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { client } from "../../../sanity/lib/client";
+import { getPostLikesQuery } from "../../../sanity/lib/queries";
 
 /**
  * Deletes a user's like/dislike on a post
@@ -27,7 +28,7 @@ export default async function handler(
 
       // Delete and send the user's like/dislike
       const deletedLike = await client.delete({
-        query: `*[_type == 'like' && references("${postId}") && references("${userId}")]`,
+        query: getPostLikesQuery(postId, userId),
       });
 
       res.status(200).send(deletedLike);
