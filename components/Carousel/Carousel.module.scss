@@ -1,3 +1,6 @@
+@use "/styles/_mixins" as mixins;
+@use "/styles/_variables" as variables;
+
 .carousel {
   display: flex;
   flex-direction: column;
@@ -32,7 +35,7 @@
 }
 
 .carousel > main {
-  background-color: var(--dark-gray);
+  background-color: variables.$darkGray;
   width: 100%;
   height: 30vw;
   display: flex;
@@ -56,28 +59,28 @@
 
 .carouselOptions > input {
   -webkit-appearance: none;
-  background-color: var(--primary-text);
-  border: 0.3vw solid var(--dark-gray);
+  background-color: variables.$primaryText;
+  border: 0.3vw solid variables.$darkGray;
   padding: 1.1vw;
   border-radius: 100%;
   cursor: pointer;
 
   @media only screen and (max-device-width: 425px) {
-    border: 2px solid var(--dark-gray);
+    border: 2px solid variables.$darkGray;
     padding: 10px;
   }
 }
 
 .carouselOptions > input:checked {
   -webkit-appearance: none;
-  background-color: var(--dark-gray);
-  border: 0.3vw solid var(--dark-gray);
+  background-color: variables.$darkGray;
+  border: 0.3vw solid variables.$darkGray;
   padding: 1.1vw;
   border-radius: 100%;
   cursor: initial;
 
   @media only screen and (max-device-width: 425px) {
-    border: 2px solid var(--dark-gray);
+    border: 2px solid variables.$darkGray;
     padding: 10px;
   }
 }
@@ -142,7 +145,7 @@
 .carouselItem > aside > section > .background {
   position: absolute;
   width: 40vw;
-  border-top: 2.2vw solid var(--light-gray);
+  border-top: 2.2vw solid variables.$lightGray;
   border-right: 2.2vw solid transparent;
   z-index: -1;
   mask: linear-gradient(
@@ -163,7 +166,7 @@
 }
 
 .carouselItem > aside > section > h3 {
-  color: var(--dark-gray);
+  color: variables.$darkGray;
   font-size: 1.3vw;
   margin: 5px;
   margin-right: 1vw;
@@ -175,12 +178,12 @@
     font-size: 3.5vw;
     margin: 5px;
     margin-right: 2vw;
-    color: var(--primary-text);
+    color: variables.$primaryText;
   }
 }
 
 .carouselItem > aside > h1 {
-  color: var(--primary-text);
+  color: variables.$primaryText;
   font-size: 2.5vw;
   font-family: "Russo One";
   font-weight: 100;
@@ -196,7 +199,7 @@
 }
 
 .carouselItem > aside > div {
-  color: var(--light-gray);
+  color: variables.$lightGray;
   font-size: 1.3vw;
   width: 100%;
   flex-direction: column;

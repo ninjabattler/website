@@ -1,3 +1,5 @@
+@use "/styles/_mixins" as mixins;
+@use "/styles/_variables" as variables;
 $gradientColour: rgba(27, 27, 27, 0.5);
 
 #homePage {
@@ -75,10 +77,10 @@ $gradientColour: rgba(27, 27, 27, 0.5);
   background-image: linear-gradient(
     0deg,
     transparent 27%,
-    var(--light-gray) 27%,
-    var(--light-gray) 31%,
-    var(--dark-gray) 31%,
-    var(--dark-gray) 37%,
+    variables.$lightGray 27%,
+    variables.$lightGray 31%,
+    variables.$darkGray 31%,
+    variables.$darkGray 37%,
     transparent 37%
   );
   animation-name: gradientSlide;
@@ -96,7 +98,7 @@ $gradientColour: rgba(27, 27, 27, 0.5);
   width: 45%;
   height: 36.5vw;
   margin-left: 50vw;
-  background-color: var(--dark-gray);
+  background-color: variables.$darkGray;
   animation-name: gradientSlide2;
   animation-timing-function: linear;
   animation-duration: 1.5s;
@@ -144,22 +146,22 @@ $gradientColour: rgba(27, 27, 27, 0.5);
   margin-right: -0.5vw;
   padding-left: 0.5vw;
   text-align: left;
-  color: var(--dark-gray);
+  color: variables.$darkGray;
   font-family: "Russo One";
   font-weight: 100;
   font-size: larger;
   background-image: linear-gradient(
     -45deg,
     transparent 16%,
-    var(--light-gray) 16%,
-    var(--light-gray) 20%,
+    variables.$lightGray 16%,
+    variables.$lightGray 20%,
     transparent 20%,
     transparent 22%,
-    var(--light-gray) 22%,
-    var(--light-gray) 24%,
+    variables.$lightGray 22%,
+    variables.$lightGray 24%,
     transparent 24%,
     transparent 26%,
-    var(--light-gray) 26%
+    variables.$lightGray 26%
   );
 
   @media only screen and (max-width: 425px) {
@@ -175,7 +177,7 @@ $gradientColour: rgba(27, 27, 27, 0.5);
   margin-right: -0.5vw;
   padding-left: 0.5vw;
   text-align: left;
-  color: var(--primary-text);
+  color: variables.$primaryText;
   font-family: "Russo One";
   font-weight: 100;
   font-size: larger;
@@ -188,7 +190,7 @@ $gradientColour: rgba(27, 27, 27, 0.5);
 
 #part1 > h1,
 #part1 > h4 {
-  color: var(--primary-text);
+  color: variables.$primaryText;
   margin: 0;
   padding: 0;
   font-family: "Russo One";
@@ -212,13 +214,13 @@ $gradientColour: rgba(27, 27, 27, 0.5);
 }
 
 #part1 > h4 {
-  color: var(--dark-gray);
+  color: variables.$darkGray;
   font-size: 0.9em;
   padding-left: 1vw;
   margin-top: 0.2vw;
 
   @media only screen and (max-width: 425px) {
-    color: var(--dark-gray);
+    color: variables.$darkGray;
     font-size: 0.9em;
     padding-left: 4vw;
     margin-top: 1.3vw;
@@ -228,7 +230,7 @@ $gradientColour: rgba(27, 27, 27, 0.5);
 
 #part1 > p {
   width: 43vw;
-  color: var(--primary-text);
+  color: variables.$primaryText;
   right: 5vw;
   position: absolute;
   animation-name: gradientSlide2;
@@ -236,7 +238,7 @@ $gradientColour: rgba(27, 27, 27, 0.5);
   animation-duration: 1.5s;
   padding: 1vw;
   font-size: 0.8em;
-  background-color: var(--dark-gray);
+  background-color: variables.$darkGray;
 
   @media only screen and (max-width: 425px) {
     width: 98vw;
@@ -262,8 +264,8 @@ $gradientColour: rgba(27, 27, 27, 0.5);
 }
 
 #part2 > .gradient2 > p {
-  color: var(--primary-text);
-  background-color: var(--dark-gray);
+  color: variables.$primaryText;
+  background-color: variables.$darkGray;
   padding: 1vw;
   position: absolute;
   width: 98vw;
@@ -284,19 +286,19 @@ $gradientColour: rgba(27, 27, 27, 0.5);
   font-size: 3.5em;
   font-family: "Russo One";
   font-weight: 100;
-  color: var(--dark-gray);
+  color: variables.$darkGray;
   padding-left: 42vw;
   margin-top: 13.6vw;
   background-image: linear-gradient(
     -45deg,
-    var(--light-gray) 32.25vw,
+    variables.$lightGray 32.25vw,
     $gradientColour 32.25vw,
     $gradientColour 34.25vw,
-    var(--light-gray) 34.25vw,
-    var(--light-gray) 36.25vw,
+    variables.$lightGray 34.25vw,
+    variables.$lightGray 36.25vw,
     $gradientColour 36.25vw,
     $gradientColour 38.4vw,
-    var(--light-gray) 38.4vw
+    variables.$lightGray 38.4vw
   );
   cursor: default;
   transform: rotateY(10deg) rotateX(10deg) translateZ(-0.47cm);
@@ -319,21 +321,21 @@ $gradientColour: rgba(27, 27, 27, 0.5);
   font-size: 1.5em;
   font-family: "Russo One";
   font-weight: 100;
-  color: var(--primary-text);
+  color: variables.$primaryText;
   padding-top: 0.5vw;
   padding-bottom: 0.5vw;
   padding-left: 44vw;
   margin-top: 20.4vw;
   background-image: linear-gradient(
     -45deg,
-    var(--dark-gray) 36.75vw,
+    variables.$darkGray 36.75vw,
     $gradientColour 36.75vw,
     $gradientColour 38.75vw,
-    var(--dark-gray) 38.75vw,
-    var(--dark-gray) 40.75vw,
+    variables.$darkGray 38.75vw,
+    variables.$darkGray 40.75vw,
     $gradientColour 40.75vw,
     $gradientColour 42.75vw,
-    var(--dark-gray) 42.75vw
+    variables.$darkGray 42.75vw
   );
   cursor: default;
   transform: rotateY(10deg) rotateX(10deg);
@@ -341,7 +343,7 @@ $gradientColour: rgba(27, 27, 27, 0.5);
   @media only screen and (max-width: 425px) {
     font-size: 1.3em;
     background-image: none;
-    background-color: var(--dark-gray);
+    background-color: variables.$darkGray;
     margin-top: 22vw;
     padding-left: 48vw;
     width: 52vw;
@@ -436,21 +438,21 @@ $gradientColour: rgba(27, 27, 27, 0.5);
   font-size: 3.5em;
   font-family: "Russo One";
   font-weight: 100;
-  color: var(--dark-gray);
+  color: variables.$darkGray;
   padding-left: 100vw;
   margin-left: -50vw;
   margin-top: 11.2vw;
   cursor: default;
   background-image: linear-gradient(
     45deg,
-    var(--light-gray) 40vw,
+    variables.$lightGray 40vw,
     $gradientColour 40vw,
     $gradientColour 42vw,
-    var(--light-gray) 42vw,
-    var(--light-gray) 44vw,
+    variables.$lightGray 42vw,
+    variables.$lightGray 44vw,
     $gradientColour 44vw,
     $gradientColour 46vw,
-    var(--light-gray) 46vw
+    variables.$lightGray 46vw
   );
   transform: rotateY(-10deg) rotateX(10deg);
 
@@ -470,7 +472,7 @@ $gradientColour: rgba(27, 27, 27, 0.5);
   font-size: 1.5em;
   font-family: "Russo One";
   font-weight: 100;
-  color: var(--primary-text);
+  color: variables.$primaryText;
   padding-top: 0.5vw;
   padding-bottom: 0.5vw;
   padding-left: 90vw;
@@ -478,21 +480,21 @@ $gradientColour: rgba(27, 27, 27, 0.5);
   margin-top: 17.85vw;
   background-image: linear-gradient(
     45deg,
-    var(--dark-gray) 42.6vw,
+    variables.$darkGray 42.6vw,
     $gradientColour 42.6vw,
     $gradientColour 44.6vw,
-    var(--dark-gray) 44.6vw,
-    var(--dark-gray) 46.6vw,
+    variables.$darkGray 44.6vw,
+    variables.$darkGray 46.6vw,
     $gradientColour 46.6vw,
     $gradientColour 48.6vw,
-    var(--dark-gray) 48.6vw
+    variables.$darkGray 48.6vw
   );
   cursor: default;
   transform: rotateY(-10deg) rotateX(10deg);
 
   @media only screen and (max-width: 425px) {
     background-image: none;
-    background-color: var(--dark-gray);
+    background-color: variables.$darkGray;
     width: 96vw;
     padding-left: 4vw;
     margin-top: 20.9vw;
@@ -506,7 +508,7 @@ $gradientColour: rgba(27, 27, 27, 0.5);
 #part4 {
   width: 100vw;
   height: fit-content;
-  background-color: var(--dark-gray);
+  background-color: variables.$darkGray;
   margin-bottom: 7vw;
 
   @media only screen and (max-width: 425px) {
@@ -515,12 +517,12 @@ $gradientColour: rgba(27, 27, 27, 0.5);
 }
 
 #part4 > h2 {
-  color: var(--primary-text);
+  color: variables.$primaryText;
   margin: 1vw;
 }
 
 #part4 > p {
-  color: var(--primary-text);
+  color: variables.$primaryText;
   margin: 1vw;
 }
 

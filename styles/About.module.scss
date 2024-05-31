@@ -1,3 +1,6 @@
+@use "/styles/_mixins" as mixins;
+@use "/styles/_variables" as variables;
+
 #about {
   display: flex;
   height: fit-content;
@@ -13,7 +16,7 @@
 
 #content {
   width: 50%;
-  color: var(--dark-gray);
+  color: variables.$darkGray;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -47,7 +50,7 @@
 .left {
   width: 5%;
   border-right: 350px solid transparent;
-  border-bottom: 350px solid var(--light-gray);
+  border-bottom: 350px solid variables.$lightGray;
   margin-right: -300px;
   z-index: 10;
 }
@@ -55,7 +58,7 @@
 .right {
   width: 5%;
   border-left: 350px solid transparent;
-  border-bottom: 350px solid var(--light-gray);
+  border-bottom: 350px solid variables.$lightGray;
   margin-left: -300px;
   z-index: 10;
 }
