@@ -3,7 +3,6 @@ import styles from "../../styles/ArticlesPage.module.scss";
 import Carousel from "../../components/Carousel/Carousel";
 import Link from "next/link";
 import { articlesServerSideProps } from "../../ssr/articles/index";
-// import { formatSqlDate } from "../../helpers/dateHelpers";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { AppData } from "../../types";
 import ArticlesPageHead from "../../components/PageMetadata/ArticlesPageHead";

@@ -1,7 +1,7 @@
 import { GetServerSidePropsContext } from "next";
-import db from "../db/db";
-import { ArticleData, TitleType } from "../types";
-import selectAllArticles from "../db/selects/selectAllArticles";
+import { ArticleData } from "../types";
+import { getCachedClient } from "../sanity/lib/getClient";
+import { getSitemapDataQuery } from "../sanity/lib/queries";
 
 const Sitemap = () => {
   return null;
@@ -12,12 +12,10 @@ export const getServerSideProps = async ({
 }: GetServerSidePropsContext) => {
   const BASE_URL = "https://ninjabattler.ca/";
 
-  const articles: ArticleData[] = await selectAllArticles(db);
-  const articleTitles: TitleType[] = [];
-
-  articles.forEach((article) => {
-    articleTitles.push(article.title.toLowerCase().replace(/ /g, "_"));
-  });
+  // const articles: ArticleData[] = await selectAllArticles(db);
+  const articles: ArticleData[] = await getCachedClient()(
+    getSitemapDataQuery(),
+  );
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -45,10 +43,10 @@ export const getServerSideProps = async ({
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
       </url>
-        ${articleTitles.map((title) => {
+        ${articles.map((article) => {
           return `<url>
-                <loc>${BASE_URL}articles/${title}</loc>
-                <lastmod>${new Date().toISOString()}</lastmod>
+                <loc>${BASE_URL}articles/${article.slug}</loc>
+                <lastmod>${article._updatedAt}</lastmod>
                 <changefreq>daily</changefreq>
                 <priority>1.0</priority>
               </url>`;

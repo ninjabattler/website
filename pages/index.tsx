@@ -1,57 +1,22 @@
-import Head from "next/head";
 import styles from "../styles/HomePage.module.scss";
-import React from "react";
-// import CodeBlock from '../components/articleComponents/CodeBlock/CodeBlock';
-import { homePageServerSideProps } from "../ssr/index";
+import React, { FC } from "react";
 import Link from "next/link";
-import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { AppData } from "../types";
 import dynamic from "next/dynamic";
-// const PixiBackground = dynamic(
-//   () => import("../components/PixiBackground/PixiBackground"),
-//   { loading: () => <></> },
-// );
+import HomePageHead from "../components/PageMetadata/HomePageHead";
+import ReviewPageBackground from "../components/backgrounds/ReviewPageBackground/ReviewPageBackground";
 const CodeBlock = dynamic(
   () => import("../components/articleComponents/CodeBlock/CodeBlock"),
   { loading: () => <></> },
 );
 
-export const getStaticProps: GetStaticProps = homePageServerSideProps;
-
-export default function Home({
-  title,
-  thumbnail,
-  setLinkClicked,
-}: InferGetStaticPropsType<typeof homePageServerSideProps> & AppData) {
+export default function Home({ setLinkClicked }: FC<{}> & AppData) {
   return (
     <>
-      {/* <PixiBackground /> */}
-      <Head>
-        <title>Ninjabattler</title>
-        <meta
-          name="description"
-          content="Website by a lunatic who knows a little node js and not much else"
-        />
-        <meta property="og:locale" content="en_CA" />
-        <meta name="theme-color" content="#FFFF00" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Ninjabattler" />
-        <meta
-          property="og:description"
-          content="Website by a lunatic who knows a little node js and not much else"
-        />
-        <meta property="og:image" content="/Website Robot 2.png" />
-        <link rel="icon" href="/favicon.ico" />
-        <meta charSet="utf-8" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-        <meta
-          name="google-site-verification"
-          content="Cq6r13JSr-HUsKYp5H2wxCqR7tIK4SQGxMxodWHx1i4"
-        />
-      </Head>
+      <HomePageHead />
+
+      <ReviewPageBackground />
+
       <main id={styles.homePage}>
         <img
           id={styles.homePageRobot}
@@ -69,7 +34,7 @@ export default function Home({
           <div id={styles.scrollToOne} />
 
           <div className={styles.gradient1} />
-          <Link
+          {/* <Link
             legacyBehavior
             href={`/articles/${title.toLowerCase().replace(/ /g, "_")}`}
           >
@@ -87,7 +52,7 @@ export default function Home({
               <h2>Newest Article: </h2>
               <h3>{title}</h3>
             </a>
-          </Link>
+          </Link> */}
 
           <h1>Status: 200, successfully connected</h1>
           <h4>to the land of uneducated opinions and a few shades of gray!</h4>

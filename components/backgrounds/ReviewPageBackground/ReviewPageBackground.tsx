@@ -71,7 +71,7 @@ const ReviewPageBackground: FC<ReviewPageBackgroundProps> = ({
       const starMap = new TextureLoader().load("/threeJs/posts/star.png");
       const starMaterial = new SpriteMaterial({
         map: starMap,
-        color: starsColour || 0xffffff,
+        color: starsColour || null,
       });
 
       for (let i = 0; i < 250; i++) {
@@ -91,13 +91,13 @@ const ReviewPageBackground: FC<ReviewPageBackgroundProps> = ({
       const sunMap = new TextureLoader().load("/threeJs/posts/sun.png");
       const sunMaterial = new SpriteMaterial({
         map: sunMap,
-        color: starsColour || 0xffffff,
+        color: starsColour || null,
       });
       const sun = new Sprite(sunMaterial);
 
       const sun2Material = new SpriteMaterial({
         map: sunMap,
-        color: starsColour || 0xffffff,
+        color: starsColour || null,
       });
       const sun2 = new Sprite(sun2Material);
 
