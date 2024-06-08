@@ -7,6 +7,7 @@ import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { AppData } from "../../types";
 import ArticlesPageHead from "../../components/PageMetadata/ArticlesPageHead";
 import Image from "next/image";
+import ArticlesPageBackground from "../../components/backgrounds/ArticlesPageBackground/ArticlesPageBackground";
 
 export const getServerSideProps: GetServerSideProps = articlesServerSideProps;
 
@@ -17,6 +18,8 @@ export default function ArticlesPage({
   return (
     <>
       <ArticlesPageHead />
+
+      <ArticlesPageBackground />
 
       <Carousel
         setLinkClicked={setLinkClicked}
