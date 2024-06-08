@@ -146,6 +146,8 @@ export interface CommentData {
 export interface ArticleData {
   id: PostIdType;
   title: TitleType;
+  slug: string;
+  _updatedAt: string;
   thumbnail: {
     url: string;
     width: number;
