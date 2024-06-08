@@ -19,7 +19,7 @@ const ArticlePage: FC<
       <ReviewPageHead
         title={articleData.title}
         description={articleData.description}
-        thumbnail={articleData.thumbnail}
+        thumbnail={articleData.thumbnail.url}
         url={url}
         primaryColour={articleData.colors.primary.hex}
         secondaryColour={

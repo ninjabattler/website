@@ -3,7 +3,6 @@ import styles from "./Carousel.module.scss";
 import Paragraph from "../articleComponents/Paragraph/Paragraph";
 import Image from "next/image";
 import Link from "next/link";
-import { formatSqlDate } from "../../helpers/dateHelpers";
 import { parseJsonArticle } from "../../helpers/parseJsonArticle";
 import { ArticleData, ParagraphItem } from "../../types";
 
@@ -38,7 +37,15 @@ const Carousel = ({ items, setLinkClicked }: CarouselProps): ReactElement => {
             style={{ opacity: index === optionIndexMap[currentOption] ? 1 : 0 }}
             className={styles.backgroundImg}
           >
-            <img src={item.thumbnail} alt="background thumbnail" />
+            <Image
+              src={item.thumbnail.url}
+              width={item.thumbnail.width}
+              height={item.thumbnail.height}
+              loading="lazy"
+              placeholder="blur"
+              blurDataURL={item.thumbnail.blur}
+              alt={item.thumbnail.alt}
+            />
           </div>
         );
       })}
@@ -64,10 +71,10 @@ const Carousel = ({ items, setLinkClicked }: CarouselProps): ReactElement => {
               >
                 <div className={styles.imageContainer}>
                   <Image
-                    width={16}
-                    height={9.6}
+                    width={item.thumbnail.width}
+                    height={item.thumbnail.height}
                     layout="responsive"
-                    src={item.thumbnail}
+                    src={item.thumbnail.url}
                     alt="thumbnail"
                   />
                 </div>
@@ -75,14 +82,14 @@ const Carousel = ({ items, setLinkClicked }: CarouselProps): ReactElement => {
                   <h1>{item.title}</h1>
                   <section>
                     <div className={styles.background}></div>
-                    <h3>{formatSqlDate(item.formatteddate)}</h3>
+                    <h3>{item.date}</h3>
                     <h3>
                       {item.category}/{item.genre}
                     </h3>
                   </section>
 
                   <div>
-                    {item.content.map((contentItem, i) => {
+                    {/* {item.content.map((contentItem, i) => {
                       if (contentItem.type === "Paragraph") {
                         // @ts-ignore
                         contentItem = contentItem as ParagraphItem;
@@ -91,7 +98,7 @@ const Carousel = ({ items, setLinkClicked }: CarouselProps): ReactElement => {
                       } else {
                         return <></>;
                       }
-                    })}
+                    })} */}
                   </div>
                 </aside>
               </a>

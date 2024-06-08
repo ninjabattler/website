@@ -228,6 +228,29 @@ export const getArticleQuery = (slug: string): string => {
 };
 
 /**
+ * Queries all posts, as well as their number of likes, dislikes and comments
+ * @author Ninjabattler
+ */
+export const getAllArticlesQuery = (): string => {
+  return groq`*[_type == "article"] | order(date desc){
+    _id,
+    title,
+    slug,
+    date,
+    colors,
+    tags[] -> {
+      tag
+    },
+    thumbnail {
+      "url": asset->url,
+      "blur": asset->metadata.lqip,
+      "width": asset->metadata.dimensions.width,
+      "height": asset->metadata.dimensions.height,
+    },
+  }`;
+};
+
+/**
  * Grabs all a user's likes/dislikes on a post
  * @author Ninjabattler
  * @param postId The id of the post tht was liked/disliked

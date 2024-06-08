@@ -63,10 +63,9 @@ const ReviewPageBackground: FC<ReviewPageBackgroundProps> = ({
       camera.position.z = 5;
 
       // Set up the space skybox
-      const spaceTexture = new TextureLoader().load("/threeJs/posts/space.png");
-      spaceTexture.colorSpace = SRGBColorSpace;
-      spaceTexture.color = spaceColour || 0xffffff;
-      scene.background = spaceTexture;
+      const spaceMap = new TextureLoader().load("/threeJs/posts/space.png");
+      spaceMap.colorSpace = SRGBColorSpace;
+      scene.background = spaceMap;
 
       // Stars
       const starMap = new TextureLoader().load("/threeJs/posts/star.png");

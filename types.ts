@@ -146,7 +146,13 @@ export interface CommentData {
 export interface ArticleData {
   id: PostIdType;
   title: TitleType;
-  thumbnail: UrlType;
+  thumbnail: {
+    url: string;
+    width: number;
+    height: number;
+    blur: string;
+    alt: string;
+  };
   videoHeader: UrlType;
   date: SqlDateType;
   tags: [
