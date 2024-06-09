@@ -31,7 +31,6 @@ $borderThickness: 7.5em;
   align-items: flex-end;
   justify-content: flex-start;
   font-size: 1em;
-  perspective: 10cm;
   perspective: 23.5em;
   filter: drop-shadow(0 0 0.1em rgba(0, 0, 0, 0.5));
 
@@ -70,7 +69,6 @@ $borderThickness: 7.5em;
       height: 100%;
       margin-left: -5em;
       position: absolute;
-      background-size: 10%;
       mask: linear-gradient(45deg, black 0%, transparent 25%);
       content: "";
     }
@@ -117,7 +115,6 @@ $borderThickness: 7.5em;
 
       &::before {
         @include mixins.gridPatternDark();
-        background-size: 10%;
         mask: linear-gradient(
           -45deg,
           transparent 7.5%,
