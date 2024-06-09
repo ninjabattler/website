@@ -21,14 +21,10 @@ export default function ArticlesPage({
 
       <ArticlesPageBackground />
 
-      <Carousel
-        setLinkClicked={setLinkClicked}
-        items={articles ? articles.slice(0, 3) : []}
-      />
-
       <main id={styles.articlesPage}>
-        <div className={styles.articlesPageContainer}>
-          {articles.slice(3).map((item) => {
+        <Carousel articles={articles ? articles.slice(0, 5) : []} />
+        {/* <div className={styles.articlesPageContainer}>
+          {articles.slice(5).map((item) => {
             const formattedDate: string = item.date;
             const link: string = `/articles/${item.title
               .toLowerCase()
@@ -78,7 +74,7 @@ export default function ArticlesPage({
               </Link>
             );
           })}
-        </div>
+        </div> */}
       </main>
     </>
   );

@@ -1,134 +1,56 @@
-import React, { ReactElement, useState } from "react";
+import React, { FC, useState } from "react";
 import styles from "./Carousel.module.scss";
-import Paragraph from "../articleComponents/Paragraph/Paragraph";
 import Image from "next/image";
 import Link from "next/link";
-import { parseJsonArticle } from "../../helpers/parseJsonArticle";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectCoverflow } from "swiper/modules";
 import { ArticleData, ParagraphItem } from "../../types";
 
 type CarouselProps = {
-  items: ArticleData[];
-  setLinkClicked: Function;
+  articles: ArticleData[];
 };
 
-const Carousel = ({ items, setLinkClicked }: CarouselProps): ReactElement => {
-  const [currentOption, setCurrentOption] = useState("left");
-
-  const selectItem = (option) => {
-    if (option !== currentOption) {
-      setCurrentOption(option);
-    }
-  };
-
-  let i = 0;
-
-  const optionIndexMap = {
-    left: 0,
-    mid: 1,
-    right: 2,
-  };
-
+/**
+ * A Swiper Carousel used to display the most recent articles on the articles page
+ * @author Ninjabattler
+ * @param articles The articles to display
+ */
+const Carousel: FC<CarouselProps> = ({ articles }) => {
   return (
     <section className={styles.carousel}>
-      {items.map((item, index) => {
-        return (
-          <div
-            key={index}
-            style={{ opacity: index === optionIndexMap[currentOption] ? 1 : 0 }}
-            className={styles.backgroundImg}
-          >
-            <Image
-              src={item.thumbnail.url}
-              width={item.thumbnail.width}
-              height={item.thumbnail.height}
-              loading="lazy"
-              placeholder="blur"
-              blurDataURL={item.thumbnail.blur}
-              alt={item.thumbnail.alt}
-            />
-          </div>
-        );
-      })}
-      <main>
-        {items.map((item) => {
-          i++;
+      <Swiper
+        className={styles.swiper}
+        effect="coverflow"
+        modules={[EffectCoverflow]}
+        coverflowEffect={{
+          slideShadows: false,
+        }}
+        slidesPerView={3}
+        loop
+        autoplay
+        mousewheel={true}
+      >
+        {articles.map((article, i) => {
           return (
-            <Link
-              legacyBehavior
-              key={item.title}
-              href={`/articles/${item.title.toLowerCase().replace(/ /g, "_")}`}
-            >
-              <a
-                onClick={(e) => {
-                  e.preventDefault();
-                  setLinkClicked(
-                    `/articles/${item.title.toLowerCase().replace(/ /g, "_")}`,
-                  );
-                }}
-                className={`${styles.carouselItem} ${
-                  i < 2 ? styles[currentOption] : ""
-                }`}
-              >
-                <div className={styles.imageContainer}>
-                  <Image
-                    width={item.thumbnail.width}
-                    height={item.thumbnail.height}
-                    layout="responsive"
-                    src={item.thumbnail.url}
-                    alt="thumbnail"
-                  />
+            <SwiperSlide key={i} className={styles.slide}>
+              <Link href={`/articles/${article.slug}`}>
+                <Image
+                  src={article.thumbnail.url}
+                  width={article.thumbnail.width}
+                  height={article.thumbnail.height}
+                  loading="lazy"
+                  placeholder="blur"
+                  blurDataURL={article.thumbnail.blur}
+                  alt={article.thumbnail.alt}
+                />
+                <div className={styles.articleInfo}>
+                  <h1>{article.title}</h1>
                 </div>
-                <aside id={styles.carouselItemAside}>
-                  <h1>{item.title}</h1>
-                  <section>
-                    <div className={styles.background}></div>
-                    <h3>{item.date}</h3>
-                    <h3>
-                      {item.category}/{item.genre}
-                    </h3>
-                  </section>
-
-                  <div>
-                    {/* {item.content.map((contentItem, i) => {
-                      if (contentItem.type === "Paragraph") {
-                        // @ts-ignore
-                        contentItem = contentItem as ParagraphItem;
-                        // @ts-ignore
-                        return <></>;
-                      } else {
-                        return <></>;
-                      }
-                    })} */}
-                  </div>
-                </aside>
-              </a>
-            </Link>
+              </Link>
+            </SwiperSlide>
           );
         })}
-      </main>
-      <div className={styles.carouselOptions}>
-        <input
-          type="checkbox"
-          checked={currentOption === "left"}
-          onClick={() => {
-            selectItem("left");
-          }}
-        />
-        <input
-          type="checkbox"
-          checked={currentOption === "mid"}
-          onClick={() => {
-            selectItem("mid");
-          }}
-        />
-        <input
-          type="checkbox"
-          checked={currentOption === "right"}
-          onClick={() => {
-            selectItem("right");
-          }}
-        />
-      </div>
+      </Swiper>
     </section>
   );
 };

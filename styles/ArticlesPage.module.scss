@@ -5,14 +5,9 @@
   width: 100vw;
   display: flex;
   flex-direction: row;
-  margin-top: 5.4vw;
-  font-size: 1.6vw;
+  font-size: 1rem;
   --gradientColour: rgba(0, 0, 0, 0.5);
   --shadow-colour: black;
-
-  @media only screen and (max-width: 425px) {
-    font-size: 2.6vw;
-  }
 }
 
 .articlesPageContainer {
