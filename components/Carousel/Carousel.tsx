@@ -18,6 +18,8 @@ type CarouselProps = {
  * @param articles The articles to display
  */
 const Carousel: FC<CarouselProps> = ({ articles }) => {
+  console.log(articles[0]);
+
   return (
     <section className={styles.carousel}>
       <div className={`${styles.bar} ${styles.dark}`} />
@@ -64,7 +66,13 @@ const Carousel: FC<CarouselProps> = ({ articles }) => {
 
                 <div className={styles.articleInfo}>
                   <div className={styles.likeDislikeBar}>
-                    <div className={styles.fillBar} style={{ width: `50%` }} />
+                    <div
+                      className={styles.fillBar}
+                      style={{
+                        width: `50%`,
+                        backgroundImage: `linear-gradient(90deg, ${article.colors.primary.hex} 0%, ${article.colors.secondary.hex} 100%)`,
+                      }}
+                    />
                   </div>
                   <h1>{article.title}</h1>
                   <h2>
