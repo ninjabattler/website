@@ -242,10 +242,10 @@ export const getArticleQuery = (slug: string, userId?: string): string => {
 };
 
 /**
- * Queries all posts, as well as their number of likes, dislikes and comments
+ * Queries the most recent posts posts, as well as their number of likes, dislikes and comments
  * @author Ninjabattler
  */
-export const getAllArticlesQuery = (): string => {
+export const getMostRecentArticlesQuery = (): string => {
   return groq`*[_type == "article"] | order(date desc){
     _id,
     title,
@@ -264,7 +264,7 @@ export const getAllArticlesQuery = (): string => {
     "comments":count( *[_type == "comment" && references(^._id)]),
     "likes": count(*[_type == "like" && references(^._id) && isLike == true]),
     "dislikes": count(*[_type == "like" && references(^._id) && isLike == false])
-  }`;
+  }[0...5]`;
 };
 
 /**

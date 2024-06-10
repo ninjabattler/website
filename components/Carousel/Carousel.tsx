@@ -33,7 +33,6 @@ const Carousel: FC<CarouselProps> = ({ articles }) => {
         }}
         slidesPerView={3}
         loop
-        autoplay
         mousewheel={true}
       >
         {articles.map((article, i) => {

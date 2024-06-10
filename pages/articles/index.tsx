@@ -22,59 +22,7 @@ export default function ArticlesPage({
       <ArticlesPageBackground />
 
       <main id={styles.articlesPage}>
-        <Carousel articles={articles ? articles.slice(0, 5) : []} />
-        {/* <div className={styles.articlesPageContainer}>
-          {articles.slice(5).map((item) => {
-            const formattedDate: string = item.date;
-            const link: string = `/articles/${item.title
-              .toLowerCase()
-              .replace(/ /g, "_")}`;
-
-            return (
-              <Link legacyBehavior key={item.title} href={link}>
-                <a
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setLinkClicked(link);
-                  }}
-                  className={styles.articleCard}
-                  // @ts-ignore
-                >
-                  <article className={styles.articleCardItem}>
-                    <div>
-                      <Image
-                        src={item.thumbnail.url}
-                        width={item.thumbnail.width}
-                        height={item.thumbnail.height}
-                        loading="lazy"
-                        placeholder="blur"
-                        blurDataURL={item.thumbnail.blur}
-                        alt={item.thumbnail.alt}
-                      />
-                      <div className={styles.infoBackground} />
-
-                      <section>
-                        <i>
-                          {formattedDate} / {item.category} / {item.genre}
-                        </i>
-                        <h1>{item.title}</h1>
-                      </section>
-                    </div>
-
-                    <div>
-                      <aside>
-                        <p>
-                          {item.description ||
-                            "Opps, looks like I forgot a description..."}
-                        </p>
-                      </aside>
-                    </div>
-                  </article>
-                </a>
-              </Link>
-            );
-          })}
-        </div> */}
+        <Carousel articles={articles ? articles : []} />
       </main>
     </>
   );
