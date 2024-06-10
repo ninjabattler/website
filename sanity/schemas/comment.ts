@@ -21,6 +21,12 @@ const comment: SchemaTypeDefinition = {
       to: [{ type: "post" }],
     },
     {
+      name: "articleId",
+      type: "reference",
+      title: "Article Id",
+      to: [{ type: "article" }],
+    },
+    {
       name: "content",
       type: "string",
       title: "Content",

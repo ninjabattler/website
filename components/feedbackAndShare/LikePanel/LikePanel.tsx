@@ -7,8 +7,8 @@ import { useSession } from "next-auth/react";
 import axios from "axios";
 
 interface LikePanelProps {
-  postId: PostIdType;
-  userId: UserIdType;
+  postId?: PostIdType;
+  articleId?: PostIdType;
   initialLikes: number;
   isCurrentlyLiked: boolean;
   initialDislikes: number;
@@ -19,7 +19,7 @@ interface LikePanelProps {
  * A panel shown on posts, used to like/dislike them and show the current amount of likes/dislikes
  * @author Ninjabattler
  * @param postId The id of the current post
- * @param userId The id of the current user
+ * @param articleId The id of the current article
  * @param initialLikes The inital amount of likes
  * @param isCurrentlyLiked Whether the current user has liked this post
  * @param initialDislikes The inital amount of dislikes
@@ -27,7 +27,7 @@ interface LikePanelProps {
  */
 const LikePanel: FC<LikePanelProps> = ({
   postId,
-  userId,
+  articleId,
   initialLikes,
   isCurrentlyLiked,
   initialDislikes,
@@ -52,14 +52,19 @@ const LikePanel: FC<LikePanelProps> = ({
           method: "post",
           url: `/api/likes/newLike`,
           // @ts-ignore
-          data: { isLike, userId: data.user.id, postId },
+          data: {
+            isLike,
+            userId: data.user.id,
+            postId: postId || null,
+            articleId: articleId || null,
+          },
           headers: { "Content-Type": "application/json" },
         });
       } catch (err) {
         console.log(err);
       }
     },
-    [data],
+    [data, articleId, postId],
   );
 
   const deleteLike = useCallback(async () => {
@@ -68,13 +73,17 @@ const LikePanel: FC<LikePanelProps> = ({
         method: "post",
         url: `/api/likes/delete`,
         // @ts-ignore
-        data: { userId: data.user.id, postId },
+        data: {
+          userId: data.user.id,
+          postId: postId || null,
+          articleId: articleId || null,
+        },
         headers: { "Content-Type": "application/json" },
       });
     } catch (err) {
       console.log(err);
     }
-  }, [data]);
+  }, [data, articleId, postId]);
 
   const clickLike = async (): Promise<void> => {
     if (isDisliked) {

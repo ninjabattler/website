@@ -6,6 +6,7 @@ import ShareBar from "../ShareBar/ShareBar";
 import Comment from "../../Comment/Comment";
 import { ArticleData, PostCommentType, WindowServerType } from "../../../types";
 import dynamic from "next/dynamic";
+import { useSession } from "next-auth/react";
 const CommentArea = dynamic(() => import("../CommentArea/CommentArea"), {
   loading: () => <></>,
 });
@@ -37,9 +38,12 @@ const ArticleCommentPanel: FC<ArticleCommentPanelProps> = ({
   url,
   randomQuoteIndex,
 }) => {
-  const [comments, setComments] = useState<PostCommentType[]>([]);
+  const [comments, setComments] = useState<PostCommentType[]>(
+    articleData.comments,
+  );
   const [windowServer, setWindow] = useState<WindowServerType>({});
   const [showCommentPanel, setShowCommentPanel] = useState<boolean>(false);
+  const { data, status } = useSession();
 
   useEffect(() => {
     setWindow(window);
@@ -59,12 +63,11 @@ const ArticleCommentPanel: FC<ArticleCommentPanelProps> = ({
       style={{ display: showCommentPanel ? "flex" : "none" }}
     >
       <LikePanel
-        postId={articleData.id}
-        userId={userId}
+        articleId={articleData._id}
         initialLikes={articleData.likes}
-        isCurrentlyLiked={liked}
+        isCurrentlyLiked={articleData.isLiked}
         initialDislikes={articleData.dislikes}
-        isCurrentlyDisliked={disliked}
+        isCurrentlyDisliked={articleData.isDisliked}
       />
 
       <ShareBar
@@ -76,24 +79,23 @@ const ArticleCommentPanel: FC<ArticleCommentPanelProps> = ({
       <CommentArea
         comments={comments}
         setComments={setComments}
-        postId={articleData.id}
-        userId={userId}
+        articleId={articleData._id}
       />
 
       <div className={styles.comments}>
         {comments.map((com, i) => {
-          if (com.username) {
-            return (
-              <Comment
-                key={i}
-                username={com.username}
-                date={com.date}
-                content={com.content}
-                avatar={com.avatar}
-                byCurrentUser={false}
-              />
-            );
-          }
+          return (
+            <Comment
+              key={i}
+              // @ts-ignore
+              username={com.user.name}
+              date={com._createdAt}
+              content={com.content}
+              avatar={com.avatar}
+              // @ts-ignore
+              byCurrentUser={com.byCurrentUser}
+            />
+          );
         })}
       </div>
     </aside>

@@ -137,6 +137,7 @@ export interface AppData {
 export interface CommentData {
   id: CommentIdType;
   content: ContentType;
+  _createdAt: string;
   date: SqlDateType;
   post_id: PostIdType;
   user_id: UserIdType;
@@ -145,9 +146,12 @@ export interface CommentData {
 
 export interface ArticleData {
   id: PostIdType;
+  _id: PostIdType;
   title: TitleType;
   slug: string;
   _updatedAt: string;
+  isLiked: boolean;
+  isDisliked: boolean;
   thumbnail: {
     url: string;
     width: number;

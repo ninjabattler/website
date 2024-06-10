@@ -16,19 +16,20 @@ export default async function handler(
     try {
       const userId: string | undefined = req.body.userId;
       const postId: string | undefined = req.body.postId;
+      const articleId: string | undefined = req.body.articleId;
 
       // Check the inputs
       if (userId === undefined) {
         return res.status(400).send("Missing userId");
       }
 
-      if (postId === undefined) {
-        return res.status(400).send("Missing postId");
+      if (postId === undefined && articleId === undefined) {
+        return res.status(400).send("Missing postId or articleId");
       }
 
       // Delete and send the user's like/dislike
       const deletedLike = await client.delete({
-        query: getPostLikesQuery(postId, userId),
+        query: getPostLikesQuery(postId, articleId, userId),
       });
 
       res.status(200).send(deletedLike);

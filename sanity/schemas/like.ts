@@ -21,6 +21,12 @@ const like: SchemaTypeDefinition = {
       to: [{ type: "post" }],
     },
     {
+      name: "articleId",
+      type: "reference",
+      title: "Article Id",
+      to: [{ type: "article" }],
+    },
+    {
       name: "isLike",
       type: "boolean",
       title: "Is Like",

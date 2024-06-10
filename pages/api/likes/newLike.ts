@@ -16,6 +16,7 @@ export default async function handler(
     try {
       const userId: string | undefined = req.body.userId;
       const postId: string | undefined = req.body.postId;
+      const articleId: string | undefined = req.body.articleId;
       const isLike: boolean | undefined = req.body.isLike;
 
       // Check the inputs
@@ -23,8 +24,8 @@ export default async function handler(
         return res.status(400).send("Missing userId");
       }
 
-      if (postId === undefined) {
-        return res.status(400).send("Missing postId");
+      if (postId === undefined && articleId === undefined) {
+        return res.status(400).send("Missing postId or articleId");
       }
 
       if (isLike === undefined) {
@@ -35,7 +36,8 @@ export default async function handler(
       const newLike = await client.create({
         _type: "like",
         userId: { _ref: userId },
-        postId: { _ref: postId },
+        postId: postId ? { _ref: postId } : undefined,
+        articleId: articleId ? { _ref: articleId } : undefined,
         isLike,
       });
 

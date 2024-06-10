@@ -2,10 +2,11 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { client } from "../../../sanity/lib/client";
 
 /**
- * Creates a new comment in santiy for a user on a post
+ * Creates a new comment in santiy for a user on a post or article
  * @author Ninjabattler
  * @param userId The id of the user who commented
  * @param postId The id of the post the user commented on
+ * @param articleId The id of the article the user commented on
  * @param content The content of the user's comment
  */
 export default async function handler(
@@ -16,6 +17,7 @@ export default async function handler(
     try {
       const userId: string | undefined = req.body.userId;
       const postId: string | undefined = req.body.postId;
+      const articleId: string | undefined = req.body.articleId;
       const content: string | undefined = req.body.content;
 
       // Check the inputs
@@ -23,8 +25,8 @@ export default async function handler(
         return res.status(400).send("Missing userId");
       }
 
-      if (postId === undefined) {
-        return res.status(400).send("Missing postId");
+      if (postId === undefined && articleId === undefined) {
+        return res.status(400).send("Missing postId or articleId");
       }
 
       if (content === undefined) {
@@ -35,7 +37,8 @@ export default async function handler(
       const newComment = await client.create({
         _type: "comment",
         userId: { _ref: userId },
-        postId: { _ref: postId },
+        postId: postId ? { _ref: postId } : undefined,
+        articleId: articleId ? { _ref: articleId } : undefined,
         content: content,
       });
 

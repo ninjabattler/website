@@ -30,8 +30,8 @@ Prism.languages.markdown = Prism.languages.extend("markup", {}), Prism.languages
 interface CommentAreaProps {
   comments: Array<any>;
   setComments: Dispatch<SetStateAction<Array<any>>>;
-  postId: PostIdType;
-  userId: UserIdType;
+  postId?: PostIdType;
+  articleId?: PostIdType;
 }
 
 /**
@@ -40,13 +40,13 @@ interface CommentAreaProps {
  * @param comments The current comments on the article/post
  * @param setComments Sets the comments after a new one has been posted
  * @param postId The id of the current article/post
- * @param userId The id of the current user
+ * @param articleId The id of the current article/post
  */
 const CommentArea: FC<CommentAreaProps> = ({
   comments,
   setComments,
   postId,
-  userId,
+  articleId,
 }) => {
   const [noComment, setNoComment] = useState<boolean>(true);
   const [commenting, setCommenting] = useState<boolean>(false);
@@ -68,7 +68,12 @@ const CommentArea: FC<CommentAreaProps> = ({
         method: "post",
         url: `/api/comments/newComment`,
         // @ts-ignore
-        data: { content: commentContent, userId: data.user.id, postId },
+        data: {
+          content: commentContent,
+          userId: data.user.id,
+          postId: postId || null,
+          articleId: articleId || null,
+        },
         headers: { "Content-Type": "application/json" },
       });
 
@@ -89,7 +94,7 @@ const CommentArea: FC<CommentAreaProps> = ({
       console.log(err);
       setCommenting(false);
     }
-  }, [data]);
+  }, [data, articleId, postId]);
 
   const decorate = useCallback(([node, path]) => {
     const ranges = [];

@@ -96,9 +96,11 @@ export const getAllPostsQuery = (): string => {
  * Queries a single article from sanity
  * @author Ninjabattler
  * @param slug The url slug of the article to grab
+ * @param userId The id of the user who's data relates to the article, comments, likes etc.
  */
-export const getArticleQuery = (slug: string): string => {
+export const getArticleQuery = (slug: string, userId?: string): string => {
   return groq`*[_type == "article" && slug == "${slug}"] | order(date.start asc){
+    _id,
     title,
     date,
     narration,
@@ -117,6 +119,18 @@ export const getArticleQuery = (slug: string): string => {
         title,
         source
     },
+    "comments": *[_type == "comment" && references(^._id)] | order(_createdAt desc) {
+      _createdAt,
+      content,
+      "byCurrentUser": references("${userId}"),
+      "user": *[_type == "userDetails" && references(^.userId._ref)] {
+        name
+      }[0]
+    },
+    "likes": count(*[_type == "like" && references(^._id) && isLike == true]),
+    "dislikes": count(*[_type == "like" && references(^._id) && isLike == false]),
+    "isLiked": count(*[_type == "like" && references(^._id) && references("${userId}") && isLike == true]) > 0,
+    "isDisliked": count(*[_type == "like" && references(^._id) && references("${userId}") && isLike == false]) > 0,
     content[]{
       _type == "block" => {
         _type,
@@ -247,6 +261,9 @@ export const getAllArticlesQuery = (): string => {
       "width": asset->metadata.dimensions.width,
       "height": asset->metadata.dimensions.height,
     },
+    "comments":count( *[_type == "comment" && references(^._id)]),
+    "likes": count(*[_type == "like" && references(^._id) && isLike == true]),
+    "dislikes": count(*[_type == "like" && references(^._id) && isLike == false])
   }`;
 };
 
@@ -266,8 +283,13 @@ export const getSitemapDataQuery = (): string => {
  * Grabs all a user's likes/dislikes on a post
  * @author Ninjabattler
  * @param postId The id of the post tht was liked/disliked
+ * @param articleId The id of the article tht was liked/disliked
  * @param userId The id of the user who liked/disliked the post
  */
-export const getPostLikesQuery = (postId: string, userId: string): string => {
-  return groq`*[_type == 'like' && references("${postId}") && references("${userId}")]`;
+export const getPostLikesQuery = (
+  postId: string,
+  articleId: string,
+  userId: string,
+): string => {
+  return groq`*[_type == 'like' && (references("${postId}") || references("${articleId}")) && references("${userId}")]`;
 };

@@ -38,7 +38,6 @@ export default function PostsPage({
       headers: { "Content-Type": "application/json" },
     }).then((res) => {
       if (res.data && res.data.content) {
-        console.log(res.data);
         setSelectedPostData(res.data);
       } else {
         setSelectedPostData({});

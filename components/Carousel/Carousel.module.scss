@@ -83,7 +83,7 @@
       height: 100%;
       margin-left: -1em;
       position: absolute;
-      mask: linear-gradient(45deg, black 0%, transparent 25%);
+      mask: linear-gradient(45deg, black 0%, transparent 15%);
       content: "";
     }
 
@@ -163,9 +163,9 @@
   }
 
   .swiper {
-    width: 100%;
+    width: 125%;
     height: fit-content;
-    margin-left: 0;
+    margin-left: -12.5%;
     overflow: visible;
 
     .slide {
@@ -175,9 +175,7 @@
       filter: drop-shadow(0 0 0.1em rgba(0, 0, 0, 0.5));
 
       a {
-        transform: scale(1.25);
-        transform-origin: center bottom;
-
+        font-size: 1.25em;
         .thumbnail {
           width: 100%;
           height: fit-content;
@@ -233,6 +231,7 @@
             background-color: variables.$secondaryText;
 
             .fillBar {
+              width: 0%;
               height: 100%;
             }
           }
