@@ -44,9 +44,7 @@ const ArticlePage: FC<
         title={articleData.title}
         infoBarProps={{
           date: articleData.date,
-          tags: articleData.tags.map((tagObj) => {
-            return tagObj.tag;
-          }),
+          tags: articleData.tags,
         }}
         spaceColour={
           articleData.colors.space

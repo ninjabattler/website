@@ -112,9 +112,7 @@ export const getArticleQuery = (slug: string, userId?: string): string => {
       "height": asset->metadata.dimensions.height,
     },
     colors,
-    tags[] -> {
-      tag
-    },
+    "tags": tags[] -> tag,
     footnotes[]{
         title,
         source
@@ -252,9 +250,7 @@ export const getMostRecentArticlesQuery = (): string => {
     slug,
     date,
     colors,
-    tags[] -> {
-      tag
-    },
+    "tags": tags[] -> tag,
     thumbnail {
       "url": asset->url,
       "blur": asset->metadata.lqip,

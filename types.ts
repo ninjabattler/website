@@ -161,11 +161,7 @@ export interface ArticleData {
   };
   videoHeader: UrlType;
   date: SqlDateType;
-  tags: [
-    {
-      tag: string;
-    },
-  ];
+  tags: string[];
   review: boolean;
   colors: {
     primary: {

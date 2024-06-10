@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
 import styles from "./Tag.module.scss";
+import Link from "next/link";
 
 export type TagProps = {
   tag: string;
@@ -25,7 +26,12 @@ const Tag: FC<TagProps> = ({ tag, delay }) => {
   }, []);
 
   return (
-    <span className={`${styles.tag} ${shown ? styles.shown : ""}`}>{tag}</span>
+    <Link
+      href={`/articles?tags=${tag}`}
+      className={`${styles.tag} ${shown ? styles.shown : ""}`}
+    >
+      {tag}
+    </Link>
   );
 };
 
