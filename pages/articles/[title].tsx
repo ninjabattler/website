@@ -13,7 +13,7 @@ export const getServerSideProps: GetServerSideProps =
 
 const ArticlePage: FC<
   InferGetServerSidePropsType<typeof articlePageServerSideProps> & AppData
-> = ({ articleData, disliked, liked, randomQuoteIndex, url, userId }) => {
+> = ({ articleData, randomQuoteIndex, url, userId }) => {
   return (
     <>
       <ReviewPageHead
@@ -99,8 +99,6 @@ const ArticlePage: FC<
 
           <ArticleCommentPanel
             articleData={articleData}
-            disliked={disliked}
-            liked={liked}
             randomQuoteIndex={randomQuoteIndex}
             url={url}
             userId={userId}

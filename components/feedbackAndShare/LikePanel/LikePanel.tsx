@@ -54,6 +54,7 @@ const LikePanel: FC<LikePanelProps> = ({
           // @ts-ignore
           data: {
             isLike,
+            // @ts-ignore
             userId: data.user.id,
             postId: postId || null,
             articleId: articleId || null,
@@ -74,6 +75,7 @@ const LikePanel: FC<LikePanelProps> = ({
         url: `/api/likes/delete`,
         // @ts-ignore
         data: {
+          // @ts-ignore
           userId: data.user.id,
           postId: postId || null,
           articleId: articleId || null,

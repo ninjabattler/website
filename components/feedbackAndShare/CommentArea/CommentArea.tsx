@@ -70,6 +70,7 @@ const CommentArea: FC<CommentAreaProps> = ({
         // @ts-ignore
         data: {
           content: commentContent,
+          // @ts-ignore
           userId: data.user.id,
           postId: postId || null,
           articleId: articleId || null,

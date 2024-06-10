@@ -83,7 +83,6 @@ export default function Post({
             isCurrentlyDisliked={isCurrentlyDisliked}
             isCurrentlyLiked={isCurrentlyLiked}
             postId={id}
-            userId={1}
           />
 
           <ShareBar
@@ -96,7 +95,6 @@ export default function Post({
             comments={commentList}
             setComments={setCommentList}
             postId={id}
-            userId={userId}
           />
 
           <div className={styles.comments}>

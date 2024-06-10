@@ -13,8 +13,6 @@ const CommentArea = dynamic(() => import("../CommentArea/CommentArea"), {
 
 export type ArticleCommentPanelProps = {
   articleData: ArticleData;
-  liked: boolean;
-  disliked: boolean;
   userId: number;
   url: string;
   randomQuoteIndex: number;
@@ -32,8 +30,6 @@ export type ArticleCommentPanelProps = {
  */
 const ArticleCommentPanel: FC<ArticleCommentPanelProps> = ({
   articleData,
-  liked,
-  disliked,
   userId,
   url,
   randomQuoteIndex,
