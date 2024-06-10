@@ -1,0 +1,36 @@
+@use "/styles/_mixins" as mixins;
+@use "/styles/_variables" as variables;
+
+.searchResultsCarousel {
+  width: 100vw;
+  height: calc(100vh - 10.3rem);
+  margin-top: 2.15rem;
+  margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  font-size: 1em;
+  perspective: 23.5em;
+  transition: opacity 0.2s;
+
+  .swiper {
+    @include mixins.flexCenter();
+    width: 50%;
+    height: 100%;
+    margin-left: 45%;
+    overflow: visible;
+
+    .slide {
+      @include mixins.flexCenter;
+      height: fit-content;
+      flex-direction: column;
+      overflow: visible;
+      filter: drop-shadow(0 0 0.1em rgba(0, 0, 0, 0.5));
+    }
+  }
+
+  &.hidden {
+    opacity: 0;
+  }
+}

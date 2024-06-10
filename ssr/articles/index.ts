@@ -9,6 +9,7 @@ import { ArticleData } from "../../types";
 export type ArticlesServerProps = {
   props: {
     articles: ArticleData[];
+    searchResults: boolean;
   };
 };
 
@@ -32,6 +33,7 @@ export const articlesServerSideProps = async ({
     return {
       props: {
         articles: searchResults,
+        searchResults: true,
       },
     };
     // Search just tags
@@ -45,6 +47,7 @@ export const articlesServerSideProps = async ({
     return {
       props: {
         articles: searchResults,
+        searchResults: true,
       },
     };
     // No Search, just the 5 most recent articles
@@ -62,6 +65,7 @@ export const articlesServerSideProps = async ({
     return {
       props: {
         articles: articlesArray,
+        searchResults: false,
       },
     };
   }

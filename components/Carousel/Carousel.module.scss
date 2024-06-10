@@ -11,6 +11,7 @@
   justify-content: flex-end;
   font-size: 1em;
   perspective: 23.5em;
+  transition: opacity 0.2s;
 
   .title {
     @include mixins.russoFont;
@@ -174,5 +175,9 @@
       flex-direction: column;
       filter: drop-shadow(0 0 0.1em rgba(0, 0, 0, 0.5));
     }
+  }
+
+  &.hidden {
+    opacity: 0;
   }
 }
