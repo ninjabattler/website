@@ -268,6 +268,45 @@ export const getMostRecentArticlesQuery = (): string => {
 };
 
 /**
+ * Queries all articles with a search query for the titles and optionally tags
+ * @author Ninjabattler
+ * @param search The search query to perform on the article titles
+ */
+export const searchArticlesQuery = (
+  search: string,
+  tags?: string[],
+): string => {
+  let tagsFilter = "";
+
+  if (tags)
+    [
+      (tagsFilter = tags
+        .map((tag) => {
+          return `"${tag}" in tags`;
+        })
+        .join(" && ")),
+    ];
+
+  return groq`*[_type == "article" ${search && `&& lower(title) match "*${search}*"`}] | order(date desc){
+    _id,
+    title,
+    slug,
+    date,
+    colors,
+    "tags": tags[] -> tag,
+    thumbnail {
+      "url": asset->url,
+      "blur": asset->metadata.lqip,
+      "width": asset->metadata.dimensions.width,
+      "height": asset->metadata.dimensions.height,
+    },
+    "comments":count( *[_type == "comment" && references(^._id)]),
+    "likes": count(*[_type == "like" && references(^._id) && isLike == true]),
+    "dislikes": count(*[_type == "like" && references(^._id) && isLike == false])
+  }[${tagsFilter}]`;
+};
+
+/**
  * Queries all posts, as well as their number of likes, dislikes and comments
  * @author Ninjabattler
  */
