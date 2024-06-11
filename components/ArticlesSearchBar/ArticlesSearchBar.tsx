@@ -54,8 +54,12 @@ const ArticlesSearchBar: FC<ArticlesSearchBarProps> = ({
         >
           {tags
             .filter((tag) => !tagsQuery.includes(tag.tag))
-            .map((tag) => {
-              return <option value={tag.tag}>{tag.tag}</option>;
+            .map((tag, i) => {
+              return (
+                <option key={i} value={tag.tag}>
+                  {tag.tag}
+                </option>
+              );
             })}
         </select>
 

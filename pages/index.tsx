@@ -12,8 +12,9 @@ export default function Home({}: FC<{}> & AppData) {
 
       <main id={styles.homePage}>
         <em>
-          "Designs improved with time and knowledge are the essence of my work.
-          Through no other method can I approach perfection."
+          {
+            '"Designs improved with time and knowledge are the essence of my work.Through no other method can I approach perfection."'
+          }
         </em>
         <span>- Draedon, Calamity Mod</span>
       </main>
