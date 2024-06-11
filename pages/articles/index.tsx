@@ -9,13 +9,16 @@ import ArticlesPageHead from "../../components/PageMetadata/ArticlesPageHead";
 import Image from "next/image";
 import ArticlesPageBackground from "../../components/backgrounds/ArticlesPageBackground/ArticlesPageBackground";
 import SearchResultsCarousel from "../../components/SearchResultsCarousel/SearchResultsCarousel";
+import ArticleSearchBar from "../../components/ArticlesSearchBar/ArticlesSearchBar";
 
 export const getServerSideProps: GetServerSideProps = articlesServerSideProps;
 
 export default function ArticlesPage({
   articles,
   searchResults,
-  setLinkClicked,
+  tags,
+  searchQuery,
+  tagsQuery,
 }: InferGetServerSidePropsType<typeof articlesServerSideProps> & AppData) {
   const [showSearchResults, setShowSearchResults] =
     useState<boolean>(searchResults);
@@ -23,8 +26,14 @@ export default function ArticlesPage({
   return (
     <>
       <ArticlesPageHead searchResults={showSearchResults} />
-
       <ArticlesPageBackground />
+      <ArticleSearchBar
+        searchResults={showSearchResults}
+        resultsCount={articles.length}
+        tags={tags}
+        initialSearchQuery={searchQuery}
+        initialTagsQuery={tagsQuery ? tagsQuery.split(",") : []}
+      />
 
       <main id={styles.articlesPage}>
         <Carousel

@@ -1,6 +1,7 @@
 import { GetServerSidePropsContext } from "next";
 import { getCachedClient } from "../../sanity/lib/getClient";
 import {
+  getAllTags,
   getMostRecentArticlesQuery,
   searchArticlesQuery,
 } from "../../sanity/lib/queries";
@@ -10,6 +11,9 @@ export type ArticlesServerProps = {
   props: {
     articles: ArticleData[];
     searchResults: boolean;
+    tags: any[];
+    searchQuery: string;
+    tagsQuery: string;
   };
 };
 
@@ -17,9 +21,11 @@ export const articlesServerSideProps = async ({
   req,
   query,
 }: GetServerSidePropsContext): Promise<ArticlesServerProps> => {
+  const tags: any[] = await getCachedClient()(getAllTags());
+
   // Search title and optionally tags
   if (query.search && typeof query.search === "string") {
-    const searchQuery = query.search.toLowerCase();
+    const searchQuery = query.search;
     let tagsQuery = [];
 
     if (query.tags && typeof query.tags === "string") {
@@ -27,13 +33,16 @@ export const articlesServerSideProps = async ({
     }
 
     const searchResults: ArticleData[] = await getCachedClient()(
-      searchArticlesQuery(searchQuery, tagsQuery),
+      searchArticlesQuery(searchQuery.toLowerCase(), tagsQuery),
     );
 
     return {
       props: {
         articles: searchResults,
         searchResults: true,
+        tags,
+        searchQuery,
+        tagsQuery: tagsQuery ? tagsQuery.join(",") : "",
       },
     };
     // Search just tags
@@ -48,6 +57,9 @@ export const articlesServerSideProps = async ({
       props: {
         articles: searchResults,
         searchResults: true,
+        tags,
+        searchQuery: "",
+        tagsQuery: tagsQuery.join(","),
       },
     };
     // No Search, just the 5 most recent articles
@@ -66,6 +78,9 @@ export const articlesServerSideProps = async ({
       props: {
         articles: articlesArray,
         searchResults: false,
+        tags,
+        searchQuery: "",
+        tagsQuery: "",
       },
     };
   }

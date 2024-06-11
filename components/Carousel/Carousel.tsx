@@ -18,10 +18,6 @@ type CarouselProps = {
 const Carousel: FC<CarouselProps> = ({ articles, hidden }) => {
   return (
     <section className={`${styles.carousel} ${hidden ? styles.hidden : ""}`}>
-      <div className={`${styles.bar} ${styles.dark}`} />
-      <div className={styles.glow} />
-      <h1 className={`${styles.bar} ${styles.light}`}>Latest Articles</h1>
-
       <Swiper
         className={styles.swiper}
         effect="coverflow"

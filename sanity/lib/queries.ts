@@ -328,3 +328,13 @@ export const getPostLikesQuery = (
 ): string => {
   return groq`*[_type == 'like' && (references("${postId}") || references("${articleId}")) && references("${userId}")]`;
 };
+
+/**
+ * Queries the most recent posts posts, as well as their number of likes, dislikes and comments
+ * @author Ninjabattler
+ */
+export const getAllTags = (): string => {
+  return groq`*[_type == "tags"] | order(tag desc){
+    tag
+  }`;
+};

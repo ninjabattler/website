@@ -94,6 +94,10 @@ figure {
   margin: 0;
 }
 
+input {
+  font-family: Righteous;
+}
+
 input:focus {
   outline: none;
 }
@@ -102,6 +106,7 @@ select {
   background-color: variables.$lightGray;
   color: variables.$darkGray;
   font-size: 1em;
+  font-family: Righteous;
   outline: none;
   border: none;
 }
