@@ -3,16 +3,13 @@ import styles from "./ArticleCard.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 import {
-  CalendarMonth,
   CalendarMonthSharp,
   CommentSharp,
   ThumbDownSharp,
   ThumbUpSharp,
-  ThumbsUpDownSharp,
 } from "@mui/icons-material";
 import { ArticleData } from "../../types";
 import { formatSanityDate } from "../../helpers/dateHelpers";
-import Tag from "../articleComponents/InfoBar/Tag/Tag";
 
 type ArticleCardProps = {
   article: ArticleData;
@@ -63,8 +60,8 @@ const ArticleCard: FC<ArticleCardProps> = ({ article }) => (
       />
 
       <div className={styles.tags}>
-        {article.tags.map((tag) => {
-          return <Tag tag={tag} delay={0} />;
+        {article.tags.map((tag, i) => {
+          return <div key={i}>{tag}</div>;
         })}
       </div>
 

@@ -9,6 +9,25 @@
   z-index: 10;
   perspective: 23.5em;
 
+  .spaceContainer {
+    width: 30%;
+    height: 150%;
+    margin-top: -2.15rem;
+    position: absolute;
+    filter: drop-shadow(0 0 0.05rem var(--article-colour-space))
+      drop-shadow(0 0 0.05rem var(--article-colour-space)) brightness(1.5);
+
+    .space {
+      @include mixins.articlePageSpaceCutout();
+      width: 100%;
+      height: 100%;
+      margin-top: 2em;
+      mask: url("/searchBarTear.webp");
+      mask-position: center top;
+      mask-size: 100% 100%;
+    }
+  }
+
   .bar {
     width: 50%;
     height: 1em;

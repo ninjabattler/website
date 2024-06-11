@@ -34,6 +34,11 @@ const ArticlesSearchBar: FC<ArticlesSearchBarProps> = ({
 
   return (
     <header className={styles.articlesSearchBar}>
+      <div className={styles.spaceContainer}>
+        <div className={styles.space} />
+        <div className={`${styles.space} ${styles.gradient}`} />
+      </div>
+
       <div className={`${styles.bar} ${styles.dark}`} />
       <div className={styles.glow} />
       <h1 className={`${styles.bar} ${styles.light}`}>

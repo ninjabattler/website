@@ -33,7 +33,6 @@
     "next-auth-sanity": "^1.5.3",
     "next-sanity": "^8.5.3",
     "pg": "^8.11.5",
-    "pixi-filters": "^6.0.0",
     "pixi.js": "^8.0.5",
     "postprocessing": "^6.35.4",
     "prismjs": "^1.29.0",

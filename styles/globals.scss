@@ -1,15 +1,6 @@
 @use "/styles/_mixins" as mixins;
 @use "/styles/_variables" as variables;
 
-@font-face {
-  font-family: "Andy Bold";
-  src: url("/Andy Bold.ttf");
-  font-style: normal;
-  font-weight: 1000;
-  font-display: swap;
-}
-// @import url('https://fonts.googleapis.com/css2?family=Righteous&family=Gloria+Hallelujah&family=Trade+Winds&family=Hanalei+Fill&family=Rock+Salt&family=Press+Start+2P&family=Black+Ops+One&family=Russo+One&display=swap');
-
 body {
   margin: 0;
   font-family:
@@ -47,6 +38,8 @@ body {
 :root {
   --article-colour: #f0f05d;
   --article-colour2: #e6d470;
+  --article-colour-space: #1a1d33;
+  --article-colour-stars: #fafa24;
 }
 
 .App {

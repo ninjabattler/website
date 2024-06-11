@@ -49,6 +49,30 @@
       @include mixins.flexCenter;
       margin-top: 0.25em;
       position: absolute;
+
+      div {
+        width: fit-content;
+        height: fit-content;
+        margin-top: 0;
+        margin-left: 0.2em;
+        margin-right: 0.2em;
+        padding-left: 0.25em;
+        padding-right: 0.25em;
+        border-top: variables.$borderThinBlack;
+        border-bottom: variables.$borderThinBlack;
+        display: block;
+        font-size: 0.75em;
+        color: variables.$darkGray;
+        background-color: variables.$lightGray;
+        transition: margin 0.2s border-color 0.2s;
+        mask: linear-gradient(
+          -45deg,
+          transparent calc(0% + 0.2em),
+          black calc(0% + 0.2em),
+          black calc(100% - 0.2em),
+          transparent calc(100% - 0.2em)
+        );
+      }
     }
 
     .stats {
@@ -87,7 +111,7 @@
       @include mixins.flexCenter;
       margin: 0;
       margin-bottom: 0.5em;
-      font-size: 0.9em;
+      font-size: 0.8em;
 
       svg {
         margin-left: 0.25em;
