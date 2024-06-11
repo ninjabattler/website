@@ -1,134 +1,21 @@
 import styles from "../styles/HomePage.module.scss";
 import React, { FC } from "react";
-import Link from "next/link";
 import { AppData } from "../types";
-import dynamic from "next/dynamic";
 import HomePageHead from "../components/PageMetadata/HomePageHead";
 import ReviewPageBackground from "../components/backgrounds/ReviewPageBackground/ReviewPageBackground";
-const CodeBlock = dynamic(
-  () => import("../components/articleComponents/CodeBlock/CodeBlock"),
-  { loading: () => <></> },
-);
 
-export default function Home({ setLinkClicked }: FC<{}> & AppData) {
+export default function Home({}: FC<{}> & AppData) {
   return (
     <>
       <HomePageHead />
-
       <ReviewPageBackground />
 
       <main id={styles.homePage}>
-        <img
-          id={styles.homePageRobot}
-          src="/websiterobot3.webp"
-          alt="ninjabattler"
-        />
-        <img
-          id={styles.homePageRobotFade}
-          src="/websiterobot3.webp"
-          alt="ninjabattler"
-        />
-
-        {/* Introduction */}
-        <section id={styles.part1}>
-          <div id={styles.scrollToOne} />
-
-          <div className={styles.gradient1} />
-          {/* <Link
-            legacyBehavior
-            href={`/articles/${title.toLowerCase().replace(/ /g, "_")}`}
-          >
-            <a className={styles.gradient2}>
-              <img
-                onClick={(e) => {
-                  e.preventDefault();
-                  setLinkClicked(
-                    `/articles/${title.toLowerCase().replace(/ /g, "_")}`,
-                  );
-                }}
-                src={thumbnail}
-                alt="article thumbnail"
-              />
-              <h2>Newest Article: </h2>
-              <h3>{title}</h3>
-            </a>
-          </Link> */}
-
-          <h1>Status: 200, successfully connected</h1>
-          <h4>to the land of uneducated opinions and a few shades of gray!</h4>
-          <p>
-            Here in this small corner of the internet, you&apos;ll find lots of
-            words, words written by me, if you can believe it. There&apos;s even
-            pictures and videos, and some blender stuff. But what topics do
-            these words speak of?
-          </p>
-        </section>
-
-        {/* Video Games */}
-        <section id={styles.part2}>
-          <img src="/videogames.webp" alt="video games header" />
-          <h2>Video Games</h2>
-          <h4>Never said I was original</h4>
-
-          <div className={styles.imageCollection}>
-            <img
-              src="https://files.ninjabattler.ca/image/Deamon.png"
-              alt="video game"
-            />
-            <img
-              src="https://files.ninjabattler.ca/image/calscourgefight.png"
-              alt="video game"
-            />
-            <img
-              src="https://files.ninjabattler.ca/image/cnightsgil.png"
-              alt="video game"
-            />
-            <img
-              src="https://files.ninjabattler.ca/image/calpostmoonlord/devourer2fight2.webp"
-              alt="video game"
-            />
-            <img
-              src="https://files.ninjabattler.ca/image/metalheads1.png"
-              alt="video game"
-            />
-          </div>
-
-          <div className={styles.gradient2}>
-            <p>
-              Video games, I play them, do you play them? Trick question. I also
-              write opinionated words about them. If that interests you, check
-              the articles page to see what I&apos;ve got and find out if any of
-              it interests you. If you have any opinionated comments of your
-              own, feel free to post them, comments exists for a reason after
-              all.
-            </p>
-          </div>
-        </section>
-
-        {/* Coding */}
-        <section id={styles.part3}>
-          <img src="/coding.webp" alt="coding header" />
-          <h2>Coding</h2>
-          <h4>Words that do stuff</h4>
-          <div className={styles.gradient2}>
-            <CodeBlock
-              code={
-                "const betterConsoleLog = (message) => {\n\tconsole.log(`Better ${message}`);\n};\n\nconst messageYouWillRead = `\nI write code, and coded this website.\n\nI mostly work with web development, JS, TS, React, NextJs etc, but I do have an interest in other languages as well.\n\nI also like to write words about code to, you can read that here, or just visit my Github and check that out.`;\n\nbetterConsoleLog(messageYouWillRead);"
-              }
-              language={"javascript"}
-              title="content.js"
-            />
-          </div>
-        </section>
-
-        <section id={styles.part4}>
-          <h2>And Whatever Else</h2>
-          <p>
-            Movies, MTG, the giant eye in the sky bringing the end of the world,
-            if it interests me, you may see it here at some point. Except the
-            end of the world, I don&apos;t write fast enough to cover that.
-          </p>
-        </section>
+        <em>
+          "Designs improved with time and knowledge are the essence of my work.
+          Through no other method can I approach perfection."
+        </em>
+        <span>- Draedon, Calamity Mod</span>
       </main>
     </>
   );
