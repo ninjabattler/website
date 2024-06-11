@@ -2,9 +2,17 @@ import React, { FC } from "react";
 import styles from "./ArticleCard.module.scss";
 import Link from "next/link";
 import Image from "next/image";
-import { CommentSharp, ThumbsUpDownSharp } from "@mui/icons-material";
+import {
+  CalendarMonth,
+  CalendarMonthSharp,
+  CommentSharp,
+  ThumbDownSharp,
+  ThumbUpSharp,
+  ThumbsUpDownSharp,
+} from "@mui/icons-material";
 import { ArticleData } from "../../types";
 import { formatSanityDate } from "../../helpers/dateHelpers";
+import Tag from "../articleComponents/InfoBar/Tag/Tag";
 
 type ArticleCardProps = {
   article: ArticleData;
@@ -13,9 +21,27 @@ type ArticleCardProps = {
 /**
  * A card to display an article and it's stats on the articles page
  * @author Ninjabattler
+ * @param article The article data to display
  */
 const ArticleCard: FC<ArticleCardProps> = ({ article }) => (
   <Link className={styles.articleCard} href={`/articles/${article.slug}`}>
+    <div className={styles.articleInfo}>
+      <div
+        className={`${styles.gradientBar} ${styles.bottom}`}
+        style={{
+          backgroundImage: `linear-gradient(90deg, ${article.colors.primary.hex} 0%, ${article.colors.secondary.hex} 100%)`,
+        }}
+      />
+
+      <h1>{article.title}</h1>
+      <h2>
+        <CalendarMonthSharp />
+        <em>{formatSanityDate(article.date)}</em>
+        {/* @ts-ignore */}
+        <CommentSharp /> {article.comments}
+      </h2>
+    </div>
+
     <div className={styles.thumbnail}>
       <Image
         src={article.thumbnail.url}
@@ -26,33 +52,31 @@ const ArticleCard: FC<ArticleCardProps> = ({ article }) => (
         blurDataURL={article.thumbnail.blur}
         alt={article.thumbnail.alt}
       />
-
-      <div className={styles.stats}>
-        <span>
-          <ThumbsUpDownSharp />
-        </span>
-
-        <span>
-          {/* @ts-ignore */}
-          <CommentSharp /> {article.comments}
-        </span>
-      </div>
     </div>
 
     <div className={styles.articleInfo}>
-      <div className={styles.likeDislikeBar}>
-        <div
-          className={styles.fillBar}
-          style={{
-            width: `${(article.likes / (article.likes + article.dislikes)) * 100}%`,
-            backgroundImage: `linear-gradient(90deg, ${article.colors.primary.hex} 0%, ${article.colors.secondary.hex} 100%)`,
-          }}
-        />
+      <div
+        className={styles.gradientBar}
+        style={{
+          backgroundImage: `linear-gradient(90deg, ${article.colors.primary.hex} 0%, ${article.colors.secondary.hex} 100%)`,
+        }}
+      />
+
+      <div className={styles.tags}>
+        {article.tags.map((tag) => {
+          return <Tag tag={tag} delay={0} />;
+        })}
       </div>
-      <h1>{article.title}</h1>
-      <h2>
-        <em>{formatSanityDate(article.date)}</em>
-      </h2>
+
+      <div className={styles.stats}>
+        <span>
+          <ThumbUpSharp /> {article.likes}
+        </span>
+
+        <span>
+          <ThumbDownSharp /> {article.dislikes}
+        </span>
+      </div>
     </div>
   </Link>
 );

@@ -15,35 +15,14 @@
       width: 100%;
       height: 100%;
       margin: 0;
-      object-fit: contain;
       z-index: 1;
-    }
-
-    .stats {
-      width: calc(100% - 1em);
-      padding: 0.5em;
-      bottom: 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: absolute;
-      color: variables.$lightGray;
-      z-index: 1;
-
-      span {
-        @include mixins.flexCenter;
-
-        svg {
-          height: 1em;
-          margin-right: 0.25em;
-        }
-      }
     }
   }
 
   .articleInfo {
     @include mixins.flexCenter;
     width: calc(100% - 0.25rem);
+    min-height: 2em;
     height: fit-content;
     border-left: variables.$borderThinLightGray;
     border-right: variables.$borderThinLightGray;
@@ -53,24 +32,52 @@
     background-color: variables.$darkGray;
     perspective: 0;
 
-    .likeDislikeBar {
+    .gradientBar {
       width: 100%;
       height: 0.3em;
       top: 0;
       position: absolute;
       background-color: variables.$secondaryText;
 
-      .fillBar {
-        width: 0%;
-        height: 100%;
+      &.bottom {
+        top: unset;
+        bottom: 0;
+      }
+    }
+
+    .tags {
+      @include mixins.flexCenter;
+      margin-top: 0.25em;
+      position: absolute;
+    }
+
+    .stats {
+      width: calc(100% - 1em);
+      padding: 0.5em;
+      padding-top: 0.5em;
+      top: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: absolute;
+      color: variables.$primaryText;
+      z-index: 1;
+
+      span {
+        @include mixins.flexCenter;
+
+        svg {
+          height: 0.75em;
+          margin-left: 0.1em;
+          margin-right: 0.1em;
+        }
       }
     }
 
     h1 {
       @include mixins.russoFont;
       max-width: 75%;
-      margin-top: 0.5em;
-      margin-bottom: 0;
+      margin: 0;
       font-size: 1em;
       text-align: center;
     }
@@ -79,9 +86,11 @@
       @include mixins.russoFont;
       @include mixins.flexCenter;
       margin: 0;
-      font-size: 0.75em;
+      margin-bottom: 0.5em;
+      font-size: 0.9em;
 
       svg {
+        margin-left: 0.25em;
         margin-right: 0.25em;
         font-size: 1em;
       }
