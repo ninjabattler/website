@@ -11,6 +11,7 @@
   position: absolute;
   font-size: 1em;
   perspective: 23.5em;
+  overflow: hidden;
   transition: opacity 0.2s;
 
   .swiper {

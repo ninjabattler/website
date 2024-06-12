@@ -26,7 +26,9 @@ const ArticleCard: FC<ArticleCardProps> = ({ article }) => (
     <div
       className={styles.spaceContainer}
       style={{
+        // @ts-ignore
         "--custom-space-colour": article.colors.space.hex,
+        // @ts-ignore
         "--custom-stars-colour": article.colors.stars.hex,
       }}
     >
