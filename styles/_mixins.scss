@@ -1,12 +1,15 @@
 @use "/styles/_variables" as variables;
 
-@mixin articlePageGradientShadow {
+@mixin articlePageGradientShadow(
+  $gradientColour1: var(--article-colour),
+  $gradientColour2: var(--article-colour2)
+) {
   background-image: linear-gradient(
     90deg,
-    var(--article-colour) 10%,
-    var(--article-colour2) 40%,
-    var(--article-colour2) 60%,
-    var(--article-colour) 90%
+    $gradientColour1 10%,
+    $gradientColour2 40%,
+    $gradientColour2 60%,
+    $gradientColour1 90%
   );
   background-size: 200vw 100vh;
   background-attachment: fixed;
@@ -36,11 +39,16 @@
   }
 }
 
-@mixin articlePageSpaceCutout($maskRotation: 1deg, $maskOffset: 0%) {
+@mixin articlePageSpaceCutout(
+  $maskRotation: 1deg,
+  $maskOffset: 0%,
+  $spaceColour: var(--article-colour-space),
+  $starsColor: var(--article-colour-stars)
+) {
   position: absolute;
   width: 100%;
   height: 50%;
-  background-color: var(--article-colour-space);
+  background-color: $spaceColour;
   background-image: url("/spacebw.png");
   background-blend-mode: overlay;
   background-size: 100vw;
@@ -59,8 +67,7 @@
   mix-blend-mode: lighten;
 
   &.gradient {
-    // @include articlePageGradientShadow;
-    background-color: var(--article-colour-stars);
+    background-color: $starsColor;
     background-image: url("/starsbw.png");
     background-blend-mode: multiply;
     mix-blend-mode: screen;

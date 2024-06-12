@@ -2,14 +2,43 @@
 @use "/styles/_variables" as variables;
 
 .articleCard {
+  margin-top: 0;
   font-size: 1.25em;
-  transform: scale(1);
-  transition: transform 0.2s;
+  transition: margin 0.2s;
+  perspective: 0;
+
+  .spaceContainer {
+    --custom-space-colour: var(--article-colour-space);
+    --custom-stars-colour: var(--article-colour-stars);
+    width: 100%;
+    height: calc(100% - 0.1em);
+    margin-top: 0;
+    position: absolute;
+    z-index: -1;
+    filter: brightness(1.5);
+    transition:
+      margin 0.2s,
+      height 0.2s;
+
+    .space {
+      @include mixins.articlePageSpaceCutout(
+        0,
+        0%,
+        var(--custom-space-colour),
+        var(--custom-stars-colour)
+      );
+      width: 100%;
+      height: 100%;
+      mask: none;
+    }
+  }
 
   .thumbnail {
     width: 100%;
     height: fit-content;
+    margin-top: 0;
     display: flex;
+    transition: margin 0.2s;
 
     img {
       width: 100%;
@@ -24,6 +53,7 @@
     width: calc(100% - 0.25rem);
     min-height: 2em;
     height: fit-content;
+    margin-top: 0;
     border-left: variables.$borderThinLightGray;
     border-right: variables.$borderThinLightGray;
     display: flex;
@@ -31,13 +61,20 @@
     color: variables.$primaryText;
     background-color: variables.$darkGray;
     perspective: 0;
+    transition: margin 0.2s;
 
     .gradientBar {
+      --custom-gradient-colour-1: var(--article-colour);
+      --custom-gradient-colour-2: var(--article-colour2);
+      @include mixins.articlePageGradientShadow(
+        var(--custom-gradient-colour-1),
+        var(--custom-gradient-colour-2)
+      );
       width: 100%;
       height: 0.3em;
       top: 0;
       position: absolute;
-      background-color: variables.$secondaryText;
+      background-color: transparent;
 
       &.bottom {
         top: unset;
@@ -138,6 +175,16 @@
   }
 
   &:hover {
-    transform: scale(1.025);
+    margin-top: -2em;
+
+    .thumbnail,
+    .articleInfo {
+      margin-top: 2em;
+    }
+
+    .spaceContainer {
+      height: calc(100% - 2.1em);
+      margin-top: 2em;
+    }
   }
 }

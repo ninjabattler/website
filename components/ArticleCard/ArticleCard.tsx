@@ -22,11 +22,26 @@ type ArticleCardProps = {
  */
 const ArticleCard: FC<ArticleCardProps> = ({ article }) => (
   <Link className={styles.articleCard} href={`/articles/${article.slug}`}>
+    {/* @ts-ignore */}
+    <div
+      className={styles.spaceContainer}
+      style={{
+        "--custom-space-colour": article.colors.space.hex,
+        "--custom-stars-colour": article.colors.stars.hex,
+      }}
+    >
+      <div className={styles.space} />
+      <div className={`${styles.space} ${styles.gradient}`} />
+    </div>
+
     <div className={styles.articleInfo}>
       <div
         className={`${styles.gradientBar} ${styles.bottom}`}
         style={{
-          backgroundImage: `linear-gradient(90deg, ${article.colors.primary.hex} 0%, ${article.colors.secondary.hex} 100%)`,
+          // @ts-ignore
+          "--custom-gradient-colour-1": article.colors.primary.hex,
+          // @ts-ignore
+          "--custom-gradient-colour-2": article.colors.secondary.hex,
         }}
       />
 
@@ -55,7 +70,10 @@ const ArticleCard: FC<ArticleCardProps> = ({ article }) => (
       <div
         className={styles.gradientBar}
         style={{
-          backgroundImage: `linear-gradient(90deg, ${article.colors.primary.hex} 0%, ${article.colors.secondary.hex} 100%)`,
+          // @ts-ignore
+          "--custom-gradient-colour-1": article.colors.primary.hex,
+          // @ts-ignore
+          "--custom-gradient-colour-2": article.colors.secondary.hex,
         }}
       />
 
