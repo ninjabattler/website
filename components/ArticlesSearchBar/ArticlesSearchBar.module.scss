@@ -9,6 +9,13 @@
   z-index: 10;
   perspective: 23.5em;
 
+  * {
+    &::selection {
+      color: variables.$lightGray;
+      background-color: var(--article-colour);
+    }
+  }
+
   .spaceContainer {
     width: 30%;
     height: 150%;
@@ -147,6 +154,10 @@
           color: variables.$primaryText;
           background-color: transparent;
           font-size: 0.4em;
+
+          &::selection {
+            color: variables.$darkGray;
+          }
         }
 
         button {

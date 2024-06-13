@@ -2,14 +2,21 @@
 @use "/styles/_variables" as variables;
 
 .articleCard {
+  --custom-gradient-colour-1: var(--article-colour);
+  --custom-gradient-colour-2: var(--article-colour2);
+  --custom-space-colour: var(--article-colour-space);
+  --custom-stars-colour: var(--article-colour-stars);
   margin-top: 0;
   font-size: 1.25em;
   transition: margin 0.2s;
   perspective: 0;
 
+  *::selection {
+    color: variables.$darkGray;
+    background-color: var(--custom-gradient-colour-1);
+  }
+
   .spaceContainer {
-    --custom-space-colour: var(--article-colour-space);
-    --custom-stars-colour: var(--article-colour-stars);
     width: 100%;
     height: calc(100% - 0.1em);
     margin-top: 0;
@@ -64,8 +71,6 @@
     transition: margin 0.2s;
 
     .gradientBar {
-      --custom-gradient-colour-1: var(--article-colour);
-      --custom-gradient-colour-2: var(--article-colour2);
       @include mixins.articlePageGradientShadow(
         var(--custom-gradient-colour-1),
         var(--custom-gradient-colour-2)
@@ -109,6 +114,11 @@
           black calc(100% - 0.2em),
           transparent calc(100% - 0.2em)
         );
+
+        &::selection {
+          color: variables.$lightGray;
+          background-color: var(--custom-gradient-colour-1);
+        }
       }
     }
 

@@ -21,31 +21,28 @@ type ArticleCardProps = {
  * @param article The article data to display
  */
 const ArticleCard: FC<ArticleCardProps> = ({ article }) => (
-  <Link className={styles.articleCard} href={`/articles/${article.slug}`}>
+  <Link
+    className={styles.articleCard}
+    href={`/articles/${article.slug}`}
+    style={{
+      // @ts-ignore
+      "--custom-gradient-colour-1": article.colors.primary.hex,
+      // @ts-ignore
+      "--custom-gradient-colour-2": article.colors.secondary.hex,
+      // @ts-ignore
+      "--custom-space-colour": article.colors.space.hex,
+      // @ts-ignore
+      "--custom-stars-colour": article.colors.stars.hex,
+    }}
+  >
     {/* @ts-ignore */}
-    <div
-      className={styles.spaceContainer}
-      style={{
-        // @ts-ignore
-        "--custom-space-colour": article.colors.space.hex,
-        // @ts-ignore
-        "--custom-stars-colour": article.colors.stars.hex,
-      }}
-    >
+    <div className={styles.spaceContainer}>
       <div className={styles.space} />
       <div className={`${styles.space} ${styles.gradient}`} />
     </div>
 
     <div className={styles.articleInfo}>
-      <div
-        className={`${styles.gradientBar} ${styles.bottom}`}
-        style={{
-          // @ts-ignore
-          "--custom-gradient-colour-1": article.colors.primary.hex,
-          // @ts-ignore
-          "--custom-gradient-colour-2": article.colors.secondary.hex,
-        }}
-      />
+      <div className={`${styles.gradientBar} ${styles.bottom}`} />
 
       <h1>{article.title}</h1>
       <h2>
@@ -69,15 +66,7 @@ const ArticleCard: FC<ArticleCardProps> = ({ article }) => (
     </div>
 
     <div className={styles.articleInfo}>
-      <div
-        className={styles.gradientBar}
-        style={{
-          // @ts-ignore
-          "--custom-gradient-colour-1": article.colors.primary.hex,
-          // @ts-ignore
-          "--custom-gradient-colour-2": article.colors.secondary.hex,
-        }}
-      />
+      <div className={styles.gradientBar} />
 
       <div className={styles.tags}>
         {article.tags.map((tag, i) => {
