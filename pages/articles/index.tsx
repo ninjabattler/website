@@ -20,8 +20,10 @@ export default function ArticlesPage({
   searchQuery,
   tagsQuery,
 }: InferGetServerSidePropsType<typeof articlesServerSideProps> & AppData) {
+  const [showCarousel, setShowCarousel] = useState<boolean>(!searchResults);
   const [showSearchResults, setShowSearchResults] =
     useState<boolean>(searchResults);
+  const [carouselArticles, setCarouselArticles] = useState<any[]>(articles);
 
   return (
     <>
@@ -29,19 +31,24 @@ export default function ArticlesPage({
       <ArticlesPageBackground />
       <ArticleSearchBar
         searchResults={showSearchResults}
-        resultsCount={articles.length}
+        resultsCount={carouselArticles.length}
         tags={tags}
         initialSearchQuery={searchQuery}
         initialTagsQuery={tagsQuery ? tagsQuery.split(",") : []}
+        setShowSearchResults={setShowSearchResults}
+        setShowCarousel={setShowCarousel}
+        setArticles={setCarouselArticles}
       />
 
       <main id={styles.articlesPage}>
         <Carousel
-          articles={articles ? articles : []}
-          hidden={showSearchResults}
+          articles={carouselArticles ? carouselArticles : []}
+          hidden={!showCarousel}
         />
         {showSearchResults && (
-          <SearchResultsCarousel articles={articles ? articles : []} />
+          <SearchResultsCarousel
+            articles={carouselArticles ? carouselArticles : []}
+          />
         )}
       </main>
     </>

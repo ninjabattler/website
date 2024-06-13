@@ -4,6 +4,7 @@
 .searchTag {
   @include mixins.flexCenter;
   width: fit-content;
+  max-width: 100%;
   height: fit-content;
   margin-top: 5em;
   margin-top: 0;
@@ -15,8 +16,13 @@
   font-size: 0.4em;
   color: variables.$darkGray;
   background-color: variables.$lightGray;
-  transition: margin 0.2s border-color 0.2s;
+  transition:
+    margin 0.2s border-color 0.2s,
+    filter 0.2s;
+  overflow: hidden;
+  white-space: nowrap;
   cursor: default;
+  animation: slideIn 0.75s linear 1;
   mask: linear-gradient(
     -45deg,
     transparent calc(0% + 0.2em),
@@ -24,6 +30,10 @@
     black calc(100% - 0.2em),
     transparent calc(100% - 0.2em)
   );
+
+  &.disabled {
+    filter: brightness(0.8);
+  }
 
   button {
     width: fit-content;
@@ -33,5 +43,18 @@
     &:hover {
       transform: scale(1.1);
     }
+
+    &:disabled {
+      cursor: progress;
+    }
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    max-width: 0%;
+  }
+  100% {
+    max-width: 100%;
   }
 }

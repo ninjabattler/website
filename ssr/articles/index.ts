@@ -24,7 +24,7 @@ export const articlesServerSideProps = async ({
   const tags: any[] = await getCachedClient()(getAllTags());
 
   // Search title and optionally tags
-  if (query.search && typeof query.search === "string") {
+  if (query.search !== undefined && typeof query.search === "string") {
     const searchQuery = query.search;
     let tagsQuery = [];
 

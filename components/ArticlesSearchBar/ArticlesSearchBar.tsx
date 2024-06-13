@@ -1,7 +1,16 @@
-import React, { FC, useCallback, useState } from "react";
+import React, {
+  Dispatch,
+  FC,
+  FormEvent,
+  SetStateAction,
+  useCallback,
+  useState,
+} from "react";
 import styles from "./ArticlesSearchBar.module.scss";
-import { SearchSharp } from "@mui/icons-material";
+import { SearchOffSharp, SearchSharp } from "@mui/icons-material";
 import SearchTag from "./SearchTag/SearchTag";
+import axios from "axios";
+import { useRouter } from "next/router";
 
 type ArticlesSearchBarProps = {
   searchResults: boolean;
@@ -9,6 +18,9 @@ type ArticlesSearchBarProps = {
   tags: any[];
   initialSearchQuery: string;
   initialTagsQuery: string[];
+  setShowSearchResults: Dispatch<SetStateAction<boolean>>;
+  setShowCarousel: Dispatch<SetStateAction<boolean>>;
+  setArticles: Dispatch<SetStateAction<any>>;
 };
 
 /**
@@ -21,9 +33,14 @@ const ArticlesSearchBar: FC<ArticlesSearchBarProps> = ({
   tags,
   initialSearchQuery,
   initialTagsQuery,
+  setShowSearchResults,
+  setShowCarousel,
+  setArticles,
 }) => {
   const [searchQuery, setSearchQuery] = useState<string>(initialSearchQuery);
   const [tagsQuery, setTagsQuery] = useState<string[]>(initialTagsQuery);
+  const [loading, setLoading] = useState<boolean>(false);
+  const router = useRouter();
 
   const removeTag = useCallback(
     (index) => {
@@ -32,6 +49,35 @@ const ArticlesSearchBar: FC<ArticlesSearchBarProps> = ({
     [tagsQuery],
   );
 
+  const search = (e: FormEvent<HTMLFormElement>) => {
+    if (!loading) {
+      e.preventDefault();
+      setShowCarousel(false);
+      setLoading(true);
+
+      setTimeout(() => {
+        axios({
+          method: "get",
+          url: `/api/articles/get`,
+          params: { searchQuery, tagsQuery: tagsQuery.join(",") },
+          headers: { "Content-Type": "application/json" },
+        }).then((res) => {
+          setLoading(false);
+          setShowSearchResults(true);
+          setArticles(res.data);
+
+          router.push(
+            `/articles?search=${searchQuery}&tags=${tagsQuery.join(",")}`,
+            `/articles?search=${searchQuery}&tags=${tagsQuery.join(",")}`,
+            {
+              shallow: true,
+            },
+          );
+        });
+      }, 2500);
+    }
+  };
+
   return (
     <header className={styles.articlesSearchBar}>
       <div className={styles.spaceContainer}>
@@ -39,20 +85,23 @@ const ArticlesSearchBar: FC<ArticlesSearchBarProps> = ({
         <div className={`${styles.space} ${styles.gradient}`} />
       </div>
 
-      <div className={`${styles.bar} ${styles.dark}`} />
-      <div className={styles.glow} />
-      <h1 className={`${styles.bar} ${styles.light}`}>
+      <div
+        className={`${styles.bar} ${styles.dark} ${loading ? styles.hidden : ""}`}
+      />
+      <div className={`${styles.glow} ${loading ? styles.hidden : ""}`} />
+      <h1
+        className={`${styles.bar} ${styles.light} ${loading ? styles.hidden : ""}`}
+      >
         {searchResults ? `Results: ${resultsCount}` : "Latest Articles"}
       </h1>
 
       <form
         className={`${styles.bar} ${styles.dark} ${styles.search}`}
-        onSubmit={(e) => {
-          e.preventDefault();
-        }}
+        onSubmit={search}
       >
         <select
           value={""}
+          disabled={loading}
           onChange={(e) => {
             setTagsQuery([...tagsQuery, e.target.value]);
           }}
@@ -73,15 +122,18 @@ const ArticlesSearchBar: FC<ArticlesSearchBarProps> = ({
           type="search"
           placeholder="search"
           value={searchQuery}
+          disabled={loading}
           onChange={(e) => {
             setSearchQuery(e.target.value);
           }}
         />
-        <a
-          href={`/articles?search=${searchQuery}${tagsQuery ? `&tags=${tagsQuery.join(",")}` : ""}`}
+        <button
+          // href={`/articles?search=${searchQuery}${tagsQuery ? `&tags=${tagsQuery.join(",")}` : ""}`}
+          type="submit"
+          disabled={loading}
         >
-          <SearchSharp />
-        </a>
+          {loading ? <SearchOffSharp /> : <SearchSharp />}
+        </button>
       </form>
 
       <div
@@ -92,6 +144,7 @@ const ArticlesSearchBar: FC<ArticlesSearchBarProps> = ({
             <SearchTag
               key={i}
               tag={tag}
+              disabled={loading}
               removeTag={() => {
                 removeTag(i);
               }}
