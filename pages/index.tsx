@@ -11,6 +11,7 @@ export default function Home({}: FC<{}> & AppData) {
       <ReviewPageBackground />
 
       <main id={styles.homePage}>
+        <img src="/newBanner.webp" />
         <em>
           {
             '"Designs improved with time and knowledge are the essence of my work. Through no other method can I approach perfection."'

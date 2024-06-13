@@ -42,31 +42,6 @@ body {
   --article-colour-stars: #fafa24;
 }
 
-.App {
-  text-align: left;
-}
-
-.App-header {
-  background-color: transparent;
-  min-height: 100vh;
-  font-size: 30px;
-}
-
-body::-webkit-scrollbar {
-  display: none;
-  background: variables.$lightGray;
-  outline: none;
-}
-
-body::-webkit-scrollbar-track {
-  background: variables.$lightGray;
-  border-left: 0.2vw solid variables.$darkGray;
-}
-
-body::-webkit-scrollbar-thumb {
-  background: variables.$darkGray;
-}
-
 ul {
   list-style: none;
   margin-left: auto;
