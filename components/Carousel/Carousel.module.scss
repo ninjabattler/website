@@ -11,7 +11,10 @@
   justify-content: flex-end;
   font-size: 1em;
   perspective: 23.5em;
-  transition: opacity 0.2s;
+  transition:
+    opacity 0.8s,
+    margin 0.8s;
+  z-index: 2;
 
   .swiper {
     width: 125%;
@@ -30,6 +33,9 @@
   }
 
   &.hidden {
+    margin-top: 6.15rem;
+    margin-bottom: 0;
     opacity: 0;
+    z-index: 1;
   }
 }

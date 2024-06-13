@@ -14,6 +14,7 @@ type CarouselProps = {
  * A Swiper Carousel used to display the most recent articles on the articles page
  * @author Ninjabattler
  * @param articles The articles to display
+ * @param hidden Whether or not the carousel should be hidden
  */
 const Carousel: FC<CarouselProps> = ({ articles, hidden }) => {
   return (

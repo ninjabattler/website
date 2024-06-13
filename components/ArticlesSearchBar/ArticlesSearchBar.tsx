@@ -49,34 +49,38 @@ const ArticlesSearchBar: FC<ArticlesSearchBarProps> = ({
     [tagsQuery],
   );
 
-  const search = (e: FormEvent<HTMLFormElement>) => {
-    if (!loading) {
-      e.preventDefault();
-      setShowCarousel(false);
-      setLoading(true);
+  const search = useCallback(
+    (e: FormEvent<HTMLFormElement>) => {
+      if (!loading) {
+        e.preventDefault();
+        setShowCarousel(false);
+        setShowSearchResults(false);
+        setLoading(true);
 
-      setTimeout(() => {
-        axios({
-          method: "get",
-          url: `/api/articles/get`,
-          params: { searchQuery, tagsQuery: tagsQuery.join(",") },
-          headers: { "Content-Type": "application/json" },
-        }).then((res) => {
-          setLoading(false);
-          setShowSearchResults(true);
-          setArticles(res.data);
+        setTimeout(() => {
+          axios({
+            method: "get",
+            url: `/api/articles/get`,
+            params: { searchQuery, tagsQuery: tagsQuery.join(",") },
+            headers: { "Content-Type": "application/json" },
+          }).then((res) => {
+            setLoading(false);
+            setShowSearchResults(true);
+            setArticles(res.data);
 
-          router.push(
-            `/articles?search=${searchQuery}&tags=${tagsQuery.join(",")}`,
-            `/articles?search=${searchQuery}&tags=${tagsQuery.join(",")}`,
-            {
-              shallow: true,
-            },
-          );
-        });
-      }, 2500);
-    }
-  };
+            router.push(
+              `/articles?search=${searchQuery}&tags=${tagsQuery.join(",")}`,
+              `/articles?search=${searchQuery}&tags=${tagsQuery.join(",")}`,
+              {
+                shallow: true,
+              },
+            );
+          });
+        }, 1000);
+      }
+    },
+    [searchQuery, tagsQuery, loading],
+  );
 
   return (
     <header className={styles.articlesSearchBar}>
@@ -100,6 +104,7 @@ const ArticlesSearchBar: FC<ArticlesSearchBarProps> = ({
         onSubmit={search}
       >
         <select
+          className={styles.tagsDropDown}
           value={""}
           disabled={loading}
           onChange={(e) => {
@@ -127,11 +132,7 @@ const ArticlesSearchBar: FC<ArticlesSearchBarProps> = ({
             setSearchQuery(e.target.value);
           }}
         />
-        <button
-          // href={`/articles?search=${searchQuery}${tagsQuery ? `&tags=${tagsQuery.join(",")}` : ""}`}
-          type="submit"
-          disabled={loading}
-        >
+        <button type="submit" disabled={loading}>
           {loading ? <SearchOffSharp /> : <SearchSharp />}
         </button>
       </form>

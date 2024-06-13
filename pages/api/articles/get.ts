@@ -36,7 +36,10 @@ export default async function handler(
 
       // Grab and send the articles
       const articles = await getCachedClient()(
-        searchArticlesQuery(searchQuery, tagsQuery.split(",")),
+        searchArticlesQuery(
+          searchQuery.toLowerCase(),
+          tagsQuery ? tagsQuery.split(",") : [],
+        ),
       );
 
       res.status(200).send(articles);

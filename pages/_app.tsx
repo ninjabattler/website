@@ -18,7 +18,6 @@ function MyApp({ Component, pageProps }: AppProps) {
     Math.floor(Math.random() * quotes.length),
   );
   const router: NextRouter = useRouter();
-
   Swiper.use([Mousewheel]);
 
   useEffect(() => {

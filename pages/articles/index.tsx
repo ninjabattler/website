@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../../styles/ArticlesPage.module.scss";
 import Carousel from "../../components/Carousel/Carousel";
 import Link from "next/link";
@@ -20,10 +20,16 @@ export default function ArticlesPage({
   searchQuery,
   tagsQuery,
 }: InferGetServerSidePropsType<typeof articlesServerSideProps> & AppData) {
-  const [showCarousel, setShowCarousel] = useState<boolean>(!searchResults);
-  const [showSearchResults, setShowSearchResults] =
-    useState<boolean>(searchResults);
+  const [showCarousel, setShowCarousel] = useState<boolean>(false);
+  const [showSearchResults, setShowSearchResults] = useState<boolean>(false);
   const [carouselArticles, setCarouselArticles] = useState<any[]>(articles);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setShowCarousel(!searchResults);
+      setShowSearchResults(searchResults);
+    }, 500);
+  }, []);
 
   return (
     <>
@@ -45,11 +51,10 @@ export default function ArticlesPage({
           articles={carouselArticles ? carouselArticles : []}
           hidden={!showCarousel}
         />
-        {showSearchResults && (
-          <SearchResultsCarousel
-            articles={carouselArticles ? carouselArticles : []}
-          />
-        )}
+        <SearchResultsCarousel
+          articles={carouselArticles ? carouselArticles : []}
+          hidden={!showSearchResults}
+        />
       </main>
     </>
   );

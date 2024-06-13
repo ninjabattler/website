@@ -7,18 +7,23 @@ import ArticleCard from "../ArticleCard/ArticleCard";
 
 type SearchResultsCarouselProps = {
   articles: ArticleData[];
+  hidden: boolean;
 };
 
 /**
  * A Swiper SearchResultsCarousel used to display the most recent articles on the articles page
  * @author Ninjabattler
  * @param articles The articles to display
+ * @param hidden Whether or not the carousel should be hidden
  */
 const SearchResultsCarousel: FC<SearchResultsCarouselProps> = ({
   articles,
+  hidden,
 }) => {
   return (
-    <section className={styles.searchResultsCarousel}>
+    <section
+      className={`${styles.searchResultsCarousel} ${hidden ? styles.hidden : ""}`}
+    >
       <Swiper
         className={styles.swiper}
         effect="creative"

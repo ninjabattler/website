@@ -12,7 +12,10 @@
   font-size: 1em;
   perspective: 23.5em;
   overflow: hidden;
-  transition: opacity 0.2s;
+  z-index: 2;
+  transition:
+    opacity 0.8s,
+    margin 0.8s;
 
   .swiper {
     @include mixins.flexCenter();
@@ -31,6 +34,8 @@
   }
 
   &.hidden {
+    margin-left: 2rem;
     opacity: 0;
+    z-index: 1;
   }
 }

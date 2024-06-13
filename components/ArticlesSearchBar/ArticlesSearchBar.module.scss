@@ -136,7 +136,7 @@
           }
         }
 
-        select {
+        .tagsDropDown {
           width: 1em;
           height: 1.75em;
           font-size: 0.4em;
@@ -147,7 +147,7 @@
         }
 
         input {
-          width: 30%;
+          width: 20%;
           height: 1.75em;
           border: variables.$borderThinLightGray;
           border-left: none;
@@ -225,12 +225,12 @@
     transform-origin: left center;
     transform: rotateY(2deg);
     z-index: 20;
+    transition: margin 1.2s;
     mask: linear-gradient(
       45deg,
       black calc(100% - 5.5em),
       transparent calc(100% - 5.5em)
     );
-    transition: margin 1.2s;
 
     &.hidden {
       margin-left: -70vw;
