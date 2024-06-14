@@ -111,7 +111,7 @@
 }
 
 @mixin russoFont {
-  font-family: "Russo One";
+  font-family: var(--russo-one);
   font-weight: 100;
 }
 

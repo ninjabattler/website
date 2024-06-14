@@ -15,7 +15,6 @@ export const getServerSideProps: GetServerSideProps = postsServerSideProps;
 
 export default function PostsPage({
   posts,
-  userId,
   selectedPost,
 }: InferGetServerSidePropsType<typeof postsServerSideProps> & AppData) {
   const [postSelected, setPostSelected] = useState<boolean>(
