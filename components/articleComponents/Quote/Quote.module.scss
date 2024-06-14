@@ -11,7 +11,7 @@
   font-size: 0.8em;
   color: variables.$secondaryText;
   filter: drop-shadow(0 0 0.1em rgba(0, 0, 0, 0.5));
-  perspective: 20em;
+  perspective: 25em;
 
   * {
     &::selection {
@@ -55,7 +55,7 @@
     position: absolute;
     display: flex;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
     background-color: variables.$lightGray;
     transform: rotateY(-5deg) rotateZ(1.25deg) translateY(-3em);
     transform-origin: left center;
@@ -97,29 +97,26 @@
     p {
       @include mixins.darkScrollBar;
       width: 67.5%;
-      height: 1.75em;
-      margin-top: 0.875em;
+      height: fit-content;
+      max-height: 3em;
+      margin: 0em;
       display: flex;
-      align-items: auto;
+      align-items: flex-start;
       justify-content: flex-start;
-      overflow-y: hidden;
-      overflow-x: scroll;
-      white-space: nowrap;
+      overflow-y: scroll;
+      overflow-x: hidden;
       z-index: 1;
 
-      &::-webkit-scrollbar {
-        height: 0.25em;
-      }
-
       &::-webkit-scrollbar-thumb {
-        border-top: 1px solid variables.$darkGray;
-        border-bottom: 1px solid variables.$darkGray;
+        border-left: 1px solid variables.$darkGray;
+        border-right: 1px solid variables.$darkGray;
       }
 
       span {
         width: fit-content;
         margin-right: auto;
-        padding-left: 0.5em;
+        // padding-left: 0.5em;
+        font-size: 1.125em;
       }
     }
   }

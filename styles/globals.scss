@@ -22,6 +22,10 @@ body {
   overflow-x: hidden;
   background-color: variables.$lightGray;
 
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
   @media only screen and (max-device-width: 3440px) {
     font-size: 21px;
   }

@@ -22,10 +22,12 @@
     }
 
     .articleContainer {
-      width: 65%;
+      width: 62.5%;
+      margin-left: 2.5%;
       margin-top: -3.5em;
       padding-top: 2.5em;
       padding-bottom: 2.5em;
+      border-left: variables.$borderThinLightGray;
       border-right: variables.$borderThinLightGray;
       display: flex;
       flex-direction: column;
@@ -96,10 +98,6 @@
           black 100%
         );
         content: "";
-      }
-
-      @media only screen and (min-aspect-ratio: 20/9) {
-        border-left: variables.$borderThinLightGray;
       }
     }
 
