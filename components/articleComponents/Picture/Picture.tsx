@@ -6,7 +6,7 @@ import CONSTANTS from "../../../helpers/constants.json";
 
 type PictureProps = {
   picture: SanityImage;
-  width?: number;
+  width: number;
   float?: PictureFloat;
   source?: string;
   sourceLink?: string;
@@ -28,13 +28,13 @@ const Picture: FC<PictureProps> = ({
   source,
   sourceLink,
 }) => {
-  const floatLeft = useMemo(
+  const floatLeft = useMemo<boolean>(
     () =>
       width < CONSTANTS.PICTURE_MAX_WIDTH &&
       float === CONSTANTS.PICTURE_FLOAT.LEFT,
     [],
   );
-  const floatRight = useMemo(
+  const floatRight = useMemo<boolean>(
     () =>
       width < CONSTANTS.PICTURE_MAX_WIDTH &&
       float === CONSTANTS.PICTURE_FLOAT.RIGHT,

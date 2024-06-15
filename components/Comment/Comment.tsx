@@ -46,14 +46,17 @@ const Comment: FC<CommentProps> = ({
 }) => {
   const [showMore, setShowMore] = useState<boolean>(false);
   const [contentOverflowed, setContentOverflowed] = useState<boolean>(false);
-  const contentRef = useRef<HTMLParagraphElement>();
+  const contentRef = useRef<HTMLParagraphElement>(null);
 
   const clickShowMore = useCallback(() => {
     setShowMore(!showMore);
   }, [showMore]);
 
   useEffect(() => {
-    if (contentRef.current.scrollHeight > contentRef.current.clientHeight) {
+    if (
+      contentRef.current &&
+      contentRef.current.scrollHeight > contentRef.current.clientHeight
+    ) {
       setContentOverflowed(true);
     }
   }, [contentRef]);
@@ -64,11 +67,6 @@ const Comment: FC<CommentProps> = ({
       style={style}
     >
       <div className={styles.header}>
-        {/* <img
-          className={styles.avatar}
-          src={avatars[`avatar${avatar}`]}
-          alt="profile pic"
-        /> */}
         <PersonSharp className={styles.avatar} />
         <div className={styles.userInfo}>
           <b>{username}</b>

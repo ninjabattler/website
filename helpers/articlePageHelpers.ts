@@ -46,26 +46,6 @@ export const sendComment = async (
   }
 };
 
-export const addMarkdownToSelection = (
-  commentRef: any,
-  openingTag: string,
-  closingTag: string,
-  setCommentContent: Function,
-): void => {
-  if (commentRef.current) {
-    const text: string = commentRef.current.innerText;
-    const selection: Selection = window.getSelection();
-    const startText: string = text.slice(0, selection.anchorOffset);
-    const endText: string = text.slice(selection.focusOffset, text.length);
-    const markdown: string = `${openingTag}${text.slice(
-      selection.anchorOffset,
-      selection.focusOffset,
-    )}${closingTag}`;
-
-    setCommentContent(startText + markdown + endText);
-  }
-};
-
 export const styleText = (text: string): string => {
   const boldPattern: RegExp = new RegExp("(\\*{2}|_{2})(.*)(\\*{2}|_{2})", "g");
   const italicPattern: RegExp = new RegExp("(\\*|_)(.*)(\\*|_)", "g");
@@ -84,7 +64,9 @@ export const styleText = (text: string): string => {
   return `${styledText}`;
 };
 
-export const getTokenLength = (token) => {
+export const getTokenLength = (
+  token: string | { content: string | string[] },
+): number => {
   if (typeof token === "string") {
     return token.length;
   } else if (typeof token.content === "string") {

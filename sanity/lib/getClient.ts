@@ -1,6 +1,5 @@
 import { createClient } from "@sanity/client";
 import type { SanityClient } from "@sanity/client";
-import { cache } from "react";
 
 import { apiVersion, dataset, projectId, useCdn } from "../env";
 

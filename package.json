@@ -51,6 +51,8 @@
   },
   "devDependencies": {
     "@types/node": "^20.12.5",
+    "@types/prismjs": "^1.26.4",
+    "@types/three": "^0.165.0",
     "eslint": "^8.0.0",
     "eslint-config-next": "^14.1.4",
     "prettier": "^3.2.5",

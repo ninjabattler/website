@@ -58,7 +58,7 @@ const NavBar: ComponentType<{}> = () => {
         }}
       >
         <PersonSharp />
-        <span>{data ? data.user.name : "Nobody"}</span>
+        <span>{data && data.user ? data.user.name : "Nobody"}</span>
       </div>
 
       <div

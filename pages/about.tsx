@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../styles/About.module.scss";
 import Head from "next/head";
 
-export default function About(props) {
+export default function About() {
   return (
     <>
       <Head>

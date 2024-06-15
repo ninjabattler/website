@@ -27,7 +27,7 @@ export default function PostsPage({
     selectedPost ? true : false,
   );
 
-  const onSlideClick = useCallback((id, title, date) => {
+  const onSlideClick = useCallback((id: string) => {
     setPostSelected(true);
 
     axios({
@@ -80,7 +80,7 @@ export default function PostsPage({
                 key={i}
                 className={styles.slide}
                 onClick={() => {
-                  onSlideClick(post._id, post.title, post.date);
+                  onSlideClick(post._id);
                 }}
               >
                 {!showPost && (
@@ -91,8 +91,8 @@ export default function PostsPage({
                     id={post._id}
                     index={i}
                     hidden={postSelected}
-                    likes={post.likes}
-                    dislikes={post.dislikes}
+                    likes={post.likes || 0}
+                    dislikes={post.dislikes || 0}
                     // @ts-ignore
                     comments={post.comments}
                   />

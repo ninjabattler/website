@@ -26,7 +26,7 @@ export const articlesServerSideProps = async ({
   // Search title and optionally tags
   if (query.search !== undefined && typeof query.search === "string") {
     const searchQuery = query.search;
-    let tagsQuery = [];
+    let tagsQuery: string[] = [];
 
     if (query.tags && typeof query.tags === "string") {
       tagsQuery = query.tags.split(/,/g);
@@ -71,8 +71,11 @@ export const articlesServerSideProps = async ({
     // Move the last article to the front of the array
     // Swiper's coverflow effect pushes the second item to the front of the carousel,
     // so I haave to offset them for the first article to appear first
-    const lastArticle = articlesArray.pop();
-    articlesArray.unshift(lastArticle);
+    const lastArticle: ArticleData | undefined = articlesArray.pop();
+
+    if (lastArticle) {
+      articlesArray.unshift(lastArticle);
+    }
 
     return {
       props: {

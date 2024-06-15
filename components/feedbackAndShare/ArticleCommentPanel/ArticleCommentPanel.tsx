@@ -1,6 +1,5 @@
-import React, { FC, useEffect, useRef, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import styles from "./ArticleCommentPanel.module.scss";
-import noCommentMessages from "../../../constants/noCommentMessages.json";
 import LikePanel from "../LikePanel/LikePanel";
 import ShareBar from "../ShareBar/ShareBar";
 import Comment from "../../Comment/Comment";
@@ -30,12 +29,10 @@ export type ArticleCommentPanelProps = {
  */
 const ArticleCommentPanel: FC<ArticleCommentPanelProps> = ({
   articleData,
-  userId,
   url,
-  randomQuoteIndex,
 }) => {
   const [comments, setComments] = useState<PostCommentType[]>(
-    articleData.comments,
+    articleData.comments || [],
   );
   const [windowServer, setWindow] = useState<WindowServerType>({});
   const [showCommentPanel, setShowCommentPanel] = useState<boolean>(false);
@@ -60,9 +57,9 @@ const ArticleCommentPanel: FC<ArticleCommentPanelProps> = ({
     >
       <LikePanel
         articleId={articleData._id}
-        initialLikes={articleData.likes}
+        initialLikes={articleData.likes || 0}
         isCurrentlyLiked={articleData.isLiked}
-        initialDislikes={articleData.dislikes}
+        initialDislikes={articleData.dislikes || 0}
         isCurrentlyDisliked={articleData.isDisliked}
       />
 

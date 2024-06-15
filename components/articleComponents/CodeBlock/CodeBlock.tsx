@@ -19,7 +19,7 @@ type CodeBlockProps = {
 const CodeBlock: FC<CodeBlockProps> = ({ code, language, title = "" }) => {
   const [isCopiedToClipboard, setIsCopiedToClipboard] =
     useState<boolean>(false);
-  const codeRef = useRef<HTMLDivElement>();
+  const codeRef = useRef<HTMLDivElement>(null);
 
   const copyCodeToClipboard = useCallback(() => {
     navigator.clipboard.writeText(code);

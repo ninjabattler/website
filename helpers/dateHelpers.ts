@@ -13,21 +13,25 @@ const months = {
   "12": "December",
 };
 
-//Date format ex: 07, 23, 2022
-export const formatSqlDate = (date): string => {
-  const splitDate: string[] = date.split(", ");
-  const month: string = splitDate[0];
-  const day: string = splitDate[1];
-  const year: string = splitDate[2];
-
-  return `${months[month] || "January"}, ${day}, ${year}`;
-};
+type Month =
+  | "01"
+  | "02"
+  | "03"
+  | "04"
+  | "05"
+  | "06"
+  | "07"
+  | "08"
+  | "09"
+  | "10"
+  | "11"
+  | "12";
 
 //Date format ex: 2022-07-23
-export const formatSanityDate = (date): string => {
+export const formatSanityDate = (date: string): string => {
   const splitDate: string[] = date.split("-");
   const year: string = splitDate[0];
-  const month: string = splitDate[1];
+  const month: Month = splitDate[1] as Month;
   const day: string = splitDate[2];
 
   return `${months[month] || "January"}, ${day}, ${year}`;

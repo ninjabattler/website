@@ -19,7 +19,7 @@ const ArticlePage: FC<
       <ReviewPageHead
         title={articleData.title}
         description={articleData.description}
-        thumbnail={articleData.thumbnail.url}
+        thumbnail={articleData.thumbnail ? articleData.thumbnail.url : ""}
         url={url}
         primaryColour={articleData.colors.primary.hex}
         secondaryColour={
@@ -97,9 +97,9 @@ const ArticlePage: FC<
 
           <ArticleCommentPanel
             articleData={articleData}
-            randomQuoteIndex={randomQuoteIndex}
+            randomQuoteIndex={1}
             url={url}
-            userId={userId}
+            userId={userId || 0}
           />
         </div>
       </main>

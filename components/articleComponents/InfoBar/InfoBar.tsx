@@ -3,7 +3,7 @@ import styles from "./InfoBar.module.scss";
 import { CalendarMonthSharp } from "@mui/icons-material";
 import { formatSanityDate } from "../../../helpers/dateHelpers";
 import Tag from "./Tag/Tag";
-import Typewriter from "typewriter-effect/dist/core";
+import Typewriter, { TypewriterClass } from "typewriter-effect";
 
 export type InfoBarProps = {
   date: string;
@@ -23,20 +23,27 @@ const InfoBar: FC<InfoBarProps> = ({ date, tags }) => {
     setTimeout(() => {
       setShowDateIcon(true);
     }, 1500);
-
-    const typewriter = new Typewriter("#date", {
-      delay: 10,
-      cursor: "",
-      skipAddStyles: true,
-    });
-
-    typewriter.pauseFor(2000).typeString(formatSanityDate(date)).start();
   }, []);
 
   return (
     <div className={styles.infoBar}>
       {showDateIcon && <CalendarMonthSharp />}
-      <span id="date" className={styles.formattedDate}></span>
+
+      <span className={styles.formattedDate}>
+        <Typewriter
+          onInit={(typewriter: TypewriterClass) => {
+            typewriter
+              .pauseFor(2000)
+              .typeString(formatSanityDate(date))
+              .start();
+          }}
+          options={{
+            delay: 10,
+            cursor: "",
+            skipAddStyles: true,
+          }}
+        />
+      </span>
 
       <div className={styles.tags}>
         {tags.map((tag, i) => {

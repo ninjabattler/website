@@ -43,7 +43,7 @@ const ArticlesSearchBar: FC<ArticlesSearchBarProps> = ({
   const router = useRouter();
 
   const removeTag = useCallback(
-    (index) => {
+    (index: number) => {
       setTagsQuery(tagsQuery.filter((tag, i) => i !== index));
     },
     [tagsQuery],

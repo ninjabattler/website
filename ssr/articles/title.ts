@@ -7,9 +7,9 @@ import { getSession } from "next-auth/react";
 
 export type ArticleServerSideData = {
   props: {
-    articleData?: ArticleData;
+    articleData: ArticleData;
     userId?: UserIdType;
-    url?: UrlType;
+    url: UrlType;
     randomQuoteIndex?: number;
   };
   notFound?: boolean;
@@ -43,7 +43,11 @@ export const articlePageServerSideProps = async ({
 
   if (!article) {
     return {
-      props: {},
+      props: {
+        articleData: article,
+        url: `https://ninjabattler.ca/articles/${params ? params.title : ""}`,
+        randomQuoteIndex,
+      },
       notFound: true,
     };
   }
@@ -51,7 +55,7 @@ export const articlePageServerSideProps = async ({
   return {
     props: {
       articleData: article,
-      url: `https://ninjabattler.ca/articles/${params.title}`,
+      url: `https://ninjabattler.ca/articles/${params ? params.title : ""}`,
       randomQuoteIndex,
     },
   };

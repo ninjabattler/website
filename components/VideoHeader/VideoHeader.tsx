@@ -1,8 +1,8 @@
-import React, { FC, useEffect } from "react";
+import React, { FC } from "react";
 import { TitleType } from "../../types";
 import InfoBar, { InfoBarProps } from "../articleComponents/InfoBar/InfoBar";
 import styles from "./VideoHeader.module.scss";
-import Typewriter from "typewriter-effect/dist/core";
+import Typewriter, { TypewriterClass } from "typewriter-effect";
 import ReviewPageBackground from "../backgrounds/ReviewPageBackground/ReviewPageBackground";
 
 type VideoHeaderProps = {
@@ -26,56 +26,53 @@ const VideoHeader: FC<VideoHeaderProps> = ({
   infoBarProps,
   spaceColour,
   starsColour,
-}) => {
-  useEffect(() => {
-    const typewriter = new Typewriter("#title", {
-      delay: 10,
-      cursor: "",
-      skipAddStyles: true,
-    });
+}) => (
+  <>
+    {/* Video */}
+    <div id={styles.videoContainer}>
+      {video ? (
+        <video loop muted autoPlay>
+          <source src={video} type="video/webm" />
+          <source src={video} type="video/ogg" />
+          <source src={video} type="video/mp4" />
+        </video>
+      ) : (
+        <ReviewPageBackground
+          spaceColour={spaceColour}
+          starsColour={starsColour}
+        />
+      )}
+    </div>
 
-    typewriter.pauseFor(1500).typeString(title).start();
-  }, []);
-
-  return (
-    <>
-      {/* Video */}
-      <div id={styles.videoContainer}>
-        {/* {!video.startsWith("htt") && <div id={styles.videoOverlay} />} */}
-
-        {video ? (
-          <video loop muted autoPlay>
-            <source src={video} type="video/webm" />
-            <source src={video} type="video/ogg" />
-            <source src={video} type="video/mp4" />
-          </video>
-        ) : (
-          <ReviewPageBackground
-            spaceColour={spaceColour}
-            starsColour={starsColour}
-          />
-        )}
+    {/* Title */}
+    <header className={styles.videoHeader}>
+      <div className={styles.spaceContainer}>
+        <div className={styles.space} />
+        <div className={`${styles.space} ${styles.gradient}`} />
       </div>
 
-      {/* Title */}
-      <header className={styles.videoHeader}>
-        <div className={styles.spaceContainer}>
-          <div className={styles.space} />
-          <div className={`${styles.space} ${styles.gradient}`} />
-        </div>
+      <div className={`${styles.bar} ${styles.dark}`} />
+      <div className={styles.glow} />
+      <div className={`${styles.bar} ${styles.light}`} />
 
-        <div className={`${styles.bar} ${styles.dark}`} />
-        <div className={styles.glow} />
-        <div className={`${styles.bar} ${styles.light}`} />
+      <h1 id="title">
+        <Typewriter
+          onInit={(typewriter: TypewriterClass) => {
+            typewriter.pauseFor(1500).typeString(title).start();
+          }}
+          options={{
+            delay: 10,
+            cursor: "",
+            skipAddStyles: true,
+          }}
+        />
+      </h1>
 
-        <h1 id="title"></h1>
-
-        <div className={styles.infoContainer}>
-          <InfoBar tags={infoBarProps.tags} date={infoBarProps.date} />
-        </div>
-      </header>
-    </>
-  );
-};
+      <div className={styles.infoContainer}>
+        <InfoBar tags={infoBarProps.tags} date={infoBarProps.date} />
+      </div>
+    </header>
+  </>
+);
 
 export default VideoHeader;

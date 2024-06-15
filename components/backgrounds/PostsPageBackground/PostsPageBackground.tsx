@@ -107,7 +107,7 @@ const PostsPageBackground: FC<{}> = () => {
       ringPlanetPieceUrls.forEach((url) => {
         gltfLoader.load(
           url,
-          (gltf) => {
+          (gltf: any) => {
             const ringPlanetPiece = gltf.scene;
 
             ringPlanetPiece.traverse((o: any) => {
@@ -133,7 +133,7 @@ const PostsPageBackground: FC<{}> = () => {
             scene.add(ringPlanetPiece);
           },
           undefined,
-          (error) => {
+          (error: Error) => {
             console.error(error);
           },
         );
@@ -146,6 +146,7 @@ const PostsPageBackground: FC<{}> = () => {
       scene.add(sunLight);
 
       // Post Processing Effects
+      // @ts-ignore
       const sunRays = new GodRaysEffect(camera, sun2, {
         height: 960,
         kernelSize: KernelSize.SMALL,

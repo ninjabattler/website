@@ -23,8 +23,12 @@ export default async function handler(
         return res.status(400).send("Missing userId");
       }
 
-      if (postId === undefined && articleId === undefined) {
-        return res.status(400).send("Missing postId or articleId");
+      if (postId === undefined) {
+        return res.status(400).send("Missing postId");
+      }
+
+      if (articleId === undefined) {
+        return res.status(400).send("Missing articleId");
       }
 
       // Delete and send the user's like/dislike

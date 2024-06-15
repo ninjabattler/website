@@ -7,11 +7,8 @@ import React, {
   SetStateAction,
 } from "react";
 import styles from "./CommentArea.module.scss";
-import {
-  getTokenLength,
-  sendComment,
-} from "../../../helpers/articlePageHelpers";
-import { PostIdType, UserIdType } from "../../../types";
+import { getTokenLength } from "../../../helpers/articlePageHelpers";
+import { PostIdType } from "../../../types";
 import { Editable, ReactEditor, Slate, withReact } from "slate-react";
 import { createEditor, Text, Editor } from "slate";
 import Prism from "prismjs";
@@ -24,7 +21,7 @@ import {
 import axios from "axios";
 
 // Adds markdown as a language to Prism
-// eslint-disable-next-line
+// @ts-ignore eslint-disable-next-line
 Prism.languages.markdown = Prism.languages.extend("markup", {}), Prism.languages.insertBefore("markdown", "prolog", { blockquote: { pattern: /^>(.*)$/gm, alias: "punctuation" }, code: [{ pattern: /^(?: {4}|\t).+/m, alias: "keyword" }, { pattern: /``.+?``|`[^`\n]+`/, alias: "keyword" }], title: [{ pattern: /\w+.*(?:\r?\n|\r)(?:==+|--+)/, alias: "important", inside: { punctuation: /==+$|--+$/ } }, { pattern: /(^\s*)#+.+/m, lookbehind: !0, alias: "important", inside: { punctuation: /^#+|#+$/ } }], hr: { pattern: /(^\s*)([*-])([\t ]*\2){2,}(?=\s*$)/m, lookbehind: !0, alias: "punctuation" }, list: { pattern: /(^\s*)(?:[*+-]|\d+\.)(?=[\t ].)/m, lookbehind: !0, alias: "punctuation" }, "url-reference": { pattern: /!?\[[^\]]+\]:[\t ]+(?:\S+|<(?:\\.|[^>\\])+>)(?:[\t ]+(?:"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\((?:\\.|[^)\\])*\)))?/, inside: { variable: { pattern: /^(!?\[)[^\]]+/, lookbehind: !0 }, string: /(?:"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\((?:\\.|[^)\\])*\))$/, punctuation: /^[\[\]!:]|[<>]/ }, alias: "url" }, bold: { pattern: /(^|[^\\])(\*\*|__)(?:(?:\r?\n|\r)(?!\r?\n|\r)|.)+?\2/, lookbehind: !0, inside: { punctuation: /^\*\*|^__|\*\*$|__$/ } }, italic: { pattern: /(^|[^\\])([*_])(?:(?:\r?\n|\r)(?!\r?\n|\r)|.)+?\2/, lookbehind: !0, inside: { punctuation: /^[*_]|[*_]$/ } }, url: { pattern: /!?\[[^\]]+\](?:\([^\s)]+(?:[\t ]+"(?:\\.|[^"\\])*")?\)| ?\[[^\]\n]*\])/, inside: { variable: { pattern: /(!?\[)[^\]]+(?=\]$)/, lookbehind: !0 }, string: { pattern: /"(?:\\.|[^"\\])*"(?=\)$)/ } } } }), Prism.languages.markdown.bold.inside.url = Prism.util.clone(Prism.languages.markdown.url), Prism.languages.markdown.italic.inside.url = Prism.util.clone(Prism.languages.markdown.url), Prism.languages.markdown.bold.inside.italic = Prism.util.clone(Prism.languages.markdown.italic), Prism.languages.markdown.italic.inside.bold = Prism.util.clone(Prism.languages.markdown.bold); // prettier-ignore
 
 interface CommentAreaProps {
@@ -62,33 +59,37 @@ const CommentArea: FC<CommentAreaProps> = ({
 
     try {
       const commentArea = document.getElementById("commentArea");
-      const commentContent = commentArea.innerText;
 
-      await axios({
-        method: "post",
-        url: `/api/comments/newComment`,
-        // @ts-ignore
-        data: {
-          content: commentContent,
+      if (commentArea) {
+        const commentContent = commentArea.innerText;
+
+        await axios({
+          method: "post",
+          url: `/api/comments/newComment`,
           // @ts-ignore
-          userId: data.user.id,
-          postId: postId || null,
-          articleId: articleId || null,
-        },
-        headers: { "Content-Type": "application/json" },
-      });
+          data: {
+            content: commentContent,
+            // @ts-ignore
+            userId: data.user.id,
+            postId: postId || null,
+            articleId: articleId || null,
+          },
+          headers: { "Content-Type": "application/json" },
+        });
 
-      const newComment = [
-        {
-          id: "",
-          user: data.user,
-          _createdAt: new Date().toISOString(),
-          content: commentContent,
-          byCurrentUser: true,
-        },
-      ];
+        const newComment = [
+          {
+            id: "",
+            // @ts-ignore
+            user: data.user,
+            _createdAt: new Date().toISOString(),
+            content: commentContent,
+            byCurrentUser: true,
+          },
+        ];
 
-      setComments(newComment.concat(comments));
+        setComments(newComment.concat(comments));
+      }
 
       setCommenting(false);
     } catch (err) {
@@ -97,8 +98,8 @@ const CommentArea: FC<CommentAreaProps> = ({
     }
   }, [data, articleId, postId]);
 
-  const decorate = useCallback(([node, path]) => {
-    const ranges = [];
+  const decorate = useCallback(([node, path]: [any, any]) => {
+    const ranges: any[] = [];
     if (!Text.isText(node)) {
       return ranges;
     }
@@ -107,7 +108,9 @@ const CommentArea: FC<CommentAreaProps> = ({
     let start = 0;
 
     for (const token of tokens) {
-      const length = getTokenLength(token);
+      const length = getTokenLength(
+        token as string | { content: string | string[] },
+      );
       const end = start + length;
 
       if (typeof token !== "string") {
@@ -128,6 +131,7 @@ const CommentArea: FC<CommentAreaProps> = ({
     (editor: ReactEditor, markStart: string, markEnd: string) => {
       Editor.insertText(
         editor,
+        // @ts-ignore
         `${markStart}${Editor.string(editor, editor.selection)}${markEnd}`,
       );
     },
