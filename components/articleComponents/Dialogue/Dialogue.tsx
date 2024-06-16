@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 import styles from "./Dialogue.module.scss";
-import { SanityImage } from "../../../types";
 import Image from "next/image";
 
 type DialogueProps = {

@@ -1,11 +1,10 @@
 import axios from "axios";
 import { CommentProps } from "../components/Comment/Comment";
-import { PostIdType, UserIdType } from "../types";
 
 export const like = async (
   like: boolean,
-  postId: PostIdType,
-  userId: UserIdType,
+  postId: string,
+  userId: string,
   cb: Function,
 ): Promise<void> => {
   await axios({
@@ -19,8 +18,8 @@ export const like = async (
 };
 
 export const sendComment = async (
-  params: { id: PostIdType; content: string },
-  userId: UserIdType,
+  params: { id: string; content: string },
+  userId: string,
   comments: CommentProps[],
   setCommenting: Function,
   cb: Function,

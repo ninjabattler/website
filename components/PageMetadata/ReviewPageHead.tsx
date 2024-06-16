@@ -1,16 +1,15 @@
 import React, { FC } from "react";
-import { ColourType, TitleType, UrlType } from "../../types";
 import Head from "next/head";
 
 type ReviewPageHeadProps = {
-  title: TitleType;
+  title: string;
   description: string;
-  thumbnail: UrlType;
-  url: UrlType;
-  primaryColour: ColourType;
-  secondaryColour: ColourType;
-  spaceColour: ColourType;
-  starsColour: ColourType;
+  thumbnail: string;
+  url: string;
+  primaryColour: string;
+  secondaryColour: string;
+  spaceColour: string;
+  starsColour: string;
 };
 
 /**

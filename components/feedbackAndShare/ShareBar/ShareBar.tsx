@@ -1,13 +1,12 @@
 import React, { FC, useCallback } from "react";
 import styles from "./ShareBar.module.scss";
 import { Reddit, X, LinkedIn, LinkSharp, Facebook } from "@mui/icons-material";
-import { TitleType, UrlType, WindowServerType } from "../../../types";
 
-interface ShareBarProps {
-  title: TitleType;
+type ShareBarProps = {
+  title: string;
   windowServer: WindowServerType;
-  articleLink: UrlType;
-}
+  articleLink: string;
+};
 
 /**
  * A panel shown on posts, used to like/dislike them and show the current amount of likes/dislikes

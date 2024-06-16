@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import { TitleType } from "../../types";
 import InfoBar, { InfoBarProps } from "../articleComponents/InfoBar/InfoBar";
 import styles from "./VideoHeader.module.scss";
 import Typewriter, { TypewriterClass } from "typewriter-effect";
@@ -7,7 +6,7 @@ import ReviewPageBackground from "../backgrounds/ReviewPageBackground/ReviewPage
 
 type VideoHeaderProps = {
   video: string | null;
-  title: TitleType;
+  title: string;
   infoBarProps: InfoBarProps;
   spaceColour?: string;
   starsColour?: string;

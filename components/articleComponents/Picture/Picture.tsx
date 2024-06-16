@@ -1,7 +1,6 @@
 import React, { FC, useMemo } from "react";
 import styles from "./Picture.module.scss";
 import Image from "next/image";
-import { PictureFloat, SanityImage } from "../../../types";
 import CONSTANTS from "../../../helpers/constants.json";
 
 type PictureProps = {

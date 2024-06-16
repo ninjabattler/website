@@ -3,7 +3,6 @@ import styles from "../../styles/ArticlesPage.module.scss";
 import Carousel from "../../components/Carousel/Carousel";
 import { articlesServerSideProps } from "../../ssr/articles/index";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import { AppData, SanityArticlesSearchResult } from "../../types";
 import ArticlesPageHead from "../../components/PageMetadata/ArticlesPageHead";
 import ArticlesPageBackground from "../../components/backgrounds/ArticlesPageBackground/ArticlesPageBackground";
 import SearchResultsCarousel from "../../components/SearchResultsCarousel/SearchResultsCarousel";

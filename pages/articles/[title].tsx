@@ -3,7 +3,6 @@ import styles from "../../styles/ReviewPage.module.scss";
 import VideoHeader from "../../components/VideoHeader/VideoHeader";
 import { articlePageServerSideProps } from "../../ssr/articles/title";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import { AppData } from "../../types";
 import ArticleContent from "../../components/articleComponents/ArticleContent/ArticleContent";
 import ArticleCommentPanel from "../../components/feedbackAndShare/ArticleCommentPanel/ArticleCommentPanel";
 import ReviewPageHead from "../../components/PageMetadata/ReviewPageHead";

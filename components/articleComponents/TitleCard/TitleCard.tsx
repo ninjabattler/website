@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import styles from "./TitleCard.module.scss";
 import Image from "next/image";
-import { SanityImage } from "../../../types";
 
 type TitleCardProps = {
   image?: SanityImage;

@@ -5,7 +5,6 @@ import {
   getMostRecentArticlesQuery,
   searchArticlesQuery,
 } from "../../sanity/lib/queries";
-import { SanityArticlesSearchResult } from "../../types";
 
 export type ArticlesServerProps = {
   props: {

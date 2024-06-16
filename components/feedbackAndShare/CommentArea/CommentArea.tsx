@@ -8,7 +8,6 @@ import React, {
 } from "react";
 import styles from "./CommentArea.module.scss";
 import { getTokenLength } from "../../../helpers/articlePageHelpers";
-import { PostIdType } from "../../../types";
 import { Editable, ReactEditor, Slate, withReact } from "slate-react";
 import { createEditor, Text, Editor, Location } from "slate";
 import Prism from "prismjs";
@@ -27,8 +26,8 @@ Prism.languages.markdown = Prism.languages.extend("markup", {}), Prism.languages
 interface CommentAreaProps {
   comments: Array<any>;
   setComments: Dispatch<SetStateAction<Array<any>>>;
-  postId?: PostIdType;
-  articleId?: PostIdType;
+  postId?: string;
+  articleId?: string;
 }
 
 /**

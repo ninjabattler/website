@@ -8,7 +8,6 @@ import {
   ThumbDownSharp,
   ThumbUpSharp,
 } from "@mui/icons-material";
-import { SanityArticlesSearchResult } from "../../types";
 import { formatSanityDate } from "../../helpers/dateHelpers";
 
 /**

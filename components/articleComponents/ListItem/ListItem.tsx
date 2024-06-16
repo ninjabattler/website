@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import { SanityImage } from "../../../types";
 import styles from "./ListItem.module.scss";
 import Image from "next/image";
 

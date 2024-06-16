@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import styles from "./SubtitleCard.module.scss";
 import Image from "next/image";
-import { SanityImage } from "../../../types";
 
 type SubtitleCardProps = {
   image: SanityImage;

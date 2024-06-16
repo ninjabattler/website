@@ -1,9 +1,8 @@
 import React, { FC } from "react";
-import { ColourType, TitleType, UrlType } from "../../types";
 import Head from "next/head";
 
 type PostsPageHeadProps = {
-  title: TitleType | null;
+  title: string | null;
 };
 
 /**

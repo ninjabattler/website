@@ -1,6 +1,5 @@
 import styles from "../styles/HomePage.module.scss";
 import React, { FC } from "react";
-import { AppData } from "../types";
 import HomePageHead from "../components/PageMetadata/HomePageHead";
 import ReviewPageBackground from "../components/backgrounds/ReviewPageBackground/ReviewPageBackground";
 

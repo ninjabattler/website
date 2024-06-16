@@ -3,7 +3,6 @@ import styles from "./ArticleCommentPanel.module.scss";
 import LikePanel from "../LikePanel/LikePanel";
 import ShareBar from "../ShareBar/ShareBar";
 import Comment from "../../Comment/Comment";
-import { ArticleData, PostCommentType, WindowServerType } from "../../../types";
 import { useSession } from "next-auth/react";
 import CommentArea from "../CommentArea/CommentArea";
 
@@ -28,7 +27,7 @@ const ArticleCommentPanel: FC<ArticleCommentPanelProps> = ({
   articleData,
   url,
 }) => {
-  const [comments, setComments] = useState<PostCommentType[]>(
+  const [comments, setComments] = useState<CommentData[]>(
     articleData.comments || [],
   );
   const [windowServer, setWindow] = useState<WindowServerType>({});

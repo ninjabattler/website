@@ -3,7 +3,6 @@ import PostCard from "../components/PostCard/PostCard";
 import styles from "../styles/PostsPage.module.scss";
 import { postsServerSideProps } from "../ssr/posts";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import { AppData, PostData } from "../types";
 // @ts-expect-error - CommonJs warning
 import { Swiper, SwiperSlide } from "swiper/react";
 // @ts-expect-error - CommonJs warning
@@ -112,7 +111,7 @@ export default function PostsPage({
           id={selectedPostData._id}
           hide={!showPost}
           title={selectedPostData.title}
-          userId={1}
+          userId={""}
           goBack={goBack}
         />
       </main>

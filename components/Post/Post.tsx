@@ -1,13 +1,6 @@
 import React, { useState, ReactElement, useEffect } from "react";
 import styles from "./Post.module.scss";
 import Comment from "../Comment/Comment";
-import {
-  ArticleJson,
-  PostIdType,
-  TitleType,
-  UserIdType,
-  WindowServerType,
-} from "../../types";
 import { TypedObject } from "sanity";
 import { PortableText } from "next-sanity";
 import Picture from "../articleComponents/Picture/Picture";
@@ -19,10 +12,10 @@ import Link from "next/link";
 import CommentArea from "../feedbackAndShare/CommentArea/CommentArea";
 
 type PostProps = {
-  title: TitleType;
-  id: PostIdType;
-  userId: UserIdType;
-  content: ArticleJson | TypedObject[];
+  title: string;
+  id: string;
+  userId: string;
+  content: TypedObject[];
   comments: Array<any>;
   likes: number;
   dislikes: number;

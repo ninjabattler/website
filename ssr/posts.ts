@@ -1,5 +1,4 @@
 import { GetServerSidePropsContext } from "next";
-import { SanityPostsResult, UserData, UserIdType } from "../types";
 import { getCachedClient } from "../sanity/lib/getClient";
 import { getSession } from "next-auth/react";
 import { getAllPostsQuery, getPostQuery } from "../sanity/lib/queries";

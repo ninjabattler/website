@@ -1,5 +1,4 @@
 import { GetServerSidePropsContext } from "next";
-import { ArticleData } from "../types";
 import { getCachedClient } from "../sanity/lib/getClient";
 import { getSitemapDataQuery } from "../sanity/lib/queries";
 

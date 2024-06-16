@@ -1,5 +1,4 @@
 import noCommentMessages from "../../constants/noCommentMessages.json";
-import { ArticleData, UrlType, UserIdType } from "../../types";
 import { GetServerSidePropsContext } from "next";
 import { getCachedClient } from "../../sanity/lib/getClient";
 import { getArticleQuery } from "../../sanity/lib/queries";
@@ -8,8 +7,8 @@ import { getSession } from "next-auth/react";
 export type ArticleServerSideData = {
   props: {
     articleData: ArticleData;
-    userId?: UserIdType;
-    url: UrlType;
+    userId?: string;
+    url: string;
     randomQuoteIndex?: number;
   };
   notFound?: boolean;

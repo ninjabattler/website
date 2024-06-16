@@ -1,6 +1,5 @@
 import React, { FC, useCallback, useEffect, useState } from "react";
 import styles from "./PostCard.module.scss";
-import { SanityPostsResult } from "../../types";
 import moment from "moment";
 import { CommentSharp, ThumbsUpDownSharp } from "@mui/icons-material";
 import Link from "next/link";

@@ -1,13 +1,12 @@
 import React, { FC, useCallback, useMemo, useState } from "react";
 import styles from "./LikePanel.module.scss";
 import { ThumbUpSharp, ThumbDownSharp } from "@mui/icons-material";
-import { PostIdType } from "../../../types";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 
 interface LikePanelProps {
-  postId?: PostIdType;
-  articleId?: PostIdType;
+  postId?: string;
+  articleId?: string;
   initialLikes: number;
   isCurrentlyLiked: boolean;
   initialDislikes: number;

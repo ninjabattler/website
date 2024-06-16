@@ -1,7 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { getCachedClient } from "../../../sanity/lib/getClient";
 import { searchArticlesQuery } from "../../../sanity/lib/queries";
-import { SanityArticlesSearchResult } from "../../../types";
 
 /**
  * Searches all articles with a tag and search query and returns the results

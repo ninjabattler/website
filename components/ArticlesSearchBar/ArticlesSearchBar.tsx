@@ -11,7 +11,6 @@ import { SearchOffSharp, SearchSharp } from "@mui/icons-material";
 import SearchTag from "./SearchTag/SearchTag";
 import axios from "axios";
 import { useRouter } from "next/router";
-import { SanityArticlesSearchResult } from "../../types";
 
 type ArticlesSearchBarProps = {
   searchResults: boolean;

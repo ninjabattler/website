@@ -4,7 +4,6 @@ import styles from "./Carousel.module.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
 // @ts-expect-error - CommonJs warning
 import { EffectCoverflow } from "swiper/modules";
-import { SanityArticlesSearchResult } from "../../types";
 import ArticleCard from "../ArticleCard/ArticleCard";
 
 type CarouselProps = {
