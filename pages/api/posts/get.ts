@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { getCachedClient } from "../../../sanity/lib/getClient";
-import { groq } from "next-sanity";
 import { getSession } from "next-auth/react";
 import { getPostQuery } from "../../../sanity/lib/queries";
 
@@ -28,10 +27,9 @@ export default async function handler(
 
       // Check if a user is logged in and set the "userId" for the query if so
       const session = await getSession({ req });
-      let userId = null;
+      let userId;
 
       if (session && session.user) {
-        // @ts-ignore
         userId = session.user.id;
       }
 

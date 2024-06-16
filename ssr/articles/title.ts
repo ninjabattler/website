@@ -26,10 +26,10 @@ export const articlePageServerSideProps = async ({
   );
   const title: string = query.title as string;
   const session = await getSession({ req });
-  let userId = null;
+  let userId;
 
   if (session && session.user) {
-    // @ts-ignore
+    //
     userId = session.user.id;
   }
 

@@ -11,8 +11,8 @@ import {
   PointLight,
   MeshToonMaterial,
 } from "three";
-// @ts-ignore
-import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+// @ts-expect-error - CommonJs warning
+import { GLTF, GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import {
   BloomEffect,
   ScanlineEffect,
@@ -112,7 +112,7 @@ const ReviewPageBackground: FC<ReviewPageBackgroundProps> = ({
       scene.add(sun2);
 
       // Post Processing Effects
-      // @ts-ignore
+      // @ts-expect-error
       const sunRays = new GodRaysEffect(camera, sun2, {
         height: 960,
         kernelSize: KernelSize.SMALL,

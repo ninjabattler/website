@@ -1,12 +1,14 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import styles from "./SearchResultsCarousel.module.scss";
+// @ts-expect-error - CommonJs warning
 import { Swiper, SwiperSlide } from "swiper/react";
+// @ts-expect-error - CommonJs warning
 import { EffectCreative } from "swiper/modules";
-import { ArticleData } from "../../types";
+import { SanityArticlesSearchResult } from "../../types";
 import ArticleCard from "../ArticleCard/ArticleCard";
 
 type SearchResultsCarouselProps = {
-  articles: ArticleData[];
+  articles: SanityArticlesSearchResult[];
   hidden: boolean;
 };
 
@@ -19,38 +21,46 @@ type SearchResultsCarouselProps = {
 const SearchResultsCarousel: FC<SearchResultsCarouselProps> = ({
   articles,
   hidden,
-}) => {
-  return (
-    <section
-      className={`${styles.searchResultsCarousel} ${hidden ? styles.hidden : ""}`}
+}) => (
+  <section
+    className={`${styles.searchResultsCarousel} ${hidden ? styles.hidden : ""}`}
+  >
+    <Swiper
+      className={styles.swiper}
+      effect="creative"
+      modules={[EffectCreative]}
+      direction="vertical"
+      creativeEffect={{
+        prev: {
+          scale: 0.9,
+          translate: [0, -250, -1],
+        },
+        next: {
+          scale: 0.9,
+          translate: [0, 250, -1],
+        },
+      }}
+      mousewheel={true}
     >
-      <Swiper
-        className={styles.swiper}
-        effect="creative"
-        modules={[EffectCreative]}
-        direction="vertical"
-        creativeEffect={{
-          prev: {
-            scale: 0.9,
-            translate: [0, -250, -1],
-          },
-          next: {
-            scale: 0.9,
-            translate: [0, 250, -1],
-          },
-        }}
-        mousewheel={true}
-      >
-        {articles.map((article, i) => {
-          return (
-            <SwiperSlide key={i} className={styles.slide}>
-              <ArticleCard article={article} />
-            </SwiperSlide>
-          );
-        })}
-      </Swiper>
-    </section>
-  );
-};
+      {articles.map((article, i) => {
+        return (
+          <SwiperSlide key={i} className={styles.slide}>
+            <ArticleCard
+              title={article.title}
+              slug={article.slug}
+              date={article.date}
+              thumbnail={article.thumbnail}
+              comments={article.comments}
+              likes={article.likes}
+              dislikes={article.dislikes}
+              tags={article.tags}
+              colors={article.colors}
+            />
+          </SwiperSlide>
+        );
+      })}
+    </Swiper>
+  </section>
+);
 
 export default SearchResultsCarousel;

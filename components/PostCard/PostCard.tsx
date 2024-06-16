@@ -1,29 +1,17 @@
 import React, { FC, useCallback, useEffect, useState } from "react";
 import styles from "./PostCard.module.scss";
-import { ArticleJson, PostIdType, TitleType, UserIdType } from "../../types";
+import { SanityPostsResult } from "../../types";
 import moment from "moment";
-import { TypedObject } from "sanity";
 import { CommentSharp, ThumbsUpDownSharp } from "@mui/icons-material";
 import Link from "next/link";
 
-type PostCardProps = {
-  title: TitleType;
-  date: string;
-  comments: number;
-  id: PostIdType;
-  index: number;
-  hidden: boolean;
-  likes: number;
-  dislikes: number;
-};
-
-const PostCard: FC<PostCardProps> = ({
-  id,
+const PostCard: FC<SanityPostsResult> = ({
+  _id,
   title,
   date,
+  comments,
   index,
   hidden,
-  comments,
   likes,
   dislikes,
 }) => {
@@ -45,7 +33,7 @@ const PostCard: FC<PostCardProps> = ({
 
   return (
     <Link
-      href={`/posts?p=${id}`}
+      href={`/posts?p=${_id}`}
       onClick={onClick}
       className={`${styles.postCard} ${(visible && !hidden) || selected ? styles.visible : ""} ${selected ? styles.selected : ""}`}
       shallow

@@ -5,7 +5,9 @@ import "swiper/css/bundle";
 import { NextRouter, useRouter } from "next/router";
 import { AppProps } from "next/app";
 import "highlight.js/styles/vs2015.css";
+// @ts-expect-error - CommonJs warning
 import { Mousewheel } from "swiper/modules";
+// @ts-expect-error - CommonJs warning
 import Swiper from "swiper";
 import { SessionProvider } from "next-auth/react";
 import { Russo_One, Righteous } from "next/font/google";

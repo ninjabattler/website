@@ -8,10 +8,7 @@ import Underline from "../Underline/Underline";
 import Dialogue from "../Dialogue/Dialogue";
 import SubtitleCard from "../SubtitleCard/SubtitleCard";
 import ListItem from "../ListItem/ListItem";
-import dynamic from "next/dynamic";
-const CodeBlock = dynamic(() => import("../CodeBlock/CodeBlock"), {
-  loading: () => <></>,
-});
+import CodeBlock from "../CodeBlock/CodeBlock";
 
 type ArticleContentProps = {
   content: any[];

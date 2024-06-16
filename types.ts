@@ -13,8 +13,7 @@ export type CommentIdType = number;
 export type WindowServerType =
   | (Window & typeof globalThis)
   | { innerWidth?: number; location?: string };
-export type PostCommentType = CommentData &
-  UserData & { formatteddate?: string };
+export type PostCommentType = CommentData;
 export type IpType = string | null;
 export type ArticleJsonItemType = string;
 export type ArticleJsonItemContent = string;
@@ -135,13 +134,12 @@ export interface AppData {
 }
 
 export interface CommentData {
-  id: CommentIdType;
+  _id: CommentIdType;
   content: ContentType;
   _createdAt: string;
-  date: SqlDateType;
   post_id: PostIdType;
-  user_id: UserIdType;
-  comment_id: CommentIdType;
+  user: UserData;
+  byCurrentUser: boolean;
 }
 
 export interface ArticleData {
@@ -197,9 +195,8 @@ export interface PostData extends ArticleData {
 }
 
 export interface UserData {
-  id: number;
-  ip: string | null;
-  username: string;
+  _id: string;
+  name: string;
   avatar: number;
 }
 
@@ -210,3 +207,33 @@ export interface SanityImage {
   height: number;
   alt: string;
 }
+
+export type SanityColors = {
+  primary: string;
+  secondary: string;
+  space: string;
+  stars: string;
+};
+
+export type SanityArticlesSearchResult = {
+  title: string;
+  slug: string;
+  date: string;
+  thumbnail: SanityImage;
+  comments: number;
+  likes: number;
+  dislikes: number;
+  tags: string[];
+  colors: SanityColors;
+};
+
+export type SanityPostsResult = {
+  _id: PostIdType;
+  title: TitleType;
+  date: string;
+  comments: number;
+  index: number;
+  hidden?: boolean;
+  likes: number;
+  dislikes: number;
+};

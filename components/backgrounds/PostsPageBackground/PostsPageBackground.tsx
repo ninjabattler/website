@@ -11,8 +11,8 @@ import {
   PointLight,
   MeshToonMaterial,
 } from "three";
-// @ts-ignore
-import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+// @ts-expect-error - CommonJs warning
+import { GLTF, GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import {
   BloomEffect,
   ScanlineEffect,
@@ -107,7 +107,7 @@ const PostsPageBackground: FC<{}> = () => {
       ringPlanetPieceUrls.forEach((url) => {
         gltfLoader.load(
           url,
-          (gltf: any) => {
+          (gltf: GLTF) => {
             const ringPlanetPiece = gltf.scene;
 
             ringPlanetPiece.traverse((o: any) => {
@@ -133,7 +133,7 @@ const PostsPageBackground: FC<{}> = () => {
             scene.add(ringPlanetPiece);
           },
           undefined,
-          (error: Error) => {
+          (error) => {
             console.error(error);
           },
         );
@@ -146,7 +146,7 @@ const PostsPageBackground: FC<{}> = () => {
       scene.add(sunLight);
 
       // Post Processing Effects
-      // @ts-ignore
+      // @ts-expect-error
       const sunRays = new GodRaysEffect(camera, sun2, {
         height: 960,
         kernelSize: KernelSize.SMALL,

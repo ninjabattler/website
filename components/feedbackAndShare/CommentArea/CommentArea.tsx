@@ -10,7 +10,7 @@ import styles from "./CommentArea.module.scss";
 import { getTokenLength } from "../../../helpers/articlePageHelpers";
 import { PostIdType } from "../../../types";
 import { Editable, ReactEditor, Slate, withReact } from "slate-react";
-import { createEditor, Text, Editor } from "slate";
+import { createEditor, Text, Editor, Location } from "slate";
 import Prism from "prismjs";
 import { SvgIcon } from "@mui/material";
 import { useSession } from "next-auth/react";
@@ -21,7 +21,7 @@ import {
 import axios from "axios";
 
 // Adds markdown as a language to Prism
-// @ts-ignore eslint-disable-next-line
+// @ts-expect-error eslint-disable-next-line
 Prism.languages.markdown = Prism.languages.extend("markup", {}), Prism.languages.insertBefore("markdown", "prolog", { blockquote: { pattern: /^>(.*)$/gm, alias: "punctuation" }, code: [{ pattern: /^(?: {4}|\t).+/m, alias: "keyword" }, { pattern: /``.+?``|`[^`\n]+`/, alias: "keyword" }], title: [{ pattern: /\w+.*(?:\r?\n|\r)(?:==+|--+)/, alias: "important", inside: { punctuation: /==+$|--+$/ } }, { pattern: /(^\s*)#+.+/m, lookbehind: !0, alias: "important", inside: { punctuation: /^#+|#+$/ } }], hr: { pattern: /(^\s*)([*-])([\t ]*\2){2,}(?=\s*$)/m, lookbehind: !0, alias: "punctuation" }, list: { pattern: /(^\s*)(?:[*+-]|\d+\.)(?=[\t ].)/m, lookbehind: !0, alias: "punctuation" }, "url-reference": { pattern: /!?\[[^\]]+\]:[\t ]+(?:\S+|<(?:\\.|[^>\\])+>)(?:[\t ]+(?:"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\((?:\\.|[^)\\])*\)))?/, inside: { variable: { pattern: /^(!?\[)[^\]]+/, lookbehind: !0 }, string: /(?:"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\((?:\\.|[^)\\])*\))$/, punctuation: /^[\[\]!:]|[<>]/ }, alias: "url" }, bold: { pattern: /(^|[^\\])(\*\*|__)(?:(?:\r?\n|\r)(?!\r?\n|\r)|.)+?\2/, lookbehind: !0, inside: { punctuation: /^\*\*|^__|\*\*$|__$/ } }, italic: { pattern: /(^|[^\\])([*_])(?:(?:\r?\n|\r)(?!\r?\n|\r)|.)+?\2/, lookbehind: !0, inside: { punctuation: /^[*_]|[*_]$/ } }, url: { pattern: /!?\[[^\]]+\](?:\([^\s)]+(?:[\t ]+"(?:\\.|[^"\\])*")?\)| ?\[[^\]\n]*\])/, inside: { variable: { pattern: /(!?\[)[^\]]+(?=\]$)/, lookbehind: !0 }, string: { pattern: /"(?:\\.|[^"\\])*"(?=\)$)/ } } } }), Prism.languages.markdown.bold.inside.url = Prism.util.clone(Prism.languages.markdown.url), Prism.languages.markdown.italic.inside.url = Prism.util.clone(Prism.languages.markdown.url), Prism.languages.markdown.bold.inside.italic = Prism.util.clone(Prism.languages.markdown.italic), Prism.languages.markdown.italic.inside.bold = Prism.util.clone(Prism.languages.markdown.bold); // prettier-ignore
 
 interface CommentAreaProps {
@@ -66,11 +66,9 @@ const CommentArea: FC<CommentAreaProps> = ({
         await axios({
           method: "post",
           url: `/api/comments/newComment`,
-          // @ts-ignore
           data: {
             content: commentContent,
-            // @ts-ignore
-            userId: data.user.id,
+            userId: data && data.user ? data.user.id : null,
             postId: postId || null,
             articleId: articleId || null,
           },
@@ -80,8 +78,7 @@ const CommentArea: FC<CommentAreaProps> = ({
         const newComment = [
           {
             id: "",
-            // @ts-ignore
-            user: data.user,
+            user: data && data.user ? data.user : null,
             _createdAt: new Date().toISOString(),
             content: commentContent,
             byCurrentUser: true,
@@ -131,8 +128,7 @@ const CommentArea: FC<CommentAreaProps> = ({
     (editor: ReactEditor, markStart: string, markEnd: string) => {
       Editor.insertText(
         editor,
-        // @ts-ignore
-        `${markStart}${Editor.string(editor, editor.selection)}${markEnd}`,
+        `${markStart}${Editor.string(editor, editor.selection as Location)}${markEnd}`,
       );
     },
     [Editor],

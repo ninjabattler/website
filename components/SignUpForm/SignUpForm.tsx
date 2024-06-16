@@ -37,7 +37,6 @@ const SignUpForm: FC<SignUpFormProps> = ({ signup, show }) => {
           await axios({
             method: "post",
             url: `/api/sanity/userDetails/create`,
-            // @ts-ignore
             data: { userId: newUser.id, username: newUser.name },
             headers: { "Content-Type": "application/json" },
           });

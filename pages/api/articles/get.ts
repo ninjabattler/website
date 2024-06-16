@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { getCachedClient } from "../../../sanity/lib/getClient";
 import { searchArticlesQuery } from "../../../sanity/lib/queries";
+import { SanityArticlesSearchResult } from "../../../types";
 
 /**
  * Searches all articles with a tag and search query and returns the results
@@ -35,7 +36,7 @@ export default async function handler(
       }
 
       // Grab and send the articles
-      const articles = await getCachedClient()(
+      const articles: SanityArticlesSearchResult = await getCachedClient()(
         searchArticlesQuery(
           searchQuery.toLowerCase(),
           tagsQuery ? tagsQuery.split(",") : [],

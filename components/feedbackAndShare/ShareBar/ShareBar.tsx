@@ -1,13 +1,6 @@
 import React, { FC, useCallback } from "react";
 import styles from "./ShareBar.module.scss";
-import {
-  Reddit,
-  X,
-  LinkedIn,
-  LinkSharp,
-  Facebook,
-  Print,
-} from "@mui/icons-material";
+import { Reddit, X, LinkedIn, LinkSharp, Facebook } from "@mui/icons-material";
 import { TitleType, UrlType, WindowServerType } from "../../../types";
 
 interface ShareBarProps {

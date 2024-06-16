@@ -3,25 +3,20 @@ import styles from "./Post.module.scss";
 import Comment from "../Comment/Comment";
 import {
   ArticleJson,
-  IpType,
   PostIdType,
   TitleType,
   UserIdType,
   WindowServerType,
 } from "../../types";
-import dynamic from "next/dynamic";
 import { TypedObject } from "sanity";
 import { PortableText } from "next-sanity";
 import Picture from "../articleComponents/Picture/Picture";
 import Spoiler from "../articleComponents/Spoiler/Spoiler";
-import { ArrowBackIosNewSharp, CalendarMonthSharp } from "@mui/icons-material";
+import { ArrowBackIosNewSharp } from "@mui/icons-material";
 import LikePanel from "../feedbackAndShare/LikePanel/LikePanel";
 import ShareBar from "../feedbackAndShare/ShareBar/ShareBar";
 import Link from "next/link";
-const CommentArea = dynamic(
-  () => import("../feedbackAndShare/CommentArea/CommentArea"),
-  { loading: () => <></> },
-);
+import CommentArea from "../feedbackAndShare/CommentArea/CommentArea";
 
 type PostProps = {
   title: TitleType;

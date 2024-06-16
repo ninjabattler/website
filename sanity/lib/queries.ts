@@ -249,7 +249,12 @@ export const getMostRecentArticlesQuery = (): string => {
     title,
     slug,
     date,
-    colors,
+    "colors": {
+      "primary": colors.primary.hex,
+      "secondary": colors.primary.hex,
+      "space": colors.primary.hex,
+      "stars": colors.primary.hex
+    }, 
     "tags": tags[] -> tag,
     thumbnail {
       "url": asset->url,
@@ -288,7 +293,12 @@ export const searchArticlesQuery = (
     title,
     slug,
     date,
-    colors,
+    "colors": {
+      "primary": colors.primary.hex,
+      "secondary": colors.primary.hex,
+      "space": colors.primary.hex,
+      "stars": colors.primary.hex
+    }, 
     "tags": tags[] -> tag,
     thumbnail {
       "url": asset->url,

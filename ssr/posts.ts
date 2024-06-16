@@ -1,13 +1,12 @@
 import { GetServerSidePropsContext } from "next";
-import { PostData, UserData, UserIdType } from "../types";
+import { SanityPostsResult, UserData, UserIdType } from "../types";
 import { getCachedClient } from "../sanity/lib/getClient";
 import { getSession } from "next-auth/react";
 import { getAllPostsQuery, getPostQuery } from "../sanity/lib/queries";
 
 export type PostsServerSideData = {
   props: {
-    posts: PostData[];
-    userId: UserIdType | UserIdType[] | UserData[];
+    posts: SanityPostsResult[];
     selectedPost: any | null;
   };
 };
@@ -18,11 +17,10 @@ export const postsServerSideProps = async ({
   draftMode,
 }: GetServerSidePropsContext): Promise<PostsServerSideData> => {
   const session = await getSession({ req });
-  let userId = null;
+  let userId;
   let selectedPost = null;
 
   if (session && session.user) {
-    // @ts-ignore
     userId = session.user.id;
   }
 
@@ -30,7 +28,8 @@ export const postsServerSideProps = async ({
     ? { token: process.env.SANITY_API_READ_WRITE_TOKEN }
     : undefined;
 
-  const postsArray: PostData[] = await getCachedClient()(getAllPostsQuery());
+  const postsArray: SanityPostsResult[] =
+    await getCachedClient()(getAllPostsQuery());
 
   if (query.p && typeof query.p === "string") {
     selectedPost = await getCachedClient(preview)(
@@ -41,7 +40,6 @@ export const postsServerSideProps = async ({
   return {
     props: {
       posts: postsArray,
-      userId,
       selectedPost,
     },
   };

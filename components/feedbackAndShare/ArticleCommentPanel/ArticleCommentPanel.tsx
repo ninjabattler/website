@@ -4,11 +4,8 @@ import LikePanel from "../LikePanel/LikePanel";
 import ShareBar from "../ShareBar/ShareBar";
 import Comment from "../../Comment/Comment";
 import { ArticleData, PostCommentType, WindowServerType } from "../../../types";
-import dynamic from "next/dynamic";
 import { useSession } from "next-auth/react";
-const CommentArea = dynamic(() => import("../CommentArea/CommentArea"), {
-  loading: () => <></>,
-});
+import CommentArea from "../CommentArea/CommentArea";
 
 export type ArticleCommentPanelProps = {
   articleData: ArticleData;
@@ -80,12 +77,10 @@ const ArticleCommentPanel: FC<ArticleCommentPanelProps> = ({
           return (
             <Comment
               key={i}
-              // @ts-ignore
               username={com.user.name}
               date={com._createdAt}
               content={com.content}
-              avatar={com.avatar}
-              // @ts-ignore
+              avatar={com.user.avatar}
               byCurrentUser={com.byCurrentUser}
             />
           );

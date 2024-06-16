@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { CSSProperties, FC } from "react";
 import styles from "./ArticleCard.module.scss";
 import Link from "next/link";
 import Image from "next/image";
@@ -8,34 +8,38 @@ import {
   ThumbDownSharp,
   ThumbUpSharp,
 } from "@mui/icons-material";
-import { ArticleData } from "../../types";
+import { SanityArticlesSearchResult } from "../../types";
 import { formatSanityDate } from "../../helpers/dateHelpers";
-
-type ArticleCardProps = {
-  article: ArticleData;
-};
 
 /**
  * A card to display an article and it's stats on the articles page
  * @author Ninjabattler
  * @param article The article data to display
  */
-const ArticleCard: FC<ArticleCardProps> = ({ article }) => (
+const ArticleCard: FC<SanityArticlesSearchResult> = ({
+  title,
+  slug,
+  date,
+  thumbnail,
+  comments,
+  likes,
+  dislikes,
+  tags,
+  colors,
+}) => (
   <Link
     className={styles.articleCard}
-    href={`/articles/${article.slug}`}
-    style={{
-      // @ts-ignore
-      "--custom-gradient-colour-1": article.colors.primary.hex,
-      // @ts-ignore
-      "--custom-gradient-colour-2": article.colors.secondary.hex,
-      // @ts-ignore
-      "--custom-space-colour": article.colors.space.hex,
-      // @ts-ignore
-      "--custom-stars-colour": article.colors.stars.hex,
-    }}
+    href={`/articles/${slug}`}
+    style={
+      {
+        "--custom-gradient-colour-1": colors.primary,
+        "--custom-gradient-colour-2": colors.secondary,
+        "--custom-space-colour": colors.space,
+        "--custom-stars-colour": colors.stars,
+      } as CSSProperties
+    }
   >
-    {/* @ts-ignore */}
+    {/*  */}
     <div className={styles.spaceContainer}>
       <div className={styles.space} />
       <div className={`${styles.space} ${styles.gradient}`} />
@@ -44,24 +48,23 @@ const ArticleCard: FC<ArticleCardProps> = ({ article }) => (
     <div className={styles.articleInfo}>
       <div className={`${styles.gradientBar} ${styles.bottom}`} />
 
-      <h1>{article.title}</h1>
+      <h1>{title}</h1>
       <h2>
         <CalendarMonthSharp />
-        <em>{formatSanityDate(article.date)}</em>
-        {/* @ts-ignore */}
-        <CommentSharp /> {article.comments}
+        <em>{formatSanityDate(date)}</em>
+        <CommentSharp /> {comments}
       </h2>
     </div>
 
     <div className={styles.thumbnail}>
       <Image
-        src={article.thumbnail.url}
-        width={article.thumbnail.width}
-        height={article.thumbnail.height}
+        src={thumbnail.url}
+        width={thumbnail.width}
+        height={thumbnail.height}
         loading="lazy"
         placeholder="blur"
-        blurDataURL={article.thumbnail.blur}
-        alt={article.thumbnail.alt}
+        blurDataURL={thumbnail.blur}
+        alt={thumbnail.alt}
       />
     </div>
 
@@ -69,18 +72,18 @@ const ArticleCard: FC<ArticleCardProps> = ({ article }) => (
       <div className={styles.gradientBar} />
 
       <div className={styles.tags}>
-        {article.tags.map((tag, i) => {
+        {tags.map((tag, i) => {
           return <div key={i}>{tag}</div>;
         })}
       </div>
 
       <div className={styles.stats}>
         <span>
-          <ThumbUpSharp /> {article.likes}
+          <ThumbUpSharp /> {likes}
         </span>
 
         <span>
-          <ThumbDownSharp /> {article.dislikes}
+          <ThumbDownSharp /> {dislikes}
         </span>
       </div>
     </div>

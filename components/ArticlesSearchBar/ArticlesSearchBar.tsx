@@ -11,6 +11,7 @@ import { SearchOffSharp, SearchSharp } from "@mui/icons-material";
 import SearchTag from "./SearchTag/SearchTag";
 import axios from "axios";
 import { useRouter } from "next/router";
+import { SanityArticlesSearchResult } from "../../types";
 
 type ArticlesSearchBarProps = {
   searchResults: boolean;
@@ -20,7 +21,7 @@ type ArticlesSearchBarProps = {
   initialTagsQuery: string[];
   setShowSearchResults: Dispatch<SetStateAction<boolean>>;
   setShowCarousel: Dispatch<SetStateAction<boolean>>;
-  setArticles: Dispatch<SetStateAction<any>>;
+  setArticles: Dispatch<SetStateAction<SanityArticlesSearchResult[]>>;
 };
 
 /**
@@ -64,9 +65,11 @@ const ArticlesSearchBar: FC<ArticlesSearchBarProps> = ({
             params: { searchQuery, tagsQuery: tagsQuery.join(",") },
             headers: { "Content-Type": "application/json" },
           }).then((res) => {
+            const results: SanityArticlesSearchResult[] = res.data;
+
             setLoading(false);
             setShowSearchResults(true);
-            setArticles(res.data);
+            setArticles(results);
 
             router.push(
               `/articles?search=${searchQuery}&tags=${tagsQuery.join(",")}`,

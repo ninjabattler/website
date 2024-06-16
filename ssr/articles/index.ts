@@ -5,11 +5,11 @@ import {
   getMostRecentArticlesQuery,
   searchArticlesQuery,
 } from "../../sanity/lib/queries";
-import { ArticleData } from "../../types";
+import { SanityArticlesSearchResult } from "../../types";
 
 export type ArticlesServerProps = {
   props: {
-    articles: ArticleData[];
+    articles: SanityArticlesSearchResult[];
     searchResults: boolean;
     tags: any[];
     searchQuery: string;
@@ -32,7 +32,7 @@ export const articlesServerSideProps = async ({
       tagsQuery = query.tags.split(/,/g);
     }
 
-    const searchResults: ArticleData[] = await getCachedClient()(
+    const searchResults: SanityArticlesSearchResult[] = await getCachedClient()(
       searchArticlesQuery(searchQuery.toLowerCase(), tagsQuery),
     );
 
@@ -49,7 +49,7 @@ export const articlesServerSideProps = async ({
   } else if (query.tags && typeof query.tags === "string") {
     const tagsQuery = query.tags.split(/,/g);
 
-    const searchResults: ArticleData[] = await getCachedClient()(
+    const searchResults: SanityArticlesSearchResult[] = await getCachedClient()(
       searchArticlesQuery("", tagsQuery),
     );
 
@@ -64,14 +64,15 @@ export const articlesServerSideProps = async ({
     };
     // No Search, just the 5 most recent articles
   } else {
-    const articlesArray: ArticleData[] = await getCachedClient()(
+    const articlesArray: SanityArticlesSearchResult[] = await getCachedClient()(
       getMostRecentArticlesQuery(),
     );
 
     // Move the last article to the front of the array
     // Swiper's coverflow effect pushes the second item to the front of the carousel,
     // so I haave to offset them for the first article to appear first
-    const lastArticle: ArticleData | undefined = articlesArray.pop();
+    const lastArticle: SanityArticlesSearchResult | undefined =
+      articlesArray.pop();
 
     if (lastArticle) {
       articlesArray.unshift(lastArticle);

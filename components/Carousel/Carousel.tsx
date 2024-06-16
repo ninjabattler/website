@@ -1,12 +1,14 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import styles from "./Carousel.module.scss";
+// @ts-expect-error - CommonJs warning
 import { Swiper, SwiperSlide } from "swiper/react";
+// @ts-expect-error - CommonJs warning
 import { EffectCoverflow } from "swiper/modules";
-import { ArticleData } from "../../types";
+import { SanityArticlesSearchResult } from "../../types";
 import ArticleCard from "../ArticleCard/ArticleCard";
 
 type CarouselProps = {
-  articles: ArticleData[];
+  articles: SanityArticlesSearchResult[];
   hidden: boolean;
 };
 
@@ -16,30 +18,38 @@ type CarouselProps = {
  * @param articles The articles to display
  * @param hidden Whether or not the carousel should be hidden
  */
-const Carousel: FC<CarouselProps> = ({ articles, hidden }) => {
-  return (
-    <section className={`${styles.carousel} ${hidden ? styles.hidden : ""}`}>
-      <Swiper
-        className={styles.swiper}
-        effect="coverflow"
-        modules={[EffectCoverflow]}
-        coverflowEffect={{
-          slideShadows: false,
-        }}
-        slidesPerView={3}
-        loop
-        mousewheel={true}
-      >
-        {articles.map((article, i) => {
-          return (
-            <SwiperSlide key={i} className={styles.slide}>
-              <ArticleCard article={article} />
-            </SwiperSlide>
-          );
-        })}
-      </Swiper>
-    </section>
-  );
-};
+const Carousel: FC<CarouselProps> = ({ articles, hidden }) => (
+  <section className={`${styles.carousel} ${hidden ? styles.hidden : ""}`}>
+    <Swiper
+      className={styles.swiper}
+      effect="coverflow"
+      modules={[EffectCoverflow]}
+      coverflowEffect={{
+        slideShadows: false,
+      }}
+      slidesPerView={3}
+      loop
+      mousewheel={true}
+    >
+      {articles.map((article, i) => {
+        return (
+          <SwiperSlide key={i} className={styles.slide}>
+            <ArticleCard
+              title={article.title}
+              slug={article.slug}
+              date={article.date}
+              thumbnail={article.thumbnail}
+              comments={article.comments}
+              likes={article.likes}
+              dislikes={article.dislikes}
+              tags={article.tags}
+              colors={article.colors}
+            />
+          </SwiperSlide>
+        );
+      })}
+    </Swiper>
+  </section>
+);
 
 export default Carousel;

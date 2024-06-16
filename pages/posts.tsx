@@ -4,7 +4,9 @@ import styles from "../styles/PostsPage.module.scss";
 import { postsServerSideProps } from "../ssr/posts";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { AppData, PostData } from "../types";
+// @ts-expect-error - CommonJs warning
 import { Swiper, SwiperSlide } from "swiper/react";
+// @ts-expect-error - CommonJs warning
 import { EffectCards } from "swiper/modules";
 import PostsPageBackground from "../components/backgrounds/PostsPageBackground/PostsPageBackground";
 import Post from "../components/Post/Post";
@@ -86,14 +88,12 @@ export default function PostsPage({
                 {!showPost && (
                   <PostCard
                     title={post.title}
-                    content={post.content}
                     date={post.date}
-                    id={post._id}
+                    _id={post._id}
                     index={i}
                     hidden={postSelected}
-                    likes={post.likes || 0}
-                    dislikes={post.dislikes || 0}
-                    // @ts-ignore
+                    likes={post.likes}
+                    dislikes={post.dislikes}
                     comments={post.comments}
                   />
                 )}

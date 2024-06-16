@@ -1,8 +1,7 @@
 import React, { FC, useCallback, useMemo, useState } from "react";
 import styles from "./LikePanel.module.scss";
 import { ThumbUpSharp, ThumbDownSharp } from "@mui/icons-material";
-import { like } from "../../../helpers/articlePageHelpers";
-import { PostIdType, UserIdType } from "../../../types";
+import { PostIdType } from "../../../types";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 
@@ -51,11 +50,9 @@ const LikePanel: FC<LikePanelProps> = ({
         await axios({
           method: "post",
           url: `/api/likes/newLike`,
-          // @ts-ignore
           data: {
             isLike,
-            // @ts-ignore
-            userId: data.user.id,
+            userId: data && data.user ? data.user.id : null,
             postId: postId || null,
             articleId: articleId || null,
           },
@@ -73,10 +70,8 @@ const LikePanel: FC<LikePanelProps> = ({
       await axios({
         method: "post",
         url: `/api/likes/delete`,
-        // @ts-ignore
         data: {
-          // @ts-ignore
-          userId: data.user.id,
+          userId: data && data.user ? data.user.id : null,
           postId: postId || null,
           articleId: articleId || null,
         },

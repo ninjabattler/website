@@ -11,8 +11,7 @@ export const authOptions: NextAuthOptions = {
   adapter: SanityAdapter(client),
   callbacks: {
     session: async ({ session, token }) => {
-      if (session?.user) {
-        // @ts-ignore
+      if (session?.user && token.sub) {
         session.user.id = token.sub;
       }
       return session;

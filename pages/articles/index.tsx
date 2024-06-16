@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styles from "../../styles/ArticlesPage.module.scss";
 import Carousel from "../../components/Carousel/Carousel";
-import Link from "next/link";
 import { articlesServerSideProps } from "../../ssr/articles/index";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import { AppData } from "../../types";
+import { AppData, SanityArticlesSearchResult } from "../../types";
 import ArticlesPageHead from "../../components/PageMetadata/ArticlesPageHead";
-import Image from "next/image";
 import ArticlesPageBackground from "../../components/backgrounds/ArticlesPageBackground/ArticlesPageBackground";
 import SearchResultsCarousel from "../../components/SearchResultsCarousel/SearchResultsCarousel";
 import ArticleSearchBar from "../../components/ArticlesSearchBar/ArticlesSearchBar";
@@ -22,7 +20,8 @@ export default function ArticlesPage({
 }: InferGetServerSidePropsType<typeof articlesServerSideProps> & AppData) {
   const [showCarousel, setShowCarousel] = useState<boolean>(false);
   const [showSearchResults, setShowSearchResults] = useState<boolean>(false);
-  const [carouselArticles, setCarouselArticles] = useState<any[]>(articles);
+  const [carouselArticles, setCarouselArticles] =
+    useState<SanityArticlesSearchResult[]>(articles);
 
   useEffect(() => {
     setTimeout(() => {
