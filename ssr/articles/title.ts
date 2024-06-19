@@ -1,4 +1,3 @@
-import noCommentMessages from "../../constants/noCommentMessages.json";
 import { GetServerSidePropsContext } from "next";
 import { getCachedClient } from "../../sanity/lib/getClient";
 import { getArticleQuery } from "../../sanity/lib/queries";
@@ -7,9 +6,7 @@ import { getSession } from "next-auth/react";
 export type ArticleServerSideData = {
   props: {
     articleData: ArticleData;
-    userId?: string;
     url: string;
-    randomQuoteIndex?: number;
   };
   notFound?: boolean;
 };
@@ -20,15 +17,11 @@ export const articlePageServerSideProps = async ({
   params,
   draftMode,
 }: GetServerSidePropsContext): Promise<ArticleServerSideData> => {
-  const randomQuoteIndex: number = Math.floor(
-    Math.random() * noCommentMessages.length,
-  );
   const title: string = query.title as string;
   const session = await getSession({ req });
   let userId;
 
   if (session && session.user) {
-    //
     userId = session.user.id;
   }
 
@@ -45,7 +38,6 @@ export const articlePageServerSideProps = async ({
       props: {
         articleData: article,
         url: `https://ninjabattler.ca/articles/${params ? params.title : ""}`,
-        randomQuoteIndex,
       },
       notFound: true,
     };
@@ -55,7 +47,6 @@ export const articlePageServerSideProps = async ({
     props: {
       articleData: article,
       url: `https://ninjabattler.ca/articles/${params ? params.title : ""}`,
-      randomQuoteIndex,
     },
   };
 };

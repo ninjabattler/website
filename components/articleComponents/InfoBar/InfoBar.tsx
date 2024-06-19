@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from "react";
 import styles from "./InfoBar.module.scss";
 import { CalendarMonthSharp } from "@mui/icons-material";
-import { formatSanityDate } from "../../../helpers/dateHelpers";
+import { formatSanityDate } from "../../../utils/dateHelpers";
 import Tag from "./Tag/Tag";
 import Typewriter, { TypewriterClass } from "typewriter-effect";
 

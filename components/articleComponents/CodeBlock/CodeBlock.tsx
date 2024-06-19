@@ -21,16 +21,14 @@ const CodeBlock: FC<CodeBlockProps> = ({ code, language, title = "" }) => {
     useState<boolean>(false);
   const codeRef = useRef<HTMLDivElement>(null);
 
-  const copyCodeToClipboard = useCallback(() => {
+  const copyCodeToClipboard = () => {
     navigator.clipboard.writeText(code);
     setIsCopiedToClipboard(true);
-  }, [isCopiedToClipboard]);
+  };
 
-  const unsetIsCopiedToClipboard = useCallback(() => {
-    if (isCopiedToClipboard) {
-      setIsCopiedToClipboard(false);
-    }
-  }, [isCopiedToClipboard]);
+  const unsetIsCopiedToClipboard = () => {
+    setIsCopiedToClipboard(false);
+  };
 
   useEffect(() => {
     if (codeRef.current) {

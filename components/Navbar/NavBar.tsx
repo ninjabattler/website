@@ -29,7 +29,7 @@ const NavBar: ComponentType<{}> = () => {
     });
   }, []);
 
-  const logOut = useCallback(async (e: FormEvent) => {
+  const logOut = async (e: FormEvent) => {
     e.preventDefault();
 
     await signOut({
@@ -37,11 +37,11 @@ const NavBar: ComponentType<{}> = () => {
     });
 
     router.reload();
-  }, []);
+  };
 
-  const openMenu = useCallback(() => {
+  const openMenu = () => {
     setOpen(!open);
-  }, [open]);
+  };
 
   return (
     <header className={`${styles.navBar} ${open ? styles.fullscreen : ""}`}>

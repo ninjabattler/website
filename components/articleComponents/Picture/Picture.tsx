@@ -1,7 +1,7 @@
 import React, { FC, useMemo } from "react";
 import styles from "./Picture.module.scss";
 import Image from "next/image";
-import CONSTANTS from "../../../helpers/constants.json";
+import { PICTURE_FLOAT, PICTURE_MAX_WIDTH } from "../../../utils/constants";
 
 type PictureProps = {
   picture: SanityImage;
@@ -28,15 +28,11 @@ const Picture: FC<PictureProps> = ({
   sourceLink,
 }) => {
   const floatLeft = useMemo<boolean>(
-    () =>
-      width < CONSTANTS.PICTURE_MAX_WIDTH &&
-      float === CONSTANTS.PICTURE_FLOAT.LEFT,
+    () => width < PICTURE_MAX_WIDTH && float === PICTURE_FLOAT.LEFT,
     [],
   );
   const floatRight = useMemo<boolean>(
-    () =>
-      width < CONSTANTS.PICTURE_MAX_WIDTH &&
-      float === CONSTANTS.PICTURE_FLOAT.RIGHT,
+    () => width < PICTURE_MAX_WIDTH && float === PICTURE_FLOAT.RIGHT,
     [],
   );
 

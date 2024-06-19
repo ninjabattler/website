@@ -22,60 +22,54 @@ const SignUpForm: FC<SignUpFormProps> = ({ signup, show }) => {
   const [retypePassword, setRetypePassword] = useState<string>("");
   const router = useRouter();
 
-  const newUser = useCallback(
-    async (e: FormEvent) => {
-      e.preventDefault();
+  const newUser = async (e: FormEvent) => {
+    e.preventDefault();
 
-      try {
-        if (name && email && password && retypePassword) {
-          const newUser = await signUp({
-            email,
-            password,
-            name,
-          });
+    try {
+      if (name && email && password && retypePassword) {
+        const newUser = await signUp({
+          email,
+          password,
+          name,
+        });
 
-          await axios({
-            method: "post",
-            url: `/api/sanity/userDetails/create`,
-            data: { userId: newUser.id, username: newUser.name },
-            headers: { "Content-Type": "application/json" },
-          });
+        await axios({
+          method: "post",
+          url: `/api/sanity/userDetails/create`,
+          data: { userId: newUser.id, username: newUser.name },
+          headers: { "Content-Type": "application/json" },
+        });
 
-          await signIn("sanity-login", {
-            redirect: false,
-            email,
-            password,
-          });
+        await signIn("sanity-login", {
+          redirect: false,
+          email,
+          password,
+        });
 
-          router.reload();
-        }
-      } catch (err) {
-        console.log(err);
+        router.reload();
       }
-    },
-    [name, email, password, retypePassword],
-  );
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
-  const logIn = useCallback(
-    async (e: FormEvent) => {
-      e.preventDefault();
+  const logIn = async (e: FormEvent) => {
+    e.preventDefault();
 
-      try {
-        if (email && password) {
-          await signIn("sanity-login", {
-            redirect: false,
-            email,
-            password,
-          });
+    try {
+      if (email && password) {
+        await signIn("sanity-login", {
+          redirect: false,
+          email,
+          password,
+        });
 
-          router.reload();
-        }
-      } catch (err) {
-        console.log(err);
+        router.reload();
       }
-    },
-    [email, password],
-  );
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div className={`${styles.signUpForm} ${show ? styles.show : ""}`}>

@@ -7,17 +7,9 @@ import React, {
   useEffect,
 } from "react";
 import styles from "./Comment.module.scss";
-import { styleText } from "../../helpers/articlePageHelpers";
+import { styleText } from "../../utils/articlePageHelpers";
 import moment from "moment";
 import { PersonSharp } from "@mui/icons-material";
-
-const avatars = {
-  avatar1: "/userAvatars/Mask 1.png",
-  avatar2: "/userAvatars/Mask 2.png",
-  avatar3: "/userAvatars/Mask 3.png",
-  avatar4: "/userAvatars/Mask 4.png",
-  avatar5: "/userAvatars/Mask 5.png",
-};
 
 export type CommentProps = {
   username: string;
@@ -48,9 +40,9 @@ const Comment: FC<CommentProps> = ({
   const [contentOverflowed, setContentOverflowed] = useState<boolean>(false);
   const contentRef = useRef<HTMLParagraphElement>(null);
 
-  const clickShowMore = useCallback(() => {
+  const clickShowMore = () => {
     setShowMore(!showMore);
-  }, [showMore]);
+  };
 
   useEffect(() => {
     if (

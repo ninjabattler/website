@@ -14,7 +14,6 @@ import CommentArea from "../feedbackAndShare/CommentArea/CommentArea";
 type PostProps = {
   title: string;
   id: string;
-  userId: string;
   content: TypedObject[];
   comments: Array<any>;
   likes: number;
@@ -28,7 +27,6 @@ type PostProps = {
 export default function Post({
   title,
   id,
-  userId,
   content,
   comments,
   likes,

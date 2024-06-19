@@ -13,11 +13,9 @@ type SpoilerProps = {
 const Spoiler: FC<SpoilerProps> = ({ text }) => {
   const [revealed, setRevealed] = useState<boolean>(false);
 
-  const reveal = useCallback(() => {
-    if (!revealed) {
-      setRevealed(true);
-    }
-  }, [revealed]);
+  const reveal = () => {
+    setRevealed(true);
+  };
 
   return (
     <span

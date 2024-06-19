@@ -8,7 +8,7 @@ import {
   ThumbDownSharp,
   ThumbUpSharp,
 } from "@mui/icons-material";
-import { formatSanityDate } from "../../helpers/dateHelpers";
+import { formatSanityDate } from "../../utils/dateHelpers";
 
 /**
  * A card to display an article and it's stats on the articles page
@@ -38,7 +38,6 @@ const ArticleCard: FC<SanityArticlesSearchResult> = ({
       } as CSSProperties
     }
   >
-    {/*  */}
     <div className={styles.spaceContainer}>
       <div className={styles.space} />
       <div className={`${styles.space} ${styles.gradient}`} />

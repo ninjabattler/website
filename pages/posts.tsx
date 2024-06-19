@@ -28,7 +28,7 @@ export default function PostsPage({
     selectedPost ? true : false,
   );
 
-  const onSlideClick = useCallback((id: string) => {
+  const onSlideClick = (id: string) => {
     setPostSelected(true);
 
     axios({
@@ -47,16 +47,16 @@ export default function PostsPage({
     setTimeout(() => {
       setShowPost(true);
     }, 1000);
-  }, []);
+  };
 
-  const goBack = useCallback(() => {
+  const goBack = () => {
     setShowPost(false);
 
     setTimeout(() => {
       setSelectedPostData({});
       setPostSelected(false);
     }, 1000);
-  }, []);
+  };
 
   return (
     <>
@@ -111,7 +111,6 @@ export default function PostsPage({
           id={selectedPostData._id}
           hide={!showPost}
           title={selectedPostData.title}
-          userId={""}
           goBack={goBack}
         />
       </main>

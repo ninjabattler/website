@@ -12,7 +12,7 @@ export const getServerSideProps: GetServerSideProps =
 
 const ArticlePage: FC<
   InferGetServerSidePropsType<typeof articlePageServerSideProps> & AppData
-> = ({ articleData, randomQuoteIndex, url, userId }) => {
+> = ({ articleData, url }) => {
   return (
     <>
       <ReviewPageHead
@@ -94,12 +94,7 @@ const ArticlePage: FC<
             )}
           </article>
 
-          <ArticleCommentPanel
-            articleData={articleData}
-            randomQuoteIndex={1}
-            url={url}
-            userId={userId || 0}
-          />
+          <ArticleCommentPanel articleData={articleData} url={url} />
         </div>
       </main>
     </>

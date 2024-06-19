@@ -17,9 +17,9 @@ const PostCard: FC<SanityPostsResult> = ({
   const [visible, setVisible] = useState<boolean>(false);
   const [selected, setSelected] = useState<boolean>(false);
 
-  const onClick = useCallback(() => {
+  const onClick = () => {
     setSelected(true);
-  }, []);
+  };
 
   useEffect(() => {
     setTimeout(

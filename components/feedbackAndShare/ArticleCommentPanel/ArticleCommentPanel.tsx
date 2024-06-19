@@ -3,25 +3,18 @@ import styles from "./ArticleCommentPanel.module.scss";
 import LikePanel from "../LikePanel/LikePanel";
 import ShareBar from "../ShareBar/ShareBar";
 import Comment from "../../Comment/Comment";
-import { useSession } from "next-auth/react";
 import CommentArea from "../CommentArea/CommentArea";
 
 export type ArticleCommentPanelProps = {
   articleData: ArticleData;
-  userId: number;
   url: string;
-  randomQuoteIndex: number;
 };
 
 /**
  * A side panel used for displaying and creating comments
  * @author Ninjabattler
  * @param articleData The article data fetched from Sanity
- * @param liked Whether or not the current user has liked the article
- * @param disliked Whether or not the current user has disliked the article
- * @param userId The id of the current user
  * @param url The url of the article
- * @param randomQuoteIndex A random number for the no comment message
  */
 const ArticleCommentPanel: FC<ArticleCommentPanelProps> = ({
   articleData,
@@ -32,7 +25,6 @@ const ArticleCommentPanel: FC<ArticleCommentPanelProps> = ({
   );
   const [windowServer, setWindow] = useState<WindowServerType>({});
   const [showCommentPanel, setShowCommentPanel] = useState<boolean>(false);
-  const { data, status } = useSession();
 
   useEffect(() => {
     setWindow(window);

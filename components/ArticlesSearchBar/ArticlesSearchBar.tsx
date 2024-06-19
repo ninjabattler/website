@@ -42,47 +42,41 @@ const ArticlesSearchBar: FC<ArticlesSearchBarProps> = ({
   const [loading, setLoading] = useState<boolean>(false);
   const router = useRouter();
 
-  const removeTag = useCallback(
-    (index: number) => {
-      setTagsQuery(tagsQuery.filter((tag, i) => i !== index));
-    },
-    [tagsQuery],
-  );
+  const removeTag = (index: number) => {
+    setTagsQuery(tagsQuery.filter((tag, i) => i !== index));
+  };
 
-  const search = useCallback(
-    (e: FormEvent<HTMLFormElement>) => {
-      if (!loading) {
-        e.preventDefault();
-        setShowCarousel(false);
-        setShowSearchResults(false);
-        setLoading(true);
+  const search = (e: FormEvent<HTMLFormElement>) => {
+    if (!loading) {
+      e.preventDefault();
+      setShowCarousel(false);
+      setShowSearchResults(false);
+      setLoading(true);
 
-        setTimeout(() => {
-          axios({
-            method: "get",
-            url: `/api/articles/get`,
-            params: { searchQuery, tagsQuery: tagsQuery.join(",") },
-            headers: { "Content-Type": "application/json" },
-          }).then((res) => {
-            const results: SanityArticlesSearchResult[] = res.data;
+      setTimeout(() => {
+        axios({
+          method: "get",
+          url: `/api/articles/get`,
+          params: { searchQuery, tagsQuery: tagsQuery.join(",") },
+          headers: { "Content-Type": "application/json" },
+        }).then((res) => {
+          const results: SanityArticlesSearchResult[] = res.data;
 
-            setLoading(false);
-            setShowSearchResults(true);
-            setArticles(results);
+          setLoading(false);
+          setShowSearchResults(true);
+          setArticles(results);
 
-            router.push(
-              `/articles?search=${searchQuery}&tags=${tagsQuery.join(",")}`,
-              `/articles?search=${searchQuery}&tags=${tagsQuery.join(",")}`,
-              {
-                shallow: true,
-              },
-            );
-          });
-        }, 1000);
-      }
-    },
-    [searchQuery, tagsQuery, loading],
-  );
+          router.push(
+            `/articles?search=${searchQuery}&tags=${tagsQuery.join(",")}`,
+            `/articles?search=${searchQuery}&tags=${tagsQuery.join(",")}`,
+            {
+              shallow: true,
+            },
+          );
+        });
+      }, 1000);
+    }
+  };
 
   return (
     <header className={styles.articlesSearchBar}>

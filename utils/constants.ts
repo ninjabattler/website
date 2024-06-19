@@ -6,6 +6,13 @@ import {
   FormatQuote,
 } from "@mui/icons-material";
 
+export const PICTURE_FLOAT = {
+  LEFT: "Left",
+  RIGHT: "Right",
+};
+
+export const PICTURE_MAX_WIDTH = 100;
+
 export const COMMENT_STYLING_OPTIONS = [
   {
     prependMark: "**",

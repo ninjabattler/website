@@ -16,9 +16,9 @@ type ShareBarProps = {
  * @param articleLink A link to the article
  */
 const ShareBar: FC<ShareBarProps> = ({ title, windowServer, articleLink }) => {
-  const copyLink = useCallback((): void => {
+  const copyLink = (): void => {
     window.navigator.clipboard.writeText(articleLink);
-  }, []);
+  };
 
   return (
     <aside id={styles.shareBar}>

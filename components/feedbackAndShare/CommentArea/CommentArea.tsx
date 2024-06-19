@@ -7,7 +7,7 @@ import React, {
   SetStateAction,
 } from "react";
 import styles from "./CommentArea.module.scss";
-import { getTokenLength } from "../../../helpers/articlePageHelpers";
+import { getTokenLength } from "../../../utils/articlePageHelpers";
 import { Editable, ReactEditor, Slate, withReact } from "slate-react";
 import { createEditor, Text, Editor, Location } from "slate";
 import Prism from "prismjs";
@@ -16,7 +16,7 @@ import { useSession } from "next-auth/react";
 import {
   COMMENT_STYLING_OPTIONS,
   DEFAULT_SLATE_VALUE,
-} from "../../../constants/constants";
+} from "../../../utils/constants";
 import axios from "axios";
 
 // Adds markdown as a language to Prism
