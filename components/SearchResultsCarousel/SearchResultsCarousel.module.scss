@@ -38,4 +38,11 @@
     opacity: 0;
     z-index: 1;
   }
+
+  @media only screen and (min-aspect-ratio: 20/9) {
+    .swiper {
+      width: 100%;
+      margin-left: 25%;
+    }
+  }
 }

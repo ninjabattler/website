@@ -38,4 +38,11 @@
     opacity: 0;
     z-index: 1;
   }
+
+  @media only screen and (min-aspect-ratio: 20/9) {
+    width: 75vw;
+    margin-left: 12.5vw;
+    margin-top: 3.15rem;
+    margin-bottom: 3rem;
+  }
 }

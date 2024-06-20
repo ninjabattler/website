@@ -251,9 +251,9 @@ export const getMostRecentArticlesQuery = (): string => {
     date,
     "colors": {
       "primary": colors.primary.hex,
-      "secondary": colors.primary.hex,
-      "space": colors.primary.hex,
-      "stars": colors.primary.hex
+      "secondary": colors.secondary.hex,
+      "space": colors.space.hex,
+      "stars": colors.stars.hex
     }, 
     "tags": tags[] -> tag,
     thumbnail {
@@ -295,9 +295,9 @@ export const searchArticlesQuery = (
     date,
     "colors": {
       "primary": colors.primary.hex,
-      "secondary": colors.primary.hex,
-      "space": colors.primary.hex,
-      "stars": colors.primary.hex
+      "secondary": colors.secondary.hex,
+      "space": colors.space.hex,
+      "stars": colors.stars.hex
     }, 
     "tags": tags[] -> tag,
     thumbnail {

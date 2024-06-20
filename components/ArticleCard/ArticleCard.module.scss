@@ -199,4 +199,16 @@
       margin-top: 2em;
     }
   }
+
+  @media only screen and (min-aspect-ratio: 20/9) {
+    .articleInfo {
+      width: calc(125% - 0.25rem);
+      margin-left: -12.5%;
+    }
+
+    .thumbnail {
+      width: 125%;
+      margin-left: -12.5%;
+    }
+  }
 }

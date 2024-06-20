@@ -25,6 +25,17 @@ body {
   &::-webkit-scrollbar {
     display: none;
   }
+}
+
+*::selection {
+  background-color: var(--article-colour);
+}
+
+:root {
+  --article-colour: #f0f05d;
+  --article-colour2: #e6d470;
+  --article-colour-space: #1a1d33;
+  --article-colour-stars: #fafa24;
 
   @media only screen and (max-device-width: 3440px) {
     font-size: 21px;
@@ -37,13 +48,6 @@ body {
   @media only screen and (max-device-width: 1920px) {
     font-size: 16px;
   }
-}
-
-:root {
-  --article-colour: #f0f05d;
-  --article-colour2: #e6d470;
-  --article-colour-space: #1a1d33;
-  --article-colour-stars: #fafa24;
 }
 
 ul {
