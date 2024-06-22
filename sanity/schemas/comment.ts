@@ -31,6 +31,12 @@ const comment: SchemaTypeDefinition = {
       type: "string",
       title: "Content",
     },
+    {
+      name: "deleted",
+      type: "boolean",
+      title: "Deleted",
+      initialValue: false,
+    },
   ],
 };
 

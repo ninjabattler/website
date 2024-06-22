@@ -87,6 +87,7 @@ export default function Post({
             {commentList.map((com, i) => {
               return (
                 <Comment
+                  id={com._id}
                   key={i}
                   username={com.user.name}
                   date={com._createdAt}

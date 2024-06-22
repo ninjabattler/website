@@ -68,6 +68,7 @@ const ArticleCommentPanel: FC<ArticleCommentPanelProps> = ({
           return (
             <Comment
               key={i}
+              id={com._id}
               username={com.user.name}
               date={com._createdAt}
               content={com.content}

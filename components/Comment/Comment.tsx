@@ -1,17 +1,12 @@
-import React, {
-  FC,
-  CSSProperties,
-  useState,
-  useCallback,
-  useRef,
-  useEffect,
-} from "react";
+import React, { FC, CSSProperties, useState, useRef, useEffect } from "react";
 import styles from "./Comment.module.scss";
 import { styleText } from "../../utils/articlePageHelpers";
 import moment from "moment";
-import { PersonSharp } from "@mui/icons-material";
+import { DeleteSharp, PersonSharp } from "@mui/icons-material";
+import axios from "axios";
 
 export type CommentProps = {
+  id: string;
   username: string;
   content: string;
   style?: CSSProperties;
@@ -23,6 +18,7 @@ export type CommentProps = {
 /**
  * A component used to display a comment on Articles and Posts
  * @author Ninjabattler
+ * @param id The id of the comment
  * @param username The username of the commenter
  * @param content The markdown of the comment
  * @param style An optional style object
@@ -30,6 +26,7 @@ export type CommentProps = {
  * @param date The date of the comment
  */
 const Comment: FC<CommentProps> = ({
+  id,
   username,
   content,
   style,
@@ -38,10 +35,26 @@ const Comment: FC<CommentProps> = ({
 }) => {
   const [showMore, setShowMore] = useState<boolean>(false);
   const [contentOverflowed, setContentOverflowed] = useState<boolean>(false);
+  const [showDeleteOverlay, setShowDeleteOverlay] = useState<boolean>(false);
   const contentRef = useRef<HTMLParagraphElement>(null);
 
   const clickShowMore = () => {
     setShowMore(!showMore);
+  };
+
+  const clickDelete = () => {
+    setShowDeleteOverlay(!showDeleteOverlay);
+  };
+
+  const deleteComment = () => {
+    axios({
+      method: "post",
+      url: `/api/comments/delete`,
+      data: { commentId: id },
+      headers: { "Content-Type": "application/json" },
+    }).then(() => {
+      setShowDeleteOverlay(false);
+    });
   };
 
   useEffect(() => {
@@ -55,10 +68,26 @@ const Comment: FC<CommentProps> = ({
 
   return (
     <div
-      className={`${styles.comment} ${byCurrentUser ? styles.byCurrentUser : ""}`}
+      className={`${styles.comment} ${byCurrentUser ? styles.byCurrentUser : ""} ${showDeleteOverlay ? styles.blurred : ""}`}
       style={style}
     >
+      {showDeleteOverlay && (
+        <div className={styles.deleteOverlay}>
+          <h3>Think about this, are you certain?</h3>
+          <button onClick={deleteComment}>Yes</button>
+          <button onClick={clickDelete}>No</button>
+        </div>
+      )}
+
       <div className={styles.header}>
+        {byCurrentUser && (
+          <div className={styles.userButtons}>
+            <button onClick={clickDelete}>
+              <DeleteSharp />
+            </button>
+          </div>
+        )}
+
         <PersonSharp className={styles.avatar} />
         <div className={styles.userInfo}>
           <b>{username}</b>

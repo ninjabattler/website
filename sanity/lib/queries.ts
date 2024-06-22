@@ -62,7 +62,8 @@ export const getPostQuery = (postId: string, userId?: string): string => {
         }
       }
     },
-    "comments": *[_type == "comment" && references(^._id)] | order(_createdAt desc) {
+    "comments": *[_type == "comment" && references(^._id) && deleted == false] | order(_createdAt desc) {
+      _id,
       _createdAt,
       content,
       "byCurrentUser": references("${userId}"),
@@ -86,7 +87,7 @@ export const getAllPostsQuery = (): string => {
     _id,
     title,
     date,
-    "comments":count( *[_type == "comment" && references(^._id)]),
+    "comments":count( *[_type == "comment" && references(^._id) && deleted == false]),
     "likes": count(*[_type == "like" && references(^._id) && isLike == true]),
     "dislikes": count(*[_type == "like" && references(^._id) && isLike == false]),
   }`;
@@ -117,7 +118,8 @@ export const getArticleQuery = (slug: string, userId?: string): string => {
         title,
         source
     },
-    "comments": *[_type == "comment" && references(^._id)] | order(_createdAt desc) {
+    "comments": *[_type == "comment" && references(^._id) && deleted == false] | order(_createdAt desc) {
+      _id,
       _createdAt,
       content,
       "byCurrentUser": references("${userId}"),
@@ -262,7 +264,7 @@ export const getMostRecentArticlesQuery = (): string => {
       "width": asset->metadata.dimensions.width,
       "height": asset->metadata.dimensions.height,
     },
-    "comments":count( *[_type == "comment" && references(^._id)]),
+    "comments":count( *[_type == "comment" && references(^._id) && deleted == false]),
     "likes": count(*[_type == "like" && references(^._id) && isLike == true]),
     "dislikes": count(*[_type == "like" && references(^._id) && isLike == false])
   }[0...5]`;
@@ -306,7 +308,7 @@ export const searchArticlesQuery = (
       "width": asset->metadata.dimensions.width,
       "height": asset->metadata.dimensions.height,
     },
-    "comments":count( *[_type == "comment" && references(^._id)]),
+    "comments":count( *[_type == "comment" && references(^._id) && deleted == false]),
     "likes": count(*[_type == "like" && references(^._id) && isLike == true]),
     "dislikes": count(*[_type == "like" && references(^._id) && isLike == false])
   }[${tagsFilter}]`;
@@ -340,11 +342,20 @@ export const getPostLikesQuery = (
 };
 
 /**
- * Queries the most recent posts posts, as well as their number of likes, dislikes and comments
+ * Queries all tags for the article page's search bar
  * @author Ninjabattler
  */
 export const getAllTags = (): string => {
   return groq`*[_type == "tags"] | order(tag desc){
     tag
   }`;
+};
+
+/**
+ * Grabs a single comment
+ * @author Ninjabattler
+ * @param commentId The id of the comment
+ */
+export const getCommentQuery = (commentId: string): string => {
+  return groq`*[_type == 'comment' && _id == "${commentId}"]`;
 };
