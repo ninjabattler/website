@@ -1,8 +1,16 @@
-import React, { FC, CSSProperties, useState, useRef, useEffect } from "react";
+import React, {
+  FC,
+  CSSProperties,
+  useState,
+  useRef,
+  useEffect,
+  Dispatch,
+  SetStateAction,
+} from "react";
 import styles from "./Comment.module.scss";
 import { styleText } from "../../utils/articlePageHelpers";
 import moment from "moment";
-import { DeleteSharp, PersonSharp } from "@mui/icons-material";
+import { DeleteForeverSharp, PersonSharp } from "@mui/icons-material";
 import axios from "axios";
 
 export type CommentProps = {
@@ -11,8 +19,9 @@ export type CommentProps = {
   content: string;
   style?: CSSProperties;
   avatar: number;
-  date?: string;
+  date: string;
   byCurrentUser: boolean;
+  setComments: (commentId: string) => void;
 };
 
 /**
@@ -24,6 +33,7 @@ export type CommentProps = {
  * @param style An optional style object
  * @param avatar The avatar to display on the comment
  * @param date The date of the comment
+ * @param setComments A function to set the comments on a post/article
  */
 const Comment: FC<CommentProps> = ({
   id,
@@ -32,6 +42,7 @@ const Comment: FC<CommentProps> = ({
   style,
   byCurrentUser = false,
   date,
+  setComments,
 }) => {
   const [showMore, setShowMore] = useState<boolean>(false);
   const [contentOverflowed, setContentOverflowed] = useState<boolean>(false);
@@ -53,7 +64,7 @@ const Comment: FC<CommentProps> = ({
       data: { commentId: id },
       headers: { "Content-Type": "application/json" },
     }).then(() => {
-      setShowDeleteOverlay(false);
+      setComments(id);
     });
   };
 
@@ -83,7 +94,7 @@ const Comment: FC<CommentProps> = ({
         {byCurrentUser && (
           <div className={styles.userButtons}>
             <button onClick={clickDelete}>
-              <DeleteSharp />
+              <DeleteForeverSharp />
             </button>
           </div>
         )}

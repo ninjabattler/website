@@ -26,6 +26,14 @@ const ArticleCommentPanel: FC<ArticleCommentPanelProps> = ({
   const [windowServer, setWindow] = useState<WindowServerType>({});
   const [showCommentPanel, setShowCommentPanel] = useState<boolean>(false);
 
+  const setCommentsList = (commentId: string) => {
+    const newCommentList = comments.filter((comment) => {
+      return comment._id !== commentId;
+    });
+
+    setComments(newCommentList);
+  };
+
   useEffect(() => {
     setWindow(window);
     window.addEventListener("scroll", scrollListener);
@@ -74,6 +82,7 @@ const ArticleCommentPanel: FC<ArticleCommentPanelProps> = ({
               content={com.content}
               avatar={com.user.avatar}
               byCurrentUser={com.byCurrentUser}
+              setComments={setCommentsList}
             />
           );
         })}

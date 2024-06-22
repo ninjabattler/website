@@ -15,7 +15,7 @@ type PostProps = {
   title: string;
   id: string;
   content: TypedObject[];
-  comments: Array<any>;
+  comments: CommentData[];
   likes: number;
   dislikes: number;
   isCurrentlyLiked: boolean;
@@ -36,8 +36,16 @@ export default function Post({
   hide,
   goBack,
 }: PostProps): ReactElement {
-  const [commentList, setCommentList] = useState<Array<any>>(comments || []);
+  const [commentList, setCommentList] = useState<CommentData[]>(comments || []);
   const [windowServer, setWindow] = useState<WindowServerType>({});
+
+  const setComments = (commentId: string) => {
+    const newCommentList = commentList.filter((comment) => {
+      return comment._id !== commentId;
+    });
+
+    setCommentList(newCommentList);
+  };
 
   useEffect(() => {
     setWindow(window);
@@ -84,16 +92,17 @@ export default function Post({
           />
 
           <div className={styles.comments}>
-            {commentList.map((com, i) => {
+            {commentList.map((com) => {
               return (
                 <Comment
                   id={com._id}
-                  key={i}
+                  key={com._id}
                   username={com.user.name}
                   date={com._createdAt}
                   content={com.content}
                   byCurrentUser={com.byCurrentUser}
                   avatar={1}
+                  setComments={setComments}
                 />
               );
             })}
