@@ -48,6 +48,14 @@ body {
   @media only screen and (max-device-width: 1920px) {
     font-size: 16px;
   }
+
+  @media only screen and (max-device-width: 1440px) {
+    font-size: 13px;
+  }
+
+  @media only screen and (max-device-width: 1024px) {
+    font-size: 9px;
+  }
 }
 
 ul {
