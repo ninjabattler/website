@@ -31,21 +31,23 @@ export default function PostsPage({
   const onSlideClick = (id: string) => {
     setPostSelected(true);
 
-    axios({
-      method: "get",
-      url: `/api/posts/get`,
-      params: { id },
-      headers: { "Content-Type": "application/json" },
-    }).then((res) => {
-      if (res.data && res.data.content) {
-        setSelectedPostData(res.data);
-      } else {
-        setSelectedPostData({});
-      }
-    });
-
     setTimeout(() => {
-      setShowPost(true);
+      axios({
+        method: "get",
+        url: `/api/posts/get`,
+        params: { id },
+        headers: { "Content-Type": "application/json" },
+      }).then((res) => {
+        if (res.data && res.data.content) {
+          setSelectedPostData(res.data);
+        } else {
+          setSelectedPostData({});
+        }
+
+        setTimeout(() => {
+          setShowPost(true);
+        }, 100);
+      });
     }, 1000);
   };
 

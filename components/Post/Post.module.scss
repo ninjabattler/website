@@ -9,7 +9,7 @@
   height: calc(85vh - 5rem);
   font-size: 3rem;
   margin-left: 7%;
-  margin-top: calc(7vh + 1rem);
+  margin-top: calc(7vh + 1.8rem);
   overflow: hidden;
   opacity: 1;
   z-index: 2;
@@ -19,17 +19,6 @@
     filter 1s;
   transform: scale(1);
   filter: blur(0);
-
-  &.hide {
-    transition:
-      opacity 1s,
-      transform 1s,
-      filter 1s;
-    opacity: 0;
-    transform: scale(0.9);
-    filter: blur(0.1em);
-    z-index: 0;
-  }
 
   .backButton {
     @include mixins.flexCenter;
@@ -165,6 +154,7 @@
       flex-direction: column;
       overflow-y: scroll;
       z-index: 2;
+      transition: height 1s;
 
       p,
       h1,
@@ -201,6 +191,7 @@
           transparent 90%,
           black 100%
         );
+        transition: height 1s;
         content: "";
       }
     }
@@ -224,7 +215,7 @@
     border-right: variables.$borderThinLightGray;
     background-color: variables.$darkGray;
     overflow-y: scroll;
-    animation: slideIn 2s 1 ease-in-out;
+    animation: slideInComments 2s 1 ease-in-out;
 
     &::-webkit-scrollbar {
       width: 0.2em;
@@ -246,6 +237,7 @@
       width: calc(100% - 0.4em);
       height: 100%;
       position: absolute;
+      animation: slideInComments 2s 1 ease-in-out;
       mask: linear-gradient(
         90deg,
         black 0%,
@@ -254,6 +246,26 @@
         black 100%
       );
       content: "";
+    }
+  }
+
+  &.hide {
+    margin-top: -75vh;
+    z-index: 0;
+    transition:
+      opacity 1s,
+      transform 1s,
+      filter 1s,
+      margin 1s;
+
+    .postContent {
+      main {
+        height: 0%;
+
+        &::before {
+          height: 0%;
+        }
+      }
     }
   }
 
@@ -275,6 +287,18 @@
   100% {
     width: calc(100% - 0.3rem);
     border-width: 0.15rem;
+  }
+}
+
+@keyframes slideInComments {
+  0% {
+    height: 0;
+  }
+  50% {
+    height: 0;
+  }
+  100% {
+    height: calc(90vh - 4.8rem - 2em);
   }
 }
 
