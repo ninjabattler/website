@@ -200,7 +200,7 @@
   .commentPanel {
     position: absolute;
     width: 30%;
-    height: calc(90vh - 5rem);
+    height: calc(85vh - 5rem);
     margin-left: auto;
     margin-right: auto;
     top: 0;
@@ -209,7 +209,7 @@
   }
 
   .comments {
-    height: calc(90vh - 4.8rem - 2em);
+    height: calc(85vh - 9.8rem - 5em);
     margin-left: auto;
     border-left: variables.$borderThinLightGray;
     border-right: variables.$borderThinLightGray;

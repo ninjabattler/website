@@ -2,19 +2,25 @@
 @use "/styles/_variables" as variables;
 
 .comment {
-  width: 100%;
+  width: calc(100% - 0.35em);
   margin-top: 0.5em;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.75em;
   margin-left: 0.35em;
   display: flex;
   flex-direction: column;
   flex-wrap: none;
   font-size: 1em;
   color: variables.$primaryText;
+  perspective: 0;
 
   .deleteOverlay {
-    width: 100%;
     @include mixins.flexCenter;
+    width: calc(100% + 0.35em);
+    margin-left: -0.35em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    border-top: variables.$borderThinLightGray;
+    border-bottom: variables.$borderThinLightGray;
     position: absolute;
     flex-wrap: wrap;
     background-color: variables.$dialogueBoxBackgroundColour;
@@ -25,7 +31,6 @@
       @include mixins.russoFont;
       width: 100%;
       margin: 0;
-      margin-top: 1.25em;
       font-size: 0.65em;
       text-align: center;
     }
@@ -117,6 +122,7 @@
 
         &:hover {
           transform: scale(1.1);
+          color: red;
         }
 
         svg {
@@ -129,7 +135,7 @@
   .content {
     width: calc(95% - 8em);
     max-height: 4.8em;
-    margin-top: -2em;
+    margin-top: -1.75em;
     margin-bottom: 0;
     margin-left: 2.75em;
     padding-top: 1em;
@@ -177,10 +183,6 @@
 
   &.byCurrentUser {
     .header {
-      .avatar {
-        border-color: var(--article-colour);
-      }
-
       .userInfo {
         filter: drop-shadow(0.1em 0.1em 0 var(--article-colour));
       }

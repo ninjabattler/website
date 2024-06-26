@@ -2,7 +2,7 @@
 @use "/styles/_variables" as variables;
 
 #commentPanel {
-  width: 30%;
+  width: 28%;
   height: calc(100vh - 3.5em);
   margin-left: auto;
   margin-right: auto;
@@ -12,7 +12,7 @@
   position: sticky;
   display: flex;
   flex-direction: column;
-  font-size: 1.3em;
+  font-size: 1.125em;
   overflow: hidden;
   perspective: 10em;
   filter: drop-shadow(0 0 0.1em rgba(0, 0, 0, 0.5));
