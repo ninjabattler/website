@@ -5,7 +5,7 @@ import { TypedObject } from "sanity";
 import { PortableText } from "next-sanity";
 import Picture from "../articleComponents/Picture/Picture";
 import Spoiler from "../articleComponents/Spoiler/Spoiler";
-import { ArrowBackIosNewSharp } from "@mui/icons-material";
+import { ArrowLeftSharp } from "@mui/icons-material";
 import LikePanel from "../feedbackAndShare/LikePanel/LikePanel";
 import ShareBar from "../feedbackAndShare/ShareBar/ShareBar";
 import Link from "next/link";
@@ -66,7 +66,7 @@ export default function Post({
         className={styles.backButton}
         onClick={goBack}
       >
-        <ArrowBackIosNewSharp />
+        <ArrowLeftSharp />
       </Link>
 
       <div className={styles.postContent}>
