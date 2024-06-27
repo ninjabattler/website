@@ -1,16 +1,16 @@
 import styles from "../styles/HomePage.module.scss";
 import React, { FC } from "react";
 import HomePageHead from "../components/PageMetadata/HomePageHead";
-import ReviewPageBackground from "../components/backgrounds/ReviewPageBackground/ReviewPageBackground";
+import HomePageBackground from "../components/backgrounds/HomePageBackground/HomePageBackground";
 
 export default function Home({}: FC<{}> & AppData) {
   return (
     <>
       <HomePageHead />
-      <ReviewPageBackground />
+      <HomePageBackground />
 
       <main id={styles.homePage}>
-        <img src="/newBanner.webp" />
+        {/* <img src="/newBanner.webp" /> */}
         <em>
           {
             '"Designs improved with time and knowledge are the essence of my work. Through no other method can I approach perfection."'
