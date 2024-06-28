@@ -9,7 +9,7 @@ import {
   SpriteMaterial,
   Sprite,
   PointLight,
-  MeshBasicMaterial,
+  MeshToonMaterial,
 } from "three";
 // @ts-expect-error - CommonJs warning
 import { GLTF, GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
@@ -114,7 +114,7 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({
       // Ring Planet
       const ringPlanetPieceUrls: string[] = [
         "/threeJs/posts/ringPlanet.glb",
-        "/threeJs/posts/ringPlanetRings.glb",
+        // "/threeJs/posts/ringPlanetRings.glb",
       ];
 
       const ringPlanetPieces: any[] = [];
@@ -127,9 +127,9 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({
 
             ringPlanetPiece.traverse((o: any) => {
               if (o.isMesh) {
-                const newMaterial = new MeshBasicMaterial({
+                const newMaterial = new MeshToonMaterial({
                   map: o.material.map,
-                  fog: false,
+                  // fog: false,
                 });
                 o.material = newMaterial;
               }
@@ -148,6 +148,8 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({
 
             ringPlanetPieces.push(ringPlanetPiece);
 
+            console.log(ringPlanetPiece);
+
             scene.add(ringPlanetPiece);
           },
           undefined,
@@ -158,8 +160,9 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({
       });
 
       // Lighting
-      const sunLight = new PointLight(0xfffcbc, 1, 11.5, 0);
-      sunLight.position.z = -0;
+      const sunLight = new PointLight(0xfffcbc, 10, 7.9, 0.01);
+      sunLight.position.y = 1;
+      sunLight.position.z = -5;
 
       scene.add(sunLight);
 
