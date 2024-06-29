@@ -10,9 +10,14 @@ import {
   Sprite,
   PointLight,
   MeshToonMaterial,
+  AmbientLight,
 } from "three";
 // @ts-expect-error - CommonJs warning
 import { GLTF, GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+// @ts-expect-error - CommonJs warning
+import { MTLLoader } from "three/addons/loaders/MTLLoader.js";
+// @ts-expect-error - CommonJs warning
+import { OBJLoader } from "three/addons/loaders/OBJLoader.js";
 import {
   BloomEffect,
   ScanlineEffect,
@@ -43,14 +48,16 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({
   useEffect(() => {
     if (typeof window !== "undefined") {
       // Scene and Renderer
-      const gltfLoader = new GLTFLoader();
       const scene = new Scene();
+      scene
+
       const camera = new PerspectiveCamera(
         75,
         window.innerWidth / window.innerHeight,
         0.1,
         1000,
       );
+
       const renderer = new WebGLRenderer({
         powerPreference: "high-performance",
         antialias: false,
@@ -63,7 +70,7 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({
       camera.position.z = 5;
 
       // Set up the space skybox
-      const spaceMap = new TextureLoader().load("/threeJs/posts/space.png");
+      const spaceMap = new TextureLoader().load("/threeJs/homePageSpace.png");
       spaceMap.colorSpace = SRGBColorSpace;
       scene.background = spaceMap;
 
@@ -101,70 +108,72 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({
       });
       const sun2 = new Sprite(sun2Material);
 
-      sun.scale.x = 5;
-      sun.scale.y = 5;
+      sun.position.z = -10.01;
+      sun.scale.x = 17;
+      sun.scale.y = 17;
 
-      sun2.position.z = 0.01;
-      sun2.scale.x = 5;
-      sun2.scale.y = 5;
+      sun2.position.z = -10;
+      sun2.scale.x = 17;
+      sun2.scale.y = 17;
 
       scene.add(sun);
       scene.add(sun2);
 
       // Ring Planet
-      const ringPlanetPieceUrls: string[] = [
-        "/threeJs/posts/ringPlanet.glb",
-        // "/threeJs/posts/ringPlanetRings.glb",
-      ];
+      const mtlLoader = new MTLLoader();
+      const url = "/threeJs/posts/ringPlanet.mtl";
+      mtlLoader.load(url, function (materials: any) {
 
-      const ringPlanetPieces: any[] = [];
+        materials.preload();
 
-      ringPlanetPieceUrls.forEach((url) => {
-        gltfLoader.load(
-          url,
-          (gltf: GLTF) => {
-            const ringPlanetPiece = gltf.scene;
+        const objLoader = new OBJLoader();
+        objLoader.setMaterials(materials);
+        objLoader.load('/threeJs/posts/ringPlanet.obj', function (object) {
+          object.traverse((o: any) => {
+            if (o.isGroup) {
+              o.children.forEach((mesh: any) => {
+                for (let i = 0; i < mesh.material.length; i++) {
+                  const newMaterial = new MeshToonMaterial(mesh.material[i]);
+                  mesh.material[i] = newMaterial;
+                  
+                  if (mesh.material[i].name !== "Material.001") {
+                    mesh.material[i].transparent = false;
+                  } else {
+                    mesh.material[i].emmissive = 0xffffff;
+                    mesh.material[i].emmissiveIntensity = 1;
+                  }
+                }
 
-            ringPlanetPiece.traverse((o: any) => {
-              if (o.isMesh) {
-                const newMaterial = new MeshToonMaterial({
-                  map: o.material.map,
-                  // fog: false,
-                });
-                o.material = newMaterial;
-              }
-            });
+                mesh.rotation.x = 0.15;
+                mesh.rotation.y = 0;
+                mesh.rotation.z = 0;
+                mesh.position.x = 0;
+                mesh.position.y = -1;
+                mesh.position.z = 2;
 
-            ringPlanetPiece.rotation.x = 0.15;
-            ringPlanetPiece.rotation.y = 0;
-            ringPlanetPiece.rotation.z = 0;
-            ringPlanetPiece.position.x = 0;
-            ringPlanetPiece.position.y = -1;
-            ringPlanetPiece.position.z = 2;
+                mesh.scale.x = 0.5;
+                mesh.scale.y = 0.5;
+                mesh.scale.z = 0.5;
+                mesh.castShadow = true;
 
-            ringPlanetPiece.scale.x = 0.45;
-            ringPlanetPiece.scale.y = 0.45;
-            ringPlanetPiece.scale.z = 0.45;
+                scene.add(mesh);
+              })
+            }
+          });
+        });
 
-            ringPlanetPieces.push(ringPlanetPiece);
-
-            console.log(ringPlanetPiece);
-
-            scene.add(ringPlanetPiece);
-          },
-          undefined,
-          (error) => {
-            console.error(error);
-          },
-        );
       });
 
       // Lighting
-      const sunLight = new PointLight(0xfffcbc, 10, 7.9, 0.01);
-      sunLight.position.y = 1;
-      sunLight.position.z = -5;
+      const sunLight = new PointLight(0xfffcbc, 1, 50, 0.01);
+      sunLight.position.y = -10;
+      sunLight.position.z = -30;
 
       scene.add(sunLight);
+
+      const ambientLight = new AmbientLight(0x131304);
+
+      scene.add(ambientLight);
 
       // Post Processing Effects
       // @ts-expect-error
@@ -187,7 +196,7 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({
       const noise = new NoiseEffect({
         blendFunction: BlendFunction.COLOR_DODGE,
       });
-      noise.blendMode.opacity.value = 0.035;
+      noise.blendMode.opacity.value = 0.04;
 
       const scanlines = new ScanlineEffect({
         blendFunction: BlendFunction.MULTIPLY,
@@ -212,15 +221,11 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({
         sun.scale.y += 0.0075;
         sunMaterial.opacity -= 0.008;
 
-        if (sun.scale.x >= 6.2) {
-          sun.scale.x = 5;
-          sun.scale.y = 5;
+        if (sun.scale.x >= 18.2) {
+          sun.scale.x = 17;
+          sun.scale.y = 17;
           sunMaterial.opacity = 1;
         }
-
-        ringPlanetPieces.forEach((planet) => {
-          planet.rotation.y += 0.0005;
-        });
 
         renderer.render(scene, camera);
         composer.render();
