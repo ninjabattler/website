@@ -49,7 +49,7 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({
     if (typeof window !== "undefined") {
       // Scene and Renderer
       const scene = new Scene();
-      scene
+      scene;
 
       const camera = new PerspectiveCamera(
         75,
@@ -123,19 +123,18 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({
       const mtlLoader = new MTLLoader();
       const url = "/threeJs/posts/ringPlanet.mtl";
       mtlLoader.load(url, function (materials: any) {
-
         materials.preload();
 
         const objLoader = new OBJLoader();
         objLoader.setMaterials(materials);
-        objLoader.load('/threeJs/posts/ringPlanet.obj', function (object) {
+        objLoader.load("/threeJs/posts/ringPlanet.obj", function (object) {
           object.traverse((o: any) => {
             if (o.isGroup) {
               o.children.forEach((mesh: any) => {
                 for (let i = 0; i < mesh.material.length; i++) {
                   const newMaterial = new MeshToonMaterial(mesh.material[i]);
                   mesh.material[i] = newMaterial;
-                  
+
                   if (mesh.material[i].name !== "Material.001") {
                     mesh.material[i].transparent = false;
                   } else {
@@ -157,11 +156,10 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({
                 mesh.castShadow = true;
 
                 scene.add(mesh);
-              })
+              });
             }
           });
         });
-
       });
 
       // Lighting
