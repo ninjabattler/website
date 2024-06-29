@@ -10,7 +10,8 @@ import {
   Sprite,
   PointLight,
   MeshToonMaterial,
-  AmbientLight,
+  Fog,
+  NoBlending,
 } from "three";
 // @ts-expect-error - CommonJs warning
 import { GLTF, GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
@@ -49,7 +50,7 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({
     if (typeof window !== "undefined") {
       // Scene and Renderer
       const scene = new Scene();
-      scene;
+      scene.fog = new Fog(0xffffff);
 
       const camera = new PerspectiveCamera(
         75,
@@ -59,10 +60,7 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({
       );
 
       const renderer = new WebGLRenderer({
-        powerPreference: "high-performance",
-        antialias: false,
-        stencil: false,
-        depth: false,
+        antialias: true,
       });
 
       renderer.setSize(window.innerWidth, window.innerHeight);
@@ -134,13 +132,10 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({
                 for (let i = 0; i < mesh.material.length; i++) {
                   const newMaterial = new MeshToonMaterial(mesh.material[i]);
                   mesh.material[i] = newMaterial;
+                  mesh.material[i].fog = true;
 
-                  if (mesh.material[i].name !== "Material.001") {
-                    mesh.material[i].transparent = false;
-                  } else {
-                    mesh.material[i].emmissive = 0xffffff;
-                    mesh.material[i].emmissiveIntensity = 1;
-                  }
+                  mesh.material[i].blending = NoBlending;
+                  mesh.material[i].alphaTest = 0.1;
                 }
 
                 mesh.rotation.x = 0.15;
@@ -163,15 +158,11 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({
       });
 
       // Lighting
-      const sunLight = new PointLight(0xfffcbc, 1, 50, 0.01);
+      const sunLight = new PointLight(0xfffcbc, 10, 100, 0.01);
       sunLight.position.y = -10;
       sunLight.position.z = -30;
 
       scene.add(sunLight);
-
-      const ambientLight = new AmbientLight(0x131304);
-
-      scene.add(ambientLight);
 
       // Post Processing Effects
       // @ts-expect-error
@@ -213,6 +204,8 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({
       // Render
 
       const renderScene = () => {
+        requestAnimationFrame(renderScene);
+
         sunMaterial.rotation += 0.001;
         sun2Material.rotation += 0.001;
         sun.scale.x += 0.0075;
@@ -227,8 +220,6 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({
 
         renderer.render(scene, camera);
         composer.render();
-
-        requestAnimationFrame(renderScene);
       };
 
       renderScene();
