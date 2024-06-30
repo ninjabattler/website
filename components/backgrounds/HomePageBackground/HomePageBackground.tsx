@@ -9,16 +9,11 @@ import {
   SpriteMaterial,
   Sprite,
   PointLight,
-  MeshToonMaterial,
   Fog,
-  NoBlending,
+  Object3DEventMap,
 } from "three";
 // @ts-expect-error - CommonJs warning
 import { GLTF, GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
-// @ts-expect-error - CommonJs warning
-import { MTLLoader } from "three/addons/loaders/MTLLoader.js";
-// @ts-expect-error - CommonJs warning
-import { OBJLoader } from "three/addons/loaders/OBJLoader.js";
 import {
   BloomEffect,
   ScanlineEffect,
@@ -30,6 +25,8 @@ import {
   BlendFunction,
   NoiseEffect,
 } from "postprocessing";
+// @ts-expect-error - CommonJs warning
+import { lerp } from "three/src/math/MathUtils.js";
 
 type HomePageBackgroundProps = {
   spaceColour?: string;
@@ -66,6 +63,7 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({
 
       renderer.setSize(window.innerWidth, window.innerHeight);
       backgroundRef.current?.appendChild(renderer.domElement);
+      camera.position.y = -0.1;
       camera.position.z = 5;
 
       // Set up the space skybox
@@ -80,17 +78,20 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({
         color: starsColour || undefined,
       });
 
+      const stars: { scaleUp: boolean; star: Sprite<Object3DEventMap> }[] = [];
+
       for (let i = 0; i < 250; i++) {
         const star = new Sprite(starMaterial);
-        const starScale = Math.random() * 4;
+        const starScale = 2 + Math.random() * 2;
 
         star.position.x = (Math.random() - 0.5) * 600;
         star.position.y = (Math.random() - 0.5) * 300;
-        star.position.z = -100 - Math.random() * 100;
+        star.position.z = -150 - Math.random() * 50;
         star.scale.x = starScale;
         star.scale.y = starScale;
 
         scene.add(star);
+        stars.push({ scaleUp: true, star });
       }
 
       // Sun
@@ -120,7 +121,6 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({
       scene.add(sun2);
 
       // Ring Planet
-
       const ringPlanetMap = new TextureLoader().load(
         "/threeJs/home/ringPlanet.png",
       );
@@ -130,9 +130,10 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({
         alphaHash: true,
       });
       const ringPlanet = new Sprite(ringPlanetMaterial);
-      ringPlanet.position.y = -0.35;
-      ringPlanet.position.z = 4;
-      ringPlanet.scale.y = 0.5625;
+      ringPlanet.position.y = -1.75;
+      ringPlanet.position.z = 0;
+      ringPlanet.scale.x = 5;
+      ringPlanet.scale.y = 5 * 0.5625;
 
       scene.add(ringPlanet);
 
@@ -181,7 +182,6 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({
       composer.addPass(new EffectPass(camera, scanlines));
 
       // Render
-
       const renderScene = () => {
         requestAnimationFrame(renderScene);
 
@@ -196,6 +196,28 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({
           sun.scale.y = 17;
           sunMaterial.opacity = 1;
         }
+
+        if (camera.position.y < 0) {
+          camera.position.y = lerp(camera.position.y, 0, 0.0075);
+        }
+
+        stars.forEach((star) => {
+          if (star.scaleUp) {
+            star.star.scale.x += 0.015;
+            star.star.scale.y += 0.015;
+          } else {
+            star.star.scale.x -= 0.015;
+            star.star.scale.y -= 0.015;
+          }
+
+          if (star.star.scale.x > 4) {
+            star.scaleUp = false;
+          }
+
+          if (star.star.scale.x < 2) {
+            star.scaleUp = true;
+          }
+        });
 
         renderer.render(scene, camera);
         composer.render();
