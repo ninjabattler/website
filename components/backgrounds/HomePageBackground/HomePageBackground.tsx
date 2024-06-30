@@ -49,6 +49,7 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({
   useEffect(() => {
     if (typeof window !== "undefined") {
       // Scene and Renderer
+      const gltfLoader = new GLTFLoader();
       const scene = new Scene();
       scene.fog = new Fog(0xffffff);
 
@@ -97,6 +98,7 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({
       const sunMaterial = new SpriteMaterial({
         map: sunMap,
         color: starsColour || undefined,
+        alphaHash: true,
       });
       const sun = new Sprite(sunMaterial);
 
@@ -118,51 +120,28 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({
       scene.add(sun2);
 
       // Ring Planet
-      const mtlLoader = new MTLLoader();
-      const url = "/threeJs/posts/ringPlanet.mtl";
-      mtlLoader.load(url, function (materials: any) {
-        materials.preload();
 
-        const objLoader = new OBJLoader();
-        objLoader.setMaterials(materials);
-        objLoader.load("/threeJs/posts/ringPlanet.obj", function (object) {
-          object.traverse((o: any) => {
-            if (o.isGroup) {
-              o.children.forEach((mesh: any) => {
-                for (let i = 0; i < mesh.material.length; i++) {
-                  const newMaterial = new MeshToonMaterial(mesh.material[i]);
-                  mesh.material[i] = newMaterial;
-                  mesh.material[i].fog = true;
-
-                  mesh.material[i].blending = NoBlending;
-                  mesh.material[i].alphaTest = 0.1;
-                }
-
-                mesh.rotation.x = 0.15;
-                mesh.rotation.y = 0;
-                mesh.rotation.z = 0;
-                mesh.position.x = 0;
-                mesh.position.y = -1;
-                mesh.position.z = 2;
-
-                mesh.scale.x = 0.5;
-                mesh.scale.y = 0.5;
-                mesh.scale.z = 0.5;
-                mesh.castShadow = true;
-
-                scene.add(mesh);
-              });
-            }
-          });
-        });
+      const ringPlanetMap = new TextureLoader().load(
+        "/threeJs/home/ringPlanet.png",
+      );
+      const ringPlanetMaterial = new SpriteMaterial({
+        map: ringPlanetMap,
+        color: starsColour || undefined,
+        alphaHash: true,
       });
+      const ringPlanet = new Sprite(ringPlanetMaterial);
+      ringPlanet.position.y = -0.35;
+      ringPlanet.position.z = 4;
+      ringPlanet.scale.y = 0.5625;
+
+      scene.add(ringPlanet);
 
       // Lighting
       const sunLight = new PointLight(0xfffcbc, 10, 100, 0.01);
-      sunLight.position.y = -10;
-      sunLight.position.z = -30;
+      sunLight.position.y = 0;
+      sunLight.position.z = 1;
 
-      scene.add(sunLight);
+      // scene.add(sunLight);
 
       // Post Processing Effects
       // @ts-expect-error
@@ -196,8 +175,8 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({
 
       const composer = new EffectComposer(renderer);
       composer.addPass(new RenderPass(scene, camera));
-      composer.addPass(new EffectPass(camera, sunRays));
       composer.addPass(new EffectPass(camera, bloom));
+      composer.addPass(new EffectPass(camera, sunRays));
       composer.addPass(new EffectPass(camera, noise));
       composer.addPass(new EffectPass(camera, scanlines));
 
