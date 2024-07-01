@@ -11,6 +11,10 @@ import {
   PointLight,
   Fog,
   Object3DEventMap,
+  BoxGeometry,
+  MeshToonMaterial,
+  Mesh,
+  Group,
 } from "three";
 // @ts-expect-error - CommonJs warning
 import { GLTF, GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
@@ -137,12 +141,39 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({
 
       scene.add(ringPlanet);
 
-      // Lighting
-      const sunLight = new PointLight(0xfffcbc, 10, 100, 0.01);
-      sunLight.position.y = 0;
-      sunLight.position.z = 1;
+      // Asteroid Belt
+      const asteroidGroup = new Group();
 
-      // scene.add(sunLight);
+      for (let i = 0; i <= 1000; i++) {
+        const asteroidSize = Math.random();
+        const asteroidGeometry = new BoxGeometry(
+          asteroidSize,
+          asteroidSize,
+          asteroidSize,
+        );
+        const asteroidMaterial = new MeshToonMaterial({ color: 0x663311 });
+        const asteroid = new Mesh(asteroidGeometry, asteroidMaterial);
+        const asteroidPositionOffset = Math.random() * 360;
+
+        asteroid.position.x =
+          Math.cos(asteroidPositionOffset) * 75 + Math.random() * 10;
+        asteroid.position.y = -5 + Math.random() * 10;
+        asteroid.position.z =
+          Math.sin(asteroidPositionOffset) * 75 + Math.random() * 10;
+
+        asteroid.rotation.x = Math.random();
+        asteroid.rotation.y = Math.random();
+        asteroid.rotation.z = Math.random();
+
+        asteroidGroup.add(asteroid);
+      }
+
+      scene.add(asteroidGroup);
+
+      // Lighting
+      const sunLight = new PointLight(0xfffcbc, 1, 0, 0.01);
+
+      scene.add(sunLight);
 
       // Post Processing Effects
       // @ts-expect-error
@@ -184,6 +215,8 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({
       // Render
       const renderScene = () => {
         requestAnimationFrame(renderScene);
+
+        asteroidGroup.rotation.y -= 0.0001;
 
         sunMaterial.rotation += 0.001;
         sun2Material.rotation += 0.001;
