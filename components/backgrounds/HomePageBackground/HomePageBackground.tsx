@@ -9,15 +9,16 @@ import {
   SpriteMaterial,
   Sprite,
   PointLight,
-  Fog,
   Object3DEventMap,
   BoxGeometry,
   MeshToonMaterial,
   Mesh,
   Group,
+  PlaneGeometry,
+  MeshBasicMaterial,
 } from "three";
 // @ts-expect-error - CommonJs warning
-import { GLTF, GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { lerp } from "three/src/math/MathUtils.js";
 import {
   BloomEffect,
   ScanlineEffect,
@@ -29,8 +30,6 @@ import {
   BlendFunction,
   NoiseEffect,
 } from "postprocessing";
-// @ts-expect-error - CommonJs warning
-import { lerp } from "three/src/math/MathUtils.js";
 
 type HomePageBackgroundProps = {
   spaceColour?: string;
@@ -50,9 +49,7 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({
   useEffect(() => {
     if (typeof window !== "undefined") {
       // Scene and Renderer
-      const gltfLoader = new GLTFLoader();
       const scene = new Scene();
-      scene.fog = new Fog(0xffffff);
 
       const camera = new PerspectiveCamera(
         75,
@@ -71,9 +68,25 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({
       camera.position.z = 5;
 
       // Set up the space skybox
+      const spaceCloudsGeometry = new PlaneGeometry(400, 225);
       const spaceMap = new TextureLoader().load("/threeJs/homePageSpace.png");
       spaceMap.colorSpace = SRGBColorSpace;
-      scene.background = spaceMap;
+      const spaceCloudsMaterial = new MeshBasicMaterial({
+        map: spaceMap,
+        color: 0x9c95ac,
+        transparent: true,
+      });
+
+      const spaceClouds = new Mesh(spaceCloudsGeometry, spaceCloudsMaterial);
+
+      spaceClouds.position.z = -100;
+      spaceClouds.position.y = 0;
+      spaceClouds.lookAt(camera.position);
+
+      scene.add(spaceClouds);
+
+      // @ts-expect-error
+      scene.background = 0x060909;
 
       // Stars
       const starMap = new TextureLoader().load("/threeJs/posts/star.png");
@@ -144,7 +157,7 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({
       // Asteroid Belt
       const asteroidGroup = new Group();
 
-      for (let i = 0; i <= 1000; i++) {
+      for (let i = 0; i <= 500; i++) {
         const asteroidSize = Math.random();
         const asteroidGeometry = new BoxGeometry(
           asteroidSize,
