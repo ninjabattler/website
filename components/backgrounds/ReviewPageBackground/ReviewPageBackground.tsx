@@ -73,7 +73,7 @@ const ReviewPageBackground: FC<ReviewPageBackgroundProps> = ({
       spaceMap.colorSpace = SRGBColorSpace;
       const spaceCloudsMaterial = new MeshBasicMaterial({
         map: spaceMap,
-        color: spaceColour || 0x9c95ac,
+        color: spaceColour || 0xac85cc,
         transparent: true,
       });
 
