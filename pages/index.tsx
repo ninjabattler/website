@@ -9,7 +9,9 @@ export default function Home({}: FC<{}> & AppData) {
       <HomePageHead />
       <HomePageBackground />
 
-      <main id={styles.homePage}>{/* <img src="/newBanner.webp" /> */}</main>
+      <main id={styles.homePage}>
+        <img src="/home/Ninjabattler_Forward.png" />
+      </main>
     </>
   );
 }

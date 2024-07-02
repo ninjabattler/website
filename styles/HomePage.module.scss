@@ -9,9 +9,10 @@
   align-items: center;
 
   img {
-    height: 40%;
+    height: calc(100% - 4.15rem);
     top: 2.15rem;
     position: absolute;
+    left: 0;
   }
 
   em,

@@ -73,7 +73,7 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({
       spaceMap.colorSpace = SRGBColorSpace;
       const spaceCloudsMaterial = new MeshBasicMaterial({
         map: spaceMap,
-        color: 0xac85cc,
+        color: 0x505585,
         transparent: true,
       });
 
