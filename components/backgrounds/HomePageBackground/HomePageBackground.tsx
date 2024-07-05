@@ -32,7 +32,6 @@ import {
 } from "postprocessing";
 
 type HomePageBackgroundProps = {
-  spaceColour?: string;
   starsColour?: string;
 };
 
@@ -40,10 +39,7 @@ type HomePageBackgroundProps = {
  * The three js space background for the Review page
  * @author Ninjabattler
  */
-const HomePageBackground: FC<HomePageBackgroundProps> = ({
-  spaceColour,
-  starsColour,
-}) => {
+const HomePageBackground: FC<HomePageBackgroundProps> = ({ starsColour }) => {
   const backgroundRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -156,16 +152,22 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({
 
       // Asteroid Belt
       const asteroidGroup = new Group();
+      const asteroidMap = new TextureLoader().load("/threeJs/Asteroid.webp");
+
+      const asteroids: {
+        rotationSpeed: number;
+        asteroid: Sprite<Object3DEventMap>;
+      }[] = [];
 
       for (let i = 0; i <= 500; i++) {
-        const asteroidSize = Math.random();
-        const asteroidGeometry = new BoxGeometry(
-          asteroidSize,
-          asteroidSize,
-          asteroidSize,
-        );
-        const asteroidMaterial = new MeshToonMaterial({ color: 0x663311 });
-        const asteroid = new Mesh(asteroidGeometry, asteroidMaterial);
+        const asteroidSize = Math.random() * 3;
+
+        const asteroidMaterial = new SpriteMaterial({
+          map: asteroidMap,
+          alphaHash: true,
+        });
+
+        const asteroid = new Sprite(asteroidMaterial);
         const asteroidPositionOffset = Math.random() * 360;
 
         asteroid.position.x =
@@ -173,11 +175,14 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({
         asteroid.position.y = -5 + Math.random() * 10;
         asteroid.position.z =
           Math.sin(asteroidPositionOffset) * 75 + Math.random() * 10;
+        asteroid.scale.x = asteroidSize;
+        asteroid.scale.y = asteroidSize;
+        asteroidMaterial.rotation = Math.random();
 
-        asteroid.rotation.x = Math.random();
-        asteroid.rotation.y = Math.random();
-        asteroid.rotation.z = Math.random();
-
+        asteroids.push({
+          rotationSpeed: -0.005 + Math.random() * 0.01,
+          asteroid,
+        });
         asteroidGroup.add(asteroid);
       }
 
@@ -263,6 +268,11 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({
           if (star.star.scale.x < 2) {
             star.scaleUp = true;
           }
+        });
+
+        asteroids.forEach((asteroidObject) => {
+          asteroidObject.asteroid.material.rotation +=
+            asteroidObject.rotationSpeed;
         });
 
         renderer.render(scene, camera);
