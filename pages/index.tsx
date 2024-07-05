@@ -10,7 +10,7 @@ export default function Home({}: FC<{}> & AppData) {
       <HomePageBackground />
 
       <main id={styles.homePage}>
-        <img src="/home/Ninjabattler_Forward.png" />
+        {/* <img src="/home/Ninjabattler_Forward.png" /> */}
       </main>
     </>
   );

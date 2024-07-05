@@ -30,16 +30,11 @@ import {
   BlendFunction,
   NoiseEffect,
 } from "postprocessing";
-
-type HomePageBackgroundProps = {
-  starsColour?: string;
-};
-
 /**
  * The three js space background for the Review page
  * @author Ninjabattler
  */
-const HomePageBackground: FC<HomePageBackgroundProps> = ({ starsColour }) => {
+const HomePageBackground: FC<{}> = () => {
   const backgroundRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -69,7 +64,7 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({ starsColour }) => {
       spaceMap.colorSpace = SRGBColorSpace;
       const spaceCloudsMaterial = new MeshBasicMaterial({
         map: spaceMap,
-        color: 0x505585,
+        color: 0x595580,
         transparent: true,
       });
 
@@ -88,7 +83,6 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({ starsColour }) => {
       const starMap = new TextureLoader().load("/threeJs/posts/star.png");
       const starMaterial = new SpriteMaterial({
         map: starMap,
-        color: starsColour || undefined,
       });
 
       const stars: { scaleUp: boolean; star: Sprite<Object3DEventMap> }[] = [];
@@ -111,14 +105,12 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({ starsColour }) => {
       const sunMap = new TextureLoader().load("/threeJs/posts/sun.png");
       const sunMaterial = new SpriteMaterial({
         map: sunMap,
-        color: starsColour || undefined,
         alphaHash: true,
       });
       const sun = new Sprite(sunMaterial);
 
       const sun2Material = new SpriteMaterial({
         map: sunMap,
-        color: starsColour || undefined,
       });
       const sun2 = new Sprite(sun2Material);
 
@@ -139,7 +131,6 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({ starsColour }) => {
       );
       const ringPlanetMaterial = new SpriteMaterial({
         map: ringPlanetMap,
-        color: starsColour || undefined,
         alphaHash: true,
       });
       const ringPlanet = new Sprite(ringPlanetMaterial);
@@ -150,20 +141,63 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({ starsColour }) => {
 
       scene.add(ringPlanet);
 
+      // Ice Planet
+      const icePlanetMap = new TextureLoader().load(
+        "/threeJs/home/icePlanet.webp",
+      );
+      const icePlanetMaterial = new SpriteMaterial({
+        map: icePlanetMap,
+        alphaHash: true,
+      });
+      const icePlanet = new Sprite(icePlanetMaterial);
+      icePlanet.position.x = -10;
+      icePlanet.position.y = 5;
+      icePlanet.position.z = -11;
+      icePlanet.scale.x = 5;
+      icePlanet.scale.y = 5 * 0.5625;
+
+      scene.add(icePlanet);
+
+      // Desert Planet
+      const desertPlanetMap = new TextureLoader().load(
+        "/threeJs/home/desertPlanet.webp",
+      );
+      const desertPlanetMaterial = new SpriteMaterial({
+        map: desertPlanetMap,
+        alphaHash: true,
+      });
+      const desertPlanet = new Sprite(desertPlanetMaterial);
+      desertPlanet.position.x = 10;
+      desertPlanet.position.y = 2.5;
+      desertPlanet.position.z = -11;
+      desertPlanet.scale.x = 6.5;
+      desertPlanet.scale.y = 6.5 * 0.5625;
+
+      scene.add(desertPlanet);
       // Asteroid Belt
       const asteroidGroup = new Group();
       const asteroidMap = new TextureLoader().load("/threeJs/Asteroid.webp");
+      const asteroid2Map = new TextureLoader().load("/threeJs/Asteroid_2.webp");
+      const asteroid3Map = new TextureLoader().load("/threeJs/Asteroid_3.webp");
+      const asteroid4Map = new TextureLoader().load("/threeJs/Asteroid_4.webp");
+
+      const asteroidMaps = [
+        asteroidMap,
+        asteroid2Map,
+        asteroid3Map,
+        asteroid4Map,
+      ];
 
       const asteroids: {
         rotationSpeed: number;
         asteroid: Sprite<Object3DEventMap>;
       }[] = [];
 
-      for (let i = 0; i <= 500; i++) {
+      for (let i = 0; i <= 750; i++) {
         const asteroidSize = Math.random() * 3;
 
         const asteroidMaterial = new SpriteMaterial({
-          map: asteroidMap,
+          map: asteroidMaps[Math.floor(Math.random() * 4)],
           alphaHash: true,
         });
 
@@ -187,11 +221,6 @@ const HomePageBackground: FC<HomePageBackgroundProps> = ({ starsColour }) => {
       }
 
       scene.add(asteroidGroup);
-
-      // Lighting
-      const sunLight = new PointLight(0xfffcbc, 1, 0, 0.01);
-
-      scene.add(sunLight);
 
       // Post Processing Effects
       // @ts-expect-error
