@@ -1,4 +1,5 @@
 import { TypedObject } from "sanity";
+import { Object3DEventMap, Sprite } from "three";
 
 declare global {
   type ColourHexCode =
@@ -114,5 +115,21 @@ declare global {
     hidden?: boolean;
     likes: number;
     dislikes: number;
+  };
+
+  type ThreeJSBackgroundAsteroids = {
+    rotationSpeed: number;
+    asteroid: Sprite<Object3DEventMap>;
+  }[];
+
+  type ThreeJSBackgroundStars = {
+    scaleUp: boolean;
+    star: Sprite<Object3DEventMap>;
+  }[];
+
+  type XYZCoordinates = {
+    x?: number;
+    y?: number;
+    z?: number;
   };
 }
