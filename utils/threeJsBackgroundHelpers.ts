@@ -105,7 +105,9 @@ export const createPostProcessing = (
 /**
  * Creates and returns an array of objects containing an asteroid sprite for three js and a rotation speed variable
  */
-export const createAsteroidsObject = (): ThreeJSBackgroundAsteroids => {
+export const createAsteroidsObject = (
+  colour?: ColorRepresentation,
+): ThreeJSBackgroundAsteroids => {
   const asteroidMap = new TextureLoader().load(
     "/threeJs/general/asteroid.webp",
   );
@@ -133,6 +135,7 @@ export const createAsteroidsObject = (): ThreeJSBackgroundAsteroids => {
     const asteroidMaterial = new SpriteMaterial({
       map: asteroidMaps[Math.floor(Math.random() * 4)],
       alphaHash: true,
+      color: colour,
     });
 
     const asteroid = new Sprite(asteroidMaterial);
@@ -211,12 +214,15 @@ export const createSpaceClouds = (
 /**
  * Creates and returns an array of objects containing a star sprite for three js and a boolean to determine if it should scale up or down
  */
-export const createStars = (): ThreeJSBackgroundStars => {
+export const createStars = (
+  colour?: ColorRepresentation,
+): ThreeJSBackgroundStars => {
   const stars: ThreeJSBackgroundStars = [];
   const starMap = new TextureLoader().load("/threeJs/posts/star.png");
   starMap.colorSpace = SRGBColorSpace;
   const starMaterial = new SpriteMaterial({
     map: starMap,
+    color: colour,
   });
 
   for (let i = 0; i < 250; i++) {
@@ -267,6 +273,7 @@ export const createSpriteObject = (
     position?: XYZCoordinates;
     rotation?: XYZCoordinates;
     scale?: XYZCoordinates;
+    colour?: ColorRepresentation;
   },
 ): Sprite<Object3DEventMap> => {
   const map = new TextureLoader().load(texture);
@@ -274,6 +281,7 @@ export const createSpriteObject = (
   const material = new SpriteMaterial({
     map: map,
     alphaHash: true,
+    color: settings ? settings.colour : undefined,
   });
   const sprite = new Sprite(material);
 
