@@ -21,9 +21,7 @@ const SearchResultsCarousel: FC<SearchResultsCarouselProps> = ({
   articles,
   hidden,
 }) => (
-  <section
-    className={`${styles.searchResultsCarousel} ${hidden ? styles.hidden : ""}`}
-  >
+  <section className={styles.searchResultsCarousel}>
     <Swiper
       className={styles.swiper}
       effect="creative"
@@ -32,11 +30,13 @@ const SearchResultsCarousel: FC<SearchResultsCarouselProps> = ({
       creativeEffect={{
         prev: {
           scale: 0.9,
-          translate: [0, -250, -1],
+          translate: [0, -250, -15],
+          rotate: [-10, 0, 0],
         },
         next: {
           scale: 0.9,
-          translate: [0, 250, -1],
+          translate: [0, 250, -15],
+          rotate: [10, 0, 0],
         },
       }}
       mousewheel={true}
@@ -54,6 +54,7 @@ const SearchResultsCarousel: FC<SearchResultsCarouselProps> = ({
               dislikes={article.dislikes}
               tags={article.tags}
               colors={article.colors}
+              hidden={hidden}
             />
           </SwiperSlide>
         );

@@ -8,7 +8,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  position: absolute;
   font-size: 1em;
   perspective: 23.5em;
   overflow: hidden;
@@ -19,9 +18,9 @@
 
   .swiper {
     @include mixins.flexCenter();
-    width: 50%;
+    width: 45%;
     height: 100%;
-    margin-left: 45%;
+    margin-left: 50%;
     overflow: visible;
 
     .slide {
@@ -31,12 +30,6 @@
       overflow: visible;
       filter: drop-shadow(0 0 0.1em rgba(0, 0, 0, 0.5));
     }
-  }
-
-  &.hidden {
-    margin-left: 2rem;
-    opacity: 0;
-    z-index: 1;
   }
 
   @media only screen and (min-aspect-ratio: 20/9) {

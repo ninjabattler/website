@@ -24,7 +24,7 @@ export default function ArticlesPage({
 
   useEffect(() => {
     setTimeout(() => {
-      setShowCarousel(!searchResults);
+      setShowCarousel(true);
       setShowSearchResults(searchResults);
     }, 500);
   }, []);
@@ -45,13 +45,9 @@ export default function ArticlesPage({
       />
 
       <main id={styles.articlesPage}>
-        <Carousel
-          articles={carouselArticles ? carouselArticles : []}
-          hidden={!showCarousel}
-        />
         <SearchResultsCarousel
           articles={carouselArticles ? carouselArticles : []}
-          hidden={!showSearchResults}
+          hidden={!showCarousel}
         />
       </main>
     </>

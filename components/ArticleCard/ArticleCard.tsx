@@ -25,9 +25,10 @@ const ArticleCard: FC<SanityArticlesSearchResult> = ({
   dislikes,
   tags,
   colors,
+  hidden,
 }) => (
   <Link
-    className={styles.articleCard}
+    className={`${styles.articleCard} ${hidden ? styles.hidden : ""}`}
     href={`/articles/${slug}`}
     style={
       {

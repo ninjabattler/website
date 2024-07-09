@@ -104,6 +104,7 @@ declare global {
     dislikes: number;
     tags: string[];
     colors: SanityColors;
+    hidden?: boolean;
   };
 
   type SanityPostsResult = {

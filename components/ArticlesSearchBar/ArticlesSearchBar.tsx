@@ -64,6 +64,7 @@ const ArticlesSearchBar: FC<ArticlesSearchBarProps> = ({
 
           setLoading(false);
           setShowSearchResults(true);
+          setShowCarousel(true);
           setArticles(results);
 
           router.push(
