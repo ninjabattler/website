@@ -30,14 +30,15 @@ const SearchResultsCarousel: FC<SearchResultsCarouselProps> = ({
       creativeEffect={{
         prev: {
           scale: 0.9,
-          translate: [0, -250, -15],
-          rotate: [-10, 0, 0],
+          translate: [0, -250, -50],
+          rotate: [-15, 0, 0],
         },
         next: {
           scale: 0.9,
-          translate: [0, 250, -15],
-          rotate: [10, 0, 0],
+          translate: [0, 250, -50],
+          rotate: [15, 0, 0],
         },
+        limitProgress: 2,
       }}
       mousewheel={true}
     >

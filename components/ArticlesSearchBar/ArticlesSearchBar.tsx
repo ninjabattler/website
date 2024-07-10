@@ -64,8 +64,11 @@ const ArticlesSearchBar: FC<ArticlesSearchBarProps> = ({
 
           setLoading(false);
           setShowSearchResults(true);
-          setShowCarousel(true);
           setArticles(results);
+
+          setTimeout(() => {
+            setShowCarousel(true);
+          }, 1);
 
           router.push(
             `/articles?search=${searchQuery}&tags=${tagsQuery.join(",")}`,
