@@ -40,6 +40,14 @@ const SearchResultsCarousel: FC<SearchResultsCarouselProps> = ({
         },
         limitProgress: 2,
       }}
+      pagination={{
+        clickable: true,
+        renderBullet(index, className) {
+          return `<span class="${className} ${styles.swiperBullet}">${index + 1}</span>`;
+        },
+        verticalClass: styles.verticalPagination,
+        bulletActiveClass: `swiper-pagination-bullet-active ${styles.active}`,
+      }}
       mousewheel={true}
     >
       {articles.map((article, i) => {

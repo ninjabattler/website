@@ -30,6 +30,37 @@
       overflow: visible;
       filter: drop-shadow(0 0 0.1em rgba(0, 0, 0, 0.5));
     }
+
+    .verticalPagination {
+      @include mixins.flexCenter();
+      flex-direction: column;
+      left: -2em;
+      right: unset;
+
+      .swiperBullet {
+        @include mixins.flexCenter();
+        width: 1em;
+        height: 1em;
+        font-size: 1em;
+        border-left: 0.15rem solid transparent;
+        border-right: 0.15rem solid transparent;
+        border-radius: 0;
+        color: variables.$lightGray;
+        background-color: variables.$secondaryText;
+        opacity: 1;
+        transition:
+          border 0.2s,
+          color 0.2s,
+          background-color 0.2s;
+
+        &.active {
+          border-left: variables.$borderThinLightGray;
+          border-right: variables.$borderThinLightGray;
+          background-color: variables.$darkGray;
+          color: variables.$primaryText;
+        }
+      }
+    }
   }
 
   @media only screen and (min-aspect-ratio: 20/9) {

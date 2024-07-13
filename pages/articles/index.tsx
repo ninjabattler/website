@@ -18,15 +18,16 @@ export default function ArticlesPage({
   tagsQuery,
 }: InferGetServerSidePropsType<typeof articlesServerSideProps> & AppData) {
   const [showCarousel, setShowCarousel] = useState<boolean>(false);
-  const [showSearchResults, setShowSearchResults] = useState<boolean>(false);
+  const [showSearchResults, setShowSearchResults] =
+    useState<boolean>(searchResults);
   const [carouselArticles, setCarouselArticles] =
     useState<SanityArticlesSearchResult[]>(articles);
 
   useEffect(() => {
     setTimeout(() => {
       setShowCarousel(true);
-      setShowSearchResults(searchResults);
-    }, 500);
+      // setShowSearchResults(searchResults);
+    }, 2000);
   }, []);
 
   return (

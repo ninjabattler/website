@@ -39,10 +39,7 @@ const ArticleCard: FC<SanityArticlesSearchResult> = ({
       } as CSSProperties
     }
   >
-    <div className={styles.spaceContainer}>
-      <div className={styles.space} />
-      <div className={`${styles.space} ${styles.gradient}`} />
-    </div>
+    <div className={styles.hoverGradient} />
 
     <div className={styles.articleInfo}>
       <div className={`${styles.gradientBar} ${styles.bottom}`} />

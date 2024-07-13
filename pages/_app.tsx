@@ -6,7 +6,7 @@ import { NextRouter, useRouter } from "next/router";
 import { AppProps } from "next/app";
 import "highlight.js/styles/vs2015.css";
 // @ts-expect-error - CommonJs warning
-import { Mousewheel } from "swiper/modules";
+import { Mousewheel, Pagination } from "swiper/modules";
 // @ts-expect-error - CommonJs warning
 import Swiper from "swiper";
 import { SessionProvider } from "next-auth/react";
@@ -25,7 +25,7 @@ const righteous = Righteous({
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router: NextRouter = useRouter();
-  Swiper.use([Mousewheel]);
+  Swiper.use([Mousewheel, Pagination]);
 
   return (
     <SessionProvider session={pageProps.session}>
