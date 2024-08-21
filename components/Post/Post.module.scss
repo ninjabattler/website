@@ -17,6 +17,7 @@
     opacity 1s,
     transform 1s,
     filter 1s;
+  transition-timing-function: cubic-bezier(0.88, 0, 0.12, 1);
   transform: scale(1);
   filter: blur(0);
 
@@ -38,6 +39,7 @@
     svg {
       font-size: 1.5em;
       transition: transform 0.2s;
+      transition-timing-function: cubic-bezier(0.88, 0, 0.12, 1);
     }
 
     &:hover {
@@ -88,13 +90,7 @@
         margin-left: 7%;
         left: 0;
         position: absolute;
-        mask: linear-gradient(
-          90deg,
-          black 0%,
-          transparent 10%,
-          transparent 90%,
-          black 100%
-        );
+        mask: linear-gradient(90deg, black 0%, transparent 10%, transparent 90%, black 100%);
         content: "";
       }
     }
@@ -131,13 +127,7 @@
         margin-left: 7%;
         left: 0;
         position: absolute;
-        mask: linear-gradient(
-          90deg,
-          black 0%,
-          transparent 10%,
-          transparent 90%,
-          black 100%
-        );
+        mask: linear-gradient(90deg, black 0%, transparent 10%, transparent 90%, black 100%);
         content: "";
       }
     }
@@ -157,6 +147,7 @@
       overflow-y: scroll;
       z-index: 2;
       transition: height 1s;
+      transition-timing-function: cubic-bezier(0.88, 0, 0.12, 1);
 
       p,
       h1,
@@ -186,14 +177,9 @@
         margin-left: 7%;
         left: 0;
         position: absolute;
-        mask: linear-gradient(
-          90deg,
-          black 0%,
-          transparent 10%,
-          transparent 90%,
-          black 100%
-        );
+        mask: linear-gradient(90deg, black 0%, transparent 10%, transparent 90%, black 100%);
         transition: height 1s;
+        transition-timing-function: cubic-bezier(0.88, 0, 0.12, 1);
         content: "";
       }
     }
@@ -240,13 +226,7 @@
       height: 100%;
       position: absolute;
       animation: slideInComments 2s 1 ease-in-out;
-      mask: linear-gradient(
-        90deg,
-        black 0%,
-        transparent 15%,
-        transparent 85%,
-        black 100%
-      );
+      mask: linear-gradient(90deg, black 0%, transparent 15%, transparent 85%, black 100%);
       content: "";
     }
   }
@@ -259,6 +239,7 @@
       transform 1s,
       filter 1s,
       margin 1s;
+    transition-timing-function: cubic-bezier(0.88, 0, 0.12, 1);
 
     .postContent {
       main {

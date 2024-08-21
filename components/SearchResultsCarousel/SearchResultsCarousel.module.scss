@@ -15,6 +15,7 @@
   transition:
     opacity 0.8s,
     margin 0.8s;
+  transition-timing-function: cubic-bezier(0.88, 0, 0.12, 1);
 
   .swiper {
     @include mixins.flexCenter();
@@ -59,6 +60,14 @@
           background-color: variables.$darkGray;
           color: variables.$primaryText;
         }
+      }
+    }
+  }
+
+  &.hidden {
+    .swiper {
+      .verticalPagination {
+        opacity: 0;
       }
     }
   }

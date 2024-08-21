@@ -4,7 +4,7 @@
 .articlesSearchBar {
   width: 100vw;
   height: 20vh;
-  margin-top: 2.15rem;
+  margin-top: 4.3rem;
   position: absolute;
   z-index: 10;
   perspective: 23.5em;
@@ -17,8 +17,9 @@
   }
 
   .spaceContainer {
-    width: 30%;
-    height: 150%;
+    width: 45%;
+    height: 225%;
+    margin-top: -4em;
     position: absolute;
     animation: spaceContainerFadeIn 0.75s linear 1;
     filter: drop-shadow(0 0 0.05rem var(--article-colour-space))
@@ -258,21 +259,21 @@
 @keyframes spaceContainerFadeIn {
   0% {
     opacity: 0;
-    width: 15%;
+    width: 22.5%;
     filter: drop-shadow(0 0 0.05rem var(--article-colour-space))
       drop-shadow(0 0 0.05rem var(--article-colour-space)) brightness(1.5)
       blur(2.5em);
   }
   50% {
     opacity: 0.5;
-    width: 22.5%;
+    width: 33.75%;
     filter: drop-shadow(0 0 0.05rem var(--article-colour-space))
       drop-shadow(0 0 0.05rem var(--article-colour-space)) brightness(1.5)
       blur(1.25em);
   }
   100% {
     opacity: 1;
-    width: 30%;
+    width: 45%;
     filter: drop-shadow(0 0 0.05rem var(--article-colour-space))
       drop-shadow(0 0 0.05rem var(--article-colour-space)) brightness(1.5)
       blur(0em);

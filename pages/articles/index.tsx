@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styles from "../../styles/ArticlesPage.module.scss";
-import Carousel from "../../components/Carousel/Carousel";
 import { articlesServerSideProps } from "../../ssr/articles/index";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import ArticlesPageHead from "../../components/PageMetadata/ArticlesPageHead";
@@ -26,7 +25,6 @@ export default function ArticlesPage({
   useEffect(() => {
     setTimeout(() => {
       setShowCarousel(true);
-      // setShowSearchResults(searchResults);
     }, 2000);
   }, []);
 
