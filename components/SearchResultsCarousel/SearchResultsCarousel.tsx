@@ -21,7 +21,9 @@ const SearchResultsCarousel: FC<SearchResultsCarouselProps> = ({
   articles,
   hidden,
 }) => (
-  <section className={`${styles.searchResultsCarousel} ${hidden ? styles.hidden : ''}`}>
+  <section
+    className={`${styles.searchResultsCarousel} ${hidden ? styles.hidden : ""}`}
+  >
     <Swiper
       className={styles.swiper}
       effect="creative"

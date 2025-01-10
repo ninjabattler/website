@@ -5,21 +5,51 @@
   height: calc(100vh - 4.15rem);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-end;
+  align-items: flex-start;
 
   img {
-    height: calc(100% - 4.15rem);
-    top: 2.15rem;
+    height: calc(100% - 6rem);
+    top: 2.55rem;
     position: absolute;
     left: 0;
   }
 
-  em,
-  span {
+  h1 {
+    width: 40vw;
+    margin-bottom: 2em;
+    padding-left: 0.5em;
+    left: 0;
+    font-size: 4rem;
     color: variables.$primaryText;
     background-color: variables.$darkGray;
+    transform: rotateY(-5deg) rotateZ(-0.5deg);
+    transform-origin: left center;
     z-index: 1;
-    filter: drop-shadow(0 0 0.1em rgba(0, 0, 0, 0.5));
+    mask: linear-gradient(
+      45deg,
+      black calc(90% - 2.25em),
+      variables.$gradientFade calc(90% - 2.25em),
+      variables.$gradientFade calc(90% - 1.75em),
+      black calc(90% - 1.75em),
+      black calc(90% - 1.25em),
+      variables.$gradientFade calc(90% - 1.25em),
+      variables.$gradientFade calc(90% - 0.75em),
+      black calc(90% - 0.75em),
+      black 90%,
+      transparent 90%
+    );
+  }
+
+  p {
+    width: 25vw;
+    padding: 0.5em;
+    border-top: variables.$borderThinLightGray;
+    border-bottom: variables.$borderThinLightGray;
+    right: 5vw;
+    position: absolute;
+    font-size: 1.5rem;
+    color: variables.$primaryText;
+    background-color: variables.$darkGray;
   }
 }

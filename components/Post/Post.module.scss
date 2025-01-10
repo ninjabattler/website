@@ -90,7 +90,13 @@
         margin-left: 7%;
         left: 0;
         position: absolute;
-        mask: linear-gradient(90deg, black 0%, transparent 10%, transparent 90%, black 100%);
+        mask: linear-gradient(
+          90deg,
+          black 0%,
+          transparent 10%,
+          transparent 90%,
+          black 100%
+        );
         content: "";
       }
     }
@@ -127,7 +133,13 @@
         margin-left: 7%;
         left: 0;
         position: absolute;
-        mask: linear-gradient(90deg, black 0%, transparent 10%, transparent 90%, black 100%);
+        mask: linear-gradient(
+          90deg,
+          black 0%,
+          transparent 10%,
+          transparent 90%,
+          black 100%
+        );
         content: "";
       }
     }
@@ -177,7 +189,13 @@
         margin-left: 7%;
         left: 0;
         position: absolute;
-        mask: linear-gradient(90deg, black 0%, transparent 10%, transparent 90%, black 100%);
+        mask: linear-gradient(
+          90deg,
+          black 0%,
+          transparent 10%,
+          transparent 90%,
+          black 100%
+        );
         transition: height 1s;
         transition-timing-function: cubic-bezier(0.88, 0, 0.12, 1);
         content: "";
@@ -226,7 +244,13 @@
       height: 100%;
       position: absolute;
       animation: slideInComments 2s 1 ease-in-out;
-      mask: linear-gradient(90deg, black 0%, transparent 15%, transparent 85%, black 100%);
+      mask: linear-gradient(
+        90deg,
+        black 0%,
+        transparent 15%,
+        transparent 85%,
+        black 100%
+      );
       content: "";
     }
   }

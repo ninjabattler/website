@@ -24,6 +24,9 @@ import {
   RenderPass,
   BlendFunction,
   NoiseEffect,
+  BlurPass,
+  GaussianBlurPass,
+  DepthOfFieldEffect,
 } from "postprocessing";
 
 /**
@@ -80,24 +83,31 @@ export const createPostProcessing = (
     radius: 0.1,
   });
 
-  const noise = new NoiseEffect({
-    blendFunction: BlendFunction.COLOR_DODGE,
-  });
-  noise.blendMode.opacity.value = 0.04;
+  // const noise = new NoiseEffect({
+  //   blendFunction: BlendFunction.COLOR_DODGE,
+  // });
+  // noise.blendMode.opacity.value = 0.04;
 
-  const scanlines = new ScanlineEffect({
-    blendFunction: BlendFunction.MULTIPLY,
-    density: 1.0,
+  // const scanlines = new ScanlineEffect({
+  //   blendFunction: BlendFunction.MULTIPLY,
+  //   density: 1.0,
+  // });
+  // scanlines.blendMode.opacity.value = 0.1;
+  // scanlines.scrollSpeed = 0.05;
+
+  const depthOfField = new DepthOfFieldEffect(camera, {
+    bokehScale: 3,
+    worldFocusDistance: 1,
+    worldFocusRange: 25,
   });
-  scanlines.blendMode.opacity.value = 0.1;
-  scanlines.scrollSpeed = 0.05;
 
   const composer = new EffectComposer(renderer);
   composer.addPass(new RenderPass(scene, camera));
   composer.addPass(new EffectPass(camera, bloom));
   composer.addPass(new EffectPass(camera, sunRays));
-  composer.addPass(new EffectPass(camera, noise));
-  composer.addPass(new EffectPass(camera, scanlines));
+  composer.addPass(new EffectPass(camera, depthOfField));
+  // composer.addPass(new EffectPass(camera, noise));
+  // composer.addPass(new EffectPass(camera, scanlines));
 
   return composer;
 };
@@ -129,11 +139,11 @@ export const createAsteroidsObject = (
 
   const asteroids: ThreeJSBackgroundAsteroids = [];
 
-  for (let i = 0; i <= 750; i++) {
-    const asteroidSize = Math.random() * 3;
+  for (let i = 0; i <= 500; i++) {
+    const asteroidSize = 2 + Math.random() * 4;
 
     const asteroidMaterial = new SpriteMaterial({
-      map: asteroidMaps[Math.floor(Math.random() * 4)],
+      map: asteroidMaps[Math.floor(Math.random() * 0)],
       alphaHash: true,
       color: colour,
     });
@@ -143,7 +153,7 @@ export const createAsteroidsObject = (
 
     asteroid.position.x =
       Math.cos(asteroidPositionOffset) * 75 + Math.random() * 10;
-    asteroid.position.y = -5 + Math.random() * 10;
+    asteroid.position.y = -3 + Math.random() * 7;
     asteroid.position.z =
       Math.sin(asteroidPositionOffset) * 75 + Math.random() * 10;
     asteroid.scale.x = asteroidSize;
@@ -151,7 +161,7 @@ export const createAsteroidsObject = (
     asteroidMaterial.rotation = Math.random();
 
     asteroids.push({
-      rotationSpeed: -0.005 + Math.random() * 0.01,
+      rotationSpeed: -0.001 + Math.random() * 0.005,
       asteroid,
     });
   }
@@ -218,21 +228,21 @@ export const createStars = (
   colour?: ColorRepresentation,
 ): ThreeJSBackgroundStars => {
   const stars: ThreeJSBackgroundStars = [];
-  const starMap = new TextureLoader().load("/threeJs/posts/star.png");
+  const starMap = new TextureLoader().load("/threeJs/star.png");
   starMap.colorSpace = SRGBColorSpace;
   const starMaterial = new SpriteMaterial({
     map: starMap,
-    color: colour,
+    color: colour || 0x999999,
   });
 
-  for (let i = 0; i < 250; i++) {
+  for (let i = 0; i < 500; i++) {
     const star = new Sprite(starMaterial);
-    const starScale = 2 + Math.random() * 2;
+    const starScale = 1 + Math.random() * 1.5;
 
     star.position.x = (Math.random() - 0.5) * 600;
     star.position.y = (Math.random() - 0.5) * 300;
     star.position.z = -150 - Math.random() * 50;
-    star.scale.x = starScale;
+    star.scale.x = starScale * 1.5;
     star.scale.y = starScale;
 
     stars.push({ scaleUp: true, star });
@@ -247,18 +257,18 @@ export const createStars = (
 export const scaleStars = (stars: ThreeJSBackgroundStars): void => {
   stars.forEach((star) => {
     if (star.scaleUp) {
-      star.star.scale.x += 0.015;
-      star.star.scale.y += 0.015;
+      star.star.scale.x += 0.01;
+      star.star.scale.y += 0.01;
     } else {
-      star.star.scale.x -= 0.015;
-      star.star.scale.y -= 0.015;
+      star.star.scale.x -= 0.01;
+      star.star.scale.y -= 0.01;
     }
 
-    if (star.star.scale.x > 4) {
+    if (star.star.scale.y > 2.75) {
       star.scaleUp = false;
     }
 
-    if (star.star.scale.x < 2) {
+    if (star.star.scale.y < 1) {
       star.scaleUp = true;
     }
   });

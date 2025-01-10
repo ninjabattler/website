@@ -35,34 +35,34 @@ const ReviewPageBackground: FC<ReviewPageBackgroundProps> = ({
 
       const spaceClouds = createSpaceClouds(
         "/threeJs/homePageSpace.png",
-        spaceColour || 0x595580,
+        spaceColour || 0x192545,
         camera,
       );
-      const sun = createSpriteObject("/threeJs/posts/sun.png", {
+      const sun = createSpriteObject("/threeJs/sun.png", {
         position: { z: -10 },
-        scale: { x: 17, y: 17 },
+        scale: { x: 18.5, y: 18.5 },
         colour: starsColour || undefined,
       });
-      const ringPlanet = createSpriteObject("/threeJs/home/ringPlanet.png", {
-        position: { y: -1.75 },
-        scale: { x: 5, y: 5 * 0.5625 },
-        colour: spaceColour || undefined,
+      const ringPlanet = createSpriteObject("/threeJs/home/ringPlanet.webp", {
+        position: { y: -2 },
+        scale: { x: 9.5, y: 9.5 * 0.5625 },
+        // colour: spaceColour || undefined,
       });
       const icePlanet = createSpriteObject("/threeJs/home/icePlanet.webp", {
         position: { x: -10, y: 5, z: -11 },
-        scale: { x: 5, y: 5 * 0.5625 },
-        colour: spaceColour || undefined,
+        scale: { x: 6.5, y: 6.5 * 0.5625 },
+        // colour: spaceColour || undefined,
       });
       const desertPlanet = createSpriteObject(
         "/threeJs/home/desertPlanet.webp",
         {
           position: { x: 10, y: 2.5, z: -11 },
-          scale: { x: 5, y: 5 * 0.5625 },
-          colour: spaceColour || undefined,
+          scale: { x: 7.5, y: 7.5 * 0.5625 },
+          // colour: spaceColour || undefined,
         },
       );
-      const asteroidsObject = createAsteroidsObject(spaceColour || undefined);
-      const asteroidsGroup = createAsteroidsGroup(asteroidsObject);
+      // const asteroidsObject = createAsteroidsObject();
+      // const asteroidsGroup = createAsteroidsGroup(asteroidsObject);
       const stars = createStars(starsColour || undefined);
 
       scene.add(spaceClouds);
@@ -70,7 +70,7 @@ const ReviewPageBackground: FC<ReviewPageBackgroundProps> = ({
       scene.add(ringPlanet);
       scene.add(icePlanet);
       scene.add(desertPlanet);
-      scene.add(asteroidsGroup);
+      // scene.add(asteroidsGroup);
       stars.forEach(({ star }) => {
         scene.add(star);
       });
@@ -80,8 +80,8 @@ const ReviewPageBackground: FC<ReviewPageBackgroundProps> = ({
       const renderScene = () => {
         scaleStars(stars);
         rotateSun(sun);
-        rotateAsteroidBelt(asteroidsGroup);
-        rotateAsteroids(asteroidsObject);
+        // rotateAsteroidBelt(asteroidsGroup);
+        // rotateAsteroids(asteroidsObject);
 
         renderer.render(scene, camera);
         composer.render();

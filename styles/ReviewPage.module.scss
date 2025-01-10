@@ -11,7 +11,7 @@
     padding-bottom: calc(100vh - 3em);
     display: flex;
     filter: drop-shadow(0 0 0.1em rgba(0, 0, 0, 0.5));
-    backdrop-filter: blur(0.75em);
+    // backdrop-filter: blur(0.75em);
     mask: linear-gradient(180deg, transparent 0%, black calc(0% + 7.5em));
 
     #adAurisIframe {

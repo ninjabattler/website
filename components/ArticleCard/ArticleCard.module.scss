@@ -10,7 +10,8 @@
   margin-right: 0%;
   font-size: 1.25em;
   transition-delay: 0s;
-  transition: margin 0.5s;
+  transition: margin 0.75s;
+  transition-timing-function: ease-in-out;
   perspective: 0;
 
   *::selection {
@@ -210,7 +211,7 @@
 
   &.hidden {
     margin-right: -125vw;
-    transition-delay: 0.5s;
+    transition-delay: 0.75s;
 
     .thumbnail {
       img {

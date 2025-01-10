@@ -29,18 +29,18 @@ const VideoHeader: FC<VideoHeaderProps> = ({
   <>
     {/* Video */}
     <div id={styles.videoContainer}>
-      {video ? (
+      {/* {video ? (
         <video loop muted autoPlay>
           <source src={video} type="video/webm" />
           <source src={video} type="video/ogg" />
           <source src={video} type="video/mp4" />
         </video>
-      ) : (
-        <ReviewPageBackground
-          spaceColour={spaceColour}
-          starsColour={starsColour}
-        />
-      )}
+      ) : ( */}
+      <ReviewPageBackground
+        spaceColour={spaceColour}
+        starsColour={starsColour}
+      />
+      {/* )} */}
     </div>
 
     {/* Title */}

@@ -46,9 +46,14 @@ const NavBar: ComponentType<{}> = () => {
   return (
     <header className={`${styles.navBar} ${open ? styles.fullscreen : ""}`}>
       <div className={styles.navOptions}>
-        <button onClick={openMenu}>
+        {/* <button onClick={openMenu}>
           <Menu />
-        </button>
+        </button> */}
+        <Link href={`/`}>
+          <img src="/Ninja placeholder.png" alt="logo" />
+        </Link>
+        <Link href={`/posts`}>Posts</Link>
+        <Link href={`/articles`}>Articles</Link>
       </div>
 
       <div

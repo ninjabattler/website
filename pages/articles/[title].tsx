@@ -45,16 +45,16 @@ const ArticlePage: FC<
           date: articleData.date,
           tags: articleData.tags,
         }}
-        spaceColour={
-          articleData.colors.space
-            ? articleData.colors.space.hex
-            : articleData.colors.primary.hex
-        }
-        starsColour={
-          articleData.colors.stars
-            ? articleData.colors.stars.hex
-            : articleData.colors.primary.hex
-        }
+        // spaceColour={
+        //   articleData.colors.space
+        //     ? articleData.colors.space.hex
+        //     : articleData.colors.primary.hex
+        // }
+        // starsColour={
+        //   articleData.colors.stars
+        //     ? articleData.colors.stars.hex
+        //     : articleData.colors.primary.hex
+        // }
       />
 
       <main id={styles.reviewPage}>

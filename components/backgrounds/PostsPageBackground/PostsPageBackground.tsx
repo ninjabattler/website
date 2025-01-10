@@ -27,35 +27,38 @@ const PostsPageBackground: FC<{}> = () => {
 
       const spaceClouds = createSpaceClouds(
         "/threeJs/homePageSpace.png",
-        0x595580,
+        0x192545,
         camera,
       );
-      const sun = createSpriteObject("/threeJs/posts/sun.png", {
+      const sun = createSpriteObject("/threeJs/sun.png", {
         position: { x: 10, y: 0, z: -10 },
-        scale: { x: 17, y: 17 },
+        scale: { x: 18.5, y: 18.5 },
       });
-      // const ringPlanet = createSpriteObject("/threeJs/home/ringPlanet.png", {
-      //   position: { y: -1.75 },
-      //   scale: { x: 5, y: 5 * 0.5625 },
-      // });
-      // const icePlanet = createSpriteObject("/threeJs/home/icePlanet.webp", {
-      //   position: { x: -10, y: 5, z: -11 },
-      //   scale: { x: 5, y: 5 * 0.5625 },
-      // });
-      // const desertPlanet = createSpriteObject(
-      //   "/threeJs/home/desertPlanet.webp",
-      //   { position: { x: 10, y: 2.5, z: -11 }, scale: { x: 5, y: 5 * 0.5625 } },
-      // );
-      const asteroidsObject = createAsteroidsObject();
-      const asteroidsGroup = createAsteroidsGroup(asteroidsObject);
+      const ringPlanet = createSpriteObject("/threeJs/posts/ringPlanet.webp", {
+        position: { x: 21.5, y: -3, z: -11 },
+        scale: { x: 7, y: 7 * 0.5625 },
+      });
+      const icePlanet = createSpriteObject("/threeJs/posts/icePlanet.webp", {
+        position: { x: 3.25, y: 1 },
+        scale: { x: 8.5, y: 8.5 * 0.5625 },
+      });
+      const desertPlanet = createSpriteObject(
+        "/threeJs/posts/desertPlanet.webp",
+        {
+          position: { x: 0, y: 1, z: -11 },
+          scale: { x: 7.5, y: 7.5 * 0.5625 },
+        },
+      );
+      // const asteroidsObject = createAsteroidsObject();
+      // const asteroidsGroup = createAsteroidsGroup(asteroidsObject);
       const stars = createStars();
 
       scene.add(spaceClouds);
       scene.add(sun);
-      // scene.add(ringPlanet);
-      // scene.add(icePlanet);
-      // scene.add(desertPlanet);
-      scene.add(asteroidsGroup);
+      scene.add(ringPlanet);
+      scene.add(icePlanet);
+      scene.add(desertPlanet);
+      // scene.add(asteroidsGroup);
       stars.forEach(({ star }) => {
         scene.add(star);
       });
@@ -65,8 +68,8 @@ const PostsPageBackground: FC<{}> = () => {
       const renderScene = () => {
         scaleStars(stars);
         rotateSun(sun);
-        rotateAsteroidBelt(asteroidsGroup);
-        rotateAsteroids(asteroidsObject);
+        // rotateAsteroidBelt(asteroidsGroup);
+        // rotateAsteroids(asteroidsObject);
 
         renderer.render(scene, camera);
         composer.render();
