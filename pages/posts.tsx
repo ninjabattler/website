@@ -115,6 +115,13 @@ export default function PostsPage({
           title={selectedPostData.title}
           goBack={goBack}
         />
+
+        <div className={styles.desciptionContainer}>
+          <p className={styles.postsDescription}>
+            Renders, opinions, and other stuff
+            <br /> that's too small to fit in an article
+          </p>
+        </div>
       </main>
     </>
   );

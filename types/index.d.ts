@@ -125,6 +125,7 @@ declare global {
 
   type ThreeJSBackgroundStars = {
     scaleUp: boolean;
+    scaleSpeed: number;
     star: Sprite<Object3DEventMap>;
   }[];
 

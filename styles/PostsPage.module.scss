@@ -1,3 +1,4 @@
+@use "/styles/_mixins" as mixins;
 @use "/styles/_variables" as variables;
 
 #postsPage {
@@ -17,5 +18,53 @@
       overflow: visible;
       perspective: 11.5em;
     }
+  }
+
+  .desciptionContainer {
+    width: 50vw;
+    height: 100vh;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 1rem;
+    bottom: 4rem;
+
+    .postsDescription {
+      @include mixins.russoFont;
+      width: fit-content;
+      height: fit-content;
+      padding: 0.5rem;
+      font-size: 1.25rem;
+      text-align: center;
+      color: variables.$secondaryText;
+      border: 0.2rem solid variables.$lightGray;
+      filter: drop-shadow(-0.1rem 0.1rem 0 variables.$darkGray)
+        drop-shadow(0.1rem -0.1rem 0 variables.$darkGray);
+      background-image: repeating-linear-gradient(
+        0deg,
+        rgba(60, 206, 255, 0.25) 0rem,
+        rgba(60, 206, 255, 0.25) 0.2rem,
+        rgba(110, 164, 214, 0.25) 0.2rem,
+        rgba(110, 164, 214, 0.25) 0.5rem
+      );
+      mask: linear-gradient(
+        -45deg,
+        transparent calc(0% + 1rem),
+        black calc(0% + 1rem),
+        black calc(100% - 1rem),
+        transparent calc(100% - 1rem)
+      );
+      animation: blueBackgroundScroll 0.25s linear infinite;
+    }
+  }
+}
+
+@keyframes blueBackgroundScroll {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 0.5rem;
   }
 }

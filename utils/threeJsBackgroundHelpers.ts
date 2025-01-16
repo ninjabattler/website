@@ -13,6 +13,8 @@ import {
   Scene,
   WebGLRenderer,
   Color,
+  RepeatWrapping,
+  Vector2,
 } from "three";
 import {
   BloomEffect,
@@ -245,7 +247,7 @@ export const createStars = (
     star.scale.x = starScale * 1.5;
     star.scale.y = starScale;
 
-    stars.push({ scaleUp: true, star });
+    stars.push({ scaleUp: true, star, scaleSpeed: Math.random() * 0.03 });
   }
 
   return stars;
@@ -257,11 +259,11 @@ export const createStars = (
 export const scaleStars = (stars: ThreeJSBackgroundStars): void => {
   stars.forEach((star) => {
     if (star.scaleUp) {
-      star.star.scale.x += 0.01;
-      star.star.scale.y += 0.01;
+      star.star.scale.x += star.scaleSpeed;
+      star.star.scale.y += star.scaleSpeed;
     } else {
-      star.star.scale.x -= 0.01;
-      star.star.scale.y -= 0.01;
+      star.star.scale.x -= star.scaleSpeed;
+      star.star.scale.y -= star.scaleSpeed;
     }
 
     if (star.star.scale.y > 2.75) {
@@ -284,6 +286,7 @@ export const createSpriteObject = (
     rotation?: XYZCoordinates;
     scale?: XYZCoordinates;
     colour?: ColorRepresentation;
+    alphaMap?: string;
   },
 ): Sprite<Object3DEventMap> => {
   const map = new TextureLoader().load(texture);
@@ -293,6 +296,13 @@ export const createSpriteObject = (
     alphaHash: true,
     color: settings ? settings.colour : undefined,
   });
+
+  if (settings && settings.alphaMap) {
+    const alphaMap = new TextureLoader().load(settings.alphaMap);
+
+    material.alphaMap = alphaMap;
+  }
+
   const sprite = new Sprite(material);
 
   if (settings) {
@@ -315,6 +325,19 @@ export const createSpriteObject = (
   }
 
   return sprite;
+};
+
+/**
+ * Sets the repeat of a sprite object's material for an object using a sprite sheet
+ */
+export const setSpriteSheetRepeat = (
+  sprite: Sprite<Object3DEventMap>,
+  tiles: number,
+): void => {
+  if (sprite.material.map) {
+    sprite.material.map.wrapS = RepeatWrapping;
+    sprite.material.map.repeat.set(1 / tiles, 1);
+  }
 };
 
 /**

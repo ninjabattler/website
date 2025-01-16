@@ -12,7 +12,9 @@ import {
   createPostProcessing,
   rotateAsteroidBelt,
   rotateSun,
+  setSpriteSheetRepeat,
 } from "../../../utils/threeJsBackgroundHelpers";
+import { RepeatWrapping, TextureLoader, Vector2 } from "three";
 
 /**
  * The three js space background for the Review page
@@ -23,6 +25,8 @@ const HomePageBackground: FC<{}> = () => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
+      let sunOffset = 0;
+      let sunOffsetTimer = 10;
       const { scene, camera, renderer } = initSpaceBackground(backgroundRef);
 
       const spaceClouds = createSpaceClouds(
@@ -30,10 +34,13 @@ const HomePageBackground: FC<{}> = () => {
         0x192545,
         camera,
       );
-      const sun = createSpriteObject("/threeJs/sun.png", {
+      const sun = createSpriteObject("/threeJs/sun.jpg", {
         position: { z: -10 },
         scale: { x: 18.5, y: 18.5 },
+        alphaMap: "/threeJs/sun.png",
       });
+      setSpriteSheetRepeat(sun, 24);
+
       const ringPlanet = createSpriteObject("/threeJs/home/ringPlanet.webp", {
         position: { y: -2 },
         scale: { x: 9.5, y: 9.5 * 0.5625 },
@@ -68,6 +75,18 @@ const HomePageBackground: FC<{}> = () => {
       const renderScene = () => {
         scaleStars(stars);
         rotateSun(sun);
+
+        if (sunOffsetTimer > 0) {
+          sunOffsetTimer -= 0.75;
+        } else {
+          sunOffset += 1 / 24;
+          sunOffsetTimer = 10;
+
+          if (sun.material.map) {
+            sun.material.map.offset = new Vector2(sunOffset, 0);
+          }
+        }
+
         // rotateAsteroidBelt(asteroidsGroup);
         // rotateAsteroids(asteroidsObject);
 
