@@ -119,7 +119,7 @@ export default function PostsPage({
         <div className={styles.desciptionContainer}>
           <p className={styles.postsDescription}>
             Renders, opinions, and other stuff
-            <br /> that's too small to fit in an article
+            <br /> that&apos;s too small to fit in an article
           </p>
         </div>
       </main>
