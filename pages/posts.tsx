@@ -113,6 +113,7 @@ export default function PostsPage({
           id={selectedPostData._id}
           hide={!showPost}
           title={selectedPostData.title}
+          date={selectedPostData.date}
           goBack={goBack}
         />
 

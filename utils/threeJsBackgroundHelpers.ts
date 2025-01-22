@@ -98,7 +98,7 @@ export const createPostProcessing = (
   // scanlines.scrollSpeed = 0.05;
 
   const depthOfField = new DepthOfFieldEffect(camera, {
-    bokehScale: 3,
+    bokehScale: 2,
     worldFocusDistance: 1,
     worldFocusRange: 25,
   });

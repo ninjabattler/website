@@ -10,9 +10,11 @@ import LikePanel from "../feedbackAndShare/LikePanel/LikePanel";
 import ShareBar from "../feedbackAndShare/ShareBar/ShareBar";
 import Link from "next/link";
 import CommentArea from "../feedbackAndShare/CommentArea/CommentArea";
+import { formatSanityDate } from "../../utils/dateHelpers";
 
 type PostProps = {
   title: string;
+  date?: string;
   id: string;
   content: TypedObject[];
   comments: CommentData[];
@@ -26,6 +28,7 @@ type PostProps = {
 
 export default function Post({
   title,
+  date,
   id,
   content,
   comments,
@@ -60,54 +63,60 @@ export default function Post({
       key={title}
       className={`${styles.post} ${hide ? styles.hide : ""}`}
     >
-      <Link
-        href="/posts"
-        shallow
-        className={styles.backButton}
-        onClick={goBack}
-      >
-        <ArrowLeftSharp />
-      </Link>
+      {!hide && (
+        <Link
+          href="/posts"
+          shallow
+          className={styles.backButton}
+          onClick={goBack}
+        >
+          <ArrowLeftSharp />
+        </Link>
+      )}
 
       <div className={styles.postContent}>
-        <aside className={styles.commentPanel}>
-          <LikePanel
-            initialDislikes={dislikes}
-            initialLikes={likes}
-            isCurrentlyDisliked={isCurrentlyDisliked}
-            isCurrentlyLiked={isCurrentlyLiked}
-            postId={id}
-          />
+        {!hide && (
+          <aside className={styles.commentPanel}>
+            <LikePanel
+              initialDislikes={dislikes}
+              initialLikes={likes}
+              isCurrentlyDisliked={isCurrentlyDisliked}
+              isCurrentlyLiked={isCurrentlyLiked}
+              postId={id}
+            />
 
-          <ShareBar
-            articleLink={`/posts?p=${id}`}
-            title={title}
-            windowServer={windowServer}
-          />
+            <ShareBar
+              articleLink={`/posts?p=${id}`}
+              title={title}
+              windowServer={windowServer}
+            />
 
-          <CommentArea
-            comments={commentList}
-            setComments={setCommentList}
-            postId={id}
-          />
+            <CommentArea
+              comments={commentList}
+              setComments={setCommentList}
+              postId={id}
+            />
 
-          <div className={styles.comments}>
-            {commentList.map((com) => {
-              return (
-                <Comment
-                  id={com._id}
-                  key={com._id}
-                  username={com.user.name}
-                  date={com._createdAt}
-                  content={com.content}
-                  byCurrentUser={com.byCurrentUser}
-                  avatar={1}
-                  setComments={setComments}
-                />
-              );
-            })}
-          </div>
-        </aside>
+            <div className={styles.comments}>
+              {commentList.map((com) => {
+                return (
+                  <Comment
+                    id={com._id}
+                    key={com._id}
+                    username={com.user.name}
+                    date={com._createdAt}
+                    content={com.content}
+                    byCurrentUser={com.byCurrentUser}
+                    avatar={1}
+                    setComments={setComments}
+                  />
+                );
+              })}
+            </div>
+          </aside>
+        )}
+
+        <h1 className={styles.title}>{title}</h1>
 
         <main>
           <PortableText
@@ -132,6 +141,7 @@ export default function Post({
             }}
           />
         </main>
+        <h2 className={styles.date}>{date ? formatSanityDate(date) : ""}</h2>
       </div>
     </article>
   );
