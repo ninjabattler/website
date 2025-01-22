@@ -116,7 +116,7 @@ export default function Post({
           </aside>
         )}
 
-        <h1 className={styles.title}>{title}</h1>
+        <p className={styles.title}>{title}</p>
 
         <main>
           <PortableText
@@ -141,7 +141,7 @@ export default function Post({
             }}
           />
         </main>
-        <h2 className={styles.date}>{date ? formatSanityDate(date) : ""}</h2>
+        <p className={styles.date}>{date ? formatSanityDate(date) : ""}</p>
       </div>
     </article>
   );
