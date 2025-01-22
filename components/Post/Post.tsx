@@ -5,7 +5,7 @@ import { TypedObject } from "sanity";
 import { PortableText } from "next-sanity";
 import Picture from "../articleComponents/Picture/Picture";
 import Spoiler from "../articleComponents/Spoiler/Spoiler";
-import { ArrowLeftSharp } from "@mui/icons-material";
+import { CloseSharp } from "@mui/icons-material";
 import LikePanel from "../feedbackAndShare/LikePanel/LikePanel";
 import ShareBar from "../feedbackAndShare/ShareBar/ShareBar";
 import Link from "next/link";
@@ -63,16 +63,14 @@ export default function Post({
       key={title}
       className={`${styles.post} ${hide ? styles.hide : ""}`}
     >
-      {!hide && (
-        <Link
-          href="/posts"
-          shallow
-          className={styles.backButton}
-          onClick={goBack}
-        >
-          <ArrowLeftSharp />
-        </Link>
-      )}
+      <Link
+        href="/posts"
+        shallow
+        className={styles.backButton}
+        onClick={goBack}
+      >
+        <CloseSharp />
+      </Link>
 
       <div className={styles.postContent}>
         {!hide && (

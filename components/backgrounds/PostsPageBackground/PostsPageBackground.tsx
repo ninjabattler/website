@@ -16,6 +16,44 @@ import {
 } from "../../../utils/threeJsBackgroundHelpers";
 import { Vector2 } from "three";
 
+const desktopObjectSettings = {
+  sun: {
+    position: { x: 10, y: 0, z: -10 },
+    scale: { x: 18.5, y: 18.5 },
+  },
+  ringPlanet: {
+    position: { x: 21.5, y: -3, z: -11 },
+    scale: { x: 7, y: 7 * 0.5625 },
+  },
+  icePlanet: {
+    position: { x: 3.25, y: 1 },
+    scale: { x: 8.5, y: 8.5 * 0.5625 },
+  },
+  desertPlanet: {
+    position: { x: 0, y: 1, z: -11 },
+    scale: { x: 7.5, y: 7.5 * 0.5625 },
+  },
+};
+
+const mobileObjectSettings = {
+  sun: {
+    position: { x: 0, y: 0, z: -10 },
+    scale: { x: 10.5, y: 10.5 },
+  },
+  ringPlanet: {
+    position: { x: 5, y: -3, z: -11 },
+    scale: { x: 3.75, y: 3.75 * 0.5625 },
+  },
+  icePlanet: {
+    position: { x: 0, y: 1 },
+    scale: { x: 4.5, y: 4.5 * 0.5625 },
+  },
+  desertPlanet: {
+    position: { x: -6, y: 1, z: -11 },
+    scale: { x: 4.5, y: 4.5 * 0.5625 },
+  },
+};
+
 /**
  * The three js space background for the Posts page
  * @author Ninjabattler
@@ -35,25 +73,49 @@ const PostsPageBackground: FC<{}> = () => {
         camera,
       );
       const sun = createSpriteObject("/threeJs/sun.jpg", {
-        position: { x: 10, y: 0, z: -10 },
-        scale: { x: 18.5, y: 18.5 },
+        position:
+          window.innerWidth > 430
+            ? desktopObjectSettings.sun.position
+            : mobileObjectSettings.sun.position,
+        scale:
+          window.innerWidth > 430
+            ? desktopObjectSettings.sun.scale
+            : mobileObjectSettings.sun.scale,
         alphaMap: "/threeJs/sun.png",
       });
       setSpriteSheetRepeat(sun, 24);
 
       const ringPlanet = createSpriteObject("/threeJs/posts/ringPlanet.webp", {
-        position: { x: 21.5, y: -3, z: -11 },
-        scale: { x: 7, y: 7 * 0.5625 },
+        position:
+          window.innerWidth > 430
+            ? desktopObjectSettings.ringPlanet.position
+            : mobileObjectSettings.ringPlanet.position,
+        scale:
+          window.innerWidth > 430
+            ? desktopObjectSettings.ringPlanet.scale
+            : mobileObjectSettings.ringPlanet.scale,
       });
       const icePlanet = createSpriteObject("/threeJs/posts/icePlanet.webp", {
-        position: { x: 3.25, y: 1 },
-        scale: { x: 8.5, y: 8.5 * 0.5625 },
+        position:
+          window.innerWidth > 430
+            ? desktopObjectSettings.icePlanet.position
+            : mobileObjectSettings.icePlanet.position,
+        scale:
+          window.innerWidth > 430
+            ? desktopObjectSettings.icePlanet.scale
+            : mobileObjectSettings.icePlanet.scale,
       });
       const desertPlanet = createSpriteObject(
         "/threeJs/posts/desertPlanet.webp",
         {
-          position: { x: 0, y: 1, z: -11 },
-          scale: { x: 7.5, y: 7.5 * 0.5625 },
+          position:
+            window.innerWidth > 430
+              ? desktopObjectSettings.desertPlanet.position
+              : mobileObjectSettings.desertPlanet.position,
+          scale:
+            window.innerWidth > 430
+              ? desktopObjectSettings.desertPlanet.scale
+              : mobileObjectSettings.desertPlanet.scale,
         },
       );
       // const asteroidsObject = createAsteroidsObject();

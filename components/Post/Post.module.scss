@@ -10,7 +10,6 @@
   font-size: 3rem;
   margin-left: 7%;
   margin-top: calc(7vh + 1.8rem);
-  overflow: hidden;
   opacity: 1;
   z-index: 2;
   transition:
@@ -26,25 +25,31 @@
     width: 1em;
     height: 1em;
     margin: 0;
-    margin-left: calc(4.25% - 0.5em);
-    padding: 0;
-    border: variables.$borderThinLightGray;
+    margin-top: calc(-1em - 0.5rem);
+    padding: 0.25rem;
+    right: calc(30% + 1.3rem);
     position: fixed;
-    font-size: 2rem;
+    font-size: 1.25rem;
     color: variables.$lightGray;
     background-color: variables.$darkGray;
     cursor: pointer;
+    overflow: hidden;
     z-index: 100;
+    transition:
+      padding 0.35s 1.35s,
+      margin 0.35s 1.35s,
+      height 0.35s 1.35s;
 
     svg {
       font-size: 1.5em;
-      transition: transform 0.2s;
-      transition-timing-function: cubic-bezier(0.88, 0, 0.12, 1);
+      transform: rotate(0deg);
     }
 
     &:hover {
       svg {
-        transform: scale(1.2);
+        transform: rotate(360deg);
+        transition: transform 0.35s;
+        transition-timing-function: ease-out;
       }
     }
   }
@@ -208,7 +213,7 @@
     &::before {
       @include mixins.gridPatternDark;
       width: calc(100% - 0.4em);
-      height: 100%;
+      height: calc(85vh - 9.8rem - 5em);
       position: absolute;
       animation: slideInComments 2s 1 ease-in-out;
       mask: linear-gradient(
@@ -230,6 +235,16 @@
       filter 1s,
       margin 1s;
     transition-timing-function: cubic-bezier(0.88, 0, 0.12, 1);
+
+    .backButton {
+      height: 0%;
+      margin-top: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+      transition:
+        padding 0.5s,
+        height 0.5s;
+    }
 
     .postContent {
       main,
@@ -253,6 +268,27 @@
   @media only screen and (min-aspect-ratio: 20/9) {
     width: 60%;
     margin-left: 17%;
+  }
+
+  @media only screen and (max-width: variables.$mobileWidth) {
+    width: 100%;
+    height: calc(60vh - 5rem);
+    margin-top: calc(18vh + 1.8rem);
+    margin-left: 0;
+
+    .commentPanel {
+      display: none;
+    }
+
+    .postContent {
+      width: calc(100%);
+
+      main,
+      .title,
+      .date {
+        margin-left: 0;
+      }
+    }
   }
 }
 
