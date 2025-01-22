@@ -127,9 +127,10 @@
   }
 
   .spaceContainer {
-    width: 100%;
-    height: calc(100% + 3em);
+    width: 80%;
+    height: calc(80% + 3em);
     margin-bottom: -4em;
+    right: 0;
     position: absolute;
     z-index: -3;
     filter: drop-shadow(0 0 0.05rem var(--article-colour-space))

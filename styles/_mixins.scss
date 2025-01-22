@@ -64,6 +64,7 @@
   mask-repeat: no-repeat;
   z-index: -2;
   mix-blend-mode: lighten;
+  filter: blur(1rem);
   animation:
     spaceCutoutHorizontal 10s linear infinite,
     spaceCutoutVertical 6s ease-in-out infinite;
@@ -161,12 +162,12 @@
 
 @keyframes spaceCutoutVertical {
   0% {
-    background-position-y: 2vh;
+    background-position-y: 4vh;
   }
   50% {
-    background-position-y: -2vh;
+    background-position-y: -4vh;
   }
   100% {
-    background-position-y: 2vh;
+    background-position-y: 4vh;
   }
 }
