@@ -73,46 +73,47 @@ export default function Post({
       </Link>
 
       <div className={styles.postContent}>
-        {!hide && (
-          <aside className={styles.commentPanel}>
-            <LikePanel
-              initialDislikes={dislikes}
-              initialLikes={likes}
-              isCurrentlyDisliked={isCurrentlyDisliked}
-              isCurrentlyLiked={isCurrentlyLiked}
-              postId={id}
-            />
+        <aside className={styles.commentPanel}>
+          <LikePanel
+            initialDislikes={dislikes}
+            initialLikes={likes}
+            isCurrentlyDisliked={isCurrentlyDisliked}
+            isCurrentlyLiked={isCurrentlyLiked}
+            hide={hide}
+            postId={id}
+          />
 
-            <ShareBar
-              articleLink={`/posts?p=${id}`}
-              title={title}
-              windowServer={windowServer}
-            />
+          <ShareBar
+            articleLink={`/posts?p=${id}`}
+            title={title}
+            hide={hide}
+            windowServer={windowServer}
+          />
 
-            <CommentArea
-              comments={commentList}
-              setComments={setCommentList}
-              postId={id}
-            />
+          <CommentArea
+            comments={commentList}
+            setComments={setCommentList}
+            hide={hide}
+            postId={id}
+          />
 
-            <div className={styles.comments}>
-              {commentList.map((com) => {
-                return (
-                  <Comment
-                    id={com._id}
-                    key={com._id}
-                    username={com.user.name}
-                    date={com._createdAt}
-                    content={com.content}
-                    byCurrentUser={com.byCurrentUser}
-                    avatar={1}
-                    setComments={setComments}
-                  />
-                );
-              })}
-            </div>
-          </aside>
-        )}
+          <div className={styles.comments}>
+            {commentList.map((com) => {
+              return (
+                <Comment
+                  id={com._id}
+                  key={com._id}
+                  username={com.user.name}
+                  date={com._createdAt}
+                  content={com.content}
+                  byCurrentUser={com.byCurrentUser}
+                  avatar={1}
+                  setComments={setComments}
+                />
+              );
+            })}
+          </div>
+        </aside>
 
         <p className={styles.title}>{title}</p>
 

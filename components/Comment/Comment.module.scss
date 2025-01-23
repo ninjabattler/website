@@ -133,17 +133,24 @@
   }
 
   .content {
-    width: calc(95% - 8em);
+    width: calc(95% - 4em);
     max-height: 4.8em;
-    margin-top: -1.75em;
+    margin-top: -1.15em;
     margin-bottom: 0;
     margin-left: 2.75em;
-    padding-top: 1em;
-    padding-left: 1.25em;
+    padding-top: 0.2em;
+    padding-left: 0.5em;
     border-left: variables.$borderThinLightGray;
+    background-color: rgba(0, 0, 0, 0.35);
     font-size: 0.6em;
     line-height: 1.2em;
     overflow: hidden;
+    z-index: -1;
+    mask: linear-gradient(
+      -45deg,
+      transparent calc(0% + 0.5rem),
+      black calc(0% + 0.5rem)
+    );
 
     &.showMore {
       max-height: unset;

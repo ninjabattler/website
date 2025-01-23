@@ -2,38 +2,55 @@
 @use "/styles/_variables" as variables;
 
 .commentArea {
-  width: calc(100% - 0.3rem);
-  height: calc(4.8rem + 1em);
+  width: 100%;
+  height: fit-content;
   margin-left: auto;
   margin-bottom: 0.5em;
-  border-left: variables.$borderThinLightGray;
-  border-right: variables.$borderThinLightGray;
   font-size: 1em;
-  overflow: hidden;
   animation: slideIn 1.25s 1 ease-in-out;
 
   .commentAreaView {
-    @include mixins.lightScrollBar();
+    @include mixins.quoteCard;
+    @include mixins.darkScrollBar();
+    width: calc(100% - 1em);
     height: 4.8rem;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 0;
-    padding: 0.2em;
+    padding: 0.5em;
     outline: none;
     display: flex;
     flex-direction: column;
     font-size: 1rem;
     line-height: 1.2rem;
     color: variables.$primaryText;
-    background-color: variables.$darkGray;
     overflow-x: hidden;
     resize: none;
-    animation: commentAreaFadeIn 1.75s 1 ease-in-out;
+    transition:
+      width 0.35s 1.55s,
+      padding 0.35s 1.55s,
+      margin 0.5s 1.9s,
+      height 0.5s 1.9s;
+    transition-timing-function: cubic-bezier(0.88, 0, 0.12, 1);
 
     &::-webkit-scrollbar {
       width: 0.4em;
     }
 
+    * {
+      height: 100%;
+      transition: inherit;
+    }
+
     div {
-      margin-left: 0.3em;
+      width: calc(100% - 0.3em);
+      padding-left: 0.3em;
+      background-color: rgba(0, 0, 0, 0.35);
+      mask: linear-gradient(
+        -45deg,
+        transparent calc(0% + 0.5rem),
+        black calc(0% + 0.5rem)
+      );
 
       span {
         blockQuote {
@@ -81,8 +98,14 @@
     margin: 0;
     display: flex;
     font-size: 0.75em;
-    background-color: variables.$lightGray;
+    background-color: variables.$darkGray;
     overflow: visible;
+    transition: height 0.3s 2.4s;
+    mask: linear-gradient(
+      -45deg,
+      transparent calc(0% + 1.6rem),
+      black calc(0% + 1.6rem)
+    );
 
     button {
       @include mixins.russoFont();
@@ -91,8 +114,8 @@
       height: 100%;
       margin-top: 0;
       font-size: 1em;
-      color: variables.$darkGray;
-      background-color: variables.$lightGray;
+      color: variables.$lightGray;
+      background-color: variables.$darkGray;
       cursor: pointer;
       animation: iconScale 1.75s 1 ease-in-out;
       transition:
@@ -120,10 +143,10 @@
       height: 100%;
       margin-left: auto;
       padding-left: 1em;
-      padding-right: 1em;
+      padding-right: calc(1em + 1.6rem);
       font-size: 0.75em;
-      color: variables.$lightGray;
-      background-color: variables.$secondaryText;
+      color: variables.$darkGray;
+      background-color: variables.$primaryText;
       opacity: 1;
       filter: drop-shadow(0 0 0 var(--article-colour));
       transition:
@@ -149,6 +172,30 @@
         opacity: 0.5;
         cursor: unset;
       }
+    }
+  }
+
+  &.hide {
+    .commentAreaView {
+      width: 0;
+      height: 0;
+      padding: 0;
+      margin-top: 2.4rem;
+      transition:
+        width 0.35s 0.5s,
+        padding-bottom 0.35s 0.5s,
+        margin 0.5s,
+        height 0.5s;
+
+      * {
+        height: 0;
+        transition: inherit;
+      }
+    }
+
+    .commentStylingBar {
+      height: 0;
+      transition: height 0.5s;
     }
   }
 }

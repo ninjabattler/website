@@ -187,44 +187,19 @@
   }
 
   .comments {
-    height: calc(85vh - 9.8rem - 5em);
+    @include mixins.quoteCard;
+    @include mixins.darkScrollBar;
+    width: 100%;
+    height: calc(85vh - 11rem - 5em);
+    margin-right: auto;
     margin-left: auto;
-    border-left: variables.$borderThinLightGray;
-    border-right: variables.$borderThinLightGray;
-    background-color: variables.$darkGray;
+    margin-top: 0;
     overflow-y: scroll;
-    animation: slideInComments 2s 1 ease-in-out;
-
-    &::-webkit-scrollbar {
-      width: 0.2em;
-      height: 0.2em;
-      background: variables.$lightGray;
-    }
-
-    &::-webkit-scrollbar-track {
-      background: variables.$lightGray;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background: variables.$darkGray;
-      border: 0.1vw solid variables.$lightGray;
-    }
-
-    &::before {
-      @include mixins.gridPatternDark;
-      width: calc(100% - 0.4em);
-      height: calc(85vh - 9.8rem - 5em);
-      position: absolute;
-      animation: slideInComments 2s 1 ease-in-out;
-      mask: linear-gradient(
-        90deg,
-        black 0%,
-        transparent 15%,
-        transparent 85%,
-        black 100%
-      );
-      content: "";
-    }
+    transition:
+      width 0.35s 1.9s,
+      margin 0.5s 2.25s,
+      height 0.5s 2.25s;
+    transition-timing-function: cubic-bezier(0.88, 0, 0.12, 1);
   }
 
   &.hide {
@@ -249,18 +224,24 @@
     .postContent {
       main,
       .title,
-      .date {
+      .date,
+      .comments {
         width: 0%;
         height: 0%;
         padding: 0;
         transition:
           width 0.35s 0.5s,
+          margin 0.5s,
           padding 0.35s 0.5s,
           height 0.5s;
 
         &::before {
           height: 0%;
         }
+      }
+
+      .comments {
+        margin-top: calc((85vh - 9.8rem - 5em) / 2);
       }
     }
   }

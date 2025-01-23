@@ -6,6 +6,7 @@ type ShareBarProps = {
   title: string;
   windowServer: WindowServerType;
   articleLink: string;
+  hide?: boolean;
 };
 
 /**
@@ -14,14 +15,20 @@ type ShareBarProps = {
  * @param title The title of the article
  * @param windowServer A window object that is set to null on the server side
  * @param articleLink A link to the article
+ * @param hide A boolean to hide/show the component
  */
-const ShareBar: FC<ShareBarProps> = ({ title, windowServer, articleLink }) => {
+const ShareBar: FC<ShareBarProps> = ({
+  title,
+  windowServer,
+  articleLink,
+  hide,
+}) => {
   const copyLink = (): void => {
     window.navigator.clipboard.writeText(articleLink);
   };
 
   return (
-    <aside id={styles.shareBar}>
+    <aside id={styles.shareBar} className={hide ? styles.hide : ""}>
       <a onClick={copyLink} rel="noreferrer" title="Copy Link">
         <LinkSharp />
       </a>

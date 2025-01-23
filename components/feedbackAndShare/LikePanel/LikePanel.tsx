@@ -11,6 +11,7 @@ interface LikePanelProps {
   isCurrentlyLiked: boolean;
   initialDislikes: number;
   isCurrentlyDisliked: boolean;
+  hide?: boolean;
 }
 
 /**
@@ -22,6 +23,7 @@ interface LikePanelProps {
  * @param isCurrentlyLiked Whether the current user has liked this post
  * @param initialDislikes The inital amount of dislikes
  * @param isCurrentlyDisliked Whether the current user has disliked this post
+ * @param hide A boolean to hide/show the component
  */
 const LikePanel: FC<LikePanelProps> = ({
   postId,
@@ -30,6 +32,7 @@ const LikePanel: FC<LikePanelProps> = ({
   isCurrentlyLiked,
   initialDislikes,
   isCurrentlyDisliked,
+  hide,
 }) => {
   const [likes, setLikes] = useState<number>(Number(initialLikes));
   const [dislikes, setDislikes] = useState<number>(initialDislikes);
@@ -156,7 +159,7 @@ const LikePanel: FC<LikePanelProps> = ({
   }, [likes, dislikes]);
 
   return (
-    <aside id={styles.likePanel}>
+    <aside id={styles.likePanel} className={hide ? styles.hide : ""}>
       <button
         className={`${styles.like} ${isLiked ? styles.selected : ""}`}
         onClick={clickLike}

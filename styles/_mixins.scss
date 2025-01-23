@@ -154,8 +154,8 @@
 @mixin quoteCard {
   color: variables.$primaryText;
   border: 0.2rem solid variables.$lightGray;
-  filter: drop-shadow(-0.1rem 0.1rem 0 variables.$darkGray)
-    drop-shadow(0.1rem -0.1rem 0 variables.$darkGray);
+  filter: drop-shadow(-1px 1px 0 variables.$darkGray)
+    drop-shadow(1px -1px 0 variables.$darkGray);
   background-image: repeating-linear-gradient(
     0deg,
     rgba(60, 206, 255, 0.25) 0rem,

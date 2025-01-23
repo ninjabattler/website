@@ -28,6 +28,7 @@ interface CommentAreaProps {
   setComments: Dispatch<SetStateAction<Array<any>>>;
   postId?: string;
   articleId?: string;
+  hide?: boolean;
 }
 
 /**
@@ -37,12 +38,14 @@ interface CommentAreaProps {
  * @param setComments Sets the comments after a new one has been posted
  * @param postId The id of the current article/post
  * @param articleId The id of the current article/post
+ * @param hide A boolean to hide/show the component
  */
 const CommentArea: FC<CommentAreaProps> = ({
   comments,
   setComments,
   postId,
   articleId,
+  hide,
 }) => {
   const [noComment, setNoComment] = useState<boolean>(true);
   const [commenting, setCommenting] = useState<boolean>(false);
@@ -169,7 +172,7 @@ const CommentArea: FC<CommentAreaProps> = ({
   );
 
   return (
-    <section className={styles.commentArea}>
+    <section className={`${styles.commentArea} ${hide ? styles.hide : ""}`}>
       {commenting && (
         <div className={styles.commentLoading}>
           <img src={"/Ninja placeholder.png"} alt="logo" />
