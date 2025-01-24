@@ -117,14 +117,14 @@ export default function PostsPage({
           goBack={goBack}
         />
 
-        {!showPost && (
+        {/* {!showPost && (
           <div className={styles.desciptionContainer}>
             <p className={styles.postsDescription}>
               Renders, opinions, and other stuff
               <br /> that&apos;s too small to fit in an article
             </p>
           </div>
-        )}
+        )} */}
       </main>
     </>
   );

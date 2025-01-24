@@ -63,14 +63,14 @@ export default function Post({
       key={title}
       className={`${styles.post} ${hide ? styles.hide : ""}`}
     >
-      <Link
+      {/* <Link
         href="/posts"
         shallow
         className={styles.backButton}
         onClick={goBack}
       >
         <CloseSharp />
-      </Link>
+      </Link> */}
 
       <div className={styles.postContent}>
         <aside className={styles.commentPanel}>
@@ -98,24 +98,29 @@ export default function Post({
           />
 
           <div className={styles.comments}>
-            {commentList.map((com) => {
-              return (
-                <Comment
-                  id={com._id}
-                  key={com._id}
-                  username={com.user.name}
-                  date={com._createdAt}
-                  content={com.content}
-                  byCurrentUser={com.byCurrentUser}
-                  avatar={1}
-                  setComments={setComments}
-                />
-              );
-            })}
+            <p className={styles.cardHeader}>
+              Comments: {comments ? comments.length : "0"}
+            </p>
+            <div className={styles.container}>
+              {commentList.map((com) => {
+                return (
+                  <Comment
+                    id={com._id}
+                    key={com._id}
+                    username={com.user.name}
+                    date={com._createdAt}
+                    content={com.content}
+                    byCurrentUser={com.byCurrentUser}
+                    avatar={1}
+                    setComments={setComments}
+                  />
+                );
+              })}
+            </div>
           </div>
         </aside>
 
-        <p className={styles.title}>{title}</p>
+        <p className={styles.cardHeader}>{title}</p>
 
         <main>
           <PortableText
@@ -140,7 +145,9 @@ export default function Post({
             }}
           />
         </main>
-        <p className={styles.date}>{date ? formatSanityDate(date) : ""}</p>
+        <p className={styles.cardFooter}>
+          {date ? formatSanityDate(date) : ""}
+        </p>
       </div>
     </article>
   );

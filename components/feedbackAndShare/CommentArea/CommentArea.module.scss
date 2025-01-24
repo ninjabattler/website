@@ -7,7 +7,6 @@
   margin-left: auto;
   margin-bottom: 0.5em;
   font-size: 1em;
-  animation: slideIn 1.25s 1 ease-in-out;
 
   .commentAreaView {
     @include mixins.quoteCard;
@@ -46,11 +45,14 @@
       width: calc(100% - 0.3em);
       padding-left: 0.3em;
       background-color: rgba(0, 0, 0, 0.35);
-      mask: linear-gradient(
-        -45deg,
-        transparent calc(0% + 0.5rem),
-        black calc(0% + 0.5rem)
-      );
+
+      &:last-child {
+        mask: linear-gradient(
+          -45deg,
+          transparent calc(0% + 0.5rem),
+          black calc(0% + 0.5rem)
+        );
+      }
 
       span {
         blockQuote {
@@ -60,8 +62,8 @@
           padding-left: 0.7em;
           border-left: 0.15em solid var(--article-colour);
           display: inline-block;
-          background-color: rgba(0, 0, 0, 0.35);
-          opacity: 0.7;
+          background-color: rgba(0, 0, 0, 0.4);
+          opacity: 0.9;
           z-index: -1;
         }
 
