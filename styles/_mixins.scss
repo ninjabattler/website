@@ -153,7 +153,7 @@
 
 @mixin quoteCard {
   color: variables.$primaryText;
-  border: 0.2rem solid variables.$lightGray;
+  border: variables.$borderThinLightGray;
   filter: drop-shadow(-1px 1px 0 variables.$darkGray)
     drop-shadow(1px -1px 0 variables.$darkGray);
   background-image: repeating-linear-gradient(

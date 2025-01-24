@@ -4,7 +4,6 @@
 .post {
   display: flex;
   position: absolute;
-  filter: drop-shadow(0 0 0.1em rgba(0, 0, 0, 0.5));
   width: 80%;
   height: calc(85vh - 5rem);
   font-size: 3rem;
@@ -18,7 +17,7 @@
     filter 1s;
   transition-timing-function: cubic-bezier(0.88, 0, 0.12, 1);
   transform: scale(1);
-  filter: blur(0);
+  filter: drop-shadow(0 0 0.1em rgba(0, 0, 0, 0.5));
 
   .backButton {
     @include mixins.flexCenter;
@@ -75,7 +74,6 @@
       height: 1.2em;
       margin: 0;
       margin-left: 10%;
-      // padding-right: 1%;
       text-align: right;
       border-left: solid 0.2rem variables.$darkGray;
       border-right: solid 0.2rem variables.$darkGray;
@@ -195,14 +193,20 @@
   .comments {
     display: flex;
     flex-direction: column;
-    height: calc(85vh - 10.6rem - 5em);
+    height: calc(85vh - 10.15rem - 5em);
 
-    .cardHeader,
-    .cardFooter {
-      width: 100%;
+    .cardHeader {
+      width: calc(100% - 0.15rem);
+      height: 1.1em;
       margin: 0;
       padding: 0;
+      font-size: 0.75em;
       transition: height 0.5s 2.75s;
+      mask: linear-gradient(
+        -45deg,
+        black calc(100% - 1.95rem),
+        transparent calc(100% - 1.95rem)
+      );
     }
 
     .container {
@@ -219,6 +223,37 @@
         margin 0.5s 2.25s,
         height 0.5s 2.25s;
       transition-timing-function: cubic-bezier(0.88, 0, 0.12, 1);
+
+      .noComment {
+        width: 80%;
+        margin-left: 10%;
+        margin-top: 35%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 0.75em;
+        background-color: rgba(0, 0, 0, 0.35);
+        cursor: default;
+        user-select: none;
+        mask: linear-gradient(
+          -45deg,
+          transparent calc(0% + 0.5rem),
+          black calc(0% + 0.5rem)
+        );
+
+        p,
+        h3 {
+          margin: 0;
+          color: variables.$lightGray;
+          text-align: center;
+        }
+
+        h3 {
+          @include mixins.russoFont;
+          width: 100%;
+          border-bottom: variables.$borderThinLightGray;
+        }
+      }
     }
   }
 

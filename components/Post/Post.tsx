@@ -116,6 +116,14 @@ export default function Post({
                   />
                 );
               })}
+              {comments && comments.length === 0 && (
+                <div className={styles.noComment}>
+                  <h3>404</h3>
+                  <p>
+                    <i>No comments, mayhaps you could be the first?</i>
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         </aside>
