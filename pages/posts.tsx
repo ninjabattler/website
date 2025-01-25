@@ -11,6 +11,8 @@ import PostsPageBackground from "../components/backgrounds/PostsPageBackground/P
 import Post from "../components/Post/Post";
 import axios from "axios";
 import PostsPageHead from "../components/PageMetadata/PostsPageHead";
+import { ArrowLeftSharp, ArrowRightSharp } from "@mui/icons-material";
+import Link from "next/link";
 
 export const getServerSideProps: GetServerSideProps = postsServerSideProps;
 
@@ -30,6 +32,7 @@ export default function PostsPage({
 
   const onSlideClick = (id: string) => {
     setPostSelected(true);
+    setShowPost(false);
 
     setTimeout(() => {
       axios({
@@ -103,6 +106,20 @@ export default function PostsPage({
           })}
         </Swiper>
 
+        <Link
+          href={`/posts?p=${selectedPostData.previous ? selectedPostData.previous._id : ""}`}
+          shallow
+          onClick={() => {
+            onSlideClick(
+              selectedPostData.previous ? selectedPostData.previous._id : "",
+            );
+          }}
+          title="Previous Post"
+          className={`${styles.arrow} ${selectedPostData.previous && showPost ? "" : styles.hidden}`}
+        >
+          <ArrowLeftSharp />
+        </Link>
+
         <Post
           comments={selectedPostData.comments}
           content={selectedPostData.content || []}
@@ -116,6 +133,20 @@ export default function PostsPage({
           date={selectedPostData.date}
           goBack={goBack}
         />
+
+        <Link
+          href={`/posts?p=${selectedPostData.next ? selectedPostData.next._id : ""}`}
+          shallow
+          onClick={() => {
+            onSlideClick(
+              selectedPostData.next ? selectedPostData.next._id : "",
+            );
+          }}
+          title="Next Post"
+          className={`${styles.arrow} ${selectedPostData.next && showPost ? "" : styles.hidden} ${styles.right}`}
+        >
+          <ArrowRightSharp />
+        </Link>
 
         {/* {!showPost && (
           <div className={styles.desciptionContainer}>

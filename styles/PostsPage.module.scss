@@ -20,6 +20,69 @@
     }
   }
 
+  .arrow {
+    @include mixins.flexCenter;
+    width: 2.5em;
+    height: calc(65vh - 5rem);
+    margin-top: calc(17vh + 1.8rem);
+    position: fixed;
+    left: 0;
+    border-right: variables.$borderThinLightGray;
+    background-color: variables.$darkGray;
+    z-index: 2;
+    cursor: pointer;
+    overflow: hidden;
+    transition:
+      width 0.2s,
+      padding 0.2s,
+      border 0.2s;
+    transition-timing-function: linear;
+
+    &.right {
+      border-right: unset;
+      border-left: variables.$borderThinLightGray;
+      left: unset;
+      right: 0;
+    }
+
+    svg {
+      color: variables.$lightGray;
+      transform: scale(2.25);
+      transition: transform 0.2s;
+      transition-timing-function: linear;
+    }
+
+    &:hover {
+      width: 3.25em;
+
+      svg {
+        transform: scale(3);
+      }
+    }
+
+    &.hidden {
+      width: 0;
+      padding: 0;
+      border-width: 0;
+    }
+
+    &::before {
+      @include mixins.gridPatternDark;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      mask: linear-gradient(
+        0deg,
+        black 0%,
+        transparent 20%,
+        transparent 80%,
+        black 100%
+      );
+      content: "";
+    }
+  }
+
   .desciptionContainer {
     width: 50vw;
     height: 100vh;

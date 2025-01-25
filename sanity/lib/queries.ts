@@ -71,6 +71,8 @@ export const getPostQuery = (postId: string, userId?: string): string => {
         name
       }[0]
     },
+    "next": *[_type == "post" && date > ^.date] | order(date asc){_id}[0],
+    "previous": *[_type == "post" && date < ^.date] | order(date desc){_id}[0],
     "likes": count(*[_type == "like" && references(^._id) && isLike == true]),
     "dislikes": count(*[_type == "like" && references(^._id) && isLike == false]),
     "isLiked": count(*[_type == "like" && references(^._id) && references("${userId}") && isLike == true]) > 0,

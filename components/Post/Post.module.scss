@@ -60,8 +60,9 @@
     font-size: 0.55em;
     width: calc(70% - 1.5rem);
     height: 100%;
-    margin-right: 0;
+    margin-left: 0;
     margin-top: auto;
+    transition: margin-left 0.3s 0.85s;
 
     *::selection {
       color: variables.$darkGray;
@@ -277,6 +278,9 @@
     }
 
     .postContent {
+      margin-left: calc(15% - 0.75rem);
+      transition: margin-left 0 0.85s;
+
       main,
       .cardHeader,
       .cardFooter,
