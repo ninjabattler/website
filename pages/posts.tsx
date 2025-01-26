@@ -51,7 +51,7 @@ export default function PostsPage({
           setShowPost(true);
         }, 100);
       });
-    }, 1000);
+    }, 1250);
   };
 
   const goBack = () => {

@@ -27,7 +27,10 @@
     resize: none;
     transition:
       width 0.35s 1.55s,
-      padding 0.35s 1.55s,
+      padding-left 0.35s 1.55s,
+      padding-right 0.35s 1.55s,
+      padding-top 0.5s 1.9s,
+      padding-bottom 0.5s 1.9s,
       margin 0.5s 1.9s,
       height 0.5s 1.9s;
     transition-timing-function: cubic-bezier(0.88, 0, 0.12, 1);
@@ -119,7 +122,7 @@
       color: variables.$lightGray;
       background-color: variables.$darkGray;
       cursor: pointer;
-      animation: iconScale 1.75s 1 ease-in-out;
+      // animation: iconScale 1.75s 1 ease-in-out;
       transition:
         color 0.2s,
         background-color 0.2s;
@@ -184,10 +187,14 @@
       padding: 0;
       margin-top: 2.4rem;
       transition:
-        width 0.35s 0.5s,
-        padding-bottom 0.35s 0.5s,
-        margin 0.5s,
-        height 0.5s;
+        width 0.35s 0.9s,
+        padding 0.5s 0.4s,
+        padding-left 0.35s 0.9s,
+        padding-right 0.35s 0.9s,
+        padding-top 0.5s 0.4s,
+        padding-bottom 0.5s 0.4s,
+        margin 0.5s 0.4s,
+        height 0.5s 0.4s;
 
       * {
         height: 0;
@@ -197,7 +204,7 @@
 
     .commentStylingBar {
       height: 0;
-      transition: height 0.5s;
+      transition: height 0.5s 0.4s;
     }
   }
 }

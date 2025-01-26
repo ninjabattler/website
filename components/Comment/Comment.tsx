@@ -22,6 +22,7 @@ export type CommentProps = {
   date: string;
   byCurrentUser: boolean;
   setComments: (commentId: string) => void;
+  hide?: boolean;
 };
 
 /**
@@ -34,6 +35,7 @@ export type CommentProps = {
  * @param avatar The avatar to display on the comment
  * @param date The date of the comment
  * @param setComments A function to set the comments on a post/article
+ * @param hide A boolean to hide/show the component
  */
 const Comment: FC<CommentProps> = ({
   id,
@@ -43,6 +45,7 @@ const Comment: FC<CommentProps> = ({
   byCurrentUser = false,
   date,
   setComments,
+  hide,
 }) => {
   const [showMore, setShowMore] = useState<boolean>(false);
   const [contentOverflowed, setContentOverflowed] = useState<boolean>(false);
@@ -79,7 +82,7 @@ const Comment: FC<CommentProps> = ({
 
   return (
     <div
-      className={`${styles.comment} ${byCurrentUser ? styles.byCurrentUser : ""} ${showDeleteOverlay ? styles.blurred : ""}`}
+      className={`${styles.comment} ${byCurrentUser ? styles.byCurrentUser : ""} ${showDeleteOverlay ? styles.blurred : ""} ${hide ? styles.hide : ""}`}
       style={style}
     >
       {showDeleteOverlay && (

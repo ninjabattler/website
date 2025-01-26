@@ -102,10 +102,12 @@ export default function Post({
               Comments: {comments ? comments.length : "0"}
             </p>
             <div className={styles.container}>
-              {commentList.map((com) => {
+              {commentList.map((com, i) => {
                 return (
                   <Comment
                     id={com._id}
+                    // @ts-ignore
+                    style={{ "--transition-delay": `${3.25 + 0.1 * i}s` }}
                     key={com._id}
                     username={com.user.name}
                     date={com._createdAt}
@@ -113,6 +115,7 @@ export default function Post({
                     byCurrentUser={com.byCurrentUser}
                     avatar={1}
                     setComments={setComments}
+                    hide={hide}
                   />
                 );
               })}

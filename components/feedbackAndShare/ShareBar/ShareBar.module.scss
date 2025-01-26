@@ -25,7 +25,7 @@
     text-align: center;
     z-index: 1;
     cursor: pointer;
-    animation: iconScale 1.5s 1 ease-in-out;
+    // animation: iconScale 1.5s 1 ease-in-out;
 
     svg {
       font-size: 1em;
@@ -53,9 +53,9 @@
     margin-top: calc(1.25em / 2);
     margin-bottom: calc((1.25em / 2) + 0.5em);
     transition:
-      width 0.35s 0.5s,
-      margin 0.5s,
-      height 0.5s;
+      width 0.35s 1s,
+      margin 0.5s 0.5s,
+      height 0.5s 0.5s;
   }
 
   // &::before {

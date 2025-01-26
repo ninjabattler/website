@@ -69,7 +69,7 @@ const PostsPageBackground: FC<{}> = () => {
 
       const spaceClouds = createSpaceClouds(
         "/threeJs/homePageSpace.png",
-        0x192545,
+        0x293555,
         camera,
       );
       const sun = createSpriteObject("/threeJs/sun.jpg", {

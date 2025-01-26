@@ -39,7 +39,7 @@ const ReviewPageBackground: FC<ReviewPageBackgroundProps> = ({
 
       const spaceClouds = createSpaceClouds(
         "/threeJs/homePageSpace.png",
-        spaceColour || 0x192545,
+        spaceColour || 0x293555,
         camera,
       );
       const sun = createSpriteObject("/threeJs/sun.jpg", {

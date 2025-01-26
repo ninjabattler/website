@@ -236,6 +236,8 @@
         background-color: rgba(0, 0, 0, 0.35);
         cursor: default;
         user-select: none;
+        transform: scale(1);
+        transition: transform 0.3s 3.25s;
         mask: linear-gradient(
           -45deg,
           transparent calc(0% + 0.5rem),
@@ -301,7 +303,25 @@
 
       .comments {
         .container {
-          margin-top: calc((85vh - 9.8rem - 5em) / 2);
+          margin-top: calc(1.1em + (85vh - 9.8rem - 5em) / 2);
+          transition:
+            width 0.35s 0.8s,
+            margin 0.5s 0.3s,
+            padding 0.35s 0.8s,
+            height 0.5s 0.3s;
+
+          .noComment {
+            transform: scale(0);
+            transition: transform 0.3s;
+          }
+        }
+
+        .cardHeader {
+          transition:
+            width 0.35s 0.8s,
+            margin 0.5s 0.3s,
+            padding 0.35s 0.8s,
+            height 0.5s 0.3s;
         }
       }
     }
