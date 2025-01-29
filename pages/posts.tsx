@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import PostCard from "../components/PostCard/PostCard";
 import styles from "../styles/PostsPage.module.scss";
 import { postsServerSideProps } from "../ssr/posts";
