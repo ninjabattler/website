@@ -51,7 +51,7 @@ export default function PostsPage({
           setShowPost(true);
         }, 100);
       });
-    }, 1250);
+    }, 1400);
   };
 
   const goBack = () => {
@@ -147,6 +147,12 @@ export default function PostsPage({
         >
           <ArrowRightSharp />
         </Link>
+
+        <div
+          className={`${styles.loadingContainer} ${showPost || !postSelected ? styles.hide : ""}`}
+        >
+          <p>Loading...</p>
+        </div>
 
         {/* {!showPost && (
           <div className={styles.desciptionContainer}>

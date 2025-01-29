@@ -83,6 +83,49 @@
     }
   }
 
+  .loadingContainer {
+    @include mixins.flexCenter;
+    flex-direction: column;
+    width: 100vw;
+    height: 15vh;
+    margin-top: calc(42.5vh - 1em);
+    position: fixed;
+
+    p {
+      @include mixins.russoFont;
+      @include mixins.quoteCard;
+      @include mixins.flexCenter;
+      width: 5em;
+      height: 1em;
+      padding: 0.25em;
+      color: variables.$primaryText;
+      font-size: 2em;
+      overflow: hidden;
+      transition:
+        width 0.3s 1s,
+        padding-left 0.3s 1s,
+        padding-right 0.3s 1s,
+        padding-top 0.3s 1.3s,
+        padding-bottom 0.3s 1.3s,
+        height 0.3s 1.3s;
+    }
+
+    &.hide {
+      p {
+        width: 0;
+        height: 0;
+        padding: 0;
+        transition:
+          width 0.3s 0.3s,
+          padding-left 0.3s 0.3s,
+          padding-right 0.3s 0.3s,
+          padding-top 0.3s,
+          padding-bottom 0.3s,
+          height 0.3s;
+      }
+    }
+  }
+
   .desciptionContainer {
     width: 50vw;
     height: 100vh;
@@ -129,5 +172,17 @@
   }
   to {
     background-position: 0 0.5rem;
+  }
+}
+
+@keyframes loading {
+  0% {
+    transform: scale(0.9);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(0.9);
   }
 }
