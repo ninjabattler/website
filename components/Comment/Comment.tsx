@@ -76,7 +76,7 @@ const Comment: FC<CommentProps> = ({
   useEffect(() => {
     if (
       contentRef.current &&
-      contentRef.current.scrollHeight > contentRef.current.clientHeight
+      contentRef.current.querySelectorAll("br").length > 3
     ) {
       setContentOverflowed(true);
     }

@@ -153,6 +153,7 @@
     padding-top: 0.2em;
     padding-left: 0.5em;
     border-left: variables.$borderThinLightGray;
+    display: inline;
     background-color: rgba(0, 0, 0, 0.35);
     font-size: 0.6em;
     line-height: 1.2em;
@@ -259,7 +260,7 @@
     }
 
     .content {
-      mask-position: 0 -5em;
+      mask-position: 0 -5.2em;
       transition: mask-position 0.3s;
     }
 
