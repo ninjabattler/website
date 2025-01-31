@@ -15,6 +15,11 @@ const userDetails: SchemaTypeDefinition = {
       to: [{ type: "user" }],
     },
     {
+      name: "profilePic",
+      type: "image",
+      title: "Profile Pic",
+    },
+    {
       name: "name",
       type: "string",
       title: "Username",

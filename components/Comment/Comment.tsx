@@ -12,13 +12,14 @@ import { styleText } from "../../utils/articlePageHelpers";
 import moment from "moment";
 import { DeleteForeverSharp, PersonSharp } from "@mui/icons-material";
 import axios from "axios";
+import Image from "next/image";
 
 export type CommentProps = {
   id: string;
   username: string;
   content: string;
   style?: CSSProperties;
-  avatar: number;
+  profilePic?: SanityImage;
   date: string;
   byCurrentUser: boolean;
   setComments: (commentId: string) => void;
@@ -32,7 +33,7 @@ export type CommentProps = {
  * @param username The username of the commenter
  * @param content The markdown of the comment
  * @param style An optional style object
- * @param avatar The avatar to display on the comment
+ * @param profilePic The user image to display on the comment
  * @param date The date of the comment
  * @param setComments A function to set the comments on a post/article
  * @param hide A boolean to hide/show the component
@@ -43,6 +44,7 @@ const Comment: FC<CommentProps> = ({
   content,
   style,
   byCurrentUser = false,
+  profilePic,
   date,
   setComments,
   hide,
@@ -102,7 +104,20 @@ const Comment: FC<CommentProps> = ({
           </div>
         )}
 
-        <PersonSharp className={styles.avatar} />
+        {profilePic ? (
+          <Image
+            className={styles.avatar}
+            src={profilePic.url}
+            width={profilePic.width}
+            height={profilePic.height}
+            loading="lazy"
+            placeholder="blur"
+            blurDataURL={profilePic.blur}
+            alt="Profile Pic"
+          />
+        ) : (
+          <PersonSharp className={styles.avatar} />
+        )}
         <div className={styles.userInfo}>
           <b>{username}</b>
           <i>{moment(date).fromNow()}</i>

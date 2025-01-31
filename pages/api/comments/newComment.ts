@@ -40,6 +40,7 @@ export default async function handler(
         postId: postId ? { _ref: postId } : undefined,
         articleId: articleId ? { _ref: articleId } : undefined,
         content: content,
+        deleted: false,
       });
 
       return res.status(200).send(newComment);

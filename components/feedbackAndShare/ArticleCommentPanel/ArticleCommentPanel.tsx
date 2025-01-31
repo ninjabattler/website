@@ -80,7 +80,7 @@ const ArticleCommentPanel: FC<ArticleCommentPanelProps> = ({
               username={com.user.name}
               date={com._createdAt}
               content={com.content}
-              avatar={com.user.avatar}
+              profilePic={com.user.profilePic}
               byCurrentUser={com.byCurrentUser}
               setComments={setCommentsList}
             />

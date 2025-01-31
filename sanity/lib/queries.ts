@@ -68,7 +68,13 @@ export const getPostQuery = (postId: string, userId?: string): string => {
       content,
       "byCurrentUser": references("${userId}"),
       "user": *[_type == "userDetails" && references(^.userId._ref)] {
-        name
+        name,
+        profilePic {
+          "url": asset->url,
+          "blur": asset->metadata.lqip,
+          "width": asset->metadata.dimensions.width,
+          "height": asset->metadata.dimensions.height,
+        }
       }[0]
     },
     "next": *[_type == "post" && date > ^.date] | order(date asc){_id}[0],
@@ -126,7 +132,13 @@ export const getArticleQuery = (slug: string, userId?: string): string => {
       content,
       "byCurrentUser": references("${userId}"),
       "user": *[_type == "userDetails" && references(^.userId._ref)] {
-        name
+        name,
+        profilePic {
+          "url": asset->url,
+          "blur": asset->metadata.lqip,
+          "width": asset->metadata.dimensions.width,
+          "height": asset->metadata.dimensions.height,
+        }
       }[0]
     },
     "likes": count(*[_type == "like" && references(^._id) && isLike == true]),

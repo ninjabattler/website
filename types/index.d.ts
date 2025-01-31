@@ -77,6 +77,7 @@ declare global {
     _id: string;
     name: string;
     avatar: number;
+    profilePic: SanityImage;
   };
 
   type SanityImage = {

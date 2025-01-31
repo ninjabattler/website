@@ -113,7 +113,7 @@ export default function Post({
                     date={com._createdAt}
                     content={com.content}
                     byCurrentUser={com.byCurrentUser}
-                    avatar={1}
+                    profilePic={com.user.profilePic}
                     setComments={setComments}
                     hide={hide}
                   />

@@ -220,6 +220,10 @@
 
   &.byCurrentUser {
     .header {
+      .avatar {
+        border-color: var(--article-colour);
+      }
+
       .userInfo {
         filter: drop-shadow(0.1em 0.1em 0 var(--article-colour));
       }
