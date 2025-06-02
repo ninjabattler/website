@@ -22,12 +22,9 @@ const PostCard: FC<SanityPostsResult> = ({
   };
 
   useEffect(() => {
-    setTimeout(
-      () => {
-        setVisible(true);
-      },
-      500 + 200 * index,
-    );
+    setTimeout(() => {
+      setVisible(true);
+    }, 350 * index);
   }, []);
 
   return (

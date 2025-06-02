@@ -10,9 +10,17 @@ import React, {
 import styles from "./Comment.module.scss";
 import { styleText } from "../../utils/articlePageHelpers";
 import moment from "moment";
-import { DeleteForeverSharp, PersonSharp } from "@mui/icons-material";
+import {
+  DeleteForeverSharp,
+  ArrowDropDown,
+  PersonSharp,
+  CommentSharp,
+  ThumbUpSharp,
+  ThumbDownSharp,
+} from "@mui/icons-material";
 import axios from "axios";
 import Image from "next/image";
+import gsap from "gsap";
 
 export type CommentProps = {
   id: string;
@@ -82,6 +90,33 @@ const Comment: FC<CommentProps> = ({
     }
   }, [contentRef]);
 
+  useEffect(() => {
+    if (contentRef.current) {
+      const hiddenHeight =
+        Number(
+          getComputedStyle(contentRef.current).fontSize.replace("px", ""),
+        ) * 4.7;
+
+      gsap.timeline().to(`#comment-${id}`, {
+        maxHeight: showMore ? "1000em" : "4.7em",
+        duration: 0,
+        delay: showMore ? 0 : 1,
+        ease: "sine",
+      });
+
+      gsap.timeline().to(`#comment-${id}`, {
+        height: showMore
+          ? contentRef.current.children[0].clientHeight
+          : contentOverflowed
+            ? hiddenHeight
+            : "auto",
+        duration: 0.25,
+        delay: 0,
+        ease: "sine",
+      });
+    }
+  }, [showMore]);
+
   return (
     <div
       className={`${styles.comment} ${byCurrentUser ? styles.byCurrentUser : ""} ${showDeleteOverlay ? styles.blurred : ""} ${hide ? styles.hide : ""}`}
@@ -126,15 +161,35 @@ const Comment: FC<CommentProps> = ({
 
       <p
         ref={contentRef}
+        id={`comment-${id}`}
         className={`${styles.content} ${showMore ? styles.showMore : ""}`}
-        dangerouslySetInnerHTML={{ __html: styleText(content) }}
+        dangerouslySetInnerHTML={{ __html: `<div>${styleText(content)}</div>` }}
       />
 
-      {contentOverflowed && (
-        <button className={styles.showMoreButton} onClick={clickShowMore}>
-          Show {showMore ? "Less" : "More"}
+      <div className={styles.bottomBar}>
+        <button
+          className={`${styles.showMoreButton} ${showMore ? styles.droppedDown : ""}`}
+          onClick={clickShowMore}
+          disabled={!contentOverflowed}
+          title="Show More"
+        >
+          <ArrowDropDown />
         </button>
-      )}
+
+        <button className={styles.replies}>
+          <CommentSharp />0
+        </button>
+
+        <div className={styles.likeBar}>
+          <button>
+            <ThumbUpSharp />0
+          </button>
+          <div />
+          <button>
+            0<ThumbDownSharp />
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
